@@ -22,7 +22,8 @@ let v9 = sandbox.window.applyH93V9Patches(v8);
 v9 = sandbox.window.applyH93V9StateFixes(v9);
 
 const mustContain = [
-  'H93_OF_001_V9_3_STATE',
+  'H93_OF_001_V9_4_STATE',
+  "const app=document.getElementById('app'),progress=document.getElementById('progress'),phase=document.getElementById('phase');",
   "if(!validStep(state.step)){state=initial();ensureSpread();save()}",
   'Math.min(Math.trunc(n),STEPS.length-1)',
   'function profile(){',
@@ -49,7 +50,7 @@ const mustContain = [
   'Consulta Inicial com Hórus IA'
 ];
 for (const token of mustContain) {
-  if (!v9.includes(token)) throw new Error(`V9.3 sem marcador obrigatório: ${token}`);
+  if (!v9.includes(token)) throw new Error(`V9.4 sem marcador obrigatório: ${token}`);
 }
 
 const mustNotContain = [
@@ -77,7 +78,6 @@ const cases = [...v9.matchAll(/case\s+(\d+)\s*:/g)].map(m => Number(m[1]));
 if (cases.length < 28) throw new Error(`Fluxo incompleto: ${cases.length} cases encontrados`);
 if (Math.min(...cases) !== 0 || Math.max(...cases) !== 27) throw new Error(`Faixa de quadros inválida: ${Math.min(...cases)}..${Math.max(...cases)}`);
 
-/* Detecta justamente o bug que gerava shell com painel vazio. */
 const runtimeOrder = ['function jump(n){','function esc(s){','function answer(key,id){','function chooseCard(id,pos){','function profile(){','function recommendation(){'];
 let last = -1;
 for (const token of runtimeOrder) {
@@ -90,4 +90,4 @@ for (const token of runtimeOrder) {
 fs.mkdirSync('dist', { recursive: true });
 fs.writeFileSync('dist/H93-OF-001-Oraculo-Financeiro-THOTH-V9.html', v9);
 fs.writeFileSync('dist/index.html', v9);
-console.log(`V9.3 validada. HTML montado: ${v9.length} bytes; ${cases.length} cases (0..27); helpers runtime preservados.`);
+console.log(`V9.4 validada. HTML montado: ${v9.length} bytes; ${cases.length} cases (0..27); DOM e helpers runtime preservados.`);
