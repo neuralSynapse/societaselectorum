@@ -23,17 +23,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Validate V9 assembly and regressions
-        run: node scripts/validate-v9.mjs
-      - name: Smoke test first frame and card runtime
-        run: node scripts/smoke-runtime.mjs
+      - name: Build V10.1
+        run: node scripts/build-v10.mjs
+      - name: Validate V10.1
+        run: node scripts/validate-v10.mjs
+      - name: Smoke V10.1 runtime
+        run: node scripts/smoke-v10.mjs
       - name: Prepare immutable static site
         run: |
           rm -rf _site
           mkdir -p _site/config
           cp dist/index.html _site/index.html
-          cp dist/index.html _site/oraculo-v94.html
-          cp dist/index.html _site/oraculo-v95.html
+          cp dist/index.html _site/oraculo-v10.html
           cp config/checkout.json _site/config/checkout.json
           cp robots.txt _site/robots.txt
       - name: Setup Pages
