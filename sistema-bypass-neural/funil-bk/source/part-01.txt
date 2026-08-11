@@ -1,0 +1,427 @@
+lite"></section>
+    </main>
+
+    <nav class="bk-bottom-nav" id="bottomNav" hidden aria-label="Navegação do diagnóstico">
+      <button class="bk-back" id="backButton" type="button">← Voltar</button>
+      <span class="bk-save-state">Progresso salvo neste dispositivo</span>
+    </nav>
+  </div>
+
+  <script>
+(() => {
+  'use strict';
+
+  const STORAGE_KEY = 'bypassBK_v1';
+  const CHECKOUT_BASE = 'https://pay.hotmart.com/A98424225S?bid=1773208589822&checkoutMode=10&off=njqo49xj';
+  const META_PIXEL_ID = '341131507668987';
+  const TRACK_PARAMS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
+  const AXES = ['diagnosticoFraco','valorDifuso','objecaoReativa','fechamentoAberto'];
+  const AXIS_LABELS = {
+    diagnosticoFraco: 'DIAGNÓSTICO FRACO',
+    valorDifuso: 'VALOR DIFUSO',
+    objecaoReativa: 'OBJEÇÃO REATIVA',
+    fechamentoAberto: 'FECHAMENTO ABERTO'
+  };
+  const AXIS_SHORT = {
+    diagnosticoFraco: 'Diagnóstico',
+    valorDifuso: 'Valor',
+    objecaoReativa: 'Objeções',
+    fechamentoAberto: 'Fechamento'
+  };
+  const AXIS_PRIORITY = ['diagnosticoFraco','valorDifuso','objecaoReativa','fechamentoAberto'];
+
+  const screen = document.getElementById('screen');
+  const main = document.getElementById('main');
+  const bottomNav = document.getElementById('bottomNav');
+  const backButton = document.getElementById('backButton');
+  const progressWrap = document.getElementById('progressWrap');
+  const progressBar = document.getElementById('progressBar');
+  const phaseLabel = document.getElementById('phaseLabel');
+  const brandHome = document.getElementById('brandHome');
+
+  window.dataLayer = window.dataLayer || [];
+
+  const uid = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2,9)}`;
+  const escapeHtml = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+
+  function freshState(preserveParams = {}) {
+    return {
+      version: 1,
+      step: 0,
+      answers: {},
+      context: {},
+      result: null,
+      params: preserveParams,
+      sessionId: uid(),
+      firedEvents: {},
+      startedAt: null,
+      completedAt: null
+    };
+  }
+
+  function loadState() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (_) {}
+    if (!saved || saved.version !== 1 || typeof saved.step !== 'number') saved = freshState();
+    saved.answers ||= {};
+    saved.context ||= {};
+    saved.params ||= {};
+    saved.firedEvents ||= {};
+    saved.sessionId ||= uid();
+    const incoming = new URLSearchParams(location.search);
+    TRACK_PARAMS.forEach(key => {
+      const value = incoming.get(key);
+      if (value) saved.params[key] = value;
+    });
+    return saved;
+  }
+
+  let state = loadState();
+
+  function saveState() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {}
+  }
+
+  function pushDataLayer(name, payload={}) {
+    window.dataLayer.push({ event: name, bk_session_id: state.sessionId, ...payload });
+  }
+
+  function fireOnce(name, payload={}, standard=false) {
+    const key = `${state.sessionId}:${name}`;
+    if (state.firedEvents[key]) return;
+    state.firedEvents[key] = true;
+    saveState();
+    pushDataLayer(name, payload);
+    if (typeof window.fbq === 'function') {
+      try {
+        if (standard) window.fbq('track', name, payload);
+        else window.fbq('trackCustom', name, payload);
+      } catch (_) {}
+    }
+  }
+
+  function trackAction(name, payload={}, standard=false) {
+    pushDataLayer(name, payload);
+    if (typeof window.fbq === 'function') {
+      try {
+        if (standard) window.fbq('track', name, payload);
+        else window.fbq('trackCustom', name, payload);
+      } catch (_) {}
+    }
+  }
+
+  const q = (id, kicker, question, helper, options, meta={}) => ({ type:'question', id, kicker, question, helper, options, ...meta });
+  const o = (label, value, scores={}, manifestations={}) => ({ label, value, scores, manifestations });
+
+  const steps = [
+    { type:'entry' },
+    { type:'editorial1' },
+    q('sellType','Contexto comercial','O que você vende hoje?','Isso personaliza os exemplos do diagnóstico sem alterar a lógica de classificação.',[
+      o('Serviços','servicos'),o('Produtos','produtos'),o('Consultoria ou mentoria','consultoria'),o('Saúde ou estética','saude'),o('Educação','educacao'),o('Imóveis','imoveis'),o('Outro','outro')
+    ],{allowOther:true,otherPlaceholder:'Descreva em poucas palavras o que você vende'}),
+    q('channel','Contexto comercial','Como normalmente acontece a venda?','Escolha o canal predominante. Se usa vários, selecione “combinação de canais”.',[
+      o('WhatsApp','whatsapp'),o('Ligação','ligacao'),o('Reunião','reuniao'),o('Presencial','presencial'),o('Direct','direct'),o('Página ou funil','funil'),o('Combinação de canais','combinacao')
+    ]),
+    q('ticket','Contexto comercial','Qual é o ticket aproximado da sua oferta?','A faixa ajuda a ajustar exemplos de decisão e follow-up.',[
+      o('Até R$100','ate100'),o('R$100 a R$500','100a500'),o('R$500 a R$2.000','500a2000'),o('R$2.000 a R$5.000','2000a5000'),o('Acima de R$5.000','acima5000')
+    ],{completeEvent:'BK_ContextComplete'}),
+    { type:'contextSummary' },
+    { type:'prepare' },
+    q('opening','Abertura da conversa','Quando um potencial cliente chega, o que normalmente acontece primeiro?','Marque o padrão mais frequente, não a exceção bonita.',[
+      o('Entendo o contexto antes de falar da solução.','contexto_primeiro',{},{}),
+      o('Faço algumas perguntas, mas logo começo a explicar.','perguntas_depois_explica',{diagnosticoFraco:1,valorDifuso:1},{diagnosticoFraco:'Você começa a explicar antes de terminar de entender o contexto.'}),
+      o('Normalmente apresento o produto ou serviço primeiro.','produto_primeiro',{diagnosticoFraco:3,valorDifuso:2},{diagnosticoFraco:'A solução entra antes de o problema e o critério de decisão estarem claros.',valorDifuso:'O valor é apresentado antes de existir um critério do cliente para ancorá-lo.'}),
+      o('Depende da conversa. Não tenho uma sequência clara.','sem_sequencia',{diagnosticoFraco:2,fechamentoAberto:1},{diagnosticoFraco:'A abertura depende de improvisação e muda sem um critério claro.'})
+    ],{weight:3,completeEvent:'BK_OpeningComplete'}),
+    q('diagnosis','Diagnóstico','Antes de recomendar sua solução, quanto você realmente entende do problema do cliente?','O objetivo não é fazer mais perguntas. É entender o suficiente antes de propor.',[
+      o('Entendo situação, problema, impacto, prioridade e critério de decisão.','completo',{},{}),
+      o('Entendo situação e problema, mas nem sempre impacto e prioridade.','parcial',{diagnosticoFraco:1},{diagnosticoFraco:'Impacto e prioridade ficam implícitos, então parte da decisão ainda é adivinhada.'}),
+      o('Faço algumas perguntas, mas avanço quando já tenho uma ideia da solução.','algumas',{diagnosticoFraco:2},{diagnosticoFraco:'Você avança com hipótese de solução antes de fechar as informações que sustentam a decisão.'}),
+      o('Pergunto o que precisa e normalmente já apresento a solução.','necessidade_solução',{diagnosticoFraco:3,valorDifuso:1},{diagnosticoFraco:'Necessidade é identificada, mas impacto, prioridade e critério ficam de fora.'}),
+      o('Quase sempre explico primeiro e entendo detalhes depois.','explica_primeiro',{diagnosticoFraco:3,valorDifuso:2},{diagnosticoFraco:'O diagnóstico acontece depois da apresentação, quando deveria orientar o que será apresentado.'})
+    ],{weight:5,completeEvent:'BK_DiagnosisComplete'}),
+    { type:'partialSynthesis' },
+    q('value','Construção de valor','Quando explica sua solução, como você costuma construir valor?','Valor forte nasce do que o cliente acabou de revelar, não de uma lista decorada.',[
+      o('Conecto diretamente a solução ao que o cliente acabou de dizer.','conecta',{},{}),
+      o('Apresento benefícios relevantes, mas nem sempre ligados às palavras do cliente.','relevantes_gerais',{valorDifuso:1},{valorDifuso:'Os benefícios são relevantes, mas a ligação com o critério declarado nem sempre fica explícita.'}),
+      o('Listo benefícios gerais que costumam funcionar.','lista_beneficios',{valorDifuso:2},{valorDifuso:'A apresentação usa benefícios gerais e deixa o cliente fazer sozinho a conexão com o próprio problema.'}),
+      o('Explico muitas características para mostrar tudo que a solução entrega.','caracteristicas',{valorDifuso:3},{valorDifuso:'Excesso de características dilui o ponto que realmente justificaria a decisão.'}),
+      o('Improviso conforme a conversa.','improvisa',{valorDifuso:2,diagnosticoFraco:1},{valorDifuso:'O valor muda conforme o improviso, sem uma estrutura consistente de conexão.'})
+    ],{weight:5,completeEvent:'BK_ValueComplete'}),
+    q('price','Momento do preço','Quando chega a hora de apresentar o preço, o que mais se parece com você?','Preço não é só um número. O que vem antes e depois dele muda a clareza da decisão.',[
+      o('Apresento depois de construir contexto e valor.','depois_valor',{},{}),
+      o('Explico demais antes de finalmente falar o preço.','explica_demais',{valorDifuso:1,objecaoReativa:1},{valorDifuso:'A apresentação se alonga e o valor central perde nitidez antes do preço.'}),
+      o('Fico desconfortável e tento justificar o valor.','justifica',{valorDifuso:2,objecaoReativa:1},{valorDifuso:'A justificativa excessiva pode sinalizar insegurança e deslocar a conversa para defesa de preço.'}),
+      o('Ofereço desconto ou condição cedo para facilitar.','desconto_cedo',{valorDifuso:2,objecaoReativa:2},{objecaoReativa:'A condição comercial entra antes de ficar claro qual objeção realmente existe.'}),
+      o('Envio o valor e espero a resposta.','envia_espera',{fechamentoAberto:2,valorDifuso:1},{fechamentoAberto:'O preço vira o último movimento e a decisão fica sem próximo passo combinado.'})
+    ],{weight:3,completeEvent:'BK_PriceComplete'}),
+    q('goal','Direção desejada','Qual mudança mais faria diferença nas suas próximas conversas?','Isso orienta o primeiro ajuste que aparecerá no resultado.',[
+      o('Entender melhor antes de apresentar','melhor_diagnostico'),o('Construir valor com mais clareza','melhor_valor'),o('Lidar melhor com objeções','melhor_objecao'),o('Concluir com próximo passo claro','melhor_fechamento')
+    ]),
+    { type:'editorial2' },
+    { type:'authority' },
+    { type:'practiceProof' },
+    { type:'mechanism' },
+    q('expensive','Objeção','Quando o cliente diz “está caro”, o que você tende a fazer primeiro?','A primeira reação mostra se você investiga a causa ou já entra em defesa.',[
+      o('Investigo o que ele está comparando ou qual percepção está por trás.','investiga',{},{}),
+      o('Reforço o valor e os benefícios.','reforca',{objecaoReativa:1,valorDifuso:1},{objecaoReativa:'Você responde à frase “está caro” antes de confirmar o que “caro” significa para aquele cliente.'}),
+      o('Justifico o preço e explico por que custa isso.','justifica_preco',{objecaoReativa:2,valorDifuso:1},{objecaoReativa:'A objeção leva direto à justificativa, sem diagnóstico da comparação ou do risco percebido.'}),
+      o('Ofereço desconto ou condição.','oferece_desconto',{objecaoReativa:3,valorDifuso:2},{objecaoReativa:'Desconto aparece como resposta automática antes de a causa da objeção ser conhecida.'}),
+      o('Fico sem saber como continuar ou respondo na defensiva.','defensiva',{objecaoReativa:3},{objecaoReativa:'A objeção interrompe sua condução e transforma a conversa em reação.'})
+    ],{weight:4}),
+    q('think','Objeção','Quando escuta “vou pensar”, como você conduz?','“Vou pensar” pode esconder critérios diferentes. O trabalho é tornar o que falta decidível.',[
+      o('Entendo exatamente o que ainda precisa ser decidido.','entende_pendente',{},{}),
+      o('Pergunto se ficou alguma dúvida.','duvida',{objecaoReativa:1,fechamentoAberto:1},{objecaoReativa:'A pergunta busca uma dúvida genérica, mas não necessariamente o critério que ainda impede a decisão.'}),
+      o('Mando um resumo e aguardo.','resumo_aguarda',{fechamentoAberto:2},{fechamentoAberto:'Você entrega informação, mas não combina como e quando a decisão será retomada.'}),
+      o('Digo “beleza, qualquer coisa me chama”.','qualquer_coisa',{fechamentoAberto:3,objecaoReativa:1},{fechamentoAberto:'A conversa termina sem decisão, condição de retomada ou próximo passo.'})
+    ],{weight:5}),
+    q('someone','Objeção','Quando o cliente diz “preciso falar com alguém”, o que você faz?','Mapear participantes e critérios evita que a proposta seja repassada sem contexto de decisão.',[
+      o('Identifico quem participa, o critério dessa pessoa e quando a decisão volta.','mapeia',{},{}),
+      o('Peço para conversar e depois me dar um retorno.','pede_retorno',{fechamentoAberto:1,objecaoReativa:1},{fechamentoAberto:'O retorno fica delegado ao cliente, sem um marco combinado.'}),
+      o('Envio mais informações para ele repassar.','envia_info',{valorDifuso:1,fechamentoAberto:2},{fechamentoAberto:'Mais informação é enviada, mas o processo de decisão continua sem estrutura.'}),
+      o('Aguardo a pessoa voltar.','aguarda',{fechamentoAberto:3},{fechamentoAberto:'A continuidade fica totalmente passiva.'})
+    ],{weight:3}),
+    q('now','Objeção','Quando o cliente diz “agora não”, como você conduz?','Timing pode ser real. O ponto é entender a condição de retomada, não fabricar urgência.',[
+      o('Entendo o motivo, a condição para retomar e combino um próximo passo.','condicao_retomada',{},{}),
+      o('Pergunto quando seria um momento melhor.','quando_melhor',{fechamentoAberto:1},{fechamentoAberto:'Existe intenção de retomar, mas falta esclarecer o que precisa mudar para a conversa fazer sentido.'}),
+      o('Tento mostrar por que deveria agir agora.','cria_urgencia',{objecaoReativa:2},{objecaoReativa:'A objeção de timing leva a argumentação antes de a causa ser compreendida.'}),
+      o('Deixo a porta aberta para ele voltar quando quiser.','porta_aberta',{fechamentoAberto:2},{fechamentoAberto:'A retomada fica sem prazo, condição ou responsabilidade.'}),
+      o('Ofereço condição especial para decidir logo.','condicao_especial',{objecaoReativa:3,fechamentoAberto:1},{objecaoReativa:'Pressão ou condição comercial substitui a investigação do motivo real do “agora não”.'})
+    ],{weight:3,completeEvent:'BK_ObjectionsComplete'}),
+    q('followup','Follow-up','Quando o cliente não decide na hora, como você retoma a conversa?','Follow-up forte recupera contexto e decisão pendente. Follow-up fraco só pergunta se a pessoa viu.',[
+      o('Retomo com base no combinado e avanço para o próximo passo.','combinado',{},{}),
+      o('Envio uma mensagem contextualizada depois.','contextualizada',{fechamentoAberto:1},{fechamentoAberto:'O contexto é retomado, mas nem sempre há uma ação concreta ou data combinada.'}),
+      o('Pergunto se conseguiu pensar.','pensou',{fechamentoAberto:2},{fechamentoAberto:'O follow-up pede resposta, mas não ajuda a reorganizar a decisão.'}),
+      o('Mando “oi, conseguiu ver?”.','oi_viu',{fechamentoAberto:3,objecaoReativa:1},{fechamentoAberto:'A retomada perde contexto e transfere ao cliente todo o trabalho de reconstruir a conversa.'}),
+      o('Normalmente espero a pessoa voltar.','espera_voltar',{fechamentoAberto:3},{fechamentoAberto:'O processo termina em espera passiva.'})
+    ],{weight:5,completeEvent:'BK_FollowupComplete'}),
+    q('closing','Fechamento','Como suas conversas normalmente terminam quando o cliente ainda não comprou?','A melhor conversa não precisa terminar em compra. Precisa terminar em decisão ou direção.',[
+      o('Com uma decisão clara, mesmo que seja “não”.','decisao_clara',{},{}),
+      o('Com próximo passo e data definidos.','passo_data',{},{}),
+      o('Com acompanhamento combinado, mas sem data fixa.','acompanhamento',{fechamentoAberto:1},{fechamentoAberto:'Existe continuidade, mas o marco de retomada ainda fica frouxo.'}),
+      o('Com “me chama se decidir”.','me_chama',{fechamentoAberto:3},{fechamentoAberto:'A conversa termina sem ação, responsável ou prazo.'}),
+      o('A conversa simplesmente esfria.','esfria',{fechamentoAberto:3},{fechamentoAberto:'A oportunidade se perde sem um encerramento explícito ou próximo passo.'})
+    ],{weight:5,completeEvent:'BK_ClosingComplete'}),
+    { type:'processing' },
+    { type:'result' },
+    { type:'bridge' },
+    { type:'offer' },
+    { type:'checkout' }
+  ];
+
+  const labels = {
+    sellType:{servicos:'Serviços',produtos:'Produtos',consultoria:'Consultoria ou mentoria',saude:'Saúde ou estética',educacao:'Educação',imoveis:'Imóveis',outro:'Outro'},
+    channel:{whatsapp:'WhatsApp',ligacao:'Ligação',reuniao:'Reunião',presencial:'Presencial',direct:'Direct',funil:'Página ou funil',combinacao:'Combinação de canais'},
+    ticket:{ate100:'Até R$100','100a500':'R$100 a R$500','500a2000':'R$500 a R$2.000','2000a5000':'R$2.000 a R$5.000',acima5000:'Acima de R$5.000'},
+    goal:{melhor_diagnostico:'entender melhor antes de apresentar',melhor_valor:'construir valor com mais clareza',melhor_objecao:'lidar melhor com objeções',melhor_fechamento:'concluir com próximo passo claro'}
+  };
+
+  function findQuestion(id){ return steps.find(s => s.type === 'question' && s.id === id); }
+  function selectedOption(id){ const question = findQuestion(id); return question?.options.find(x => x.value === state.answers[id]); }
+
+  function calculateResult(){
+    const totals = Object.fromEntries(AXES.map(a => [a,0]));
+    const weighted = Object.fromEntries(AXES.map(a => [a,0]));
+    const manifestations = Object.fromEntries(AXES.map(a => [a,[]]));
+    steps.filter(s => s.type === 'question').forEach(question => {
+      const option = question.options.find(x => x.value === state.answers[question.id]);
+      if (!option) return;
+      AXES.forEach(axis => {
+        const value = Number(option.scores?.[axis] || 0);
+        totals[axis] += value;
+        weighted[axis] += value * (question.weight || 1);
+        const m = option.manifestations?.[axis];
+        if (m && !manifestations[axis].includes(m)) manifestations[axis].push(m);
+      });
+    });
+    const totalSeverity = Object.values(totals).reduce((a,b)=>a+b,0);
+    const ranked = [...AXES].sort((a,b)=> weighted[b]-weighted[a] || totals[b]-totals[a] || AXIS_PRIORITY.indexOf(a)-AXIS_PRIORITY.indexOf(b));
+    const noDominant = totalSeverity === 0;
+    const primary = noDominant ? 'valorDifuso' : ranked[0];
+    const secondary = noDominant ? 'diagnosticoFraco' : ranked[1];
+    const severityQuestions = steps.filter(s=>s.type==='question').length;
+    const maxRough = severityQuestions * 3;
+    const ratio = Math.min(1,totalSeverity/Math.max(1,maxRough*.48));
+    const level = ratio >= .63 ? ['Estrutura Inicial','A conversa depende bastante de improvisação e possui rupturas em diferentes momentos.'] : ratio >= .38 ? ['Estrutura Parcial','Existem boas práticas, mas elas ainda não formam uma sequência consistente.'] : ratio >= .14 ? ['Estrutura Funcional','Existe condução razoavelmente clara, com rupturas localizadas.'] : ['Estrutura Consolidada','A conversa possui boa sequência, com pontos pontuais de otimização.'];
+    return { totals, weighted, primary, secondary, totalSeverity, noDominant, level, manifestations: manifestations[primary].slice(0,3) };
+  }
+
+  const resultCopy = {
+    diagnosticoFraco:{
+      center:'Você tende a entrar na solução antes de ter informação suficiente para conduzir a decisão.',
+      consequence:'A apresentação passa a depender de suposições e o cliente precisa sozinho conectar aquilo que você vende ao que ele realmente precisa.',
+      adjust:'Antes de apresentar a solução, obtenha clareza sobre situação, principal problema, impacto e prioridade.'
+    },
+    valorDifuso:{
+      center:'Você apresenta valor, mas nem sempre ele nasce diretamente do que o cliente acabou de revelar.',
+      consequence:'O cliente pode entender o produto e ainda não enxergar por que aquilo importa especificamente para a situação dele.',
+      adjust:'Conecte cada benefício relevante a uma necessidade, impacto ou critério que o próprio cliente verbalizou.'
+    },
+    objecaoReativa:{
+      center:'A objeção está fazendo você responder antes de entender o que realmente precisa ser resolvido.',
+      consequence:'A conversa tende a virar defesa, explicação, desconto ou tentativa de convencimento antes de existir um diagnóstico da objeção.',
+      adjust:'Antes de responder, identifique o que exatamente o cliente está comparando, temendo ou tentando decidir.'
+    },
+    fechamentoAberto:{
+      center:'Sua conversa frequentemente termina sem uma decisão ou próximo passo claramente combinado.',
+      consequence:'Bons potenciais clientes entram em follow-ups vagos ou desaparecem porque a continuidade ficou sem estrutura.',
+      adjust:'Toda conversa deve terminar com decisão, ação ou próximo passo definido, inclusive quando a resposta é “não agora”.'
+    }
+  };
+
+  function phaseFor(index){
+    if (index <= 1) return 'Diagnóstico';
+    if (index <= 5) return 'Contexto';
+    if (index <= 16) return 'Conversa';
+    if (index <= 22) return 'Objeções';
+    if (index <= 24) return 'Resultado';
+    return 'Sistema';
+  }
+
+  function syncChrome(){
+    phaseLabel.textContent = phaseFor(state.step);
+    const visibleProgress = state.step > 1 && state.step < 24;
+    progressWrap.hidden = !visibleProgress;
+    const pct = Math.max(0,Math.min(100,((state.step-1)/22)*100));
+    progressBar.style.width = `${pct}%`;
+    bottomNav.hidden = state.step === 0;
+  }
+
+  function go(index, opts={}){
+    index = Math.max(0,Math.min(steps.length-1,index));
+    state.step = index;
+    saveState();
+    const hash = `#etapa-${index+1}`;
+    if (opts.replace) history.replaceState({bkStep:index},'',hash); else history.pushState({bkStep:index},'',hash);
+    render();
+  }
+
+  function answer(question, option){
+    state.answers[question.id] = option.value;
+    if (question.id === 'sellType') state.context.sellType = option.value;
+    if (question.id === 'channel') state.context.channel = option.value;
+    if (question.id === 'ticket') state.context.ticket = option.value;
+    if (question.id === 'goal') state.context.goal = option.value;
+    state.result = null;
+    saveState();
+    if (question.completeEvent) fireOnce(question.completeEvent,{answer_id:question.id});
+    go(state.step+1);
+  }
+
+  function optionMarkup(question, option, index){
+    const selected = state.answers[question.id] === option.value;
+    return `<button class="bk-option" type="button" data-option="${escapeHtml(option.value)}" aria-pressed="${selected}"><span class="bk-letter">${String.fromCharCode(65+index)}</span><span>${escapeHtml(option.label)}</span><span class="bk-arrow">›</span></button>`;
+  }
+
+  function renderQuestion(question){
+    const current = state.answers[question.id];
+    screen.innerHTML = `<div class="bk-frame"><div class="bk-question-head"><div class="bk-kicker">${escapeHtml(question.kicker)}</div><h1 class="bk-question">${escapeHtml(question.question)}</h1><p class="bk-helper">${escapeHtml(question.helper)}</p></div><div class="bk-options">${question.options.map((option,i)=>optionMarkup(question,option,i)).join('')}</div>${question.allowOther ? `<div class="bk-other" id="otherBox" ${current==='outro'?'':'hidden'}><input class="bk-other-input" id="otherInput" maxlength="90" placeholder="${escapeHtml(question.otherPlaceholder||'Descreva aqui')}" value="${escapeHtml(state.context.otherSellType||'')}"><button class="bk-btn bk-btn-dark" type="button" id="otherContinue">CONTINUAR</button></div>` : ''}</div>`;
+    screen.querySelectorAll('[data-option]').forEach(btn => btn.addEventListener('click',()=>{
+      const opt = question.options.find(o=>o.value===btn.dataset.option);
+      if (question.allowOther && opt.value==='outro') {
+        state.answers[question.id]='outro'; state.context.sellType='outro'; saveState();
+        screen.querySelectorAll('[data-option]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.option==='outro'));
+        document.getElementById('otherBox').hidden=false; document.getElementById('otherInput').focus();
+        return;
+      }
+      answer(question,opt);
+    }));
+    if (question.allowOther) {
+      const continueBtn=document.getElementById('otherContinue');
+      continueBtn?.addEventListener('click',()=>{
+        const value=document.getElementById('otherInput').value.trim();
+        if (!value) { document.getElementById('otherInput').focus(); return; }
+        state.context.otherSellType=value; saveState();
+        answer(question,question.options.find(o=>o.value==='outro'));
+      });
+    }
+  }
+
+  function button(text,id,kind='primary') { return `<button class="bk-btn bk-btn-${kind}" type="button" id="${id}">${text}</button>`; }
+
+  function setupButton(id,fn){ document.getElementById(id)?.addEventListener('click',fn); }
+
+  function render(){
+    syncChrome();
+    const step = steps[state.step];
+    if (!step) return;
+    if (step.type === 'question') { renderQuestion(step); }
+    else renderSpecial(step.type);
+    main.focus({preventScroll:true});
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+
+  function renderSpecial(type){
+    if (type === 'entry') {
+      fireOnce('BK_ViewEntry');
+      screen.innerHTML = `<div class="bk-frame-wide"><div class="bk-kicker">Diagnóstico de condução comercial</div><h1 class="bk-title">EM QUAL PONTO DA SUA CONVERSA A VENDA <span>COMEÇA A ESCAPAR?</span></h1><p class="bk-lead">Analise como você abre, diagnostica, apresenta valor, responde objeções e conduz a decisão. No final, você recebe o principal ponto de ruptura da sua conversa e o primeiro ajuste que pode aplicar.</p><div class="bk-actions">${button('DESCOBRIR MEU PONTO DE RUPTURA','startButton')}</div><p class="bk-micro">Sem login. Seu diagnóstico principal aparece antes da oferta.</p></div>`;
+      setupButton('startButton',()=>{ state.startedAt ||= new Date().toISOString(); saveState(); fireOnce('BK_StartDiagnostic'); go(1); });
+      return;
+    }
+    if (type === 'editorial1') {
+      screen.innerHTML = `<div class="bk-frame"><article class="bk-card bk-editorial"><div class="bk-editorial-label">Análise prática · conversa comercial</div><h1 class="bk-title-medium">Boa parte das vendas não se perde no “não”. Ela começa a escapar antes.</h1><p class="bk-copy">A ruptura pode aparecer quando a solução entra cedo demais, quando o valor não nasce do que o cliente disse, quando uma objeção vira defesa ou quando a conversa termina sem próximo passo.</p><p class="bk-quote">“Você não precisa adivinhar qual é o seu caso. Vamos observar a sequência.”</p><div class="bk-actions">${button('ANALISAR MINHA CONVERSA','editorialContinue')}</div></article></div>`;
+      setupButton('editorialContinue',()=>go(2));
+      return;
+    }
+    if (type === 'contextSummary') {
+      const sell = state.context.sellType==='outro' ? state.context.otherSellType : labels.sellType[state.context.sellType];
+      screen.innerHTML = `<div class="bk-frame"><div class="bk-kicker">Contexto registrado</div><h1 class="bk-title-medium">Agora o diagnóstico entra na conversa em si.</h1><div class="bk-summary-grid"><div class="bk-summary-item"><small>Oferta</small><strong>${escapeHtml(sell||'Não informado')}</strong></div><div class="bk-summary-item"><small>Canal</small><strong>${escapeHtml(labels.channel[state.context.channel]||'Não informado')}</strong></div><div class="bk-summary-item"><small>Ticket</small><strong>${escapeHtml(labels.ticket[state.context.ticket]||'Não informado')}</strong></div></div><p class="bk-copy">Esses dados só ajustam os exemplos do resultado. A classificação nasce do que você faz em cada etapa da conversa.</p><div class="bk-actions">${button('CONTINUAR A ANÁLISE','contextContinue')}</div></div>`;
+      setupButton('contextContinue',()=>go(6));
+      return;
+    }
+    if (type === 'prepare') {
+      screen.innerHTML = `<div class="bk-frame"><div class="bk-card"><div class="bk-kicker">Uma regra antes de continuar</div><h1 class="bk-title-medium">Responda pelo que acontece na prática.</h1><p class="bk-lead">Não marque a frase que parece mais profissional. Marque o comportamento que aparece com mais frequência quando a conversa está acontecendo de verdade.</p><div class="bk-insights"><div class="bk-insight"><strong>Sequência</strong><span>O que você faz primeiro?</span></div><div class="bk-insight"><strong>Decisão</strong><span>O que acontece diante de hesitação?</span></div><div class="bk-insight"><strong>Continuidade</strong><span>Como a conversa termina?</span></div></div><div class="bk-actions">${button('COMEÇAR PELA ABERTURA','prepareContinue')}</div></div></div>`;
+      setupButton('prepareContinue',()=>go(7));
+      return;
+    }
+    if (type === 'partialSynthesis') {
+      const temp = calculateResult();
+      const axis = temp.totalSeverity ? temp.primary : 'diagnosticoFraco';
+      const line = axis==='diagnosticoFraco' ? 'Sua abertura e diagnóstico já mostram o quanto a apresentação nasce de informação ou de hipótese.' : 'Sua base de diagnóstico está relativamente organizada. Agora precisamos observar o que acontece quando você constrói valor e conduz a decisão.';
+      screen.innerHTML = `<div class="bk-frame"><div class="bk-card bk-editorial"><div class="bk-editorial-label">Primeira leitura da sequência</div><h1 class="bk-title-medium">A apresentação começa antes de você falar do produto.</h1><p class="bk-copy">${line}</p><div class="bk-actions">${button('ANALISAR COMO CONSTRUO VALOR','partialContinue')}</div></div></div>`;
+      setupButton('partialContinue',()=>go(10));
+      return;
+    }
+    if (type === 'editorial2') {
+      const r=calculateResult();
+      const axis=r.totalSeverity?r.primary:'valorDifuso';
+      const headlines={diagnosticoFraco:'Quando a solução aparece cedo, o cliente recebe uma resposta antes de sentir que foi compreendido.',valorDifuso:'Quando o benefício não nasce do que o cliente disse, ele pode entender a oferta sem sentir prioridade.',objecaoReativa:'Quando toda objeção recebe resposta imediata, a conversa pode esconder o que realmente ainda precisa ser decidido.',fechamentoAberto:'Quando a conversa termina sem próximo passo, o follow-up tenta reconstruir algo que deveria ter ficado combinado.'};
+      screen.innerHTML = `<div class="bk-frame"><article class="bk-card bk-editorial"><div class="bk-editorial-label">Padrão observado até aqui</div><h1 class="bk-title-medium">${headlines[axis]}</h1><p class="bk-copy">As próximas situações verificam se esse padrão continua quando aparecem preço, hesitação, terceiros e timing.</p><div class="bk-actions">${button('VER A ESTRUTURA POR TRÁS DISSO','editorial2Continue')}</div></article></div>`;
+      setupButton('editorial2Continue',()=>go(14));
+      return;
+    }
+    if (type === 'authority') {
+      screen.innerHTML = `<div class="bk-frame"><div class="bk-card"><div class="bk-kicker">Estrutura aplicada</div><h1 class="bk-title-medium">O diagnóstico usa a mesma lógica operacional ensinada no Sistema Bypass Neural.</h1><p class="bk-copy">A estrutura organiza quatro movimentos simples: entender antes de propor, perguntar antes de presumir, conectar valor ao que foi dito e concluir com uma direção clara.</p><div class="bk-ipac"><div class="bk-ipac-step"><b>I</b><strong>Investigar</strong><span>Contexto, problema e critério.</span></div><div class="bk-ipac-step"><b>P</b><strong>Perguntar</strong><span>Aprofundar sem interrogatório.</span></div><div class="bk-ipac-step"><b>A</b><strong>Apresentar</strong><span>Conectar valor ao que foi revelado.</span></div><div class="bk-ipac-step"><b>C</b><strong>Concluir</strong><span>Decisão, ação ou próximo passo.</span></div></div><div class="bk-actions">${button('VER ISSO EM UMA CONVERSA','authorityContinue')}</div></div></div>`;
+      setupButton('authorityContinue',()=>go(15));
+      return;
+    }
+    if (type === 'practiceProof') {
+      screen.innerHTML = `<div class="bk-frame-wide"><div class="bk-kicker">Demonstração de estrutura</div><h1 class="bk-title-medium">Mesma objeção. Duas maneiras de continuar.</h1><div class="bk-demo"><div class="bk-demo-card"><div class="bk-demo-label">Resposta reativa</div><div class="bk-message client">Cliente: “Está caro.”</div><div class="bk-message">“Mas você recebe X, Y, Z e ainda posso fazer uma condição…”</div><p class="bk-copy">A resposta tenta resolver algo que ainda não foi identificado.</p></div><div class="bk-demo-card good"><div class="bk-demo-label">Condução estruturada</div><div class="bk-message client">Cliente: “Está caro.”</div><div class="bk-message">“Quando você diz caro, está comparando com outra opção, com o orçamento disponível ou com o retorno que espera?”</div><p class="bk-copy">Primeiro se esclarece a objeção. Depois existe algo concreto para responder.</p></div></div><div class="bk-actions">${button('CONTINUAR','practiceContinue')}</div></div>`;
+      setupButton('practiceContinue',()=>go(16));
+      return;
+    }
+    if (type === 'mechanism') {
+      screen.innerHTML = `<div class="bk-frame"><div class="bk-kicker">Sequência de Condução Estruturada</div><h1 class="bk-title-medium">Uma conversa não precisa ser rígida para ter direção.</h1><p class="bk-lead">A estrutura serve como trilho. Ela reduz o número de decisões improvisadas no meio da conversa e ajuda a perceber qual movimento vem antes do próximo.</p><div class="bk-insights"><div class="bk-insight"><strong>Antes</strong><span>Entender o cenário que sustenta a decisão.</span></div><div class="bk-insight"><strong>Durante</strong><span>Conectar resposta e valor ao que foi revelado.</span></div><div class="bk-insight"><strong>Depois</strong><span>Encerrar com direção clara.</span></div></div><div class="bk-actions">${button('TESTAR NAS OBJEÇÕES','mechanismContinue')}</div></div>`;
+      setupButton('mechanismContinue',()=>go(17));
+      return;
+    }
+    if (type === 'processing') {
+      state.result=calculateResult(); state.completedAt=new Date().toISOString(); saveState(); fireOnce('BK_DiagnosticComplete',{primary_axis:state.result.primary,secondary_axis:state.result.secondary,structure_level:state.result.level[0]});
+      screen.innerHTML = `<div class="bk-frame"><div class="bk-processing"><div><div class="bk-spinner" aria-hidden="true"></div><div class="bk-kicker" style="justify-content:center">Organizando sua sequência</div><h1 class="bk-title-medium">Cruzando abertura, diagnóstico, valor, objeções e fechamento.</h1><p class="bk-copy" style="margin:auto">O resultado não é uma avaliação científica ou psicológica. É uma leitura estrutural das respostas que você acabou de fornecer.</p></div></div></div>`;
+      setTimeout(()=>{ if(state.step===23) go(24,{replace:true}); },850);
+      return;
+    }
+    if (type === 'result') {
+      const r=state.result||calculateResult(); state.result=r; saveState(); fireOnce('BK_ResultViewed',{primary_axis:r.primary,secondary_axis:r.secondary,structure_level:r.level[0]});
+      if(r.noDominant){
+        screen.innerHTML = `<div class="bk-frame"><div class="bk-result-badge">Seu principal ponto de ruptura</div><h1 class="bk-result-title">NENHUMA RUPTURA DOMINANTE</h1><p class="bk-lead">Suas respostas indicam uma sequência comercial relativamente estruturada. Isso não significa que a conversa esteja “perfeita”; significa que nenhum dos quatro pontos avaliados apareceu como fragilidade dominante.</p><div class="bk-result-grid"><div class="bk-result-panel"><h3>Onde otimizar</h3><p>O ganho tende a vir de consistência: repetir a boa sequência em conversas reais, especialmente sob pressão, preço e follow-up.</p></div><div class="bk-result-panel"><h3>Direção escolhida</h3><p>${escapeHtml(labels.goal[state.context.goal]||'manter a condução consistente')}</p></div></div><div class="bk-adjust"><strong>Primeiro ajuste</strong>Revise suas próximas três conversas e confirme se a mesma estrutura aparece na prática, sem depender do improviso.</div><div class="bk-level"><div class="bk-level-mark">✓</div><div><small>Estrutura estimada</small><strong>${r.level[0]}</strong><div class="bk-copy">${r.level[1]}</div></div></div><div class="bk-actions">${button('VER COMO TRANSFORMAR ISSO EM SEQUÊNCIA','resultContinue')}</div><button class="bk-restart" id="restartDiagnostic" type="button">Reiniciar diagnóstico</button></div>`;
+      } else {
+        const copy=resultCopy[r.primary]; const manifests=(r.manifestations.length?r.manifestations:[copy.center]).slice(0,3);
+        screen.innerHTML = `<div class="bk-frame"><div class="bk-result-badge">Seu principal ponto de ruptura</div><h1 class="bk-result-title">${AXIS_LABELS[r.primary]}</h1><p class="bk-result-secondary">Ponto secundário observado: <strong>${AXIS_LABELS[r.secondary]}</strong></p><div class="bk-result-grid"><div class="bk-result-panel"><h3>Onde sua conversa perde direção</h3><p>${copy.center}</p></div><div class="bk-result-panel"><h3>Como isso aparece</h3><ul>${manifests.map(x=>`<li>${escapeHtml(x)}</li>`).join('')}</ul></div></div><div class="bk-result-panel"><h3>Consequência comercial</h3><p>${copy.consequence}</p></div><div class="bk-adjust"><strong>Primeiro ajuste</strong>${copy.adjust}</div><div class="bk-level"><div class="bk-level-mark">${r.level[0].split(' ')[1]?.charAt(0)||'E'}</div><div><small>Estrutura estimada</small><strong>${r.level[0]}</strong><div class="bk-copy">${r.level[1]}</div></div></div><div class="bk-actions">${button('VER COMO CORRIGIR A SEQUÊNCIA','resultContinue')}</div><button class="bk-restart" id="restartDiagnostic" type="button">Reiniciar diagnóstico</button></div>`;
+      }
+      setupButton('resultContinue',()=>go(25)); setupButton('restartDiagnostic',restart);
+      return;
+    }
+    if (type === 'bridge') {
+      const r=state.result||calculateResult(); fireOnce('BK_OfferViewed',{primary_axis:r.primary});
+      screen.innerHTML = `<div class="bk-frame-wide"><div class="bk-bridge"><div class="bk-kicker">Do diagnóstico para a execução</div><h1 class="bk-title-medium">SEU PROBLEMA NÃO EXIGE FALAR MAIS. <span class="bk-accent">EXIGE CONDUZIR MELHOR.</span></h1><p class="bk-lead"><strong>SEQUÊNCIA DE CONDUÇÃO ESTRUTURADA.</strong> O diagnóstico mostrou onde sua conversa perde direção. O Sistema Bypass Neural organiza os momentos anteriores e posteriores a esse ponto para reduzir improvisação.</p><div class="bk-gallery"><figure class="bk-mockup"><img src="data:image/webp;base64,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[...truncated for brevity in this message...]
