@@ -1,0 +1,32 @@
+{
+  "provider": "stripe",
+  "currency": "brl",
+  "mode": "live",
+  "status": "awaiting_account_verification",
+  "offers": {
+    "essential": {
+      "amount": 47,
+      "product_id": "prod_V2RBmzy4RBIXEC",
+      "price_id": "price_1U2MJK2aHZ9yiNGq8qWD2nC8",
+      "payment_link": ""
+    },
+    "deep": {
+      "amount": 97,
+      "product_id": "prod_V2RBqRQqWNFAA9",
+      "price_id": "price_1U2MJQ2aHZ9yiNGqKFQxHnFY",
+      "payment_link": ""
+    },
+    "complete": {
+      "amount": 147,
+      "product_id": "prod_V2RB6DYx4oxtJV",
+      "price_id": "price_1U2MJW2aHZ9yiNGquVnBSuRd",
+      "payment_link": ""
+    },
+    "horusai": {
+      "amount": 17,
+      "product_id": "prod_V2RCU5PjRynFp6",
+      "price_id": "price_1U2MJe2aHZ9yiNGqIG82EJcZ",
+      "payment_link": ""
+    }
+  }
+}
