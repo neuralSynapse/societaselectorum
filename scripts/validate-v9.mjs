@@ -22,7 +22,9 @@ let v9 = sandbox.window.applyH93V9Patches(v8);
 v9 = sandbox.window.applyH93V9StateFixes(v9);
 
 const mustContain = [
-  'H93_OF_001_V9_STATE',
+  'H93_OF_001_V9_2_STATE',
+  "if(!validStep(state.step)){state=initial();ensureSpread();save()}",
+  'Math.min(Math.trunc(n),STEPS.length-1)',
   'Custo invisível',
   'Mecanismo de repetição',
   'Primeiro comando de correção',
@@ -37,12 +39,13 @@ const mustContain = [
   'Consulta Inicial com Hórus IA'
 ];
 for (const token of mustContain) {
-  if (!v9.includes(token)) throw new Error(`V9 sem marcador obrigatório: ${token}`);
+  if (!v9.includes(token)) throw new Error(`V9.2 sem marcador obrigatório: ${token}`);
 }
 
 const mustNotContain = [
   "localStorage.setItem('h93of001v8'",
   "if(state.step>=21&&!state.card)state.card=state.spread[0]||CARDS[0]",
+  'if(n>28)n=28',
   'hotmart.com'
 ];
 for (const token of mustNotContain) {
@@ -60,9 +63,10 @@ for (const [offer, priceId] of Object.entries(expectedPrices)) {
 }
 if (checkout.provider !== 'stripe' || checkout.mode !== 'live') throw new Error('Checkout não está configurado para Stripe live');
 
-const frameCount = [...v9.matchAll(/case\s+(\d+)\s*:/g)].length;
-if (frameCount < 28) throw new Error(`Fluxo incompleto: ${frameCount} cases encontrados`);
+const cases = [...v9.matchAll(/case\s+(\d+)\s*:/g)].map(m => Number(m[1]));
+if (cases.length < 28) throw new Error(`Fluxo incompleto: ${cases.length} cases encontrados`);
+if (Math.min(...cases) !== 0 || Math.max(...cases) !== 27) throw new Error(`Faixa de quadros inválida: ${Math.min(...cases)}..${Math.max(...cases)}`);
 
 fs.mkdirSync('dist', { recursive: true });
 fs.writeFileSync('dist/H93-OF-001-Oraculo-Financeiro-THOTH-V9.html', v9);
-console.log(`V9 validada. HTML montado: ${v9.length} bytes; ${frameCount} cases; checkout Stripe separado validado.`);
+console.log(`V9.2 validada. HTML montado: ${v9.length} bytes; ${cases.length} cases (0..27); recuperação de estado inválido validada.`);
