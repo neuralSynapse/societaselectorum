@@ -1,0 +1,51 @@
+ir o ponto em que o processo se rompe.',move:'transformar movimento em continuidade'},potential:{name:'Potencial disperso em muitas direções',short:'Potencial e dispersão',truth:'Você pode possuir recursos e ideias suficientes, mas a energia se divide antes de produzir uma construção sólida.',shadow:'Possibilidade demais mascara ausência de prioridade.',move:'eleger uma direção e sustentá-la'},control:{name:'Controle usado como proteção contra o risco',short:'Controle e paralisia',truth:'A tentativa de evitar erros pode estar impedindo decisões necessárias e atrasando movimentos importantes.',shadow:'O medo de perder produz uma perda silenciosa de tempo e oportunidade.',move:'definir critérios e agir com medida'}};return map[top]}
+function recommendation(){const f=state.answers.format;if(f==='complete'||state.answers.duration==='years')return'complete';if(f==='three'||state.answers.duration==='months')return'deep';return'essential'}
+const PRODUCTS={
+essential:{id:'essential',name:'Leitura Financeira Essencial',price:47,desc:'Uma pergunta central com um plano oracular direto.',spread:'PLANO DE 3 CARTAS',items:['1 pergunta financeira','3 cartas: raiz, bloqueio e próximo passo','áudio ou vídeo objetivo','Conselho do Oráculo','plano de ação imediato'],pdf:9.97,extra:17},
+deep:{id:'deep',name:'Leitura Financeira Profunda',price:97,desc:'Até três perguntas relacionadas e um mapa de continuidade.',spread:'PLANO DE 5 CARTAS',items:['até 3 perguntas','5 cartas: padrão, tensão, recurso, ação e tendência','áudio ou vídeo aprofundado','síntese dos pontos críticos','plano de aplicação de 7 dias'],pdf:14.97,extra:27},
+complete:{id:'complete',name:'Consulta Financeira Completa',price:147,desc:'Consulta individual para investigar o padrão e construir direção.',spread:'PLANO DE 9 CARTAS',items:['consulta individual agendada','até 5 eixos relacionados','9 posições de diagnóstico, direção e consolidação','plano de aplicação personalizado','Ferramenta Gravada de Integração personalizada'],pdf:17,extra:37},
+horusai:{id:'horusai',name:'Consulta Inicial com Hórus IA',price:17,desc:'Uma alternativa de entrada para organizar a pergunta e receber uma direção oracular inicial.',spread:'ORÁCULO DIGITAL',items:['1 pergunta objetiva','resposta oracular inicial','síntese do padrão percebido','orientação para o próximo passo'],pdf:0,extra:0}
+};
+const TESTIMONIAL_META={
+dep01:{title:'Transformação financeira e pessoal',body:'Relato de mudança de renda acompanhado de autonomia e reorganização mental.',alt:'Depoimento real sobre superação e renda'},
+dep02:{title:'Decisão seguida de execução',body:'Cliente relaciona uma decisão tomada após a consulta ao avanço de uma meta financeira.',alt:'Depoimento real sobre decisão e resultado financeiro'},
+dep03:{title:'Abertura de possibilidades',body:'Cliente descreve alinhamento interno e percepção de caminhos antes invisíveis.',alt:'Depoimento real sobre abertura de possibilidades'},
+dep04:{title:'Direção aplicável',body:'As orientações tornaram o caminho mais simples, possível e executável.',alt:'Depoimento real sobre orientações de Hórus'},
+dep05:{title:'Aplicação profissional',body:'Corretor relata melhora em captação, atração de negócios e reflexos nas comissões.',alt:'Depoimento real de corretor sobre captação e comissões'},
+dep06:{title:'Renovação para avançar',body:'A ansiedade foi reorganizada em confiança, disposição e movimento.',alt:'Depoimento real sobre renovação'},
+dep07:{title:'Chave da prosperidade',body:'Relato de paz, clareza e ativação simbólica de recursos internos.',alt:'Depoimento real sobre clareza e prosperidade'},
+dep08:{title:'Clareza e estabilidade interna',body:'Relato de paz mental, calma e melhora financeira após o processo.',alt:'Depoimento real sobre melhora financeira e mental'}
+};
+function proofIds(stage){
+  const pain=state.answers.pain,emotion=state.answers.emotion,desired=state.answers.desired;
+  if(stage==='first'){
+    if(pain==='vanish'||emotion==='fear')return['dep08','dep01','dep02','dep06'];
+    if(pain==='stuck'||emotion==='frustration')return['dep01','dep05','dep02','dep04'];
+    return['dep02','dep03','dep05','dep07'];
+  }
+  if(desired==='relief'||emotion==='fear')return['dep06','dep08','dep04','dep07'];
+  if(desired==='stability'||pain==='stuck')return['dep05','dep01','dep04','dep03'];
+  return['dep03','dep07','dep02','dep06'];
+}
+function proofHtml(stage){return proofIds(stage).filter(id=>ASSETS[id]).map(id=>`<figure class="testimonial-real proof-image-only"><img src="${ASSETS[id]}" alt="Relato real de cliente"></figure>`).join('')}
+function showDownsell(){state.downsell=true;save();render()}
+function closeDownsell(){state.downsell=false;save();render()}
+function selectHorusAI(){state.product=PRODUCTS.horusai;state.bumps=[];state.downsell=false;state.postStage='summary';save();next()}
+function selectProduct(id){state.product=PRODUCTS[id];state.bumps=[];state.downsell=false;state.postStage='magnet';save();next()}
+function bumpPrice(id){return id==='pdf'?state.product.pdf:state.product.extra}
+function toggleBump(id){state.bumps=state.bumps.includes(id)?state.bumps.filter(x=>x!==id):[...state.bumps,id];save();render()}
+function total(){return (state.product?.price||0)+state.bumps.reduce((a,b)=>a+bumpPrice(b),0)}
+function choosePayment(id){state.payment=id;save();render()}
+function completePayment(){
+  const offer=CONFIG.checkoutLinks[state.product?.id]||'';
+  if(offer){location.href=offer;return}
+  alert('O checkout Stripe está em ativação. Nenhuma cobrança foi realizada.');
+}
+function toggleUpsell(id){state.upsells=state.upsells.includes(id)?state.upsells.filter(x=>x!==id):[...state.upsells,id];save();render()}
+function postDecision(id,accepted){if(accepted&&!state.upsells.includes(id))state.upsells.push(id);state.postStage=id==='magnet'?'numerology':'summary';save();render();window.scrollTo({top:0,behavior:'smooth'})}
+function saveLead(){state.lead={name:document.getElementById('name').value.trim(),birth:document.getElementById('birth').value,time:document.getElementById('time').value,question:document.getElementById('question').value.trim()};if(!state.lead.name||!state.lead.birth||!state.lead.question){alert('Preencha nome, nascimento e a questão principal para continuar.');return}save();next()}
+function updatePhase(){const pct=(state.step/(STEPS.length-1))*100;progress.style.width=pct+'%';phase.textContent=STEPS[state.step]}
+function render(){ensureSpread();updatePhase();const p=profile();const rec=recommendation();let h='';
+switch(state.step){
+case 0:h=`<div class="content center"><div class="eyebrow">Experiência oracular · Frater Hórus L93</div><h1>O que está impedindo seu dinheiro de <span class="accent">permanecer, crescer e virar estrutura?</span></h1><p class="lead center">Escolha uma entre três cartas de THOTH e receba uma leitura inicial sobre o padrão que governa sua vida financeira hoje.</p><div class="preview-cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div><button class="btn btn-primary" onclick="next()">INICIAR MINHA TIRAGEM</button><div class="price-note">Tiragem inicial gratuita · opções de aprofundamento aparecem somente depois do diagnóstico</div><p class="micro">Você verá formatos, entregas e valores antes de decidir.</p></div>`;break;
+case 1:h=`<div class="content article"><div class="article-brand"><span>☿</span><b>SOCIEDADE DOS ELEITOS</b></div><div class="article-head"><span>ANÁLISE</span><b>DINHEIRO, PADRÕES E DECISÃO</b><span>H93</span></div><div class="article-body"><h2>Por que algumas pessoas trabalham tanto, fazem o dinheiro entrar e ainda sentem que nunca conseguem construir?</h2><div class="article-byline">Análise de Frater Hórus L93 · Conteúdo especial</div><p>Ganhar mais nem sempre corrige o problema quando o recurso chega e encontra <b>a mesma urgência, o mesmo medo ou a mesma decisão automática</b>.</p><p>Em muitos ciclos, a dificuldade não está somente na renda. Ela também aparece na forma c
