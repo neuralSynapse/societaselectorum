@@ -32,6 +32,7 @@ jobs:
           rm -rf _site
           mkdir -p _site/config
           cp dist/index.html _site/index.html
+          cp dist/index.html _site/oraculo-v94.html
           cp config/checkout.json _site/config/checkout.json
           cp robots.txt _site/robots.txt
       - name: Setup Pages
