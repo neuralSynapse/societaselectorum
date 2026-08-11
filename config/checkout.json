@@ -2,12 +2,13 @@
   "provider": "stripe",
   "currency": "brl",
   "mode": "live",
-  "status": "awaiting_account_verification",
+  "status": "awaiting_stripe_account_verification",
+  "account_blocker": "stripe_account_verification_required",
   "offers": {
-    "essential": {"amount":47,"product_id":"prod_V2RBmzy4RBIXEC","price_id":"price_1U2MJK2aHZ9yiNGq8qWD2nC8","payment_link":""},
-    "deep": {"amount":97,"product_id":"prod_V2RBqRQqWNFAA9","price_id":"price_1U2MJQ2aHZ9yiNGqKFQxHnFY","payment_link":""},
-    "complete": {"amount":147,"product_id":"prod_V2RB6DYx4oxtJV","price_id":"price_1U2MJW2aHZ9yiNGquVnBSuRd","payment_link":""},
-    "horusai": {"amount":17,"product_id":"prod_V2RCU5PjRynFp6","price_id":"price_1U2MJe2aHZ9yiNGqIG82EJcZ","payment_link":""}
+    "essential": {"amount":47,"product_id":"prod_V2RBmzy4RBIXEC","price_id":"price_1U2MJK2aHZ9yiNGq8qWD2nC8"},
+    "deep": {"amount":97,"product_id":"prod_V2RBqRQqWNFAA9","price_id":"price_1U2MJQ2aHZ9yiNGqKFQxHnFY"},
+    "complete": {"amount":147,"product_id":"prod_V2RB6DYx4oxtJV","price_id":"price_1U2MJW2aHZ9yiNGquVnBSuRd"},
+    "horusai": {"amount":17,"product_id":"prod_V2RCU5PjRynFp6","price_id":"price_1U2MJe2aHZ9yiNGqIG82EJcZ"}
   },
   "order_bumps": {
     "pdf": {
@@ -18,6 +19,12 @@
       "product_id":"prod_V3Bu0SAOrIew8h",
       "prices":{"essential":"price_1U35Wn2aHZ9yiNGqWxXHsOeQ","deep":"price_1U35XK2aHZ9yiNGq754bXDdr","complete":"price_1U35XT2aHZ9yiNGqmXhoouTL"}
     }
+  },
+  "payment_links": {
+    "essential":{"none":"","pdf":"","extra":"","pdf_extra":""},
+    "deep":{"none":"","pdf":"","extra":"","pdf_extra":""},
+    "complete":{"none":"","pdf":"","extra":"","pdf_extra":""},
+    "horusai":{"none":""}
   },
   "upsells": {
     "magnet": {"amount":9.97,"product_id":"prod_V3BvaGrSuMdG6U","price_id":"price_1U35Xd2aHZ9yiNGqSJp3mrw5","payment_link":""},
