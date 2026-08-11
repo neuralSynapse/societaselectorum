@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Validate V9 assembly and regressions
+        run: node scripts/validate-v9.mjs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
