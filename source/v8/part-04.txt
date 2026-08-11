@@ -1,0 +1,62 @@
+mento.'},
+{id:'devil',name:'O Diabo',meta:'XV · CAPRICÓRNIO',g:'♑',a:'#27362d',b:'#41263e',axis:'pressure',title:'Matéria, desejo e aprisionamento',text:'A carta não condena a matéria. Ela expõe vínculos, impulsos e acordos que governam o comportamento sem serem nomeados.',advice:'Identifique qual compromisso, medo ou desejo está comprando sua liberdade.'},
+{id:'universe',name:'O Universo',meta:'XXI · SATURNO',g:'♄',a:'#173846',b:'#312d4a',axis:'control',title:'Conclusão, forma e materialização',text:'O Universo pede acabamento. Potencial só vira patrimônio quando recebe forma, limite, prazo e conclusão.',advice:'Feche uma frente antes de abrir outra e transforme resultado em ativo.'}
+];CARDS.forEach(c=>c.img=cardSvg(c));
+const QUESTIONS={
+pain:{title:'Qual situação financeira mais pesa hoje?',options:[
+{id:'vanish',label:'O dinheiro entra, mas desaparece',detail:'Despesas, urgências ou decisões consomem qualquer avanço.',axis:'pressure'},
+{id:'stuck',label:'Eu me esforço, mas não consigo crescer',detail:'Existe trabalho e movimento, porém pouca consolidação.',axis:'cycle'},
+{id:'choice',label:'Preciso tomar uma decisão importante',detail:'Há caminhos possíveis, mas falta segurança para escolher.',axis:'control'}]},
+emotion:{title:'O que essa situação produz com mais força em você?',options:[
+{id:'fear',label:'Medo de piorar ou perder',detail:'A atenção permanece presa à proteção e à sobrevivência.',axis:'pressure'},
+{id:'frustration',label:'Frustração por repetir o mesmo ciclo',detail:'Você já tentou mudar, mas o padrão retorna.',axis:'cycle'},
+{id:'confusion',label:'Confusão entre muitas possibilidades',detail:'Há ideias, opções ou caminhos sem prioridade clara.',axis:'potential'}]},
+duration:{title:'Há quanto tempo esse padrão acompanha você?',options:[
+{id:'recent',label:'Começou recentemente',detail:'A situação ainda está se formando e pede leitura rápida.',axis:'control'},
+{id:'months',label:'Já se repete há alguns meses',detail:'O ciclo ganhou força e começa a parecer normal.',axis:'cycle'},
+{id:'years',label:'Parece atravessar anos ou fases da minha vida',detail:'O padrão já participa da identidade e das decisões.',axis:'pressure'}]},
+decision:{title:'Quando surge uma oportunidade financeira, o que costuma acontecer?',options:[
+{id:'rush',label:'Eu ajo rápido para não perder',detail:'A urgência toma o lugar da análise.',axis:'pressure'},
+{id:'delay',label:'Eu penso tanto que perco o momento',detail:'O medo de errar paralisa o movimento.',axis:'control'},
+{id:'scatter',label:'Eu começo várias coisas ao mesmo tempo',detail:'A energia se divide antes de produzir resultado.',axis:'potential'}]},
+attempts:{title:'O que você mais tentou fazer para mudar?',options:[
+{id:'earn',label:'Ganhar mais ou criar novas fontes',detail:'O foco foi aumentar entrada e oportunidade.',axis:'potential'},
+{id:'cut',label:'Cortar gastos e controlar tudo',detail:'O foco foi conter risco e preservar recursos.',axis:'control'},
+{id:'manifest',label:'Mudar crenças, energia ou mentalidade',detail:'O foco foi reorganizar o estado interno.',axis:'cycle'}]},
+desired:{title:'O que você mais deseja construir agora?',options:[
+{id:'relief',label:'Respirar sem viver sob urgência',detail:'Reduzir pressão e recuperar margem de escolha.',axis:'pressure'},
+{id:'stability',label:'Criar estabilidade e continuidade',detail:'Fazer o dinheiro permanecer e sustentar um ciclo.',axis:'cycle'},
+{id:'expansion',label:'Expandir com clareza e direção',detail:'Transformar potencial em movimento consistente.',axis:'potential'}]},
+objection:{title:'Qual destas dúvidas mais pode impedir você de aprofundar a leitura?',options:[
+{id:'generic',label:'Receio de receber algo genérico',detail:'Você quer uma leitura ligada ao seu contexto real.',axis:'potential'},
+{id:'useful',label:'Não sei como transformar símbolo em ação',detail:'Você precisa de orientação prática, não apenas significado.',axis:'control'},
+{id:'worth',label:'Não sei qual formato faz sentido para mim',detail:'Você quer profundidade proporcional à sua questão.',axis:'cycle'}]},
+format:{title:'Qual nível de profundidade sua situação pede?',options:[
+{id:'one',label:'Uma resposta central e objetiva',detail:'Quero clareza sobre uma pergunta específica.',offer:'essential'},
+{id:'three',label:'Uma leitura integrada de até três perguntas',detail:'Quero compreender relações e desdobramentos.',offer:'deep'},
+{id:'complete',label:'Uma consulta completa e personalizada',detail:'Quero investigar o padrão e construir uma direção.',offer:'complete'}]}
+};
+const STEPS=['Abertura','Advertorial I','Dor central','Emoção','Duração','Primeira leitura','Preparação','Escolha das cartas','Carta revelada','Integração','Padrão de decisão','Tentativas','Estado desejado','Advertorial II','Frater Hórus L93','Provas I','Tarot de THOTH','Objeção','Profundidade','Dados','Processamento','Diagnóstico','Conselho','Plano inicial','Provas e bônus','Oferta','Pagamento e complementos','Continuidade e expansões'];
+const initial=()=>({step:0,answers:{},spread:[],card:null,lead:{},product:null,bumps:[],payment:null,upsells:[],downsell:false,postStage:'magnet',utm:{}});let state=initial();
+const app=document.getElementById('app'),progress=document.getElementById('progress'),phase=document.getElementById('phase');
+function save(){try{localStorage.setItem('h93of001v8',JSON.stringify(state))}catch(e){}}
+function restore(){try{const x=JSON.parse(localStorage.getItem('h93of001v8')||'null');if(x)state={...initial(),...x,bumps:x.bumps||[],upsells:x.upsells||[]}}catch(e){}}
+function reset(){localStorage.removeItem('h93of001v8');state=initial();ensureSpread();render()}
+function ensureSpread(){if(!state.spread.length)state.spread=[...CARDS].sort(()=>Math.random()-.5).slice(0,3)}
+function next(){if(state.step<STEPS.length-1){state.step++;save();render();window.scrollTo({top:0,behavior:'smooth'})}}
+function jump(n){state.step=Math.max(0,Math.min(STEPS.length-1,Number(n)||0));if(state.step>=26&&!state.product)state.product=PRODUCTS[recommendation()];if(state.step>=21&&!state.card)state.card=state.spread[0]||CARDS[0];render()}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function answer(key,id){state.answers[key]=id;save();next()}
+function option(key,id){return QUESTIONS[key].options.find(o=>o.id===id)}
+function label(key){return option(key,state.answers[key])?.label||'Não informado'}
+function qScreen(key,eyebrow,context=''){const q=QUESTIONS[key];return `<div class="eyebrow">${eyebrow}</div><h2>${q.title}</h2>${context?`<div class="context">${context}</div>`:''}<div class="options">${q.options.map((o,i)=>`<button class="option" onclick="answer('${key}','${o.id}')"><span class="mark">${i+1}</span><span><b>${o.label}</b><small>${o.detail}</small></span></button>`).join('')}</div>`}
+function chooseCard(id,pos){
+  if(state.card)return;
+  state.card=CARDS.find(c=>c.id===id);
+  state.cardPos=pos;
+  save();
+  const cards=[...document.querySelectorAll('.flip-card')];
+  cards.forEach((el,i)=>i===pos?el.classList.add('selected'):el.classList.add('dim'));
+  setTimeout(()=>next(),900);
+}
+function profile(){const count={pressure:0,cycle:0,potential:0,control:0};Object.entries(state.answers).forEach(([k,id])=>{const o=option(k,id);if(o?.axis)count[o.axis]++});if(state.card?.axis)count[state.card.axis]+=2;const top=Object.keys(count).sort((a,b)=>count[b]-count[a])[0]||'cycle';const map={pressure:{name:'Pressão transformada em sobrevivência',short:'Pressão e urgência',truth:'Grande parte da sua energia pode estar sendo usada para impedir perdas, deixando pouca margem para construir.',shadow:'A urgência faz decisões de curto prazo parecerem inevitáveis.',move:'criar margem antes de escolher'},cycle:{name:'Ciclo de movimento sem consolidação',short:'Ciclo e instabilidade',truth:'Existe capacidade de reagir e recomeçar, mas o avanço perde força antes de virar estrutura.',shadow:'Cada recomeço devolve esperança sem corrig
