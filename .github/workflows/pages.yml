@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v6
       - name: Validate V9 assembly and regressions
         run: node scripts/validate-v9.mjs
-      - name: Smoke test first frame runtime
+      - name: Smoke test first frame and card runtime
         run: node scripts/smoke-runtime.mjs
       - name: Prepare immutable static site
         run: |
@@ -33,6 +33,7 @@ jobs:
           mkdir -p _site/config
           cp dist/index.html _site/index.html
           cp dist/index.html _site/oraculo-v94.html
+          cp dist/index.html _site/oraculo-v95.html
           cp config/checkout.json _site/config/checkout.json
           cp robots.txt _site/robots.txt
       - name: Setup Pages
