@@ -6,17 +6,21 @@ const parts = Array.from({ length: 9 }, (_, i) =>
 );
 const v8 = parts.join('');
 const patcher = fs.readFileSync('source/v9/patcher.js', 'utf8');
+const stateFix = fs.readFileSync('source/v9/state-fix.js', 'utf8');
 const checkout = JSON.parse(fs.readFileSync('config/checkout.json', 'utf8'));
 
 const sandbox = { window: {}, console };
 vm.createContext(sandbox);
 vm.runInContext(patcher, sandbox, { filename: 'source/v9/patcher.js' });
+vm.runInContext(stateFix, sandbox, { filename: 'source/v9/state-fix.js' });
 
-if (typeof sandbox.window.applyH93V9Patches !== 'function') {
-  throw new Error('applyH93V9Patches não foi exposto');
+if (typeof sandbox.window.applyH93V9Patches !== 'function' || typeof sandbox.window.applyH93V9StateFixes !== 'function') {
+  throw new Error('Camadas V9 não foram expostas');
 }
 
-const v9 = sandbox.window.applyH93V9Patches(v8);
+let v9 = sandbox.window.applyH93V9Patches(v8);
+v9 = sandbox.window.applyH93V9StateFixes(v9);
+
 const mustContain = [
   'H93_OF_001_V9_STATE',
   'Custo invisível',
@@ -32,7 +36,6 @@ const mustContain = [
   'depoimento-05-captacao-comissoes.png',
   'Consulta Inicial com Hórus IA'
 ];
-
 for (const token of mustContain) {
   if (!v9.includes(token)) throw new Error(`V9 sem marcador obrigatório: ${token}`);
 }
