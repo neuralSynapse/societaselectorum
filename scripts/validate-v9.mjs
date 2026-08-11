@@ -22,10 +22,16 @@ let v9 = sandbox.window.applyH93V9Patches(v8);
 v9 = sandbox.window.applyH93V9StateFixes(v9);
 
 const mustContain = [
-  'H93_OF_001_V9_4_STATE',
+  'H93_OF_001_V9_5_STATE',
   "const app=document.getElementById('app'),progress=document.getElementById('progress'),phase=document.getElementById('phase');",
   "if(!validStep(state.step)){state=initial();ensureSpread();save()}",
   'Math.min(Math.trunc(n),STEPS.length-1)',
+  'function freshSpread(){',
+  'function beginCardSelection(){',
+  'onclick="beginCardSelection()">ESCOLHER ENTRE AS TRÊS CARTAS</button>',
+  "if(state.step!==7||state.card||!Number.isInteger(pos)",
+  "state.step===7&&state.card&&state.card.id===id",
+  "window.beginCardSelection=beginCardSelection;",
   'function profile(){',
   'function answer(key,id){',
   'function option(key,id){',
@@ -50,13 +56,14 @@ const mustContain = [
   'Consulta Inicial com Hórus IA'
 ];
 for (const token of mustContain) {
-  if (!v9.includes(token)) throw new Error(`V9.4 sem marcador obrigatório: ${token}`);
+  if (!v9.includes(token)) throw new Error(`V9.5 sem marcador obrigatório: ${token}`);
 }
 
 const mustNotContain = [
   "localStorage.setItem('h93of001v8'",
   "if(state.step>=21&&!state.card)state.card=state.spread[0]||CARDS[0]",
   'if(n>28)n=28',
+  'if(state.card)return;',
   'hotmart.com'
 ];
 for (const token of mustNotContain) {
@@ -90,4 +97,4 @@ for (const token of runtimeOrder) {
 fs.mkdirSync('dist', { recursive: true });
 fs.writeFileSync('dist/H93-OF-001-Oraculo-Financeiro-THOTH-V9.html', v9);
 fs.writeFileSync('dist/index.html', v9);
-console.log(`V9.4 validada. HTML montado: ${v9.length} bytes; ${cases.length} cases (0..27); DOM e helpers runtime preservados.`);
+console.log(`V9.5 validada. HTML montado: ${v9.length} bytes; ${cases.length} cases (0..27); tiragem e estado de cartas protegidos.`);
