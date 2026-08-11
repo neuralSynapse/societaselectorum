@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Staging: remover o bloqueio somente após checkout Stripe e QA final.
