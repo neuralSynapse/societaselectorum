@@ -1,0 +1,55 @@
+:1fr 1fr;gap:12px;margin-top:18px}
+.post-progress{display:flex;gap:7px;margin:0 0 18px}.post-progress span{height:5px;flex:1;border-radius:99px;background:rgba(169,187,192,.18)}.post-progress span.active{background:var(--copper)}
+.post-offer{max-width:760px;margin:auto;border:1px solid var(--line);border-radius:22px;padding:25px;background:rgba(255,255,255,.025)}
+.post-offer .price{font-family:Bodoni Moda;font-size:52px;color:var(--copper2);margin:12px 0}
+@media(max-width:560px){.post-choice{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top"><div class="topin"><div class="brand"><span class="sigil">☿</span><span><span class="brand-main">FRATER HÓRUS L93 · ORÁCULO FINANCEIRO DE THOTH</span><span class="brand-sub">Sociedade dos Eleitos</span></span></div><div class="track"><div id="progress" class="fill"></div></div><div id="phase" class="phase"></div></div></header>
+<main><section id="app" class="panel" aria-live="polite"></section></main>
+<footer>V8 Consolidado funcional para aprovação. Leitura simbólica e reflexiva. Não substitui orientação financeira, jurídica, contábil ou de investimentos e não garante resultados.</footer>
+</div>
+<div id="review" class="review"><select id="stepSelect"></select><button id="jumpBtn">Ir</button><button id="resetBtn">Reiniciar</button></div>
+<script>
+(async()=>{'use strict';
+const CONFIG={
+  review:new URLSearchParams(location.search).get('review')==='1',
+  checkoutProvider:'stripe',
+  checkoutLinks:{essential:'',deep:'',complete:'',horusai:''}
+};
+const ASSETS={
+  portrait:'',
+  dep02:'https://cdn.websitepublisher.ai/custom/wid25063/images/oraculo/depoimento-02-meta-300-mil.png',
+  dep01:'',
+  dep05:'https://cdn.websitepublisher.ai/custom/wid25063/images/oraculo/depoimento-05-captacao-comissoes.png',
+  dep08:'',
+  dep07:'',
+  dep03:'https://cdn.websitepublisher.ai/custom/wid25063/images/oraculo/depoimento-03-abertura-possibilidades.png',
+  dep06:'',
+  dep04:'https://cdn.websitepublisher.ai/custom/wid25063/images/oraculo/depoimento-04-orientacoes.png'
+};
+const ASSET_CHUNKS={portrait:[],dep01:[],dep08:[],dep07:[],dep06:[]};
+async function hydrateAssets(){
+  for(const [id,parts] of Object.entries(ASSET_CHUNKS)){
+    if(!parts.length)continue;
+    const chunks=await Promise.all(parts.map(async p=>{const r=await fetch(p,{cache:'force-cache'});if(!r.ok)throw new Error('Ativo ausente: '+p);return r.text()}));
+    ASSETS[id]='data:image/webp;base64,'+chunks.join('');
+  }
+}
+async function loadCheckoutConfig(){
+  try{const r=await fetch('config/checkout.json',{cache:'no-store'});if(!r.ok)return;const j=await r.json();for(const [id,o] of Object.entries(j.offers||{}))CONFIG.checkoutLinks[id]=o.payment_link||''}catch(e){}
+}
+const fmt=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v);
+function cardBackSvg(){const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#372752"/><stop offset=".48" stop-color="#06131f"/><stop offset="1" stop-color="#0b3c46"/></linearGradient><radialGradient id="gl"><stop stop-color="#2fa6a4" stop-opacity=".38"/><stop offset="1" stop-color="#2fa6a4" stop-opacity="0"/></radialGradient></defs><rect width="600" height="1000" rx="34" fill="url(#bg)"/><rect x="28" y="28" width="544" height="944" rx="24" fill="none" stroke="#f0b271" stroke-width="5"/><rect x="50" y="50" width="500" height="900" rx="19" fill="none" stroke="#2fa6a4" stroke-opacity=".48" stroke-width="2"/><circle cx="300" cy="500" r="205" fill="url(#gl)"/><circle cx="300" cy="500" r="150" fill="none" stroke="#2fa6a4" stroke-width="5"/><path d="M300 300 L430 500 L300 700 L170 500 Z" fill="none" stroke="#f0b271" stroke-width="8"/><circle cx="300" cy="500" r="75" fill="#06131f" fill-opacity=".74" stroke="#f0b271" stroke-width="4"/><text x="300" y="540" text-anchor="middle" font-family="serif" font-size="130" fill="#f0b271">☿</text><text x="300" y="560" text-anchor="middle" font-family="serif" font-size="38" fill="#eef2ee">✦</text><text x="300" y="870" text-anchor="middle" font-family="monospace" font-size="25" letter-spacing="8" fill="#2fa6a4">THOTH</text></svg>`;return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)}
+const CARD_BACK=cardBackSvg();
+function cardSvg(c){const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${c.a}"/><stop offset="1" stop-color="${c.b}"/></linearGradient><radialGradient id="r"><stop stop-color="#f0b271" stop-opacity=".55"/><stop offset="1" stop-color="#f0b271" stop-opacity="0"/></radialGradient></defs><rect width="600" height="1000" rx="30" fill="url(#g)"/><rect x="24" y="24" width="552" height="952" rx="20" fill="none" stroke="#f0b271" stroke-width="5"/><circle cx="300" cy="360" r="190" fill="url(#r)"/><path d="M300 165 L450 430 L300 700 L150 430 Z" fill="none" stroke="#eef2ee" stroke-opacity=".62" stroke-width="10"/><circle cx="300" cy="430" r="115" fill="none" stroke="#2fa6a4" stroke-width="9"/><text x="300" y="470" text-anchor="middle" font-family="serif" font-size="155" fill="#f0b271">${c.g}</text><text x="300" y="825" text-anchor="middle" font-family="serif" font-size="43" fill="#eef2ee">${c.name}</text><text x="300" y="880" text-anchor="middle" font-family="monospace" font-size="22" fill="#2fa6a4">${c.meta}</text></svg>`;return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)}
+const CARDS=[
+{id:'adjustment',name:'Ajustamento',meta:'VIII · LIBRA',g:'⚖',a:'#0b3844',b:'#30234a',axis:'control',title:'Medida, consequência e equilíbrio',text:'A carta aponta para a relação entre escolhas, limites e consequências. O avanço depende menos de força bruta e mais de medida correta.',advice:'Defina o critério que fará uma decisão ser justa para o seu futuro, não apenas suportável hoje.'},
+{id:'fortune',name:'Fortuna',meta:'X · JÚPITER',g:'✹',a:'#183f52',b:'#422753',axis:'cycle',title:'Ciclos, expansão e mudança de posição',text:'Fortuna mostra movimento. O problema não é a mudança em si, mas atravessar ciclos sem transformar oportunidade em estrutura.',advice:'Escolha uma oportunidade que possa ser sustentada por um processo, não apenas por entusiasmo.'},
+{id:'magus',name:'O Mago',meta:'I · MERCÚRIO',g:'☿',a:'#0a4950',b:'#30254f',axis:'potential',title:'Inteligência, linguagem e direção',text:'O Mago revela recursos, habilidade e múltiplos caminhos. Sua sombra é dispersar energia em possibilidades que nunca amadurecem.',advice:'Reduza as opções e dê nome ao movimento que realmente merece execução.'},
+{id:'emperor',name:'O Imperador',meta:'IV · ÁRIES',g:'♈',a:'#442a37',b:'#092f3b',axis:'control',title:'Estrutura, autoridade e comando',text:'O Imperador pede fronteiras, ordem e comando material. Crescer exige uma estrutura capaz de preservar o que entra.',advice:'Crie uma regra simples que proteja recursos antes que a urgência os reivindique.'},
+{id:'sun',name:'O Sol',meta:'XIX · SOL',g:'☉',a:'#6a3f2a',b:'#0d3a43',axis:'potential',title:'Visibilidade, vitalidade e sucesso',text:'O Sol ilumina capacidade real e pede expressão sem culpa. O risco está em confundir brilho momentâneo com estabilidade.',advice:'Transforme uma força evidente em rotina mensurável e repetível.'},
+{id:'moon',name:'A Lua',meta:'XVIII · PEIXES',g:'☾',a:'#172d4d',b:'#34264b',axis:'pressure',title:'Incerteza, projeção e travessia',text:'A Lua mostra decisões contaminadas por medo, imaginação e sinais contraditórios. Nem toda urgência é realidade.',advice:'Separe fatos, hipóteses e receios antes de movimentar dinheiro.'},
+{id:'art',name:'A Arte',meta:'XIV · SAGITÁRIO',g:'⚗',a:'#15464a',b:'#513142',axis:'cycle',title:'Integração, combinação e transmutação',text:'A Arte pede combinar forças aparentemente opostas. O caminho não é escolher entre prudência e expansão, mas dar função a ambas.',advice:'Construa uma estratégia que una proteção de caixa e movimento de cresci
