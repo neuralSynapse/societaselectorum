@@ -87,12 +87,20 @@ if (nodes.phase.textContent !== 'Abertura') {
 if (nodes.progress.style.width !== '0%') {
   throw new Error(`Progresso inicial inválido: ${nodes.progress.style.width}`);
 }
+if (typeof window.beginCardSelection !== 'function' || typeof window.chooseCard !== 'function') {
+  throw new Error('API pública da tiragem não foi exposta');
+}
 
-vm.runInContext('beginCardSelection()', sandbox);
-const selectionState = vm.runInContext('({step:state.step, card:state.card, ids:state.spread.map(c=>c.id)})', sandbox);
+const STATE_KEY = 'H93_OF_001_V9_5_STATE';
+const readState = () => JSON.parse(storage.get(STATE_KEY) || 'null');
+
+window.beginCardSelection();
+let selectionState = readState();
+if (!selectionState) throw new Error('Tiragem não salvou estado');
 if (selectionState.step !== 7) throw new Error(`Tiragem não abriu no quadro 7: ${selectionState.step}`);
 if (selectionState.card !== null) throw new Error('Tiragem nova começou com carta antiga selecionada');
-if (selectionState.ids.length !== 3 || new Set(selectionState.ids).size !== 3) throw new Error('Tiragem não possui três cartas distintas');
+const ids = selectionState.spread.map(c => c.id);
+if (ids.length !== 3 || new Set(ids).size !== 3) throw new Error('Tiragem não possui três cartas distintas');
 if (!nodes.app.innerHTML.includes('Qual posição chama você primeiro?')) throw new Error('Quadro de escolha das cartas não renderizou');
 
 cardNodes = Array.from({ length: 3 }, () => {
@@ -103,24 +111,26 @@ cardNodes = Array.from({ length: 3 }, () => {
     hasClass(name){ return classes.has(name); }
   };
 });
-const chosenId = selectionState.ids[1];
-vm.runInContext(`chooseCard(${JSON.stringify(chosenId)},1)`, sandbox);
-const immediate = vm.runInContext('({step:state.step, id:state.card&&state.card.id, pos:state.cardPos})', sandbox);
-if (immediate.step !== 7 || immediate.id !== chosenId || immediate.pos !== 1) throw new Error('Clique não registrou a carta escolhida corretamente');
+const chosenId = ids[1];
+window.chooseCard(chosenId, 1);
+selectionState = readState();
+if (selectionState.step !== 7 || selectionState.card?.id !== chosenId || selectionState.cardPos !== 1) {
+  throw new Error('Clique não registrou a carta escolhida corretamente');
+}
 if (!cardNodes.every(n => n.disabled)) throw new Error('Cartas não foram bloqueadas após a primeira escolha');
 if (!cardNodes[1].hasClass('selected')) throw new Error('Carta escolhida não recebeu classe selected');
 if (!cardNodes[0].hasClass('dim') || !cardNodes[2].hasClass('dim')) throw new Error('Cartas não escolhidas não foram atenuadas');
 
 await new Promise(resolve => setTimeout(resolve, 1100));
-const revealed = vm.runInContext('({step:state.step, id:state.card&&state.card.id, name:state.card&&state.card.name})', sandbox);
-if (revealed.step !== 8 || revealed.id !== chosenId) throw new Error(`Carta não avançou para revelação: quadro ${revealed.step}`);
+const revealed = readState();
+if (revealed.step !== 8 || revealed.card?.id !== chosenId) throw new Error(`Carta não avançou para revelação: quadro ${revealed.step}`);
 if (!nodes.app.innerHTML.includes('Carta revelada')) throw new Error('Quadro de carta revelada não apareceu');
-if (!nodes.app.innerHTML.includes(revealed.name)) throw new Error('A carta revelada não corresponde à carta clicada');
+if (!nodes.app.innerHTML.includes(revealed.card.name)) throw new Error('A carta revelada não corresponde à carta clicada');
 
-vm.runInContext('beginCardSelection()', sandbox);
-const repeated = vm.runInContext('({step:state.step, card:state.card, pos:state.cardPos, count:state.spread.length})', sandbox);
-if (repeated.step !== 7 || repeated.card !== null || repeated.pos !== null || repeated.count !== 3) {
+window.beginCardSelection();
+const repeated = readState();
+if (repeated.step !== 7 || repeated.card !== null || repeated.cardPos !== null || repeated.spread.length !== 3) {
   throw new Error('Nova tiragem herdou estado da carta anterior');
 }
 
-console.log(`Smoke runtime OK. Primeiro quadro + escolha/virada/revelação de carta validados; carta testada: ${revealed.name}.`);
+console.log(`Smoke runtime OK. Primeiro quadro + escolha/virada/revelação validados; carta testada: ${revealed.card.name}.`);
