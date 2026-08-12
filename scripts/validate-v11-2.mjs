@@ -8,7 +8,7 @@ const required=[
   'INICIAR MINHA TIRAGEM',
   "function qthread(){return''}",
   "const CARDS=[...MAJORS,...MINORS];",
-  'images/tarot-thoth-full/back-thoth-lamen.png',
+  "const REAL_CARD_BACK=THOTH_FULL_BASE+'back-thoth-lamen.png';",
   "quickCheckout('${x.id}','none')",
   "quickCheckout('${x.id}','pdf')",
   "quickCheckout('${x.id}','extra')",
