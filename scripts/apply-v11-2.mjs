@@ -19,7 +19,9 @@ html=html.replace(/const microBlock=microPromptHtml\(state\.step\);if\(microBloc
 );
 
 // 3) Remove os pequenos ecos repetidos da pergunta. A personalização fica na copy principal.
-html=html.replace(/function qthread\([^)]*\)\{[\s\S]*?\n\}/,'function qthread(){return\'\'}');
+const qthreadRe=/function qthread\([^)]*\)\{[^\n]*\}/;
+if(!qthreadRe.test(html))throw new Error('V11.1: qthread não localizado');
+html=html.replace(qthreadRe,"function qthread(){return''}");
 html=html.replace("${qthread('Esta escolha afina uma parte da sua pergunta')}",'');
 html=html.replace(/<div class="question-echo"><span>Sua pergunta<\/span><b>\$\{esc\(activeQuestion\(\)\)\}<\/b><\/div>/g,'');
 html=html.replace(/<div class="question-echo light"><span>Pergunta que orienta esta leitura<\/span><b>\$\{esc\(activeQuestion\(\)\)\}<\/b><\/div>/g,'');
