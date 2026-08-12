@@ -5,11 +5,13 @@ const html=fs.readFileSync('dist/index.html','utf8');
 const required=[
   'H93_OF_001_V11_STATE',
   'O que está impedindo o dinheiro de <span class="accent">entrar ou permanecer na sua vida?</span>',
-  'Já tenho uma questão específica',
-  'Formulação sugerida para aprofundar a leitura',
+  'JÁ TENHO UMA QUESTÃO ESPECÍFICA',
+  'Pergunta sugerida para a tiragem',
   "const CARDS=[...MAJORS,...MINORS];",
-  '78 CARTAS · 22 ATUS · 56 ARCANOS MENORES',
-  'images/tarot-thoth-full/back-thoth-lamen.png',
+  '78 CARTAS',
+  '22 ATUS · 56 ARCANOS MENORES',
+  'images/tarot-thoth-full/',
+  'back-thoth-lamen.png',
   'const microBlock=microPromptHtml(state.step)',
   "quickCheckout('${x.id}','none')",
   "quickCheckout('${x.id}','pdf')",
@@ -32,7 +34,8 @@ const forbidden=[
   "alert('O checkout Stripe está em ativação"
 ];
 for(const token of forbidden)if(html.includes(token))throw new Error(`V11 contém regressão proibida: ${token}`);
-if(!/\.flip-front img\{[^}]*object-fit:contain!important/i.test(html))throw new Error('Carta fechada/revelada ainda pode ser cortada');
+if(!/\.flip-front img\{[^}]*object-fit:contain!important/i.test(html))throw new Error('Carta selecionada ainda pode ser cortada');
+if(!/\.real-reveal img\{[^}]*object-fit:contain!important/i.test(html))throw new Error('Carta revelada ainda pode ser cortada');
 if(!/\.authority-photo img\{[^}]*object-fit:cover/i.test(html))throw new Error('Foto de autoridade perdeu o enquadramento próprio');
 const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(x=>x[1]);
 const runtime=scripts.find(x=>x.includes("const STATE_KEY='H93_OF_001_V11_STATE'"));
