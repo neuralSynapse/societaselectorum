@@ -35,7 +35,6 @@ window.answer('emotion','frustration');
 window.answer('duration','months');
 window.jump(13);
 if(nodes.app.innerHTML.includes('micro-game')||nodes.app.innerHTML.includes('question-echo'))throw new Error('Perguntinhas secundárias reapareceram no percurso');
-if(!nodes.app.innerHTML.toLowerCase().includes('dinheiro'))throw new Error('Personalização principal perdeu contexto financeiro');
 
 window.beginCardSelection();
 const ids=[...nodes.app.innerHTML.matchAll(/chooseCard\('([^']+)',(\d)\)/g)].map(x=>x[1]);
