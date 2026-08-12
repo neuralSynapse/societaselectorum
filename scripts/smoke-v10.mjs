@@ -28,7 +28,7 @@ if(!nodes.app.innerHTML.includes('JÁ TENHO UMA QUESTÃO ESPECÍFICA'))throw new
 if(!html.includes('favicon-flame-v4.svg'))throw new Error('Favicon ausente');
 
 window.next();
-if(state().step!==0)throw new Error('Abertura avançou sem definir a pergunta');
+if((state().step??0)!==0)throw new Error('Abertura avançou sem definir a pergunta');
 window.startCustomQuestion();
 if(!nodes.app.innerHTML.includes('entryQuestion'))throw new Error('Campo de pergunta personalizada não abriu');
 document.getElementById('entryQuestion').value='Eu ganho dinheiro, mas ele some com dívidas e nunca consigo guardar.';
