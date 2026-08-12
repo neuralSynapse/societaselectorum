@@ -1,0 +1,28 @@
+{
+  "name": "Societas Electorum",
+  "short_name": "Societas",
+  "description": "Biblioteca, caminho de estudos, práticas e continuidade da Societas Electorum.",
+  "id": "./",
+  "start_url": "./#centro",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait-primary",
+  "background_color": "#080807",
+  "theme_color": "#080807",
+  "lang": "pt-BR",
+  "categories": ["education", "books", "lifestyle"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {"name":"Biblioteca","short_name":"Biblioteca","url":"./#biblioteca"},
+    {"name":"Caminho","short_name":"Caminho","url":"./#caminho"},
+    {"name":"Práticas","short_name":"Práticas","url":"./#praticas"}
+  ]
+}
