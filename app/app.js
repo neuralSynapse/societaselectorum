@@ -1,6 +1,11 @@
 (() => {
   'use strict';
 
+  const libraryStyles = document.createElement('link');
+  libraryStyles.rel = 'stylesheet';
+  libraryStyles.href = './library.css';
+  document.head.appendChild(libraryStyles);
+
   const views = [...document.querySelectorAll('[data-view]')];
   const navButtons = [...document.querySelectorAll('[data-nav]')];
   const bottomNavButtons = [...document.querySelectorAll('.bottom-nav [data-nav]')];
