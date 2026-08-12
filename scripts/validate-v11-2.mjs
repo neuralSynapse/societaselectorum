@@ -8,7 +8,6 @@ const required=[
   'INICIAR MINHA TIRAGEM',
   "function qthread(){return''}",
   "const CARDS=[...MAJORS,...MINORS];",
-  '78 CARTAS · 22 ATUS · 56 ARCANOS MENORES',
   'images/tarot-thoth-full/back-thoth-lamen.png',
   "quickCheckout('${x.id}','none')",
   "quickCheckout('${x.id}','pdf')",
@@ -38,6 +37,7 @@ for(const token of forbidden)if(html.includes(token))throw new Error(`V11.2 cont
 if(!/function next\(\)\{if\(state\.step===0&&!state\.entryQuestion\)\{startGuidedQuestion\(\);return\}if\(state\.step<STEPS\.length-1\)/.test(html))throw new Error('next ainda depende das microperguntas');
 if(!/function activeQuestion\(\)\{return DEFAULT_ENTRY_QUESTION\}/.test(html))throw new Error('Pergunta central não ficou fixa');
 if(!/\.flip-front img\{[^}]*object-fit:contain!important/i.test(html))throw new Error('Cartas podem voltar a ser cortadas');
+if(!/const CARDS=\[\.\.\.MAJORS,\.\.\.MINORS\];/.test(html))throw new Error('Deck integral não está montado por Maiores + Menores');
 
 const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(x=>x[1]);
 const runtime=scripts.find(x=>x.includes("const STATE_KEY='H93_OF_001_V11_2_STATE'"));
