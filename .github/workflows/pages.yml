@@ -23,8 +23,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Build V11
-        run: node scripts/build-v11.mjs
+      - name: Build V10 base
+        run: node scripts/build-v10.mjs
+      - name: Apply V10.2 baseline
+        run: python3 scripts/patch-v10-2.py
+      - name: Apply V11
+        run: node scripts/apply-v11.mjs
       - name: Validate V11
         run: node scripts/validate-v11.mjs
       - name: Smoke V11 runtime
