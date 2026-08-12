@@ -37,17 +37,25 @@ jobs:
         run: node scripts/validate-v11-2.mjs
       - name: Smoke V11.2 runtime
         run: node scripts/smoke-v11-2.mjs
-      - name: Prepare immutable static site
+      - name: Finalize canonical public build
+        run: node scripts/finalize-oraculo.mjs
+      - name: Validate canonical production build
+        run: node scripts/validate-final.mjs
+      - name: Prepare canonical static site
         run: |
           rm -rf _site
           mkdir -p _site/config
-          cp dist/index.html _site/index.html
-          cp dist/index.html _site/oraculo-v11-2.html
-          cp dist/index.html _site/oraculo-v11-1.html
-          cp dist/index.html _site/oraculo-v11.html
-          cp dist/index.html _site/oraculo-v10.html
+          cp dist/oraculo.html _site/oraculo.html
           cp config/checkout.json _site/config/checkout.json
           cp robots.txt _site/robots.txt
+          cat > /tmp/oraculo-redirect.html <<'EOF'
+          <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=oraculo.html"><link rel="canonical" href="oraculo.html"><title>Oráculo Financeiro de THOTH</title><script>location.replace('oraculo.html'+location.search+location.hash)</script></head><body><a href="oraculo.html">Abrir Oráculo Financeiro de THOTH</a></body></html>
+          EOF
+          cp /tmp/oraculo-redirect.html _site/index.html
+          cp /tmp/oraculo-redirect.html _site/oraculo-v10.html
+          cp /tmp/oraculo-redirect.html _site/oraculo-v11.html
+          cp /tmp/oraculo-redirect.html _site/oraculo-v11-1.html
+          cp /tmp/oraculo-redirect.html _site/oraculo-v11-2.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
