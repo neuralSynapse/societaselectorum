@@ -22,11 +22,11 @@ vm.createContext(sandbox);vm.runInContext(runtime,sandbox,{filename:'H93-final-r
 if(!nodes.app.innerHTML.includes('Dados da consulta'))throw new Error('Etapa de dados não renderizou em revisão');
 if(!nodes.app.innerHTML.includes('leadConsent'))throw new Error('Consentimento não renderizou');
 
-nodes.name.value='Pessoa de Teste';
-nodes.email.value='teste@example.com';
-nodes.birth.value='1990-01-01';
-nodes.time.value='12:30';
-nodes.leadConsent.checked=true;
+document.getElementById('name').value='Pessoa de Teste';
+document.getElementById('email').value='teste@example.com';
+document.getElementById('birth').value='1990-01-01';
+document.getElementById('time').value='12:30';
+document.getElementById('leadConsent').checked=true;
 await window.saveLead();
 await new Promise(r=>setTimeout(r,20));
 
@@ -36,5 +36,5 @@ for(const key of ['name','email','birth','question','axis','source'])if(!submitt
 if(submitted.form_data.email!=='teste@example.com')throw new Error('E-mail não chegou ao SAPI');
 const state=JSON.parse(storage.get('H93_OF_001_V11_2_STATE')||'{}');
 if(state.step!==20)throw new Error(`Lead não avançou ao processamento: step=${state.step}`);
-if(nodes.leadSubmit.disabled!==true)throw new Error('Botão não foi protegido durante submissão');
+if(document.getElementById('leadSubmit').disabled!==true)throw new Error('Botão não foi protegido durante submissão');
 console.log('Smoke final OK: consentimento + lead SAPI real do domínio oficial + avanço ao processamento validados.');
