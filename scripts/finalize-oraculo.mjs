@@ -14,7 +14,7 @@ html=html.replace(/V8 Consolidado[^<]*/g,footer);
 // A URL pública é estável. Números internos de build não aparecem para o visitante.
 html=html.replace(/<title>Oráculo Financeiro de THOTH[^<]*<\/title>/,'<title>Oráculo Financeiro de THOTH · Societas Electorum</title>');
 
-// SAPI oficial do WebsitePublisher para captura real de lead no domínio oficial.
+// SAPI oficial do WebsitePublisher para captura real de lead quando a build roda diretamente no domínio oficial.
 if(!html.includes('cdn.websitepublisher.ai/js/sapi-client.js')){
   html=html.replace('</head>','<script src="https://cdn.websitepublisher.ai/js/sapi-client.js"></script>\n</head>');
 }
@@ -31,7 +31,7 @@ html=html.replace(leadButton,leadBlock);
 const leadCss=`\n.lead-consent{margin:18px 0 10px;padding:14px 16px;border:1px solid rgba(65,207,206,.24);border-radius:14px;background:rgba(65,207,206,.05);color:var(--muted);font-size:13px;line-height:1.5}.lead-consent label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}.lead-consent input{width:18px;height:18px;margin-top:2px;accent-color:#2fc3c0;flex:0 0 auto}.lead-status{min-height:20px;margin:0 0 10px;color:#bde7e3;font-size:13px}.lead-status.error{color:#f1a2a2}.lead-status.ok{color:#b9e8c7}\n`;
 html=html.replace('</style>',leadCss+'</style>');
 
-// Captura real no domínio oficial. No GitHub, o funil continua como espelho técnico sem tentar contornar a origem do SAPI.
+// Captura real: direta quando hospedada no domínio oficial e por ponte postMessage quando a build GitHub está embutida na página oficial.
 const saveLeadRe=/function saveLead\(\)\{[\s\S]*?save\(\);next\(\)\}/;
 if(!saveLeadRe.test(html))throw new Error('saveLead não localizado na finalização');
 const saveLead=`async function saveLead(){
@@ -47,15 +47,27 @@ const saveLead=`async function saveLead(){
   if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)){message('Confira o e-mail informado.');return}
   if(!consent){message('Confirme o consentimento para registrar e entregar sua leitura.');return}
   state.lead={name,email,birth,time,question:activeQuestion()};save();
+  const payload={name,email,birth,time,question:activeQuestion(),axis:state.questionAxis||'entrada e permanência',card:state.card?.name||'',source:'oraculo_financeiro_thoth'};
   const host=String(location.hostname||'').toLowerCase();
   const official=host==='sociedadedoseleitos.com'||host.endsWith('.sociedadedoseleitos.com');
+  const inFrame=typeof window.parent!=='undefined'&&window.parent&&window.parent!==window;
   if(button){button.disabled=true;button.textContent='REGISTRANDO SUA LEITURA…'}
   try{
     if(official){
       if(!window.WP?.sapi)throw new Error('Canal de registro indisponível. Recarregue a página e tente novamente.');
       const sapi=window.WP.sapi(25063);
-      const result=await sapi.submitForm({form_name:'oraculo_financeiro_thoth',form_data:{name,email,birth,time,question:activeQuestion(),axis:state.questionAxis||'entrada e permanência',card:state.card?.name||'',source:'oraculo_financeiro_thoth'}});
+      const result=await sapi.submitForm({form_name:'oraculo_financeiro_thoth',form_data:payload});
       if(result&&result.ok===false)throw new Error(result.message||'Não foi possível registrar seus dados agora.');
+      message('Dados registrados. Seu diagnóstico está sendo organizado.','ok');
+    }else if(inFrame&&typeof window.addEventListener==='function'){
+      const requestId='h93_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+      await new Promise((resolve,reject)=>{
+        let timer;
+        const onMessage=(event)=>{const data=event?.data||{};if(data.type!=='H93_LEAD_RESULT'||data.requestId!==requestId)return;clearTimeout(timer);window.removeEventListener('message',onMessage);data.ok?resolve(data):reject(new Error(data.message||'Não foi possível registrar seus dados agora.'))};
+        window.addEventListener('message',onMessage);
+        timer=setTimeout(()=>{window.removeEventListener('message',onMessage);reject(new Error('O registro demorou mais que o esperado. Tente novamente.'))},10000);
+        window.parent.postMessage({type:'H93_LEAD_SUBMIT',requestId,form_name:'oraculo_financeiro_thoth',form_data:payload},'*');
+      });
       message('Dados registrados. Seu diagnóstico está sendo organizado.','ok');
     }
     next();
