@@ -4,7 +4,11 @@ const html=fs.readFileSync('dist/index.html','utf8');
 const checkout=JSON.parse(fs.readFileSync('config/checkout.json','utf8'));
 
 const mustContain=[
-  'H93_OF_001_V10_STATE',
+  'H93_OF_001_V10_2_STATE',
+  'O que está impedindo o dinheiro de <span class="accent">entrar ou permanecer na sua vida?</span>',
+  'JÁ TENHO UMA QUESTÃO ESPECÍFICA','ORGANIZAR MINHA PERGUNTA','Pergunta sugerida para a tiragem',
+  'function startGuidedQuestion','function startCustomQuestion','function refineEntryQuestion','function acceptEntryQuestion',
+  'Pergunta que orienta esta tiragem','Pergunta que organizou esta leitura','Pergunta da tiragem',
   'favicon-flame-v4.svg',
   'THOTH_BASE',
   'o-louco.jpg','o-eremita.jpg','o-mago.jpg','dois-de-copas.jpg','cinco-de-bastoes.jpg','tres-de-espadas.jpg',
@@ -15,7 +19,7 @@ const mustContain=[
   'Você marcou <b>','sua leitura está pedindo agora',
   'Sua leitura está sendo organizada'
 ];
-for(const token of mustContain){if(!html.includes(token))throw new Error(`V10.1 sem marcador obrigatório: ${token}`)}
+for(const token of mustContain){if(!html.includes(token))throw new Error(`V10.2 sem marcador obrigatório: ${token}`)}
 
 const forbidden=[
   'Pessoas que chegaram com dores semelhantes',
@@ -24,7 +28,7 @@ const forbidden=[
   'hotmart.com',
   'CARDS.forEach(c=>c.img=cardSvg(c))'
 ];
-for(const token of forbidden){if(html.toLowerCase().includes(token.toLowerCase()))throw new Error(`Regressão V10.1: ${token}`)}
+for(const token of forbidden){if(html.toLowerCase().includes(token.toLowerCase()))throw new Error(`Regressão V10.2: ${token}`)}
 
 const cases=[...html.matchAll(/case\s+(\d+)\s*:/g)].map(m=>Number(m[1]));
 if(cases.length<28||Math.min(...cases)!==0||Math.max(...cases)!==27)throw new Error(`Fluxo inválido: ${cases.length} cases, faixa ${Math.min(...cases)}..${Math.max(...cases)}`);
@@ -43,4 +47,4 @@ for(const id of ['essential','deep','complete']){
 }
 if(typeof checkout.payment_links?.horusai?.none!=='string')throw new Error('payment_links.horusai.none ausente');
 
-console.log(`V10.1 validada: ${html.length} caracteres; cartas THOTH, foto, personalização, microganhos, prova social e checkout preparados.`);
+console.log(`V10.2 validada: ${html.length} caracteres; abertura híbrida, pergunta personalizada, cartas THOTH, foto, microganhos, prova social e checkout preparados.`);
