@@ -1,9 +1,11 @@
-const CACHE_NAME = 'societas-app-shell-v1';
+const CACHE_NAME = 'societas-app-shell-v2';
 const APP_SHELL = [
   './',
   './index.html',
   './styles.css',
+  './library.css',
   './config.js',
+  './catalog-snapshot.js',
   './app.js',
   './manifest.webmanifest',
   './icon.svg'
