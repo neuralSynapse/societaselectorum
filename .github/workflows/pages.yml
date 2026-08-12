@@ -29,15 +29,18 @@ jobs:
         run: python3 scripts/patch-v10-2.py
       - name: Apply V11
         run: node scripts/apply-v11.mjs
-      - name: Validate V11
-        run: node scripts/validate-v11.mjs
-      - name: Smoke V11 runtime
-        run: node scripts/smoke-v11.mjs
+      - name: Apply V11.1 global personalization
+        run: node scripts/apply-v11-1.mjs
+      - name: Validate V11.1
+        run: node scripts/validate-v11-1.mjs
+      - name: Smoke V11.1 runtime
+        run: node scripts/smoke-v11-1.mjs
       - name: Prepare immutable static site
         run: |
           rm -rf _site
           mkdir -p _site/config
           cp dist/index.html _site/index.html
+          cp dist/index.html _site/oraculo-v11-1.html
           cp dist/index.html _site/oraculo-v11.html
           cp dist/index.html _site/oraculo-v10.html
           cp config/checkout.json _site/config/checkout.json
