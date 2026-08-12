@@ -3,9 +3,9 @@ import vm from 'node:vm';
 
 const html=fs.readFileSync('dist/index.html','utf8');
 const match=html.match(/<script>([\s\S]*?)<\/script>/i);
-if(!match)throw new Error('Runtime inline da V10.1 não encontrado');
+if(!match)throw new Error('Runtime inline da V10.2 não encontrado');
 
-const mkNode=()=>({value:'',innerHTML:'',textContent:'',style:{},disabled:false,classList:{add(){},remove(){},toggle(){}},querySelectorAll(){return[]},scrollIntoView(){}});
+const mkNode=()=>({value:'',innerHTML:'',textContent:'',style:{},disabled:false,classList:{add(){},remove(){},toggle(){}},querySelectorAll(){return[]},scrollIntoView(){},focus(){}});
 const nodes={app:mkNode(),progress:mkNode(),phase:mkNode(),review:mkNode(),stepSelect:mkNode(),jumpBtn:mkNode(),resetBtn:mkNode()};
 let cardNodes=[];
 const document={
@@ -19,19 +19,30 @@ const window={location,scrollTo(){},open(){return null},__H93_FRATER_PHOTO:'data
 const sandbox={console,window,document,location,URLSearchParams,Intl,Math,Date,JSON,Number,String,Object,Array,RegExp,Promise,Set,setTimeout,clearTimeout,alert(){throw new Error('Alert inesperado')},localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},fetch:async()=>({ok:true,json:async()=>({provider:'stripe',status:'awaiting_account_verification',offers:{},payment_links:{essential:{none:'',pdf:'',extra:'',pdf_extra:''},deep:{none:'',pdf:'',extra:'',pdf_extra:''},complete:{none:'',pdf:'',extra:'',pdf_extra:''},horusai:{none:''}}}),text:async()=>''})};
 sandbox.globalThis=sandbox;
 vm.createContext(sandbox);
-vm.runInContext(match[1],sandbox,{filename:'H93-V10.1-runtime.js'});
+vm.runInContext(match[1],sandbox,{filename:'H93-V10.2-runtime.js'});
 await new Promise(r=>setTimeout(r,50));
-const state=()=>JSON.parse(storage.get('H93_OF_001_V10_STATE')||'{}');
+const state=()=>JSON.parse(storage.get('H93_OF_001_V10_2_STATE')||'{}');
 
-if(!nodes.app.innerHTML.includes('INICIAR MINHA TIRAGEM'))throw new Error('Quadro inicial não renderizou');
+if(!nodes.app.innerHTML.includes('entrar ou permanecer na sua vida'))throw new Error('Headline V10.2 não renderizou');
+if(!nodes.app.innerHTML.includes('JÁ TENHO UMA QUESTÃO ESPECÍFICA'))throw new Error('Caminho de pergunta específica ausente');
 if(!html.includes('favicon-flame-v4.svg'))throw new Error('Favicon ausente');
 
 window.next();
-if(state().step!==1)throw new Error('Navegação inicial falhou');
+if(state().step!==0)throw new Error('Abertura avançou sem definir a pergunta');
+window.startCustomQuestion();
+if(!nodes.app.innerHTML.includes('entryQuestion'))throw new Error('Campo de pergunta personalizada não abriu');
+document.getElementById('entryQuestion').value='Eu ganho dinheiro, mas ele some com dívidas e nunca consigo guardar.';
+window.refineEntryQuestion();
+if(state().questionAxis!=='entrada e permanência')throw new Error(`Eixo personalizado incorreto: ${state().questionAxis}`);
+if(!nodes.app.innerHTML.includes('Pergunta sugerida para a tiragem'))throw new Error('Sugestão personalizada não apareceu');
+window.acceptEntryQuestion(true);
+if(state().step!==1||!state().entryQuestion)throw new Error('Pergunta sugerida não foi aceita');
+
 window.next();
 if(state().step!==1)throw new Error('Etapa narrativa avançou sem microescolha');
 window.chooseMicro(1,'repeat');window.next();
 if(state().step!==2)throw new Error('Microganho não liberou avanço');
+if(!nodes.app.innerHTML.includes('Pergunta que orienta esta tiragem'))throw new Error('Pergunta de abertura não acompanhou o percurso');
 
 window.beginCardSelection();
 if(state().step!==7)throw new Error('Tiragem não abriu no quadro 7');
@@ -51,9 +62,10 @@ if((nodes.app.innerHTML.match(/v10-system-icon/g)||[]).length<6)throw new Error(
 window.chooseMicro(16,'symbols');window.jump(21);
 if(nodes.app.innerHTML.includes('O valor desta leitura está no cruzamento'))throw new Error('Copy antiga do diagnóstico reapareceu');
 if(!nodes.app.innerHTML.includes('Você marcou'))throw new Error('Diagnóstico não está usando resposta do usuário');
+if(!nodes.app.innerHTML.includes('Pergunta que organizou esta leitura'))throw new Error('Diagnóstico não preservou a pergunta de abertura');
 
 if(!html.includes('function checkoutVariant()'))throw new Error('Arquitetura de variantes do checkout ausente');
 if(!html.includes("const key=product+'|'+checkoutVariant()"))throw new Error('Checkout não preserva produto+bump');
 if(html.includes("alert('O checkout Stripe está em ativação"))throw new Error('Alert antigo do checkout reapareceu');
 
-console.log(`Smoke V10.1 OK: abertura, microganho, tiragem THOTH, foto, ícones, diagnóstico personalizado e checkout seguro validados. Carta testada: ${ids[1]}.`);
+console.log(`Smoke V10.2 OK: abertura híbrida, refinamento da pergunta, microganho, tiragem THOTH, foto, ícones, diagnóstico personalizado e checkout seguro validados. Carta testada: ${ids[1]}.`);
