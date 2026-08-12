@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+const html=fs.readFileSync('dist/index.html','utf8');
+const required=['H93_OF_001_V11_1_STATE','function qctx()','function adaptStepHtml(h,step)','adaptiveQTitle(key,q.title)','app.innerHTML=adaptStepHtml(h,state.step)','tarot-thoth-full/','78 CARTAS','quickCheckout','v11-checkout-disabled','window.__H93_FRATER_PHOTO','v10-system-icon'];
+for(const token of required)if(!html.includes(token))throw new Error(`V11.1 sem marcador: ${token}`);
+for(const token of ['O valor desta leitura está no cruzamento',"alert('O checkout Stripe está em ativação"])if(html.includes(token))throw new Error(`Regressão proibida: ${token}`);
+const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(x=>x[1]);
+const runtime=scripts.find(x=>x.includes("H93_OF_001_V11_1_STATE"));
+if(!runtime)throw new Error('Runtime V11.1 ausente');
+new vm.Script(runtime,{filename:'H93-V11.1-runtime.js'});
+console.log(`V11.1 validada: ${html.length} caracteres; personalização global, deck integral e checkout preservados.`);
