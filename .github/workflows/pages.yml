@@ -43,6 +43,8 @@ jobs:
         run: node scripts/validate-final.mjs
       - name: Smoke canonical lead capture
         run: node scripts/smoke-final.mjs
+      - name: Smoke iframe lead bridge
+        run: node scripts/smoke-iframe-bridge.mjs
       - name: Prepare canonical static site
         run: |
           rm -rf _site
