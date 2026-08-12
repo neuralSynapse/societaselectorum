@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Societas Electorum</title>
+  <desc id="desc">Monograma institucional dourado sobre fundo negro.</desc>
+  <rect width="512" height="512" rx="108" fill="#080807"/>
+  <circle cx="256" cy="256" r="176" fill="none" stroke="#D7AE52" stroke-width="6"/>
+  <circle cx="256" cy="256" r="151" fill="none" stroke="#D7AE52" stroke-opacity=".3" stroke-width="2"/>
+  <path d="M256 103v62M256 347v62M103 256h62M347 256h62" stroke="#D7AE52" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+  <path d="M155 155l43 43M314 314l43 43M357 155l-43 43M198 314l-43 43" stroke="#D7AE52" stroke-width="3" stroke-linecap="round" opacity=".34"/>
+  <circle cx="256" cy="256" r="78" fill="#0F0E0B" stroke="#F0D18A" stroke-width="3"/>
+  <text x="256" y="278" text-anchor="middle" font-family="Georgia, serif" font-size="67" font-weight="700" letter-spacing="5" fill="#F0D18A">SE</text>
+</svg>
