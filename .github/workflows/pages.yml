@@ -41,6 +41,8 @@ jobs:
         run: node scripts/finalize-oraculo.mjs
       - name: Validate canonical production build
         run: node scripts/validate-final.mjs
+      - name: Smoke canonical lead capture
+        run: node scripts/smoke-final.mjs
       - name: Prepare canonical static site
         run: |
           rm -rf _site
