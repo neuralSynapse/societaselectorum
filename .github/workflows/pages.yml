@@ -57,6 +57,8 @@ jobs:
         run: node scripts/apply-v12-persistence.mjs
       - name: Smoke V12 durable progress
         run: node scripts/smoke-v12-persistence.mjs
+      - name: Smoke 18+ birth and financial numerology
+        run: node scripts/smoke-v12-birth-numerology.mjs
       - name: Validate V12 secure automation
         run: node scripts/validate-v12.mjs
       - name: Prepare canonical static site
