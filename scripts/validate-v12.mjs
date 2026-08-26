@@ -15,6 +15,12 @@ const required=[
   'MÉTODOS DISPONÍVEIS',
   'window.quickCheckout=quick',
   'window.completePayment=startCheckout',
+  "button.id='v12CheckoutButton'",
+  "button.classList.remove('v11-checkout-disabled')",
+  "button.removeAttribute('disabled')",
+  "button.removeAttribute('onclick')",
+  "button.addEventListener('click',startCheckout)",
+  "document.getElementById('v12CheckoutButton')||document.querySelector('button[onclick*=\"completePayment\"]')",
   'leitura privada escrita e individual',
   'leitura privada aprofundada',
   'Ferramenta de Integração personalizada',
@@ -41,7 +47,9 @@ const forbidden=[
   'a edição foi preparada na quinta-feira',
   'state.upsells.push(id)',
   'ciclos e tendências materiais',
-  'quando aplicável, o agendamento'
+  'quando aplicável, o agendamento',
+  `class="btn btn-primary \${isLive?'':'v11-checkout-disabled'}" \${isLive?'':'disabled'} onclick="completePayment()"`,
+  'CHECKOUT AGUARDANDO LIBERAÇÃO DA STRIPE'
 ];
 for(const token of forbidden)if(html.includes(token))throw new Error(`V12 contém promessa ou fluxo legado: ${token}`);
 const start=html.indexOf("window.parent.postMessage({type:'H93_CHECKOUT_REQUEST'");
@@ -55,4 +63,4 @@ if(!/event\.origin!==PARENT_ORIGIN\|\|event\.source!==window\.parent/.test(html)
 if(!/window\.parent===window/.test(html))throw new Error('V12 não bloqueia checkout direto fora do domínio oficial');
 const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(x=>x[1]).filter(Boolean);
 for(let i=0;i<scripts.length;i++)new vm.Script(scripts[i],{filename:`H93-v12-inline-${i}.js`});
-console.log(`V12 OK: ${html.length} caracteres; checkout parent-bridged, preço server-side, consentimento, entrega privada e pós-compras legados neutralizados.`);
+console.log(`V12 OK: ${html.length} caracteres; botão ativo com binding direto, checkout parent-bridged, preço server-side, consentimento, entrega privada e pós-compras legados neutralizados.`);
