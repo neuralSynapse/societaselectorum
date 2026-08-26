@@ -51,6 +51,8 @@ jobs:
         run: node scripts/fix-v12-body.mjs
       - name: Neutralize legacy post-purchase UI
         run: node scripts/cleanup-v12-commerce.mjs
+      - name: Enable V12 Stripe checkout button
+        run: node scripts/fix-v12-checkout-button.mjs
       - name: Validate V12 secure automation
         run: node scripts/validate-v12.mjs
       - name: Prepare canonical static site
