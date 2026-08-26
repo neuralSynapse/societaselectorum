@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+
+const html=fs.readFileSync('dist/oraculo.html','utf8');
+if(!html.includes('id="h93-v12-birth-numerology"'))throw new Error('Birth/numerology runtime ausente');
+if(!html.includes('financial_numerology:s.financialNumerology||null'))throw new Error('Numerologia financeira não entra no contexto pago');
+if(!/id=["']birth["'][^>]*data-h93-birth|data-h93-birth[^>]*id=["']birth["']/i.test(html))throw new Error('Campo nascimento não recebeu proteção 18+');
+const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(x=>x[1]);
+const runtime=scripts.find(x=>x.includes('H93_V12_BIRTH_NUMEROLOGY_RUNTIME'));
+if(!runtime)throw new Error('Runtime de nascimento/numerologia não localizado');
+const node={value:'',type:'text',min:'',max:'',dataset:{},classList:{add(){},remove(){}},setCustomValidity(){},addEventListener(){},insertAdjacentElement(){},parentNode:{insertBefore(){}},nextElementSibling:null};
+const document={getElementById(id){return id==='birth'?node:null},querySelector(){return null},createElement(){return {className:'',dataset:{},innerHTML:'',textContent:'',parentNode:{insertBefore(){}},insertAdjacentElement(){}}}};
+const window={__H93_GET_STATE:()=>({step:0}),__H93_SAVE_STATE(){},addEventListener(){}};
+const sandbox={console,window,document,MutationObserver:class{observe(){}},Date,Math,Number,String,Object,Array,RegExp,Set,JSON,setInterval,clearInterval,setTimeout,clearTimeout,alert(){}};sandbox.globalThis=sandbox;vm.createContext(sandbox);vm.runInContext(runtime,sandbox,{filename:'H93-birth-numerology.js'});
+const validate=window.__H93_VALIDATE_BIRTH,num=window.__H93_FINANCIAL_NUMEROLOGY;
+if(typeof validate!=='function'||typeof num!=='function')throw new Error('APIs de teste de nascimento/numerologia ausentes');
+const now='2026-08-26T12:00:00Z';
+for(const bad of ['2024-02-30','2027-01-01','2008-08-27','1899-12-31',''])if(validate(bad,now).valid)throw new Error('Data inválida/menor foi aceita: '+bad);
+const adult=validate('2008-08-26',now);if(!adult.valid||adult.age<18)throw new Error('Pessoa com exatamente 18 anos foi rejeitada');
+const a=num('Pessoa Teste','1990-04-23',now),b=num('Pessoa Teste','1990-04-23',now);if(JSON.stringify(a)!==JSON.stringify(b))throw new Error('Numerologia não é determinística');
+for(const key of ['life_path','birthday','personal_year','expression','soul_urge','personality','financial_axis'])if(a[key]==null||a[key]==='')throw new Error('Numerologia financeira incompleta: '+key);
+console.log('Smoke birth/numerology OK: datas reais, 18+, cálculo determinístico e contexto financeiro protegidos.');
