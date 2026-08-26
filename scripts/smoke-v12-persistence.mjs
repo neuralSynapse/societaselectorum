@@ -23,6 +23,7 @@ function boot(){
 
 const first=boot();await new Promise(r=>setTimeout(r,40));
 first.window.startGuidedQuestion();
+first.window.next();
 first.window.answer('pain','vanish');
 first.window.answer('emotion','frustration');
 let saved=JSON.parse(storage.get('H93_OF_001_V11_2_STATE')||'{}');
