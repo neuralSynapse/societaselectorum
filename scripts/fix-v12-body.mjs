@@ -10,6 +10,11 @@ for (const path of ['dist/index.html','dist/oraculo.html']) {
   const end=close+'</script>'.length;
   const runtime=html.slice(start,end);
   html=html.slice(0,start)+html.slice(end);
+
+  // O primeiro replace do V12 ocorreu dentro da string HTML usada pelo exportador de PDF.
+  // Ao retirar o runtime daquele ponto sobra uma quebra literal, inválida dentro da string JS.
+  html=html.replace(/<\\\/script>\r?\n<\/body><\/html>/g,'<\\/script></body></html>');
+
   const body=html.lastIndexOf('</body>');
   if(body<0)throw new Error(`V12 repair: body final não localizado em ${path}`);
   html=html.slice(0,body)+runtime+'\n'+html.slice(body);
@@ -17,4 +22,4 @@ for (const path of ['dist/index.html','dist/oraculo.html']) {
   fs.writeFileSync(path,html);
 }
 
-console.log('V12 runtime reposicionado no body final real.');
+console.log('V12 runtime reposicionado e string do PDF normalizada.');
