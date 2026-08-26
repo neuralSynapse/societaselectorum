@@ -18,7 +18,7 @@ function boot(){
   const location={search:'',href:'https://example.test/oraculo.html'};
   const window={location,scrollY:0,scrollTo(){},open(){return null},addEventListener(){},removeEventListener(){},__H93_FRATER_PHOTO:'data:image/webp;base64,TEST_PHOTO'};
   const sandbox={console,window,document,location,URLSearchParams,Intl,Math,Date,JSON,Number,String,Object,Array,RegExp,Promise,Set,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame:fn=>fn(),MutationObserver:class{observe(){} disconnect(){}},alert(){throw new Error('Alert inesperado')},localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},fetch:async()=>({ok:true,json:async()=>checkout,text:async()=>''})};
-  sandbox.globalThis=sandbox;vm.createContext(sandbox);vm.runInContext(runtime,sandbox,{filename:'H93-base-runtime.js'});return{sandbox,window,nodes};
+  sandbox.globalThis=sandbox;vm.createContext(sandbox);vm.runInContext(runtime,sandbox,{filename:'H93-base-runtime.js'});window.__H93_GET_STATE=()=>vm.runInContext('state',sandbox);window.__H93_SAVE_STATE=()=>vm.runInContext('save()',sandbox);window.__H93_RENDER=()=>vm.runInContext('render()',sandbox);return{sandbox,window,nodes};
 }
 
 const first=boot();await new Promise(r=>setTimeout(r,40));
@@ -31,7 +31,7 @@ if(saved.step!==4||saved.answers?.pain!=='vanish'||saved.answers?.emotion!=='fru
 saved.v12CheckoutPending=true;saved.v12CheckoutRequestId='transient';storage.set('H93_OF_001_V11_2_STATE',JSON.stringify(saved));
 
 const second=boot();await new Promise(r=>setTimeout(r,40));
-vm.runInContext(persistence,second.sandbox,{filename:'H93-persistence-runtime.js'});await new Promise(r=>setTimeout(r,40));
+vm.runInContext(persistence,second.sandbox,{filename:'H93-persistence-runtime.js'});await new Promise(r=>setTimeout(r,80));
 const restored=JSON.parse(storage.get('H93_OF_001_V11_2_STATE')||'{}');
 if(restored.step!==4)throw new Error('Persistência: reload não preservou a etapa');
 if(restored.answers?.pain!=='vanish'||restored.answers?.emotion!=='frustration')throw new Error('Persistência: reload perdeu respostas');
