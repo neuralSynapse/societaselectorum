@@ -53,6 +53,8 @@ jobs:
         run: node scripts/cleanup-v12-commerce.mjs
       - name: Enable V12 Stripe checkout button
         run: node scripts/fix-v12-checkout-button.mjs
+      - name: Smoke V12 durable progress
+        run: node scripts/smoke-v12-persistence.mjs
       - name: Validate V12 secure automation
         run: node scripts/validate-v12.mjs
       - name: Prepare canonical static site
