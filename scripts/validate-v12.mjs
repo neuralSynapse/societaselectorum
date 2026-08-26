@@ -23,7 +23,10 @@ const required=[
   "quickCheckout('${x.id}','none')",
   "quickCheckout('${x.id}','pdf')",
   "quickCheckout('${x.id}','extra')",
-  "quickCheckout('${x.id}','pdf_extra')"
+  "quickCheckout('${x.id}','pdf_extra')",
+  'sete práticas guiadas escritas',
+  'DISPONÍVEL NA ÁREA PRIVADA',
+  'Nenhuma aquisição foi registrada nesta tela.'
 ];
 for(const token of required)if(!html.includes(token))throw new Error(`V12 sem marcador obrigatório: ${token}`);
 const forbidden=[
@@ -32,7 +35,13 @@ const forbidden=[
   'Ferramenta Gravada de Integração personalizada',
   'O checkout Stripe está em ativação. Nenhuma cobrança foi realizada.',
   'Ainda não quero uma consulta conduzida por Frater Hórus L93',
-  'Esta alternativa é mais simples e não substitui uma consulta conduzida por Frater Hórus L93.'
+  'Esta alternativa é mais simples e não substitui uma consulta conduzida por Frater Hórus L93.',
+  'sete áudios de hipnose',
+  'SEGUIR SEM OS ÁUDIOS',
+  'a edição foi preparada na quinta-feira',
+  'state.upsells.push(id)',
+  'ciclos e tendências materiais',
+  'quando aplicável, o agendamento'
 ];
 for(const token of forbidden)if(html.includes(token))throw new Error(`V12 contém promessa ou fluxo legado: ${token}`);
 const start=html.indexOf("window.parent.postMessage({type:'H93_CHECKOUT_REQUEST'");
@@ -46,4 +55,4 @@ if(!/event\.origin!==PARENT_ORIGIN\|\|event\.source!==window\.parent/.test(html)
 if(!/window\.parent===window/.test(html))throw new Error('V12 não bloqueia checkout direto fora do domínio oficial');
 const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(x=>x[1]).filter(Boolean);
 for(let i=0;i<scripts.length;i++)new vm.Script(scripts[i],{filename:`H93-v12-inline-${i}.js`});
-console.log(`V12 OK: ${html.length} caracteres; checkout parent-bridged, preço server-side, consentimento e entrega privada presentes.`);
+console.log(`V12 OK: ${html.length} caracteres; checkout parent-bridged, preço server-side, consentimento, entrega privada e pós-compras legados neutralizados.`);
