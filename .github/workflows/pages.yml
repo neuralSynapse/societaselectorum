@@ -49,6 +49,8 @@ jobs:
         run: node scripts/apply-v12.mjs
       - name: Repair V12 body placement
         run: node scripts/fix-v12-body.mjs
+      - name: Neutralize legacy post-purchase UI
+        run: node scripts/cleanup-v12-commerce.mjs
       - name: Validate V12 secure automation
         run: node scripts/validate-v12.mjs
       - name: Prepare canonical static site
