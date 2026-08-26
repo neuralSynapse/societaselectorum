@@ -45,6 +45,10 @@ jobs:
         run: node scripts/smoke-final.mjs
       - name: Smoke iframe lead bridge
         run: node scripts/smoke-iframe-bridge.mjs
+      - name: Apply V12 secure automation
+        run: node scripts/apply-v12.mjs
+      - name: Validate V12 secure automation
+        run: node scripts/validate-v12.mjs
       - name: Prepare canonical static site
         run: |
           rm -rf _site
