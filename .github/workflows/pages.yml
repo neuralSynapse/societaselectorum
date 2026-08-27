@@ -67,6 +67,10 @@ jobs:
         run: node scripts/smoke-v12-client-copy-cleanup.mjs
       - name: Validate V12 secure automation
         run: node scripts/validate-v12.mjs
+      - name: Apply Hotmart basic checkout
+        run: node scripts/apply-v12-hotmart-basic.mjs
+      - name: Smoke Hotmart basic checkout
+        run: node scripts/smoke-v12-hotmart-basic.mjs
       - name: Prepare canonical static site
         run: |
           rm -rf _site
