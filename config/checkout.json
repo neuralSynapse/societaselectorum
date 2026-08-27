@@ -1,55 +1,56 @@
 {
-  "provider": "stripe",
-  "currency": "brl",
+  "provider": "hotmart",
+  "currency": "BRL",
   "mode": "live",
-  "status": "awaiting_stripe_account_verification",
-  "account_blocker": "stripe_account_verification_required",
-  "last_payment_link_attempt": "blocked_no_active_payment_methods",
+  "phase": "basic_core_offers",
+  "product_code": "Q107347421X",
+  "status": "core_offers_ready",
+  "checkout_policy": {
+    "combo": "none",
+    "separate_pdf_charge": false,
+    "separate_extra_question_charge": false,
+    "checkout_owner": "hotmart"
+  },
   "offers": {
-    "essential": {"amount":47,"product_id":"prod_V2RBmzy4RBIXEC","price_id":"price_1U2MJK2aHZ9yiNGq8qWD2nC8"},
-    "deep": {"amount":97,"product_id":"prod_V2RBqRQqWNFAA9","price_id":"price_1U2MJQ2aHZ9yiNGqKFQxHnFY"},
-    "complete": {"amount":147,"product_id":"prod_V2RB6DYx4oxtJV","price_id":"price_1U2MJW2aHZ9yiNGquVnBSuRd"},
-    "horusai": {"amount":17,"product_id":"prod_V2RCU5PjRynFp6","price_id":"price_1U2MJe2aHZ9yiNGqIG82EJcZ"}
+    "horusai": {
+      "amount": 17,
+      "offer_code": "i3q0mi3w",
+      "checkout_url": "https://pay.hotmart.com/Q107347421X?off=i3q0mi3w"
+    },
+    "essential": {
+      "amount": 47,
+      "offer_code": "zxzen8y7",
+      "checkout_url": "https://pay.hotmart.com/Q107347421X?off=zxzen8y7"
+    },
+    "deep": {
+      "amount": 97,
+      "offer_code": "2f1wiu89",
+      "checkout_url": "https://pay.hotmart.com/Q107347421X?off=2f1wiu89"
+    },
+    "complete": {
+      "amount": 147,
+      "offer_code": "j7n6y4nm",
+      "checkout_url": "https://pay.hotmart.com/Q107347421X?off=j7n6y4nm"
+    }
   },
   "order_bumps": {
     "pdf": {
-      "product_id":"prod_V3BuOUcy6K5PwB",
-      "prices":{"essential":"price_1U35We2aHZ9yiNGqkfW9Qz4D","deep":"price_1U35X32aHZ9yiNGq5S57DCor","complete":"price_1U35XB2aHZ9yiNGqVAeTUYGC"}
+      "status": "deferred_to_hotmart_order_bump",
+      "visible_in_oracle": false
     },
     "extra_question": {
-      "product_id":"prod_V3Bu0SAOrIew8h",
-      "prices":{"essential":"price_1U35Wn2aHZ9yiNGqWxXHsOeQ","deep":"price_1U35XK2aHZ9yiNGq754bXDdr","complete":"price_1U35XT2aHZ9yiNGqmXhoouTL"}
+      "status": "deferred_to_hotmart_order_bump",
+      "visible_in_oracle": false
     }
   },
-  "variant_line_items": {
-    "essential": {
-      "none": ["price_1U2MJK2aHZ9yiNGq8qWD2nC8"],
-      "pdf": ["price_1U2MJK2aHZ9yiNGq8qWD2nC8","price_1U35We2aHZ9yiNGqkfW9Qz4D"],
-      "extra": ["price_1U2MJK2aHZ9yiNGq8qWD2nC8","price_1U35Wn2aHZ9yiNGqWxXHsOeQ"],
-      "pdf_extra": ["price_1U2MJK2aHZ9yiNGq8qWD2nC8","price_1U35We2aHZ9yiNGqkfW9Qz4D","price_1U35Wn2aHZ9yiNGqWxXHsOeQ"]
-    },
-    "deep": {
-      "none": ["price_1U2MJQ2aHZ9yiNGqKFQxHnFY"],
-      "pdf": ["price_1U2MJQ2aHZ9yiNGqKFQxHnFY","price_1U35X32aHZ9yiNGq5S57DCor"],
-      "extra": ["price_1U2MJQ2aHZ9yiNGqKFQxHnFY","price_1U35XK2aHZ9yiNGq754bXDdr"],
-      "pdf_extra": ["price_1U2MJQ2aHZ9yiNGqKFQxHnFY","price_1U35X32aHZ9yiNGq5S57DCor","price_1U35XK2aHZ9yiNGq754bXDdr"]
-    },
-    "complete": {
-      "none": ["price_1U2MJW2aHZ9yiNGquVnBSuRd"],
-      "pdf": ["price_1U2MJW2aHZ9yiNGquVnBSuRd","price_1U35XB2aHZ9yiNGqVAeTUYGC"],
-      "extra": ["price_1U2MJW2aHZ9yiNGquVnBSuRd","price_1U35XT2aHZ9yiNGqmXhoouTL"],
-      "pdf_extra": ["price_1U2MJW2aHZ9yiNGquVnBSuRd","price_1U35XB2aHZ9yiNGqVAeTUYGC","price_1U35XT2aHZ9yiNGqmXhoouTL"]
-    },
-    "horusai": {"none":["price_1U2MJe2aHZ9yiNGqIG82EJcZ"]}
-  },
-  "payment_links": {
-    "essential":{"none":"","pdf":"","extra":"","pdf_extra":""},
-    "deep":{"none":"","pdf":"","extra":"","pdf_extra":""},
-    "complete":{"none":"","pdf":"","extra":"","pdf_extra":""},
-    "horusai":{"none":""}
-  },
   "upsells": {
-    "magnet": {"amount":9.97,"product_id":"prod_V3BvaGrSuMdG6U","price_id":"price_1U35Xd2aHZ9yiNGqSJp3mrw5","payment_link":""},
-    "numerology": {"amount":147,"product_id":"prod_V3BvziAQFlKv1g","price_id":"price_1U35Xl2aHZ9yiNGqKLeni6oV","payment_link":""}
+    "magnet": {
+      "amount": 9.97,
+      "status": "deferred_until_basic_flow_validated"
+    },
+    "numerology": {
+      "amount": 147,
+      "status": "deferred_until_basic_flow_validated"
+    }
   }
 }
