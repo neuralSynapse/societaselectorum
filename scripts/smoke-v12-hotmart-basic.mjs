@@ -9,9 +9,15 @@ const checks=[
   ['Depois que o Wix confirmar o pagamento','Wix delivery copy'],
   ['Preparando seu checkout seguro no Wix.','Wix status copy'],
   ["window.open('about:blank','h93_wix_checkout')",'checkout window reserved synchronously'],
+  ["checkoutUrl.startsWith('https://menussienterprises.wixsite.com/sociedade-dos-eleito/_paylink/')",'Wix paylink allowlist'],
   ["type:'H93_CHECKOUT_OPENED'",'opened checkout acknowledgement'],
   ["type:'H93_CHECKOUT_FALLBACK'",'blocked popup fallback']
 ];
 for(const [needle,label] of checks)if(!html.includes(needle))throw new Error(`Smoke Wix checkout falhou: ${label}`);
-for(const forbidden of ["function combo(){return 'none'}","combo:'none',name:name,email:email","s.bumps=[];",'Depois que a Hotmart confirmar o pagamento','Abrindo o checkout seguro da Hotmart.','Checkout Stripe seguro'])if(html.includes(forbidden))throw new Error(`Smoke Wix checkout: trecho legado ainda ativo: ${forbidden}`);
-console.log('Smoke H93 Wix checkout OK: planos, bumps, combos e reserva de aba preservados.');
+for(const forbidden of ["function combo(){return 'none'}","combo:'none',name:name,email:email","s.bumps=[];",'Depois que a Hotmart confirmar o pagamento','Abrindo o checkout seguro da Hotmart.','Checkout Stripe seguro','<span>STRIPE</span>','O checkout está temporariamente indisponível enquanto o provedor conclui a ativação da conta'])if(html.includes(forbidden))throw new Error(`Smoke Wix checkout: trecho legado ainda ativo: ${forbidden}`);
+
+const runtimeMatch=html.match(/<script id="h93-v12-runtime">([\s\S]*?)<\/script>/);
+if(!runtimeMatch)throw new Error('Smoke Wix checkout: runtime h93-v12 não encontrado');
+try{new Function(runtimeMatch[1])}catch(err){throw new Error(`Smoke Wix checkout: runtime com erro de sintaxe: ${err.message}`)}
+
+console.log('Smoke H93 Wix checkout OK: runtime sintaticamente válido, planos, bumps, combos e reserva de aba preservados.');
