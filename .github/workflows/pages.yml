@@ -51,7 +51,7 @@ jobs:
         run: node scripts/fix-v12-body.mjs
       - name: Neutralize legacy post-purchase UI
         run: node scripts/cleanup-v12-commerce.mjs
-      - name: Enable V12 Stripe checkout button
+      - name: Enable V12 checkout button
         run: node scripts/fix-v12-checkout-button.mjs
       - name: Apply V12 durable progress
         run: node scripts/apply-v12-persistence.mjs
@@ -67,10 +67,10 @@ jobs:
         run: node scripts/smoke-v12-client-copy-cleanup.mjs
       - name: Validate V12 secure automation
         run: node scripts/validate-v12.mjs
-      - name: Apply Hotmart basic checkout
-        run: node scripts/apply-v12-hotmart-basic.mjs
-      - name: Smoke Hotmart basic checkout
-        run: node scripts/smoke-v12-hotmart-basic.mjs
+      - name: Apply Wix checkout
+        run: node scripts/apply-v12-wix-checkout.mjs
+      - name: Smoke Wix checkout
+        run: node scripts/smoke-v12-wix-checkout.mjs
       - name: Prepare canonical static site
         run: |
           rm -rf _site
