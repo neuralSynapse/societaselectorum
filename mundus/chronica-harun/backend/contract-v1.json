@@ -4,8 +4,8 @@
   "environment": "prod",
   "dataApiBase": "https://ep-green-hill-acstnnfu.apirest.sa-east-1.aws.neon.tech/chronica_harun/rest/v1",
   "authBase": "https://ep-green-hill-acstnnfu.neonauth.sa-east-1.aws.neon.tech/chronica_harun/auth",
-  "healthDirect": "https://ep-green-hill-acstnnfu.apirest.sa-east-1.aws.neon.tech/chronica_harun/rest/v1/rpc/backend_health",
-  "healthProxyFallback": "https://api.websitepublisher.ai/iapi/public/25063/proxy/chronica-backend-health",
+  "healthDirect": "https://chronica-harun-backend.vercel.app/api/health",
+  "healthProxyFallback": null,
   "adapterAsset": "games/chronica-harun/backend/adapter-v1.js",
   "bootstrapAsset": "games/chronica-harun/backend/bootstrap-v1.js",
   "identityRule": "user_id is always derived server-side from Neon Auth JWT",
@@ -41,7 +41,7 @@
     "rendererV2": false
   },
   "liveRuntimeReferenced": true,
-  "integrationMode": "passive bridge loaded after v0.9 runtime; no runtime monkeypatch; remote writes require authenticated tokenProvider and otherwise remain queued locally",
-  "adapterVersionHash": "8c91cf22",
+  "integrationMode": "passive bridge loaded after v0.9 runtime; health is read via Vercel server API; remote writes require authenticated tokenProvider and otherwise remain queued locally",
+  "adapterVersionHash": "8dd1c0cf",
   "bootstrapVersionHash": "9ac56399"
 }
