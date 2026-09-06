@@ -7,8 +7,8 @@
 
   const DEFAULTS = Object.freeze({
     dataApiBase: 'https://ep-green-hill-acstnnfu.apirest.sa-east-1.aws.neon.tech/chronica_harun/rest/v1',
-    healthUrl: 'https://ep-green-hill-acstnnfu.apirest.sa-east-1.aws.neon.tech/chronica_harun/rest/v1/rpc/backend_health',
-    healthFallbackUrl: 'https://api.websitepublisher.ai/iapi/public/25063/proxy/chronica-backend-health'
+    healthUrl: 'https://chronica-harun-backend.vercel.app/api/health',
+    healthFallbackUrl: null
   });
 
   const ALLOWED_RPC = new Set([
@@ -113,13 +113,18 @@
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: '{}',
+      const method = /\/api\/health(?:[?#]|$)/.test(url) ? 'GET' : 'POST';
+      const options = {
+        method,
+        headers: { 'Accept': 'application/json' },
         cache: 'no-store',
         signal: controller.signal
-      });
+      };
+      if (method !== 'GET') {
+        options.headers['Content-Type'] = 'application/json';
+        options.body = '{}';
+      }
+      const response = await fetch(url, options);
       const body = await decodeResponse(response);
       const found = findHealth(body, 0);
       if (!found) throw new Error('CHRONICA health response is invalid');
