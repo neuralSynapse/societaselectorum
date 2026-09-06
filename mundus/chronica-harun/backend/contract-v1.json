@@ -8,6 +8,11 @@
   "healthProxyFallback": null,
   "adapterAsset": "games/chronica-harun/backend/adapter-v1.js",
   "bootstrapAsset": "games/chronica-harun/backend/bootstrap-v1.js",
+  "authControllerAsset": "games/chronica-harun/backend/auth-controller-v1.js",
+  "authAsset": "games/chronica-harun/backend/auth-v1.js",
+  "cloudSyncControllerAsset": "games/chronica-harun/backend/cloud-sync-controller-v1.js",
+  "cloudSyncAsset": "games/chronica-harun/backend/sync-v1.js",
+  "authSdk": "@neondatabase/neon-js@0.7.0-beta",
   "identityRule": "user_id is always derived server-side from Neon Auth JWT",
   "realProgressRule": "real_progress_gate is read-only to authenticated clients; canonical mutations remain privileged server-side only",
   "rpc": [
@@ -36,12 +41,16 @@
     "featureFlagConfig": 65536
   },
   "productionFlags": {
-    "backendPersistence": false,
+    "backendPersistence": true,
     "posthogTelemetry": false,
     "rendererV2": false
   },
   "liveRuntimeReferenced": true,
-  "integrationMode": "passive bridge loaded after v0.9 runtime; health is read via Vercel server API; remote writes require authenticated tokenProvider and otherwise remain queued locally",
+  "integrationMode": "isolated authenticated persistence layer loaded after the v0.9 runtime; guest play remains local; Neon Auth JWT enables RLS-protected remote saves, run lifecycle and telemetry; save conflicts require explicit user choice",
   "adapterVersionHash": "8dd1c0cf",
-  "bootstrapVersionHash": "9ac56399"
+  "bootstrapVersionHash": "9ac56399",
+  "authControllerVersionHash": "e3ed8fa3",
+  "cloudSyncControllerVersionHash": "e4e27abc",
+  "authVersionHash": "d78fb675",
+  "cloudSyncVersionHash": "7b97ff8f"
 }
