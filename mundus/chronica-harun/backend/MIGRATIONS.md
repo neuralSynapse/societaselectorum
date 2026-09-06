@@ -22,6 +22,10 @@ Contrato RPC autenticado. RPCs públicas do gameplay derivam identidade a partir
 
 Guardrails de tamanho para JSON de cliente, limitando amplificação de request e crescimento de storage. Entre os tetos: save 1 MiB, world state 512 KiB, stats/Speculi 256 KiB e evento/telemetria 64 KiB.
 
+## 1.5.0
+
+Compatibilidade autenticada do Data API/RLS: `public.require_game_user()` passa a executar como `SECURITY DEFINER` com `search_path` travado em `pg_catalog, public, auth`, permitindo resolver o `sub` do JWT sem conceder acesso direto do papel `authenticated` ao schema interno `auth`. As 11 políticas RLS de dados de jogador foram roteadas pelo helper seguro, preservando isolamento por usuário e mantendo `real_progress_gate` sem escrita de cliente.
+
 ## Invariantes obrigatórias
 
 1. O cliente nunca decide nem escreve sozinho `real_progress_gate`.
@@ -34,4 +38,4 @@ Guardrails de tamanho para JSON de cliente, limitando amplificação de request 
 
 ## Verificações de referência
 
-Em 2026-09-06, DEV e PROD reportaram `backend_health().ok=true` e `schema_version=1.4.0`. Testes negativos de ownership e payload oversized foram rejeitados sem resíduos. `anonymous` e `authenticated` não conseguem executar a mutação canônica do progresso real.
+Em 2026-09-06, PROD reportou `backend_health().ok=true` e `schema_version=1.5.0`. O E2E autenticado real validou criação de usuário, emissão de JWT, `save_campaign`/`campaign_snapshot`, lifecycle de run, eventos, Liber Speculi, Codex, estado do mundo, relíquias, telemetria e isolamento entre dois usuários. A tentativa autenticada de escrever `real_progress_gate` foi rejeitada. Nenhuma das 11 políticas RLS de jogador mantém chamada direta a `auth.user_id()`; todas usam `public.require_game_user()`.
