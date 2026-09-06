@@ -1,0 +1,47 @@
+{
+  "service": "chronica-harun-backend",
+  "schemaVersion": "1.4.0",
+  "environment": "prod",
+  "dataApiBase": "https://ep-green-hill-acstnnfu.apirest.sa-east-1.aws.neon.tech/chronica_harun/rest/v1",
+  "authBase": "https://ep-green-hill-acstnnfu.neonauth.sa-east-1.aws.neon.tech/chronica_harun/auth",
+  "healthDirect": "https://ep-green-hill-acstnnfu.apirest.sa-east-1.aws.neon.tech/chronica_harun/rest/v1/rpc/backend_health",
+  "healthProxyFallback": "https://api.websitepublisher.ai/iapi/public/25063/proxy/chronica-backend-health",
+  "adapterAsset": "games/chronica-harun/backend/adapter-v1.js",
+  "bootstrapAsset": "games/chronica-harun/backend/bootstrap-v1.js",
+  "identityRule": "user_id is always derived server-side from Neon Auth JWT",
+  "realProgressRule": "real_progress_gate is read-only to authenticated clients; canonical mutations remain privileged server-side only",
+  "rpc": [
+    "start_run",
+    "append_run_event",
+    "finish_run",
+    "upsert_speculi",
+    "unlock_codex",
+    "save_campaign",
+    "update_world_state",
+    "record_relic",
+    "record_telemetry",
+    "campaign_snapshot"
+  ],
+  "payloadLimitsBytes": {
+    "profileSettings": 131072,
+    "runStats": 262144,
+    "runEventPayload": 65536,
+    "speculiContent": 262144,
+    "speculiCausality": 131072,
+    "codexState": 131072,
+    "relicState": 131072,
+    "worldState": 524288,
+    "saveState": 1048576,
+    "telemetryPayload": 65536,
+    "featureFlagConfig": 65536
+  },
+  "productionFlags": {
+    "backendPersistence": false,
+    "posthogTelemetry": false,
+    "rendererV2": false
+  },
+  "liveRuntimeReferenced": true,
+  "integrationMode": "passive bridge loaded after v0.9 runtime; no runtime monkeypatch; remote writes require authenticated tokenProvider and otherwise remain queued locally",
+  "adapterVersionHash": "8c91cf22",
+  "bootstrapVersionHash": "9ac56399"
+}
