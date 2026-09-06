@@ -1,6 +1,6 @@
 {
   "service": "chronica-harun-backend",
-  "schemaVersion": "1.4.0",
+  "schemaVersion": "1.5.0",
   "environment": "prod",
   "dataApiBase": "https://ep-green-hill-acstnnfu.apirest.sa-east-1.aws.neon.tech/chronica_harun/rest/v1",
   "authBase": "https://ep-green-hill-acstnnfu.neonauth.sa-east-1.aws.neon.tech/chronica_harun/auth",
@@ -46,10 +46,10 @@
     "rendererV2": false
   },
   "liveRuntimeReferenced": true,
-  "integrationMode": "isolated authenticated persistence layer loaded after the v0.9 runtime; guest play remains local; Neon Auth JWT enables RLS-protected remote saves, run lifecycle and telemetry; save conflicts require explicit user choice",
+  "integrationMode": "isolated authenticated persistence layer loaded after the v0.9 runtime; guest play remains local; Neon Auth uses auth.token() with legacy session.access_token fallback; JWT enables RLS-protected remote saves, run lifecycle and telemetry; save conflicts require explicit user choice; authenticated E2E and cross-user isolation verified",
   "adapterVersionHash": "8dd1c0cf",
   "bootstrapVersionHash": "9ac56399",
-  "authControllerVersionHash": "e3ed8fa3",
+  "authControllerVersionHash": "a2609f8f",
   "cloudSyncControllerVersionHash": "e4e27abc",
   "authVersionHash": "d78fb675",
   "cloudSyncVersionHash": "7b97ff8f"
