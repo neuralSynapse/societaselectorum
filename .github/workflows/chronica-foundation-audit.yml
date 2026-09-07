@@ -73,125 +73,146 @@ jobs:
             --path godot/chronica_harun \
             --quit-after 5
 
-  recovered-source-audit:
+  source-discovery-audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 8
     steps:
-      - name: Checkout audit branch with complete history
+      - name: Checkout complete repository history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Restore verified recovered Godot source pack
+      - name: Audit every remote branch and historical object claim
+        shell: bash
+        run: |
+          set -euxo pipefail
+          git fetch --all --prune
+          python - <<'PY'
+          import json
+          import subprocess
+
+          def run(*args, check=True):
+              p = subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+              if check and p.returncode:
+                  raise SystemExit(f"command failed: {args}\n{p.stderr}")
+              return p
+
+          target_suffixes = [
+              'project.godot',
+              'autoload/GameState.gd',
+              'autoload/SaveService.gd',
+              'autoload/RogueliteContentService.gd',
+              'scripts/progression/StageDirector.gd',
+              'scripts/generation/StageFloorBuilder.gd',
+              'scripts/content/BuildResolver.gd',
+              'scripts/content/PowerMutationRuntime.gd',
+              'scripts/content/DaimonRuntime.gd',
+              'scripts/rooms/SpecialRoomDirector.gd',
+              'scripts/vision/VisionDirector.gd',
+              'scripts/meta/MetaRunDirector.gd',
+              'data/stages/student_journey.json',
+              'data/enemies/student_enemies.json',
+              'data/bosses/student_bosses.json',
+          ]
+          dir_fragments = [
+              '/data/roguelite/', '/scenes/player/', '/scenes/enemies/', '/scenes/bosses/'
+          ]
+          refs = run('git', 'for-each-ref', '--format=%(refname:short)', 'refs/remotes/origin').stdout.splitlines()
+          refs = [r for r in refs if r != 'origin/HEAD']
+          branch_report = {}
+          for ref in refs:
+              paths = run('git', 'ls-tree', '-r', '--name-only', ref).stdout.splitlines()
+              found = {}
+              for suffix in target_suffixes:
+                  found[suffix] = [p for p in paths if p == suffix or p.endswith('/' + suffix)]
+              for fragment in dir_fragments:
+                  key = fragment.strip('/') + '/'
+                  found[key] = sorted({p.split(fragment)[0] + fragment.strip('/') + '/' for p in paths if fragment in '/' + p})
+              hits = {k: v for k, v in found.items() if v}
+              branch_report[ref] = {
+                  'target_hits': hits,
+                  'target_hit_count': sum(bool(v) for v in found.values()),
+                  'complete_exact_file_set': all(found[s] for s in target_suffixes),
+              }
+
+          historical = [
+              'ed9570e', '62be8b4', 'c229ccd', '9a418c3', 'e01f1dc',
+              '94ed311', 'e3b38a9', '5259c0b', '52a2295'
+          ]
+          history_report = {}
+          for sha in historical:
+              p = run('git', 'cat-file', '-e', sha + '^{commit}', check=False)
+              history_report[sha] = 'PRESENT' if p.returncode == 0 else 'ABSENT'
+
+          old_branch = run('git', 'show-ref', '--verify', '--quiet', 'refs/remotes/origin/feat/godot-o-olho', check=False)
+          report = {
+              'remote_branches': refs,
+              'feat_godot_o_olho': 'PRESENT' if old_branch.returncode == 0 else 'ABSENT',
+              'historical_commits': history_report,
+              'branches': branch_report,
+          }
+          print(json.dumps(report, indent=2, sort_keys=True))
+          PY
+
+      - name: Classify handoff package integrity without pretending restoration succeeded
         shell: bash
         run: |
           set -euxo pipefail
           git fetch origin handoff/chronica-godot-real-source-2026-09-07
-          PACK_REF='origin/handoff/chronica-godot-real-source-2026-09-07'
-          PACK_PATH='chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64'
-          test "$(git rev-parse "${PACK_REF}:${PACK_PATH}")" = '6d67028680d9d99186f06a532efb6f4601ccc32e'
-          git show "${PACK_REF}:${PACK_PATH}" > /tmp/chronica-source.tar.gz.b64
-          wc -c /tmp/chronica-source.tar.gz.b64
-          sha256sum /tmp/chronica-source.tar.gz.b64
+          REF='origin/handoff/chronica-godot-real-source-2026-09-07'
           python - <<'PY'
-          from pathlib import Path
-          import base64, hashlib, re
-          src = Path('/tmp/chronica-source.tar.gz.b64').read_text(encoding='ascii')
-          compact = ''.join(src.split())
-          bad = sorted(set(re.sub(r'[A-Za-z0-9+/=]', '', compact)))
-          print('base64_compact_length=', len(compact))
-          print('base64_length_mod_4=', len(compact) % 4)
-          print('base64_invalid_chars=', repr(bad))
-          print('base64_tail=', repr(compact[-32:]))
-          if bad:
-              raise SystemExit('invalid non-base64 characters present')
-          raw = base64.b64decode(compact, validate=True)
-          Path('/tmp/chronica-source.tar.gz').write_bytes(raw)
-          print('decoded_bytes=', len(raw))
-          print('decoded_sha256=', hashlib.sha256(raw).hexdigest())
+          import base64
+          import hashlib
+          import json
+          import re
+          import subprocess
+
+          ref = 'origin/handoff/chronica-godot-real-source-2026-09-07'
+          packs = [
+              'chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_2026-09-07.tar.gz.b64',
+              'chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64',
+          ]
+          report = {}
+          for path in packs:
+              p = subprocess.run(['git', 'show', f'{ref}:{path}'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+              if p.returncode:
+                  report[path] = {'status': 'missing'}
+                  continue
+              raw_text = p.stdout
+              try:
+                  text = raw_text.decode('ascii')
+              except UnicodeDecodeError:
+                  report[path] = {'status': 'non_ascii', 'bytes': len(raw_text)}
+                  continue
+              compact = ''.join(text.split())
+              bad = sorted(set(re.sub(r'[A-Za-z0-9+/=]', '', compact)))
+              item = {
+                  'stored_bytes': len(raw_text),
+                  'stored_sha256': hashlib.sha256(raw_text).hexdigest(),
+                  'compact_length': len(compact),
+                  'length_mod_4': len(compact) % 4,
+                  'invalid_chars': bad,
+                  'contains_ellipsis_marker': 'ELLIPSIZATION' in text,
+              }
+              if bad or len(compact) % 4:
+                  item['status'] = 'CORRUPT_NOT_VALID_BASE64'
+              else:
+                  try:
+                      decoded = base64.b64decode(compact, validate=True)
+                      item['status'] = 'VALID_BASE64'
+                      item['decoded_bytes'] = len(decoded)
+                      item['decoded_sha256'] = hashlib.sha256(decoded).hexdigest()
+                  except Exception as exc:
+                      item['status'] = 'CORRUPT_BASE64_DECODE_ERROR'
+                      item['decode_error'] = str(exc)
+              report[path] = item
+          print(json.dumps(report, indent=2, sort_keys=True))
           PY
-          gzip -t /tmp/chronica-source.tar.gz
-          mkdir -p /tmp/chronica-recovered
-          tar -xzf /tmp/chronica-source.tar.gz -C /tmp/chronica-recovered
-          test -f /tmp/chronica-recovered/project.godot
-          find /tmp/chronica-recovered -maxdepth 3 -type f | sort | sed -n '1,260p'
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-
-      - name: Generate recovered content and models
-        working-directory: /tmp/chronica-recovered
+      - name: Show directly exposed recovered project manifest
         shell: bash
         run: |
           set -euxo pipefail
-          python tools/generate_recovered_content.py
-          python tools/generate_models.py
-
-      - name: Recovered source pytest suite
-        working-directory: /tmp/chronica-recovered
-        shell: bash
-        run: |
-          set -euxo pipefail
-          python -m pip install --disable-pip-version-check pytest
-          pytest -q
-
-      - name: Recovered source structural inventory
-        working-directory: /tmp/chronica-recovered
-        shell: bash
-        run: |
-          set -euxo pipefail
-          printf '%s\n' '--- required files ---'
-          for f in \
-            project.godot \
-            autoload/GameState.gd \
-            autoload/SaveService.gd \
-            autoload/RogueliteContentService.gd \
-            scripts/progression/StageDirector.gd \
-            scripts/generation/StageFloorBuilder.gd \
-            scripts/content/BuildResolver.gd \
-            scripts/content/PowerMutationRuntime.gd \
-            scripts/content/DaimonRuntime.gd \
-            scripts/rooms/SpecialRoomDirector.gd \
-            scripts/vision/VisionDirector.gd \
-            scripts/meta/MetaRunDirector.gd \
-            data/stages/student_journey.json \
-            data/enemies/student_enemies.json \
-            data/bosses/student_bosses.json; do
-              test -f "$f" && echo "OK $f"
-          done
-          test -d data/roguelite && echo 'OK data/roguelite/'
-          test -d scenes/player && echo 'OK scenes/player/'
-          test -d scenes/enemies && echo 'OK scenes/enemies/'
-          test -d scenes/bosses && echo 'OK scenes/bosses/'
-
-      - name: Install Godot 4.5.1 stable
-        shell: bash
-        run: |
-          set -euxo pipefail
-          curl --fail --location --retry 3 \
-            -o /tmp/godot-recovered.zip \
-            https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
-          echo '02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd  /tmp/godot-recovered.zip' | sha256sum --check
-          unzip -q /tmp/godot-recovered.zip -d /tmp/godot-recovered-bin
-          chmod +x /tmp/godot-recovered-bin/Godot_v4.5.1-stable_linux.x86_64
-          /tmp/godot-recovered-bin/Godot_v4.5.1-stable_linux.x86_64 --version
-
-      - name: Recovered source Godot import validation
-        shell: bash
-        run: |
-          set -euxo pipefail
-          /tmp/godot-recovered-bin/Godot_v4.5.1-stable_linux.x86_64 \
-            --headless \
-            --path /tmp/chronica-recovered \
-            --editor --quit
-
-      - name: Recovered source Godot boot smoke test
-        shell: bash
-        run: |
-          set -euxo pipefail
-          /tmp/godot-recovered-bin/Godot_v4.5.1-stable_linux.x86_64 \
-            --headless \
-            --path /tmp/chronica-recovered \
-            --quit-after 5
+          REF='origin/handoff/chronica-godot-real-source-2026-09-07'
+          git cat-file -e "${REF}:chronica-handoff/source/project.godot"
+          git show "${REF}:chronica-handoff/source/project.godot" | sed -n '1,220p'
