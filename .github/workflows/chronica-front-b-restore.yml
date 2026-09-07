@@ -1,0 +1,79 @@
+name: CHRONICA Front B Restore
+
+on:
+  push:
+    branches:
+      - feat/chronica-combat-entities
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Front B branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore verified Godot source v2
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf chronica-harun-godot
+          base64 -d chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64 > /tmp/chronica-front-b-source.tar.gz
+          mkdir -p chronica-harun-godot
+          tar -xzf /tmp/chronica-front-b-source.tar.gz -C chronica-harun-godot
+          cd chronica-harun-godot
+          python tools/generate_recovered_content.py
+          python tools/generate_models.py
+          pytest -q
+
+      - name: Verify required paths and counts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd chronica-harun-godot
+          test -f project.godot
+          test -f data/enemies/student_enemies.json
+          test -f data/bosses/student_bosses.json
+          test -d scenes/enemies
+          test -d scenes/bosses
+          test -d scripts/ai
+          test -d scripts/combat
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          enemies = json.loads(Path('data/enemies/student_enemies.json').read_text())
+          bosses = json.loads(Path('data/bosses/student_bosses.json').read_text())
+          def count_items(obj):
+              if isinstance(obj, list):
+                  return len(obj)
+              if isinstance(obj, dict):
+                  for key in ('enemies','bosses','items','entries'):
+                      if isinstance(obj.get(key), list):
+                          return len(obj[key])
+              raise SystemExit('Unsupported catalog structure')
+          ec = count_items(enemies)
+          bc = count_items(bosses)
+          print(f'enemies {ec}')
+          print(f'bosses {bc}')
+          assert ec == 82, ec
+          assert bc == 16, bc
+          PY
+
+      - name: Persist restored source on Front B branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add chronica-harun-godot
+          if git diff --cached --quiet; then
+            echo "No restored-source changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: materialize recovered Godot source for Front B"
+          git push origin HEAD:feat/chronica-combat-entities
