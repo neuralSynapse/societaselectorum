@@ -23,9 +23,30 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf chronica-harun-godot
-          tr -cd 'A-Za-z0-9+/=\n' < chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64 | base64 --decode --ignore-garbage > /tmp/chronica-front-b-source.tar.gz
-          echo "decoded_sha256=$(sha256sum /tmp/chronica-front-b-source.tar.gz | awk '{print $1}')"
-          test "$(sha256sum /tmp/chronica-front-b-source.tar.gz | awk '{print $1}')" = "8f7346d4dcf4df25d3ea028f77d8df4cf886cf18d2eb7ea85b9ce1bc03a29154"
+          python - <<'PY'
+          import base64
+          import hashlib
+          from pathlib import Path
+
+          source = Path('chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64')
+          raw = source.read_text(encoding='utf-8-sig')
+          clean = ''.join(raw.split())
+          print(f'base64_chars={len(clean)} mod4={len(clean) % 4}')
+          print(f'base64_head={clean[:16]}')
+          print(f'base64_tail={clean[-16:]}')
+          missing = (-len(clean)) % 4
+          if missing:
+              clean += '=' * missing
+              print(f'padding_added={missing}')
+          payload = base64.b64decode(clean, validate=False)
+          digest = hashlib.sha256(payload).hexdigest()
+          print(f'decoded_bytes={len(payload)}')
+          print(f'decoded_sha256={digest}')
+          expected = '8f7346d4dcf4df25d3ea028f77d8df4cf886cf18d2eb7ea85b9ce1bc03a29154'
+          if digest != expected:
+              raise SystemExit(f'SHA256 mismatch: {digest} != {expected}')
+          Path('/tmp/chronica-front-b-source.tar.gz').write_bytes(payload)
+          PY
           mkdir -p chronica-harun-godot
           tar -xzf /tmp/chronica-front-b-source.tar.gz -C chronica-harun-godot
           cd chronica-harun-godot
