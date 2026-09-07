@@ -1,0 +1,76 @@
+name: CHRONICA Publish Windows Alpha
+
+on:
+  push:
+    branches:
+      - release/chronica-playable-alpha-v5-2026-09-07
+    paths:
+      - '.github/workflows/chronica-publish-alpha.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  TAG: chronica-harun-windows-alpha-2026-09-07
+  BUILD_RUN_ID: '34171325006'
+  BRANCH: release/chronica-playable-alpha-v5-2026-09-07
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release/chronica-playable-alpha-v5-2026-09-07
+      - name: Download verified build artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/chronica-release
+          gh run download "$BUILD_RUN_ID" --repo "$GITHUB_REPOSITORY" --name CHRONICA_HARUN_WINDOWS_ALPHA --dir /tmp/chronica-release
+          ls -lh /tmp/chronica-release
+      - name: Verify release payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/chronica-release
+          echo 'b89fa1319ccf341ea7df859c9bd24564457f5006ca52b5af44020ad1cbf63ad0  CHRONICA_HARUN_WINDOWS_ALPHA.zip' | sha256sum -c -
+          test -s CHRONICA_HARUN_WINDOWS_ALPHA.zip
+          unzip -p CHRONICA_HARUN_WINDOWS_ALPHA.zip CHRONICA_HARUN.exe.sha256 | grep -q 'f96ceda716ac38654b11b1e6271163bd11a039678aa41b61e7ed55371073b9bf'
+          echo CHRONICA_RELEASE_PAYLOAD_OK
+      - name: Create or update prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/release-notes.md <<'EOF'
+          # CHRONICA HARUN · Windows Alpha
+
+          Build técnico jogável de MUNDUS · CHRONICA HARUN.
+
+          Verificação do pipeline:
+          - 87 testes Python: PASS
+          - 82 modelos GLB de inimigos gerados
+          - 16 modelos GLB de bosses gerados
+          - Godot 4.3 headless import: PASS
+          - Main.tscn boot smoke: PASS
+          - Windows export: PASS
+          - EXE SHA-256: `f96ceda716ac38654b11b1e6271163bd11a039678aa41b61e7ed55371073b9bf`
+          - ZIP SHA-256: `b89fa1319ccf341ea7df859c9bd24564457f5006ca52b5af44020ad1cbf63ad0`
+          - Source lineage: `a558da28caa4f9b0f475e2a7e81a78c15696f415`
+          - Verified source branch HEAD: `05d1cb3d31d065b2bdf105a8caad67297b1b708d`
+
+          Observação: alpha técnica. Assets procedurais ainda substituem parte da arte final; não representa o passe final de Blender, animação, áudio, VFX e QA visual manual.
+          EOF
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" /tmp/chronica-release/CHRONICA_HARUN_WINDOWS_ALPHA.zip /tmp/chronica-release/CHRONICA_HARUN_WINDOWS_ALPHA.zip.sha256 --clobber --repo "$GITHUB_REPOSITORY"
+            gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --notes-file /tmp/release-notes.md --title 'CHRONICA HARUN · Windows Alpha · 2026-09-07' --prerelease
+          else
+            gh release create "$TAG" /tmp/chronica-release/CHRONICA_HARUN_WINDOWS_ALPHA.zip /tmp/chronica-release/CHRONICA_HARUN_WINDOWS_ALPHA.zip.sha256 --repo "$GITHUB_REPOSITORY" --target "$BRANCH" --title 'CHRONICA HARUN · Windows Alpha · 2026-09-07' --notes-file /tmp/release-notes.md --prerelease
+          fi
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json url,tagName,isPrerelease,name
