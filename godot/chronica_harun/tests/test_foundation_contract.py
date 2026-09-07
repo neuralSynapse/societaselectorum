@@ -25,7 +25,7 @@ def test_main_scene_is_boot():
 def test_required_autoloads_are_registered():
     text = read("project.godot")
     for name in ("GameState", "SaveService", "RogueliteContentService"):
-        assert re.search(rf'^{name}="\\*res://autoload/{name}\\.gd"$', text, re.M), name
+        assert re.search(rf'^{name}="\*res://autoload/{name}\.gd"$', text, re.M), name
 
 
 def test_first_person_player_contract():
@@ -144,7 +144,7 @@ def test_required_foundation_runtime_files_exist():
 
 def test_tscn_resource_paths_resolve():
     missing = []
-    pattern = re.compile(r'path="res://([^\"]+)"')
+    pattern = re.compile(r'path="res://([^"]+)"')
     for scene in ROOT.rglob("*.tscn"):
         for rel in pattern.findall(scene.read_text(encoding="utf-8")):
             if not (ROOT / rel).exists():
@@ -155,8 +155,8 @@ def test_tscn_resource_paths_resolve():
 def test_no_embedded_backend_secrets():
     forbidden = [
         re.compile(r"postgres(?:ql)?://", re.I),
-        re.compile(r"DATABASE_URL\\s*=", re.I),
-        re.compile(r"NEON_DATABASE_URL\\s*=", re.I),
+        re.compile(r"DATABASE_URL\s*=", re.I),
+        re.compile(r"NEON_DATABASE_URL\s*=", re.I),
         re.compile(r"BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY"),
         re.compile(r"sk-[A-Za-z0-9]{20,}"),
     ]
