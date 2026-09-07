@@ -26,25 +26,73 @@ jobs:
           python - <<'PY'
           import base64
           import hashlib
+          import zlib
           from pathlib import Path
 
           source = Path('chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64')
           raw = source.read_text(encoding='utf-8-sig')
           clean = ''.join(raw.split())
-          print(f'base64_chars={len(clean)} mod4={len(clean) % 4}')
-          print(f'base64_head={clean[:16]}')
-          print(f'base64_tail={clean[-16:]}')
-          missing = (-len(clean)) % 4
-          if missing:
-              clean += '=' * missing
-              print(f'padding_added={missing}')
-          payload = base64.b64decode(clean, validate=False)
-          digest = hashlib.sha256(payload).hexdigest()
-          print(f'decoded_bytes={len(payload)}')
-          print(f'decoded_sha256={digest}')
           expected = '8f7346d4dcf4df25d3ea028f77d8df4cf886cf18d2eb7ea85b9ce1bc03a29154'
+          alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+
+          def decode(text: str) -> bytes:
+              text = text + ('=' * ((-len(text)) % 4))
+              return base64.b64decode(text, validate=False)
+
+          payload = decode(clean)
+          digest = hashlib.sha256(payload).hexdigest()
+          print(f'base64_chars={len(clean)} mod4={len(clean) % 4}')
+          print(f'direct_decoded_bytes={len(payload)}')
+          print(f'direct_sha256={digest}')
+
           if digest != expected:
-              raise SystemExit(f'SHA256 mismatch: {digest} != {expected}')
+              # The published blob is exactly one base64 character short (len % 4 == 3).
+              # Locate the first gzip inflate failure to constrain the insertion search.
+              approx_byte = None
+              d = zlib.decompressobj(16 + zlib.MAX_WBITS)
+              for offset in range(0, len(payload), 32):
+                  try:
+                      d.decompress(payload[offset:offset+32])
+                  except zlib.error:
+                      approx_byte = offset
+                      break
+              if approx_byte is None:
+                  approx_byte = len(payload) // 2
+              approx_pos = int(approx_byte * 4 / 3)
+              print(f'approx_corruption_byte={approx_byte} approx_base64_pos={approx_pos}')
+
+              positions = list(range(max(0, approx_pos - 96), min(len(clean) + 1, approx_pos + 97)))
+              searched = set(positions)
+              positions.extend(i for i in range(len(clean) + 1) if i not in searched)
+
+              repaired = None
+              attempts = 0
+              for pos in positions:
+                  for ch in alphabet:
+                      attempts += 1
+                      candidate = clean[:pos] + ch + clean[pos:]
+                      try:
+                          candidate_payload = base64.b64decode(candidate, validate=True)
+                      except Exception:
+                          continue
+                      if hashlib.sha256(candidate_payload).hexdigest() == expected:
+                          repaired = (pos, ch, candidate, candidate_payload)
+                          break
+                  if repaired:
+                      break
+
+              print(f'repair_attempts={attempts}')
+              if not repaired:
+                  raise SystemExit('Unable to repair v2 package to the published SHA-256')
+              pos, ch, clean, payload = repaired
+              print(f'repaired_missing_base64_char_position={pos}')
+              print(f'repaired_missing_base64_char={ch}')
+              print(f'repaired_sha256={hashlib.sha256(payload).hexdigest()}')
+              source.write_text(clean + '\n', encoding='ascii')
+
+          final_digest = hashlib.sha256(payload).hexdigest()
+          if final_digest != expected:
+              raise SystemExit(f'SHA256 mismatch after repair: {final_digest} != {expected}')
           Path('/tmp/chronica-front-b-source.tar.gz').write_bytes(payload)
           PY
           mkdir -p chronica-harun-godot
@@ -87,13 +135,13 @@ jobs:
           assert bc == 16, bc
           PY
 
-      - name: Persist restored source on Front B branch
+      - name: Persist repaired package and restored source on Front B branch
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add chronica-harun-godot
+          git add chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64 chronica-harun-godot
           if git diff --cached --quiet; then
             echo "No restored-source changes to commit"
             exit 0
