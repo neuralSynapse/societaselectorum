@@ -1,0 +1,1 @@
+CHRONICA playable source archive is split into small checksum-verified text chunks. CI concatenates the chunks, decodes Base64, validates SHA-256, and extracts the XZ-compressed source tree. This avoids the prior single-file truncation failure.
