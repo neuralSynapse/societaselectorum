@@ -1,0 +1,270 @@
+name: CHRONICA Runtime QA
+
+on:
+  push:
+    branches:
+      - fix/chronica-runtime-qa
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  runtime-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      QA_BRANCH: fix/chronica-runtime-qa
+      RESTORE_DIR: runtime-restored
+      PROJECT_DEST: game/chronica-harun
+      QA_DIR: runtime-qa
+    steps:
+      - name: Checkout QA branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: fix/chronica-runtime-qa
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch all remote branches
+        run: git fetch origin '+refs/heads/*:refs/remotes/origin/*' --prune
+
+      - name: Restore exact v4 source from verified manifest
+        id: restore
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64, hashlib, json, os, pathlib, shutil, subprocess, tarfile
+
+          manifest_path = pathlib.Path('handoff/chronica-playable/v4/manifest.json')
+          if not manifest_path.exists():
+              raise SystemExit('BLOCKER: v4 manifest missing')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          refs = subprocess.check_output(
+              ['git','for-each-ref','--format=%(refname)','refs/remotes/origin/'], text=True
+          ).splitlines()
+          refs = [r for r in refs if not r.endswith('/HEAD')]
+
+          candidates_by_name = {c['name']: [] for c in manifest['chunks']}
+          for ref in refs:
+              try:
+                  paths = subprocess.check_output(['git','ls-tree','-r','--name-only',ref], text=True).splitlines()
+              except subprocess.CalledProcessError:
+                  continue
+              for p in paths:
+                  name = pathlib.PurePosixPath(p).name
+                  if name in candidates_by_name:
+                      candidates_by_name[name].append((ref,p))
+
+          out_dir = pathlib.Path('runtime-qa/restore-chunks')
+          out_dir.mkdir(parents=True, exist_ok=True)
+          provenance = []
+          pieces = []
+          for chunk in manifest['chunks']:
+              name = chunk['name']
+              expected = chunk['sha256']
+              matched = None
+              preferred = [
+                  ('refs/remotes/origin/release/chronica-playable-alpha-v4-2026-09-07', f'handoff/chronica-playable/v4/{name}'),
+                  ('refs/remotes/origin/release/chronica-playable-alpha-v4-2026-09-07', f'handoff/chronica-playable-v4/chunks/{name}'),
+              ]
+              ordered = preferred + candidates_by_name.get(name, [])
+              seen = set()
+              for ref, path in ordered:
+                  if (ref,path) in seen:
+                      continue
+                  seen.add((ref,path))
+                  try:
+                      text = subprocess.check_output(['git','show',f'{ref}:{path}'], text=True).strip()
+                      data = base64.b64decode(''.join(text.split()), validate=True)
+                  except Exception:
+                      continue
+                  actual = hashlib.sha256(data).hexdigest()
+                  if actual == expected and len(data) == int(chunk['decoded_bytes']):
+                      matched = (ref,path,data)
+                      break
+              if matched is None:
+                  raise SystemExit(f'BLOCKER: no verified copy found for {name} sha256={expected}')
+              ref,path,data = matched
+              (out_dir / name.replace('.b64','.bin')).write_bytes(data)
+              pieces.append(data)
+              provenance.append({'chunk':name,'ref':ref,'path':path,'sha256':expected,'bytes':len(data)})
+
+          archive = b''.join(pieces)
+          actual_archive = hashlib.sha256(archive).hexdigest()
+          if actual_archive != manifest['archive_sha256']:
+              raise SystemExit(f"BLOCKER: archive sha mismatch {actual_archive} != {manifest['archive_sha256']}")
+          if len(archive) != int(manifest['archive_bytes']):
+              raise SystemExit(f"BLOCKER: archive size mismatch {len(archive)} != {manifest['archive_bytes']}")
+
+          archive_path = pathlib.Path('runtime-qa/chronica-playable-v4.tar.xz')
+          archive_path.write_bytes(archive)
+          restore_root = pathlib.Path('runtime-restored')
+          if restore_root.exists():
+              shutil.rmtree(restore_root)
+          restore_root.mkdir(parents=True)
+          with tarfile.open(archive_path, 'r:xz') as tf:
+              tf.extractall(restore_root)
+
+          projects = list(restore_root.rglob('project.godot'))
+          if len(projects) != 1:
+              raise SystemExit(f'BLOCKER: expected exactly one project.godot, found {len(projects)}: {projects}')
+          project_dir = projects[0].parent
+          dest = pathlib.Path('game/chronica-harun')
+          if dest.exists():
+              shutil.rmtree(dest)
+          dest.parent.mkdir(parents=True, exist_ok=True)
+          shutil.copytree(project_dir, dest)
+
+          report = {
+              'manifest': str(manifest_path),
+              'archive_sha256': actual_archive,
+              'archive_bytes': len(archive),
+              'source_head': manifest.get('source_head'),
+              'project_source_inside_archive': str(project_dir),
+              'restored_destination': str(dest),
+              'chunks': provenance,
+          }
+          pathlib.Path('runtime-qa').mkdir(exist_ok=True)
+          pathlib.Path('runtime-qa/restore.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+          print(json.dumps(report, indent=2))
+          with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf-8') as f:
+              f.write('project_dir=game/chronica-harun\n')
+          PY
+
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check -q pytest
+
+      - name: Install Godot 4.3 stable
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --retry 3 --fail -o /tmp/godot.zip \
+            https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          mkdir -p "$QA_DIR/logs"
+          godot --version | tee "$QA_DIR/logs/godot-version.txt"
+
+      - name: Baseline pytest
+        id: pytest
+        shell: bash
+        run: |
+          set +e
+          cd "${{ steps.restore.outputs.project_dir }}"
+          pytest -q 2>&1 | tee "$GITHUB_WORKSPACE/$QA_DIR/logs/pytest.txt"
+          code=${PIPESTATUS[0]}
+          echo "$code" > "$GITHUB_WORKSPACE/$QA_DIR/logs/pytest.exit"
+          exit 0
+
+      - name: Godot headless import
+        id: import
+        shell: bash
+        run: |
+          set +e
+          godot --headless --editor --path "${{ steps.restore.outputs.project_dir }}" --quit-after 240 2>&1 | tee "$QA_DIR/logs/godot-import.txt"
+          code=${PIPESTATUS[0]}
+          echo "$code" > "$QA_DIR/logs/godot-import.exit"
+          exit 0
+
+      - name: Boot smoke
+        id: boot
+        shell: bash
+        run: |
+          set +e
+          timeout 20s godot --headless --path "${{ steps.restore.outputs.project_dir }}" --quit-after 360 2>&1 | tee "$QA_DIR/logs/boot-smoke.txt"
+          code=${PIPESTATUS[0]}
+          echo "$code" > "$QA_DIR/logs/boot-smoke.exit"
+          exit 0
+
+      - name: Static runtime contract audit
+        shell: bash
+        run: |
+          set +e
+          python - <<'PY' 2>&1 | tee "$QA_DIR/logs/static-runtime-audit.txt"
+          import configparser, json, pathlib, re
+          root = pathlib.Path('game/chronica-harun')
+          project = (root/'project.godot').read_text(encoding='utf-8')
+          checks = {}
+          m = re.search(r'run/main_scene="([^"]+)"', project)
+          checks['main_scene'] = m.group(1) if m else None
+          checks['first_person_markers'] = any(x in project.lower() for x in ('first_person','fps'))
+          for action in ['move_left','move_right','move_forward','move_back','primary_attack']:
+              checks[f'input:{action}'] = bool(re.search(rf'(?m)^{re.escape(action)}=', project))
+          refs = []
+          for path in list(root.rglob('*.tscn')) + list(root.rglob('*.gd')):
+              text = path.read_text(encoding='utf-8', errors='replace')
+              for ref in re.findall(r'res://[^"\')\]\s]+', text):
+                  rel = ref.removeprefix('res://')
+                  refs.append((str(path.relative_to(root)), ref, (root/rel).exists()))
+          broken = [r for r in refs if not r[2]]
+          checks['resource_refs_total'] = len(refs)
+          checks['resource_refs_broken'] = broken[:200]
+          print(json.dumps(checks, indent=2, ensure_ascii=False))
+          PY
+          exit 0
+
+      - name: Build baseline report
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, pathlib, re
+          qa = pathlib.Path('runtime-qa')
+          logs = qa/'logs'
+          def read(name):
+              p=logs/name
+              return p.read_text(encoding='utf-8',errors='replace') if p.exists() else ''
+          def exit_code(name):
+              p=logs/name
+              return int(p.read_text().strip()) if p.exists() and p.read_text().strip().isdigit() else None
+          def grep_errors(text):
+              pats = [r'(?im)^.*(?:ERROR|SCRIPT ERROR|Parse Error|Invalid call|Failed loading resource|Cannot open file).*$']
+              out=[]
+              for pat in pats:
+                  out += re.findall(pat,text)
+              return out[:200]
+          report={
+            'pytest_exit': exit_code('pytest.exit'),
+            'godot_import_exit': exit_code('godot-import.exit'),
+            'boot_exit': exit_code('boot-smoke.exit'),
+            'pytest_tail': read('pytest.txt')[-12000:],
+            'godot_import_errors': grep_errors(read('godot-import.txt')),
+            'boot_errors': grep_errors(read('boot-smoke.txt')),
+            'godot_version': read('godot-version.txt').strip(),
+          }
+          (qa/'baseline.json').write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding='utf-8')
+          md = [
+            '# CHRONICA HARUN · Runtime QA Baseline',
+            '',
+            f"- Godot: `{report['godot_version']}`",
+            f"- pytest exit: `{report['pytest_exit']}`",
+            f"- import exit: `{report['godot_import_exit']}`",
+            f"- boot exit: `{report['boot_exit']}`",
+            '',
+            '## Import errors',
+            '```text', *report['godot_import_errors'], '```',
+            '', '## Boot errors', '```text', *report['boot_errors'], '```',
+            '', '## pytest tail', '```text', report['pytest_tail'], '```',
+          ]
+          (qa/'BASELINE.md').write_text('\n'.join(md),encoding='utf-8')
+          PY
+
+      - name: Persist restored source and baseline evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "$QA_DIR/restore-chunks" "$QA_DIR/chronica-playable-v4.tar.xz"
+          git config user.name 'chronica-runtime-qa-bot'
+          git config user.email 'chronica-runtime-qa-bot@users.noreply.github.com'
+          git add "$PROJECT_DEST" "$QA_DIR"
+          if git diff --cached --quiet; then
+            echo 'Nothing to persist.'
+            exit 0
+          fi
+          git commit -m 'chore: restore v4 source and capture runtime baseline'
+          git push origin HEAD:"$QA_BRANCH"
