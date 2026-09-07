@@ -1,0 +1,205 @@
+name: CHRONICA v5 Fix Build Windows
+
+on:
+  push:
+    branches:
+      - release/chronica-playable-alpha-v5-2026-09-07
+    paths:
+      - '.github/workflows/chronica-v5-fix-build.yml'
+      - 'runtime-v5/TRIGGER_BUILD.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  GAME_DIR: game/chronica-harun
+  GODOT_VERSION: '4.3'
+
+jobs:
+  fix-validate-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release/chronica-playable-alpha-v5-2026-09-07
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply Godot 4.3 parser fixes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          root=Path('game/chronica-harun')
+          fixes={
+            'scripts/progression/StageDirector.gd':[
+              ('                    var d := enemy.global_position - player.global_position; d.y = 0.0',
+               '                    var d: Vector3 = enemy.global_position - player.global_position\n                    d.y = 0.0'),
+              ('        var index := abs(GameState.run_seed + int(GameState.run_stats.get("rooms_cleared", 0)) + String(room_id).hash() + category.hash()) % ids.size()',
+               '        var index: int = abs(GameState.run_seed + int(GameState.run_stats.get("rooms_cleared", 0)) + String(room_id).hash() + category.hash()) % ids.size()'),
+            ],
+            'scripts/kinesis/KinesisProgressionDirector.gd':[
+              ('    var payload := ability.get("ability", {}).duplicate(true)',
+               '    var payload: Dictionary = ability.get("ability", {}).duplicate(true)'),
+            ],
+            'scripts/quantum/QuantumRiftDirector.gd':[
+              ('        var kind := archetypes[rng.randi_range(0, archetypes.size()-1)]',
+               '        var kind: String = String(archetypes[rng.randi_range(0, archetypes.size()-1)])'),
+            ],
+            'scripts/narrative/TemporalRiftDirector.gd':[
+              ('    var total := row.get("mission", {}).get("objectives", []).size()',
+               '    var total: int = row.get("mission", {}).get("objectives", []).size()'),
+              ('    var completed := completed_objectives.size() >= total and not force_retreat',
+               '    var completed: bool = completed_objectives.size() >= total and not force_retreat'),
+            ],
+            'scripts/generation/StageFloorBuilder.gd':[
+              ('    var host_id := attachment_ids[index % attachment_ids.size()]',
+               '    var host_id: String = String(attachment_ids[index % attachment_ids.size()])'),
+            ],
+          }
+          for rel,repls in fixes.items():
+              p=root/rel
+              text=p.read_text(encoding='utf-8')
+              for old,new in repls:
+                  if old not in text and new not in text:
+                      raise SystemExit(f'Expected parser-fix pattern missing in {rel}: {old}')
+                  text=text.replace(old,new)
+              p.write_text(text,encoding='utf-8')
+          print('CHRONICA_PARSER_FIXES_APPLIED')
+          PY
+
+      - name: Install validation and model dependencies
+        run: python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+
+      - name: Generate individual enemy and boss GLBs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+          test -s "$GAME_DIR/art/generated/enemies/manifest.json"
+          test -s "$GAME_DIR/art/generated/bosses/manifest.json"
+          echo CHRONICA_MODELS_OK
+
+      - name: Run complete Python test suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          pytest -q "$GAME_DIR/tests" | tee /tmp/chronica-pytest.log
+
+      - name: Run canonical validators
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$GAME_DIR/tools/validate_complete_game.py"
+          python "$GAME_DIR/tools/validate_story_canon.py"
+
+      - name: Install Godot 4.3 and Windows export templates
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot_v4.3-stable_linux.x86_64
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          curl -L --fail --retry 3 -o /tmp/templates.tpz https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          rm -rf /tmp/export_templates
+          mkdir -p /tmp/export_templates
+          unzip -q /tmp/templates.tpz -d /tmp/export_templates
+          mkdir -p "$HOME/.local/share/godot/export_templates/4.3.stable"
+          cp -a /tmp/export_templates/templates/. "$HOME/.local/share/godot/export_templates/4.3.stable/"
+          godot --version
+
+      - name: Import full project in Godot headless
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/chronica-import.log
+          if grep -E "SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed" /tmp/chronica-import.log; then
+            echo 'Godot import contains blocking errors.' >&2
+            exit 1
+          fi
+          echo CHRONICA_GODOT_IMPORT_OK
+
+      - name: Boot main scene smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 12s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/chronica-boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          if grep -E "SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value" /tmp/chronica-boot.log; then
+            echo 'Boot smoke contains blocking errors.' >&2
+            exit 1
+          fi
+          echo CHRONICA_PLAYABLE_BOOT_OK
+
+      - name: Export Windows executable
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GAME_DIR/build/windows"
+          godot --headless --path "$GAME_DIR" --export-release "Windows Desktop" build/windows/CHRONICA_HARUN.exe 2>&1 | tee /tmp/chronica-export.log
+          if grep -E "SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|ERROR: Cannot export" /tmp/chronica-export.log; then exit 1; fi
+          test -s "$GAME_DIR/build/windows/CHRONICA_HARUN.exe"
+          sha256sum "$GAME_DIR/build/windows/CHRONICA_HARUN.exe" | tee "$GAME_DIR/build/windows/CHRONICA_HARUN.exe.sha256"
+          echo CHRONICA_WINDOWS_EXPORT_OK
+
+      - name: Package playable alpha
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GAME_DIR/build/windows"
+          zip -9 CHRONICA_HARUN_WINDOWS_ALPHA.zip CHRONICA_HARUN.exe CHRONICA_HARUN.exe.sha256
+          test -s CHRONICA_HARUN_WINDOWS_ALPHA.zip
+          sha256sum CHRONICA_HARUN_WINDOWS_ALPHA.zip | tee CHRONICA_HARUN_WINDOWS_ALPHA.zip.sha256
+
+      - name: Persist parser fixes and verification record
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXE_SHA=$(cut -d' ' -f1 "$GAME_DIR/build/windows/CHRONICA_HARUN.exe.sha256")
+          ZIP_SHA=$(cut -d' ' -f1 "$GAME_DIR/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA.zip.sha256")
+          mkdir -p runtime-v5
+          cat > runtime-v5/BUILD_VERIFIED.md <<EOF
+          # CHRONICA HARUN · Windows Alpha Verification
+
+          - Source lineage: a558da28caa4f9b0f475e2a7e81a78c15696f415
+          - GitHub branch: release/chronica-playable-alpha-v5-2026-09-07
+          - Godot: 4.3 stable
+          - Python tests: passed in this build workflow
+          - Godot import: CHRONICA_GODOT_IMPORT_OK
+          - Main boot smoke: CHRONICA_PLAYABLE_BOOT_OK
+          - Windows export: CHRONICA_WINDOWS_EXPORT_OK
+          - EXE SHA-256: $EXE_SHA
+          - ZIP SHA-256: $ZIP_SHA
+          EOF
+          git config user.name 'chronica-release-bot'
+          git config user.email 'chronica-release-bot@users.noreply.github.com'
+          git add "$GAME_DIR/scripts/progression/StageDirector.gd" \
+                  "$GAME_DIR/scripts/kinesis/KinesisProgressionDirector.gd" \
+                  "$GAME_DIR/scripts/quantum/QuantumRiftDirector.gd" \
+                  "$GAME_DIR/scripts/narrative/TemporalRiftDirector.gd" \
+                  "$GAME_DIR/scripts/generation/StageFloorBuilder.gd" \
+                  runtime-v5/BUILD_VERIFIED.md
+          git commit -m 'fix: pass Godot 4.3 runtime QA and verify Windows alpha'
+          git push origin HEAD:release/chronica-playable-alpha-v5-2026-09-07
+
+      - name: Upload Windows playable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CHRONICA_HARUN_WINDOWS_ALPHA
+          path: |
+            game/chronica-harun/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA.zip
+            game/chronica-harun/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA.zip.sha256
+          if-no-files-found: error
+          retention-days: 30
