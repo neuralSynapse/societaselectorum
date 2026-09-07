@@ -1,0 +1,8 @@
+{
+  "archive_sha256": "8c5c416178c26e611d87b41fff08f718df5ccbedb2f30ddb4c153acfc11d96a7",
+  "archive_bytes": 153508,
+  "archive_format": "tar.xz",
+  "chunks": 16,
+  "chunk_raw_bytes": 10000,
+  "source_head": "a558da28caa4f9b0f475e2a7e81a78c15696f415"
+}
