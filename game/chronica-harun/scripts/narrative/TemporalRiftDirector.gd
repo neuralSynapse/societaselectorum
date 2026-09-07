@@ -37,8 +37,8 @@ func complete_objective(objective_index: int) -> bool:
 func return_from_rift(force_retreat := false) -> bool:
     if active_rift_id == &"": return false
     var row := _find(active_rift_id)
-    var total := row.get("mission", {}).get("objectives", []).size()
-    var completed := completed_objectives.size() >= total and not force_retreat
+    var total: int = row.get("mission", {}).get("objectives", []).size()
+    var completed: bool = completed_objectives.size() >= total and not force_retreat
     var state := _state()
     var visited: Array = state.get("visited", [])
     if not visited.has(String(active_rift_id)): visited.append(String(active_rift_id))

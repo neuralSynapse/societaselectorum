@@ -62,7 +62,7 @@ static func spawn_special_room(rooms: Node3D, definition: Dictionary, index: int
     room.room_id = StringName(id)
     room.room_role = &"special"
     var attachment_ids := ["combat_1", "reward_1", "combat_2", "sanctuary", "combat_3", "threshold"]
-    var host_id := attachment_ids[index % attachment_ids.size()]
+    var host_id: String = String(attachment_ids[index % attachment_ids.size()])
     var host := by_id.get(host_id) as RoomShell
     if host:
         var side := -1.0 if index % 2 == 0 else 1.0

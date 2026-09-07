@@ -93,7 +93,8 @@ func _apply_kinesis(ability_id: StringName, payload: Dictionary) -> void:
         "telekinesis", "aerokinesis":
             for enemy in active_enemies:
                 if is_instance_valid(enemy):
-                    var d := enemy.global_position - player.global_position; d.y = 0.0
+                    var d: Vector3 = enemy.global_position - player.global_position
+                    d.y = 0.0
                     if d.length() <= 7.0 and enemy is CharacterBody3D: (enemy as CharacterBody3D).velocity += d.normalized() * (4.0 + magnitude * 3.0)
         "electrokinesis":
             var hits := 0
@@ -382,7 +383,7 @@ func spawn_special_reward(room_id: StringName) -> Dictionary:
         var ids := ContentRegistry.all_ids(category)
         if ids.is_empty():
             continue
-        var index := abs(GameState.run_seed + int(GameState.run_stats.get("rooms_cleared", 0)) + String(room_id).hash() + category.hash()) % ids.size()
+        var index: int = abs(GameState.run_seed + int(GameState.run_stats.get("rooms_cleared", 0)) + String(room_id).hash() + category.hash()) % ids.size()
         var item_id := StringName(ids[index])
         _spawn_pickup(room, category, item_id)
         special_reward_spawned.emit(room_id, StringName(category), item_id)
