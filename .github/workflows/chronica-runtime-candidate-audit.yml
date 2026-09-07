@@ -1,0 +1,161 @@
+name: CHRONICA Runtime Candidate Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix/chronica-runtime-qa
+    paths:
+      - '.github/workflows/chronica-runtime-candidate-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout QA branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: fix/chronica-runtime-qa
+
+      - name: Fetch candidate branches
+        run: git fetch origin '+refs/heads/*:refs/remotes/origin/*' --prune
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check -q pytest
+
+      - name: Install Godot 4.5 stable
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --retry 3 --fail -o /tmp/godot.zip \
+            https://github.com/godotengine/godot/releases/download/4.5-stable/Godot_v4.5-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.5-stable_linux.x86_64 /usr/local/bin/godot
+          mkdir -p runtime-qa/candidate-audit
+          godot --version | tee runtime-qa/candidate-audit/godot-version.txt
+
+      - name: Audit persisted candidates
+        shell: bash
+        run: |
+          set +e
+          mkdir -p /tmp/chronica-candidates runtime-qa/candidate-audit
+
+          audit_candidate() {
+            name="$1"
+            ref="$2"
+            rel="$3"
+            root="/tmp/chronica-candidates/$name"
+            out="$GITHUB_WORKSPACE/runtime-qa/candidate-audit/$name"
+            mkdir -p "$out"
+
+            echo "candidate=$name" | tee "$out/meta.txt"
+            echo "ref=$ref" | tee -a "$out/meta.txt"
+            git rev-parse "origin/$ref" | tee -a "$out/meta.txt"
+
+            rm -rf "$root"
+            git worktree add --detach "$root" "origin/$ref" >"$out/worktree.txt" 2>&1
+            wt=$?
+            echo "$wt" > "$out/worktree.exit"
+            if [ "$wt" != "0" ]; then
+              return
+            fi
+
+            proj="$root/$rel"
+            echo "project_path=$rel" | tee -a "$out/meta.txt"
+            if [ ! -f "$proj/project.godot" ]; then
+              echo "BLOCKER: project.godot missing at $rel" | tee "$out/project-check.txt"
+              return
+            fi
+
+            cp "$proj/project.godot" "$out/project.godot.txt"
+            find "$proj" -type f | sed "s#^$proj/##" | sort > "$out/file-list.txt"
+
+            (
+              cd "$proj"
+              pytest -q
+            ) >"$out/pytest.txt" 2>&1
+            echo "$?" > "$out/pytest.exit"
+
+            godot --headless --editor --path "$proj" --quit-after 120 >"$out/import.txt" 2>&1
+            echo "$?" > "$out/import.exit"
+
+            timeout 12s godot --headless --path "$proj" --quit-after 120 >"$out/boot.txt" 2>&1
+            echo "$?" > "$out/boot.exit"
+
+            python - "$proj" "$out/static.json" <<'PY'
+          import json, pathlib, re, sys
+          root = pathlib.Path(sys.argv[1])
+          target = pathlib.Path(sys.argv[2])
+          text = (root/'project.godot').read_text(encoding='utf-8', errors='replace')
+          def has_action(name):
+              return bool(re.search(rf'(?m)^\s*{re.escape(name)}\s*=\s*\{{', text))
+          m = re.search(r'run/main_scene="([^"]+)"', text)
+          gd = list(root.rglob('*.gd'))
+          tscn = list(root.rglob('*.tscn'))
+          all_text = '\n'.join(p.read_text(encoding='utf-8', errors='replace') for p in gd + tscn)
+          checks = {
+              'main_scene': m.group(1) if m else None,
+              'input_move_forward': has_action('move_forward'),
+              'input_move_back': has_action('move_back'),
+              'input_move_left': has_action('move_left'),
+              'input_move_right': has_action('move_right'),
+              'input_primary_attack': has_action('primary_attack'),
+              'input_toggle_camera': has_action('toggle_camera'),
+              'gdscript_count': len(gd),
+              'scene_count': len(tscn),
+              'has_player_controller': any(p.name == 'PlayerController.gd' for p in gd),
+              'has_camera3d': 'Camera3D' in all_text,
+              'has_attack_marker': bool(re.search(r'(?i)attack|primary_attack|melee|projectile', all_text)),
+              'has_enemy_marker': bool(re.search(r'(?i)enemy|boss', all_text)),
+              'has_save_marker': bool(re.search(r'(?i)save|load', all_text)),
+              'has_room_marker': bool(re.search(r'(?i)room|door|clear', all_text)),
+          }
+          target.write_text(json.dumps(checks, indent=2), encoding='utf-8')
+          print(json.dumps(checks, indent=2))
+          PY
+          }
+
+          audit_candidate foundation feat/chronica-foundation-audit godot/chronica_harun
+          audit_candidate roguelite feat/chronica-roguelite-depth game/chronica-harun
+          audit_candidate release-v2 release/chronica-playable-alpha-v2-2026-09-07 game/chronica-harun
+
+          python - <<'PY'
+          import json, pathlib
+          root = pathlib.Path('runtime-qa/candidate-audit')
+          summary = {'godot_version': (root/'godot-version.txt').read_text().strip(), 'candidates': {}}
+          for name in ('foundation','roguelite','release-v2'):
+              d = root/name
+              item = {}
+              for k in ('pytest','import','boot','worktree'):
+                  p=d/f'{k}.exit'
+                  item[f'{k}_exit'] = int(p.read_text().strip()) if p.exists() and p.read_text().strip().lstrip('-').isdigit() else None
+              sp=d/'static.json'
+              item['static'] = json.loads(sp.read_text()) if sp.exists() else None
+              mp=d/'meta.txt'
+              item['meta'] = mp.read_text() if mp.exists() else ''
+              for log in ('pytest.txt','import.txt','boot.txt','project-check.txt'):
+                  p=d/log
+                  if p.exists():
+                      item[log.replace('.txt','_tail')] = p.read_text(errors='replace')[-8000:]
+              summary['candidates'][name]=item
+          (root/'summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
+          print(json.dumps(summary, indent=2))
+          PY
+          exit 0
+
+      - name: Upload candidate audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: chronica-runtime-candidate-audit
+          path: runtime-qa/candidate-audit
+          if-no-files-found: error
