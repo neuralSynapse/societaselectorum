@@ -93,8 +93,23 @@ jobs:
           git show "${PACK_REF}:${PACK_PATH}" > /tmp/chronica-source.tar.gz.b64
           wc -c /tmp/chronica-source.tar.gz.b64
           sha256sum /tmp/chronica-source.tar.gz.b64
-          base64 -d /tmp/chronica-source.tar.gz.b64 > /tmp/chronica-source.tar.gz
-          sha256sum /tmp/chronica-source.tar.gz
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, re
+          src = Path('/tmp/chronica-source.tar.gz.b64').read_text(encoding='ascii')
+          compact = ''.join(src.split())
+          bad = sorted(set(re.sub(r'[A-Za-z0-9+/=]', '', compact)))
+          print('base64_compact_length=', len(compact))
+          print('base64_length_mod_4=', len(compact) % 4)
+          print('base64_invalid_chars=', repr(bad))
+          print('base64_tail=', repr(compact[-32:]))
+          if bad:
+              raise SystemExit('invalid non-base64 characters present')
+          raw = base64.b64decode(compact, validate=True)
+          Path('/tmp/chronica-source.tar.gz').write_bytes(raw)
+          print('decoded_bytes=', len(raw))
+          print('decoded_sha256=', hashlib.sha256(raw).hexdigest())
+          PY
           gzip -t /tmp/chronica-source.tar.gz
           mkdir -p /tmp/chronica-recovered
           tar -xzf /tmp/chronica-source.tar.gz -C /tmp/chronica-recovered
