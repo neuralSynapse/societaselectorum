@@ -16,11 +16,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Repository state
         shell: bash
         run: |
           set -euxo pipefail
+          git fetch --all --prune
           git status
           git branch -a
           git log --oneline --decorate -30
@@ -36,6 +39,9 @@ jobs:
 
       - name: Pytest full repository
         run: python -m pytest -q
+
+      - name: Existing Chronica backend tests
+        run: node --test mundus/chronica-harun/backend/auth-controller-v1.test.js
 
       - name: Install Godot 4.5.1 stable
         shell: bash
