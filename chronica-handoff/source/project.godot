@@ -1,0 +1,41 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+config/name="CHRONICA HARUN"
+run/main_scene="res://scenes/boot/Main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+
+[autoload]
+GameState="*res://autoload/GameState.gd"
+SaveService="*res://autoload/SaveService.gd"
+ContentRegistry="*res://autoload/ContentRegistry.gd"
+RogueliteContentService="*res://autoload/RogueliteContentService.gd"
+AudioDirector="*res://autoload/AudioDirector.gd"
+
+[display]
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+
+[input]
+move_left={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":65)]}
+move_right={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":68)]}
+move_forward={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":87)]}
+move_back={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":83)]}
+jump={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":32)]}
+interact={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":69)]}
+primary_attack={"deadzone":0.5,"events":[Object(InputEventMouseButton,"button_index":1)]}
+power={"deadzone":0.5,"events":[Object(InputEventMouseButton,"button_index":2)]}
+instrument={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":82)]}
+consume={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":67)]}
+sprint={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":4194325)]}
+rupture_charge={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":66)]}
+pause={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":4194305)]}
