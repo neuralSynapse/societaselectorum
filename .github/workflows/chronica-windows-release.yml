@@ -7,6 +7,7 @@ on:
     paths:
       - '.github/workflows/chronica-windows-release.yml'
       - 'scripts/chronica_release_recover.py'
+      - 'scripts/chronica_godot43_compat.py'
       - 'handoff/chronica-playable-v4/**'
       - 'handoff/chronica-playable/v4/**'
   workflow_dispatch:
@@ -122,6 +123,15 @@ jobs:
           if len(boss) != 16:
               raise SystemExit(f'expected 16 boss GLBs, got {len(boss)}')
           PY
+
+      - name: Apply Godot 4.3 parser compatibility normalization
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python scripts/chronica_godot43_compat.py \
+            --project game/chronica-harun \
+            --report .release/godot43-compat.json
+          cat .release/godot43-compat.json
 
       - name: Pytest CHRONICA suite
         shell: bash
@@ -263,6 +273,7 @@ jobs:
             echo "GODOT_VERSION_REQUESTED=${GODOT_VERSION}"
             if [[ -f .release/godot-version.log ]]; then printf 'GODOT_VERSION_LITERAL='; tr '\n' ' ' < .release/godot-version.log; echo; fi
             if [[ -f .release/pytest.log ]]; then printf 'PYTEST_LITERAL='; tail -n 1 .release/pytest.log; fi
+            if [[ -f .release/godot43-compat.json ]]; then echo 'GODOT43_COMPAT_REPORT_PRESENT=YES'; fi
             if [[ -f .release/godot-import.log ]]; then echo 'IMPORT_LOG_PRESENT=YES'; fi
             if [[ -f .release/godot-boot.log ]]; then echo 'BOOT_LOG_PRESENT=YES'; fi
             if [[ -f .release/godot-export.log ]]; then echo 'EXPORT_LOG_PRESENT=YES'; fi
@@ -282,6 +293,7 @@ jobs:
             CHRONICA_HARUN_WINDOWS_ALPHA.zip
             .release/verification-summary.txt
             .release/source-recovery.json
+            .release/godot43-compat.json
             .release/pytest.log
             .release/godot-version.log
             .release/godot-import.log
