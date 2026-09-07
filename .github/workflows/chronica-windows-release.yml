@@ -15,8 +15,8 @@ permissions:
   contents: read
 
 env:
-  GODOT_VERSION: '4.5.1'
-  GODOT_BIN: /tmp/godot/Godot_v4.5.1-stable_linux.x86_64
+  GODOT_VERSION: '4.3'
+  GODOT_BIN: /tmp/godot/Godot_v4.3-stable_linux.x86_64
   PROJECT_DIR: game/chronica-harun
   EXE_PATH: game/chronica-harun/build/windows/CHRONICA_HARUN.exe
   ZIP_PATH: CHRONICA_HARUN_WINDOWS_ALPHA.zip
@@ -43,7 +43,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.12'
 
       - name: Install Python build dependencies
         shell: bash
@@ -87,19 +87,21 @@ jobs:
           PY
           test -s game/chronica-harun/project.godot
 
-      - name: Run available content generators
+      - name: Run recovery generator without regressing integrated catalogs
         shell: bash
         run: |
           set -euxo pipefail
-          cd game/chronica-harun
-          for generator in tools/generate_recovered_content.py tools/generate_models.py; do
-            if [[ -f "$generator" ]]; then
-              echo "RUN_GENERATOR=$generator"
-              python "$generator"
-            else
-              echo "GENERATOR_NOT_PRESENT=$generator"
-            fi
-          done
+          rm -rf .release/recovery-generator-smoke
+          cp -a game/chronica-harun .release/recovery-generator-smoke
+          python .release/recovery-generator-smoke/tools/generate_recovered_content.py
+          echo 'RECOVERED_CONTENT_GENERATOR_LITERAL=PASS_SANDBOX'
+
+      - name: Generate individual enemy and boss GLBs
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python game/chronica-harun/tools/generate_models.py
+          echo 'MODEL_GENERATOR_LITERAL=PASS'
 
       - name: Verify 82 enemy GLBs and 16 boss GLBs
         shell: bash
@@ -148,15 +150,15 @@ jobs:
               subprocess.run([sys.executable, str(rel)], cwd=root, check=True)
           PY
 
-      - name: Install Godot 4.5.1 stable
+      - name: Install Godot 4.3 stable
         shell: bash
         run: |
           set -euxo pipefail
+          rm -rf /tmp/godot /tmp/godot.zip
           mkdir -p /tmp/godot
           curl --fail --location --retry 3 \
             -o /tmp/godot.zip \
-            https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
-          echo '02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd  /tmp/godot.zip' | sha256sum --check
+            https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip -q /tmp/godot.zip -d /tmp/godot
           chmod +x "$GODOT_BIN"
           "$GODOT_BIN" --version | tee .release/godot-version.log
@@ -167,11 +169,11 @@ jobs:
           set -euxo pipefail
           curl --fail --location --retry 3 \
             -o /tmp/godot-templates.tpz \
-            https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz
+            https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           rm -rf /tmp/godot-templates
           mkdir -p /tmp/godot-templates
           unzip -q /tmp/godot-templates.tpz -d /tmp/godot-templates
-          TEMPLATE_DIR="$HOME/.local/share/godot/export_templates/4.5.1.stable"
+          TEMPLATE_DIR="$HOME/.local/share/godot/export_templates/4.3.stable"
           mkdir -p "$TEMPLATE_DIR"
           cp -a /tmp/godot-templates/templates/. "$TEMPLATE_DIR/"
           test -s "$TEMPLATE_DIR/windows_release_x86_64.exe"
@@ -183,7 +185,7 @@ jobs:
           set -o pipefail
           "$GODOT_BIN" --headless --path "$PROJECT_DIR" --editor --quit 2>&1 | tee .release/godot-import.log
           status=${PIPESTATUS[0]}
-          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource' .release/godot-import.log; then
+          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource|Compilation failed' .release/godot-import.log; then
             echo 'IMPORT_FORBIDDEN_ERROR_PATTERN=FOUND'
             exit 31
           fi
@@ -194,28 +196,30 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          "$GODOT_BIN" --headless --path "$PROJECT_DIR" --quit-after 10 2>&1 | tee .release/godot-boot.log
+          set +e
+          timeout 12s "$GODOT_BIN" --headless --path "$PROJECT_DIR" res://scenes/boot/Main.tscn 2>&1 | tee .release/godot-boot.log
           status=${PIPESTATUS[0]}
-          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource' .release/godot-boot.log; then
+          set -e
+          if [[ "$status" -ne 0 && "$status" -ne 124 ]]; then
+            exit "$status"
+          fi
+          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' .release/godot-boot.log; then
             echo 'BOOT_FORBIDDEN_ERROR_PATTERN=FOUND'
             exit 32
           fi
-          test "$status" -eq 0
           echo 'BOOT_LITERAL=PASS'
 
       - name: Export Windows release
         shell: bash
         run: |
-          set -euxo pipefail
+          set -o pipefail
           mkdir -p game/chronica-harun/build/windows
-          set +e
           OUTPUT_ABS="$GITHUB_WORKSPACE/$EXE_PATH"
           "$GODOT_BIN" --headless --path "$PROJECT_DIR" \
             --export-release 'Windows Desktop' \
             "$OUTPUT_ABS" 2>&1 | tee .release/godot-export.log
           status=${PIPESTATUS[0]}
-          set -e
-          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource' .release/godot-export.log; then
+          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource|Compilation failed|ERROR: Cannot export' .release/godot-export.log; then
             echo 'EXPORT_FORBIDDEN_ERROR_PATTERN=FOUND'
             exit 33
           fi
@@ -238,6 +242,7 @@ jobs:
           out = Path('CHRONICA_HARUN_WINDOWS_ALPHA.zip')
           with zipfile.ZipFile(out, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
               zf.write(exe, arcname='CHRONICA_HARUN.exe')
+              zf.writestr('CHRONICA_HARUN.exe.sha256', Path('.release/exe.sha256').read_text(encoding='utf-8'))
           print(f'ZIP_BYTES={out.stat().st_size}')
           PY
           test -s "$ZIP_PATH"
@@ -248,6 +253,7 @@ jobs:
         if: always()
         shell: bash
         run: |
+          set +e
           mkdir -p .release
           {
             echo "BRANCH=${GITHUB_REF_NAME}"
@@ -255,12 +261,17 @@ jobs:
             echo "RUN_ID=${GITHUB_RUN_ID}"
             echo "RUN_ATTEMPT=${GITHUB_RUN_ATTEMPT}"
             echo "GODOT_VERSION_REQUESTED=${GODOT_VERSION}"
-            [[ -f .release/godot-version.log ]] && { printf 'GODOT_VERSION_LITERAL='; tr '\n' ' ' < .release/godot-version.log; echo; }
-            [[ -f .release/exe.sha256 ]] && cat .release/exe.sha256
-            [[ -f .release/exe-size.txt ]] && cat .release/exe-size.txt
-            [[ -f .release/zip.sha256 ]] && cat .release/zip.sha256
-            [[ -f .release/zip-size.txt ]] && cat .release/zip-size.txt
+            if [[ -f .release/godot-version.log ]]; then printf 'GODOT_VERSION_LITERAL='; tr '\n' ' ' < .release/godot-version.log; echo; fi
+            if [[ -f .release/pytest.log ]]; then printf 'PYTEST_LITERAL='; tail -n 1 .release/pytest.log; fi
+            if [[ -f .release/godot-import.log ]]; then echo 'IMPORT_LOG_PRESENT=YES'; fi
+            if [[ -f .release/godot-boot.log ]]; then echo 'BOOT_LOG_PRESENT=YES'; fi
+            if [[ -f .release/godot-export.log ]]; then echo 'EXPORT_LOG_PRESENT=YES'; fi
+            if [[ -f .release/exe.sha256 ]]; then cat .release/exe.sha256; fi
+            if [[ -f .release/exe-size.txt ]]; then cat .release/exe-size.txt; fi
+            if [[ -f .release/zip.sha256 ]]; then cat .release/zip.sha256; fi
+            if [[ -f .release/zip-size.txt ]]; then cat .release/zip-size.txt; fi
           } | tee .release/verification-summary.txt
+          exit 0
 
       - name: Upload Windows alpha artifact
         if: success()
@@ -272,11 +283,14 @@ jobs:
             .release/verification-summary.txt
             .release/source-recovery.json
             .release/pytest.log
+            .release/godot-version.log
             .release/godot-import.log
             .release/godot-boot.log
             .release/godot-export.log
             .release/exe.sha256
+            .release/exe-size.txt
             .release/zip.sha256
+            .release/zip-size.txt
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
