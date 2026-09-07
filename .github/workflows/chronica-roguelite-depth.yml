@@ -26,6 +26,34 @@ jobs:
         run: python game/chronica-harun/tools/generate_roguelite_catalogs.py
       - name: Validate catalogs and runtime contracts
         run: pytest -q game/chronica-harun/tests
+      - name: Install Godot 4.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip \
+            https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot_v4.3-stable_linux.x86_64
+          ln -sf /tmp/godot/Godot_v4.3-stable_linux.x86_64 /tmp/godot/godot
+          echo "/tmp/godot" >> "$GITHUB_PATH"
+          /tmp/godot/godot --version
+      - name: Import Godot project headless
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path game/chronica-harun --editor --quit 2>&1 | tee /tmp/godot-import.log
+          if grep -E "SCRIPT ERROR:|Parse Error:|Failed to load script" /tmp/godot-import.log; then
+            exit 1
+          fi
+      - name: Run roguelite depth smoke scene
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path game/chronica-harun res://scenes/boot/DepthRuntimeSmoke.tscn 2>&1 | tee /tmp/depth-smoke.log
+          grep -q "DEPTH_RUNTIME_SMOKE_OK" /tmp/depth-smoke.log
+          if grep -E "SCRIPT ERROR:|Parse Error:|DEPTH_RUNTIME_SMOKE_FAILURE" /tmp/depth-smoke.log; then
+            exit 1
+          fi
       - name: Persist generated catalogs on feature branch
         shell: bash
         run: |
