@@ -1,0 +1,56 @@
+[
+  {
+    "id": "blind_crown",
+    "name": "Coroa Cega",
+    "unlock_conditions": {
+      "student_completion": true
+    },
+    "modifiers": [
+      "enemy_telegraphs_faster",
+      "no_map"
+    ],
+    "completion_mark": "gauntlet_blind_crown",
+    "provenance_class": "electorum_dramatization"
+  },
+  {
+    "id": "seven_authorities",
+    "name": "Sete Autoridades",
+    "unlock_conditions": {
+      "archon_codex": 7
+    },
+    "modifiers": [
+      "archon_rooms_forced",
+      "elite_budget_plus_one"
+    ],
+    "completion_mark": "gauntlet_seven_authorities",
+    "provenance_class": "electorum_dramatization"
+  },
+  {
+    "id": "phosphoros_trial",
+    "name": "Prova de Phosphoros",
+    "unlock_conditions": {
+      "route": "luciferian",
+      "theophanies_seen": 3
+    },
+    "modifiers": [
+      "light_reveals_damage",
+      "curse_rooms_plus_one"
+    ],
+    "completion_mark": "gauntlet_phosphoros_trial",
+    "provenance_class": "electorum_dramatization"
+  },
+  {
+    "id": "pleroma_return",
+    "name": "Retorno ao Pleroma",
+    "unlock_conditions": {
+      "routes_completed": 4
+    },
+    "modifiers": [
+      "no_market",
+      "visions_forced",
+      "boss_phase_speed_plus"
+    ],
+    "completion_mark": "gauntlet_pleroma_return",
+    "provenance_class": "electorum_dramatization"
+  }
+]

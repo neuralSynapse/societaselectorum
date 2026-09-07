@@ -1,0 +1,29 @@
+{
+  "product": "CHRONICA HARUN",
+  "version": "0.12-recovery",
+  "engine": "Godot 4.x",
+  "save_schema_version": 2,
+  "quality_presets": {
+    "1080p": {"resolution": [1920, 1080], "target_fps": 60, "shadow_quality": "medium", "volumetrics": "low"},
+    "1440p": {"resolution": [2560, 1440], "target_fps": 60, "shadow_quality": "high", "volumetrics": "medium"},
+    "4k": {"resolution": [3840, 2160], "target_fps": 60, "shadow_quality": "high", "volumetrics": "medium", "upscaling_allowed": true}
+  },
+  "backend": {
+    "health_url": "https://chronica-harun-backend.vercel.app/api/health",
+    "status_url": "https://www.sociedadedoseleitos.com/mundus/chronica-backend-status.html",
+    "no_embedded_secrets": true,
+    "database_url_client_side": false
+  },
+  "launcher": {
+    "public_game_url": "https://www.sociedadedoseleitos.com/mundus/chronica-harun.html",
+    "desktop_builds": ["windows", "linux"],
+    "update_channel": "manual-manifest"
+  },
+  "runtime_contract": {
+    "first_person_only": true,
+    "mouse_y_inverted_by_default": false,
+    "world_space_entities": true,
+    "projectile_telegraphs_required": true,
+    "max_emission_target": 0.38
+  }
+}

@@ -1,0 +1,4326 @@
+[
+  {
+    "id": "atu_00_threshold_reset",
+    "group": "atu",
+    "rank": 0,
+    "name": "The Fool",
+    "effect_id": "threshold_reset",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "threshold_reset",
+      "arcana_class": "atu",
+      "rank": 0,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_00_threshold_reset",
+    "sfx_hook": "sfx.atu_00_threshold_reset",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Fool"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_01_echo_instrument",
+    "group": "atu",
+    "rank": 1,
+    "name": "The Magus",
+    "effect_id": "echo_instrument",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "echo_instrument",
+      "arcana_class": "atu",
+      "rank": 1,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_01_echo_instrument",
+    "sfx_hook": "sfx.atu_01_echo_instrument",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Magus"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_02_secret_sight",
+    "group": "atu",
+    "rank": 2,
+    "name": "The Priestess",
+    "effect_id": "secret_sight",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "secret_sight",
+      "arcana_class": "atu",
+      "rank": 2,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_02_secret_sight",
+    "sfx_hook": "sfx.atu_02_secret_sight",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Priestess"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_03_fecundity",
+    "group": "atu",
+    "rank": 3,
+    "name": "The Empress",
+    "effect_id": "fecundity",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "fecundity",
+      "arcana_class": "atu",
+      "rank": 3,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_03_fecundity",
+    "sfx_hook": "sfx.atu_03_fecundity",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Empress"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_04_command",
+    "group": "atu",
+    "rank": 4,
+    "name": "The Emperor",
+    "effect_id": "command",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "command",
+      "arcana_class": "atu",
+      "rank": 4,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_04_command",
+    "sfx_hook": "sfx.atu_04_command",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Emperor"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_05_tradition",
+    "group": "atu",
+    "rank": 5,
+    "name": "The Hierophant",
+    "effect_id": "tradition",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "tradition",
+      "arcana_class": "atu",
+      "rank": 5,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_05_tradition",
+    "sfx_hook": "sfx.atu_05_tradition",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Hierophant"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_06_syzygy",
+    "group": "atu",
+    "rank": 6,
+    "name": "The Lovers",
+    "effect_id": "syzygy",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "syzygy",
+      "arcana_class": "atu",
+      "rank": 6,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_06_syzygy",
+    "sfx_hook": "sfx.atu_06_syzygy",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Lovers"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_07_chariot",
+    "group": "atu",
+    "rank": 7,
+    "name": "The Chariot",
+    "effect_id": "chariot",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "chariot",
+      "arcana_class": "atu",
+      "rank": 7,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_07_chariot",
+    "sfx_hook": "sfx.atu_07_chariot",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Chariot"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_08_adjustment",
+    "group": "atu",
+    "rank": 8,
+    "name": "Adjustment",
+    "effect_id": "adjustment",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "adjustment",
+      "arcana_class": "atu",
+      "rank": 8,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_08_adjustment",
+    "sfx_hook": "sfx.atu_08_adjustment",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Adjustment"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_09_hermit",
+    "group": "atu",
+    "rank": 9,
+    "name": "The Hermit",
+    "effect_id": "hermit",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "hermit",
+      "arcana_class": "atu",
+      "rank": 9,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_09_hermit",
+    "sfx_hook": "sfx.atu_09_hermit",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Hermit"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_10_fortune",
+    "group": "atu",
+    "rank": 10,
+    "name": "Fortune",
+    "effect_id": "fortune",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "fortune",
+      "arcana_class": "atu",
+      "rank": 10,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_10_fortune",
+    "sfx_hook": "sfx.atu_10_fortune",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Fortune"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_11_lust",
+    "group": "atu",
+    "rank": 11,
+    "name": "Lust",
+    "effect_id": "lust",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "lust",
+      "arcana_class": "atu",
+      "rank": 11,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_11_lust",
+    "sfx_hook": "sfx.atu_11_lust",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Lust"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_12_suspension",
+    "group": "atu",
+    "rank": 12,
+    "name": "The Hanged Man",
+    "effect_id": "suspension",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "suspension",
+      "arcana_class": "atu",
+      "rank": 12,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_12_suspension",
+    "sfx_hook": "sfx.atu_12_suspension",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Hanged Man"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_13_death",
+    "group": "atu",
+    "rank": 13,
+    "name": "Death",
+    "effect_id": "death",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "death",
+      "arcana_class": "atu",
+      "rank": 13,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_13_death",
+    "sfx_hook": "sfx.atu_13_death",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Death"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_14_art",
+    "group": "atu",
+    "rank": 14,
+    "name": "Art",
+    "effect_id": "art",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "art",
+      "arcana_class": "atu",
+      "rank": 14,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_14_art",
+    "sfx_hook": "sfx.atu_14_art",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Art"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_15_devil",
+    "group": "atu",
+    "rank": 15,
+    "name": "The Devil",
+    "effect_id": "devil",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "devil",
+      "arcana_class": "atu",
+      "rank": 15,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_15_devil",
+    "sfx_hook": "sfx.atu_15_devil",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Devil"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_16_tower",
+    "group": "atu",
+    "rank": 16,
+    "name": "The Tower",
+    "effect_id": "tower",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "tower",
+      "arcana_class": "atu",
+      "rank": 16,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_16_tower",
+    "sfx_hook": "sfx.atu_16_tower",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Tower"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_17_star",
+    "group": "atu",
+    "rank": 17,
+    "name": "The Star",
+    "effect_id": "star",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "star",
+      "arcana_class": "atu",
+      "rank": 17,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_17_star",
+    "sfx_hook": "sfx.atu_17_star",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Star"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_18_moon",
+    "group": "atu",
+    "rank": 18,
+    "name": "The Moon",
+    "effect_id": "moon",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "moon",
+      "arcana_class": "atu",
+      "rank": 18,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_18_moon",
+    "sfx_hook": "sfx.atu_18_moon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Moon"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_19_sun",
+    "group": "atu",
+    "rank": 19,
+    "name": "The Sun",
+    "effect_id": "sun",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "sun",
+      "arcana_class": "atu",
+      "rank": 19,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_19_sun",
+    "sfx_hook": "sfx.atu_19_sun",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Sun"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_20_aeon",
+    "group": "atu",
+    "rank": 20,
+    "name": "The Aeon",
+    "effect_id": "aeon",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "aeon",
+      "arcana_class": "atu",
+      "rank": 20,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_20_aeon",
+    "sfx_hook": "sfx.atu_20_aeon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Aeon"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "atu_21_universe",
+    "group": "atu",
+    "rank": 21,
+    "name": "The Universe",
+    "effect_id": "universe",
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "universe",
+      "arcana_class": "atu",
+      "rank": 21,
+      "suit": "",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.atu_21_universe",
+    "sfx_hook": "sfx.atu_21_universe",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "The Universe"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_01",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 1,
+    "name": "Root of the Powers of Fire",
+    "effect_id": "wands_01_effect",
+    "magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_01_effect",
+      "arcana_class": "minor",
+      "rank": 1,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_01",
+    "sfx_hook": "sfx.wands_01",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Root of the Powers of Fire"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_02",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 2,
+    "name": "Dominion",
+    "effect_id": "wands_02_effect",
+    "magnitude": 12,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_02_effect",
+      "arcana_class": "minor",
+      "rank": 2,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_02",
+    "sfx_hook": "sfx.wands_02",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Dominion"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_03",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 3,
+    "name": "Virtue",
+    "effect_id": "wands_03_effect",
+    "magnitude": 14,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_03_effect",
+      "arcana_class": "minor",
+      "rank": 3,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_03",
+    "sfx_hook": "sfx.wands_03",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Virtue"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_04",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 4,
+    "name": "Completion",
+    "effect_id": "wands_04_effect",
+    "magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_04_effect",
+      "arcana_class": "minor",
+      "rank": 4,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_04",
+    "sfx_hook": "sfx.wands_04",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Completion"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_05",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 5,
+    "name": "Strife",
+    "effect_id": "wands_05_effect",
+    "magnitude": 18,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_05_effect",
+      "arcana_class": "minor",
+      "rank": 5,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_05",
+    "sfx_hook": "sfx.wands_05",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Strife"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_06",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 6,
+    "name": "Victory",
+    "effect_id": "wands_06_effect",
+    "magnitude": 20,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_06_effect",
+      "arcana_class": "minor",
+      "rank": 6,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_06",
+    "sfx_hook": "sfx.wands_06",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Victory"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_07",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 7,
+    "name": "Valour",
+    "effect_id": "wands_07_effect",
+    "magnitude": 22,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_07_effect",
+      "arcana_class": "minor",
+      "rank": 7,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_07",
+    "sfx_hook": "sfx.wands_07",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Valour"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_08",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 8,
+    "name": "Swiftness",
+    "effect_id": "wands_08_effect",
+    "magnitude": 24,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_08_effect",
+      "arcana_class": "minor",
+      "rank": 8,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_08",
+    "sfx_hook": "sfx.wands_08",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Swiftness"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_09",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 9,
+    "name": "Strength",
+    "effect_id": "wands_09_effect",
+    "magnitude": 26,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_09_effect",
+      "arcana_class": "minor",
+      "rank": 9,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_09",
+    "sfx_hook": "sfx.wands_09",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Strength"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_10",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 10,
+    "name": "Oppression",
+    "effect_id": "wands_10_effect",
+    "magnitude": 28,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_10_effect",
+      "arcana_class": "minor",
+      "rank": 10,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_10",
+    "sfx_hook": "sfx.wands_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Oppression"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_11",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 11,
+    "name": "Princess of Wands",
+    "effect_id": "wands_11_effect",
+    "magnitude": 30,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_11_effect",
+      "arcana_class": "minor",
+      "rank": 11,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_11",
+    "sfx_hook": "sfx.wands_11",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Princess of Wands"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_12",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 12,
+    "name": "Prince of Wands",
+    "effect_id": "wands_12_effect",
+    "magnitude": 32,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_12_effect",
+      "arcana_class": "minor",
+      "rank": 12,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_12",
+    "sfx_hook": "sfx.wands_12",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Prince of Wands"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_13",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 13,
+    "name": "Queen of Wands",
+    "effect_id": "wands_13_effect",
+    "magnitude": 34,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_13_effect",
+      "arcana_class": "minor",
+      "rank": 13,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_13",
+    "sfx_hook": "sfx.wands_13",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Queen of Wands"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "wands_14",
+    "group": "minor",
+    "suit": "wands",
+    "rank": 14,
+    "name": "Knight of Wands",
+    "effect_id": "wands_14_effect",
+    "magnitude": 36,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "wands_14_effect",
+      "arcana_class": "minor",
+      "rank": 14,
+      "suit": "wands",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.wands_14",
+    "sfx_hook": "sfx.wands_14",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Knight of Wands"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_01",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 1,
+    "name": "Root of the Powers of Water",
+    "effect_id": "cups_01_effect",
+    "magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_01_effect",
+      "arcana_class": "minor",
+      "rank": 1,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_01",
+    "sfx_hook": "sfx.cups_01",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Root of the Powers of Water"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_02",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 2,
+    "name": "Love",
+    "effect_id": "cups_02_effect",
+    "magnitude": 12,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_02_effect",
+      "arcana_class": "minor",
+      "rank": 2,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_02",
+    "sfx_hook": "sfx.cups_02",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Love"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_03",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 3,
+    "name": "Abundance",
+    "effect_id": "cups_03_effect",
+    "magnitude": 14,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_03_effect",
+      "arcana_class": "minor",
+      "rank": 3,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_03",
+    "sfx_hook": "sfx.cups_03",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Abundance"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_04",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 4,
+    "name": "Luxury",
+    "effect_id": "cups_04_effect",
+    "magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_04_effect",
+      "arcana_class": "minor",
+      "rank": 4,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_04",
+    "sfx_hook": "sfx.cups_04",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Luxury"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_05",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 5,
+    "name": "Disappointment",
+    "effect_id": "cups_05_effect",
+    "magnitude": 18,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_05_effect",
+      "arcana_class": "minor",
+      "rank": 5,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_05",
+    "sfx_hook": "sfx.cups_05",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Disappointment"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_06",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 6,
+    "name": "Pleasure",
+    "effect_id": "cups_06_effect",
+    "magnitude": 20,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_06_effect",
+      "arcana_class": "minor",
+      "rank": 6,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_06",
+    "sfx_hook": "sfx.cups_06",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Pleasure"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_07",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 7,
+    "name": "Debauch",
+    "effect_id": "cups_07_effect",
+    "magnitude": 22,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_07_effect",
+      "arcana_class": "minor",
+      "rank": 7,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_07",
+    "sfx_hook": "sfx.cups_07",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Debauch"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_08",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 8,
+    "name": "Indolence",
+    "effect_id": "cups_08_effect",
+    "magnitude": 24,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_08_effect",
+      "arcana_class": "minor",
+      "rank": 8,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_08",
+    "sfx_hook": "sfx.cups_08",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Indolence"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_09",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 9,
+    "name": "Happiness",
+    "effect_id": "cups_09_effect",
+    "magnitude": 26,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_09_effect",
+      "arcana_class": "minor",
+      "rank": 9,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_09",
+    "sfx_hook": "sfx.cups_09",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Happiness"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_10",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 10,
+    "name": "Satiety",
+    "effect_id": "cups_10_effect",
+    "magnitude": 28,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_10_effect",
+      "arcana_class": "minor",
+      "rank": 10,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_10",
+    "sfx_hook": "sfx.cups_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Satiety"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_11",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 11,
+    "name": "Princess of Cups",
+    "effect_id": "cups_11_effect",
+    "magnitude": 30,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_11_effect",
+      "arcana_class": "minor",
+      "rank": 11,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_11",
+    "sfx_hook": "sfx.cups_11",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Princess of Cups"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_12",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 12,
+    "name": "Prince of Cups",
+    "effect_id": "cups_12_effect",
+    "magnitude": 32,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_12_effect",
+      "arcana_class": "minor",
+      "rank": 12,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_12",
+    "sfx_hook": "sfx.cups_12",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Prince of Cups"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_13",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 13,
+    "name": "Queen of Cups",
+    "effect_id": "cups_13_effect",
+    "magnitude": 34,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_13_effect",
+      "arcana_class": "minor",
+      "rank": 13,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_13",
+    "sfx_hook": "sfx.cups_13",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Queen of Cups"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "cups_14",
+    "group": "minor",
+    "suit": "cups",
+    "rank": 14,
+    "name": "Knight of Cups",
+    "effect_id": "cups_14_effect",
+    "magnitude": 36,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "cups_14_effect",
+      "arcana_class": "minor",
+      "rank": 14,
+      "suit": "cups",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.cups_14",
+    "sfx_hook": "sfx.cups_14",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Knight of Cups"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_01",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 1,
+    "name": "Root of the Powers of Air",
+    "effect_id": "swords_01_effect",
+    "magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_01_effect",
+      "arcana_class": "minor",
+      "rank": 1,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_01",
+    "sfx_hook": "sfx.swords_01",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Root of the Powers of Air"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_02",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 2,
+    "name": "Peace",
+    "effect_id": "swords_02_effect",
+    "magnitude": 12,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_02_effect",
+      "arcana_class": "minor",
+      "rank": 2,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_02",
+    "sfx_hook": "sfx.swords_02",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Peace"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_03",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 3,
+    "name": "Sorrow",
+    "effect_id": "swords_03_effect",
+    "magnitude": 14,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_03_effect",
+      "arcana_class": "minor",
+      "rank": 3,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_03",
+    "sfx_hook": "sfx.swords_03",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Sorrow"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_04",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 4,
+    "name": "Truce",
+    "effect_id": "swords_04_effect",
+    "magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_04_effect",
+      "arcana_class": "minor",
+      "rank": 4,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_04",
+    "sfx_hook": "sfx.swords_04",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Truce"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_05",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 5,
+    "name": "Defeat",
+    "effect_id": "swords_05_effect",
+    "magnitude": 18,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_05_effect",
+      "arcana_class": "minor",
+      "rank": 5,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_05",
+    "sfx_hook": "sfx.swords_05",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Defeat"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_06",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 6,
+    "name": "Science",
+    "effect_id": "swords_06_effect",
+    "magnitude": 20,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_06_effect",
+      "arcana_class": "minor",
+      "rank": 6,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_06",
+    "sfx_hook": "sfx.swords_06",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Science"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_07",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 7,
+    "name": "Futility",
+    "effect_id": "swords_07_effect",
+    "magnitude": 22,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_07_effect",
+      "arcana_class": "minor",
+      "rank": 7,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_07",
+    "sfx_hook": "sfx.swords_07",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Futility"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_08",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 8,
+    "name": "Interference",
+    "effect_id": "swords_08_effect",
+    "magnitude": 24,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_08_effect",
+      "arcana_class": "minor",
+      "rank": 8,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_08",
+    "sfx_hook": "sfx.swords_08",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Interference"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_09",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 9,
+    "name": "Cruelty",
+    "effect_id": "swords_09_effect",
+    "magnitude": 26,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_09_effect",
+      "arcana_class": "minor",
+      "rank": 9,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_09",
+    "sfx_hook": "sfx.swords_09",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Cruelty"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_10",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 10,
+    "name": "Ruin",
+    "effect_id": "swords_10_effect",
+    "magnitude": 28,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_10_effect",
+      "arcana_class": "minor",
+      "rank": 10,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_10",
+    "sfx_hook": "sfx.swords_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Ruin"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_11",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 11,
+    "name": "Princess of Swords",
+    "effect_id": "swords_11_effect",
+    "magnitude": 30,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_11_effect",
+      "arcana_class": "minor",
+      "rank": 11,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_11",
+    "sfx_hook": "sfx.swords_11",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Princess of Swords"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_12",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 12,
+    "name": "Prince of Swords",
+    "effect_id": "swords_12_effect",
+    "magnitude": 32,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_12_effect",
+      "arcana_class": "minor",
+      "rank": 12,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_12",
+    "sfx_hook": "sfx.swords_12",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Prince of Swords"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_13",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 13,
+    "name": "Queen of Swords",
+    "effect_id": "swords_13_effect",
+    "magnitude": 34,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_13_effect",
+      "arcana_class": "minor",
+      "rank": 13,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_13",
+    "sfx_hook": "sfx.swords_13",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Queen of Swords"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "swords_14",
+    "group": "minor",
+    "suit": "swords",
+    "rank": 14,
+    "name": "Knight of Swords",
+    "effect_id": "swords_14_effect",
+    "magnitude": 36,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "swords_14_effect",
+      "arcana_class": "minor",
+      "rank": 14,
+      "suit": "swords",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.swords_14",
+    "sfx_hook": "sfx.swords_14",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Knight of Swords"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_01",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 1,
+    "name": "Root of the Powers of Earth",
+    "effect_id": "disks_01_effect",
+    "magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_01_effect",
+      "arcana_class": "minor",
+      "rank": 1,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_01",
+    "sfx_hook": "sfx.disks_01",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Root of the Powers of Earth"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_02",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 2,
+    "name": "Change",
+    "effect_id": "disks_02_effect",
+    "magnitude": 12,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_02_effect",
+      "arcana_class": "minor",
+      "rank": 2,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_02",
+    "sfx_hook": "sfx.disks_02",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Change"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_03",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 3,
+    "name": "Works",
+    "effect_id": "disks_03_effect",
+    "magnitude": 14,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_03_effect",
+      "arcana_class": "minor",
+      "rank": 3,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_03",
+    "sfx_hook": "sfx.disks_03",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Works"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_04",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 4,
+    "name": "Power",
+    "effect_id": "disks_04_effect",
+    "magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_04_effect",
+      "arcana_class": "minor",
+      "rank": 4,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_04",
+    "sfx_hook": "sfx.disks_04",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Power"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_05",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 5,
+    "name": "Worry",
+    "effect_id": "disks_05_effect",
+    "magnitude": 18,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_05_effect",
+      "arcana_class": "minor",
+      "rank": 5,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_05",
+    "sfx_hook": "sfx.disks_05",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Worry"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_06",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 6,
+    "name": "Success",
+    "effect_id": "disks_06_effect",
+    "magnitude": 20,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_06_effect",
+      "arcana_class": "minor",
+      "rank": 6,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_06",
+    "sfx_hook": "sfx.disks_06",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Success"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_07",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 7,
+    "name": "Failure",
+    "effect_id": "disks_07_effect",
+    "magnitude": 22,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_07_effect",
+      "arcana_class": "minor",
+      "rank": 7,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_07",
+    "sfx_hook": "sfx.disks_07",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Failure"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_08",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 8,
+    "name": "Prudence",
+    "effect_id": "disks_08_effect",
+    "magnitude": 24,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_08_effect",
+      "arcana_class": "minor",
+      "rank": 8,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_08",
+    "sfx_hook": "sfx.disks_08",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Prudence"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_09",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 9,
+    "name": "Gain",
+    "effect_id": "disks_09_effect",
+    "magnitude": 26,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_09_effect",
+      "arcana_class": "minor",
+      "rank": 9,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_09",
+    "sfx_hook": "sfx.disks_09",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Gain"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_10",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 10,
+    "name": "Wealth",
+    "effect_id": "disks_10_effect",
+    "magnitude": 28,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_10_effect",
+      "arcana_class": "minor",
+      "rank": 10,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_10",
+    "sfx_hook": "sfx.disks_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Wealth"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_11",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 11,
+    "name": "Princess of Disks",
+    "effect_id": "disks_11_effect",
+    "magnitude": 30,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_11_effect",
+      "arcana_class": "minor",
+      "rank": 11,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_11",
+    "sfx_hook": "sfx.disks_11",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Princess of Disks"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_12",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 12,
+    "name": "Prince of Disks",
+    "effect_id": "disks_12_effect",
+    "magnitude": 32,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_12_effect",
+      "arcana_class": "minor",
+      "rank": 12,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_12",
+    "sfx_hook": "sfx.disks_12",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Prince of Disks"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_13",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 13,
+    "name": "Queen of Disks",
+    "effect_id": "disks_13_effect",
+    "magnitude": 34,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_13_effect",
+      "arcana_class": "minor",
+      "rank": 13,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_13",
+    "sfx_hook": "sfx.disks_13",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Queen of Disks"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "disks_14",
+    "group": "minor",
+    "suit": "disks",
+    "rank": 14,
+    "name": "Knight of Disks",
+    "effect_id": "disks_14_effect",
+    "magnitude": 36,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "tarot",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "arcana",
+      "effect_id": "disks_14_effect",
+      "arcana_class": "minor",
+      "rank": 14,
+      "suit": "disks",
+      "element": ""
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.disks_14",
+    "sfx_hook": "sfx.disks_14",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "tarot",
+      "summary": "Knight of Disks"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

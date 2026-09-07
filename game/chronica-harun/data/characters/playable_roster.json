@@ -1,0 +1,162 @@
+[
+  {
+    "id": "harun",
+    "name": "Frater Harun",
+    "unlock": {
+      "kind": "default"
+    },
+    "starting_build": [
+      "revelatory_eye"
+    ],
+    "completion_mark_set": "harun_marks",
+    "silhouette_profile": "scholar_warrior"
+  },
+  {
+    "id": "caim",
+    "name": "Caim",
+    "unlock": {
+      "kind": "stage_mark",
+      "id": "a_balanca"
+    },
+    "starting_build": [
+      "mark_of_cain",
+      "ritual_sword"
+    ],
+    "completion_mark_set": "caim_marks",
+    "silhouette_profile": "marked_exile"
+  },
+  {
+    "id": "lilith",
+    "name": "Lilith",
+    "unlock": {
+      "kind": "stage_mark",
+      "id": "a_eleicao"
+    },
+    "starting_build": [
+      "veil_step",
+      "athame"
+    ],
+    "completion_mark_set": "lilith_marks",
+    "silhouette_profile": "winged_exile"
+  },
+  {
+    "id": "nadir",
+    "name": "Nadir",
+    "unlock": {
+      "kind": "story_epilogue"
+    },
+    "starting_build": [
+      "apprentice_lamp",
+      "manuscript_shard"
+    ],
+    "completion_mark_set": "nadir_marks",
+    "silhouette_profile": "young_peregrine"
+  },
+  {
+    "id": "seth",
+    "name": "Seth",
+    "unlock": {
+      "kind": "initiation_complete"
+    },
+    "starting_build": [
+      "lineage_memory",
+      "staff"
+    ],
+    "completion_mark_set": "seth_marks",
+    "silhouette_profile": "lineage_bearer"
+  },
+  {
+    "id": "sabaoth",
+    "name": "Sabaoth · Ruptura",
+    "unlock": {
+      "kind": "archon_route_break"
+    },
+    "starting_build": [
+      "authority_break",
+      "pentacle"
+    ],
+    "completion_mark_set": "sabaoth_marks",
+    "silhouette_profile": "draconic_authority"
+  },
+  {
+    "id": "aspect_sophia",
+    "name": "Aspecto de Sophia",
+    "unlock": {
+      "kind": "theophany_mastery",
+      "id": "sophia"
+    },
+    "starting_build": [
+      "focus_transmutation",
+      "chalice"
+    ],
+    "completion_mark_set": "sophia_marks",
+    "silhouette_profile": "luminous_fragment"
+  },
+  {
+    "id": "aspect_thoth",
+    "name": "Aspecto de Thoth",
+    "unlock": {
+      "kind": "codex_threshold",
+      "count": 72
+    },
+    "starting_build": [
+      "arcana_memory",
+      "wand"
+    ],
+    "completion_mark_set": "thoth_marks",
+    "silhouette_profile": "ibis_scribe"
+  },
+  {
+    "id": "aspect_horus",
+    "name": "Aspecto de Hórus",
+    "unlock": {
+      "kind": "precision_challenge"
+    },
+    "starting_build": [
+      "precision",
+      "ritual_sword"
+    ],
+    "completion_mark_set": "horus_marks",
+    "silhouette_profile": "falcon_sovereign"
+  },
+  {
+    "id": "aspect_belial",
+    "name": "Aspecto de Belial",
+    "unlock": {
+      "kind": "pact_refusal_chain"
+    },
+    "starting_build": [
+      "grounding",
+      "earth_altar_focus"
+    ],
+    "completion_mark_set": "belial_marks",
+    "silhouette_profile": "iron_sovereign"
+  },
+  {
+    "id": "aspect_paimon",
+    "name": "Aspecto de Paimon",
+    "unlock": {
+      "kind": "fortune_mastery"
+    },
+    "starting_build": [
+      "dominate",
+      "bell"
+    ],
+    "completion_mark_set": "paimon_marks",
+    "silhouette_profile": "crowned_procession"
+  },
+  {
+    "id": "baphometic_hermaphrodite",
+    "name": "Forma Baphomética",
+    "unlock": {
+      "kind": "transformation_mastery",
+      "count": 6
+    },
+    "starting_build": [
+      "syzygy",
+      "staff"
+    ],
+    "completion_mark_set": "baphomet_marks",
+    "silhouette_profile": "balanced_hybrid"
+  }
+]

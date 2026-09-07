@@ -1,0 +1,39 @@
+{
+  "pytest_exit": 1,
+  "godot_import_exit": 0,
+  "boot_exit": 0,
+  "pytest_tail": ".........................F.............................................. [ 82%]\n...............                                                          [100%]\n=================================== FAILURES ===================================\n________ test_every_enemy_and_boss_has_unique_nonempty_glb_and_manifest ________\n\n    def test_every_enemy_and_boss_has_unique_nonempty_glb_and_manifest():\n        enemies = load('data/enemies/student_enemies.json')\n        bosses = load('data/bosses/student_bosses.json')\n>       enemy_manifest = load('art/generated/enemies/manifest.json')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_generated_models.py:18: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ntests/test_generated_models.py:8: in load\n    return json.loads((ROOT / rel).read_text())\n                      ^^^^^^^^^^^^^^^^^^^^^^^^\n/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/pathlib.py:1027: in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PosixPath('/home/runner/work/societaselectorum/societaselectorum/game/chronica-harun/art/generated/enemies/manifest.json')\nmode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None\n\n    def open(self, mode='r', buffering=-1, encoding=None,\n             errors=None, newline=None):\n        \"\"\"\n        Open the file pointed to by this path and return a file object, as\n        the built-in open() function does.\n        \"\"\"\n        if \"b\" not in mode:\n            encoding = io.text_encoding(encoding)\n>       return io.open(self, mode, buffering, encoding, errors, newline)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/societaselectorum/societaselectorum/game/chronica-harun/art/generated/enemies/manifest.json'\n\n/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/pathlib.py:1013: FileNotFoundError\n=========================== short test summary info ============================\nFAILED tests/test_generated_models.py::test_every_enemy_and_boss_has_unique_nonempty_glb_and_manifest - FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/societaselectorum/societaselectorum/game/chronica-harun/art/generated/enemies/manifest.json'\n1 failed, 86 passed in 0.25s\n",
+  "godot_import_errors": [
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"d\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"index\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"payload\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"kind\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"total\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"completed\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Compile Error: ",
+    "SCRIPT ERROR: Compile Error: ",
+    "ERROR: Failed to load script \"res://scripts/boot/Main.gd\" with error \"Parse error\".",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"host_id\" variable because the value doesn't have a set type.",
+    "ERROR: Failed to load script \"res://scripts/generation/StageFloorBuilder.gd\" with error \"Parse error\".",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"d\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"index\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Compile Error: ",
+    "SCRIPT ERROR: Compile Error: ",
+    "ERROR: Failed to load script \"res://scripts/narrative/NarrativePresentationController.gd\" with error \"Parse error\"."
+  ],
+  "boot_errors": [
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"d\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"index\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"payload\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"kind\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"total\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Parse Error: Cannot infer the type of \"completed\" variable because the value doesn't have a set type.",
+    "SCRIPT ERROR: Compile Error: ",
+    "SCRIPT ERROR: Compile Error: ",
+    "ERROR: Failed to load script \"res://scripts/boot/Main.gd\" with error \"Compilation failed\".",
+    "SCRIPT ERROR: Trying to assign value of type 'Node' to a variable of type 'TemporalRiftDirector.gd'.",
+    "SCRIPT ERROR: Trying to assign value of type 'Node' to a variable of type 'StageDirector.gd'.",
+    "SCRIPT ERROR: Invalid access to property or key 'stage_completed' on a base object of type 'Nil'."
+  ],
+  "godot_version": "4.3.stable.official.77dcf97d8"
+}

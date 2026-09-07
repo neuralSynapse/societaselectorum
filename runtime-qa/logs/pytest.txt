@@ -1,0 +1,40 @@
+.........................F.............................................. [ 82%]
+...............                                                          [100%]
+=================================== FAILURES ===================================
+________ test_every_enemy_and_boss_has_unique_nonempty_glb_and_manifest ________
+
+    def test_every_enemy_and_boss_has_unique_nonempty_glb_and_manifest():
+        enemies = load('data/enemies/student_enemies.json')
+        bosses = load('data/bosses/student_bosses.json')
+>       enemy_manifest = load('art/generated/enemies/manifest.json')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_generated_models.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_generated_models.py:8: in load
+    return json.loads((ROOT / rel).read_text())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/runner/work/societaselectorum/societaselectorum/game/chronica-harun/art/generated/enemies/manifest.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/societaselectorum/societaselectorum/game/chronica-harun/art/generated/enemies/manifest.json'
+
+/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_generated_models.py::test_every_enemy_and_boss_has_unique_nonempty_glb_and_manifest - FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/societaselectorum/societaselectorum/game/chronica-harun/art/generated/enemies/manifest.json'
+1 failed, 86 passed in 0.25s

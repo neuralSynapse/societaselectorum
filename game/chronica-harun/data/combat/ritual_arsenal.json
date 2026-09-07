@@ -1,0 +1,398 @@
+[
+  {
+    "id": "ritual_sword",
+    "name": "Espada Ritual",
+    "ritual_role": "direction_and_severance",
+    "combat_profile": {
+      "kind": "melee_arc",
+      "damage": 12,
+      "range": 1.4,
+      "focus_cost": 0,
+      "cooldown": 0.45
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 0
+    },
+    "vfx_hook": "vfx.weapon.ritual_sword",
+    "sfx_hook": "sfx.weapon.ritual_sword",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "athame",
+    "name": "Athame",
+    "ritual_role": "precision_and_marking",
+    "combat_profile": {
+      "kind": "precision_stab",
+      "damage": 14,
+      "range": 2.3,
+      "focus_cost": 0,
+      "cooldown": 0.65
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 1
+    },
+    "vfx_hook": "vfx.weapon.athame",
+    "sfx_hook": "sfx.weapon.athame",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "wand",
+    "name": "Bastão",
+    "ritual_role": "directed_will",
+    "combat_profile": {
+      "kind": "projectile_focus",
+      "damage": 16,
+      "range": 3.2,
+      "focus_cost": 0,
+      "cooldown": 0.85
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 2
+    },
+    "vfx_hook": "vfx.weapon.wand",
+    "sfx_hook": "sfx.weapon.wand",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "staff",
+    "name": "Cajado",
+    "ritual_role": "authority_and_channel",
+    "combat_profile": {
+      "kind": "sweeping_cast",
+      "damage": 18,
+      "range": 4.1,
+      "focus_cost": 13,
+      "cooldown": 1.05
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 3
+    },
+    "vfx_hook": "vfx.weapon.staff",
+    "sfx_hook": "sfx.weapon.staff",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "chalice",
+    "name": "Cálice",
+    "ritual_role": "containment_and_exchange",
+    "combat_profile": {
+      "kind": "focus_wave",
+      "damage": 20,
+      "range": 5.0,
+      "focus_cost": 4,
+      "cooldown": 0.45
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 4
+    },
+    "vfx_hook": "vfx.weapon.chalice",
+    "sfx_hook": "sfx.weapon.chalice",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "pentacle",
+    "name": "Pentáculo",
+    "ritual_role": "matter_and_boundary",
+    "combat_profile": {
+      "kind": "ward_throw",
+      "damage": 22,
+      "range": 1.4,
+      "focus_cost": 7,
+      "cooldown": 0.65
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 5
+    },
+    "vfx_hook": "vfx.weapon.pentacle",
+    "sfx_hook": "sfx.weapon.pentacle",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "censer",
+    "name": "Turíbulo",
+    "ritual_role": "atmosphere_and_purification",
+    "combat_profile": {
+      "kind": "smoke_arc",
+      "damage": 24,
+      "range": 2.3,
+      "focus_cost": 10,
+      "cooldown": 0.85
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 6
+    },
+    "vfx_hook": "vfx.weapon.censer",
+    "sfx_hook": "sfx.weapon.censer",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "bell",
+    "name": "Sino Ritual",
+    "ritual_role": "attention_and_threshold",
+    "combat_profile": {
+      "kind": "sonic_pulse",
+      "damage": 26,
+      "range": 3.2,
+      "focus_cost": 13,
+      "cooldown": 1.05
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 7
+    },
+    "vfx_hook": "vfx.weapon.bell",
+    "sfx_hook": "sfx.weapon.bell",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "ritual_lamp",
+    "name": "Lâmpada Ritual",
+    "ritual_role": "illumination",
+    "combat_profile": {
+      "kind": "light_beam",
+      "damage": 28,
+      "range": 4.1,
+      "focus_cost": 4,
+      "cooldown": 0.45
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 8
+    },
+    "vfx_hook": "vfx.weapon.ritual_lamp",
+    "sfx_hook": "sfx.weapon.ritual_lamp",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "grimorium",
+    "name": "Grimório",
+    "ritual_role": "memory_and_formula",
+    "combat_profile": {
+      "kind": "sigil_volley",
+      "damage": 30,
+      "range": 5.0,
+      "focus_cost": 7,
+      "cooldown": 0.65
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 9
+    },
+    "vfx_hook": "vfx.weapon.grimorium",
+    "sfx_hook": "sfx.weapon.grimorium",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "cord",
+    "name": "Cordão Ritual",
+    "ritual_role": "binding_and_measure",
+    "combat_profile": {
+      "kind": "bind_whip",
+      "damage": 32,
+      "range": 1.4,
+      "focus_cost": 10,
+      "cooldown": 0.85
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 10
+    },
+    "vfx_hook": "vfx.weapon.cord",
+    "sfx_hook": "sfx.weapon.cord",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "ritual_hammer",
+    "name": "Martelo de Fundação",
+    "ritual_role": "construction_and_break",
+    "combat_profile": {
+      "kind": "heavy_smash",
+      "damage": 34,
+      "range": 2.3,
+      "focus_cost": 13,
+      "cooldown": 1.05
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 11
+    },
+    "vfx_hook": "vfx.weapon.ritual_hammer",
+    "sfx_hook": "sfx.weapon.ritual_hammer",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "ritual_spear",
+    "name": "Lança do Limiar",
+    "ritual_role": "distance_and_intent",
+    "combat_profile": {
+      "kind": "thrust_line",
+      "damage": 36,
+      "range": 3.2,
+      "focus_cost": 4,
+      "cooldown": 0.45
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 12
+    },
+    "vfx_hook": "vfx.weapon.ritual_spear",
+    "sfx_hook": "sfx.weapon.ritual_spear",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "mirror",
+    "name": "Espelho Ritual",
+    "ritual_role": "reflection_and_self-knowledge",
+    "combat_profile": {
+      "kind": "reflect_guard",
+      "damage": 38,
+      "range": 4.1,
+      "focus_cost": 7,
+      "cooldown": 0.65
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 13
+    },
+    "vfx_hook": "vfx.weapon.mirror",
+    "sfx_hook": "sfx.weapon.mirror",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "earth_altar_focus",
+    "name": "Foco do Altar da Terra",
+    "ritual_role": "stability_and_matter",
+    "combat_profile": {
+      "kind": "ground_shock",
+      "damage": 40,
+      "range": 5.0,
+      "focus_cost": 10,
+      "cooldown": 0.85
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 14
+    },
+    "vfx_hook": "vfx.weapon.earth_altar_focus",
+    "sfx_hook": "sfx.weapon.earth_altar_focus",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "luciferian_altar_focus",
+    "name": "Foco do Altar Luciferiano",
+    "ritual_role": "illumination_and_adversarial_will",
+    "combat_profile": {
+      "kind": "black_flame_cast",
+      "damage": 42,
+      "range": 1.4,
+      "focus_cost": 13,
+      "cooldown": 1.05
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 15
+    },
+    "vfx_hook": "vfx.weapon.luciferian_altar_focus",
+    "sfx_hook": "sfx.weapon.luciferian_altar_focus",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "saturnine_sickle",
+    "name": "Foice Saturnina",
+    "ritual_role": "limit_and_time",
+    "combat_profile": {
+      "kind": "slow_cleave",
+      "damage": 44,
+      "range": 2.3,
+      "focus_cost": 4,
+      "cooldown": 0.45
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 16
+    },
+    "vfx_hook": "vfx.weapon.saturnine_sickle",
+    "sfx_hook": "sfx.weapon.saturnine_sickle",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  },
+  {
+    "id": "thoth_tablet",
+    "name": "Tabuleta de Thoth",
+    "ritual_role": "record_and_word",
+    "combat_profile": {
+      "kind": "glyph_shot",
+      "damage": 46,
+      "range": 3.2,
+      "focus_cost": 7,
+      "cooldown": 0.65
+    },
+    "unlock": {
+      "kind": "altar_or_stage",
+      "index": 17
+    },
+    "vfx_hook": "vfx.weapon.thoth_tablet",
+    "sfx_hook": "sfx.weapon.thoth_tablet",
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Instrumento mantém função ritual simbólica e ganha segunda função de combate no universo do jogo."
+    }
+  }
+]

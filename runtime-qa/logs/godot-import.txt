@@ -1,0 +1,34 @@
+Godot Engine v4.3.stable.official.77dcf97d8 - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Cannot infer the type of "d" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/progression/StageDirector.gd:96)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "index" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/progression/StageDirector.gd:385)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "payload" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/kinesis/KinesisProgressionDirector.gd:52)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "kind" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/quantum/QuantumRiftDirector.gd:38)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "total" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/narrative/TemporalRiftDirector.gd:40)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "completed" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/narrative/TemporalRiftDirector.gd:41)
+SCRIPT ERROR: Compile Error: 
+          at: GDScript::reload (res://scripts/world/WorldExpansionRuntime.gd:-1)
+SCRIPT ERROR: Compile Error: 
+          at: GDScript::reload (res://scripts/boot/Main.gd:-1)
+ERROR: Failed to load script "res://scripts/boot/Main.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:2936)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "host_id" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/generation/StageFloorBuilder.gd:65)
+ERROR: Failed to load script "res://scripts/generation/StageFloorBuilder.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:2936)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "d" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/progression/StageDirector.gd:96)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "index" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://scripts/progression/StageDirector.gd:385)
+SCRIPT ERROR: Compile Error: 
+          at: GDScript::reload (res://scripts/narrative/NarrativeRuntimeBridge.gd:-1)
+SCRIPT ERROR: Compile Error: 
+          at: GDScript::reload (res://scripts/narrative/NarrativePresentationController.gd:-1)
+ERROR: Failed to load script "res://scripts/narrative/NarrativePresentationController.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:2936)

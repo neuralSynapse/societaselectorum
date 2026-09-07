@@ -1,0 +1,62 @@
+{
+  "main_scene": "res://scenes/boot/Main.tscn",
+  "first_person_markers": false,
+  "input:move_left": true,
+  "input:move_right": true,
+  "input:move_forward": true,
+  "input:move_back": true,
+  "input:primary_attack": true,
+  "resource_refs_total": 88,
+  "resource_refs_broken": [
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/ambience/footsteps_stone.ogg",
+      false
+    ],
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/combat/player_dodge.ogg",
+      false
+    ],
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/combat/player_hit.ogg",
+      false
+    ],
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/entities/enemy_windup.ogg",
+      false
+    ],
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/entities/enemy_shot.ogg",
+      false
+    ],
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/combat/boss_phase.ogg",
+      false
+    ],
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/ambience/secret_break.ogg",
+      false
+    ],
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/ui/pickup.ogg",
+      false
+    ],
+    [
+      "autoload/AudioDirector.gd",
+      "res://audio/combat/power_reveal.ogg",
+      false
+    ],
+    [
+      "scripts/content/EnemyFactory.gd",
+      "res://art/generated/enemies/",
+      false
+    ]
+  ]
+}

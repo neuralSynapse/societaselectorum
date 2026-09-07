@@ -1,0 +1,1838 @@
+[
+  {
+    "id": "decan_01",
+    "sign": "Áries",
+    "decan": 1,
+    "effect_id": "opening_strike_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 01",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "opening_strike_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_01",
+    "sfx_hook": "sfx.decan_01",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 01"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_02",
+    "sign": "Áries",
+    "decan": 2,
+    "effect_id": "opening_strike_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 02",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "opening_strike_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_02",
+    "sfx_hook": "sfx.decan_02",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 02"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_03",
+    "sign": "Áries",
+    "decan": 3,
+    "effect_id": "opening_strike_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 03",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "opening_strike_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_03",
+    "sfx_hook": "sfx.decan_03",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 03"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_04",
+    "sign": "Touro",
+    "decan": 1,
+    "effect_id": "armor_heal_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 04",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "armor_heal_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_04",
+    "sfx_hook": "sfx.decan_04",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 04"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_05",
+    "sign": "Touro",
+    "decan": 2,
+    "effect_id": "armor_heal_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 05",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "armor_heal_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_05",
+    "sfx_hook": "sfx.decan_05",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 05"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_06",
+    "sign": "Touro",
+    "decan": 3,
+    "effect_id": "armor_heal_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 06",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "armor_heal_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_06",
+    "sfx_hook": "sfx.decan_06",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 06"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_07",
+    "sign": "Gêmeos",
+    "decan": 1,
+    "effect_id": "double_activation_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 07",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "double_activation_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_07",
+    "sfx_hook": "sfx.decan_07",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 07"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_08",
+    "sign": "Gêmeos",
+    "decan": 2,
+    "effect_id": "double_activation_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 08",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "double_activation_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_08",
+    "sfx_hook": "sfx.decan_08",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 08"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_09",
+    "sign": "Gêmeos",
+    "decan": 3,
+    "effect_id": "double_activation_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 09",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "double_activation_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_09",
+    "sfx_hook": "sfx.decan_09",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 09"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_10",
+    "sign": "Câncer",
+    "decan": 1,
+    "effect_id": "damage_shield_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 10",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "damage_shield_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_10",
+    "sfx_hook": "sfx.decan_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 10"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_11",
+    "sign": "Câncer",
+    "decan": 2,
+    "effect_id": "damage_shield_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 11",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "damage_shield_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_11",
+    "sfx_hook": "sfx.decan_11",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 11"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_12",
+    "sign": "Câncer",
+    "decan": 3,
+    "effect_id": "damage_shield_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 12",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "damage_shield_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_12",
+    "sfx_hook": "sfx.decan_12",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 12"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_13",
+    "sign": "Leão",
+    "decan": 1,
+    "effect_id": "visible_damage_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 13",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "visible_damage_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_13",
+    "sfx_hook": "sfx.decan_13",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 13"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_14",
+    "sign": "Leão",
+    "decan": 2,
+    "effect_id": "visible_damage_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 14",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "visible_damage_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_14",
+    "sfx_hook": "sfx.decan_14",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 14"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_15",
+    "sign": "Leão",
+    "decan": 3,
+    "effect_id": "visible_damage_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 15",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "visible_damage_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_15",
+    "sfx_hook": "sfx.decan_15",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 15"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_16",
+    "sign": "Virgem",
+    "decan": 1,
+    "effect_id": "precision_recharge_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 16",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "precision_recharge_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_16",
+    "sfx_hook": "sfx.decan_16",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 16"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_17",
+    "sign": "Virgem",
+    "decan": 2,
+    "effect_id": "precision_recharge_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 17",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "precision_recharge_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_17",
+    "sfx_hook": "sfx.decan_17",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 17"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_18",
+    "sign": "Virgem",
+    "decan": 3,
+    "effect_id": "precision_recharge_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 18",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "precision_recharge_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_18",
+    "sfx_hook": "sfx.decan_18",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 18"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_19",
+    "sign": "Libra",
+    "decan": 1,
+    "effect_id": "resource_balance_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 19",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "resource_balance_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_19",
+    "sfx_hook": "sfx.decan_19",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 19"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_20",
+    "sign": "Libra",
+    "decan": 2,
+    "effect_id": "resource_balance_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 20",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "resource_balance_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_20",
+    "sfx_hook": "sfx.decan_20",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 20"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_21",
+    "sign": "Libra",
+    "decan": 3,
+    "effect_id": "resource_balance_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 21",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "resource_balance_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_21",
+    "sfx_hook": "sfx.decan_21",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 21"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_22",
+    "sign": "Escorpião",
+    "decan": 1,
+    "effect_id": "execute_poison_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 22",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "execute_poison_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_22",
+    "sfx_hook": "sfx.decan_22",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 22"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_23",
+    "sign": "Escorpião",
+    "decan": 2,
+    "effect_id": "execute_poison_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 23",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "execute_poison_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_23",
+    "sfx_hook": "sfx.decan_23",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 23"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_24",
+    "sign": "Escorpião",
+    "decan": 3,
+    "effect_id": "execute_poison_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 24",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "execute_poison_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_24",
+    "sfx_hook": "sfx.decan_24",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 24"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_25",
+    "sign": "Sagitário",
+    "decan": 1,
+    "effect_id": "range_speed_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 25",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "range_speed_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_25",
+    "sfx_hook": "sfx.decan_25",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 25"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_26",
+    "sign": "Sagitário",
+    "decan": 2,
+    "effect_id": "range_speed_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 26",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "range_speed_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_26",
+    "sfx_hook": "sfx.decan_26",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 26"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_27",
+    "sign": "Sagitário",
+    "decan": 3,
+    "effect_id": "range_speed_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 27",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "range_speed_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_27",
+    "sfx_hook": "sfx.decan_27",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 27"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_28",
+    "sign": "Capricórnio",
+    "decan": 1,
+    "effect_id": "discipline_reward_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 28",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "discipline_reward_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_28",
+    "sfx_hook": "sfx.decan_28",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 28"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_29",
+    "sign": "Capricórnio",
+    "decan": 2,
+    "effect_id": "discipline_reward_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 29",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "discipline_reward_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_29",
+    "sfx_hook": "sfx.decan_29",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 29"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_30",
+    "sign": "Capricórnio",
+    "decan": 3,
+    "effect_id": "discipline_reward_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 30",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "discipline_reward_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_30",
+    "sfx_hook": "sfx.decan_30",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 30"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_31",
+    "sign": "Aquário",
+    "decan": 1,
+    "effect_id": "chain_effect_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 31",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "chain_effect_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_31",
+    "sfx_hook": "sfx.decan_31",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 31"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_32",
+    "sign": "Aquário",
+    "decan": 2,
+    "effect_id": "chain_effect_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 32",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "chain_effect_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_32",
+    "sfx_hook": "sfx.decan_32",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 32"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_33",
+    "sign": "Aquário",
+    "decan": 3,
+    "effect_id": "chain_effect_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 33",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "chain_effect_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_33",
+    "sfx_hook": "sfx.decan_33",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 33"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_34",
+    "sign": "Peixes",
+    "decan": 1,
+    "effect_id": "focus_phase_1",
+    "magnitude": 4,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 34",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "focus_phase_1"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_34",
+    "sfx_hook": "sfx.decan_34",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 34"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_35",
+    "sign": "Peixes",
+    "decan": 2,
+    "effect_id": "focus_phase_2",
+    "magnitude": 6,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 35",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "focus_phase_2"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_35",
+    "sfx_hook": "sfx.decan_35",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 35"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "decan_36",
+    "sign": "Peixes",
+    "decan": 3,
+    "effect_id": "focus_phase_3",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Decan 36",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "effect_id": "focus_phase_3"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.decan_36",
+    "sfx_hook": "sfx.decan_36",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "talismans",
+      "summary": "Decan 36"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

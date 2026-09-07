@@ -1,0 +1,1602 @@
+[
+  {
+    "id": "instrument_01",
+    "name": "Bastão Ígneo",
+    "effect_id": "cone_fire",
+    "charges": 2,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "cone_fire",
+      "action": "cone_fire",
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_01",
+    "sfx_hook": "sfx.instrument_01",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Bastão Ígneo"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_02",
+    "name": "Vara Serpentina",
+    "effect_id": "chain_strike",
+    "charges": 3,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "chain_strike",
+      "action": "chain_strike",
+      "charges": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_02",
+    "sfx_hook": "sfx.instrument_02",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Vara Serpentina"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_03",
+    "name": "Cetro Solar",
+    "effect_id": "solar_burst",
+    "charges": 4,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "solar_burst",
+      "action": "solar_burst",
+      "charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_03",
+    "sfx_hook": "sfx.instrument_03",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Cetro Solar"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_04",
+    "name": "Bastão de Mercúrio",
+    "effect_id": "tempo_shift",
+    "charges": 5,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "tempo_shift",
+      "action": "tempo_shift",
+      "charges": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_04",
+    "sfx_hook": "sfx.instrument_04",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Bastão de Mercúrio"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_05",
+    "name": "Vara de Marte",
+    "effect_id": "dash_break",
+    "charges": 2,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "dash_break",
+      "action": "dash_break",
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_05",
+    "sfx_hook": "sfx.instrument_05",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Vara de Marte"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_06",
+    "name": "Bastão da Chama Negra",
+    "effect_id": "black_flame",
+    "charges": 3,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "black_flame",
+      "action": "black_flame",
+      "charges": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_06",
+    "sfx_hook": "sfx.instrument_06",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Bastão da Chama Negra"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_07",
+    "name": "Cálice Lunar",
+    "effect_id": "focus_well",
+    "charges": 4,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "focus_well",
+      "action": "focus_well",
+      "charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_07",
+    "sfx_hook": "sfx.instrument_07",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Cálice Lunar"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_08",
+    "name": "Taça do Véu",
+    "effect_id": "phase",
+    "charges": 5,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "phase",
+      "action": "phase",
+      "charges": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_08",
+    "sfx_hook": "sfx.instrument_08",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Taça do Véu"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_09",
+    "name": "Copa de Vênus",
+    "effect_id": "heal_link",
+    "charges": 2,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "heal_link",
+      "action": "heal_link",
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_09",
+    "sfx_hook": "sfx.instrument_09",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Copa de Vênus"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_10",
+    "name": "Cratera de Sophia",
+    "effect_id": "transmute_hurt",
+    "charges": 3,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "transmute_hurt",
+      "action": "transmute_hurt",
+      "charges": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_10",
+    "sfx_hook": "sfx.instrument_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Cratera de Sophia"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_11",
+    "name": "Cálice de Água Negra",
+    "effect_id": "curse_cleanse",
+    "charges": 4,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "curse_cleanse",
+      "action": "curse_cleanse",
+      "charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_11",
+    "sfx_hook": "sfx.instrument_11",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Cálice de Água Negra"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_12",
+    "name": "Taça do Retorno",
+    "effect_id": "return",
+    "charges": 5,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "return",
+      "action": "return",
+      "charges": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_12",
+    "sfx_hook": "sfx.instrument_12",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Taça do Retorno"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_13",
+    "name": "Lâmina de Ruptura",
+    "effect_id": "armor_break",
+    "charges": 2,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "armor_break",
+      "action": "armor_break",
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_13",
+    "sfx_hook": "sfx.instrument_13",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Lâmina de Ruptura"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_14",
+    "name": "Athame de Thoth",
+    "effect_id": "mark_reveal",
+    "charges": 3,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "mark_reveal",
+      "action": "mark_reveal",
+      "charges": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_14",
+    "sfx_hook": "sfx.instrument_14",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Athame de Thoth"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_15",
+    "name": "Espada Solar",
+    "effect_id": "line_beam",
+    "charges": 4,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "line_beam",
+      "action": "line_beam",
+      "charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_15",
+    "sfx_hook": "sfx.instrument_15",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Espada Solar"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_16",
+    "name": "Faca do Verbum",
+    "effect_id": "silence",
+    "charges": 5,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "silence",
+      "action": "silence",
+      "charges": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_16",
+    "sfx_hook": "sfx.instrument_16",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Faca do Verbum"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_17",
+    "name": "Lâmina de Saturno",
+    "effect_id": "slow_cut",
+    "charges": 2,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "slow_cut",
+      "action": "slow_cut",
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_17",
+    "sfx_hook": "sfx.instrument_17",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Lâmina de Saturno"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_18",
+    "name": "Espada do Limiar",
+    "effect_id": "door_cut",
+    "charges": 3,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "door_cut",
+      "action": "door_cut",
+      "charges": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_18",
+    "sfx_hook": "sfx.instrument_18",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Espada do Limiar"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_19",
+    "name": "Disco de Saturno",
+    "effect_id": "fortify",
+    "charges": 4,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "fortify",
+      "action": "fortify",
+      "charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_19",
+    "sfx_hook": "sfx.instrument_19",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Disco de Saturno"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_20",
+    "name": "Pentáculo Solar",
+    "effect_id": "ward",
+    "charges": 5,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "ward",
+      "action": "ward",
+      "charges": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_20",
+    "sfx_hook": "sfx.instrument_20",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Pentáculo Solar"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_21",
+    "name": "Disco de Fortuna",
+    "effect_id": "reroll",
+    "charges": 2,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "reroll",
+      "action": "reroll",
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_21",
+    "sfx_hook": "sfx.instrument_21",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Disco de Fortuna"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_22",
+    "name": "Selo de Terra",
+    "effect_id": "anchor",
+    "charges": 3,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "anchor",
+      "action": "anchor",
+      "charges": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_22",
+    "sfx_hook": "sfx.instrument_22",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Selo de Terra"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_23",
+    "name": "Moeda de Júpiter",
+    "effect_id": "multiply_essence",
+    "charges": 4,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "multiply_essence",
+      "action": "multiply_essence",
+      "charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_23",
+    "sfx_hook": "sfx.instrument_23",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Moeda de Júpiter"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_24",
+    "name": "Placa de Belial",
+    "effect_id": "grounding",
+    "charges": 5,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "grounding",
+      "action": "grounding",
+      "charges": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_24",
+    "sfx_hook": "sfx.instrument_24",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Placa de Belial"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_25",
+    "name": "Espelho de Sophia",
+    "effect_id": "reflect",
+    "charges": 2,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "reflect",
+      "action": "reflect",
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_25",
+    "sfx_hook": "sfx.instrument_25",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Espelho de Sophia"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_26",
+    "name": "Lâmpada de Phosphoros",
+    "effect_id": "reveal_all",
+    "charges": 3,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "reveal_all",
+      "action": "reveal_all",
+      "charges": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_26",
+    "sfx_hook": "sfx.instrument_26",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Lâmpada de Phosphoros"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_27",
+    "name": "Livro do Verbum",
+    "effect_id": "command_wave",
+    "charges": 4,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "command_wave",
+      "action": "command_wave",
+      "charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_27",
+    "sfx_hook": "sfx.instrument_27",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Livro do Verbum"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_28",
+    "name": "Ampulheta de Kairos",
+    "effect_id": "time_stop",
+    "charges": 5,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "time_stop",
+      "action": "time_stop",
+      "charges": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_28",
+    "sfx_hook": "sfx.instrument_28",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Ampulheta de Kairos"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_29",
+    "name": "Máscara de Paimon",
+    "effect_id": "dominate",
+    "charges": 2,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "dominate",
+      "action": "dominate",
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_29",
+    "sfx_hook": "sfx.instrument_29",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Máscara de Paimon"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_30",
+    "name": "Olho de Hórus",
+    "effect_id": "precision",
+    "charges": 3,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "precision",
+      "action": "precision",
+      "charges": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_30",
+    "sfx_hook": "sfx.instrument_30",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Olho de Hórus"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_31",
+    "name": "Tabuleta de Thoth",
+    "effect_id": "echo_card",
+    "charges": 4,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "echo_card",
+      "action": "echo_card",
+      "charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_31",
+    "sfx_hook": "sfx.instrument_31",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Tabuleta de Thoth"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "instrument_32",
+    "name": "Chave Dracônica",
+    "effect_id": "red_path",
+    "charges": 5,
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "instrument_action",
+      "effect_id": "red_path",
+      "action": "red_path",
+      "charges": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrument_32",
+    "sfx_hook": "sfx.instrument_32",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "instrumenta",
+      "summary": "Chave Dracônica"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

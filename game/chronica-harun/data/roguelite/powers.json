@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "revelatory_eye",
+    "name": "Olho Revelatório",
+    "stage_index": 0,
+    "effect_id": "revelatory_eye_base",
+    "mutations": [
+      {
+        "id": "revelatory_eye_m1",
+        "effect_id": "revealed_crit",
+        "tier": 1
+      },
+      {
+        "id": "revelatory_eye_m2",
+        "effect_id": "projectile_vision",
+        "tier": 2
+      },
+      {
+        "id": "revelatory_eye_m3",
+        "effect_id": "secret_map",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "revelatory_eye_base",
+      "mutations": [
+        "revealed_crit",
+        "projectile_vision",
+        "secret_map"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.revelatory_eye",
+    "sfx_hook": "sfx.revelatory_eye",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Olho Revelatório"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "black_flame_matrix",
+    "name": "Chama Negra",
+    "stage_index": 1,
+    "effect_id": "black_flame_matrix_base",
+    "mutations": [
+      {
+        "id": "black_flame_matrix_m1",
+        "effect_id": "ember_corpse",
+        "tier": 1
+      },
+      {
+        "id": "black_flame_matrix_m2",
+        "effect_id": "hurt_fuels_flame",
+        "tier": 2
+      },
+      {
+        "id": "black_flame_matrix_m3",
+        "effect_id": "chain_flame",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "black_flame_matrix_base",
+      "mutations": [
+        "ember_corpse",
+        "hurt_fuels_flame",
+        "chain_flame"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.black_flame_matrix",
+    "sfx_hook": "sfx.black_flame_matrix",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Chama Negra"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "foundation_hammer",
+    "name": "Martelo de Fundação",
+    "stage_index": 2,
+    "effect_id": "foundation_hammer_base",
+    "mutations": [
+      {
+        "id": "foundation_hammer_m1",
+        "effect_id": "shockwave",
+        "tier": 1
+      },
+      {
+        "id": "foundation_hammer_m2",
+        "effect_id": "break_armor_secret",
+        "tier": 2
+      },
+      {
+        "id": "foundation_hammer_m3",
+        "effect_id": "elite_stamina",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "foundation_hammer_base",
+      "mutations": [
+        "shockwave",
+        "break_armor_secret",
+        "elite_stamina"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.foundation_hammer",
+    "sfx_hook": "sfx.foundation_hammer",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Martelo de Fundação"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "election_sigil",
+    "name": "Sigilo da Eleição",
+    "stage_index": 3,
+    "effect_id": "election_sigil_base",
+    "mutations": [
+      {
+        "id": "election_sigil_m1",
+        "effect_id": "first_mark_crit",
+        "tier": 1
+      },
+      {
+        "id": "election_sigil_m2",
+        "effect_id": "fear_immunity",
+        "tier": 2
+      },
+      {
+        "id": "election_sigil_m3",
+        "effect_id": "choice_shield",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "election_sigil_base",
+      "mutations": [
+        "first_mark_crit",
+        "fear_immunity",
+        "choice_shield"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.election_sigil",
+    "sfx_hook": "sfx.election_sigil",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Sigilo da Eleição"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "inner_balance",
+    "name": "Balança Interna",
+    "stage_index": 4,
+    "effect_id": "inner_balance_base",
+    "mutations": [
+      {
+        "id": "inner_balance_m1",
+        "effect_id": "hp_to_focus",
+        "tier": 1
+      },
+      {
+        "id": "inner_balance_m2",
+        "effect_id": "focus_to_shield",
+        "tier": 2
+      },
+      {
+        "id": "inner_balance_m3",
+        "effect_id": "balance_cleanse",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "inner_balance_base",
+      "mutations": [
+        "hp_to_focus",
+        "focus_to_shield",
+        "balance_cleanse"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.inner_balance",
+    "sfx_hook": "sfx.inner_balance",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Balança Interna"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "will_vector",
+    "name": "Vetor da Vontade",
+    "stage_index": 5,
+    "effect_id": "will_vector_base",
+    "mutations": [
+      {
+        "id": "will_vector_m1",
+        "effect_id": "projectile_dash",
+        "tier": 1
+      },
+      {
+        "id": "will_vector_m2",
+        "effect_id": "unstoppable_action",
+        "tier": 2
+      },
+      {
+        "id": "will_vector_m3",
+        "effect_id": "execute_low",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "will_vector_base",
+      "mutations": [
+        "projectile_dash",
+        "unstoppable_action",
+        "execute_low"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.will_vector",
+    "sfx_hook": "sfx.will_vector",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Vetor da Vontade"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "character_column",
+    "name": "Coluna de Caráter",
+    "stage_index": 6,
+    "effect_id": "character_column_base",
+    "mutations": [
+      {
+        "id": "character_column_m1",
+        "effect_id": "still_defense",
+        "tier": 1
+      },
+      {
+        "id": "character_column_m2",
+        "effect_id": "block_attack",
+        "tier": 2
+      },
+      {
+        "id": "character_column_m3",
+        "effect_id": "calm_focus",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "character_column_base",
+      "mutations": [
+        "still_defense",
+        "block_attack",
+        "calm_focus"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.character_column",
+    "sfx_hook": "sfx.character_column",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Coluna de Caráter"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "discipline_rhythm",
+    "name": "Ritmo da Disciplina",
+    "stage_index": 7,
+    "effect_id": "discipline_rhythm_base",
+    "mutations": [
+      {
+        "id": "discipline_rhythm_m1",
+        "effect_id": "combo_recharge",
+        "tier": 1
+      },
+      {
+        "id": "discipline_rhythm_m2",
+        "effect_id": "perfect_dodge_charge",
+        "tier": 2
+      },
+      {
+        "id": "discipline_rhythm_m3",
+        "effect_id": "no_damage_speed",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "discipline_rhythm_base",
+      "mutations": [
+        "combo_recharge",
+        "perfect_dodge_charge",
+        "no_damage_speed"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.discipline_rhythm",
+    "sfx_hook": "sfx.discipline_rhythm",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Ritmo da Disciplina"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "clarity_light",
+    "name": "Luz de Clareza",
+    "stage_index": 8,
+    "effect_id": "clarity_light_base",
+    "mutations": [
+      {
+        "id": "clarity_light_m1",
+        "effect_id": "telegraph_reveal",
+        "tier": 1
+      },
+      {
+        "id": "clarity_light_m2",
+        "effect_id": "visual_cleanse",
+        "tier": 2
+      },
+      {
+        "id": "clarity_light_m3",
+        "effect_id": "route_marker",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "clarity_light_base",
+      "mutations": [
+        "telegraph_reveal",
+        "visual_cleanse",
+        "route_marker"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.clarity_light",
+    "sfx_hook": "sfx.clarity_light",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Luz de Clareza"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "transmutation_serpent",
+    "name": "Serpente da Transmutação",
+    "stage_index": 9,
+    "effect_id": "transmutation_serpent_base",
+    "mutations": [
+      {
+        "id": "transmutation_serpent_m1",
+        "effect_id": "hurt_to_focus",
+        "tier": 1
+      },
+      {
+        "id": "transmutation_serpent_m2",
+        "effect_id": "curse_to_buff",
+        "tier": 2
+      },
+      {
+        "id": "transmutation_serpent_m3",
+        "effect_id": "overflow_to_essence",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "transmutation_serpent_base",
+      "mutations": [
+        "hurt_to_focus",
+        "curse_to_buff",
+        "overflow_to_essence"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.transmutation_serpent",
+    "sfx_hook": "sfx.transmutation_serpent",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Serpente da Transmutação"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "vital_pulse",
+    "name": "Pulso Vital",
+    "stage_index": 10,
+    "effect_id": "vital_pulse_base",
+    "mutations": [
+      {
+        "id": "vital_pulse_m1",
+        "effect_id": "room_heal",
+        "tier": 1
+      },
+      {
+        "id": "vital_pulse_m2",
+        "effect_id": "perfect_dodge_stamina",
+        "tier": 2
+      },
+      {
+        "id": "vital_pulse_m3",
+        "effect_id": "low_hp_speed",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "vital_pulse_base",
+      "mutations": [
+        "room_heal",
+        "perfect_dodge_stamina",
+        "low_hp_speed"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.vital_pulse",
+    "sfx_hook": "sfx.vital_pulse",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Pulso Vital"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "hand_of_work",
+    "name": "Mão da Obra",
+    "stage_index": 11,
+    "effect_id": "hand_of_work_base",
+    "mutations": [
+      {
+        "id": "hand_of_work_m1",
+        "effect_id": "temporary_ward",
+        "tier": 1
+      },
+      {
+        "id": "hand_of_work_m2",
+        "effect_id": "virtual_charge",
+        "tier": 2
+      },
+      {
+        "id": "hand_of_work_m3",
+        "effect_id": "break_fragment",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "hand_of_work_base",
+      "mutations": [
+        "temporary_ward",
+        "virtual_charge",
+        "break_fragment"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.hand_of_work",
+    "sfx_hook": "sfx.hand_of_work",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Mão da Obra"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigillar_fortune",
+    "name": "Fortuna Sigilar",
+    "stage_index": 12,
+    "effect_id": "sigillar_fortune_base",
+    "mutations": [
+      {
+        "id": "sigillar_fortune_m1",
+        "effect_id": "reward_reroll",
+        "tier": 1
+      },
+      {
+        "id": "sigillar_fortune_m2",
+        "effect_id": "essence_rare_room",
+        "tier": 2
+      },
+      {
+        "id": "sigillar_fortune_m3",
+        "effect_id": "pact_refund",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "sigillar_fortune_base",
+      "mutations": [
+        "reward_reroll",
+        "essence_rare_room",
+        "pact_refund"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillar_fortune",
+    "sfx_hook": "sfx.sigillar_fortune",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Fortuna Sigilar"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "verbum",
+    "name": "Verbum",
+    "stage_index": 13,
+    "effect_id": "verbum_base",
+    "mutations": [
+      {
+        "id": "verbum_m1",
+        "effect_id": "push_wave",
+        "tier": 1
+      },
+      {
+        "id": "verbum_m2",
+        "effect_id": "silence_ranged",
+        "tier": 2
+      },
+      {
+        "id": "verbum_m3",
+        "effect_id": "temporary_dominate",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "verbum_base",
+      "mutations": [
+        "push_wave",
+        "silence_ranged",
+        "temporary_dominate"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.verbum",
+    "sfx_hook": "sfx.verbum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Verbum"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "memoria_ignis",
+    "name": "Memoria Ignis",
+    "stage_index": 14,
+    "effect_id": "memoria_ignis_base",
+    "mutations": [
+      {
+        "id": "memoria_ignis_m1",
+        "effect_id": "first_card_free",
+        "tier": 1
+      },
+      {
+        "id": "memoria_ignis_m2",
+        "effect_id": "instrument_charge_memory",
+        "tier": 2
+      },
+      {
+        "id": "memoria_ignis_m3",
+        "effect_id": "build_trait_memory",
+        "tier": 3
+      }
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "powers",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matrix_power",
+      "effect_id": "memoria_ignis_base",
+      "mutations": [
+        "first_card_free",
+        "instrument_charge_memory",
+        "build_trait_memory"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.memoria_ignis",
+    "sfx_hook": "sfx.memoria_ignis",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "powers",
+      "summary": "Memoria Ignis"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]
