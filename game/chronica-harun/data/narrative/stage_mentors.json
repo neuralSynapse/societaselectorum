@@ -1,0 +1,338 @@
+[
+  {
+    "stage_id": "o_olho",
+    "mentor_id": "thoth",
+    "mentor_name": "Thoth",
+    "mentor_type": "theophany",
+    "delivery_mode": "vision",
+    "lesson": "Perceber antes de interpretar",
+    "mission": {
+      "objectives": [
+        "identificar três telegraphs sem sofrer dano"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.thoth.revelation",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "tradition",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_chama",
+    "mentor_id": "lucifer_phosphoros",
+    "mentor_name": "Lucifer / Phosphoros",
+    "mentor_type": "theophany",
+    "delivery_mode": "vision",
+    "lesson": "Governar o impulso sem apagar a chama",
+    "mission": {
+      "objectives": [
+        "vencer uma sala mantendo o Foco acima de 40"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.phosphoros.regency",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "interpretation",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_fundacao",
+    "mentor_id": "paracelsus",
+    "mentor_name": "Paracelso",
+    "mentor_type": "historical_rift",
+    "delivery_mode": "ritual_rift",
+    "lesson": "Separar matéria, processo e transformação",
+    "mission": {
+      "objectives": [
+        "coletar três reagentes e registrar o efeito antes de misturá-los"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.paracelsus.laboratory",
+    "no_invented_quotes": true,
+    "provenance": {
+      "level": "source",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_eleicao",
+    "mentor_id": "lilith",
+    "mentor_name": "Lilith",
+    "mentor_type": "mythic_tradition",
+    "delivery_mode": "dream",
+    "lesson": "Escolher a saída quando permanecer é obedecer",
+    "mission": {
+      "objectives": [
+        "recusar uma recompensa e abrir uma rota alternativa"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.lilith.refusal",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "tradition",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_balanca",
+    "mentor_id": "caim",
+    "mentor_name": "Caim",
+    "mentor_type": "diegic_ancestor",
+    "delivery_mode": "threshold",
+    "lesson": "Assumir custo sem transferir a autoria",
+    "mission": {
+      "objectives": [
+        "concluir uma provação aceitando a consequência escolhida"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.caim.mark",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_vontade",
+    "mentor_id": "aleister_crowley",
+    "mentor_name": "Aleister Crowley",
+    "mentor_type": "historical_rift",
+    "delivery_mode": "ritual_rift",
+    "lesson": "Distinguir desejo momentâneo de direção persistente",
+    "mission": {
+      "objectives": [
+        "cumprir três objetivos em sequência sem trocar o voto de rota"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.crowley.true_will",
+    "no_invented_quotes": true,
+    "provenance": {
+      "level": "source",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "o_carater",
+    "mentor_id": "giordano_bruno",
+    "mentor_name": "Giordano Bruno",
+    "mentor_type": "historical_rift",
+    "delivery_mode": "ritual_rift",
+    "lesson": "Sustentar uma ideia sob pressão sem confundir coragem com certeza",
+    "mission": {
+      "objectives": [
+        "defender uma posição e depois testar uma hipótese contrária"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.bruno.integrity",
+    "no_invented_quotes": true,
+    "provenance": {
+      "level": "source",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_disciplina",
+    "mentor_id": "harun_future",
+    "mentor_name": "Harun Futuro",
+    "mentor_type": "future_self",
+    "delivery_mode": "projection",
+    "lesson": "Fazer o necessário depois que a inspiração acaba",
+    "mission": {
+      "objectives": [
+        "limpar três salas usando o mesmo compromisso de build"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.harun.discipline",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "electorum_dramatization",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_clareza",
+    "mentor_id": "hermes_trismegistus",
+    "mentor_name": "Hermes Trismegistus",
+    "mentor_type": "traditional_figure",
+    "delivery_mode": "manuscript",
+    "lesson": "Ler correspondências sem apagar diferenças",
+    "mission": {
+      "objectives": [
+        "classificar quatro símbolos por função e proveniência"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.hermes.discernment",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "tradition",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_transmutacao",
+    "mentor_id": "michael_w_ford",
+    "mentor_name": "Michael W. Ford",
+    "mentor_type": "historical_projection",
+    "delivery_mode": "projection",
+    "lesson": "Converter adversidade em agência dentro de uma leitura luciferiana moderna",
+    "mission": {
+      "objectives": [
+        "transformar uma maldição em vantagem sem remover sua consequência"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.ford.adversarial_transmutation",
+    "no_invented_quotes": true,
+    "provenance": {
+      "level": "interpretation",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "o_corpo",
+    "mentor_id": "horus",
+    "mentor_name": "Hórus",
+    "mentor_type": "theophany",
+    "delivery_mode": "vision",
+    "lesson": "O corpo como instrumento de presença e direção",
+    "mission": {
+      "objectives": [
+        "sobreviver a uma prova de movimento com dano mínimo"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.horus.embodiment",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "tradition",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_obra",
+    "mentor_id": "eliphas_levi",
+    "mentor_name": "Éliphas Lévi",
+    "mentor_type": "historical_rift",
+    "delivery_mode": "ritual_rift",
+    "lesson": "Dar forma operacional ao símbolo",
+    "mission": {
+      "objectives": [
+        "construir um selo de sala a partir de três componentes e usá-lo"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.levi.symbolic_operation",
+    "no_invented_quotes": true,
+    "provenance": {
+      "level": "source",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_fortuna",
+    "mentor_id": "paimon",
+    "mentor_name": "Paimon",
+    "mentor_type": "theophany",
+    "delivery_mode": "vision",
+    "lesson": "Tratar poder e recurso como decisão estratégica",
+    "mission": {
+      "objectives": [
+        "negociar duas recompensas e preservar uma reserva de Essência"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.paimon.strategy",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "tradition",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "a_influencia",
+    "mentor_id": "belial",
+    "mentor_name": "Belial",
+    "mentor_type": "theophany",
+    "delivery_mode": "vision",
+    "lesson": "Influência sem submissão automática",
+    "mission": {
+      "objectives": [
+        "resolver uma câmara de comando sem aceitar o primeiro pacto"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.belial.sovereignty",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "tradition",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "o_legado",
+    "mentor_id": "sophia",
+    "mentor_name": "Sophia",
+    "mentor_type": "theophany",
+    "delivery_mode": "vision",
+    "lesson": "Transmitir sem aprisionar o herdeiro",
+    "mission": {
+      "objectives": [
+        "deixar um artefato ou conhecimento para a próxima run"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.sophia.legacy",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "interpretation",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  },
+  {
+    "stage_id": "initiation_chamber",
+    "mentor_id": "seth",
+    "mentor_name": "Seth",
+    "mentor_type": "theophany",
+    "delivery_mode": "threshold",
+    "lesson": "Atravessar a prova sem confundir iniciação de jogo com autoridade real",
+    "mission": {
+      "objectives": [
+        "reunir as marcas da Jornada e escolher a forma de retorno"
+      ],
+      "failure_is_story": true,
+      "replayable": true
+    },
+    "reward_hook": "mentor.seth.initiation",
+    "no_invented_quotes": false,
+    "provenance": {
+      "level": "tradition",
+      "note": "Diálogo e missão são dramatização do jogo; nenhuma fala inventada é apresentada como citação histórica."
+    }
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "aleister_crowley",
+    "name": "Aleister Crowley",
+    "appearance": "narrative_echo",
+    "effect_id": "echo_aleister_crowley",
+    "conditions": {
+      "codex_entries": 6
+    },
+    "codex_note": "Aleister Crowley: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "michael_w_ford",
+    "name": "Michael W. Ford",
+    "appearance": "narrative_echo",
+    "effect_id": "echo_michael_w_ford",
+    "conditions": {
+      "route": [
+        "luciferian",
+        "draconis"
+      ]
+    },
+    "codex_note": "Michael W. Ford: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "paracelsus",
+    "name": "Paracelso",
+    "appearance": "narrative_echo",
+    "effect_id": "echo_paracelsus",
+    "conditions": {
+      "pharmaka_used": 3
+    },
+    "codex_note": "Paracelso: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "eliphas_levi",
+    "name": "Éliphas Lévi",
+    "appearance": "narrative_echo",
+    "effect_id": "echo_eliphas_levi",
+    "conditions": {
+      "sigilla_bound": 1
+    },
+    "codex_note": "Éliphas Lévi: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "giordano_bruno",
+    "name": "Giordano Bruno",
+    "appearance": "narrative_echo",
+    "effect_id": "echo_giordano_bruno",
+    "conditions": {
+      "theophanies_seen": 2
+    },
+    "codex_note": "Giordano Bruno: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "hermes_trismegistus",
+    "name": "Hermes Trismegistus",
+    "appearance": "narrative_echo",
+    "effect_id": "echo_hermes_trismegistus",
+    "conditions": {
+      "codex_entries": 10
+    },
+    "codex_note": "Hermes Trismegistus: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "tradition",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  }
+]

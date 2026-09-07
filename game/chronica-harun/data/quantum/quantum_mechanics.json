@@ -1,0 +1,86 @@
+{
+  "epistemic_rule": {
+    "real_physics_is_not_paranormal_proof": true,
+    "gameplay_effects_are_electorum_dramatization": true,
+    "note": "Superposição, medição, decoerência, emaranhamento e tunelamento são conceitos físicos reais; sua transformação em poderes, portais e corredores é ficção de gameplay."
+  },
+  "concepts": [
+    {
+      "id": "superposition",
+      "science": "um estado quântico pode ser descrito como combinação de possibilidades antes de uma medição",
+      "gameplay": "três estados de sala coexistem como opções até a escolha do jogador"
+    },
+    {
+      "id": "measurement",
+      "science": "medição produz um resultado observável segundo a dinâmica quântica",
+      "gameplay": "escolher uma porta fixa uma ramificação e remove as demais"
+    },
+    {
+      "id": "decoherence",
+      "science": "interação ambiental suprime coerência entre alternativas quânticas",
+      "gameplay": "dano, ruído ritual ou excesso de ameaça reduz tempo de escolha"
+    },
+    {
+      "id": "entanglement",
+      "science": "correlações quânticas não clássicas entre sistemas preparados conjuntamente",
+      "gameplay": "duas recompensas ficam ligadas; alterar uma modifica a outra"
+    },
+    {
+      "id": "tunneling",
+      "science": "amplitude quântica pode atravessar barreiras classicamente proibidas",
+      "gameplay": "habilidade rara permite atravessar uma barreira selada a custo alto"
+    },
+    {
+      "id": "branching",
+      "science": "interpretações de ramificação são interpretações, não uma máquina comprovada de viagem entre universos",
+      "gameplay": "corredor autoral de possibilidades oferece rotas alternativas de run"
+    }
+  ],
+  "secret_room": {
+    "id": "quantum_liminal_lab",
+    "name": "Laboratorium Liminale",
+    "access": {
+      "hidden": true,
+      "requirements": [
+        "liber_laboratorii_arcani:quantum_lab",
+        "observation_fragments:3"
+      ],
+      "openers": [
+        "paradox_key",
+        "quantum_tunneling"
+      ]
+    },
+    "risk": "decoherence_pressure",
+    "reward_pool": "quantum_unlocks"
+  },
+  "branch_corridor": {
+    "id": "corridor_of_possible_worlds",
+    "name": "Corredor dos Possíveis",
+    "doors": 5,
+    "copy_reference_media": false,
+    "selection_rule": "one_branch_measured_others_collapse",
+    "visual_rule": "original_non_euclidean_ritual_architecture"
+  },
+  "unlocks": [
+    {
+      "id": "quantum_tunneling",
+      "kind": "pass_wall_once",
+      "cost": {
+        "focus": 35,
+        "observation_fragment": 1
+      }
+    },
+    {
+      "id": "entangled_reward",
+      "kind": "paired_reward"
+    },
+    {
+      "id": "superposed_pickup",
+      "kind": "pickup_three_states"
+    },
+    {
+      "id": "decoherence_shield",
+      "kind": "choice_time_extension"
+    }
+  ]
+}

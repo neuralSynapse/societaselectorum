@@ -1,0 +1,2544 @@
+[
+  {
+    "id": "o_olho_presence_01",
+    "display_name": "Athoth",
+    "stage_id": "o_olho",
+    "role": "common",
+    "family": "ram_archon",
+    "max_hp": 42,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "ram_archon",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_olho_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.78,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 8
+    },
+    "codex": "Forma de prova de PERCEPÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_olho_presence_01.glb"
+  },
+  {
+    "id": "o_olho_presence_02",
+    "display_name": "Eloaios",
+    "stage_id": "o_olho",
+    "role": "common",
+    "family": "asinine_archon",
+    "max_hp": 46,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "asinine_archon",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_olho_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.83,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 10
+    },
+    "codex": "Forma de prova de PERCEPÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_olho_presence_02.glb"
+  },
+  {
+    "id": "o_olho_presence_03",
+    "display_name": "Astaphaios",
+    "stage_id": "o_olho",
+    "role": "common",
+    "family": "hyena_archon",
+    "max_hp": 50,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "hyena_archon",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_olho_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 0.88,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 12
+    },
+    "codex": "Forma de prova de PERCEPÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_olho_presence_03.glb"
+  },
+  {
+    "id": "o_olho_presence_04",
+    "display_name": "Yao",
+    "stage_id": "o_olho",
+    "role": "common",
+    "family": "seven_head_serpent",
+    "max_hp": 54,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "seven_head_serpent",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_olho_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 0.93,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 14
+    },
+    "codex": "Forma de prova de PERCEPÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_olho_presence_04.glb"
+  },
+  {
+    "id": "o_olho_elite",
+    "display_name": "Adonin",
+    "stage_id": "o_olho",
+    "role": "elite",
+    "family": "simian_archon",
+    "max_hp": 140,
+    "move_speed": 1.85,
+    "visual_profile": {
+      "silhouette": "simian_archon",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "o_olho_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 20
+    },
+    "codex": "Autoridade intermediária de PERCEPÇÃO; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/o_olho_elite.glb"
+  },
+  {
+    "id": "a_chama_presence_01",
+    "display_name": "Regência · Presença 1",
+    "stage_id": "a_chama",
+    "role": "common",
+    "family": "shade",
+    "max_hp": 48,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "shade",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_chama_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.8,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 9
+    },
+    "codex": "Forma de prova de REGÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_chama_presence_01.glb"
+  },
+  {
+    "id": "a_chama_presence_02",
+    "display_name": "Regência · Presença 2",
+    "stage_id": "a_chama",
+    "role": "common",
+    "family": "chain",
+    "max_hp": 52,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "chain",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_chama_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.85,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 11
+    },
+    "codex": "Forma de prova de REGÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_chama_presence_02.glb"
+  },
+  {
+    "id": "a_chama_presence_03",
+    "display_name": "Regência · Presença 3",
+    "stage_id": "a_chama",
+    "role": "common",
+    "family": "beast",
+    "max_hp": 56,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "beast",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_chama_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 0.9,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 13
+    },
+    "codex": "Forma de prova de REGÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_chama_presence_03.glb"
+  },
+  {
+    "id": "a_chama_presence_04",
+    "display_name": "Regência · Presença 4",
+    "stage_id": "a_chama",
+    "role": "common",
+    "family": "winged",
+    "max_hp": 60,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_chama_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 0.95,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 15
+    },
+    "codex": "Forma de prova de REGÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_chama_presence_04.glb"
+  },
+  {
+    "id": "a_chama_elite",
+    "display_name": "Sabbataios",
+    "stage_id": "a_chama",
+    "role": "elite",
+    "family": "fire_face",
+    "max_hp": 155,
+    "move_speed": 1.9700000000000002,
+    "visual_profile": {
+      "silhouette": "fire_face",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_chama_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 21
+    },
+    "codex": "Autoridade intermediária de REGÊNCIA; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_chama_elite.glb"
+  },
+  {
+    "id": "a_fundacao_presence_01",
+    "display_name": "Estrutura · Presença 1",
+    "stage_id": "a_fundacao",
+    "role": "common",
+    "family": "winged",
+    "max_hp": 54,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_fundacao_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.81,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 10
+    },
+    "codex": "Forma de prova de ESTRUTURA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_fundacao_presence_01.glb"
+  },
+  {
+    "id": "a_fundacao_presence_02",
+    "display_name": "Estrutura · Presença 2",
+    "stage_id": "a_fundacao",
+    "role": "common",
+    "family": "construct",
+    "max_hp": 58,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "construct",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_fundacao_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.86,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 12
+    },
+    "codex": "Forma de prova de ESTRUTURA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_fundacao_presence_02.glb"
+  },
+  {
+    "id": "a_fundacao_presence_03",
+    "display_name": "Estrutura · Presença 3",
+    "stage_id": "a_fundacao",
+    "role": "common",
+    "family": "chorus",
+    "max_hp": 62,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "chorus",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_fundacao_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 0.91,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 14
+    },
+    "codex": "Forma de prova de ESTRUTURA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_fundacao_presence_03.glb"
+  },
+  {
+    "id": "a_fundacao_presence_04",
+    "display_name": "Estrutura · Presença 4",
+    "stage_id": "a_fundacao",
+    "role": "common",
+    "family": "serpent",
+    "max_hp": 66,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_fundacao_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 0.96,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 16
+    },
+    "codex": "Forma de prova de ESTRUTURA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_fundacao_presence_04.glb"
+  },
+  {
+    "id": "a_fundacao_elite",
+    "display_name": "Sabaoth",
+    "stage_id": "a_fundacao",
+    "role": "elite",
+    "family": "draconic",
+    "max_hp": 170,
+    "move_speed": 2.09,
+    "visual_profile": {
+      "silhouette": "draconic",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_fundacao_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 22
+    },
+    "codex": "Autoridade intermediária de ESTRUTURA; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_fundacao_elite.glb"
+  },
+  {
+    "id": "a_eleicao_presence_01",
+    "display_name": "Autoeleição · Presença 1",
+    "stage_id": "a_eleicao",
+    "role": "common",
+    "family": "serpent",
+    "max_hp": 60,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_eleicao_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.83,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 11
+    },
+    "codex": "Forma de prova de AUTOELEIÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_eleicao_presence_01.glb"
+  },
+  {
+    "id": "a_eleicao_presence_02",
+    "display_name": "Autoeleição · Presença 2",
+    "stage_id": "a_eleicao",
+    "role": "common",
+    "family": "fire",
+    "max_hp": 64,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "fire",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_eleicao_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.88,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 13
+    },
+    "codex": "Forma de prova de AUTOELEIÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_eleicao_presence_02.glb"
+  },
+  {
+    "id": "a_eleicao_presence_03",
+    "display_name": "Autoeleição · Presença 3",
+    "stage_id": "a_eleicao",
+    "role": "common",
+    "family": "walker",
+    "max_hp": 68,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "walker",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_eleicao_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 0.93,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 15
+    },
+    "codex": "Forma de prova de AUTOELEIÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_eleicao_presence_03.glb"
+  },
+  {
+    "id": "a_eleicao_presence_04",
+    "display_name": "Autoeleição · Presença 4",
+    "stage_id": "a_eleicao",
+    "role": "common",
+    "family": "crawler",
+    "max_hp": 72,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "crawler",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_eleicao_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 0.98,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 17
+    },
+    "codex": "Forma de prova de AUTOELEIÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_eleicao_presence_04.glb"
+  },
+  {
+    "id": "a_eleicao_elite",
+    "display_name": "Autoeleição · Autoridade",
+    "stage_id": "a_eleicao",
+    "role": "elite",
+    "family": "fire",
+    "max_hp": 185,
+    "move_speed": 2.21,
+    "visual_profile": {
+      "silhouette": "fire",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_eleicao_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 23
+    },
+    "codex": "Autoridade intermediária de AUTOELEIÇÃO; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_eleicao_elite.glb"
+  },
+  {
+    "id": "a_balanca_presence_01",
+    "display_name": "Autorresponsabilidade · Presença 1",
+    "stage_id": "a_balanca",
+    "role": "common",
+    "family": "crawler",
+    "max_hp": 66,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "crawler",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_balanca_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.84,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 12
+    },
+    "codex": "Forma de prova de AUTORRESPONSABILIDADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_balanca_presence_01.glb"
+  },
+  {
+    "id": "a_balanca_presence_02",
+    "display_name": "Autorresponsabilidade · Presença 2",
+    "stage_id": "a_balanca",
+    "role": "common",
+    "family": "eye",
+    "max_hp": 70,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "eye",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_balanca_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.89,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 14
+    },
+    "codex": "Forma de prova de AUTORRESPONSABILIDADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_balanca_presence_02.glb"
+  },
+  {
+    "id": "a_balanca_presence_03",
+    "display_name": "Autorresponsabilidade · Presença 3",
+    "stage_id": "a_balanca",
+    "role": "common",
+    "family": "ritualist",
+    "max_hp": 74,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "ritualist",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_balanca_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 0.94,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 16
+    },
+    "codex": "Forma de prova de AUTORRESPONSABILIDADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_balanca_presence_03.glb"
+  },
+  {
+    "id": "a_balanca_presence_04",
+    "display_name": "Autorresponsabilidade · Presença 4",
+    "stage_id": "a_balanca",
+    "role": "common",
+    "family": "shade",
+    "max_hp": 78,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "shade",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_balanca_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 0.99,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 18
+    },
+    "codex": "Forma de prova de AUTORRESPONSABILIDADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_balanca_presence_04.glb"
+  },
+  {
+    "id": "a_balanca_elite",
+    "display_name": "Autorresponsabilidade · Autoridade",
+    "stage_id": "a_balanca",
+    "role": "elite",
+    "family": "shade",
+    "max_hp": 200,
+    "move_speed": 1.85,
+    "visual_profile": {
+      "silhouette": "shade",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_balanca_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 24
+    },
+    "codex": "Autoridade intermediária de AUTORRESPONSABILIDADE; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_balanca_elite.glb"
+  },
+  {
+    "id": "a_vontade_presence_01",
+    "display_name": "Verdadeira Vontade · Presença 1",
+    "stage_id": "a_vontade",
+    "role": "common",
+    "family": "shade",
+    "max_hp": 72,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "shade",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_vontade_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.85,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 13
+    },
+    "codex": "Forma de prova de VERDADEIRA VONTADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_vontade_presence_01.glb"
+  },
+  {
+    "id": "a_vontade_presence_02",
+    "display_name": "Verdadeira Vontade · Presença 2",
+    "stage_id": "a_vontade",
+    "role": "common",
+    "family": "chain",
+    "max_hp": 76,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "chain",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_vontade_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.91,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 15
+    },
+    "codex": "Forma de prova de VERDADEIRA VONTADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_vontade_presence_02.glb"
+  },
+  {
+    "id": "a_vontade_presence_03",
+    "display_name": "Verdadeira Vontade · Presença 3",
+    "stage_id": "a_vontade",
+    "role": "common",
+    "family": "beast",
+    "max_hp": 80,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "beast",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_vontade_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 0.95,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 17
+    },
+    "codex": "Forma de prova de VERDADEIRA VONTADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_vontade_presence_03.glb"
+  },
+  {
+    "id": "a_vontade_presence_04",
+    "display_name": "Verdadeira Vontade · Presença 4",
+    "stage_id": "a_vontade",
+    "role": "common",
+    "family": "winged",
+    "max_hp": 84,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_vontade_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.0,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 19
+    },
+    "codex": "Forma de prova de VERDADEIRA VONTADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_vontade_presence_04.glb"
+  },
+  {
+    "id": "a_vontade_elite",
+    "display_name": "Verdadeira Vontade · Autoridade",
+    "stage_id": "a_vontade",
+    "role": "elite",
+    "family": "chorus",
+    "max_hp": 215,
+    "move_speed": 1.9700000000000002,
+    "visual_profile": {
+      "silhouette": "chorus",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_vontade_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 25
+    },
+    "codex": "Autoridade intermediária de VERDADEIRA VONTADE; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_vontade_elite.glb"
+  },
+  {
+    "id": "o_carater_presence_01",
+    "display_name": "Caráter · Presença 1",
+    "stage_id": "o_carater",
+    "role": "common",
+    "family": "winged",
+    "max_hp": 78,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_carater_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.87,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 14
+    },
+    "codex": "Forma de prova de CARÁTER. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_carater_presence_01.glb"
+  },
+  {
+    "id": "o_carater_presence_02",
+    "display_name": "Caráter · Presença 2",
+    "stage_id": "o_carater",
+    "role": "common",
+    "family": "construct",
+    "max_hp": 82,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "construct",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_carater_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.92,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 16
+    },
+    "codex": "Forma de prova de CARÁTER. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_carater_presence_02.glb"
+  },
+  {
+    "id": "o_carater_presence_03",
+    "display_name": "Caráter · Presença 3",
+    "stage_id": "o_carater",
+    "role": "common",
+    "family": "chorus",
+    "max_hp": 86,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "chorus",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_carater_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 0.97,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 18
+    },
+    "codex": "Forma de prova de CARÁTER. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_carater_presence_03.glb"
+  },
+  {
+    "id": "o_carater_presence_04",
+    "display_name": "Caráter · Presença 4",
+    "stage_id": "o_carater",
+    "role": "common",
+    "family": "serpent",
+    "max_hp": 90,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_carater_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.02,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 20
+    },
+    "codex": "Forma de prova de CARÁTER. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_carater_presence_04.glb"
+  },
+  {
+    "id": "o_carater_elite",
+    "display_name": "Caráter · Autoridade",
+    "stage_id": "o_carater",
+    "role": "elite",
+    "family": "eye",
+    "max_hp": 230,
+    "move_speed": 2.09,
+    "visual_profile": {
+      "silhouette": "eye",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "o_carater_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 26
+    },
+    "codex": "Autoridade intermediária de CARÁTER; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/o_carater_elite.glb"
+  },
+  {
+    "id": "a_disciplina_presence_01",
+    "display_name": "Disciplina · Presença 1",
+    "stage_id": "a_disciplina",
+    "role": "common",
+    "family": "serpent",
+    "max_hp": 84,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_disciplina_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.89,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 15
+    },
+    "codex": "Forma de prova de DISCIPLINA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_disciplina_presence_01.glb"
+  },
+  {
+    "id": "a_disciplina_presence_02",
+    "display_name": "Disciplina · Presença 2",
+    "stage_id": "a_disciplina",
+    "role": "common",
+    "family": "fire",
+    "max_hp": 88,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "fire",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_disciplina_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.94,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 17
+    },
+    "codex": "Forma de prova de DISCIPLINA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_disciplina_presence_02.glb"
+  },
+  {
+    "id": "a_disciplina_presence_03",
+    "display_name": "Disciplina · Presença 3",
+    "stage_id": "a_disciplina",
+    "role": "common",
+    "family": "walker",
+    "max_hp": 92,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "walker",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_disciplina_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 0.98,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 19
+    },
+    "codex": "Forma de prova de DISCIPLINA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_disciplina_presence_03.glb"
+  },
+  {
+    "id": "a_disciplina_presence_04",
+    "display_name": "Disciplina · Presença 4",
+    "stage_id": "a_disciplina",
+    "role": "common",
+    "family": "crawler",
+    "max_hp": 96,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "crawler",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_disciplina_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.04,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 21
+    },
+    "codex": "Forma de prova de DISCIPLINA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_disciplina_presence_04.glb"
+  },
+  {
+    "id": "a_disciplina_elite",
+    "display_name": "Disciplina · Autoridade",
+    "stage_id": "a_disciplina",
+    "role": "elite",
+    "family": "winged",
+    "max_hp": 245,
+    "move_speed": 2.21,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_disciplina_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 27
+    },
+    "codex": "Autoridade intermediária de DISCIPLINA; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_disciplina_elite.glb"
+  },
+  {
+    "id": "a_clareza_presence_01",
+    "display_name": "Clareza · Presença 1",
+    "stage_id": "a_clareza",
+    "role": "common",
+    "family": "crawler",
+    "max_hp": 90,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "crawler",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_clareza_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.9,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 16
+    },
+    "codex": "Forma de prova de CLAREZA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_clareza_presence_01.glb"
+  },
+  {
+    "id": "a_clareza_presence_02",
+    "display_name": "Clareza · Presença 2",
+    "stage_id": "a_clareza",
+    "role": "common",
+    "family": "eye",
+    "max_hp": 94,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "eye",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_clareza_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.95,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 18
+    },
+    "codex": "Forma de prova de CLAREZA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_clareza_presence_02.glb"
+  },
+  {
+    "id": "a_clareza_presence_03",
+    "display_name": "Clareza · Presença 3",
+    "stage_id": "a_clareza",
+    "role": "common",
+    "family": "ritualist",
+    "max_hp": 98,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "ritualist",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_clareza_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 1.0,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 20
+    },
+    "codex": "Forma de prova de CLAREZA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_clareza_presence_03.glb"
+  },
+  {
+    "id": "a_clareza_presence_04",
+    "display_name": "Clareza · Presença 4",
+    "stage_id": "a_clareza",
+    "role": "common",
+    "family": "shade",
+    "max_hp": 102,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "shade",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_clareza_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.05,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 22
+    },
+    "codex": "Forma de prova de CLAREZA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_clareza_presence_04.glb"
+  },
+  {
+    "id": "a_clareza_elite",
+    "display_name": "Clareza · Autoridade",
+    "stage_id": "a_clareza",
+    "role": "elite",
+    "family": "walker",
+    "max_hp": 260,
+    "move_speed": 1.85,
+    "visual_profile": {
+      "silhouette": "walker",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_clareza_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 28
+    },
+    "codex": "Autoridade intermediária de CLAREZA; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_clareza_elite.glb"
+  },
+  {
+    "id": "a_transmutacao_presence_01",
+    "display_name": "Transmutação · Presença 1",
+    "stage_id": "a_transmutacao",
+    "role": "common",
+    "family": "shade",
+    "max_hp": 96,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "shade",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_transmutacao_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.92,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 17
+    },
+    "codex": "Forma de prova de TRANSMUTAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_transmutacao_presence_01.glb"
+  },
+  {
+    "id": "a_transmutacao_presence_02",
+    "display_name": "Transmutação · Presença 2",
+    "stage_id": "a_transmutacao",
+    "role": "common",
+    "family": "chain",
+    "max_hp": 100,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "chain",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_transmutacao_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.97,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 19
+    },
+    "codex": "Forma de prova de TRANSMUTAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_transmutacao_presence_02.glb"
+  },
+  {
+    "id": "a_transmutacao_presence_03",
+    "display_name": "Transmutação · Presença 3",
+    "stage_id": "a_transmutacao",
+    "role": "common",
+    "family": "beast",
+    "max_hp": 104,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "beast",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_transmutacao_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 1.02,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 21
+    },
+    "codex": "Forma de prova de TRANSMUTAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_transmutacao_presence_03.glb"
+  },
+  {
+    "id": "a_transmutacao_presence_04",
+    "display_name": "Transmutação · Presença 4",
+    "stage_id": "a_transmutacao",
+    "role": "common",
+    "family": "winged",
+    "max_hp": 108,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_transmutacao_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.06,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 23
+    },
+    "codex": "Forma de prova de TRANSMUTAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_transmutacao_presence_04.glb"
+  },
+  {
+    "id": "a_transmutacao_elite",
+    "display_name": "Transmutação · Autoridade",
+    "stage_id": "a_transmutacao",
+    "role": "elite",
+    "family": "chain",
+    "max_hp": 275,
+    "move_speed": 1.9700000000000002,
+    "visual_profile": {
+      "silhouette": "chain",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_transmutacao_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 29
+    },
+    "codex": "Autoridade intermediária de TRANSMUTAÇÃO; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_transmutacao_elite.glb"
+  },
+  {
+    "id": "o_corpo_presence_01",
+    "display_name": "Corpo E Energia · Presença 1",
+    "stage_id": "o_corpo",
+    "role": "common",
+    "family": "winged",
+    "max_hp": 102,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_corpo_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.93,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 18
+    },
+    "codex": "Forma de prova de CORPO E ENERGIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_corpo_presence_01.glb"
+  },
+  {
+    "id": "o_corpo_presence_02",
+    "display_name": "Corpo E Energia · Presença 2",
+    "stage_id": "o_corpo",
+    "role": "common",
+    "family": "construct",
+    "max_hp": 106,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "construct",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_corpo_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 0.98,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 20
+    },
+    "codex": "Forma de prova de CORPO E ENERGIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_corpo_presence_02.glb"
+  },
+  {
+    "id": "o_corpo_presence_03",
+    "display_name": "Corpo E Energia · Presença 3",
+    "stage_id": "o_corpo",
+    "role": "common",
+    "family": "chorus",
+    "max_hp": 110,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "chorus",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_corpo_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 1.03,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 22
+    },
+    "codex": "Forma de prova de CORPO E ENERGIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_corpo_presence_03.glb"
+  },
+  {
+    "id": "o_corpo_presence_04",
+    "display_name": "Corpo E Energia · Presença 4",
+    "stage_id": "o_corpo",
+    "role": "common",
+    "family": "serpent",
+    "max_hp": 114,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_corpo_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.08,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 24
+    },
+    "codex": "Forma de prova de CORPO E ENERGIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_corpo_presence_04.glb"
+  },
+  {
+    "id": "o_corpo_elite",
+    "display_name": "Corpo E Energia · Autoridade",
+    "stage_id": "o_corpo",
+    "role": "elite",
+    "family": "serpent",
+    "max_hp": 290,
+    "move_speed": 2.09,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "o_corpo_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 30
+    },
+    "codex": "Autoridade intermediária de CORPO E ENERGIA; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/o_corpo_elite.glb"
+  },
+  {
+    "id": "a_obra_presence_01",
+    "display_name": "Obra · Presença 1",
+    "stage_id": "a_obra",
+    "role": "common",
+    "family": "serpent",
+    "max_hp": 108,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_obra_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.95,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 19
+    },
+    "codex": "Forma de prova de OBRA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_obra_presence_01.glb"
+  },
+  {
+    "id": "a_obra_presence_02",
+    "display_name": "Obra · Presença 2",
+    "stage_id": "a_obra",
+    "role": "common",
+    "family": "fire",
+    "max_hp": 112,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "fire",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_obra_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 1.0,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 21
+    },
+    "codex": "Forma de prova de OBRA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_obra_presence_02.glb"
+  },
+  {
+    "id": "a_obra_presence_03",
+    "display_name": "Obra · Presença 3",
+    "stage_id": "a_obra",
+    "role": "common",
+    "family": "walker",
+    "max_hp": 116,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "walker",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_obra_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 1.05,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 23
+    },
+    "codex": "Forma de prova de OBRA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_obra_presence_03.glb"
+  },
+  {
+    "id": "a_obra_presence_04",
+    "display_name": "Obra · Presença 4",
+    "stage_id": "a_obra",
+    "role": "common",
+    "family": "crawler",
+    "max_hp": 120,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "crawler",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_obra_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.1,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 25
+    },
+    "codex": "Forma de prova de OBRA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_obra_presence_04.glb"
+  },
+  {
+    "id": "a_obra_elite",
+    "display_name": "Obra · Autoridade",
+    "stage_id": "a_obra",
+    "role": "elite",
+    "family": "ritualist",
+    "max_hp": 305,
+    "move_speed": 2.21,
+    "visual_profile": {
+      "silhouette": "ritualist",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_obra_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 31
+    },
+    "codex": "Autoridade intermediária de OBRA; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_obra_elite.glb"
+  },
+  {
+    "id": "a_fortuna_presence_01",
+    "display_name": "Fortuna · Presença 1",
+    "stage_id": "a_fortuna",
+    "role": "common",
+    "family": "crawler",
+    "max_hp": 114,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "crawler",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_fortuna_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.96,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 20
+    },
+    "codex": "Forma de prova de FORTUNA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_fortuna_presence_01.glb"
+  },
+  {
+    "id": "a_fortuna_presence_02",
+    "display_name": "Fortuna · Presença 2",
+    "stage_id": "a_fortuna",
+    "role": "common",
+    "family": "eye",
+    "max_hp": 118,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "eye",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_fortuna_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 1.01,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 22
+    },
+    "codex": "Forma de prova de FORTUNA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_fortuna_presence_02.glb"
+  },
+  {
+    "id": "a_fortuna_presence_03",
+    "display_name": "Fortuna · Presença 3",
+    "stage_id": "a_fortuna",
+    "role": "common",
+    "family": "ritualist",
+    "max_hp": 122,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "ritualist",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_fortuna_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 1.06,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 24
+    },
+    "codex": "Forma de prova de FORTUNA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_fortuna_presence_03.glb"
+  },
+  {
+    "id": "a_fortuna_presence_04",
+    "display_name": "Fortuna · Presença 4",
+    "stage_id": "a_fortuna",
+    "role": "common",
+    "family": "shade",
+    "max_hp": 126,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "shade",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_fortuna_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.11,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 26
+    },
+    "codex": "Forma de prova de FORTUNA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_fortuna_presence_04.glb"
+  },
+  {
+    "id": "a_fortuna_elite",
+    "display_name": "Fortuna · Autoridade",
+    "stage_id": "a_fortuna",
+    "role": "elite",
+    "family": "construct",
+    "max_hp": 320,
+    "move_speed": 1.85,
+    "visual_profile": {
+      "silhouette": "construct",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_fortuna_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 32
+    },
+    "codex": "Autoridade intermediária de FORTUNA; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_fortuna_elite.glb"
+  },
+  {
+    "id": "a_influencia_presence_01",
+    "display_name": "Influência · Presença 1",
+    "stage_id": "a_influencia",
+    "role": "common",
+    "family": "shade",
+    "max_hp": 120,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "shade",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_influencia_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.98,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 21
+    },
+    "codex": "Forma de prova de INFLUÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_influencia_presence_01.glb"
+  },
+  {
+    "id": "a_influencia_presence_02",
+    "display_name": "Influência · Presença 2",
+    "stage_id": "a_influencia",
+    "role": "common",
+    "family": "chain",
+    "max_hp": 124,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "chain",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_influencia_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 1.03,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 23
+    },
+    "codex": "Forma de prova de INFLUÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_influencia_presence_02.glb"
+  },
+  {
+    "id": "a_influencia_presence_03",
+    "display_name": "Influência · Presença 3",
+    "stage_id": "a_influencia",
+    "role": "common",
+    "family": "beast",
+    "max_hp": 128,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "beast",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_influencia_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 1.08,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 25
+    },
+    "codex": "Forma de prova de INFLUÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_influencia_presence_03.glb"
+  },
+  {
+    "id": "a_influencia_presence_04",
+    "display_name": "Influência · Presença 4",
+    "stage_id": "a_influencia",
+    "role": "common",
+    "family": "winged",
+    "max_hp": 132,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "a_influencia_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.12,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 27
+    },
+    "codex": "Forma de prova de INFLUÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/a_influencia_presence_04.glb"
+  },
+  {
+    "id": "a_influencia_elite",
+    "display_name": "Influência · Autoridade",
+    "stage_id": "a_influencia",
+    "role": "elite",
+    "family": "crawler",
+    "max_hp": 335,
+    "move_speed": 1.9700000000000002,
+    "visual_profile": {
+      "silhouette": "crawler",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "a_influencia_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 33
+    },
+    "codex": "Autoridade intermediária de INFLUÊNCIA; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/a_influencia_elite.glb"
+  },
+  {
+    "id": "o_legado_presence_01",
+    "display_name": "Legado · Presença 1",
+    "stage_id": "o_legado",
+    "role": "common",
+    "family": "winged",
+    "max_hp": 126,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "winged",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_legado_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 0.99,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 22
+    },
+    "codex": "Forma de prova de LEGADO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_legado_presence_01.glb"
+  },
+  {
+    "id": "o_legado_presence_02",
+    "display_name": "Legado · Presença 2",
+    "stage_id": "o_legado",
+    "role": "common",
+    "family": "construct",
+    "max_hp": 130,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "construct",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_legado_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 1.04,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 24
+    },
+    "codex": "Forma de prova de LEGADO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_legado_presence_02.glb"
+  },
+  {
+    "id": "o_legado_presence_03",
+    "display_name": "Legado · Presença 3",
+    "stage_id": "o_legado",
+    "role": "common",
+    "family": "chorus",
+    "max_hp": 134,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "chorus",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_legado_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 1.09,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 26
+    },
+    "codex": "Forma de prova de LEGADO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_legado_presence_03.glb"
+  },
+  {
+    "id": "o_legado_presence_04",
+    "display_name": "Legado · Presença 4",
+    "stage_id": "o_legado",
+    "role": "common",
+    "family": "serpent",
+    "max_hp": 138,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "o_legado_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.14,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 28
+    },
+    "codex": "Forma de prova de LEGADO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/o_legado_presence_04.glb"
+  },
+  {
+    "id": "o_legado_elite",
+    "display_name": "Legado · Autoridade",
+    "stage_id": "o_legado",
+    "role": "elite",
+    "family": "beast",
+    "max_hp": 350,
+    "move_speed": 2.09,
+    "visual_profile": {
+      "silhouette": "beast",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "o_legado_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 34
+    },
+    "codex": "Autoridade intermediária de LEGADO; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/o_legado_elite.glb"
+  },
+  {
+    "id": "initiation_chamber_presence_01",
+    "display_name": "Iniciação · Presença 1",
+    "stage_id": "initiation_chamber",
+    "role": "common",
+    "family": "serpent",
+    "max_hp": 132,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "ochre",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "initiation_chamber_presence_01_attack",
+      "display_name": "Investida Telegrafada",
+      "attack_kind": "movement",
+      "pattern": "dash",
+      "windup": 1.0,
+      "telegraph_time": 0.45,
+      "active": 0.28,
+      "recovery": 0.72,
+      "damage": 23
+    },
+    "codex": "Forma de prova de INICIAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/initiation_chamber_presence_01.glb"
+  },
+  {
+    "id": "initiation_chamber_presence_02",
+    "display_name": "Iniciação · Presença 2",
+    "stage_id": "initiation_chamber",
+    "role": "common",
+    "family": "fire",
+    "max_hp": 136,
+    "move_speed": 1.8299999999999998,
+    "visual_profile": {
+      "silhouette": "fire",
+      "accent": "ashen",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "initiation_chamber_presence_02_attack",
+      "display_name": "Orbe de Pressão",
+      "attack_kind": "projectile",
+      "pattern": "line",
+      "windup": 1.05,
+      "telegraph_time": 0.49,
+      "active": 0.32,
+      "recovery": 0.77,
+      "damage": 25
+    },
+    "codex": "Forma de prova de INICIAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/initiation_chamber_presence_02.glb"
+  },
+  {
+    "id": "initiation_chamber_presence_03",
+    "display_name": "Iniciação · Presença 3",
+    "stage_id": "initiation_chamber",
+    "role": "common",
+    "family": "walker",
+    "max_hp": 140,
+    "move_speed": 2.01,
+    "visual_profile": {
+      "silhouette": "walker",
+      "accent": "copper",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "initiation_chamber_presence_03_attack",
+      "display_name": "Corte Angular",
+      "attack_kind": "movement",
+      "pattern": "fan",
+      "windup": 1.1,
+      "telegraph_time": 0.53,
+      "active": 0.36,
+      "recovery": 0.82,
+      "damage": 27
+    },
+    "codex": "Forma de prova de INICIAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/initiation_chamber_presence_03.glb"
+  },
+  {
+    "id": "initiation_chamber_presence_04",
+    "display_name": "Iniciação · Presença 4",
+    "stage_id": "initiation_chamber",
+    "role": "common",
+    "family": "crawler",
+    "max_hp": 144,
+    "move_speed": 1.65,
+    "visual_profile": {
+      "silhouette": "crawler",
+      "accent": "violet",
+      "emission_cap": 0.32
+    },
+    "attack": {
+      "id": "initiation_chamber_presence_04_attack",
+      "display_name": "Pulso Radial",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.15,
+      "telegraph_time": 0.57,
+      "active": 0.4,
+      "recovery": 0.87,
+      "damage": 29
+    },
+    "codex": "Forma de prova de INICIAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+    },
+    "model_path": "res://art/generated/enemies/initiation_chamber_presence_04.glb"
+  },
+  {
+    "id": "initiation_chamber_elite",
+    "display_name": "Iniciação · Autoridade",
+    "stage_id": "initiation_chamber",
+    "role": "elite",
+    "family": "fire",
+    "max_hp": 365,
+    "move_speed": 2.21,
+    "visual_profile": {
+      "silhouette": "fire",
+      "accent": "old_gold",
+      "emission_cap": 0.38
+    },
+    "attack": {
+      "id": "initiation_chamber_elite_attack",
+      "display_name": "Autoridade em Três Tempos",
+      "attack_kind": "projectile",
+      "pattern": "fan",
+      "windup": 0.7,
+      "telegraph_time": 0.5,
+      "active": 0.5,
+      "recovery": 0.9,
+      "damage": 35
+    },
+    "codex": "Autoridade intermediária de INICIAÇÃO; forma autoral de jogo.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Dramatização de mecânica."
+    },
+    "model_path": "res://art/generated/enemies/initiation_chamber_elite.glb"
+  },
+  {
+    "id": "rare_witness_1",
+    "display_name": "Testemunha do Limite",
+    "stage_id": "global",
+    "role": "rare",
+    "family": "eye",
+    "max_hp": 180,
+    "move_speed": 1.6,
+    "visual_profile": {
+      "silhouette": "eye",
+      "accent": "cold_gold",
+      "emission_cap": 0.3
+    },
+    "attack": {
+      "id": "rare_witness_1_attack",
+      "display_name": "Ruptura Rara",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.0,
+      "telegraph_time": 0.65,
+      "active": 0.55,
+      "recovery": 1.1,
+      "damage": 28
+    },
+    "codex": "Presença rara da Jornada.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral."
+    },
+    "model_path": "res://art/generated/enemies/rare_witness_1.glb"
+  },
+  {
+    "id": "rare_witness_2",
+    "display_name": "Serpente do Intervalo",
+    "stage_id": "global",
+    "role": "rare",
+    "family": "serpent",
+    "max_hp": 220,
+    "move_speed": 1.6,
+    "visual_profile": {
+      "silhouette": "serpent",
+      "accent": "cold_gold",
+      "emission_cap": 0.3
+    },
+    "attack": {
+      "id": "rare_witness_2_attack",
+      "display_name": "Ruptura Rara",
+      "attack_kind": "projectile",
+      "pattern": "radial",
+      "windup": 1.0,
+      "telegraph_time": 0.65,
+      "active": 0.55,
+      "recovery": 1.1,
+      "damage": 32
+    },
+    "codex": "Presença rara da Jornada.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Gameplay autoral."
+    },
+    "model_path": "res://art/generated/enemies/rare_witness_2.glb"
+  }
+]

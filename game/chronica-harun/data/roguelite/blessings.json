@@ -1,0 +1,284 @@
+[
+  {
+    "id": "sophia_light",
+    "name": "Luz de Sophia",
+    "effect_id": "second_chance_focus",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "effect_id": "second_chance_focus"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sophia_light",
+    "sfx_hook": "sfx.sophia_light",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "blessings",
+      "summary": "Luz de Sophia"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "lucifer_glow",
+    "name": "Fulgor de Lúcifer",
+    "effect_id": "damage_reveal",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "effect_id": "damage_reveal"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.lucifer_glow",
+    "sfx_hook": "sfx.lucifer_glow",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "blessings",
+      "summary": "Fulgor de Lúcifer"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "horus_eye",
+    "name": "Olho de Hórus",
+    "effect_id": "precision",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "effect_id": "precision"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.horus_eye",
+    "sfx_hook": "sfx.horus_eye",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "blessings",
+      "summary": "Olho de Hórus"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "thoth_word",
+    "name": "Palavra de Thoth",
+    "effect_id": "arcana_echo",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "effect_id": "arcana_echo"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.thoth_word",
+    "sfx_hook": "sfx.thoth_word",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "blessings",
+      "summary": "Palavra de Thoth"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "belial_order",
+    "name": "Ordem de Belial",
+    "effect_id": "armor",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "effect_id": "armor"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.belial_order",
+    "sfx_hook": "sfx.belial_order",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "blessings",
+      "summary": "Ordem de Belial"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "paimon_crown",
+    "name": "Coroa de Paimon",
+    "effect_id": "command",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "effect_id": "command"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.paimon_crown",
+    "sfx_hook": "sfx.paimon_crown",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "blessings",
+      "summary": "Coroa de Paimon"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

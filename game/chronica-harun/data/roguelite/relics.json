@@ -1,0 +1,425 @@
+[
+  {
+    "id": "mirror_sophia",
+    "name": "Espelho de Sophia",
+    "effect_id": "reflect_first_projectile",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "reflect_first_projectile"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.mirror_sophia",
+    "sfx_hook": "sfx.mirror_sophia",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Espelho de Sophia"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "pleroma_fragment",
+    "name": "Fragmento do Pleroma",
+    "effect_id": "third_arcana_free",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "third_arcana_free"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.pleroma_fragment",
+    "sfx_hook": "sfx.pleroma_fragment",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Fragmento do Pleroma"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "blind_eye",
+    "name": "Olho do Cego",
+    "effect_id": "secret_reveal_hp_hidden",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "secret_reveal_hp_hidden"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.blind_eye",
+    "sfx_hook": "sfx.blind_eye",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Olho do Cego"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "broken_crown",
+    "name": "Coroa Quebrada",
+    "effect_id": "elite_risk_reward",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "elite_risk_reward"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.broken_crown",
+    "sfx_hook": "sfx.broken_crown",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Coroa Quebrada"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "phosphoros_ash",
+    "name": "Cinza de Phosphoros",
+    "effect_id": "one_hp_black_flame",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "one_hp_black_flame"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.phosphoros_ash",
+    "sfx_hook": "sfx.phosphoros_ash",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Cinza de Phosphoros"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "saturn_disk",
+    "name": "Disco de Saturno",
+    "effect_id": "slow_damage_reduction",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "slow_damage_reduction"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.saturn_disk",
+    "sfx_hook": "sfx.saturn_disk",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Disco de Saturno"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "belial_seal",
+    "name": "Selo de Belial",
+    "effect_id": "knockback_immunity_melee",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "knockback_immunity_melee"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.belial_seal",
+    "sfx_hook": "sfx.belial_seal",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Selo de Belial"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "lilith_veil",
+    "name": "Véu de Lilith",
+    "effect_id": "slower_detection_pact_focus",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "slower_detection_pact_focus"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.lilith_veil",
+    "sfx_hook": "sfx.lilith_veil",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Véu de Lilith"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "thoth_feather",
+    "name": "Pena de Thoth",
+    "effect_id": "first_arcana_echo",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "relic_rule",
+      "effect_id": "first_arcana_echo"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.thoth_feather",
+    "sfx_hook": "sfx.thoth_feather",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "relics",
+      "summary": "Pena de Thoth"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

@@ -1,0 +1,1178 @@
+[
+  {
+    "id": "ph_01_sulphur_sol",
+    "principle": "Sulphur",
+    "planet": "Sol",
+    "effect_id": "pharmakon_01",
+    "benefit": "damage",
+    "side_effect": "none",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 01 Sulphur Sol",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_01",
+      "benefit": "damage",
+      "side_effect": "none",
+      "magnitude": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_01_sulphur_sol",
+    "sfx_hook": "sfx.ph_01_sulphur_sol",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 01 Sulphur Sol"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_02_sulphur_lua",
+    "principle": "Sulphur",
+    "planet": "Lua",
+    "effect_id": "pharmakon_02",
+    "benefit": "focus",
+    "side_effect": "fragility",
+    "magnitude": 11,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 02 Sulphur Lua",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_02",
+      "benefit": "focus",
+      "side_effect": "fragility",
+      "magnitude": 11
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_02_sulphur_lua",
+    "sfx_hook": "sfx.ph_02_sulphur_lua",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 02 Sulphur Lua"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_03_sulphur_mercurio",
+    "principle": "Sulphur",
+    "planet": "Mercúrio",
+    "effect_id": "pharmakon_03",
+    "benefit": "speed",
+    "side_effect": "focus_drain",
+    "magnitude": 14,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 03 Sulphur Mercurio",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_03",
+      "benefit": "speed",
+      "side_effect": "focus_drain",
+      "magnitude": 14
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_03_sulphur_mercurio",
+    "sfx_hook": "sfx.ph_03_sulphur_mercurio",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 03 Sulphur Mercurio"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_04_sulphur_venus",
+    "principle": "Sulphur",
+    "planet": "Vênus",
+    "effect_id": "pharmakon_04",
+    "benefit": "heal",
+    "side_effect": "slow",
+    "magnitude": 17,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 04 Sulphur Venus",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_04",
+      "benefit": "heal",
+      "side_effect": "slow",
+      "magnitude": 17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_04_sulphur_venus",
+    "sfx_hook": "sfx.ph_04_sulphur_venus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 04 Sulphur Venus"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_05_sulphur_marte",
+    "principle": "Sulphur",
+    "planet": "Marte",
+    "effect_id": "pharmakon_05",
+    "benefit": "burst",
+    "side_effect": "hp_cost",
+    "magnitude": 20,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 05 Sulphur Marte",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_05",
+      "benefit": "burst",
+      "side_effect": "hp_cost",
+      "magnitude": 20
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_05_sulphur_marte",
+    "sfx_hook": "sfx.ph_05_sulphur_marte",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 05 Sulphur Marte"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_06_sulphur_jupiter",
+    "principle": "Sulphur",
+    "planet": "Júpiter",
+    "effect_id": "pharmakon_06",
+    "benefit": "essence",
+    "side_effect": "curse_chance",
+    "magnitude": 23,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 06 Sulphur Jupiter",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_06",
+      "benefit": "essence",
+      "side_effect": "curse_chance",
+      "magnitude": 23
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_06_sulphur_jupiter",
+    "sfx_hook": "sfx.ph_06_sulphur_jupiter",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 06 Sulphur Jupiter"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_07_sulphur_saturno",
+    "principle": "Sulphur",
+    "planet": "Saturno",
+    "effect_id": "pharmakon_07",
+    "benefit": "armor",
+    "side_effect": "locked_slot",
+    "magnitude": 26,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 07 Sulphur Saturno",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_07",
+      "benefit": "armor",
+      "side_effect": "locked_slot",
+      "magnitude": 26
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_07_sulphur_saturno",
+    "sfx_hook": "sfx.ph_07_sulphur_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 07 Sulphur Saturno"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_08_mercurius_sol",
+    "principle": "Mercurius",
+    "planet": "Sol",
+    "effect_id": "pharmakon_08",
+    "benefit": "damage",
+    "side_effect": "focus_drain",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 08 Mercurius Sol",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_08",
+      "benefit": "damage",
+      "side_effect": "focus_drain",
+      "magnitude": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_08_mercurius_sol",
+    "sfx_hook": "sfx.ph_08_mercurius_sol",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 08 Mercurius Sol"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_09_mercurius_lua",
+    "principle": "Mercurius",
+    "planet": "Lua",
+    "effect_id": "pharmakon_09",
+    "benefit": "focus",
+    "side_effect": "slow",
+    "magnitude": 11,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 09 Mercurius Lua",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_09",
+      "benefit": "focus",
+      "side_effect": "slow",
+      "magnitude": 11
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_09_mercurius_lua",
+    "sfx_hook": "sfx.ph_09_mercurius_lua",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 09 Mercurius Lua"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_10_mercurius_mercurio",
+    "principle": "Mercurius",
+    "planet": "Mercúrio",
+    "effect_id": "pharmakon_10",
+    "benefit": "speed",
+    "side_effect": "hp_cost",
+    "magnitude": 14,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 10 Mercurius Mercurio",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_10",
+      "benefit": "speed",
+      "side_effect": "hp_cost",
+      "magnitude": 14
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_10_mercurius_mercurio",
+    "sfx_hook": "sfx.ph_10_mercurius_mercurio",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 10 Mercurius Mercurio"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_11_mercurius_venus",
+    "principle": "Mercurius",
+    "planet": "Vênus",
+    "effect_id": "pharmakon_11",
+    "benefit": "heal",
+    "side_effect": "curse_chance",
+    "magnitude": 17,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 11 Mercurius Venus",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_11",
+      "benefit": "heal",
+      "side_effect": "curse_chance",
+      "magnitude": 17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_11_mercurius_venus",
+    "sfx_hook": "sfx.ph_11_mercurius_venus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 11 Mercurius Venus"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_12_mercurius_marte",
+    "principle": "Mercurius",
+    "planet": "Marte",
+    "effect_id": "pharmakon_12",
+    "benefit": "burst",
+    "side_effect": "locked_slot",
+    "magnitude": 20,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 12 Mercurius Marte",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_12",
+      "benefit": "burst",
+      "side_effect": "locked_slot",
+      "magnitude": 20
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_12_mercurius_marte",
+    "sfx_hook": "sfx.ph_12_mercurius_marte",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 12 Mercurius Marte"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_13_mercurius_jupiter",
+    "principle": "Mercurius",
+    "planet": "Júpiter",
+    "effect_id": "pharmakon_13",
+    "benefit": "essence",
+    "side_effect": "none",
+    "magnitude": 23,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 13 Mercurius Jupiter",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_13",
+      "benefit": "essence",
+      "side_effect": "none",
+      "magnitude": 23
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_13_mercurius_jupiter",
+    "sfx_hook": "sfx.ph_13_mercurius_jupiter",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 13 Mercurius Jupiter"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_14_mercurius_saturno",
+    "principle": "Mercurius",
+    "planet": "Saturno",
+    "effect_id": "pharmakon_14",
+    "benefit": "armor",
+    "side_effect": "fragility",
+    "magnitude": 26,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 14 Mercurius Saturno",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_14",
+      "benefit": "armor",
+      "side_effect": "fragility",
+      "magnitude": 26
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_14_mercurius_saturno",
+    "sfx_hook": "sfx.ph_14_mercurius_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 14 Mercurius Saturno"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_15_sal_sol",
+    "principle": "Sal",
+    "planet": "Sol",
+    "effect_id": "pharmakon_15",
+    "benefit": "damage",
+    "side_effect": "hp_cost",
+    "magnitude": 8,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 15 Sal Sol",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_15",
+      "benefit": "damage",
+      "side_effect": "hp_cost",
+      "magnitude": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_15_sal_sol",
+    "sfx_hook": "sfx.ph_15_sal_sol",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 15 Sal Sol"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_16_sal_lua",
+    "principle": "Sal",
+    "planet": "Lua",
+    "effect_id": "pharmakon_16",
+    "benefit": "focus",
+    "side_effect": "curse_chance",
+    "magnitude": 11,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 16 Sal Lua",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_16",
+      "benefit": "focus",
+      "side_effect": "curse_chance",
+      "magnitude": 11
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_16_sal_lua",
+    "sfx_hook": "sfx.ph_16_sal_lua",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 16 Sal Lua"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_17_sal_mercurio",
+    "principle": "Sal",
+    "planet": "Mercúrio",
+    "effect_id": "pharmakon_17",
+    "benefit": "speed",
+    "side_effect": "locked_slot",
+    "magnitude": 14,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 17 Sal Mercurio",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_17",
+      "benefit": "speed",
+      "side_effect": "locked_slot",
+      "magnitude": 14
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_17_sal_mercurio",
+    "sfx_hook": "sfx.ph_17_sal_mercurio",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 17 Sal Mercurio"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_18_sal_venus",
+    "principle": "Sal",
+    "planet": "Vênus",
+    "effect_id": "pharmakon_18",
+    "benefit": "heal",
+    "side_effect": "none",
+    "magnitude": 17,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 18 Sal Venus",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_18",
+      "benefit": "heal",
+      "side_effect": "none",
+      "magnitude": 17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_18_sal_venus",
+    "sfx_hook": "sfx.ph_18_sal_venus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 18 Sal Venus"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_19_sal_marte",
+    "principle": "Sal",
+    "planet": "Marte",
+    "effect_id": "pharmakon_19",
+    "benefit": "burst",
+    "side_effect": "fragility",
+    "magnitude": 20,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 19 Sal Marte",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_19",
+      "benefit": "burst",
+      "side_effect": "fragility",
+      "magnitude": 20
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_19_sal_marte",
+    "sfx_hook": "sfx.ph_19_sal_marte",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 19 Sal Marte"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_20_sal_jupiter",
+    "principle": "Sal",
+    "planet": "Júpiter",
+    "effect_id": "pharmakon_20",
+    "benefit": "essence",
+    "side_effect": "focus_drain",
+    "magnitude": 23,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 20 Sal Jupiter",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_20",
+      "benefit": "essence",
+      "side_effect": "focus_drain",
+      "magnitude": 23
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_20_sal_jupiter",
+    "sfx_hook": "sfx.ph_20_sal_jupiter",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 20 Sal Jupiter"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ph_21_sal_saturno",
+    "principle": "Sal",
+    "planet": "Saturno",
+    "effect_id": "pharmakon_21",
+    "benefit": "armor",
+    "side_effect": "slow",
+    "magnitude": 26,
+    "provenance_class": "interpretation",
+    "gameplay_class": "electorum_dramatization",
+    "name": "Ph 21 Sal Saturno",
+    "rarity": "common",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "effect_id": "pharmakon_21",
+      "benefit": "armor",
+      "side_effect": "slow",
+      "magnitude": 26
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ph_21_sal_saturno",
+    "sfx_hook": "sfx.ph_21_sal_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "pharmaka",
+      "summary": "Ph 21 Sal Saturno"
+    },
+    "provenance": {
+      "level": "interpretation",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

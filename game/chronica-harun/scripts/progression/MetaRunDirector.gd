@@ -1,0 +1,74 @@
+extends Node
+class_name MetaRunDirector
+
+signal meta_changed(state: Dictionary)
+
+func set_route(route_id: StringName) -> bool:
+    if ContentRegistry.get_item("routes",route_id).is_empty(): return false
+    GameState.route_state["route"] = String(route_id)
+    GameState.run_build["route"] = String(route_id)
+    _changed(); return true
+
+func add_curse(curse_id: StringName) -> bool:
+    if ContentRegistry.get_item("curses",curse_id).is_empty(): return false
+    var list: Array = GameState.route_state.get("curses",[])
+    if not list.has(String(curse_id)): list.append(String(curse_id))
+    GameState.route_state["curses"] = list; _changed(); return true
+
+func add_blessing(blessing_id: StringName) -> bool:
+    if ContentRegistry.get_item("blessings",blessing_id).is_empty(): return false
+    var list: Array = GameState.route_state.get("blessings",[])
+    if not list.has(String(blessing_id)): list.append(String(blessing_id))
+    GameState.route_state["blessings"] = list; _changed(); return true
+
+func record_completion_mark(mark_id: StringName, character_id: StringName = GameState.selected_character_id) -> void:
+    var key := String(character_id)
+    if not GameState.completion_marks_by_character.has(key): GameState.completion_marks_by_character[key] = {}
+    GameState.completion_marks_by_character[key][String(mark_id)] = true
+    _changed()
+
+func unlock_gauntlet(gauntlet_id: StringName) -> bool:
+    var row := ContentRegistry.get_item("gauntlets",gauntlet_id)
+    if row.is_empty(): return false
+    if not _conditions_met(row.get("unlock_conditions",{})): return false
+    var unlocked: Array = GameState.meta_progression.get("unlocked_gauntlets",[])
+    if not unlocked.has(String(gauntlet_id)): unlocked.append(String(gauntlet_id))
+    GameState.meta_progression["unlocked_gauntlets"] = unlocked
+    _changed(); return true
+
+func apply_floor_modifiers() -> Dictionary:
+    var out := {"enemy_budget_delta":0,"telegraph_mult":1.0,"drop_mult":1.0,"map_hidden":false,"damage_mult":1.0}
+    for curse_id in GameState.route_state.get("curses",[]):
+        match String(curse_id):
+            "scarcity": out.drop_mult *= .7
+            "labyrinth": out.map_hidden = true
+            "hostile_echo": out.enemy_budget_delta += 1
+            "ritual_blindness": out.telegraph_mult *= .9
+    for blessing_id in GameState.route_state.get("blessings",[]):
+        match String(blessing_id):
+            "lucifer_glow": out.damage_mult += .08
+            "horus_eye": out.telegraph_mult *= 1.08
+            "belial_order": out.enemy_budget_delta -= 1
+    var gauntlet := String(GameState.route_state.get("gauntlet",""))
+    if not gauntlet.is_empty():
+        var g := ContentRegistry.get_item("gauntlets",StringName(gauntlet))
+        for modifier in g.get("modifiers",[]):
+            if modifier == "elite_budget_plus_one": out.enemy_budget_delta += 1
+            elif modifier == "no_map": out.map_hidden = true
+            elif modifier == "boss_phase_speed_plus": out.telegraph_mult *= .88
+    return out
+
+func _conditions_met(conditions: Dictionary) -> bool:
+    for key in conditions:
+        var expected = conditions[key]
+        var actual = GameState.meta_progression.get(key,GameState.route_state.get(key,null))
+        if expected is bool:
+            if bool(actual) != expected: return false
+        elif expected is int or expected is float:
+            if actual == null or float(actual) < float(expected): return false
+        else:
+            if String(actual) != String(expected): return false
+    return true
+
+func _changed() -> void:
+    meta_changed.emit(GameState.to_save_data())

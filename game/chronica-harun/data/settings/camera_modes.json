@@ -1,0 +1,23 @@
+{
+  "default": "first_person",
+  "modes": {
+    "first_person": {
+      "shows_player_body": false,
+      "distance": 0.0,
+      "combat_aim_source": "world_camera"
+    },
+    "over_shoulder": {
+      "shows_player_body": true,
+      "distance": 3.2,
+      "height": 1.45,
+      "side_offset": 0.55,
+      "combat_aim_source": "world_camera"
+    }
+  },
+  "rules": {
+    "enemies_never_parented_to_camera": true,
+    "viewmodel_only_in_first_person": true,
+    "switch_allowed_during_gameplay": true,
+    "no_target_lock_camera_snap": true
+  }
+}

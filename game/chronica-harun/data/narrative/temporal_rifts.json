@@ -1,0 +1,151 @@
+[
+  {
+    "id": "rift_cairo_1904",
+    "title": "Cairo · 1904",
+    "mentor_id": "aleister_crowley",
+    "ritual": {
+      "requirements": [
+        "paradox_key",
+        "stage:a_vontade",
+        "focus:30"
+      ]
+    },
+    "mission": {
+      "objectives": [
+        "observar a tensão entre desejo, disciplina e Verdadeira Vontade",
+        "resolver uma prova sem trocar de objetivo"
+      ]
+    },
+    "return_condition": "mission_complete_or_retreat",
+    "save_state": {
+      "persist": true,
+      "scope": "campaign"
+    },
+    "provenance": {
+      "level": "source",
+      "note": "Data/local histórico como contexto; encontros e ações jogáveis são dramatização. Sem reprodução de textos protegidos."
+    }
+  },
+  {
+    "id": "rift_basel_1527",
+    "title": "Basileia · 1527",
+    "mentor_id": "paracelsus",
+    "ritual": {
+      "requirements": [
+        "laboratory_mark",
+        "stage:a_fundacao"
+      ]
+    },
+    "mission": {
+      "objectives": [
+        "coletar três materiais",
+        "formular hipótese antes do teste",
+        "registrar resultado"
+      ]
+    },
+    "return_condition": "experiment_recorded",
+    "save_state": {
+      "persist": true
+    },
+    "provenance": {
+      "level": "source"
+    }
+  },
+  {
+    "id": "rift_paris_1854",
+    "title": "Paris · 1854",
+    "mentor_id": "eliphas_levi",
+    "ritual": {
+      "requirements": [
+        "sigil_fragment",
+        "stage:a_obra"
+      ]
+    },
+    "mission": {
+      "objectives": [
+        "reconstruir um símbolo funcional",
+        "distinguir símbolo de efeito"
+      ]
+    },
+    "return_condition": "symbol_tested",
+    "save_state": {
+      "persist": true
+    },
+    "provenance": {
+      "level": "source"
+    }
+  },
+  {
+    "id": "rift_london_1584",
+    "title": "Londres · 1584",
+    "mentor_id": "giordano_bruno",
+    "ritual": {
+      "requirements": [
+        "memory_shard",
+        "stage:o_carater"
+      ]
+    },
+    "mission": {
+      "objectives": [
+        "atravessar o salão das teses",
+        "testar uma proposição contrária à primeira escolha"
+      ]
+    },
+    "return_condition": "countertest_complete",
+    "save_state": {
+      "persist": true
+    },
+    "provenance": {
+      "level": "source"
+    }
+  },
+  {
+    "id": "rift_aleppo_1585",
+    "title": "Aleppo · c. 1585",
+    "mentor_id": "harun_future",
+    "ritual": {
+      "requirements": [
+        "grimorium_fragment:5",
+        "story:harun_origin"
+      ]
+    },
+    "mission": {
+      "objectives": [
+        "seguir a segunda sombra",
+        "preservar o manuscrito",
+        "não intervir no encontro que ainda deve acontecer"
+      ]
+    },
+    "return_condition": "causal_boundary_preserved",
+    "save_state": {
+      "persist": true
+    },
+    "provenance": {
+      "level": "electorum_dramatization"
+    }
+  },
+  {
+    "id": "rift_archive_future",
+    "title": "Arquivo da Obra · Futuro Indeterminado",
+    "mentor_id": "harun_future",
+    "ritual": {
+      "requirements": [
+        "legacy_mark",
+        "quantum_observation:3"
+      ]
+    },
+    "mission": {
+      "objectives": [
+        "observar três futuros de uma mesma Obra",
+        "retornar com apenas uma decisão, não com certeza"
+      ]
+    },
+    "return_condition": "one_branch_measured",
+    "save_state": {
+      "persist": true
+    },
+    "provenance": {
+      "level": "electorum_dramatization"
+    }
+  }
+]
