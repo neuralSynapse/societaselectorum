@@ -1,0 +1,9 @@
+{
+  "archive":"chronica-runtime-release.tar.gz",
+  "sha256":"7a93c075c8c3df639d329de5ad72cadb55731ffc55b8e3bad052c0b229a36190",
+  "bytes":184816,
+  "chunks":19,
+  "decoded_chunk_size":10000,
+  "source_head":"a558da28caa4f9b0f475e2a7e81a78c15696f415",
+  "excludes":[".git",".godot","build","art/generated","tests","docs"]
+}
