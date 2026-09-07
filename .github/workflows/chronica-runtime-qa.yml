@@ -59,7 +59,20 @@ jobs:
               for p in paths:
                   name = pathlib.PurePosixPath(p).name
                   if name in candidates_by_name:
-                      candidates_by_name[name].append((ref,p))
+                      candidates_by_name[name].append(('ref', ref, p))
+
+          # Also inspect every reachable historical blob. Several v4 chunks were
+          # overwritten or moved while the release handoff was being persisted.
+          # The manifest SHA is the authority; branch-tip path is not.
+          object_lines = subprocess.check_output(['git','rev-list','--objects','--all'], text=True).splitlines()
+          for line in object_lines:
+              parts = line.split(' ', 1)
+              if len(parts) != 2:
+                  continue
+              obj_sha, p = parts
+              name = pathlib.PurePosixPath(p).name
+              if name in candidates_by_name:
+                  candidates_by_name[name].append(('blob', obj_sha, p))
 
           out_dir = pathlib.Path('runtime-qa/restore-chunks')
           out_dir.mkdir(parents=True, exist_ok=True)
@@ -68,32 +81,44 @@ jobs:
           for chunk in manifest['chunks']:
               name = chunk['name']
               expected = chunk['sha256']
+              expected_bytes = int(chunk['decoded_bytes'])
               matched = None
               preferred = [
-                  ('refs/remotes/origin/release/chronica-playable-alpha-v4-2026-09-07', f'handoff/chronica-playable/v4/{name}'),
-                  ('refs/remotes/origin/release/chronica-playable-alpha-v4-2026-09-07', f'handoff/chronica-playable-v4/chunks/{name}'),
+                  ('ref', 'refs/remotes/origin/release/chronica-playable-alpha-v4-2026-09-07', f'handoff/chronica-playable/v4/{name}'),
+                  ('ref', 'refs/remotes/origin/release/chronica-playable-alpha-v4-2026-09-07', f'handoff/chronica-playable-v4/chunks/{name}'),
               ]
               ordered = preferred + candidates_by_name.get(name, [])
               seen = set()
-              for ref, path in ordered:
-                  if (ref,path) in seen:
+              observed = []
+              for kind, locator, path in ordered:
+                  key = (kind, locator, path)
+                  if key in seen:
                       continue
-                  seen.add((ref,path))
+                  seen.add(key)
                   try:
-                      text = subprocess.check_output(['git','show',f'{ref}:{path}'], text=True).strip()
+                      if kind == 'ref':
+                          raw = subprocess.check_output(['git','show',f'{locator}:{path}'])
+                      else:
+                          raw = subprocess.check_output(['git','cat-file','blob',locator])
+                      text = raw.decode('utf-8').strip()
                       data = base64.b64decode(''.join(text.split()), validate=True)
                   except Exception:
                       continue
                   actual = hashlib.sha256(data).hexdigest()
-                  if actual == expected and len(data) == int(chunk['decoded_bytes']):
-                      matched = (ref,path,data)
+                  observed.append({'kind':kind,'locator':locator,'path':path,'sha256':actual,'bytes':len(data)})
+                  if actual == expected and len(data) == expected_bytes:
+                      matched = (kind, locator, path, data)
                       break
               if matched is None:
+                  diagnostic = pathlib.Path(f'runtime-qa/missing-{name}.json')
+                  diagnostic.parent.mkdir(parents=True, exist_ok=True)
+                  diagnostic.write_text(json.dumps({'chunk':chunk,'observed':observed}, indent=2), encoding='utf-8')
+                  print(diagnostic.read_text(encoding='utf-8'))
                   raise SystemExit(f'BLOCKER: no verified copy found for {name} sha256={expected}')
-              ref,path,data = matched
+              kind, locator, path, data = matched
               (out_dir / name.replace('.b64','.bin')).write_bytes(data)
               pieces.append(data)
-              provenance.append({'chunk':name,'ref':ref,'path':path,'sha256':expected,'bytes':len(data)})
+              provenance.append({'chunk':name,'kind':kind,'locator':locator,'path':path,'sha256':expected,'bytes':len(data)})
 
           archive = b''.join(pieces)
           actual_archive = hashlib.sha256(archive).hexdigest()
@@ -187,7 +212,7 @@ jobs:
         run: |
           set +e
           python - <<'PY' 2>&1 | tee "$QA_DIR/logs/static-runtime-audit.txt"
-          import configparser, json, pathlib, re
+          import json, pathlib, re
           root = pathlib.Path('game/chronica-harun')
           project = (root/'project.godot').read_text(encoding='utf-8')
           checks = {}
@@ -197,9 +222,10 @@ jobs:
           for action in ['move_left','move_right','move_forward','move_back','primary_attack']:
               checks[f'input:{action}'] = bool(re.search(rf'(?m)^{re.escape(action)}=', project))
           refs = []
+          resource_pattern = re.compile(r'res://[A-Za-z0-9_./@+\-]+')
           for path in list(root.rglob('*.tscn')) + list(root.rglob('*.gd')):
               text = path.read_text(encoding='utf-8', errors='replace')
-              for ref in re.findall(r'res://[^"\')\]\s]+', text):
+              for ref in resource_pattern.findall(text):
                   rel = ref.removeprefix('res://')
                   refs.append((str(path.relative_to(root)), ref, (root/rel).exists()))
           broken = [r for r in refs if not r[2]]
