@@ -1,0 +1,442 @@
+[
+  {
+    "id": "curse_urgency",
+    "name": "Regime da Urgência",
+    "rarity": "rare",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "modifiers": {
+        "room_timer_pct": -0.18,
+        "reward_rarity": 0.08
+      },
+      "risk_tier": 1
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:curse"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.curse_urgency",
+    "sfx_hook": "sfx.curse_urgency",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Maldições",
+      "summary": "Regime da Urgência: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Dramatização Electorum inspirada nos regimes arcônticos do Liber Yaldabaoth; não apresentada como doutrina antiga"
+    },
+    "tags": [
+      "curse",
+      "curse:urgency"
+    ]
+  },
+  {
+    "id": "curse_visibility",
+    "name": "Regime da Visibilidade",
+    "rarity": "rare",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "modifiers": {
+        "hidden_feedback": true,
+        "elite_reward": 0.12
+      },
+      "risk_tier": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:curse"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.curse_visibility",
+    "sfx_hook": "sfx.curse_visibility",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Maldições",
+      "summary": "Regime da Visibilidade: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Dramatização Electorum inspirada nos regimes arcônticos do Liber Yaldabaoth; não apresentada como doutrina antiga"
+    },
+    "tags": [
+      "curse",
+      "curse:visibility"
+    ]
+  },
+  {
+    "id": "curse_scarcity",
+    "name": "Regime da Escassez",
+    "rarity": "rare",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "modifiers": {
+        "pickup_rate": -0.2,
+        "shop_power": 0.15
+      },
+      "risk_tier": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:curse"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.curse_scarcity",
+    "sfx_hook": "sfx.curse_scarcity",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Maldições",
+      "summary": "Regime da Escassez: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Dramatização Electorum inspirada nos regimes arcônticos do Liber Yaldabaoth; não apresentada como doutrina antiga"
+    },
+    "tags": [
+      "curse",
+      "curse:scarcity"
+    ]
+  },
+  {
+    "id": "curse_purity",
+    "name": "Regime da Pureza",
+    "rarity": "rare",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "modifiers": {
+        "mixed_tags_penalty": 0.12,
+        "mono_tag_bonus": 0.1
+      },
+      "risk_tier": 1
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:curse"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.curse_purity",
+    "sfx_hook": "sfx.curse_purity",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Maldições",
+      "summary": "Regime da Pureza: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Dramatização Electorum inspirada nos regimes arcônticos do Liber Yaldabaoth; não apresentada como doutrina antiga"
+    },
+    "tags": [
+      "curse",
+      "curse:purity"
+    ]
+  },
+  {
+    "id": "curse_hierarchy",
+    "name": "Regime da Hierarquia Total",
+    "rarity": "rare",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "modifiers": {
+        "elite_aura": 0.15,
+        "boss_reward": 0.12
+      },
+      "risk_tier": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:curse"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.curse_hierarchy",
+    "sfx_hook": "sfx.curse_hierarchy",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Maldições",
+      "summary": "Regime da Hierarquia Total: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Dramatização Electorum inspirada nos regimes arcônticos do Liber Yaldabaoth; não apresentada como doutrina antiga"
+    },
+    "tags": [
+      "curse",
+      "curse:hierarchy"
+    ]
+  },
+  {
+    "id": "curse_identity",
+    "name": "Regime da Identidade",
+    "rarity": "rare",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "modifiers": {
+        "pool_lock": 1,
+        "locked_pool_bonus": 0.16
+      },
+      "risk_tier": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:curse"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.curse_identity",
+    "sfx_hook": "sfx.curse_identity",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Maldições",
+      "summary": "Regime da Identidade: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Dramatização Electorum inspirada nos regimes arcônticos do Liber Yaldabaoth; não apresentada como doutrina antiga"
+    },
+    "tags": [
+      "curse",
+      "curse:identity"
+    ]
+  },
+  {
+    "id": "curse_repetition",
+    "name": "Regime da Repetição",
+    "rarity": "rare",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "modifiers": {
+        "repeat_enemy_strength": 0.1,
+        "repeat_reward": 0.08
+      },
+      "risk_tier": 1
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:curse"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.curse_repetition",
+    "sfx_hook": "sfx.curse_repetition",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Maldições",
+      "summary": "Regime da Repetição: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Dramatização Electorum inspirada nos regimes arcônticos do Liber Yaldabaoth; não apresentada como doutrina antiga"
+    },
+    "tags": [
+      "curse",
+      "curse:repetition"
+    ]
+  },
+  {
+    "id": "curse_second_order_blindness",
+    "name": "Cegueira de Segunda Ordem",
+    "rarity": "rare",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "modifiers": {
+        "map_uncertainty": true,
+        "secret_weight": 0.2
+      },
+      "risk_tier": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:curse"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.curse_second_order_blindness",
+    "sfx_hook": "sfx.curse_second_order_blindness",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Maldições",
+      "summary": "Cegueira de Segunda Ordem: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Dramatização Electorum inspirada nos regimes arcônticos do Liber Yaldabaoth; não apresentada como doutrina antiga"
+    },
+    "tags": [
+      "curse",
+      "curse:second_order_blindness"
+    ]
+  }
+]

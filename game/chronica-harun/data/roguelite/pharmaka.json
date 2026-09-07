@@ -1,0 +1,1220 @@
+[
+  {
+    "id": "pharmakon_sulphur_sol",
+    "name": "Sulphur de Sol",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sulphur",
+      "planet": "sol",
+      "benefit": "damage",
+      "magnitude": 0.12,
+      "liability": "self_heat",
+      "unknown_until_use": true,
+      "polarity": "volatile"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:sol"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sulphur_sol",
+    "sfx_hook": "sfx.pharmakon_sulphur_sol",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sulphur de Sol: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:sol",
+      "principle:sulphur"
+    ]
+  },
+  {
+    "id": "pharmakon_sulphur_lua",
+    "name": "Sulphur de Lua",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sulphur",
+      "planet": "lua",
+      "benefit": "focus",
+      "magnitude": 0.145,
+      "liability": "random_swap",
+      "unknown_until_use": true,
+      "polarity": "volatile"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:lua"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sulphur_lua",
+    "sfx_hook": "sfx.pharmakon_sulphur_lua",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sulphur de Lua: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:lua",
+      "principle:sulphur"
+    ]
+  },
+  {
+    "id": "pharmakon_sulphur_mercurio",
+    "name": "Sulphur de Mercúrio",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sulphur",
+      "planet": "mercúrio",
+      "benefit": "speed",
+      "magnitude": 0.17,
+      "liability": "slow_recovery",
+      "unknown_until_use": true,
+      "polarity": "volatile"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:mercurio"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sulphur_mercurio",
+    "sfx_hook": "sfx.pharmakon_sulphur_mercurio",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sulphur de Mercúrio: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:mercurio",
+      "principle:sulphur"
+    ]
+  },
+  {
+    "id": "pharmakon_sulphur_venus",
+    "name": "Sulphur de Vênus",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sulphur",
+      "planet": "vênus",
+      "benefit": "recovery",
+      "magnitude": 0.195,
+      "liability": "self_heat",
+      "unknown_until_use": true,
+      "polarity": "volatile"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:venus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sulphur_venus",
+    "sfx_hook": "sfx.pharmakon_sulphur_venus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sulphur de Vênus: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:venus",
+      "principle:sulphur"
+    ]
+  },
+  {
+    "id": "pharmakon_sulphur_marte",
+    "name": "Sulphur de Marte",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sulphur",
+      "planet": "marte",
+      "benefit": "rupture",
+      "magnitude": 0.22,
+      "liability": "random_swap",
+      "unknown_until_use": true,
+      "polarity": "volatile"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:marte"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sulphur_marte",
+    "sfx_hook": "sfx.pharmakon_sulphur_marte",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sulphur de Marte: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:marte",
+      "principle:sulphur"
+    ]
+  },
+  {
+    "id": "pharmakon_sulphur_jupiter",
+    "name": "Sulphur de Júpiter",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sulphur",
+      "planet": "júpiter",
+      "benefit": "essence",
+      "magnitude": 0.245,
+      "liability": "slow_recovery",
+      "unknown_until_use": true,
+      "polarity": "volatile"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:jupiter"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sulphur_jupiter",
+    "sfx_hook": "sfx.pharmakon_sulphur_jupiter",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sulphur de Júpiter: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:jupiter",
+      "principle:sulphur"
+    ]
+  },
+  {
+    "id": "pharmakon_sulphur_saturno",
+    "name": "Sulphur de Saturno",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sulphur",
+      "planet": "saturno",
+      "benefit": "armor",
+      "magnitude": 0.27,
+      "liability": "self_heat",
+      "unknown_until_use": true,
+      "polarity": "volatile"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:saturno"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sulphur_saturno",
+    "sfx_hook": "sfx.pharmakon_sulphur_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sulphur de Saturno: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:saturno",
+      "principle:sulphur"
+    ]
+  },
+  {
+    "id": "pharmakon_mercurius_sol",
+    "name": "Mercurius de Sol",
+    "rarity": "rare",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "mercurius",
+      "planet": "sol",
+      "benefit": "damage",
+      "magnitude": 0.14,
+      "liability": "random_swap",
+      "unknown_until_use": true,
+      "polarity": "ambivalent"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:sol"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_mercurius_sol",
+    "sfx_hook": "sfx.pharmakon_mercurius_sol",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Mercurius de Sol: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:sol",
+      "principle:mercurius"
+    ]
+  },
+  {
+    "id": "pharmakon_mercurius_lua",
+    "name": "Mercurius de Lua",
+    "rarity": "rare",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "mercurius",
+      "planet": "lua",
+      "benefit": "focus",
+      "magnitude": 0.165,
+      "liability": "slow_recovery",
+      "unknown_until_use": true,
+      "polarity": "ambivalent"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:lua"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_mercurius_lua",
+    "sfx_hook": "sfx.pharmakon_mercurius_lua",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Mercurius de Lua: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:lua",
+      "principle:mercurius"
+    ]
+  },
+  {
+    "id": "pharmakon_mercurius_mercurio",
+    "name": "Mercurius de Mercúrio",
+    "rarity": "rare",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "mercurius",
+      "planet": "mercúrio",
+      "benefit": "speed",
+      "magnitude": 0.19,
+      "liability": "self_heat",
+      "unknown_until_use": true,
+      "polarity": "ambivalent"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:mercurio"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_mercurius_mercurio",
+    "sfx_hook": "sfx.pharmakon_mercurius_mercurio",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Mercurius de Mercúrio: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:mercurio",
+      "principle:mercurius"
+    ]
+  },
+  {
+    "id": "pharmakon_mercurius_venus",
+    "name": "Mercurius de Vênus",
+    "rarity": "rare",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "mercurius",
+      "planet": "vênus",
+      "benefit": "recovery",
+      "magnitude": 0.215,
+      "liability": "random_swap",
+      "unknown_until_use": true,
+      "polarity": "ambivalent"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:venus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_mercurius_venus",
+    "sfx_hook": "sfx.pharmakon_mercurius_venus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Mercurius de Vênus: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:venus",
+      "principle:mercurius"
+    ]
+  },
+  {
+    "id": "pharmakon_mercurius_marte",
+    "name": "Mercurius de Marte",
+    "rarity": "rare",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "mercurius",
+      "planet": "marte",
+      "benefit": "rupture",
+      "magnitude": 0.24,
+      "liability": "slow_recovery",
+      "unknown_until_use": true,
+      "polarity": "ambivalent"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:marte"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_mercurius_marte",
+    "sfx_hook": "sfx.pharmakon_mercurius_marte",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Mercurius de Marte: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:marte",
+      "principle:mercurius"
+    ]
+  },
+  {
+    "id": "pharmakon_mercurius_jupiter",
+    "name": "Mercurius de Júpiter",
+    "rarity": "rare",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "mercurius",
+      "planet": "júpiter",
+      "benefit": "essence",
+      "magnitude": 0.265,
+      "liability": "self_heat",
+      "unknown_until_use": true,
+      "polarity": "ambivalent"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:jupiter"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_mercurius_jupiter",
+    "sfx_hook": "sfx.pharmakon_mercurius_jupiter",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Mercurius de Júpiter: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:jupiter",
+      "principle:mercurius"
+    ]
+  },
+  {
+    "id": "pharmakon_mercurius_saturno",
+    "name": "Mercurius de Saturno",
+    "rarity": "rare",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "mercurius",
+      "planet": "saturno",
+      "benefit": "armor",
+      "magnitude": 0.29,
+      "liability": "random_swap",
+      "unknown_until_use": true,
+      "polarity": "ambivalent"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:saturno"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_mercurius_saturno",
+    "sfx_hook": "sfx.pharmakon_mercurius_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Mercurius de Saturno: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:saturno",
+      "principle:mercurius"
+    ]
+  },
+  {
+    "id": "pharmakon_sal_sol",
+    "name": "Sal de Sol",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sal",
+      "planet": "sol",
+      "benefit": "damage",
+      "magnitude": 0.16,
+      "liability": "slow_recovery",
+      "unknown_until_use": true,
+      "polarity": "stable"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:sol"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sal_sol",
+    "sfx_hook": "sfx.pharmakon_sal_sol",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sal de Sol: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:sol",
+      "principle:sal"
+    ]
+  },
+  {
+    "id": "pharmakon_sal_lua",
+    "name": "Sal de Lua",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sal",
+      "planet": "lua",
+      "benefit": "focus",
+      "magnitude": 0.185,
+      "liability": "self_heat",
+      "unknown_until_use": true,
+      "polarity": "stable"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:lua"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sal_lua",
+    "sfx_hook": "sfx.pharmakon_sal_lua",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sal de Lua: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:lua",
+      "principle:sal"
+    ]
+  },
+  {
+    "id": "pharmakon_sal_mercurio",
+    "name": "Sal de Mercúrio",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sal",
+      "planet": "mercúrio",
+      "benefit": "speed",
+      "magnitude": 0.21,
+      "liability": "random_swap",
+      "unknown_until_use": true,
+      "polarity": "stable"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:mercurio"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sal_mercurio",
+    "sfx_hook": "sfx.pharmakon_sal_mercurio",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sal de Mercúrio: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:mercurio",
+      "principle:sal"
+    ]
+  },
+  {
+    "id": "pharmakon_sal_venus",
+    "name": "Sal de Vênus",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sal",
+      "planet": "vênus",
+      "benefit": "recovery",
+      "magnitude": 0.235,
+      "liability": "slow_recovery",
+      "unknown_until_use": true,
+      "polarity": "stable"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:venus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sal_venus",
+    "sfx_hook": "sfx.pharmakon_sal_venus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sal de Vênus: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:venus",
+      "principle:sal"
+    ]
+  },
+  {
+    "id": "pharmakon_sal_marte",
+    "name": "Sal de Marte",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sal",
+      "planet": "marte",
+      "benefit": "rupture",
+      "magnitude": 0.26,
+      "liability": "self_heat",
+      "unknown_until_use": true,
+      "polarity": "stable"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:marte"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sal_marte",
+    "sfx_hook": "sfx.pharmakon_sal_marte",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sal de Marte: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:marte",
+      "principle:sal"
+    ]
+  },
+  {
+    "id": "pharmakon_sal_jupiter",
+    "name": "Sal de Júpiter",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sal",
+      "planet": "júpiter",
+      "benefit": "essence",
+      "magnitude": 0.285,
+      "liability": "random_swap",
+      "unknown_until_use": true,
+      "polarity": "stable"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:jupiter"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sal_jupiter",
+    "sfx_hook": "sfx.pharmakon_sal_jupiter",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sal de Júpiter: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:jupiter",
+      "principle:sal"
+    ]
+  },
+  {
+    "id": "pharmakon_sal_saturno",
+    "name": "Sal de Saturno",
+    "rarity": "uncommon",
+    "pool": "pharmaka",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pharmakon",
+      "principle": "sal",
+      "planet": "saturno",
+      "benefit": "armor",
+      "magnitude": 0.31,
+      "liability": "slow_recovery",
+      "unknown_until_use": true,
+      "polarity": "stable"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:planet:saturno"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.pharmakon_sal_saturno",
+    "sfx_hook": "sfx.pharmakon_sal_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Pharmaka Hermetica",
+      "summary": "Sal de Saturno: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Matriz hermético-alquímica 3×7 do cânone; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "pharmakon",
+      "planet:saturno",
+      "principle:sal"
+    ]
+  }
+]

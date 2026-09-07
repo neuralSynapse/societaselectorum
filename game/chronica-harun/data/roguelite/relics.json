@@ -1,0 +1,470 @@
+[
+  {
+    "id": "relic_espelho_de_sophia",
+    "name": "Espelho de Sophia",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "reflect_rule",
+      "rule_change": true,
+      "magnitude": 0.15
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_espelho_de_sophia",
+    "sfx_hook": "sfx.relic_espelho_de_sophia",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Espelho de Sophia: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:reflect_rule"
+    ]
+  },
+  {
+    "id": "relic_fragmento_do_pleroma",
+    "name": "Fragmento do Pleroma",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "pleroma_balance",
+      "rule_change": true,
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_fragmento_do_pleroma",
+    "sfx_hook": "sfx.relic_fragmento_do_pleroma",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Fragmento do Pleroma: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:pleroma_balance"
+    ]
+  },
+  {
+    "id": "relic_olho_do_cego",
+    "name": "Olho do Cego",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blindspot_trade",
+      "rule_change": true,
+      "magnitude": 0.25
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_olho_do_cego",
+    "sfx_hook": "sfx.relic_olho_do_cego",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Olho do Cego: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:blindspot_trade"
+    ]
+  },
+  {
+    "id": "relic_coroa_quebrada",
+    "name": "Coroa Quebrada",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "broken_crown",
+      "rule_change": true,
+      "magnitude": 0.3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_coroa_quebrada",
+    "sfx_hook": "sfx.relic_coroa_quebrada",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Coroa Quebrada: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:broken_crown"
+    ]
+  },
+  {
+    "id": "relic_cinza_de_phosphoros",
+    "name": "Cinza de Phosphoros",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "phosphoros_ember",
+      "rule_change": true,
+      "magnitude": 0.35
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_cinza_de_phosphoros",
+    "sfx_hook": "sfx.relic_cinza_de_phosphoros",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Cinza de Phosphoros: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:phosphoros_ember"
+    ]
+  },
+  {
+    "id": "relic_disco_de_saturno",
+    "name": "Disco de Saturno",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "saturn_cycle",
+      "rule_change": true,
+      "magnitude": 0.4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_disco_de_saturno",
+    "sfx_hook": "sfx.relic_disco_de_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Disco de Saturno: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:saturn_cycle"
+    ]
+  },
+  {
+    "id": "relic_selo_de_belial",
+    "name": "Selo de Belial",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "belial_ground",
+      "rule_change": true,
+      "magnitude": 0.45
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_selo_de_belial",
+    "sfx_hook": "sfx.relic_selo_de_belial",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Selo de Belial: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:belial_ground"
+    ]
+  },
+  {
+    "id": "relic_veu_de_lilith",
+    "name": "Véu de Lilith",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "lilith_veil",
+      "rule_change": true,
+      "magnitude": 0.5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_veu_de_lilith",
+    "sfx_hook": "sfx.relic_veu_de_lilith",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Véu de Lilith: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:lilith_veil"
+    ]
+  },
+  {
+    "id": "relic_pena_de_thoth",
+    "name": "Pena de Thoth",
+    "rarity": "legendary",
+    "pool": "relics",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "thoth_inscription",
+      "rule_change": true,
+      "magnitude": 0.55
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:relic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.relic_pena_de_thoth",
+    "sfx_hook": "sfx.relic_pena_de_thoth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Relíquias",
+      "summary": "Pena de Thoth: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Relíquia canônica inicial de CHRONICA HARUN"
+    },
+    "tags": [
+      "relic",
+      "relic_rule:thoth_inscription"
+    ]
+  }
+]

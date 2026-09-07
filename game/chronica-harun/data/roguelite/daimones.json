@@ -1,0 +1,387 @@
+[
+  {
+    "id": "daimon_lampadario",
+    "name": "Daimon Lampadário",
+    "rarity": "rare",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "action": "reveal_secret",
+      "cooldown_sec": 6,
+      "range": 4,
+      "magnitude": 0.25
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:reveal",
+      "tag:court"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_lampadario",
+    "sfx_hook": "sfx.daimon_lampadario",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Daimones",
+      "summary": "Daimon Lampadário: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Daimon canônico de CHRONICA HARUN; função mecânica autoral"
+    },
+    "tags": [
+      "daimon",
+      "theme:reveal"
+    ]
+  },
+  {
+    "id": "daimon_serpentino",
+    "name": "Daimon Serpentino",
+    "rarity": "rare",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "action": "execute_bite",
+      "cooldown_sec": 7,
+      "range": 5,
+      "magnitude": 0.33
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:serpent",
+      "tag:court"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_serpentino",
+    "sfx_hook": "sfx.daimon_serpentino",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Daimones",
+      "summary": "Daimon Serpentino: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Daimon canônico de CHRONICA HARUN; função mecânica autoral"
+    },
+    "tags": [
+      "daimon",
+      "theme:serpent"
+    ]
+  },
+  {
+    "id": "daimon_escriba",
+    "name": "Daimon Escriba",
+    "rarity": "rare",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "action": "echo_arcana",
+      "cooldown_sec": 8,
+      "range": 6,
+      "magnitude": 0.41
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:arcana",
+      "tag:court"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_escriba",
+    "sfx_hook": "sfx.daimon_escriba",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Daimones",
+      "summary": "Daimon Escriba: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Daimon canônico de CHRONICA HARUN; função mecânica autoral"
+    },
+    "tags": [
+      "daimon",
+      "theme:arcana"
+    ]
+  },
+  {
+    "id": "daimon_specular",
+    "name": "Daimon Specular",
+    "rarity": "rare",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "action": "echo_attack",
+      "cooldown_sec": 9,
+      "range": 4,
+      "magnitude": 0.49
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:reflect",
+      "tag:court"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_specular",
+    "sfx_hook": "sfx.daimon_specular",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Daimones",
+      "summary": "Daimon Specular: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Daimon canônico de CHRONICA HARUN; função mecânica autoral"
+    },
+    "tags": [
+      "daimon",
+      "theme:reflect"
+    ]
+  },
+  {
+    "id": "daimon_funerario",
+    "name": "Daimon Funerário",
+    "rarity": "rare",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "action": "corpse_essence",
+      "cooldown_sec": 10,
+      "range": 5,
+      "magnitude": 0.57
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:death",
+      "tag:court"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_funerario",
+    "sfx_hook": "sfx.daimon_funerario",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Daimones",
+      "summary": "Daimon Funerário: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Daimon canônico de CHRONICA HARUN; função mecânica autoral"
+    },
+    "tags": [
+      "daimon",
+      "theme:death"
+    ]
+  },
+  {
+    "id": "daimon_saturnino",
+    "name": "Daimon Saturnino",
+    "rarity": "rare",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "action": "intercept_projectile",
+      "cooldown_sec": 11,
+      "range": 6,
+      "magnitude": 0.65
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:saturn",
+      "tag:court"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_saturnino",
+    "sfx_hook": "sfx.daimon_saturnino",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Daimones",
+      "summary": "Daimon Saturnino: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Daimon canônico de CHRONICA HARUN; função mecânica autoral"
+    },
+    "tags": [
+      "daimon",
+      "theme:saturn"
+    ]
+  },
+  {
+    "id": "daimon_solar",
+    "name": "Daimon Solar",
+    "rarity": "rare",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "action": "purge_curse",
+      "cooldown_sec": 12,
+      "range": 4,
+      "magnitude": 0.73
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:solar",
+      "tag:court"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_solar",
+    "sfx_hook": "sfx.daimon_solar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Daimones",
+      "summary": "Daimon Solar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Daimon canônico de CHRONICA HARUN; função mecânica autoral"
+    },
+    "tags": [
+      "daimon",
+      "theme:solar"
+    ]
+  }
+]

@@ -1,0 +1,1624 @@
+[
+  {
+    "id": "room_arcana",
+    "name": "Câmara do Arcano",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "arcana",
+      "reward_pool": "tarot",
+      "weight": 1.0,
+      "risk": "choice_lock"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_arcana",
+    "sfx_hook": "sfx.room_arcana",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara do Arcano: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 1.0,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "choice_lock"
+    },
+    "reward": {
+      "pool": "tarot",
+      "choices": 1
+    },
+    "runtime_event": "room.arcana",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.arcana",
+    "discovery_feedback": "discover.room.arcana",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_reliquary",
+    "name": "Reliquarium",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "reliquary",
+      "reward_pool": "relics",
+      "weight": 0.5,
+      "risk": "rarity_debt"
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 10
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_reliquary",
+    "sfx_hook": "sfx.room_reliquary",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Reliquarium: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.5,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "rarity_debt"
+    },
+    "reward": {
+      "pool": "relics",
+      "choices": 2
+    },
+    "runtime_event": "room.reliquary",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.reliquary",
+    "discovery_feedback": "discover.room.reliquary",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_instrumentarium",
+    "name": "Instrumentarium",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "instrumentarium",
+      "reward_pool": "instrumenta",
+      "weight": 0.8,
+      "risk": "charge_tax"
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 6
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_instrumentarium",
+    "sfx_hook": "sfx.room_instrumentarium",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Instrumentarium: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.8,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "charge_tax"
+    },
+    "reward": {
+      "pool": "instrumenta",
+      "choices": 1
+    },
+    "runtime_event": "room.instrumentarium",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.instrumentarium",
+    "discovery_feedback": "discover.room.instrumentarium",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_laboratorium",
+    "name": "Laboratorium",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "laboratorium",
+      "reward_pool": "pharmaka",
+      "weight": 0.7,
+      "risk": "unknown_pharmakon"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_laboratorium",
+    "sfx_hook": "sfx.room_laboratorium",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Laboratorium: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.7,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "unknown_pharmakon"
+    },
+    "reward": {
+      "pool": "pharmaka",
+      "choices": 2
+    },
+    "runtime_event": "room.laboratorium",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.laboratorium",
+    "discovery_feedback": "discover.room.laboratorium",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_sigillar",
+    "name": "Câmara Sigillar",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "sigillar",
+      "reward_pool": "sigilla_goetica",
+      "weight": 0.65,
+      "risk": "pretium"
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 4
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_sigillar",
+    "sfx_hook": "sfx.room_sigillar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Sigillar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.65,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "pretium"
+    },
+    "reward": {
+      "pool": "sigilla_goetica",
+      "choices": 1
+    },
+    "runtime_event": "room.sigillar",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.sigillar",
+    "discovery_feedback": "discover.room.sigillar",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_essence_market",
+    "name": "Mercado de Essência",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "essence_market",
+      "reward_pool": "market",
+      "weight": 0.9,
+      "risk": "market_variance"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_essence_market",
+    "sfx_hook": "sfx.room_essence_market",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Mercado de Essência: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.9,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "market_variance"
+    },
+    "reward": {
+      "pool": "market",
+      "choices": 2
+    },
+    "runtime_event": "room.essence_market",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.essence_market",
+    "discovery_feedback": "discover.room.essence_market",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_bibliotheca",
+    "name": "Bibliotheca",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "bibliotheca",
+      "reward_pool": "codex",
+      "weight": 0.55,
+      "risk": "opportunity_cost"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_bibliotheca",
+    "sfx_hook": "sfx.room_bibliotheca",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Bibliotheca: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.55,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "opportunity_cost"
+    },
+    "reward": {
+      "pool": "codex",
+      "choices": 1
+    },
+    "runtime_event": "room.bibliotheca",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.bibliotheca",
+    "discovery_feedback": "discover.room.bibliotheca",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_speculum",
+    "name": "Speculum",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "speculum",
+      "reward_pool": "reroll",
+      "weight": 0.45,
+      "risk": "reflection"
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 10
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_speculum",
+    "sfx_hook": "sfx.room_speculum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Speculum: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.45,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "reflection"
+    },
+    "reward": {
+      "pool": "reroll",
+      "choices": 2
+    },
+    "runtime_event": "room.speculum",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.speculum",
+    "discovery_feedback": "discover.room.speculum",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_planetary",
+    "name": "Câmara Planetária",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "planetary",
+      "reward_pool": "planetary",
+      "weight": 0.5,
+      "risk": "planetary_bias"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_planetary",
+    "sfx_hook": "sfx.room_planetary",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Planetária: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.5,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "planetary_bias"
+    },
+    "reward": {
+      "pool": "planetary",
+      "choices": 1
+    },
+    "runtime_event": "room.planetary",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.planetary",
+    "discovery_feedback": "discover.room.planetary",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_trial",
+    "name": "Câmara de Provação",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "trial",
+      "reward_pool": "trial_reward",
+      "weight": 0.65,
+      "risk": "combat_trial"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:trial"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_trial",
+    "sfx_hook": "sfx.room_trial",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara de Provação: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:trial"
+    ],
+    "room_role": "trial",
+    "spawn_condition": {
+      "weight": 0.65,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "combat_trial"
+    },
+    "reward": {
+      "pool": "trial_reward",
+      "choices": 2
+    },
+    "runtime_event": "room.trial",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.trial",
+    "discovery_feedback": "discover.room.trial",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_cursed",
+    "name": "Câmara Maldita",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "cursed",
+      "reward_pool": "curses",
+      "weight": 0.45,
+      "risk": "curse"
+    },
+    "cost": {
+      "resource": "hp",
+      "amount": 8
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:cursed"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_cursed",
+    "sfx_hook": "sfx.room_cursed",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Maldita: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:cursed"
+    ],
+    "room_role": "cursed",
+    "spawn_condition": {
+      "weight": 0.45,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "curse"
+    },
+    "reward": {
+      "pool": "curses",
+      "choices": 1
+    },
+    "runtime_event": "room.cursed",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.cursed",
+    "discovery_feedback": "discover.room.cursed",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_secret",
+    "name": "Sala Secreta",
+    "rarity": "legendary",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "secret",
+      "reward_pool": "secret_reward",
+      "weight": 1.0,
+      "risk": "resource_spend"
+    },
+    "cost": {
+      "resource": "rupture",
+      "amount": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:secret"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_secret",
+    "sfx_hook": "sfx.room_secret",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Sala Secreta: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:secret"
+    ],
+    "room_role": "secret",
+    "spawn_condition": {
+      "weight": 1.0,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "hidden_wall",
+      "accepted_openers": [
+        "ritual_bomb",
+        "rupture_charge",
+        "wall_break"
+      ],
+      "requires_discovery": true
+    },
+    "risk": {
+      "kind": "resource_spend"
+    },
+    "reward": {
+      "pool": "secret_reward",
+      "choices": 2
+    },
+    "runtime_event": "room.secret",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.secret",
+    "discovery_feedback": "discover.room.secret",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_super_secret",
+    "name": "Sala Duplamente Secreta",
+    "rarity": "legendary",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "super_secret",
+      "reward_pool": "super_secret_reward",
+      "weight": 0.35,
+      "risk": "high_variance"
+    },
+    "cost": {
+      "resource": "rupture",
+      "amount": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:super_secret"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_super_secret",
+    "sfx_hook": "sfx.room_super_secret",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Sala Duplamente Secreta: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:super_secret"
+    ],
+    "room_role": "super_secret",
+    "spawn_condition": {
+      "weight": 0.35,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "hidden_wall",
+      "accepted_openers": [
+        "ritual_bomb",
+        "rupture_charge",
+        "wall_break"
+      ],
+      "requires_discovery": true
+    },
+    "risk": {
+      "kind": "high_variance"
+    },
+    "reward": {
+      "pool": "super_secret_reward",
+      "choices": 1
+    },
+    "runtime_event": "room.super_secret",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.super_secret",
+    "discovery_feedback": "discover.room.super_secret",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_archon",
+    "name": "Câmara do Arconte",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "archon",
+      "reward_pool": "archon_event",
+      "weight": 0.25,
+      "risk": "archontic_debt"
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 8
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_archon",
+    "sfx_hook": "sfx.room_archon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara do Arconte: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.25,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "archontic_debt"
+    },
+    "reward": {
+      "pool": "archon_event",
+      "choices": 2
+    },
+    "runtime_event": "room.archon",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.archon",
+    "discovery_feedback": "discover.room.archon",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_theophany",
+    "name": "Câmara Teofânica",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "theophany",
+      "reward_pool": "theophany",
+      "weight": 0.18,
+      "risk": "judgement"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_theophany",
+    "sfx_hook": "sfx.room_theophany",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Teofânica: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.18,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "judgement"
+    },
+    "reward": {
+      "pool": "theophany",
+      "choices": 1
+    },
+    "runtime_event": "room.theophany",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.theophany",
+    "discovery_feedback": "discover.room.theophany",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_historical_echo",
+    "name": "Câmara Histórica",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "historical_echo",
+      "reward_pool": "historical_echo",
+      "weight": 0.3,
+      "risk": "interpretive_choice"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:special"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_historical_echo",
+    "sfx_hook": "sfx.room_historical_echo",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Histórica: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:special"
+    ],
+    "room_role": "special",
+    "spawn_condition": {
+      "weight": 0.3,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "interpretive_choice"
+    },
+    "reward": {
+      "pool": "historical_echo",
+      "choices": 2
+    },
+    "runtime_event": "room.historical_echo",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.historical_echo",
+    "discovery_feedback": "discover.room.historical_echo",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_initiation",
+    "name": "Câmara de Iniciação",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "journey:ready_for_initiation"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "initiation",
+      "reward_pool": "initiation",
+      "weight": 1.0,
+      "risk": "threshold"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:initiation"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_initiation",
+    "sfx_hook": "sfx.room_initiation",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara de Iniciação: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Sala canônica de CHRONICA HARUN"
+    },
+    "tags": [
+      "room",
+      "room_role:initiation"
+    ],
+    "room_role": "initiation",
+    "spawn_condition": {
+      "weight": 1.0,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "door",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "threshold"
+    },
+    "reward": {
+      "pool": "initiation",
+      "choices": 1
+    },
+    "runtime_event": "room.initiation",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.initiation",
+    "discovery_feedback": "discover.room.initiation",
+    "postboss": false,
+    "exclusive_group": null
+  },
+  {
+    "id": "room_pneumatic",
+    "name": "Câmara Pneumática",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "postboss:cleared"
+      ],
+      "forbids_tags": [
+        "debt:severe"
+      ]
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "pneumatic",
+      "reward_pool": "blessings",
+      "weight": 0.45,
+      "risk": "route_commitment"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:postboss"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_pneumatic",
+    "sfx_hook": "sfx.room_pneumatic",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Pneumática: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Escolha pós-chefe autoral Electorum inspirada apenas em princípios genéricos de risco/recompensa"
+    },
+    "tags": [
+      "room",
+      "room_role:postboss"
+    ],
+    "room_role": "postboss",
+    "spawn_condition": {
+      "weight": 0.45,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "postboss_portal",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "route_commitment"
+    },
+    "reward": {
+      "pool": "blessings",
+      "choices": 2
+    },
+    "runtime_event": "room.pneumatic",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.pneumatic",
+    "discovery_feedback": "discover.room.pneumatic",
+    "postboss": true,
+    "exclusive_group": "postboss_path"
+  },
+  {
+    "id": "room_chthonic",
+    "name": "Câmara Ctônica",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "postboss:cleared"
+      ],
+      "forbids_tags": [
+        "blessing:sealed"
+      ]
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "chthonic",
+      "reward_pool": "pact_reward",
+      "weight": 0.45,
+      "risk": "curse_heat"
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 8
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:postboss"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_chthonic",
+    "sfx_hook": "sfx.room_chthonic",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Ctônica: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Escolha pós-chefe autoral Electorum inspirada apenas em princípios genéricos de risco/recompensa"
+    },
+    "tags": [
+      "room",
+      "room_role:postboss"
+    ],
+    "room_role": "postboss",
+    "spawn_condition": {
+      "weight": 0.45,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "postboss_portal",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "curse_heat"
+    },
+    "reward": {
+      "pool": "pact_reward",
+      "choices": 1
+    },
+    "runtime_event": "room.chthonic",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.chthonic",
+    "discovery_feedback": "discover.room.chthonic",
+    "postboss": true,
+    "exclusive_group": "postboss_path"
+  },
+  {
+    "id": "room_pact_table",
+    "name": "Mesa do Pacto",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "postboss:cleared"
+      ],
+      "forbids_tags": [
+        "pact:locked"
+      ]
+    },
+    "effect": {
+      "kind": "room_event",
+      "event": "pact_table",
+      "reward_pool": "sigilla_goetica",
+      "weight": 0.35,
+      "risk": "contract_debt"
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 12
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:room_role:postboss"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.room_pact_table",
+    "sfx_hook": "sfx.room_pact_table",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Mesa do Pacto: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Escolha pós-chefe autoral Electorum inspirada apenas em princípios genéricos de risco/recompensa"
+    },
+    "tags": [
+      "room",
+      "room_role:postboss"
+    ],
+    "room_role": "postboss",
+    "spawn_condition": {
+      "weight": 0.35,
+      "once_per_floor": true
+    },
+    "entry": {
+      "mode": "postboss_portal",
+      "accepted_openers": [],
+      "requires_discovery": false
+    },
+    "risk": {
+      "kind": "contract_debt"
+    },
+    "reward": {
+      "pool": "sigilla_goetica",
+      "choices": 2
+    },
+    "runtime_event": "room.pact_table",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.pact_table",
+    "discovery_feedback": "discover.room.pact_table",
+    "postboss": true,
+    "exclusive_group": "postboss_path"
+  }
+]

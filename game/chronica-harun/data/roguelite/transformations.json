@@ -1,0 +1,698 @@
+[
+  {
+    "id": "transformation_forma_do_olho_desvelado",
+    "name": "Forma do Olho Desvelado",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:reveal",
+        "theme:precision",
+        "theme:thoth"
+      ],
+      "threshold": 3,
+      "result": "reveal_mastery",
+      "visual_hook": "transform.reveal_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:reveal"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_forma_do_olho_desvelado",
+    "sfx_hook": "sfx.transformation_forma_do_olho_desvelado",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Forma do Olho Desvelado: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:reveal_mastery"
+    ]
+  },
+  {
+    "id": "transformation_corpus_ignis",
+    "name": "Corpus Ignis",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:fire",
+        "theme:will",
+        "theme:black_flame"
+      ],
+      "threshold": 3,
+      "result": "fire_mastery",
+      "visual_hook": "transform.fire_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:fire"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_corpus_ignis",
+    "sfx_hook": "sfx.transformation_corpus_ignis",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Corpus Ignis: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:fire_mastery"
+    ]
+  },
+  {
+    "id": "transformation_armadura_de_horos",
+    "name": "Armadura de Horos",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:foundation",
+        "theme:earth",
+        "theme:saturn"
+      ],
+      "threshold": 3,
+      "result": "boundary_mastery",
+      "visual_hook": "transform.boundary_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:foundation"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_armadura_de_horos",
+    "sfx_hook": "sfx.transformation_armadura_de_horos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Armadura de Horos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:boundary_mastery"
+    ]
+  },
+  {
+    "id": "transformation_syzygia_lunar",
+    "name": "Syzygia Lunar",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:water",
+        "theme:bond",
+        "theme:moon"
+      ],
+      "threshold": 3,
+      "result": "bond_mastery",
+      "visual_hook": "transform.bond_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:water"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_syzygia_lunar",
+    "sfx_hook": "sfx.transformation_syzygia_lunar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Syzygia Lunar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:bond_mastery"
+    ]
+  },
+  {
+    "id": "transformation_verbum_incisivo",
+    "name": "Verbum Incisivo",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:verbum",
+        "theme:air",
+        "theme:rupture"
+      ],
+      "threshold": 3,
+      "result": "word_mastery",
+      "visual_hook": "transform.word_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:verbum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_verbum_incisivo",
+    "sfx_hook": "sfx.transformation_verbum_incisivo",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Verbum Incisivo: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:word_mastery"
+    ]
+  },
+  {
+    "id": "transformation_pele_draconica",
+    "name": "Pele Dracônica",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:draconic",
+        "theme:serpent",
+        "theme:transmutation"
+      ],
+      "threshold": 3,
+      "result": "draconic_mastery",
+      "visual_hook": "transform.draconic_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:draconic"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_pele_draconica",
+    "sfx_hook": "sfx.transformation_pele_draconica",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Pele Dracônica: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:draconic_mastery"
+    ]
+  },
+  {
+    "id": "transformation_espelho_vivo",
+    "name": "Espelho Vivo",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:reflect",
+        "theme:sophia",
+        "theme:clarity"
+      ],
+      "threshold": 3,
+      "result": "reflection_mastery",
+      "visual_hook": "transform.reflection_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:reflect"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_espelho_vivo",
+    "sfx_hook": "sfx.transformation_espelho_vivo",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Espelho Vivo: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:reflection_mastery"
+    ]
+  },
+  {
+    "id": "transformation_coroa_sem_trono",
+    "name": "Coroa sem Trono",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:command",
+        "theme:election",
+        "theme:belial"
+      ],
+      "threshold": 3,
+      "result": "sovereignty_mastery",
+      "visual_hook": "transform.sovereignty_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:command"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_coroa_sem_trono",
+    "sfx_hook": "sfx.transformation_coroa_sem_trono",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Coroa sem Trono: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:sovereignty_mastery"
+    ]
+  },
+  {
+    "id": "transformation_motor_de_fortuna",
+    "name": "Motor de Fortuna",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:fortune",
+        "theme:jupiter",
+        "theme:economy"
+      ],
+      "threshold": 3,
+      "result": "fortune_mastery",
+      "visual_hook": "transform.fortune_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:fortune"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_motor_de_fortuna",
+    "sfx_hook": "sfx.transformation_motor_de_fortuna",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Motor de Fortuna: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:fortune_mastery"
+    ]
+  },
+  {
+    "id": "transformation_memoria_ignea",
+    "name": "Memória Ígnea",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:memory",
+        "theme:fire",
+        "theme:arcana"
+      ],
+      "threshold": 3,
+      "result": "memory_mastery",
+      "visual_hook": "transform.memory_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:memory"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_memoria_ignea",
+    "sfx_hook": "sfx.transformation_memoria_ignea",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Memória Ígnea: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:memory_mastery"
+    ]
+  },
+  {
+    "id": "transformation_coluna_solar",
+    "name": "Coluna Solar",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:solar",
+        "theme:character",
+        "theme:vital"
+      ],
+      "threshold": 3,
+      "result": "solar_mastery",
+      "visual_hook": "transform.solar_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:solar"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_coluna_solar",
+    "sfx_hook": "sfx.transformation_coluna_solar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Coluna Solar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:solar_mastery"
+    ]
+  },
+  {
+    "id": "transformation_mao_do_artifice",
+    "name": "Mão do Artífice",
+    "rarity": "legendary",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "required_tags": [
+        "theme:work",
+        "theme:matter",
+        "theme:foundation"
+      ],
+      "threshold": 3,
+      "result": "craft_mastery",
+      "visual_hook": "transform.craft_mastery"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "unique_transform",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:work"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.transformation_mao_do_artifice",
+    "sfx_hook": "sfx.transformation_mao_do_artifice",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Transformações",
+      "summary": "Mão do Artífice: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Transformação autoral Electorum para buildcraft"
+    },
+    "tags": [
+      "transformation",
+      "transform:craft_mastery"
+    ]
+  }
+]

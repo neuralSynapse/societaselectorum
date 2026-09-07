@@ -1,0 +1,1762 @@
+[
+  {
+    "id": "instrumentum_bastao_igneo",
+    "name": "Bastão Ígneo",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "cone_fire",
+      "charge_cost": 1,
+      "cooldown_rooms": 1,
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 3,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_bastao_igneo",
+    "sfx_hook": "sfx.instrumentum_bastao_igneo",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Bastão Ígneo: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:wands",
+      "theme:fire"
+    ]
+  },
+  {
+    "id": "instrumentum_vara_serpentina",
+    "name": "Vara Serpentina",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "chain_strike",
+      "charge_cost": 2,
+      "cooldown_rooms": 2,
+      "magnitude": 0.27
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 4,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:serpent",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_vara_serpentina",
+    "sfx_hook": "sfx.instrumentum_vara_serpentina",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Vara Serpentina: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:wands",
+      "theme:serpent"
+    ]
+  },
+  {
+    "id": "instrumentum_cetro_solar",
+    "name": "Cetro Solar",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "solar_burst",
+      "charge_cost": 3,
+      "cooldown_rooms": 1,
+      "magnitude": 0.34
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 5,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:solar",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_cetro_solar",
+    "sfx_hook": "sfx.instrumentum_cetro_solar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Cetro Solar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:wands",
+      "theme:solar"
+    ]
+  },
+  {
+    "id": "instrumentum_bastao_de_mercurio",
+    "name": "Bastão de Mercúrio",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "tempo_shift",
+      "charge_cost": 1,
+      "cooldown_rooms": 2,
+      "magnitude": 0.41
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 6,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:mercury",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_bastao_de_mercurio",
+    "sfx_hook": "sfx.instrumentum_bastao_de_mercurio",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Bastão de Mercúrio: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:wands",
+      "theme:mercury"
+    ]
+  },
+  {
+    "id": "instrumentum_vara_de_marte",
+    "name": "Vara de Marte",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "dash_break",
+      "charge_cost": 2,
+      "cooldown_rooms": 1,
+      "magnitude": 0.48
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 3,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:mars",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_vara_de_marte",
+    "sfx_hook": "sfx.instrumentum_vara_de_marte",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Vara de Marte: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:wands",
+      "theme:mars"
+    ]
+  },
+  {
+    "id": "instrumentum_bastao_da_chama_negra",
+    "name": "Bastão da Chama Negra",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "black_flame",
+      "charge_cost": 3,
+      "cooldown_rooms": 2,
+      "magnitude": 0.55
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 4,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:black_flame",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_bastao_da_chama_negra",
+    "sfx_hook": "sfx.instrumentum_bastao_da_chama_negra",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Bastão da Chama Negra: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:wands",
+      "theme:black_flame"
+    ]
+  },
+  {
+    "id": "instrumentum_calice_lunar",
+    "name": "Cálice Lunar",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "focus_well",
+      "charge_cost": 1,
+      "cooldown_rooms": 1,
+      "magnitude": 0.62
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 5,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:moon",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_calice_lunar",
+    "sfx_hook": "sfx.instrumentum_calice_lunar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Cálice Lunar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:cups",
+      "theme:moon"
+    ]
+  },
+  {
+    "id": "instrumentum_taca_do_veu",
+    "name": "Taça do Véu",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "phase",
+      "charge_cost": 2,
+      "cooldown_rooms": 2,
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "timed",
+      "seconds": 6,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:veil",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_taca_do_veu",
+    "sfx_hook": "sfx.instrumentum_taca_do_veu",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Taça do Véu: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:cups",
+      "theme:veil"
+    ]
+  },
+  {
+    "id": "instrumentum_copa_de_venus",
+    "name": "Copa de Vênus",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "heal_link",
+      "charge_cost": 3,
+      "cooldown_rooms": 1,
+      "magnitude": 0.27
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 3,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:venus",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_copa_de_venus",
+    "sfx_hook": "sfx.instrumentum_copa_de_venus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Copa de Vênus: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:cups",
+      "theme:venus"
+    ]
+  },
+  {
+    "id": "instrumentum_cratera_de_sophia",
+    "name": "Cratera de Sophia",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transmute_hurt",
+      "charge_cost": 1,
+      "cooldown_rooms": 2,
+      "magnitude": 0.34
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 4,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:sophia",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_cratera_de_sophia",
+    "sfx_hook": "sfx.instrumentum_cratera_de_sophia",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Cratera de Sophia: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:cups",
+      "theme:sophia"
+    ]
+  },
+  {
+    "id": "instrumentum_calice_de_agua_negra",
+    "name": "Cálice de Água Negra",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse_cleanse",
+      "charge_cost": 2,
+      "cooldown_rooms": 1,
+      "magnitude": 0.41
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 5,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:purge",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_calice_de_agua_negra",
+    "sfx_hook": "sfx.instrumentum_calice_de_agua_negra",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Cálice de Água Negra: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:cups",
+      "theme:purge"
+    ]
+  },
+  {
+    "id": "instrumentum_taca_do_retorno",
+    "name": "Taça do Retorno",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "return",
+      "charge_cost": 3,
+      "cooldown_rooms": 2,
+      "magnitude": 0.48
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 6,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:return",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_taca_do_retorno",
+    "sfx_hook": "sfx.instrumentum_taca_do_retorno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Taça do Retorno: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:cups",
+      "theme:return"
+    ]
+  },
+  {
+    "id": "instrumentum_lamina_de_ruptura",
+    "name": "Lâmina de Ruptura",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "armor_break",
+      "charge_cost": 1,
+      "cooldown_rooms": 1,
+      "magnitude": 0.55
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 3,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:rupture",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_lamina_de_ruptura",
+    "sfx_hook": "sfx.instrumentum_lamina_de_ruptura",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Lâmina de Ruptura: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:swords",
+      "theme:rupture"
+    ]
+  },
+  {
+    "id": "instrumentum_athame_de_thoth",
+    "name": "Athame de Thoth",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mark_reveal",
+      "charge_cost": 2,
+      "cooldown_rooms": 2,
+      "magnitude": 0.62
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 4,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:thoth",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_athame_de_thoth",
+    "sfx_hook": "sfx.instrumentum_athame_de_thoth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Athame de Thoth: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:swords",
+      "theme:thoth"
+    ]
+  },
+  {
+    "id": "instrumentum_espada_solar",
+    "name": "Espada Solar",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "line_beam",
+      "charge_cost": 3,
+      "cooldown_rooms": 1,
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 5,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:solar",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_espada_solar",
+    "sfx_hook": "sfx.instrumentum_espada_solar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Espada Solar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:swords",
+      "theme:solar"
+    ]
+  },
+  {
+    "id": "instrumentum_faca_do_verbum",
+    "name": "Faca do Verbum",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "silence",
+      "charge_cost": 1,
+      "cooldown_rooms": 2,
+      "magnitude": 0.27
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 6,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:verbum",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_faca_do_verbum",
+    "sfx_hook": "sfx.instrumentum_faca_do_verbum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Faca do Verbum: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:swords",
+      "theme:verbum"
+    ]
+  },
+  {
+    "id": "instrumentum_lamina_de_saturno",
+    "name": "Lâmina de Saturno",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "slow_cut",
+      "charge_cost": 2,
+      "cooldown_rooms": 1,
+      "magnitude": 0.34
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 3,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:saturn",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_lamina_de_saturno",
+    "sfx_hook": "sfx.instrumentum_lamina_de_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Lâmina de Saturno: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:swords",
+      "theme:saturn"
+    ]
+  },
+  {
+    "id": "instrumentum_espada_do_limiar",
+    "name": "Espada do Limiar",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "door_cut",
+      "charge_cost": 3,
+      "cooldown_rooms": 2,
+      "magnitude": 0.41
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 4,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:threshold",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_espada_do_limiar",
+    "sfx_hook": "sfx.instrumentum_espada_do_limiar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Espada do Limiar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:swords",
+      "theme:threshold"
+    ]
+  },
+  {
+    "id": "instrumentum_disco_de_saturno",
+    "name": "Disco de Saturno",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "fortify",
+      "charge_cost": 1,
+      "cooldown_rooms": 1,
+      "magnitude": 0.48
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "timed",
+      "seconds": 5,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:saturn",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_disco_de_saturno",
+    "sfx_hook": "sfx.instrumentum_disco_de_saturno",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Disco de Saturno: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:disks",
+      "theme:saturn"
+    ]
+  },
+  {
+    "id": "instrumentum_pentaculo_solar",
+    "name": "Pentáculo Solar",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "ward",
+      "charge_cost": 2,
+      "cooldown_rooms": 2,
+      "magnitude": 0.55
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 6,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:solar",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_pentaculo_solar",
+    "sfx_hook": "sfx.instrumentum_pentaculo_solar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Pentáculo Solar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:disks",
+      "theme:solar"
+    ]
+  },
+  {
+    "id": "instrumentum_disco_de_fortuna",
+    "name": "Disco de Fortuna",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "reroll",
+      "charge_cost": 3,
+      "cooldown_rooms": 1,
+      "magnitude": 0.62
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 3,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:fortune",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_disco_de_fortuna",
+    "sfx_hook": "sfx.instrumentum_disco_de_fortuna",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Disco de Fortuna: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:disks",
+      "theme:fortune"
+    ]
+  },
+  {
+    "id": "instrumentum_selo_de_terra",
+    "name": "Selo de Terra",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "anchor",
+      "charge_cost": 1,
+      "cooldown_rooms": 2,
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 4,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_selo_de_terra",
+    "sfx_hook": "sfx.instrumentum_selo_de_terra",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Selo de Terra: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:disks",
+      "theme:earth"
+    ]
+  },
+  {
+    "id": "instrumentum_moeda_de_jupiter",
+    "name": "Moeda de Júpiter",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "multiply_essence",
+      "charge_cost": 2,
+      "cooldown_rooms": 1,
+      "magnitude": 0.27
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 5,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:jupiter",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_moeda_de_jupiter",
+    "sfx_hook": "sfx.instrumentum_moeda_de_jupiter",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Moeda de Júpiter: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:disks",
+      "theme:jupiter"
+    ]
+  },
+  {
+    "id": "instrumentum_placa_de_belial",
+    "name": "Placa de Belial",
+    "rarity": "uncommon",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "grounding",
+      "charge_cost": 3,
+      "cooldown_rooms": 2,
+      "magnitude": 0.34
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 6,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:belial",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_placa_de_belial",
+    "sfx_hook": "sfx.instrumentum_placa_de_belial",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Placa de Belial: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:disks",
+      "theme:belial"
+    ]
+  },
+  {
+    "id": "instrumentum_espelho_de_sophia",
+    "name": "Espelho de Sophia",
+    "rarity": "rare",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "reflect",
+      "charge_cost": 1,
+      "cooldown_rooms": 1,
+      "magnitude": 0.41
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 3,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:sophia",
+      "tag:spiritus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_espelho_de_sophia",
+    "sfx_hook": "sfx.instrumentum_espelho_de_sophia",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Espelho de Sophia: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:spiritus",
+      "theme:sophia"
+    ]
+  },
+  {
+    "id": "instrumentum_lampada_de_phosphoros",
+    "name": "Lâmpada de Phosphoros",
+    "rarity": "rare",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "reveal_all",
+      "charge_cost": 2,
+      "cooldown_rooms": 2,
+      "magnitude": 0.48
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 4,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:phosphoros",
+      "tag:spiritus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_lampada_de_phosphoros",
+    "sfx_hook": "sfx.instrumentum_lampada_de_phosphoros",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Lâmpada de Phosphoros: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:spiritus",
+      "theme:phosphoros"
+    ]
+  },
+  {
+    "id": "instrumentum_livro_do_verbum",
+    "name": "Livro do Verbum",
+    "rarity": "rare",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "command_wave",
+      "charge_cost": 3,
+      "cooldown_rooms": 1,
+      "magnitude": 0.55
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 5,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:verbum",
+      "tag:spiritus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_livro_do_verbum",
+    "sfx_hook": "sfx.instrumentum_livro_do_verbum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Livro do Verbum: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:spiritus",
+      "theme:verbum"
+    ]
+  },
+  {
+    "id": "instrumentum_ampulheta_de_kairos",
+    "name": "Ampulheta de Kairos",
+    "rarity": "rare",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "time_stop",
+      "charge_cost": 1,
+      "cooldown_rooms": 2,
+      "magnitude": 0.62
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "timed",
+      "seconds": 6,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:kairos",
+      "tag:spiritus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_ampulheta_de_kairos",
+    "sfx_hook": "sfx.instrumentum_ampulheta_de_kairos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Ampulheta de Kairos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:spiritus",
+      "theme:kairos"
+    ]
+  },
+  {
+    "id": "instrumentum_mascara_de_paimon",
+    "name": "Máscara de Paimon",
+    "rarity": "rare",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "dominate",
+      "charge_cost": 2,
+      "cooldown_rooms": 1,
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "timed",
+      "seconds": 3,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:paimon",
+      "tag:spiritus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_mascara_de_paimon",
+    "sfx_hook": "sfx.instrumentum_mascara_de_paimon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Máscara de Paimon: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:spiritus",
+      "theme:paimon"
+    ]
+  },
+  {
+    "id": "instrumentum_olho_de_horus",
+    "name": "Olho de Hórus",
+    "rarity": "rare",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "precision",
+      "charge_cost": 3,
+      "cooldown_rooms": 2,
+      "magnitude": 0.27
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "timed",
+      "seconds": 4,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:horus",
+      "tag:spiritus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_olho_de_horus",
+    "sfx_hook": "sfx.instrumentum_olho_de_horus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Olho de Hórus: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:spiritus",
+      "theme:horus"
+    ]
+  },
+  {
+    "id": "instrumentum_tabuleta_de_thoth",
+    "name": "Tabuleta de Thoth",
+    "rarity": "rare",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "echo_card",
+      "charge_cost": 1,
+      "cooldown_rooms": 1,
+      "magnitude": 0.34
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 5,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:thoth",
+      "tag:spiritus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_tabuleta_de_thoth",
+    "sfx_hook": "sfx.instrumentum_tabuleta_de_thoth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Tabuleta de Thoth: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:spiritus",
+      "theme:thoth"
+    ]
+  },
+  {
+    "id": "instrumentum_chave_draconica",
+    "name": "Chave Dracônica",
+    "rarity": "rare",
+    "pool": "instrumenta",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "red_path",
+      "charge_cost": 2,
+      "cooldown_rooms": 2,
+      "magnitude": 0.41
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 6,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:theme:draconic",
+      "tag:spiritus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.instrumentum_chave_draconica",
+    "sfx_hook": "sfx.instrumentum_chave_draconica",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Instrumenta",
+      "summary": "Chave Dracônica: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Instrumentum canônico de CHRONICA HARUN; mecânica autoral Electorum"
+    },
+    "tags": [
+      "instrumentum",
+      "instrument_family:spiritus",
+      "theme:draconic"
+    ]
+  }
+]

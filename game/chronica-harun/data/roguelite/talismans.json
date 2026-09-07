@@ -1,0 +1,2018 @@
+[
+  {
+    "id": "talisman_aries_1",
+    "name": "Talismã de Áries · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "áries",
+      "decan": 1,
+      "stat": "attack",
+      "condition": "on_room_clear",
+      "magnitude": 0.05
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:aries"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_aries_1",
+    "sfx_hook": "sfx.talisman_aries_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Áries · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:aries",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_aries_2",
+    "name": "Talismã de Áries · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "áries",
+      "decan": 2,
+      "stat": "armor",
+      "condition": "while_full_focus",
+      "magnitude": 0.06
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:aries"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_aries_2",
+    "sfx_hook": "sfx.talisman_aries_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Áries · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:aries",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_aries_3",
+    "name": "Talismã de Áries · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "áries",
+      "decan": 3,
+      "stat": "speed",
+      "condition": "after_dodge",
+      "magnitude": 0.07
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:aries"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_aries_3",
+    "sfx_hook": "sfx.talisman_aries_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Áries · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:aries",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_touro_1",
+    "name": "Talismã de Touro · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "touro",
+      "decan": 1,
+      "stat": "focus",
+      "condition": "on_room_clear",
+      "magnitude": 0.055
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:touro"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_touro_1",
+    "sfx_hook": "sfx.talisman_touro_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Touro · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:touro",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_touro_2",
+    "name": "Talismã de Touro · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "touro",
+      "decan": 2,
+      "stat": "precision",
+      "condition": "while_full_focus",
+      "magnitude": 0.065
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:touro"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_touro_2",
+    "sfx_hook": "sfx.talisman_touro_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Touro · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:touro",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_touro_3",
+    "name": "Talismã de Touro · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "touro",
+      "decan": 3,
+      "stat": "essence",
+      "condition": "after_dodge",
+      "magnitude": 0.075
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:touro"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_touro_3",
+    "sfx_hook": "sfx.talisman_touro_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Touro · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:touro",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_gemeos_1",
+    "name": "Talismã de Gêmeos · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "gêmeos",
+      "decan": 1,
+      "stat": "recovery",
+      "condition": "on_room_clear",
+      "magnitude": 0.06
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:gemeos"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_gemeos_1",
+    "sfx_hook": "sfx.talisman_gemeos_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Gêmeos · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:gemeos",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_gemeos_2",
+    "name": "Talismã de Gêmeos · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "gêmeos",
+      "decan": 2,
+      "stat": "rupture",
+      "condition": "while_full_focus",
+      "magnitude": 0.07
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:gemeos"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_gemeos_2",
+    "sfx_hook": "sfx.talisman_gemeos_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Gêmeos · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:gemeos",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_gemeos_3",
+    "name": "Talismã de Gêmeos · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "gêmeos",
+      "decan": 3,
+      "stat": "attack",
+      "condition": "after_dodge",
+      "magnitude": 0.08
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:gemeos"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_gemeos_3",
+    "sfx_hook": "sfx.talisman_gemeos_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Gêmeos · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:gemeos",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_cancer_1",
+    "name": "Talismã de Câncer · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "câncer",
+      "decan": 1,
+      "stat": "armor",
+      "condition": "on_room_clear",
+      "magnitude": 0.065
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:cancer"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_cancer_1",
+    "sfx_hook": "sfx.talisman_cancer_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Câncer · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:cancer",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_cancer_2",
+    "name": "Talismã de Câncer · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "câncer",
+      "decan": 2,
+      "stat": "speed",
+      "condition": "while_full_focus",
+      "magnitude": 0.075
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:cancer"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_cancer_2",
+    "sfx_hook": "sfx.talisman_cancer_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Câncer · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:cancer",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_cancer_3",
+    "name": "Talismã de Câncer · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "câncer",
+      "decan": 3,
+      "stat": "focus",
+      "condition": "after_dodge",
+      "magnitude": 0.085
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:cancer"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_cancer_3",
+    "sfx_hook": "sfx.talisman_cancer_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Câncer · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:cancer",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_leao_1",
+    "name": "Talismã de Leão · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "leão",
+      "decan": 1,
+      "stat": "precision",
+      "condition": "on_room_clear",
+      "magnitude": 0.05
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:leao"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_leao_1",
+    "sfx_hook": "sfx.talisman_leao_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Leão · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:leao",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_leao_2",
+    "name": "Talismã de Leão · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "leão",
+      "decan": 2,
+      "stat": "essence",
+      "condition": "while_full_focus",
+      "magnitude": 0.06
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:leao"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_leao_2",
+    "sfx_hook": "sfx.talisman_leao_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Leão · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:leao",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_leao_3",
+    "name": "Talismã de Leão · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "leão",
+      "decan": 3,
+      "stat": "recovery",
+      "condition": "after_dodge",
+      "magnitude": 0.07
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:leao"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_leao_3",
+    "sfx_hook": "sfx.talisman_leao_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Leão · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:leao",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_virgem_1",
+    "name": "Talismã de Virgem · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "virgem",
+      "decan": 1,
+      "stat": "rupture",
+      "condition": "on_room_clear",
+      "magnitude": 0.055
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:virgem"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_virgem_1",
+    "sfx_hook": "sfx.talisman_virgem_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Virgem · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:virgem",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_virgem_2",
+    "name": "Talismã de Virgem · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "virgem",
+      "decan": 2,
+      "stat": "attack",
+      "condition": "while_full_focus",
+      "magnitude": 0.065
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:virgem"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_virgem_2",
+    "sfx_hook": "sfx.talisman_virgem_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Virgem · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:virgem",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_virgem_3",
+    "name": "Talismã de Virgem · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "virgem",
+      "decan": 3,
+      "stat": "armor",
+      "condition": "after_dodge",
+      "magnitude": 0.075
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:virgem"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_virgem_3",
+    "sfx_hook": "sfx.talisman_virgem_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Virgem · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:virgem",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_libra_1",
+    "name": "Talismã de Libra · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "libra",
+      "decan": 1,
+      "stat": "speed",
+      "condition": "on_room_clear",
+      "magnitude": 0.06
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:libra"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_libra_1",
+    "sfx_hook": "sfx.talisman_libra_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Libra · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:libra",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_libra_2",
+    "name": "Talismã de Libra · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "libra",
+      "decan": 2,
+      "stat": "focus",
+      "condition": "while_full_focus",
+      "magnitude": 0.07
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:libra"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_libra_2",
+    "sfx_hook": "sfx.talisman_libra_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Libra · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:libra",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_libra_3",
+    "name": "Talismã de Libra · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "libra",
+      "decan": 3,
+      "stat": "precision",
+      "condition": "after_dodge",
+      "magnitude": 0.08
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:libra"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_libra_3",
+    "sfx_hook": "sfx.talisman_libra_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Libra · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:libra",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_escorpiao_1",
+    "name": "Talismã de Escorpião · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "escorpião",
+      "decan": 1,
+      "stat": "essence",
+      "condition": "on_room_clear",
+      "magnitude": 0.065
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:escorpiao"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_escorpiao_1",
+    "sfx_hook": "sfx.talisman_escorpiao_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Escorpião · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:escorpiao",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_escorpiao_2",
+    "name": "Talismã de Escorpião · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "escorpião",
+      "decan": 2,
+      "stat": "recovery",
+      "condition": "while_full_focus",
+      "magnitude": 0.075
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:escorpiao"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_escorpiao_2",
+    "sfx_hook": "sfx.talisman_escorpiao_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Escorpião · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:escorpiao",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_escorpiao_3",
+    "name": "Talismã de Escorpião · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "escorpião",
+      "decan": 3,
+      "stat": "rupture",
+      "condition": "after_dodge",
+      "magnitude": 0.085
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:escorpiao"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_escorpiao_3",
+    "sfx_hook": "sfx.talisman_escorpiao_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Escorpião · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:escorpiao",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_sagitario_1",
+    "name": "Talismã de Sagitário · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "sagitário",
+      "decan": 1,
+      "stat": "attack",
+      "condition": "on_room_clear",
+      "magnitude": 0.05
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:sagitario"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_sagitario_1",
+    "sfx_hook": "sfx.talisman_sagitario_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Sagitário · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:sagitario",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_sagitario_2",
+    "name": "Talismã de Sagitário · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "sagitário",
+      "decan": 2,
+      "stat": "armor",
+      "condition": "while_full_focus",
+      "magnitude": 0.06
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:sagitario"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_sagitario_2",
+    "sfx_hook": "sfx.talisman_sagitario_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Sagitário · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:sagitario",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_sagitario_3",
+    "name": "Talismã de Sagitário · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "sagitário",
+      "decan": 3,
+      "stat": "speed",
+      "condition": "after_dodge",
+      "magnitude": 0.07
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:sagitario"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_sagitario_3",
+    "sfx_hook": "sfx.talisman_sagitario_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Sagitário · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:sagitario",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_capricornio_1",
+    "name": "Talismã de Capricórnio · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "capricórnio",
+      "decan": 1,
+      "stat": "focus",
+      "condition": "on_room_clear",
+      "magnitude": 0.055
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:capricornio"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_capricornio_1",
+    "sfx_hook": "sfx.talisman_capricornio_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Capricórnio · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:capricornio",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_capricornio_2",
+    "name": "Talismã de Capricórnio · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "capricórnio",
+      "decan": 2,
+      "stat": "precision",
+      "condition": "while_full_focus",
+      "magnitude": 0.065
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:capricornio"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_capricornio_2",
+    "sfx_hook": "sfx.talisman_capricornio_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Capricórnio · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:capricornio",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_capricornio_3",
+    "name": "Talismã de Capricórnio · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "capricórnio",
+      "decan": 3,
+      "stat": "essence",
+      "condition": "after_dodge",
+      "magnitude": 0.075
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:capricornio"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_capricornio_3",
+    "sfx_hook": "sfx.talisman_capricornio_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Capricórnio · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:capricornio",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_aquario_1",
+    "name": "Talismã de Aquário · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "aquário",
+      "decan": 1,
+      "stat": "recovery",
+      "condition": "on_room_clear",
+      "magnitude": 0.06
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:aquario"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_aquario_1",
+    "sfx_hook": "sfx.talisman_aquario_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Aquário · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:aquario",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_aquario_2",
+    "name": "Talismã de Aquário · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "aquário",
+      "decan": 2,
+      "stat": "rupture",
+      "condition": "while_full_focus",
+      "magnitude": 0.07
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:aquario"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_aquario_2",
+    "sfx_hook": "sfx.talisman_aquario_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Aquário · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:aquario",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_aquario_3",
+    "name": "Talismã de Aquário · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "aquário",
+      "decan": 3,
+      "stat": "attack",
+      "condition": "after_dodge",
+      "magnitude": 0.08
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:aquario"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_aquario_3",
+    "sfx_hook": "sfx.talisman_aquario_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Aquário · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:aquario",
+      "decan:3"
+    ]
+  },
+  {
+    "id": "talisman_peixes_1",
+    "name": "Talismã de Peixes · Decanato 1",
+    "rarity": "common",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "peixes",
+      "decan": 1,
+      "stat": "armor",
+      "condition": "on_room_clear",
+      "magnitude": 0.065
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:peixes"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_peixes_1",
+    "sfx_hook": "sfx.talisman_peixes_1",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Peixes · Decanato 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:peixes",
+      "decan:1"
+    ]
+  },
+  {
+    "id": "talisman_peixes_2",
+    "name": "Talismã de Peixes · Decanato 2",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "peixes",
+      "decan": 2,
+      "stat": "speed",
+      "condition": "while_full_focus",
+      "magnitude": 0.075
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:peixes"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_peixes_2",
+    "sfx_hook": "sfx.talisman_peixes_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Peixes · Decanato 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:peixes",
+      "decan:2"
+    ]
+  },
+  {
+    "id": "talisman_peixes_3",
+    "name": "Talismã de Peixes · Decanato 3",
+    "rarity": "uncommon",
+    "pool": "talismans",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "decan_modifier",
+      "sign": "peixes",
+      "decan": 3,
+      "stat": "focus",
+      "condition": "after_dodge",
+      "magnitude": 0.085
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "additive",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:sign:peixes"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.talisman_peixes_3",
+    "sfx_hook": "sfx.talisman_peixes_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Talismãs Decânicos",
+      "summary": "Talismã de Peixes · Decanato 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "interpretacao",
+      "source": "Estrutura 12 signos × 3 decanatos do cânone; efeito é dramatização Electorum"
+    },
+    "tags": [
+      "talisman",
+      "sign:peixes",
+      "decan:3"
+    ]
+  }
+]

@@ -1,0 +1,2657 @@
+[
+  {
+    "id": "mutation_01_1_reveal",
+    "name": "Olho Revelatório · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:reveal"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_01_olho_revelatorio",
+      "hook": "on_projectile_about_to_hit",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_01_olho_revelatorio",
+      "tag:matrix:reveal"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_01_1_reveal",
+    "sfx_hook": "sfx.mutation_01_1_reveal",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Olho Revelatório · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:reveal",
+      "hook:on_projectile_about_to_hit"
+    ]
+  },
+  {
+    "id": "mutation_01_2_reveal",
+    "name": "Olho Revelatório · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:reveal"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_01_olho_revelatorio",
+      "hook": "modify_damage",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.23
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_01_olho_revelatorio",
+      "tag:matrix:reveal"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_01_2_reveal",
+    "sfx_hook": "sfx.mutation_01_2_reveal",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Olho Revelatório · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:reveal",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_01_3_reveal",
+    "name": "Olho Revelatório · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:reveal"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_01_olho_revelatorio",
+      "hook": "on_enemy_killed",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.29
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_01_olho_revelatorio",
+      "tag:matrix:reveal"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_01_3_reveal",
+    "sfx_hook": "sfx.mutation_01_3_reveal",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Olho Revelatório · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:reveal",
+      "hook:on_enemy_killed"
+    ]
+  },
+  {
+    "id": "mutation_02_1_fire",
+    "name": "Chama Negra · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:fire"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_02_chama_negra",
+      "hook": "on_player_damaged",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_02_chama_negra",
+      "tag:matrix:fire"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_02_1_fire",
+    "sfx_hook": "sfx.mutation_02_1_fire",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Chama Negra · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:fire",
+      "hook:on_player_damaged"
+    ]
+  },
+  {
+    "id": "mutation_02_2_fire",
+    "name": "Chama Negra · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:fire"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_02_chama_negra",
+      "hook": "on_enemy_killed",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.24
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_02_chama_negra",
+      "tag:matrix:fire"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_02_2_fire",
+    "sfx_hook": "sfx.mutation_02_2_fire",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Chama Negra · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:fire",
+      "hook:on_enemy_killed"
+    ]
+  },
+  {
+    "id": "mutation_02_3_fire",
+    "name": "Chama Negra · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:fire"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_02_chama_negra",
+      "hook": "modify_damage",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_02_chama_negra",
+      "tag:matrix:fire"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_02_3_fire",
+    "sfx_hook": "sfx.mutation_02_3_fire",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Chama Negra · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:fire",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_03_1_foundation",
+    "name": "Martelo de Fundação · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:foundation"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_03_martelo_de_fundacao",
+      "hook": "modify_damage",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.19
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_03_martelo_de_fundacao",
+      "tag:matrix:foundation"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_03_1_foundation",
+    "sfx_hook": "sfx.mutation_03_1_foundation",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Martelo de Fundação · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:foundation",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_03_2_foundation",
+    "name": "Martelo de Fundação · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:foundation"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_03_martelo_de_fundacao",
+      "hook": "on_room_cleared",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.25
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_03_martelo_de_fundacao",
+      "tag:matrix:foundation"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_03_2_foundation",
+    "sfx_hook": "sfx.mutation_03_2_foundation",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Martelo de Fundação · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:foundation",
+      "hook:on_room_cleared"
+    ]
+  },
+  {
+    "id": "mutation_03_3_foundation",
+    "name": "Martelo de Fundação · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:foundation"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_03_martelo_de_fundacao",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.31
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_03_martelo_de_fundacao",
+      "tag:matrix:foundation"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_03_3_foundation",
+    "sfx_hook": "sfx.mutation_03_3_foundation",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Martelo de Fundação · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:foundation",
+      "hook:passive_flags"
+    ]
+  },
+  {
+    "id": "mutation_04_1_election",
+    "name": "Sigilo da Eleição · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:election"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_04_sigilo_da_eleicao",
+      "hook": "on_room_cleared",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_04_sigilo_da_eleicao",
+      "tag:matrix:election"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_04_1_election",
+    "sfx_hook": "sfx.mutation_04_1_election",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Sigilo da Eleição · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:election",
+      "hook:on_room_cleared"
+    ]
+  },
+  {
+    "id": "mutation_04_2_election",
+    "name": "Sigilo da Eleição · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:election"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_04_sigilo_da_eleicao",
+      "hook": "on_dodge",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.26
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_04_sigilo_da_eleicao",
+      "tag:matrix:election"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_04_2_election",
+    "sfx_hook": "sfx.mutation_04_2_election",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Sigilo da Eleição · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:election",
+      "hook:on_dodge"
+    ]
+  },
+  {
+    "id": "mutation_04_3_election",
+    "name": "Sigilo da Eleição · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:election"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_04_sigilo_da_eleicao",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.32
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_04_sigilo_da_eleicao",
+      "tag:matrix:election"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_04_3_election",
+    "sfx_hook": "sfx.mutation_04_3_election",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Sigilo da Eleição · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:election",
+      "hook:passive_flags"
+    ]
+  },
+  {
+    "id": "mutation_05_1_balance",
+    "name": "Balança Interna · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:balance"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_05_balanca_interna",
+      "hook": "on_player_damaged",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_05_balanca_interna",
+      "tag:matrix:balance"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_05_1_balance",
+    "sfx_hook": "sfx.mutation_05_1_balance",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Balança Interna · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:balance",
+      "hook:on_player_damaged"
+    ]
+  },
+  {
+    "id": "mutation_05_2_balance",
+    "name": "Balança Interna · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:balance"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_05_balanca_interna",
+      "hook": "on_room_cleared",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.22
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_05_balanca_interna",
+      "tag:matrix:balance"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_05_2_balance",
+    "sfx_hook": "sfx.mutation_05_2_balance",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Balança Interna · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:balance",
+      "hook:on_room_cleared"
+    ]
+  },
+  {
+    "id": "mutation_05_3_balance",
+    "name": "Balança Interna · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:balance"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_05_balanca_interna",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.28
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_05_balanca_interna",
+      "tag:matrix:balance"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_05_3_balance",
+    "sfx_hook": "sfx.mutation_05_3_balance",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Balança Interna · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:balance",
+      "hook:passive_flags"
+    ]
+  },
+  {
+    "id": "mutation_06_1_will",
+    "name": "Vetor da Vontade · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:will"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_06_vetor_da_vontade",
+      "hook": "modify_damage",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_06_vetor_da_vontade",
+      "tag:matrix:will"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_06_1_will",
+    "sfx_hook": "sfx.mutation_06_1_will",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Vetor da Vontade · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:will",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_06_2_will",
+    "name": "Vetor da Vontade · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:will"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_06_vetor_da_vontade",
+      "hook": "on_dodge",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.23
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_06_vetor_da_vontade",
+      "tag:matrix:will"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_06_2_will",
+    "sfx_hook": "sfx.mutation_06_2_will",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Vetor da Vontade · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:will",
+      "hook:on_dodge"
+    ]
+  },
+  {
+    "id": "mutation_06_3_will",
+    "name": "Vetor da Vontade · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:will"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_06_vetor_da_vontade",
+      "hook": "on_enemy_killed",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.29
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_06_vetor_da_vontade",
+      "tag:matrix:will"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_06_3_will",
+    "sfx_hook": "sfx.mutation_06_3_will",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Vetor da Vontade · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:will",
+      "hook:on_enemy_killed"
+    ]
+  },
+  {
+    "id": "mutation_07_1_character",
+    "name": "Coluna de Caráter · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:character"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_07_coluna_de_carater",
+      "hook": "on_player_damaged",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_07_coluna_de_carater",
+      "tag:matrix:character"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_07_1_character",
+    "sfx_hook": "sfx.mutation_07_1_character",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Coluna de Caráter · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:character",
+      "hook:on_player_damaged"
+    ]
+  },
+  {
+    "id": "mutation_07_2_character",
+    "name": "Coluna de Caráter · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:character"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_07_coluna_de_carater",
+      "hook": "modify_damage",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.24
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_07_coluna_de_carater",
+      "tag:matrix:character"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_07_2_character",
+    "sfx_hook": "sfx.mutation_07_2_character",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Coluna de Caráter · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:character",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_07_3_character",
+    "name": "Coluna de Caráter · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:character"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_07_coluna_de_carater",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_07_coluna_de_carater",
+      "tag:matrix:character"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_07_3_character",
+    "sfx_hook": "sfx.mutation_07_3_character",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Coluna de Caráter · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:character",
+      "hook:passive_flags"
+    ]
+  },
+  {
+    "id": "mutation_08_1_rhythm",
+    "name": "Ritmo da Disciplina · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:rhythm"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_08_ritmo_da_disciplina",
+      "hook": "on_dodge",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.19
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_08_ritmo_da_disciplina",
+      "tag:matrix:rhythm"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_08_1_rhythm",
+    "sfx_hook": "sfx.mutation_08_1_rhythm",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Ritmo da Disciplina · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:rhythm",
+      "hook:on_dodge"
+    ]
+  },
+  {
+    "id": "mutation_08_2_rhythm",
+    "name": "Ritmo da Disciplina · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:rhythm"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_08_ritmo_da_disciplina",
+      "hook": "on_room_cleared",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.25
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_08_ritmo_da_disciplina",
+      "tag:matrix:rhythm"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_08_2_rhythm",
+    "sfx_hook": "sfx.mutation_08_2_rhythm",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Ritmo da Disciplina · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:rhythm",
+      "hook:on_room_cleared"
+    ]
+  },
+  {
+    "id": "mutation_08_3_rhythm",
+    "name": "Ritmo da Disciplina · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:rhythm"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_08_ritmo_da_disciplina",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.31
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_08_ritmo_da_disciplina",
+      "tag:matrix:rhythm"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_08_3_rhythm",
+    "sfx_hook": "sfx.mutation_08_3_rhythm",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Ritmo da Disciplina · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:rhythm",
+      "hook:passive_flags"
+    ]
+  },
+  {
+    "id": "mutation_09_1_clarity",
+    "name": "Luz de Clareza · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:clarity"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_09_luz_de_clareza",
+      "hook": "modify_damage",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_09_luz_de_clareza",
+      "tag:matrix:clarity"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_09_1_clarity",
+    "sfx_hook": "sfx.mutation_09_1_clarity",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Luz de Clareza · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:clarity",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_09_2_clarity",
+    "name": "Luz de Clareza · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:clarity"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_09_luz_de_clareza",
+      "hook": "on_projectile_about_to_hit",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.26
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_09_luz_de_clareza",
+      "tag:matrix:clarity"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_09_2_clarity",
+    "sfx_hook": "sfx.mutation_09_2_clarity",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Luz de Clareza · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:clarity",
+      "hook:on_projectile_about_to_hit"
+    ]
+  },
+  {
+    "id": "mutation_09_3_clarity",
+    "name": "Luz de Clareza · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:clarity"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_09_luz_de_clareza",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.32
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_09_luz_de_clareza",
+      "tag:matrix:clarity"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_09_3_clarity",
+    "sfx_hook": "sfx.mutation_09_3_clarity",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Luz de Clareza · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:clarity",
+      "hook:passive_flags"
+    ]
+  },
+  {
+    "id": "mutation_10_1_transmutation",
+    "name": "Serpente da Transmutação · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:transmutation"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_10_serpente_da_transmutacao",
+      "hook": "on_enemy_killed",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_10_serpente_da_transmutacao",
+      "tag:matrix:transmutation"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_10_1_transmutation",
+    "sfx_hook": "sfx.mutation_10_1_transmutation",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Serpente da Transmutação · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:transmutation",
+      "hook:on_enemy_killed"
+    ]
+  },
+  {
+    "id": "mutation_10_2_transmutation",
+    "name": "Serpente da Transmutação · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:transmutation"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_10_serpente_da_transmutacao",
+      "hook": "on_player_damaged",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.22
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_10_serpente_da_transmutacao",
+      "tag:matrix:transmutation"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_10_2_transmutation",
+    "sfx_hook": "sfx.mutation_10_2_transmutation",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Serpente da Transmutação · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:transmutation",
+      "hook:on_player_damaged"
+    ]
+  },
+  {
+    "id": "mutation_10_3_transmutation",
+    "name": "Serpente da Transmutação · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:transmutation"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_10_serpente_da_transmutacao",
+      "hook": "modify_damage",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.28
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_10_serpente_da_transmutacao",
+      "tag:matrix:transmutation"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_10_3_transmutation",
+    "sfx_hook": "sfx.mutation_10_3_transmutation",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Serpente da Transmutação · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:transmutation",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_11_1_vital",
+    "name": "Pulso Vital · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:vital"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_11_pulso_vital",
+      "hook": "on_player_damaged",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_11_pulso_vital",
+      "tag:matrix:vital"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_11_1_vital",
+    "sfx_hook": "sfx.mutation_11_1_vital",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Pulso Vital · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:vital",
+      "hook:on_player_damaged"
+    ]
+  },
+  {
+    "id": "mutation_11_2_vital",
+    "name": "Pulso Vital · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:vital"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_11_pulso_vital",
+      "hook": "on_room_cleared",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.23
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_11_pulso_vital",
+      "tag:matrix:vital"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_11_2_vital",
+    "sfx_hook": "sfx.mutation_11_2_vital",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Pulso Vital · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:vital",
+      "hook:on_room_cleared"
+    ]
+  },
+  {
+    "id": "mutation_11_3_vital",
+    "name": "Pulso Vital · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:vital"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_11_pulso_vital",
+      "hook": "on_dodge",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.29
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_11_pulso_vital",
+      "tag:matrix:vital"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_11_3_vital",
+    "sfx_hook": "sfx.mutation_11_3_vital",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Pulso Vital · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:vital",
+      "hook:on_dodge"
+    ]
+  },
+  {
+    "id": "mutation_12_1_work",
+    "name": "Mão da Obra · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:work"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_12_mao_da_obra",
+      "hook": "on_room_cleared",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_12_mao_da_obra",
+      "tag:matrix:work"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_12_1_work",
+    "sfx_hook": "sfx.mutation_12_1_work",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Mão da Obra · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:work",
+      "hook:on_room_cleared"
+    ]
+  },
+  {
+    "id": "mutation_12_2_work",
+    "name": "Mão da Obra · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:work"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_12_mao_da_obra",
+      "hook": "on_enemy_killed",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.24
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_12_mao_da_obra",
+      "tag:matrix:work"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_12_2_work",
+    "sfx_hook": "sfx.mutation_12_2_work",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Mão da Obra · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:work",
+      "hook:on_enemy_killed"
+    ]
+  },
+  {
+    "id": "mutation_12_3_work",
+    "name": "Mão da Obra · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:work"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_12_mao_da_obra",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_12_mao_da_obra",
+      "tag:matrix:work"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_12_3_work",
+    "sfx_hook": "sfx.mutation_12_3_work",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Mão da Obra · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:work",
+      "hook:passive_flags"
+    ]
+  },
+  {
+    "id": "mutation_13_1_fortune",
+    "name": "Fortuna Sigilar · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:fortune"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_13_fortuna_sigilar",
+      "hook": "on_room_cleared",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.19
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_13_fortuna_sigilar",
+      "tag:matrix:fortune"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_13_1_fortune",
+    "sfx_hook": "sfx.mutation_13_1_fortune",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Fortuna Sigilar · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:fortune",
+      "hook:on_room_cleared"
+    ]
+  },
+  {
+    "id": "mutation_13_2_fortune",
+    "name": "Fortuna Sigilar · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:fortune"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_13_fortuna_sigilar",
+      "hook": "on_enemy_killed",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.25
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_13_fortuna_sigilar",
+      "tag:matrix:fortune"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_13_2_fortune",
+    "sfx_hook": "sfx.mutation_13_2_fortune",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Fortuna Sigilar · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:fortune",
+      "hook:on_enemy_killed"
+    ]
+  },
+  {
+    "id": "mutation_13_3_fortune",
+    "name": "Fortuna Sigilar · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:fortune"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_13_fortuna_sigilar",
+      "hook": "modify_damage",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.31
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_13_fortuna_sigilar",
+      "tag:matrix:fortune"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_13_3_fortune",
+    "sfx_hook": "sfx.mutation_13_3_fortune",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Fortuna Sigilar · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:fortune",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_14_1_verbum",
+    "name": "Verbum · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:verbum"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_14_verbum",
+      "hook": "modify_damage",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_14_verbum",
+      "tag:matrix:verbum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_14_1_verbum",
+    "sfx_hook": "sfx.mutation_14_1_verbum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Verbum · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:verbum",
+      "hook:modify_damage"
+    ]
+  },
+  {
+    "id": "mutation_14_2_verbum",
+    "name": "Verbum · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:verbum"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_14_verbum",
+      "hook": "on_enemy_killed",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.26
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_14_verbum",
+      "tag:matrix:verbum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_14_2_verbum",
+    "sfx_hook": "sfx.mutation_14_2_verbum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Verbum · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:verbum",
+      "hook:on_enemy_killed"
+    ]
+  },
+  {
+    "id": "mutation_14_3_verbum",
+    "name": "Verbum · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:verbum"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_14_verbum",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.32
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_14_verbum",
+      "tag:matrix:verbum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_14_3_verbum",
+    "sfx_hook": "sfx.mutation_14_3_verbum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Verbum · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:verbum",
+      "hook:passive_flags"
+    ]
+  },
+  {
+    "id": "mutation_15_1_memory",
+    "name": "Memoria Ignis · Mutação 1",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:memory"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_15_memoria_ignis",
+      "hook": "on_room_cleared",
+      "variant": 1,
+      "operation": "amplify",
+      "magnitude": 0.16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_15_memoria_ignis",
+      "tag:matrix:memory"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_15_1_memory",
+    "sfx_hook": "sfx.mutation_15_1_memory",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Memoria Ignis · Mutação 1: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:memory",
+      "hook:on_room_cleared"
+    ]
+  },
+  {
+    "id": "mutation_15_2_memory",
+    "name": "Memoria Ignis · Mutação 2",
+    "rarity": "uncommon",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:memory"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_15_memoria_ignis",
+      "hook": "on_dodge",
+      "variant": 2,
+      "operation": "convert",
+      "magnitude": 0.22
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_15_memoria_ignis",
+      "tag:matrix:memory"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_15_2_memory",
+    "sfx_hook": "sfx.mutation_15_2_memory",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Memoria Ignis · Mutação 2: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:memory",
+      "hook:on_dodge"
+    ]
+  },
+  {
+    "id": "mutation_15_3_memory",
+    "name": "Memoria Ignis · Mutação 3",
+    "rarity": "rare",
+    "pool": "mutations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [
+        "matrix:memory"
+      ],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "mutation_hook",
+      "parent_power": "power_15_memoria_ignis",
+      "hook": "passive_flags",
+      "variant": 3,
+      "operation": "echo",
+      "magnitude": 0.28
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "power_15_memoria_ignis",
+      "tag:matrix:memory"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.mutation_15_3_memory",
+    "sfx_hook": "sfx.mutation_15_3_memory",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Mutações",
+      "summary": "Memoria Ignis · Mutação 3: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Mutação funcional autoral vinculada ao Poder-Matriz canônico"
+    },
+    "tags": [
+      "mutation",
+      "matrix:memory",
+      "hook:passive_flags"
+    ]
+  }
+]

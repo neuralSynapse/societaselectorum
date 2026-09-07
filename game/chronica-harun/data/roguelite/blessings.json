@@ -1,0 +1,324 @@
+[
+  {
+    "id": "blessing_horos",
+    "name": "Lucidez de Horos",
+    "rarity": "rare",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "modifiers": {
+        "precision": 0.12,
+        "map_clarity": true
+      }
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:horos"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.blessing_horos",
+    "sfx_hook": "sfx.blessing_horos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Bênçãos",
+      "summary": "Lucidez de Horos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Bênção autoral Electorum para CHRONICA HARUN"
+    },
+    "tags": [
+      "blessing",
+      "blessing:horos"
+    ]
+  },
+  {
+    "id": "blessing_phosphoros",
+    "name": "Fogo de Phosphoros",
+    "rarity": "rare",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "modifiers": {
+        "damage": 0.1,
+        "curse_resist": 0.12
+      }
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:phosphoros"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.blessing_phosphoros",
+    "sfx_hook": "sfx.blessing_phosphoros",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Bênçãos",
+      "summary": "Fogo de Phosphoros: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Bênção autoral Electorum para CHRONICA HARUN"
+    },
+    "tags": [
+      "blessing",
+      "blessing:phosphoros"
+    ]
+  },
+  {
+    "id": "blessing_thoth",
+    "name": "Memória de Thoth",
+    "rarity": "rare",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "modifiers": {
+        "arcana_echo_chance": 0.16
+      }
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:thoth"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.blessing_thoth",
+    "sfx_hook": "sfx.blessing_thoth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Bênçãos",
+      "summary": "Memória de Thoth: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Bênção autoral Electorum para CHRONICA HARUN"
+    },
+    "tags": [
+      "blessing",
+      "blessing:thoth"
+    ]
+  },
+  {
+    "id": "blessing_horus",
+    "name": "Olho de Hórus",
+    "rarity": "rare",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "modifiers": {
+        "weakpoint_bonus": 0.18
+      }
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:horus"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.blessing_horus",
+    "sfx_hook": "sfx.blessing_horus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Bênçãos",
+      "summary": "Olho de Hórus: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Bênção autoral Electorum para CHRONICA HARUN"
+    },
+    "tags": [
+      "blessing",
+      "blessing:horus"
+    ]
+  },
+  {
+    "id": "blessing_belial",
+    "name": "Fundamento de Belial",
+    "rarity": "rare",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "modifiers": {
+        "armor": 8,
+        "knockback_resist": 0.5
+      }
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:belial"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.blessing_belial",
+    "sfx_hook": "sfx.blessing_belial",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Bênçãos",
+      "summary": "Fundamento de Belial: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Bênção autoral Electorum para CHRONICA HARUN"
+    },
+    "tags": [
+      "blessing",
+      "blessing:belial"
+    ]
+  },
+  {
+    "id": "blessing_sophia",
+    "name": "Sophia Reintegrada",
+    "rarity": "rare",
+    "pool": "blessings",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "blessing",
+      "modifiers": {
+        "focus_regen": 0.18,
+        "transmute_loss": 0.15
+      }
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:sophia"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.blessing_sophia",
+    "sfx_hook": "sfx.blessing_sophia",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Bênçãos",
+      "summary": "Sophia Reintegrada: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Bênção autoral Electorum para CHRONICA HARUN"
+    },
+    "tags": [
+      "blessing",
+      "blessing:sophia"
+    ]
+  }
+]

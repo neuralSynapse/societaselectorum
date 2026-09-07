@@ -1,0 +1,522 @@
+[
+  {
+    "id": "route_eye",
+    "name": "Rota do Olho",
+    "rarity": "rare",
+    "pool": "routes",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "route",
+      "route_index": 0,
+      "affinity_tags": [
+        "theme:reveal",
+        "theme:precision"
+      ],
+      "reward_bias": "information",
+      "route_modifier": 0.05
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:reveal"
+    ],
+    "exclusions": [
+      "route_flame",
+      "route_work",
+      "route_daimon",
+      "route_pleroma",
+      "route_archontic",
+      "route_draconic",
+      "route_threshold"
+    ],
+    "vfx_hook": "vfx.route_eye",
+    "sfx_hook": "sfx.route_eye",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Rotas",
+      "summary": "Rota do Olho: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Nome e mecânica de rota autorais Electorum; as fontes canônicas fixam a contagem de oito rotas, não estes nomes"
+    },
+    "tags": [
+      "route",
+      "route:eye"
+    ]
+  },
+  {
+    "id": "route_flame",
+    "name": "Rota da Chama",
+    "rarity": "rare",
+    "pool": "routes",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "route",
+      "route_index": 1,
+      "affinity_tags": [
+        "theme:fire",
+        "theme:will"
+      ],
+      "reward_bias": "aggression",
+      "route_modifier": 0.065
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:fire"
+    ],
+    "exclusions": [
+      "route_eye",
+      "route_work",
+      "route_daimon",
+      "route_pleroma",
+      "route_archontic",
+      "route_draconic",
+      "route_threshold"
+    ],
+    "vfx_hook": "vfx.route_flame",
+    "sfx_hook": "sfx.route_flame",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Rotas",
+      "summary": "Rota da Chama: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Nome e mecânica de rota autorais Electorum; as fontes canônicas fixam a contagem de oito rotas, não estes nomes"
+    },
+    "tags": [
+      "route",
+      "route:flame"
+    ]
+  },
+  {
+    "id": "route_work",
+    "name": "Rota da Obra",
+    "rarity": "rare",
+    "pool": "routes",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "route",
+      "route_index": 2,
+      "affinity_tags": [
+        "theme:work",
+        "theme:foundation"
+      ],
+      "reward_bias": "construction",
+      "route_modifier": 0.08
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:work"
+    ],
+    "exclusions": [
+      "route_eye",
+      "route_flame",
+      "route_daimon",
+      "route_pleroma",
+      "route_archontic",
+      "route_draconic",
+      "route_threshold"
+    ],
+    "vfx_hook": "vfx.route_work",
+    "sfx_hook": "sfx.route_work",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Rotas",
+      "summary": "Rota da Obra: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Nome e mecânica de rota autorais Electorum; as fontes canônicas fixam a contagem de oito rotas, não estes nomes"
+    },
+    "tags": [
+      "route",
+      "route:work"
+    ]
+  },
+  {
+    "id": "route_daimon",
+    "name": "Rota do Daimon",
+    "rarity": "rare",
+    "pool": "routes",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "route",
+      "route_index": 3,
+      "affinity_tags": [
+        "theme:daimon",
+        "theme:memory"
+      ],
+      "reward_bias": "companionship",
+      "route_modifier": 0.095
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:daimon"
+    ],
+    "exclusions": [
+      "route_eye",
+      "route_flame",
+      "route_work",
+      "route_pleroma",
+      "route_archontic",
+      "route_draconic",
+      "route_threshold"
+    ],
+    "vfx_hook": "vfx.route_daimon",
+    "sfx_hook": "sfx.route_daimon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Rotas",
+      "summary": "Rota do Daimon: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Nome e mecânica de rota autorais Electorum; as fontes canônicas fixam a contagem de oito rotas, não estes nomes"
+    },
+    "tags": [
+      "route",
+      "route:daimon"
+    ]
+  },
+  {
+    "id": "route_pleroma",
+    "name": "Rota do Pleroma",
+    "rarity": "rare",
+    "pool": "routes",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "route",
+      "route_index": 4,
+      "affinity_tags": [
+        "theme:balance",
+        "theme:sophia"
+      ],
+      "reward_bias": "integration",
+      "route_modifier": 0.11
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:balance"
+    ],
+    "exclusions": [
+      "route_eye",
+      "route_flame",
+      "route_work",
+      "route_daimon",
+      "route_archontic",
+      "route_draconic",
+      "route_threshold"
+    ],
+    "vfx_hook": "vfx.route_pleroma",
+    "sfx_hook": "sfx.route_pleroma",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Rotas",
+      "summary": "Rota do Pleroma: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Nome e mecânica de rota autorais Electorum; as fontes canônicas fixam a contagem de oito rotas, não estes nomes"
+    },
+    "tags": [
+      "route",
+      "route:pleroma"
+    ]
+  },
+  {
+    "id": "route_archontic",
+    "name": "Rota Arcôntica",
+    "rarity": "rare",
+    "pool": "routes",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "route",
+      "route_index": 5,
+      "affinity_tags": [
+        "theme:command",
+        "theme:risk"
+      ],
+      "reward_bias": "dominion",
+      "route_modifier": 0.125
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:command"
+    ],
+    "exclusions": [
+      "route_eye",
+      "route_flame",
+      "route_work",
+      "route_daimon",
+      "route_pleroma",
+      "route_draconic",
+      "route_threshold"
+    ],
+    "vfx_hook": "vfx.route_archontic",
+    "sfx_hook": "sfx.route_archontic",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Rotas",
+      "summary": "Rota Arcôntica: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Nome e mecânica de rota autorais Electorum; as fontes canônicas fixam a contagem de oito rotas, não estes nomes"
+    },
+    "tags": [
+      "route",
+      "route:archontic"
+    ]
+  },
+  {
+    "id": "route_draconic",
+    "name": "Rota Dracônica",
+    "rarity": "rare",
+    "pool": "routes",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "route",
+      "route_index": 6,
+      "affinity_tags": [
+        "theme:draconic",
+        "theme:transmutation"
+      ],
+      "reward_bias": "transformation",
+      "route_modifier": 0.14
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:draconic"
+    ],
+    "exclusions": [
+      "route_eye",
+      "route_flame",
+      "route_work",
+      "route_daimon",
+      "route_pleroma",
+      "route_archontic",
+      "route_threshold"
+    ],
+    "vfx_hook": "vfx.route_draconic",
+    "sfx_hook": "sfx.route_draconic",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Rotas",
+      "summary": "Rota Dracônica: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Nome e mecânica de rota autorais Electorum; as fontes canônicas fixam a contagem de oito rotas, não estes nomes"
+    },
+    "tags": [
+      "route",
+      "route:draconic"
+    ]
+  },
+  {
+    "id": "route_threshold",
+    "name": "Rota do Limiar",
+    "rarity": "rare",
+    "pool": "routes",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "route",
+      "route_index": 7,
+      "affinity_tags": [
+        "theme:threshold",
+        "theme:secret"
+      ],
+      "reward_bias": "hidden_path",
+      "route_modifier": 0.155
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:theme:threshold"
+    ],
+    "exclusions": [
+      "route_eye",
+      "route_flame",
+      "route_work",
+      "route_daimon",
+      "route_pleroma",
+      "route_archontic",
+      "route_draconic"
+    ],
+    "vfx_hook": "vfx.route_threshold",
+    "sfx_hook": "sfx.route_threshold",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Rotas",
+      "summary": "Rota do Limiar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "dramatizacao_electorum",
+      "source": "Nome e mecânica de rota autorais Electorum; as fontes canônicas fixam a contagem de oito rotas, não estes nomes"
+    },
+    "tags": [
+      "route",
+      "route:threshold"
+    ]
+  }
+]

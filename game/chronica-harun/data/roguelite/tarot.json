@@ -1,0 +1,4695 @@
+[
+  {
+    "id": "tarot_atu_the_fool",
+    "name": "O Louco",
+    "rarity": "legendary",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "threshold_reset",
+      "power": 1.0,
+      "arcana_index": 0,
+      "runtime_event": "arcana.threshold_reset"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_fool",
+    "sfx_hook": "sfx.tarot_atu_the_fool",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Louco: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_fool"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 0
+  },
+  {
+    "id": "tarot_atu_the_magus",
+    "name": "O Mago",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "echo_instrument",
+      "power": 1.03,
+      "arcana_index": 1,
+      "runtime_event": "arcana.echo_instrument"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_magus",
+    "sfx_hook": "sfx.tarot_atu_the_magus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Mago: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_magus"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 1
+  },
+  {
+    "id": "tarot_atu_the_priestess",
+    "name": "A Sacerdotisa",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "secret_sight",
+      "power": 1.06,
+      "arcana_index": 2,
+      "runtime_event": "arcana.secret_sight"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_priestess",
+    "sfx_hook": "sfx.tarot_atu_the_priestess",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "A Sacerdotisa: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_priestess"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 2
+  },
+  {
+    "id": "tarot_atu_the_empress",
+    "name": "A Imperatriz",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "fecundity",
+      "power": 1.09,
+      "arcana_index": 3,
+      "runtime_event": "arcana.fecundity"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_empress",
+    "sfx_hook": "sfx.tarot_atu_the_empress",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "A Imperatriz: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_empress"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 3
+  },
+  {
+    "id": "tarot_atu_the_emperor",
+    "name": "O Imperador",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "command",
+      "power": 1.12,
+      "arcana_index": 4,
+      "runtime_event": "arcana.command"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_emperor",
+    "sfx_hook": "sfx.tarot_atu_the_emperor",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Imperador: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_emperor"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 4
+  },
+  {
+    "id": "tarot_atu_the_hierophant",
+    "name": "O Hierofante",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "tradition",
+      "power": 1.15,
+      "arcana_index": 5,
+      "runtime_event": "arcana.tradition"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_hierophant",
+    "sfx_hook": "sfx.tarot_atu_the_hierophant",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Hierofante: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_hierophant"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 5
+  },
+  {
+    "id": "tarot_atu_the_lovers",
+    "name": "Os Amantes",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "syzygy",
+      "power": 1.18,
+      "arcana_index": 6,
+      "runtime_event": "arcana.syzygy"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_lovers",
+    "sfx_hook": "sfx.tarot_atu_the_lovers",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Os Amantes: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_lovers"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 6
+  },
+  {
+    "id": "tarot_atu_the_chariot",
+    "name": "O Carro",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "chariot",
+      "power": 1.21,
+      "arcana_index": 7,
+      "runtime_event": "arcana.chariot"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_chariot",
+    "sfx_hook": "sfx.tarot_atu_the_chariot",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Carro: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_chariot"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 7
+  },
+  {
+    "id": "tarot_atu_adjustment",
+    "name": "Ajustamento",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "adjustment",
+      "power": 1.24,
+      "arcana_index": 8,
+      "runtime_event": "arcana.adjustment"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_adjustment",
+    "sfx_hook": "sfx.tarot_atu_adjustment",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Ajustamento: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:adjustment"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 8
+  },
+  {
+    "id": "tarot_atu_the_hermit",
+    "name": "O Eremita",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "hermit",
+      "power": 1.27,
+      "arcana_index": 9,
+      "runtime_event": "arcana.hermit"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_hermit",
+    "sfx_hook": "sfx.tarot_atu_the_hermit",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Eremita: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_hermit"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 9
+  },
+  {
+    "id": "tarot_atu_fortune",
+    "name": "Fortuna",
+    "rarity": "legendary",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "fortune",
+      "power": 1.3,
+      "arcana_index": 10,
+      "runtime_event": "arcana.fortune"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_fortune",
+    "sfx_hook": "sfx.tarot_atu_fortune",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Fortuna: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:fortune"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 10
+  },
+  {
+    "id": "tarot_atu_lust",
+    "name": "Luxúria",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "lust",
+      "power": 1.33,
+      "arcana_index": 11,
+      "runtime_event": "arcana.lust"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_lust",
+    "sfx_hook": "sfx.tarot_atu_lust",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Luxúria: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:lust"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 11
+  },
+  {
+    "id": "tarot_atu_the_hanged_man",
+    "name": "O Enforcado",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "suspension",
+      "power": 1.3599999999999999,
+      "arcana_index": 12,
+      "runtime_event": "arcana.suspension"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_hanged_man",
+    "sfx_hook": "sfx.tarot_atu_the_hanged_man",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Enforcado: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_hanged_man"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 12
+  },
+  {
+    "id": "tarot_atu_death",
+    "name": "Morte",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "death",
+      "power": 1.3900000000000001,
+      "arcana_index": 13,
+      "runtime_event": "arcana.death"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_death",
+    "sfx_hook": "sfx.tarot_atu_death",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Morte: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:death"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 13
+  },
+  {
+    "id": "tarot_atu_art",
+    "name": "Arte",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "art",
+      "power": 1.42,
+      "arcana_index": 14,
+      "runtime_event": "arcana.art"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_art",
+    "sfx_hook": "sfx.tarot_atu_art",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Arte: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:art"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 14
+  },
+  {
+    "id": "tarot_atu_the_devil",
+    "name": "O Diabo",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "devil",
+      "power": 1.45,
+      "arcana_index": 15,
+      "runtime_event": "arcana.devil"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_devil",
+    "sfx_hook": "sfx.tarot_atu_the_devil",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Diabo: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_devil"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 15
+  },
+  {
+    "id": "tarot_atu_the_tower",
+    "name": "A Torre",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "tower",
+      "power": 1.48,
+      "arcana_index": 16,
+      "runtime_event": "arcana.tower"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_tower",
+    "sfx_hook": "sfx.tarot_atu_the_tower",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "A Torre: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_tower"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 16
+  },
+  {
+    "id": "tarot_atu_the_star",
+    "name": "A Estrela",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "star",
+      "power": 1.51,
+      "arcana_index": 17,
+      "runtime_event": "arcana.star"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_star",
+    "sfx_hook": "sfx.tarot_atu_the_star",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "A Estrela: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_star"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 17
+  },
+  {
+    "id": "tarot_atu_the_moon",
+    "name": "A Lua",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "moon",
+      "power": 1.54,
+      "arcana_index": 18,
+      "runtime_event": "arcana.moon"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_moon",
+    "sfx_hook": "sfx.tarot_atu_the_moon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "A Lua: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_moon"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 18
+  },
+  {
+    "id": "tarot_atu_the_sun",
+    "name": "O Sol",
+    "rarity": "rare",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sun",
+      "power": 1.5699999999999998,
+      "arcana_index": 19,
+      "runtime_event": "arcana.sun"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_sun",
+    "sfx_hook": "sfx.tarot_atu_the_sun",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Sol: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_sun"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 19
+  },
+  {
+    "id": "tarot_atu_the_aeon",
+    "name": "O Aeon",
+    "rarity": "legendary",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "aeon",
+      "power": 1.6,
+      "arcana_index": 20,
+      "runtime_event": "arcana.aeon"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_aeon",
+    "sfx_hook": "sfx.tarot_atu_the_aeon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Aeon: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_aeon"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 20
+  },
+  {
+    "id": "tarot_atu_the_universe",
+    "name": "O Universo",
+    "rarity": "legendary",
+    "pool": "tarot_atu",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "universe",
+      "power": 1.63,
+      "arcana_index": 21,
+      "runtime_event": "arcana.universe"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:arcana",
+      "tag:power"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_atu_the_universe",
+    "sfx_hook": "sfx.tarot_atu_the_universe",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "O Universo: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura e nomenclatura do Tarot de Thoth; efeito de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "atu",
+      "atu:the_universe"
+    ],
+    "arcana_class": "atu",
+    "atu_index": 21
+  },
+  {
+    "id": "tarot_minor_wands_ace",
+    "name": "Ás de Bastões",
+    "rarity": "common",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "ignite_seed",
+      "suit": "wands",
+      "element": "fire",
+      "attack_bonus": 0.18,
+      "next_hit_ignite": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_ace",
+    "sfx_hook": "sfx.tarot_minor_wands_ace",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Ás de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "ace",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_2",
+    "name": "Dois de Bastões",
+    "rarity": "common",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "split_will",
+      "suit": "wands",
+      "element": "fire",
+      "choose": "speed_or_damage",
+      "rooms": 1
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_2",
+    "sfx_hook": "sfx.tarot_minor_wands_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Dois de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "2",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_3",
+    "name": "Três de Bastões",
+    "rarity": "common",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "formation_chain",
+      "suit": "wands",
+      "element": "fire",
+      "chain_count": 3,
+      "chain_scale": 0.55
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_3",
+    "sfx_hook": "sfx.tarot_minor_wands_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Três de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "3",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_4",
+    "name": "Quatro de Bastões",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "war_stance",
+      "suit": "wands",
+      "element": "fire",
+      "stationary_damage": 0.24,
+      "break_on_move": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_4",
+    "sfx_hook": "sfx.tarot_minor_wands_4",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Quatro de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "4",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_5",
+    "name": "Cinco de Bastões",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "overdrive_risk",
+      "suit": "wands",
+      "element": "fire",
+      "damage": 0.36,
+      "self_heat": 1
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_5",
+    "sfx_hook": "sfx.tarot_minor_wands_5",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Cinco de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "5",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_6",
+    "name": "Seis de Bastões",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "victory_resonance",
+      "suit": "wands",
+      "element": "fire",
+      "on_kill_speed": 0.2,
+      "max_stacks": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_6",
+    "sfx_hook": "sfx.tarot_minor_wands_6",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Seis de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "6",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_7",
+    "name": "Sete de Bastões",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "threshold_gambit",
+      "suit": "wands",
+      "element": "fire",
+      "low_hp_damage": 0.42,
+      "hp_threshold": 0.35
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_7",
+    "sfx_hook": "sfx.tarot_minor_wands_7",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Sete de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "7",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_8",
+    "name": "Oito de Bastões",
+    "rarity": "common",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "velocity_engine",
+      "suit": "wands",
+      "element": "fire",
+      "projectile_speed": 0.3,
+      "move_speed": 0.12
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_8",
+    "sfx_hook": "sfx.tarot_minor_wands_8",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Oito de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "8",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_9",
+    "name": "Nove de Bastões",
+    "rarity": "common",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "will_culmination",
+      "suit": "wands",
+      "element": "fire",
+      "prevent_stagger": true,
+      "charges": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_9",
+    "sfx_hook": "sfx.tarot_minor_wands_9",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Nove de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "9",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_10",
+    "name": "Dez de Bastões",
+    "rarity": "common",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "fire_overflow",
+      "suit": "wands",
+      "element": "fire",
+      "convert_excess_focus_to_damage": true,
+      "ratio": 0.35
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:fire",
+      "tag:suit:wands"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_10",
+    "sfx_hook": "sfx.tarot_minor_wands_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Dez de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "10",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_princess",
+    "name": "Princesa de Bastões",
+    "rarity": "rare",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "manifest_field",
+      "suit": "wands",
+      "element": "fire",
+      "manifestation": "suit_field",
+      "duration_sec": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:wands",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_princess",
+    "sfx_hook": "sfx.tarot_minor_wands_princess",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Princesa de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "princess",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_prince",
+    "name": "Príncipe de Bastões",
+    "rarity": "rare",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "combo_engine",
+      "suit": "wands",
+      "element": "fire",
+      "combo_window_sec": 5,
+      "combo_cap": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:wands",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_prince",
+    "sfx_hook": "sfx.tarot_minor_wands_prince",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Príncipe de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "prince",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_queen",
+    "name": "Rainha de Bastões",
+    "rarity": "rare",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "resource_aura",
+      "suit": "wands",
+      "element": "fire",
+      "aura_radius": 6,
+      "conversion_rate": 0.18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:wands",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_queen",
+    "sfx_hook": "sfx.tarot_minor_wands_queen",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Rainha de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "queen",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_wands_knight",
+    "name": "Cavaleiro de Bastões",
+    "rarity": "rare",
+    "pool": "tarot_minor_wands",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "suit_finisher",
+      "suit": "wands",
+      "element": "fire",
+      "finisher_power": 1.6,
+      "resets_suit_stacks": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:wands",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_wands_knight",
+    "sfx_hook": "sfx.tarot_minor_wands_knight",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Cavaleiro de Bastões: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:wands",
+      "element:fire"
+    ],
+    "arcana_class": "minor",
+    "suit": "wands",
+    "rank": "knight",
+    "element": "fire"
+  },
+  {
+    "id": "tarot_minor_cups_ace",
+    "name": "Ás de Copas",
+    "rarity": "common",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "focus_spring",
+      "suit": "cups",
+      "element": "water",
+      "focus_gain": 30
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_ace",
+    "sfx_hook": "sfx.tarot_minor_cups_ace",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Ás de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "ace",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_2",
+    "name": "Dois de Copas",
+    "rarity": "common",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "bond_pair",
+      "suit": "cups",
+      "element": "water",
+      "link_echo": 0.4,
+      "rooms": 1
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_2",
+    "sfx_hook": "sfx.tarot_minor_cups_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Dois de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "2",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_3",
+    "name": "Três de Copas",
+    "rarity": "common",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "recovery_circle",
+      "suit": "cups",
+      "element": "water",
+      "heal_on_three_kills": 3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_3",
+    "sfx_hook": "sfx.tarot_minor_cups_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Três de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "3",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_4",
+    "name": "Quatro de Copas",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "still_pool",
+      "suit": "cups",
+      "element": "water",
+      "focus_regen": 0.8,
+      "while_stationary": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_4",
+    "sfx_hook": "sfx.tarot_minor_cups_4",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Quatro de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "4",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_5",
+    "name": "Cinco de Copas",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "wound_to_focus",
+      "suit": "cups",
+      "element": "water",
+      "damage_taken_focus": 0.45
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_5",
+    "sfx_hook": "sfx.tarot_minor_cups_5",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Cinco de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "5",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_6",
+    "name": "Seis de Copas",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "memory_recovery",
+      "suit": "cups",
+      "element": "water",
+      "restore_last_spent_resource": 0.35
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_6",
+    "sfx_hook": "sfx.tarot_minor_cups_6",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Seis de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "6",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_7",
+    "name": "Sete de Copas",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "choice_of_cups",
+      "suit": "cups",
+      "element": "water",
+      "offer_three_boons": true,
+      "one_is_ambivalent": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_7",
+    "sfx_hook": "sfx.tarot_minor_cups_7",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Sete de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "7",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_8",
+    "name": "Oito de Copas",
+    "rarity": "common",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "flow_engine",
+      "suit": "cups",
+      "element": "water",
+      "dodge_focus": 8,
+      "perfect_dodge_bonus": 10
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_8",
+    "sfx_hook": "sfx.tarot_minor_cups_8",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Oito de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "8",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_9",
+    "name": "Nove de Copas",
+    "rarity": "common",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "overflow_heal",
+      "suit": "cups",
+      "element": "water",
+      "focus_cap_bonus": 20,
+      "overflow_to_heal": 0.25
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_9",
+    "sfx_hook": "sfx.tarot_minor_cups_9",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Nove de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "9",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_10",
+    "name": "Dez de Copas",
+    "rarity": "common",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "communion",
+      "suit": "cups",
+      "element": "water",
+      "room_clear_heal": 4,
+      "daimon_cooldown_pct": -0.15
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:water",
+      "tag:suit:cups"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_10",
+    "sfx_hook": "sfx.tarot_minor_cups_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Dez de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "10",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_princess",
+    "name": "Princesa de Copas",
+    "rarity": "rare",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "manifest_field",
+      "suit": "cups",
+      "element": "water",
+      "manifestation": "suit_field",
+      "duration_sec": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:cups",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_princess",
+    "sfx_hook": "sfx.tarot_minor_cups_princess",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Princesa de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "princess",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_prince",
+    "name": "Príncipe de Copas",
+    "rarity": "rare",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "combo_engine",
+      "suit": "cups",
+      "element": "water",
+      "combo_window_sec": 5,
+      "combo_cap": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:cups",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_prince",
+    "sfx_hook": "sfx.tarot_minor_cups_prince",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Príncipe de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "prince",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_queen",
+    "name": "Rainha de Copas",
+    "rarity": "rare",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "resource_aura",
+      "suit": "cups",
+      "element": "water",
+      "aura_radius": 6,
+      "conversion_rate": 0.18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:cups",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_queen",
+    "sfx_hook": "sfx.tarot_minor_cups_queen",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Rainha de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "queen",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_cups_knight",
+    "name": "Cavaleiro de Copas",
+    "rarity": "rare",
+    "pool": "tarot_minor_cups",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "suit_finisher",
+      "suit": "cups",
+      "element": "water",
+      "finisher_power": 1.6,
+      "resets_suit_stacks": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:cups",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_cups_knight",
+    "sfx_hook": "sfx.tarot_minor_cups_knight",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Cavaleiro de Copas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:cups",
+      "element:water"
+    ],
+    "arcana_class": "minor",
+    "suit": "cups",
+    "rank": "knight",
+    "element": "water"
+  },
+  {
+    "id": "tarot_minor_swords_ace",
+    "name": "Ás de Espadas",
+    "rarity": "common",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "reveal_edge",
+      "suit": "swords",
+      "element": "air",
+      "reveal_weakpoint": true,
+      "precision": 0.12
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_ace",
+    "sfx_hook": "sfx.tarot_minor_swords_ace",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Ás de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "ace",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_2",
+    "name": "Dois de Espadas",
+    "rarity": "common",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "dual_mark",
+      "suit": "swords",
+      "element": "air",
+      "mark_two_targets": true,
+      "mark_damage": 0.16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_2",
+    "sfx_hook": "sfx.tarot_minor_swords_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Dois de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "2",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_3",
+    "name": "Três de Espadas",
+    "rarity": "common",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "rupture_triangle",
+      "suit": "swords",
+      "element": "air",
+      "third_hit_armor_break": 0.3
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_3",
+    "sfx_hook": "sfx.tarot_minor_swords_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Três de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "3",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_4",
+    "name": "Quatro de Espadas",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "quiet_blade",
+      "suit": "swords",
+      "element": "air",
+      "after_no_attack_sec": 2.0,
+      "next_crit": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_4",
+    "sfx_hook": "sfx.tarot_minor_swords_4",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Quatro de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "4",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_5",
+    "name": "Cinco de Espadas",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "precision_wager",
+      "suit": "swords",
+      "element": "air",
+      "crit_bonus": 0.25,
+      "miss_penalty_focus": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_5",
+    "sfx_hook": "sfx.tarot_minor_swords_5",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Cinco de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "5",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_6",
+    "name": "Seis de Espadas",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "line_of_truth",
+      "suit": "swords",
+      "element": "air",
+      "pierce": 2,
+      "reveal_path": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_6",
+    "sfx_hook": "sfx.tarot_minor_swords_6",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Seis de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "6",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_7",
+    "name": "Sete de Espadas",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "feint",
+      "suit": "swords",
+      "element": "air",
+      "dodge_creates_decoy": true,
+      "decoy_sec": 1.5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_7",
+    "sfx_hook": "sfx.tarot_minor_swords_7",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Sete de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "7",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_8",
+    "name": "Oito de Espadas",
+    "rarity": "common",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "analysis_engine",
+      "suit": "swords",
+      "element": "air",
+      "consecutive_hit_precision": 0.04,
+      "max_stacks": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_8",
+    "sfx_hook": "sfx.tarot_minor_swords_8",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Oito de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "8",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_9",
+    "name": "Nove de Espadas",
+    "rarity": "common",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "severance",
+      "suit": "swords",
+      "element": "air",
+      "execute_revealed_below": 0.16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_9",
+    "sfx_hook": "sfx.tarot_minor_swords_9",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Nove de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "9",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_10",
+    "name": "Dez de Espadas",
+    "rarity": "common",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "break_the_map",
+      "suit": "swords",
+      "element": "air",
+      "break_ward": true,
+      "reveal_secret_candidate": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:air",
+      "tag:suit:swords"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_10",
+    "sfx_hook": "sfx.tarot_minor_swords_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Dez de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "10",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_princess",
+    "name": "Princesa de Espadas",
+    "rarity": "rare",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "manifest_field",
+      "suit": "swords",
+      "element": "air",
+      "manifestation": "suit_field",
+      "duration_sec": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:swords",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_princess",
+    "sfx_hook": "sfx.tarot_minor_swords_princess",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Princesa de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "princess",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_prince",
+    "name": "Príncipe de Espadas",
+    "rarity": "rare",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "combo_engine",
+      "suit": "swords",
+      "element": "air",
+      "combo_window_sec": 5,
+      "combo_cap": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:swords",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_prince",
+    "sfx_hook": "sfx.tarot_minor_swords_prince",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Príncipe de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "prince",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_queen",
+    "name": "Rainha de Espadas",
+    "rarity": "rare",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "resource_aura",
+      "suit": "swords",
+      "element": "air",
+      "aura_radius": 6,
+      "conversion_rate": 0.18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:swords",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_queen",
+    "sfx_hook": "sfx.tarot_minor_swords_queen",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Rainha de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "queen",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_swords_knight",
+    "name": "Cavaleiro de Espadas",
+    "rarity": "rare",
+    "pool": "tarot_minor_swords",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "suit_finisher",
+      "suit": "swords",
+      "element": "air",
+      "finisher_power": 1.6,
+      "resets_suit_stacks": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:swords",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_swords_knight",
+    "sfx_hook": "sfx.tarot_minor_swords_knight",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Cavaleiro de Espadas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:swords",
+      "element:air"
+    ],
+    "arcana_class": "minor",
+    "suit": "swords",
+    "rank": "knight",
+    "element": "air"
+  },
+  {
+    "id": "tarot_minor_disks_ace",
+    "name": "Ás de Discos",
+    "rarity": "common",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "material_seed",
+      "suit": "disks",
+      "element": "earth",
+      "armor": 8,
+      "essence": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_ace",
+    "sfx_hook": "sfx.tarot_minor_disks_ace",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Ás de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "ace",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_2",
+    "name": "Dois de Discos",
+    "rarity": "common",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "balanced_exchange",
+      "suit": "disks",
+      "element": "earth",
+      "reroll_cost_pct": -0.25,
+      "economy_variance": 0.1
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_2",
+    "sfx_hook": "sfx.tarot_minor_disks_2",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Dois de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "2",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_3",
+    "name": "Três de Discos",
+    "rarity": "common",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "craft_triangle",
+      "suit": "disks",
+      "element": "earth",
+      "upgrade_next_talisman": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_3",
+    "sfx_hook": "sfx.tarot_minor_disks_3",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Três de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "3",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_4",
+    "name": "Quatro de Discos",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "anchor_stance",
+      "suit": "disks",
+      "element": "earth",
+      "knockback_resist": 1.0,
+      "armor_while_still": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_4",
+    "sfx_hook": "sfx.tarot_minor_disks_4",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Quatro de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "4",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_5",
+    "name": "Cinco de Discos",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "scarcity_alchemy",
+      "suit": "disks",
+      "element": "earth",
+      "low_essence_defense": 0.22,
+      "threshold": 10
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_5",
+    "sfx_hook": "sfx.tarot_minor_disks_5",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Cinco de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "5",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_6",
+    "name": "Seis de Discos",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "equitable_return",
+      "suit": "disks",
+      "element": "earth",
+      "shop_refund_chance": 0.22
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_6",
+    "sfx_hook": "sfx.tarot_minor_disks_6",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Seis de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "6",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_7",
+    "name": "Sete de Discos",
+    "rarity": "uncommon",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "investment",
+      "suit": "disks",
+      "element": "earth",
+      "bank_essence": 5,
+      "room_return": 2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_7",
+    "sfx_hook": "sfx.tarot_minor_disks_7",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Sete de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "7",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_8",
+    "name": "Oito de Discos",
+    "rarity": "common",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matter_engine",
+      "suit": "disks",
+      "element": "earth",
+      "room_clear_armor_charge": 3,
+      "max_charges": 4
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_8",
+    "sfx_hook": "sfx.tarot_minor_disks_8",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Oito de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "8",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_9",
+    "name": "Nove de Discos",
+    "rarity": "common",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "fortress",
+      "suit": "disks",
+      "element": "earth",
+      "barrier_charges": 2,
+      "barrier_value": 12
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_9",
+    "sfx_hook": "sfx.tarot_minor_disks_9",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Nove de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "9",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_10",
+    "name": "Dez de Discos",
+    "rarity": "common",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "matter_overflow",
+      "suit": "disks",
+      "element": "earth",
+      "excess_armor_to_essence": 0.2
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:element:earth",
+      "tag:suit:disks"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_10",
+    "sfx_hook": "sfx.tarot_minor_disks_10",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Dez de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Estrutura de naipe do Tarot de Thoth; mecânica é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "10",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_princess",
+    "name": "Princesa de Discos",
+    "rarity": "rare",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "manifest_field",
+      "suit": "disks",
+      "element": "earth",
+      "manifestation": "suit_field",
+      "duration_sec": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:disks",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_princess",
+    "sfx_hook": "sfx.tarot_minor_disks_princess",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Princesa de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "princess",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_prince",
+    "name": "Príncipe de Discos",
+    "rarity": "rare",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "combo_engine",
+      "suit": "disks",
+      "element": "earth",
+      "combo_window_sec": 5,
+      "combo_cap": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:disks",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_prince",
+    "sfx_hook": "sfx.tarot_minor_disks_prince",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Príncipe de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "prince",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_queen",
+    "name": "Rainha de Discos",
+    "rarity": "rare",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "resource_aura",
+      "suit": "disks",
+      "element": "earth",
+      "aura_radius": 6,
+      "conversion_rate": 0.18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:disks",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_queen",
+    "sfx_hook": "sfx.tarot_minor_disks_queen",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Rainha de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "queen",
+    "element": "earth"
+  },
+  {
+    "id": "tarot_minor_disks_knight",
+    "name": "Cavaleiro de Discos",
+    "rarity": "rare",
+    "pool": "tarot_minor_disks",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "suit_finisher",
+      "suit": "disks",
+      "element": "earth",
+      "finisher_power": 1.6,
+      "resets_suit_stacks": true
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:suit:disks",
+      "tag:daimon",
+      "tag:instrumentum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.tarot_minor_disks_knight",
+    "sfx_hook": "sfx.tarot_minor_disks_knight",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Tarot de Thoth",
+      "summary": "Cavaleiro de Discos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Carta de corte do Tarot de Thoth; manifestação de gameplay é dramatização Electorum"
+    },
+    "tags": [
+      "tarot",
+      "minor",
+      "court",
+      "suit:disks",
+      "element:earth"
+    ],
+    "arcana_class": "minor",
+    "suit": "disks",
+    "rank": "knight",
+    "element": "earth"
+  }
+]

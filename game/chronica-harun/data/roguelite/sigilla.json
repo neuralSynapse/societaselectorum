@@ -1,0 +1,4826 @@
+[
+  {
+    "id": "sigillum_01_bael",
+    "name": "Sigillum Bael",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 1,
+      "spirit": "Bael",
+      "dominium": "command",
+      "trigger": "secret_discovered",
+      "benefit": {
+        "magnitude": 0.13,
+        "variant": 0,
+        "signature": "command:secret_discovered:1"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 2,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 2,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:command",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_01_bael",
+    "sfx_hook": "sfx.sigillum_01_bael",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Bael: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:command",
+      "trigger:secret_discovered"
+    ]
+  },
+  {
+    "id": "sigillum_02_agares",
+    "name": "Sigillum Agares",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 2,
+      "spirit": "Agares",
+      "dominium": "movement",
+      "trigger": "room_clear",
+      "benefit": {
+        "magnitude": 0.155,
+        "variant": 0,
+        "signature": "movement:room_clear:2"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 3,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 3,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:movement",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_02_agares",
+    "sfx_hook": "sfx.sigillum_02_agares",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Agares: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:movement",
+      "trigger:room_clear"
+    ]
+  },
+  {
+    "id": "sigillum_03_vassago",
+    "name": "Sigillum Vassago",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 3,
+      "spirit": "Vassago",
+      "dominium": "revelation",
+      "trigger": "room_enter",
+      "benefit": {
+        "magnitude": 0.18,
+        "variant": 0,
+        "signature": "revelation:room_enter:3"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 4,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 4,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:revelation",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_03_vassago",
+    "sfx_hook": "sfx.sigillum_03_vassago",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Vassago: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:revelation",
+      "trigger:room_enter"
+    ]
+  },
+  {
+    "id": "sigillum_04_samigina",
+    "name": "Sigillum Samigina",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 4,
+      "spirit": "Samigina",
+      "dominium": "rupture",
+      "trigger": "player_damaged",
+      "benefit": {
+        "magnitude": 0.205,
+        "variant": 0,
+        "signature": "rupture:player_damaged:4"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 5,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 5,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:rupture",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_04_samigina",
+    "sfx_hook": "sfx.sigillum_04_samigina",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Samigina: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:rupture",
+      "trigger:player_damaged"
+    ]
+  },
+  {
+    "id": "sigillum_05_marbas",
+    "name": "Sigillum Marbas",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 5,
+      "spirit": "Marbas",
+      "dominium": "economy",
+      "trigger": "primary_hit",
+      "benefit": {
+        "magnitude": 0.23,
+        "variant": 0,
+        "signature": "economy:primary_hit:5"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 1,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 1,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:economy",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_05_marbas",
+    "sfx_hook": "sfx.sigillum_05_marbas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Marbas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:economy",
+      "trigger:primary_hit"
+    ]
+  },
+  {
+    "id": "sigillum_06_valefor",
+    "name": "Sigillum Valefor",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 6,
+      "spirit": "Valefor",
+      "dominium": "ward",
+      "trigger": "instrument_use",
+      "benefit": {
+        "magnitude": 0.255,
+        "variant": 0,
+        "signature": "ward:instrument_use:6"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 2,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 2,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:ward",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_06_valefor",
+    "sfx_hook": "sfx.sigillum_06_valefor",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Valefor: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:ward",
+      "trigger:instrument_use"
+    ]
+  },
+  {
+    "id": "sigillum_07_amon",
+    "name": "Sigillum Amon",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 7,
+      "spirit": "Amon",
+      "dominium": "summon",
+      "trigger": "dodge",
+      "benefit": {
+        "magnitude": 0.28,
+        "variant": 0,
+        "signature": "summon:dodge:7"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 3,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 3,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:summon",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_07_amon",
+    "sfx_hook": "sfx.sigillum_07_amon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Amon: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:summon",
+      "trigger:dodge"
+    ]
+  },
+  {
+    "id": "sigillum_08_barbatos",
+    "name": "Sigillum Barbatos",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 8,
+      "spirit": "Barbatos",
+      "dominium": "conversion",
+      "trigger": "arcana_use",
+      "benefit": {
+        "magnitude": 0.305,
+        "variant": 0,
+        "signature": "conversion:arcana_use:8"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 4,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 4,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:conversion",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_08_barbatos",
+    "sfx_hook": "sfx.sigillum_08_barbatos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Barbatos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:conversion",
+      "trigger:arcana_use"
+    ]
+  },
+  {
+    "id": "sigillum_09_paimon",
+    "name": "Sigillum Paimon",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 9,
+      "spirit": "Paimon",
+      "dominium": "precision",
+      "trigger": "enemy_kill",
+      "benefit": {
+        "magnitude": 0.105,
+        "variant": 0,
+        "signature": "precision:enemy_kill:9"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 5,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 5,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:precision",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_09_paimon",
+    "sfx_hook": "sfx.sigillum_09_paimon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Paimon: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:precision",
+      "trigger:enemy_kill"
+    ]
+  },
+  {
+    "id": "sigillum_10_buer",
+    "name": "Sigillum Buer",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 10,
+      "spirit": "Buer",
+      "dominium": "tempo",
+      "trigger": "secret_discovered",
+      "benefit": {
+        "magnitude": 0.13,
+        "variant": 0,
+        "signature": "tempo:secret_discovered:10"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 1,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 1,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:tempo",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_10_buer",
+    "sfx_hook": "sfx.sigillum_10_buer",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Buer: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:tempo",
+      "trigger:secret_discovered"
+    ]
+  },
+  {
+    "id": "sigillum_11_gusion",
+    "name": "Sigillum Gusion",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 11,
+      "spirit": "Gusion",
+      "dominium": "harvest",
+      "trigger": "room_clear",
+      "benefit": {
+        "magnitude": 0.155,
+        "variant": 0,
+        "signature": "harvest:room_clear:11"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 2,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 2,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:harvest",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_11_gusion",
+    "sfx_hook": "sfx.sigillum_11_gusion",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Gusion: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:harvest",
+      "trigger:room_clear"
+    ]
+  },
+  {
+    "id": "sigillum_12_sitri",
+    "name": "Sigillum Sitri",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 12,
+      "spirit": "Sitri",
+      "dominium": "risk",
+      "trigger": "room_enter",
+      "benefit": {
+        "magnitude": 0.18,
+        "variant": 0,
+        "signature": "risk:room_enter:12"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 3,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 3,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:risk",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_12_sitri",
+    "sfx_hook": "sfx.sigillum_12_sitri",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Sitri: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:risk",
+      "trigger:room_enter"
+    ]
+  },
+  {
+    "id": "sigillum_13_beleth",
+    "name": "Sigillum Beleth",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 13,
+      "spirit": "Beleth",
+      "dominium": "command",
+      "trigger": "player_damaged",
+      "benefit": {
+        "magnitude": 0.205,
+        "variant": 1,
+        "signature": "command:player_damaged:13"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 4,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 4,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:command",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_13_beleth",
+    "sfx_hook": "sfx.sigillum_13_beleth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Beleth: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:command",
+      "trigger:player_damaged"
+    ]
+  },
+  {
+    "id": "sigillum_14_leraje",
+    "name": "Sigillum Leraje",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 14,
+      "spirit": "Leraje",
+      "dominium": "movement",
+      "trigger": "primary_hit",
+      "benefit": {
+        "magnitude": 0.23,
+        "variant": 1,
+        "signature": "movement:primary_hit:14"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 5,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 5,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:movement",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_14_leraje",
+    "sfx_hook": "sfx.sigillum_14_leraje",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Leraje: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:movement",
+      "trigger:primary_hit"
+    ]
+  },
+  {
+    "id": "sigillum_15_eligos",
+    "name": "Sigillum Eligos",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 15,
+      "spirit": "Eligos",
+      "dominium": "revelation",
+      "trigger": "instrument_use",
+      "benefit": {
+        "magnitude": 0.255,
+        "variant": 1,
+        "signature": "revelation:instrument_use:15"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 1,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 1,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:revelation",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_15_eligos",
+    "sfx_hook": "sfx.sigillum_15_eligos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Eligos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:revelation",
+      "trigger:instrument_use"
+    ]
+  },
+  {
+    "id": "sigillum_16_zepar",
+    "name": "Sigillum Zepar",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 16,
+      "spirit": "Zepar",
+      "dominium": "rupture",
+      "trigger": "dodge",
+      "benefit": {
+        "magnitude": 0.28,
+        "variant": 1,
+        "signature": "rupture:dodge:16"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 2,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 2,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:rupture",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_16_zepar",
+    "sfx_hook": "sfx.sigillum_16_zepar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Zepar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:rupture",
+      "trigger:dodge"
+    ]
+  },
+  {
+    "id": "sigillum_17_botis",
+    "name": "Sigillum Botis",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 17,
+      "spirit": "Botis",
+      "dominium": "economy",
+      "trigger": "arcana_use",
+      "benefit": {
+        "magnitude": 0.305,
+        "variant": 1,
+        "signature": "economy:arcana_use:17"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 3,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 3,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:economy",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_17_botis",
+    "sfx_hook": "sfx.sigillum_17_botis",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Botis: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:economy",
+      "trigger:arcana_use"
+    ]
+  },
+  {
+    "id": "sigillum_18_bathin",
+    "name": "Sigillum Bathin",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 18,
+      "spirit": "Bathin",
+      "dominium": "ward",
+      "trigger": "enemy_kill",
+      "benefit": {
+        "magnitude": 0.105,
+        "variant": 1,
+        "signature": "ward:enemy_kill:18"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 4,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 4,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:ward",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_18_bathin",
+    "sfx_hook": "sfx.sigillum_18_bathin",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Bathin: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:ward",
+      "trigger:enemy_kill"
+    ]
+  },
+  {
+    "id": "sigillum_19_sallos",
+    "name": "Sigillum Sallos",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 19,
+      "spirit": "Sallos",
+      "dominium": "summon",
+      "trigger": "secret_discovered",
+      "benefit": {
+        "magnitude": 0.13,
+        "variant": 1,
+        "signature": "summon:secret_discovered:19"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 5,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 5,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:summon",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_19_sallos",
+    "sfx_hook": "sfx.sigillum_19_sallos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Sallos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:summon",
+      "trigger:secret_discovered"
+    ]
+  },
+  {
+    "id": "sigillum_20_purson",
+    "name": "Sigillum Purson",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 20,
+      "spirit": "Purson",
+      "dominium": "conversion",
+      "trigger": "room_clear",
+      "benefit": {
+        "magnitude": 0.155,
+        "variant": 1,
+        "signature": "conversion:room_clear:20"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 1,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 1,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:conversion",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_20_purson",
+    "sfx_hook": "sfx.sigillum_20_purson",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Purson: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:conversion",
+      "trigger:room_clear"
+    ]
+  },
+  {
+    "id": "sigillum_21_marax",
+    "name": "Sigillum Marax",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 21,
+      "spirit": "Marax",
+      "dominium": "precision",
+      "trigger": "room_enter",
+      "benefit": {
+        "magnitude": 0.18,
+        "variant": 1,
+        "signature": "precision:room_enter:21"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 2,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 2,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:precision",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_21_marax",
+    "sfx_hook": "sfx.sigillum_21_marax",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Marax: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:precision",
+      "trigger:room_enter"
+    ]
+  },
+  {
+    "id": "sigillum_22_ipos",
+    "name": "Sigillum Ipos",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 22,
+      "spirit": "Ipos",
+      "dominium": "tempo",
+      "trigger": "player_damaged",
+      "benefit": {
+        "magnitude": 0.205,
+        "variant": 1,
+        "signature": "tempo:player_damaged:22"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 3,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 3,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:tempo",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_22_ipos",
+    "sfx_hook": "sfx.sigillum_22_ipos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Ipos: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:tempo",
+      "trigger:player_damaged"
+    ]
+  },
+  {
+    "id": "sigillum_23_aim",
+    "name": "Sigillum Aim",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 23,
+      "spirit": "Aim",
+      "dominium": "harvest",
+      "trigger": "primary_hit",
+      "benefit": {
+        "magnitude": 0.23,
+        "variant": 1,
+        "signature": "harvest:primary_hit:23"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 4,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 4,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:harvest",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_23_aim",
+    "sfx_hook": "sfx.sigillum_23_aim",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Aim: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:harvest",
+      "trigger:primary_hit"
+    ]
+  },
+  {
+    "id": "sigillum_24_naberius",
+    "name": "Sigillum Naberius",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 24,
+      "spirit": "Naberius",
+      "dominium": "risk",
+      "trigger": "instrument_use",
+      "benefit": {
+        "magnitude": 0.255,
+        "variant": 1,
+        "signature": "risk:instrument_use:24"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 5,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 5,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:risk",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_24_naberius",
+    "sfx_hook": "sfx.sigillum_24_naberius",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Naberius: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:risk",
+      "trigger:instrument_use"
+    ]
+  },
+  {
+    "id": "sigillum_25_glasya_labolas",
+    "name": "Sigillum Glasya-Labolas",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 25,
+      "spirit": "Glasya-Labolas",
+      "dominium": "command",
+      "trigger": "dodge",
+      "benefit": {
+        "magnitude": 0.28,
+        "variant": 2,
+        "signature": "command:dodge:25"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 1,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 1,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:command",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_25_glasya_labolas",
+    "sfx_hook": "sfx.sigillum_25_glasya_labolas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Glasya-Labolas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:command",
+      "trigger:dodge"
+    ]
+  },
+  {
+    "id": "sigillum_26_bune",
+    "name": "Sigillum Bune",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 26,
+      "spirit": "Bune",
+      "dominium": "movement",
+      "trigger": "arcana_use",
+      "benefit": {
+        "magnitude": 0.305,
+        "variant": 2,
+        "signature": "movement:arcana_use:26"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 2,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 2,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:movement",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_26_bune",
+    "sfx_hook": "sfx.sigillum_26_bune",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Bune: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:movement",
+      "trigger:arcana_use"
+    ]
+  },
+  {
+    "id": "sigillum_27_ronove",
+    "name": "Sigillum Ronove",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 27,
+      "spirit": "Ronove",
+      "dominium": "revelation",
+      "trigger": "enemy_kill",
+      "benefit": {
+        "magnitude": 0.105,
+        "variant": 2,
+        "signature": "revelation:enemy_kill:27"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 3,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 3,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:revelation",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_27_ronove",
+    "sfx_hook": "sfx.sigillum_27_ronove",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Ronove: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:revelation",
+      "trigger:enemy_kill"
+    ]
+  },
+  {
+    "id": "sigillum_28_berith",
+    "name": "Sigillum Berith",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 28,
+      "spirit": "Berith",
+      "dominium": "rupture",
+      "trigger": "secret_discovered",
+      "benefit": {
+        "magnitude": 0.13,
+        "variant": 2,
+        "signature": "rupture:secret_discovered:28"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 4,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 4,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:rupture",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_28_berith",
+    "sfx_hook": "sfx.sigillum_28_berith",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Berith: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:rupture",
+      "trigger:secret_discovered"
+    ]
+  },
+  {
+    "id": "sigillum_29_astaroth",
+    "name": "Sigillum Astaroth",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 29,
+      "spirit": "Astaroth",
+      "dominium": "economy",
+      "trigger": "room_clear",
+      "benefit": {
+        "magnitude": 0.155,
+        "variant": 2,
+        "signature": "economy:room_clear:29"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 5,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 5,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:economy",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_29_astaroth",
+    "sfx_hook": "sfx.sigillum_29_astaroth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Astaroth: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:economy",
+      "trigger:room_clear"
+    ]
+  },
+  {
+    "id": "sigillum_30_forneus",
+    "name": "Sigillum Forneus",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 30,
+      "spirit": "Forneus",
+      "dominium": "ward",
+      "trigger": "room_enter",
+      "benefit": {
+        "magnitude": 0.18,
+        "variant": 2,
+        "signature": "ward:room_enter:30"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 1,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 1,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:ward",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_30_forneus",
+    "sfx_hook": "sfx.sigillum_30_forneus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Forneus: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:ward",
+      "trigger:room_enter"
+    ]
+  },
+  {
+    "id": "sigillum_31_foras",
+    "name": "Sigillum Foras",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 31,
+      "spirit": "Foras",
+      "dominium": "summon",
+      "trigger": "player_damaged",
+      "benefit": {
+        "magnitude": 0.205,
+        "variant": 2,
+        "signature": "summon:player_damaged:31"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 2,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 2,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:summon",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_31_foras",
+    "sfx_hook": "sfx.sigillum_31_foras",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Foras: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:summon",
+      "trigger:player_damaged"
+    ]
+  },
+  {
+    "id": "sigillum_32_asmoday",
+    "name": "Sigillum Asmoday",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 32,
+      "spirit": "Asmoday",
+      "dominium": "conversion",
+      "trigger": "primary_hit",
+      "benefit": {
+        "magnitude": 0.23,
+        "variant": 2,
+        "signature": "conversion:primary_hit:32"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 3,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 3,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:conversion",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_32_asmoday",
+    "sfx_hook": "sfx.sigillum_32_asmoday",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Asmoday: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:conversion",
+      "trigger:primary_hit"
+    ]
+  },
+  {
+    "id": "sigillum_33_gaap",
+    "name": "Sigillum Gaap",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 33,
+      "spirit": "Gaap",
+      "dominium": "precision",
+      "trigger": "instrument_use",
+      "benefit": {
+        "magnitude": 0.255,
+        "variant": 2,
+        "signature": "precision:instrument_use:33"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 4,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 4,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:precision",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_33_gaap",
+    "sfx_hook": "sfx.sigillum_33_gaap",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Gaap: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:precision",
+      "trigger:instrument_use"
+    ]
+  },
+  {
+    "id": "sigillum_34_furfur",
+    "name": "Sigillum Furfur",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 34,
+      "spirit": "Furfur",
+      "dominium": "tempo",
+      "trigger": "dodge",
+      "benefit": {
+        "magnitude": 0.28,
+        "variant": 2,
+        "signature": "tempo:dodge:34"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 5,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 5,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:tempo",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_34_furfur",
+    "sfx_hook": "sfx.sigillum_34_furfur",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Furfur: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:tempo",
+      "trigger:dodge"
+    ]
+  },
+  {
+    "id": "sigillum_35_marchosias",
+    "name": "Sigillum Marchosias",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 35,
+      "spirit": "Marchosias",
+      "dominium": "harvest",
+      "trigger": "arcana_use",
+      "benefit": {
+        "magnitude": 0.305,
+        "variant": 2,
+        "signature": "harvest:arcana_use:35"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 1,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 1,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:harvest",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_35_marchosias",
+    "sfx_hook": "sfx.sigillum_35_marchosias",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Marchosias: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:harvest",
+      "trigger:arcana_use"
+    ]
+  },
+  {
+    "id": "sigillum_36_stolas",
+    "name": "Sigillum Stolas",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 36,
+      "spirit": "Stolas",
+      "dominium": "risk",
+      "trigger": "enemy_kill",
+      "benefit": {
+        "magnitude": 0.105,
+        "variant": 2,
+        "signature": "risk:enemy_kill:36"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 2,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 2,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:risk",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_36_stolas",
+    "sfx_hook": "sfx.sigillum_36_stolas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Stolas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:risk",
+      "trigger:enemy_kill"
+    ]
+  },
+  {
+    "id": "sigillum_37_phenex",
+    "name": "Sigillum Phenex",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 37,
+      "spirit": "Phenex",
+      "dominium": "command",
+      "trigger": "secret_discovered",
+      "benefit": {
+        "magnitude": 0.13,
+        "variant": 3,
+        "signature": "command:secret_discovered:37"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 3,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 3,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:command",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_37_phenex",
+    "sfx_hook": "sfx.sigillum_37_phenex",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Phenex: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:command",
+      "trigger:secret_discovered"
+    ]
+  },
+  {
+    "id": "sigillum_38_halphas",
+    "name": "Sigillum Halphas",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 38,
+      "spirit": "Halphas",
+      "dominium": "movement",
+      "trigger": "room_clear",
+      "benefit": {
+        "magnitude": 0.155,
+        "variant": 3,
+        "signature": "movement:room_clear:38"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 4,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 4,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:movement",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_38_halphas",
+    "sfx_hook": "sfx.sigillum_38_halphas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Halphas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:movement",
+      "trigger:room_clear"
+    ]
+  },
+  {
+    "id": "sigillum_39_malphas",
+    "name": "Sigillum Malphas",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 39,
+      "spirit": "Malphas",
+      "dominium": "revelation",
+      "trigger": "room_enter",
+      "benefit": {
+        "magnitude": 0.18,
+        "variant": 3,
+        "signature": "revelation:room_enter:39"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 5,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 5,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:revelation",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_39_malphas",
+    "sfx_hook": "sfx.sigillum_39_malphas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Malphas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:revelation",
+      "trigger:room_enter"
+    ]
+  },
+  {
+    "id": "sigillum_40_raum",
+    "name": "Sigillum Raum",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 40,
+      "spirit": "Raum",
+      "dominium": "rupture",
+      "trigger": "player_damaged",
+      "benefit": {
+        "magnitude": 0.205,
+        "variant": 3,
+        "signature": "rupture:player_damaged:40"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 1,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 1,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:rupture",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_40_raum",
+    "sfx_hook": "sfx.sigillum_40_raum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Raum: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:rupture",
+      "trigger:player_damaged"
+    ]
+  },
+  {
+    "id": "sigillum_41_focalor",
+    "name": "Sigillum Focalor",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 41,
+      "spirit": "Focalor",
+      "dominium": "economy",
+      "trigger": "primary_hit",
+      "benefit": {
+        "magnitude": 0.23,
+        "variant": 3,
+        "signature": "economy:primary_hit:41"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 2,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 2,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:economy",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_41_focalor",
+    "sfx_hook": "sfx.sigillum_41_focalor",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Focalor: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:economy",
+      "trigger:primary_hit"
+    ]
+  },
+  {
+    "id": "sigillum_42_vepar",
+    "name": "Sigillum Vepar",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 42,
+      "spirit": "Vepar",
+      "dominium": "ward",
+      "trigger": "instrument_use",
+      "benefit": {
+        "magnitude": 0.255,
+        "variant": 3,
+        "signature": "ward:instrument_use:42"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 3,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 3,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:ward",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_42_vepar",
+    "sfx_hook": "sfx.sigillum_42_vepar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Vepar: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:ward",
+      "trigger:instrument_use"
+    ]
+  },
+  {
+    "id": "sigillum_43_sabnock",
+    "name": "Sigillum Sabnock",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 43,
+      "spirit": "Sabnock",
+      "dominium": "summon",
+      "trigger": "dodge",
+      "benefit": {
+        "magnitude": 0.28,
+        "variant": 3,
+        "signature": "summon:dodge:43"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 4,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 4,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:summon",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_43_sabnock",
+    "sfx_hook": "sfx.sigillum_43_sabnock",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Sabnock: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:summon",
+      "trigger:dodge"
+    ]
+  },
+  {
+    "id": "sigillum_44_shax",
+    "name": "Sigillum Shax",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 44,
+      "spirit": "Shax",
+      "dominium": "conversion",
+      "trigger": "arcana_use",
+      "benefit": {
+        "magnitude": 0.305,
+        "variant": 3,
+        "signature": "conversion:arcana_use:44"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 5,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 5,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:conversion",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_44_shax",
+    "sfx_hook": "sfx.sigillum_44_shax",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Shax: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:conversion",
+      "trigger:arcana_use"
+    ]
+  },
+  {
+    "id": "sigillum_45_vine",
+    "name": "Sigillum Vine",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 45,
+      "spirit": "Vine",
+      "dominium": "precision",
+      "trigger": "enemy_kill",
+      "benefit": {
+        "magnitude": 0.105,
+        "variant": 3,
+        "signature": "precision:enemy_kill:45"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 1,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 1,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:precision",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_45_vine",
+    "sfx_hook": "sfx.sigillum_45_vine",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Vine: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:precision",
+      "trigger:enemy_kill"
+    ]
+  },
+  {
+    "id": "sigillum_46_bifrons",
+    "name": "Sigillum Bifrons",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 46,
+      "spirit": "Bifrons",
+      "dominium": "tempo",
+      "trigger": "secret_discovered",
+      "benefit": {
+        "magnitude": 0.13,
+        "variant": 3,
+        "signature": "tempo:secret_discovered:46"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 2,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 2,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:tempo",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_46_bifrons",
+    "sfx_hook": "sfx.sigillum_46_bifrons",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Bifrons: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:tempo",
+      "trigger:secret_discovered"
+    ]
+  },
+  {
+    "id": "sigillum_47_uvall",
+    "name": "Sigillum Uvall",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 47,
+      "spirit": "Uvall",
+      "dominium": "harvest",
+      "trigger": "room_clear",
+      "benefit": {
+        "magnitude": 0.155,
+        "variant": 3,
+        "signature": "harvest:room_clear:47"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 3,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 3,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:harvest",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_47_uvall",
+    "sfx_hook": "sfx.sigillum_47_uvall",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Uvall: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:harvest",
+      "trigger:room_clear"
+    ]
+  },
+  {
+    "id": "sigillum_48_haagenti",
+    "name": "Sigillum Haagenti",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 48,
+      "spirit": "Haagenti",
+      "dominium": "risk",
+      "trigger": "room_enter",
+      "benefit": {
+        "magnitude": 0.18,
+        "variant": 3,
+        "signature": "risk:room_enter:48"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 4,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 4,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:risk",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_48_haagenti",
+    "sfx_hook": "sfx.sigillum_48_haagenti",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Haagenti: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:risk",
+      "trigger:room_enter"
+    ]
+  },
+  {
+    "id": "sigillum_49_crocell",
+    "name": "Sigillum Crocell",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 49,
+      "spirit": "Crocell",
+      "dominium": "command",
+      "trigger": "player_damaged",
+      "benefit": {
+        "magnitude": 0.205,
+        "variant": 4,
+        "signature": "command:player_damaged:49"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 5,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 5,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:command",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_49_crocell",
+    "sfx_hook": "sfx.sigillum_49_crocell",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Crocell: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:command",
+      "trigger:player_damaged"
+    ]
+  },
+  {
+    "id": "sigillum_50_furcas",
+    "name": "Sigillum Furcas",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 50,
+      "spirit": "Furcas",
+      "dominium": "movement",
+      "trigger": "primary_hit",
+      "benefit": {
+        "magnitude": 0.23,
+        "variant": 4,
+        "signature": "movement:primary_hit:50"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 1,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 1,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:movement",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_50_furcas",
+    "sfx_hook": "sfx.sigillum_50_furcas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Furcas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:movement",
+      "trigger:primary_hit"
+    ]
+  },
+  {
+    "id": "sigillum_51_balam",
+    "name": "Sigillum Balam",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 51,
+      "spirit": "Balam",
+      "dominium": "revelation",
+      "trigger": "instrument_use",
+      "benefit": {
+        "magnitude": 0.255,
+        "variant": 4,
+        "signature": "revelation:instrument_use:51"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 2,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 2,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:revelation",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_51_balam",
+    "sfx_hook": "sfx.sigillum_51_balam",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Balam: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:revelation",
+      "trigger:instrument_use"
+    ]
+  },
+  {
+    "id": "sigillum_52_alloces",
+    "name": "Sigillum Alloces",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 52,
+      "spirit": "Alloces",
+      "dominium": "rupture",
+      "trigger": "dodge",
+      "benefit": {
+        "magnitude": 0.28,
+        "variant": 4,
+        "signature": "rupture:dodge:52"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 3,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 3,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:rupture",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_52_alloces",
+    "sfx_hook": "sfx.sigillum_52_alloces",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Alloces: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:rupture",
+      "trigger:dodge"
+    ]
+  },
+  {
+    "id": "sigillum_53_camio",
+    "name": "Sigillum Camio",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 53,
+      "spirit": "Camio",
+      "dominium": "economy",
+      "trigger": "arcana_use",
+      "benefit": {
+        "magnitude": 0.305,
+        "variant": 4,
+        "signature": "economy:arcana_use:53"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 4,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 4,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:economy",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_53_camio",
+    "sfx_hook": "sfx.sigillum_53_camio",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Camio: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:economy",
+      "trigger:arcana_use"
+    ]
+  },
+  {
+    "id": "sigillum_54_murmur",
+    "name": "Sigillum Murmur",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 54,
+      "spirit": "Murmur",
+      "dominium": "ward",
+      "trigger": "enemy_kill",
+      "benefit": {
+        "magnitude": 0.105,
+        "variant": 4,
+        "signature": "ward:enemy_kill:54"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 5,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 5,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:ward",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_54_murmur",
+    "sfx_hook": "sfx.sigillum_54_murmur",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Murmur: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:ward",
+      "trigger:enemy_kill"
+    ]
+  },
+  {
+    "id": "sigillum_55_orobas",
+    "name": "Sigillum Orobas",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 55,
+      "spirit": "Orobas",
+      "dominium": "summon",
+      "trigger": "secret_discovered",
+      "benefit": {
+        "magnitude": 0.13,
+        "variant": 4,
+        "signature": "summon:secret_discovered:55"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 1,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 1,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:summon",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_55_orobas",
+    "sfx_hook": "sfx.sigillum_55_orobas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Orobas: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:summon",
+      "trigger:secret_discovered"
+    ]
+  },
+  {
+    "id": "sigillum_56_gremory",
+    "name": "Sigillum Gremory",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 56,
+      "spirit": "Gremory",
+      "dominium": "conversion",
+      "trigger": "room_clear",
+      "benefit": {
+        "magnitude": 0.155,
+        "variant": 4,
+        "signature": "conversion:room_clear:56"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 2,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 2,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:conversion",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_56_gremory",
+    "sfx_hook": "sfx.sigillum_56_gremory",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Gremory: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:conversion",
+      "trigger:room_clear"
+    ]
+  },
+  {
+    "id": "sigillum_57_ose",
+    "name": "Sigillum Ose",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 57,
+      "spirit": "Ose",
+      "dominium": "precision",
+      "trigger": "room_enter",
+      "benefit": {
+        "magnitude": 0.18,
+        "variant": 4,
+        "signature": "precision:room_enter:57"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 3,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 3,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:precision",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_57_ose",
+    "sfx_hook": "sfx.sigillum_57_ose",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Ose: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:precision",
+      "trigger:room_enter"
+    ]
+  },
+  {
+    "id": "sigillum_58_amy",
+    "name": "Sigillum Amy",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 58,
+      "spirit": "Amy",
+      "dominium": "tempo",
+      "trigger": "player_damaged",
+      "benefit": {
+        "magnitude": 0.205,
+        "variant": 4,
+        "signature": "tempo:player_damaged:58"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 4,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 4,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:tempo",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_58_amy",
+    "sfx_hook": "sfx.sigillum_58_amy",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Amy: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:tempo",
+      "trigger:player_damaged"
+    ]
+  },
+  {
+    "id": "sigillum_59_orias",
+    "name": "Sigillum Orias",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 59,
+      "spirit": "Orias",
+      "dominium": "harvest",
+      "trigger": "primary_hit",
+      "benefit": {
+        "magnitude": 0.23,
+        "variant": 4,
+        "signature": "harvest:primary_hit:59"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 5,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 5,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:harvest",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_59_orias",
+    "sfx_hook": "sfx.sigillum_59_orias",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Orias: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:harvest",
+      "trigger:primary_hit"
+    ]
+  },
+  {
+    "id": "sigillum_60_vapula",
+    "name": "Sigillum Vapula",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 60,
+      "spirit": "Vapula",
+      "dominium": "risk",
+      "trigger": "instrument_use",
+      "benefit": {
+        "magnitude": 0.255,
+        "variant": 4,
+        "signature": "risk:instrument_use:60"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 1,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 1,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:risk",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_60_vapula",
+    "sfx_hook": "sfx.sigillum_60_vapula",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Vapula: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:risk",
+      "trigger:instrument_use"
+    ]
+  },
+  {
+    "id": "sigillum_61_zagan",
+    "name": "Sigillum Zagan",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 61,
+      "spirit": "Zagan",
+      "dominium": "command",
+      "trigger": "dodge",
+      "benefit": {
+        "magnitude": 0.28,
+        "variant": 5,
+        "signature": "command:dodge:61"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 2,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 2,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:command",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_61_zagan",
+    "sfx_hook": "sfx.sigillum_61_zagan",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Zagan: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:command",
+      "trigger:dodge"
+    ]
+  },
+  {
+    "id": "sigillum_62_valac",
+    "name": "Sigillum Valac",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 62,
+      "spirit": "Valac",
+      "dominium": "movement",
+      "trigger": "arcana_use",
+      "benefit": {
+        "magnitude": 0.305,
+        "variant": 5,
+        "signature": "movement:arcana_use:62"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 3,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 3,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:movement",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_62_valac",
+    "sfx_hook": "sfx.sigillum_62_valac",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Valac: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:movement",
+      "trigger:arcana_use"
+    ]
+  },
+  {
+    "id": "sigillum_63_andras",
+    "name": "Sigillum Andras",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 63,
+      "spirit": "Andras",
+      "dominium": "revelation",
+      "trigger": "enemy_kill",
+      "benefit": {
+        "magnitude": 0.105,
+        "variant": 5,
+        "signature": "revelation:enemy_kill:63"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 4,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 4,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:revelation",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_63_andras",
+    "sfx_hook": "sfx.sigillum_63_andras",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Andras: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:revelation",
+      "trigger:enemy_kill"
+    ]
+  },
+  {
+    "id": "sigillum_64_haures",
+    "name": "Sigillum Haures",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 64,
+      "spirit": "Haures",
+      "dominium": "rupture",
+      "trigger": "secret_discovered",
+      "benefit": {
+        "magnitude": 0.13,
+        "variant": 5,
+        "signature": "rupture:secret_discovered:64"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 5,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 5,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:rupture",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_64_haures",
+    "sfx_hook": "sfx.sigillum_64_haures",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Haures: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:rupture",
+      "trigger:secret_discovered"
+    ]
+  },
+  {
+    "id": "sigillum_65_andrealphus",
+    "name": "Sigillum Andrealphus",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 65,
+      "spirit": "Andrealphus",
+      "dominium": "economy",
+      "trigger": "room_clear",
+      "benefit": {
+        "magnitude": 0.155,
+        "variant": 5,
+        "signature": "economy:room_clear:65"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 1,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 1,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:economy",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_65_andrealphus",
+    "sfx_hook": "sfx.sigillum_65_andrealphus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Andrealphus: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:economy",
+      "trigger:room_clear"
+    ]
+  },
+  {
+    "id": "sigillum_66_cimejes",
+    "name": "Sigillum Cimejes",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 66,
+      "spirit": "Cimejes",
+      "dominium": "ward",
+      "trigger": "room_enter",
+      "benefit": {
+        "magnitude": 0.18,
+        "variant": 5,
+        "signature": "ward:room_enter:66"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 2,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 2,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:ward",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_66_cimejes",
+    "sfx_hook": "sfx.sigillum_66_cimejes",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Cimejes: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:ward",
+      "trigger:room_enter"
+    ]
+  },
+  {
+    "id": "sigillum_67_amdusias",
+    "name": "Sigillum Amdusias",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 67,
+      "spirit": "Amdusias",
+      "dominium": "summon",
+      "trigger": "player_damaged",
+      "benefit": {
+        "magnitude": 0.205,
+        "variant": 5,
+        "signature": "summon:player_damaged:67"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 3,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 3,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:summon",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_67_amdusias",
+    "sfx_hook": "sfx.sigillum_67_amdusias",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Amdusias: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:summon",
+      "trigger:player_damaged"
+    ]
+  },
+  {
+    "id": "sigillum_68_belial",
+    "name": "Sigillum Belial",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 68,
+      "spirit": "Belial",
+      "dominium": "conversion",
+      "trigger": "primary_hit",
+      "benefit": {
+        "magnitude": 0.23,
+        "variant": 5,
+        "signature": "conversion:primary_hit:68"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 4,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 4,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:conversion",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_68_belial",
+    "sfx_hook": "sfx.sigillum_68_belial",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Belial: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:conversion",
+      "trigger:primary_hit"
+    ]
+  },
+  {
+    "id": "sigillum_69_decarabia",
+    "name": "Sigillum Decarabia",
+    "rarity": "legendary",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 69,
+      "spirit": "Decarabia",
+      "dominium": "precision",
+      "trigger": "instrument_use",
+      "benefit": {
+        "magnitude": 0.255,
+        "variant": 5,
+        "signature": "precision:instrument_use:69"
+      },
+      "pretium": {
+        "resource": "focus",
+        "amount": 5,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "focus",
+      "amount": 5,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:precision",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_69_decarabia",
+    "sfx_hook": "sfx.sigillum_69_decarabia",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Decarabia: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:precision",
+      "trigger:instrument_use"
+    ]
+  },
+  {
+    "id": "sigillum_70_seere",
+    "name": "Sigillum Seere",
+    "rarity": "common",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 70,
+      "spirit": "Seere",
+      "dominium": "tempo",
+      "trigger": "dodge",
+      "benefit": {
+        "magnitude": 0.28,
+        "variant": 5,
+        "signature": "tempo:dodge:70"
+      },
+      "pretium": {
+        "resource": "max_hp",
+        "amount": 1,
+        "risk_tier": 2
+      }
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 1,
+      "risk_tier": 2
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 2
+    },
+    "synergies": [
+      "tag:dominium:tempo",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_70_seere",
+    "sfx_hook": "sfx.sigillum_70_seere",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Seere: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:tempo",
+      "trigger:dodge"
+    ]
+  },
+  {
+    "id": "sigillum_71_dantalion",
+    "name": "Sigillum Dantalion",
+    "rarity": "uncommon",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 71,
+      "spirit": "Dantalion",
+      "dominium": "harvest",
+      "trigger": "arcana_use",
+      "benefit": {
+        "magnitude": 0.305,
+        "variant": 5,
+        "signature": "harvest:arcana_use:71"
+      },
+      "pretium": {
+        "resource": "curse_heat",
+        "amount": 2,
+        "risk_tier": 3
+      }
+    },
+    "cost": {
+      "resource": "curse_heat",
+      "amount": 2,
+      "risk_tier": 3
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "refresh",
+      "max_stacks": 3
+    },
+    "synergies": [
+      "tag:dominium:harvest",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_71_dantalion",
+    "sfx_hook": "sfx.sigillum_71_dantalion",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Dantalion: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:harvest",
+      "trigger:arcana_use"
+    ]
+  },
+  {
+    "id": "sigillum_72_andromalius",
+    "name": "Sigillum Andromalius",
+    "rarity": "rare",
+    "pool": "sigilla_goetica",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "number": 72,
+      "spirit": "Andromalius",
+      "dominium": "risk",
+      "trigger": "enemy_kill",
+      "benefit": {
+        "magnitude": 0.105,
+        "variant": 5,
+        "signature": "risk:enemy_kill:72"
+      },
+      "pretium": {
+        "resource": "essence",
+        "amount": 3,
+        "risk_tier": 1
+      }
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 3,
+      "risk_tier": 1
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "charges",
+      "max_stacks": 1
+    },
+    "synergies": [
+      "tag:dominium:risk",
+      "tag:sigillum"
+    ],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigillum_72_andromalius",
+    "sfx_hook": "sfx.sigillum_72_andromalius",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Sigilla Goetica",
+      "summary": "Sigillum Andromalius: efeito de gameplay integrado ao sistema roguelite."
+    },
+    "provenance": {
+      "level": "tradicao",
+      "source": "Nome tradicional da Ars Goetia; DOMINIUM, PRETIUM e mecânica são dramatização Electorum"
+    },
+    "tags": [
+      "sigillum",
+      "dominium:risk",
+      "trigger:enemy_kill"
+    ]
+  }
+]
