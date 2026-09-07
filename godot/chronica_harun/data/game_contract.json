@@ -1,0 +1,43 @@
+{
+  "schema": "chronica-foundation-contract-v1",
+  "save_version": 1,
+  "mode": "first_person_fps_roguelite",
+  "journey": {
+    "student_substages": 15,
+    "initiation_room": true,
+    "final_narrative_state": "PEREGRINUS_IGNIS_GAME",
+    "institutional_progression_write": false
+  },
+  "bestiary": {
+    "enemies": 82,
+    "bosses": 16,
+    "boss_phases": 3
+  },
+  "catalogs": {
+    "tarot_thoth": 78,
+    "sigilla_goetica": 72,
+    "pharmaka_hermetica": 21,
+    "talismans_decanic": 36,
+    "instrumenta": 32,
+    "matrix_powers": 15,
+    "mutations": 45,
+    "daimones": 7
+  },
+  "special_rooms": [
+    "arcana", "reliquary", "instrumentarium", "laboratorium", "sigillar",
+    "market", "bibliotheca", "speculum", "planetary", "trial", "cursed",
+    "secret", "super_secret", "archon", "theophany", "historical_echo",
+    "initiation", "post_boss_blessing", "post_boss_pact"
+  ],
+  "routes": 8,
+  "quality_presets": ["1080p", "1440p", "4K"],
+  "provenance_fields": ["fonte", "tradicao", "interpretacao", "dramatizacao_electorum"],
+  "recovery": {
+    "foundation": "reconstructed_from_governing_specs",
+    "enemy_catalog_body": "not_recovered",
+    "boss_catalog_body": "not_recovered",
+    "roguelite_catalog_bodies": "not_recovered",
+    "enemy_scenes": "not_recovered",
+    "boss_scenes": "not_recovered"
+  }
+}

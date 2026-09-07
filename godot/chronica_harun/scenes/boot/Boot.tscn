@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/boot/Boot.gd" id="2_boot"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(12, 0.2, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape_floor"]
+size = Vector3(12, 0.2, 12)
+
+[sub_resource type="Environment" id="Environment_boot"]
+background_mode = 1
+background_color = Color(0.015, 0.015, 0.02, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.16, 0.14, 0.12, 1)
+ambient_light_energy = 0.35
+
+[node name="Boot" type="Node3D"]
+script = ExtResource("2_boot")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_boot")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape_floor")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector3(0, 1.1, 0)

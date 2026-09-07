@@ -1,0 +1,21 @@
+{
+  "schema": "student-journey-v1",
+  "entries": [
+    {"index": 0, "id": "o_olho", "kind": "student_substage"},
+    {"index": 1, "id": "a_chama", "kind": "student_substage"},
+    {"index": 2, "id": "a_obra_fundacao", "kind": "student_substage"},
+    {"index": 3, "id": "autoeleicao", "kind": "student_substage"},
+    {"index": 4, "id": "autorresponsabilidade", "kind": "student_substage"},
+    {"index": 5, "id": "verdadeira_vontade", "kind": "student_substage"},
+    {"index": 6, "id": "carater", "kind": "student_substage"},
+    {"index": 7, "id": "disciplina", "kind": "student_substage"},
+    {"index": 8, "id": "clareza", "kind": "student_substage"},
+    {"index": 9, "id": "transmutacao", "kind": "student_substage"},
+    {"index": 10, "id": "corpo_energia", "kind": "student_substage"},
+    {"index": 11, "id": "obra", "kind": "student_substage"},
+    {"index": 12, "id": "fortuna", "kind": "student_substage"},
+    {"index": 13, "id": "influencia", "kind": "student_substage"},
+    {"index": 14, "id": "legado", "kind": "student_substage"},
+    {"index": 15, "id": "camara_iniciacao", "kind": "initiation_room"}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "student-bosses-recovery-v1",
+  "expected_count": 16,
+  "expected_phases_per_boss": 3,
+  "recovery_status": "not_recovered",
+  "entries": [],
+  "note": "Foundation audit marker only. Boss content belongs to the combat/entities front and was not reconstructed here."
+}

@@ -1,0 +1,41 @@
+; Engine configuration file.
+; CHRONICA HARUN foundation recovery branch.
+config_version=5
+
+[application]
+config/name="MUNDUS · CHRONICA HARUN"
+run/main_scene="res://scenes/boot/Boot.tscn"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+
+[autoload]
+GameState="*res://autoload/GameState.gd"
+SaveService="*res://autoload/SaveService.gd"
+RogueliteContentService="*res://autoload/RogueliteContentService.gd"
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+
+[input]
+move_forward={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":87)]
+}
+move_back={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":83)]
+}
+move_left={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":65)]
+}
+move_right={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":68)]
+}
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

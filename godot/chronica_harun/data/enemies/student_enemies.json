@@ -1,0 +1,7 @@
+{
+  "schema": "student-enemies-recovery-v1",
+  "expected_count": 82,
+  "recovery_status": "not_recovered",
+  "entries": [],
+  "note": "Foundation audit marker only. Enemy content belongs to the combat/entities front and was not reconstructed here."
+}

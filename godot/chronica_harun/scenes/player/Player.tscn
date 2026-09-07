@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/PlayerController.gd" id="1_controller"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape_player"]
+radius = 0.35
+height = 1.1
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_controller")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape_player")
+
+[node name="Neck" type="Node3D" parent="."]
+position = Vector3(0, 0.65, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+current = true
+near = 0.05

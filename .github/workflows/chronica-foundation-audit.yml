@@ -1,0 +1,68 @@
+name: CHRONICA Foundation Audit
+
+on:
+  push:
+    branches:
+      - feat/chronica-foundation-audit
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  foundation-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Repository state
+        shell: bash
+        run: |
+          set -euxo pipefail
+          git status
+          git branch -a
+          git log --oneline --decorate -30
+          git remote -v
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Pytest full repository
+        run: python -m pytest -q
+
+      - name: Install Godot 4.5.1 stable
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --retry 3 \
+            -o /tmp/godot.zip \
+            https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          echo '02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd  /tmp/godot.zip' | sha256sum --check
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot_v4.5.1-stable_linux.x86_64
+          /tmp/godot/Godot_v4.5.1-stable_linux.x86_64 --version
+
+      - name: Godot headless import validation
+        shell: bash
+        run: |
+          set -euxo pipefail
+          /tmp/godot/Godot_v4.5.1-stable_linux.x86_64 \
+            --headless \
+            --path godot/chronica_harun \
+            --editor --quit
+
+      - name: Godot boot smoke test
+        shell: bash
+        run: |
+          set -euxo pipefail
+          /tmp/godot/Godot_v4.5.1-stable_linux.x86_64 \
+            --headless \
+            --path godot/chronica_harun \
+            --quit-after 5

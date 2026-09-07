@@ -1,0 +1,24 @@
+{
+  "schema": "roguelite-catalog-recovery-v1",
+  "recovery_status": "not_recovered",
+  "expected_counts": {
+    "tarot_thoth": 78,
+    "sigilla_goetica": 72,
+    "pharmaka_hermetica": 21,
+    "talismans_decanic": 36,
+    "instrumenta": 32,
+    "matrix_powers": 15,
+    "mutations": 45,
+    "daimones": 7
+  },
+  "catalogs": [
+    {"id": "tarot_thoth", "status": "not_recovered"},
+    {"id": "sigilla_goetica", "status": "not_recovered"},
+    {"id": "pharmaka_hermetica", "status": "not_recovered"},
+    {"id": "talismans_decanic", "status": "not_recovered"},
+    {"id": "instrumenta", "status": "not_recovered"},
+    {"id": "matrix_powers", "status": "not_recovered"},
+    {"id": "mutations", "status": "not_recovered"},
+    {"id": "daimones", "status": "not_recovered"}
+  ]
+}
