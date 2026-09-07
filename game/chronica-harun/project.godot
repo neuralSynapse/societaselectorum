@@ -1,0 +1,17 @@
+; Engine configuration file.
+; CHRONICA HARUN · Roguelite Depth reconstruction
+config_version=5
+
+[application]
+config/name="MUNDUS · CHRONICA HARUN · Roguelite Depth"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+
+[autoload]
+GameState="*res://autoload/GameState.gd"
+RogueliteContentService="*res://autoload/RogueliteContentService.gd"
+GameplayEffectBus="*res://scripts/content/GameplayEffectBus.gd"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.006, 0.005, 0.004, 1)

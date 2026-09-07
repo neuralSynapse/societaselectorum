@@ -1,0 +1,38 @@
+name: CHRONICA Roguelite Depth
+
+on:
+  push:
+    branches:
+      - feat/chronica-roguelite-depth
+    paths:
+      - 'game/chronica-harun/**'
+      - '.github/workflows/chronica-roguelite-depth.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chronica-roguelite-depth
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pytest
+      - name: Generate canonical runtime catalogs
+        run: python game/chronica-harun/tools/generate_roguelite_catalogs.py
+      - name: Validate catalogs and runtime contracts
+        run: pytest -q game/chronica-harun/tests
+      - name: Persist generated catalogs on feature branch
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain game/chronica-harun/data/roguelite)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add game/chronica-harun/data/roguelite
+            git commit -m "feat: materialize roguelite catalogs [skip ci]"
+            git push origin HEAD:feat/chronica-roguelite-depth
+          fi
