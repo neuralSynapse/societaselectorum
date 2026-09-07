@@ -19,7 +19,7 @@ func build_floor_rooms(context: Dictionary, layout_secret_capacity: int, rng_see
         elif role not in ["postboss", "initiation"]:
             regular.append(room)
     var selected_regular := _weighted_without_replacement(regular, int(context.get("max_special_rooms", 2)), rng)
-    var secret_limit := min(layout_secret_capacity, MAX_SECRET_ROOMS)
+    var secret_limit: int = min(layout_secret_capacity, MAX_SECRET_ROOMS)
     var selected_secrets: Array = []
     if secret_limit > 0:
         var ordered := secrets.duplicate()
