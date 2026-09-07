@@ -31,10 +31,14 @@ DEFAULT_REFS = (
     "origin/release/chronica-playable-alpha-v2-2026-09-07",
     "origin/release/chronica-playable-alpha-2026-09-07",
     "origin/release/chronica-playable-alpha-2026-09-07-fix",
+    "origin/fix/chronica-runtime-qa",
+    "origin/fix/chronica-runtime-qa-baseline",
+    "origin/fix/chronica-runtime-qa-fallback-temp",
     "origin/feat/chronica-roguelite-depth",
     "origin/feat/chronica-combat-entities",
     "origin/feat/chronica-foundation-audit",
     "origin/handoff/chronica-godot-real-source-2026-09-07",
+    "origin/release/chronica-playable-alpha-v5-2026-09-07",
 )
 
 
