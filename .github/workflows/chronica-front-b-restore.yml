@@ -23,7 +23,9 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf chronica-harun-godot
-          base64 -d chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64 > /tmp/chronica-front-b-source.tar.gz
+          tr -cd 'A-Za-z0-9+/=\n' < chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64 | base64 --decode --ignore-garbage > /tmp/chronica-front-b-source.tar.gz
+          echo "decoded_sha256=$(sha256sum /tmp/chronica-front-b-source.tar.gz | awk '{print $1}')"
+          test "$(sha256sum /tmp/chronica-front-b-source.tar.gz | awk '{print $1}')" = "8f7346d4dcf4df25d3ea028f77d8df4cf886cf18d2eb7ea85b9ce1bc03a29154"
           mkdir -p chronica-harun-godot
           tar -xzf /tmp/chronica-front-b-source.tar.gz -C chronica-harun-godot
           cd chronica-harun-godot
