@@ -33,10 +33,10 @@ func _prime_resources() -> void:
 
 func _exercise_buildcraft() -> void:
     var resolver := BuildResolver.new()
-    for pool_name in ["tarot", "sigilla", "instrumenta"]:
-        var entries := RogueliteContentService.get_pool(pool_name)
+    for catalog_name in ["tarot", "sigilla", "instrumenta"]:
+        var entries: Array = RogueliteContentService.catalogs.get(catalog_name, []).duplicate()
         if entries.is_empty():
-            _fail("missing runtime pool: %s" % pool_name)
+            _fail("missing runtime catalog: %s" % catalog_name)
             continue
         var entry: Dictionary = entries[0]
         var cost: Dictionary = entry.get("cost", {})
@@ -54,7 +54,7 @@ func _exercise_buildcraft() -> void:
         var resolution := resolver.resolve(entry, context)
         var blocked: Array = resolution.get("blocked_by", [])
         if not blocked.is_empty():
-            _fail("%s did not dispatch: %s" % [pool_name, str(blocked)])
+            _fail("%s did not dispatch: %s" % [catalog_name, str(blocked)])
 
 func _exercise_secret_and_special_room() -> void:
     var director := SpecialRoomDirector.new()
