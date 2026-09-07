@@ -72,3 +72,111 @@ jobs:
             --headless \
             --path godot/chronica_harun \
             --quit-after 5
+
+  recovered-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout audit branch with complete history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore verified recovered Godot source pack
+        shell: bash
+        run: |
+          set -euxo pipefail
+          git fetch origin handoff/chronica-godot-real-source-2026-09-07
+          PACK_REF='origin/handoff/chronica-godot-real-source-2026-09-07'
+          PACK_PATH='chronica-handoff/CHRONICA_HARUN_FRONT_B_SOURCE_MIN_v2_2026-09-07.tar.gz.b64'
+          test "$(git rev-parse "${PACK_REF}:${PACK_PATH}")" = '6d67028680d9d99186f06a532efb6f4601ccc32e'
+          git show "${PACK_REF}:${PACK_PATH}" > /tmp/chronica-source.tar.gz.b64
+          wc -c /tmp/chronica-source.tar.gz.b64
+          sha256sum /tmp/chronica-source.tar.gz.b64
+          base64 -d /tmp/chronica-source.tar.gz.b64 > /tmp/chronica-source.tar.gz
+          sha256sum /tmp/chronica-source.tar.gz
+          gzip -t /tmp/chronica-source.tar.gz
+          mkdir -p /tmp/chronica-recovered
+          tar -xzf /tmp/chronica-source.tar.gz -C /tmp/chronica-recovered
+          test -f /tmp/chronica-recovered/project.godot
+          find /tmp/chronica-recovered -maxdepth 3 -type f | sort | sed -n '1,260p'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Generate recovered content and models
+        working-directory: /tmp/chronica-recovered
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python tools/generate_recovered_content.py
+          python tools/generate_models.py
+
+      - name: Recovered source pytest suite
+        working-directory: /tmp/chronica-recovered
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python -m pip install --disable-pip-version-check pytest
+          pytest -q
+
+      - name: Recovered source structural inventory
+        working-directory: /tmp/chronica-recovered
+        shell: bash
+        run: |
+          set -euxo pipefail
+          printf '%s\n' '--- required files ---'
+          for f in \
+            project.godot \
+            autoload/GameState.gd \
+            autoload/SaveService.gd \
+            autoload/RogueliteContentService.gd \
+            scripts/progression/StageDirector.gd \
+            scripts/generation/StageFloorBuilder.gd \
+            scripts/content/BuildResolver.gd \
+            scripts/content/PowerMutationRuntime.gd \
+            scripts/content/DaimonRuntime.gd \
+            scripts/rooms/SpecialRoomDirector.gd \
+            scripts/vision/VisionDirector.gd \
+            scripts/meta/MetaRunDirector.gd \
+            data/stages/student_journey.json \
+            data/enemies/student_enemies.json \
+            data/bosses/student_bosses.json; do
+              test -f "$f" && echo "OK $f"
+          done
+          test -d data/roguelite && echo 'OK data/roguelite/'
+          test -d scenes/player && echo 'OK scenes/player/'
+          test -d scenes/enemies && echo 'OK scenes/enemies/'
+          test -d scenes/bosses && echo 'OK scenes/bosses/'
+
+      - name: Install Godot 4.5.1 stable
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --retry 3 \
+            -o /tmp/godot-recovered.zip \
+            https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          echo '02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd  /tmp/godot-recovered.zip' | sha256sum --check
+          unzip -q /tmp/godot-recovered.zip -d /tmp/godot-recovered-bin
+          chmod +x /tmp/godot-recovered-bin/Godot_v4.5.1-stable_linux.x86_64
+          /tmp/godot-recovered-bin/Godot_v4.5.1-stable_linux.x86_64 --version
+
+      - name: Recovered source Godot import validation
+        shell: bash
+        run: |
+          set -euxo pipefail
+          /tmp/godot-recovered-bin/Godot_v4.5.1-stable_linux.x86_64 \
+            --headless \
+            --path /tmp/chronica-recovered \
+            --editor --quit
+
+      - name: Recovered source Godot boot smoke test
+        shell: bash
+        run: |
+          set -euxo pipefail
+          /tmp/godot-recovered-bin/Godot_v4.5.1-stable_linux.x86_64 \
+            --headless \
+            --path /tmp/chronica-recovered \
+            --quit-after 5
