@@ -1,0 +1,282 @@
+name: CHRONICA HARUN Windows Alpha
+
+on:
+  push:
+    branches:
+      - release/chronica-playable-alpha-v4-2026-09-07
+    paths:
+      - '.github/workflows/chronica-windows-release.yml'
+      - 'scripts/chronica_release_recover.py'
+      - 'handoff/chronica-playable-v4/**'
+      - 'handoff/chronica-playable/v4/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  GODOT_VERSION: '4.5.1'
+  GODOT_BIN: /tmp/godot/Godot_v4.5.1-stable_linux.x86_64
+  PROJECT_DIR: game/chronica-harun
+  EXE_PATH: game/chronica-harun/build/windows/CHRONICA_HARUN.exe
+  ZIP_PATH: CHRONICA_HARUN_WINDOWS_ALPHA.zip
+
+jobs:
+  windows-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout release branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch all candidate source refs
+        shell: bash
+        run: |
+          set -euxo pipefail
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' --prune
+          echo "BRANCH=${GITHUB_REF_NAME}"
+          echo "HEAD=${GITHUB_SHA}"
+          git status --short --branch
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install Python build dependencies
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python -m pip install --disable-pip-version-check --upgrade pip
+          python -m pip install pytest trimesh numpy
+
+      - name: Recover exact v4 archive from Git-tracked chunks
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python scripts/chronica_release_recover.py
+          test "$(stat -c%s chronica-release-v4-xz.tar.xz)" = "153508"
+          echo '8c5c416178c26e611d87b41fff08f718df5ccbedb2f30ddb4c153acfc11d96a7  chronica-release-v4-xz.tar.xz' | sha256sum --check
+          cat .release/source-recovery.json
+
+      - name: Extract verified source into game/chronica-harun
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm -rf .release/extracted
+          mkdir -p .release/extracted
+          tar -tJf chronica-release-v4-xz.tar.xz | tee .release/archive-contents.txt
+          tar -xJf chronica-release-v4-xz.tar.xz -C .release/extracted
+          python - <<'PY'
+          from pathlib import Path
+          import shutil
+
+          root = Path('.release/extracted')
+          projects = sorted(root.rglob('project.godot'))
+          if len(projects) != 1:
+              raise SystemExit(f'expected exactly one project.godot in archive, found {len(projects)}: {projects}')
+          src = projects[0].parent
+          dst = Path('game/chronica-harun')
+          if dst.exists():
+              shutil.rmtree(dst)
+          shutil.copytree(src, dst)
+          print(f'EXTRACTED_PROJECT={src} -> {dst}')
+          print(f'PROJECT_GODOT={dst / "project.godot"}')
+          PY
+          test -s game/chronica-harun/project.godot
+
+      - name: Run available content generators
+        shell: bash
+        run: |
+          set -euxo pipefail
+          cd game/chronica-harun
+          for generator in tools/generate_recovered_content.py tools/generate_models.py; do
+            if [[ -f "$generator" ]]; then
+              echo "RUN_GENERATOR=$generator"
+              python "$generator"
+            else
+              echo "GENERATOR_NOT_PRESENT=$generator"
+            fi
+          done
+
+      - name: Verify 82 enemy GLBs and 16 boss GLBs
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('game/chronica-harun')
+          glbs = sorted(root.rglob('*.glb'))
+          enemy = [p for p in glbs if any(part.lower() in {'enemy', 'enemies'} for part in p.parts)]
+          boss = [p for p in glbs if any(part.lower() in {'boss', 'bosses'} for part in p.parts)]
+          print(f'GLB_TOTAL={len(glbs)}')
+          print(f'ENEMY_GLB_COUNT={len(enemy)}')
+          print(f'BOSS_GLB_COUNT={len(boss)}')
+          if len(enemy) != 82:
+              raise SystemExit(f'expected 82 enemy GLBs, got {len(enemy)}')
+          if len(boss) != 16:
+              raise SystemExit(f'expected 16 boss GLBs, got {len(boss)}')
+          PY
+
+      - name: Pytest CHRONICA suite
+        shell: bash
+        run: |
+          set -o pipefail
+          python -m pytest -q game/chronica-harun/tests 2>&1 | tee .release/pytest.log
+
+      - name: Run available standalone validators
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          root = Path('game/chronica-harun')
+          candidates = []
+          for pattern in ('tools/validate*.py', 'tools/*validator*.py'):
+              candidates.extend(root.glob(pattern))
+          validators = sorted(set(candidates))
+          print('VALIDATORS=' + ','.join(str(p.relative_to(root)) for p in validators))
+          for path in validators:
+              rel = path.relative_to(root)
+              print(f'RUN_VALIDATOR={rel}', flush=True)
+              subprocess.run([sys.executable, str(rel)], cwd=root, check=True)
+          PY
+
+      - name: Install Godot 4.5.1 stable
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p /tmp/godot
+          curl --fail --location --retry 3 \
+            -o /tmp/godot.zip \
+            https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          echo '02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd  /tmp/godot.zip' | sha256sum --check
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          chmod +x "$GODOT_BIN"
+          "$GODOT_BIN" --version | tee .release/godot-version.log
+
+      - name: Install Windows export templates
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl --fail --location --retry 3 \
+            -o /tmp/godot-templates.tpz \
+            https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz
+          rm -rf /tmp/godot-templates
+          mkdir -p /tmp/godot-templates
+          unzip -q /tmp/godot-templates.tpz -d /tmp/godot-templates
+          TEMPLATE_DIR="$HOME/.local/share/godot/export_templates/4.5.1.stable"
+          mkdir -p "$TEMPLATE_DIR"
+          cp -a /tmp/godot-templates/templates/. "$TEMPLATE_DIR/"
+          test -s "$TEMPLATE_DIR/windows_release_x86_64.exe"
+          echo "WINDOWS_EXPORT_TEMPLATE=$TEMPLATE_DIR/windows_release_x86_64.exe"
+
+      - name: Godot headless import
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GODOT_BIN" --headless --path "$PROJECT_DIR" --editor --quit 2>&1 | tee .release/godot-import.log
+          status=${PIPESTATUS[0]}
+          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource' .release/godot-import.log; then
+            echo 'IMPORT_FORBIDDEN_ERROR_PATTERN=FOUND'
+            exit 31
+          fi
+          test "$status" -eq 0
+          echo 'IMPORT_LITERAL=PASS'
+
+      - name: Boot smoke Main
+        shell: bash
+        run: |
+          set -o pipefail
+          "$GODOT_BIN" --headless --path "$PROJECT_DIR" --quit-after 10 2>&1 | tee .release/godot-boot.log
+          status=${PIPESTATUS[0]}
+          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource' .release/godot-boot.log; then
+            echo 'BOOT_FORBIDDEN_ERROR_PATTERN=FOUND'
+            exit 32
+          fi
+          test "$status" -eq 0
+          echo 'BOOT_LITERAL=PASS'
+
+      - name: Export Windows release
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p game/chronica-harun/build/windows
+          set +e
+          OUTPUT_ABS="$GITHUB_WORKSPACE/$EXE_PATH"
+          "$GODOT_BIN" --headless --path "$PROJECT_DIR" \
+            --export-release 'Windows Desktop' \
+            "$OUTPUT_ABS" 2>&1 | tee .release/godot-export.log
+          status=${PIPESTATUS[0]}
+          set -e
+          if grep -E -i 'SCRIPT ERROR|Parse Error|Failed to load script|Failed loading resource' .release/godot-export.log; then
+            echo 'EXPORT_FORBIDDEN_ERROR_PATTERN=FOUND'
+            exit 33
+          fi
+          test "$status" -eq 0
+          test -s "$EXE_PATH"
+          echo 'EXPORT_LITERAL=PASS'
+          sha256sum "$EXE_PATH" | tee .release/exe.sha256
+          stat -c 'EXE_BYTES=%s' "$EXE_PATH" | tee .release/exe-size.txt
+
+      - name: Package Windows alpha ZIP
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm -f "$ZIP_PATH"
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+
+          exe = Path('game/chronica-harun/build/windows/CHRONICA_HARUN.exe')
+          out = Path('CHRONICA_HARUN_WINDOWS_ALPHA.zip')
+          with zipfile.ZipFile(out, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
+              zf.write(exe, arcname='CHRONICA_HARUN.exe')
+          print(f'ZIP_BYTES={out.stat().st_size}')
+          PY
+          test -s "$ZIP_PATH"
+          sha256sum "$ZIP_PATH" | tee .release/zip.sha256
+          stat -c 'ZIP_BYTES=%s' "$ZIP_PATH" | tee .release/zip-size.txt
+
+      - name: Write release verification report
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p .release
+          {
+            echo "BRANCH=${GITHUB_REF_NAME}"
+            echo "HEAD_SHA=${GITHUB_SHA}"
+            echo "RUN_ID=${GITHUB_RUN_ID}"
+            echo "RUN_ATTEMPT=${GITHUB_RUN_ATTEMPT}"
+            echo "GODOT_VERSION_REQUESTED=${GODOT_VERSION}"
+            [[ -f .release/godot-version.log ]] && { printf 'GODOT_VERSION_LITERAL='; tr '\n' ' ' < .release/godot-version.log; echo; }
+            [[ -f .release/exe.sha256 ]] && cat .release/exe.sha256
+            [[ -f .release/exe-size.txt ]] && cat .release/exe-size.txt
+            [[ -f .release/zip.sha256 ]] && cat .release/zip.sha256
+            [[ -f .release/zip-size.txt ]] && cat .release/zip-size.txt
+          } | tee .release/verification-summary.txt
+
+      - name: Upload Windows alpha artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: CHRONICA_HARUN_WINDOWS_ALPHA
+          path: |
+            CHRONICA_HARUN_WINDOWS_ALPHA.zip
+            .release/verification-summary.txt
+            .release/source-recovery.json
+            .release/pytest.log
+            .release/godot-import.log
+            .release/godot-boot.log
+            .release/godot-export.log
+            .release/exe.sha256
+            .release/zip.sha256
+          if-no-files-found: error
+          retention-days: 30
+          include-hidden-files: true
