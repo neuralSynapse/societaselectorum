@@ -12,6 +12,7 @@ $zip = Join-Path $buildDir 'CHRONICA_HARUN-Windows-x86_64.zip'
 $hashFile = Join-Path $buildDir 'CHRONICA_HARUN.exe.sha256.txt'
 $probeJson = Join-Path $qaRoot 'release-probe.json'
 $screenshotPath = Join-Path $qaRoot 'windows-native-smoke.png'
+$presetPath = Join-Path $GameDir 'export_presets.cfg'
 
 New-Item -ItemType Directory -Force -Path $qaRoot | Out-Null
 New-Item -ItemType Directory -Force -Path $buildDir | Out-Null
@@ -50,6 +51,17 @@ $versionMetadataPass = (
     -not [string]::IsNullOrWhiteSpace($versionInfo.FileVersion) -and
     -not [string]::IsNullOrWhiteSpace($versionInfo.ProductVersion)
 )
+
+$customIconPath = ''
+$customIconConfigured = $false
+if (Test-Path $presetPath) {
+    $presetText = Get-Content $presetPath -Raw
+    $iconMatch = [regex]::Match($presetText, 'application/icon="([^"]*)"')
+    if ($iconMatch.Success) {
+        $customIconPath = $iconMatch.Groups[1].Value
+        $customIconConfigured = -not [string]::IsNullOrWhiteSpace($customIconPath)
+    }
+}
 
 Add-Type @"
 using System;
@@ -208,6 +220,8 @@ $probe = [ordered]@{
     icon_resource = $iconResource
     group_icon_resource = $groupIconResource
     icon_present = $iconPresent
+    custom_icon_path = $customIconPath
+    custom_icon_configured = $customIconConfigured
     zip_name = 'CHRONICA_HARUN-Windows-x86_64.zip'
     zip_integrity_pass = $zipIntegrityPass
     screenshot_captured = $screenshotCaptured
@@ -219,10 +233,11 @@ $probe = [ordered]@{
 $probe | ConvertTo-Json -Depth 6 | Set-Content -Path $probeJson -Encoding utf8
 $probe | ConvertTo-Json -Depth 6
 
-$hardPass = $peValid -and $launchPass -and $zipIntegrityPass -and $versionMetadataPass -and $iconPresent
+$hardPass = $peValid -and $launchPass -and $zipIntegrityPass -and $versionMetadataPass -and $iconPresent -and $customIconConfigured
 if (-not $hardPass) {
     Write-Host 'WINDOWS_RELEASE_PROBE=FAIL'
-    if (-not $iconPresent) { Write-Host 'WINDOWS_RELEASE_BLOCKER=ICON_METADATA_MISSING' }
+    if (-not $iconPresent) { Write-Host 'WINDOWS_RELEASE_BLOCKER=ICON_RESOURCE_MISSING' }
+    if (-not $customIconConfigured) { Write-Host 'WINDOWS_RELEASE_BLOCKER=CUSTOM_ICON_NOT_CONFIGURED' }
     Write-Host 'NOT TESTABLE IN CI: final render quality, physical pointer lock, GPU/VFX quality, real fullscreen acceptance.'
     Write-Host 'VISUAL QA NOT VERIFIED'
     exit 1
