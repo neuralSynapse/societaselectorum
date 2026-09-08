@@ -16,7 +16,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "before_dark",
@@ -35,7 +38,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "before_dark",
@@ -54,7 +60,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "before_dark",
@@ -73,7 +82,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "before_dark",
@@ -92,7 +104,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "pleroma",
@@ -112,7 +127,10 @@
       "lighting_cue",
       "cosmic_field"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "pleroma",
@@ -132,7 +150,10 @@
       "lighting_cue",
       "cosmic_field"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "pleroma",
@@ -152,7 +173,10 @@
       "lighting_cue",
       "cosmic_field"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "pleroma",
@@ -172,7 +196,10 @@
       "lighting_cue",
       "cosmic_field"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "pleroma",
@@ -192,7 +219,10 @@
       "lighting_cue",
       "cosmic_field"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "sophia_at_edge",
@@ -212,7 +242,10 @@
       "lighting_cue",
       "sophia_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "sophia_at_edge",
@@ -232,7 +265,10 @@
       "lighting_cue",
       "sophia_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "sophia_at_edge",
@@ -252,7 +288,10 @@
       "lighting_cue",
       "sophia_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "sophia_at_edge",
@@ -272,7 +311,10 @@
       "lighting_cue",
       "sophia_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "sophia_at_edge",
@@ -293,7 +335,10 @@
       "cosmic_field",
       "sophia_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "first_scream",
@@ -313,7 +358,10 @@
       "lighting_cue",
       "yaldabaoth_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "first_scream",
@@ -332,7 +380,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "first_scream",
@@ -351,7 +402,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "first_scream",
@@ -370,7 +424,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "first_scream",
@@ -389,7 +446,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "blind_god",
@@ -409,7 +469,10 @@
       "lighting_cue",
       "yaldabaoth_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "blind_god",
@@ -428,7 +491,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "blind_god",
@@ -447,7 +513,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "blind_god",
@@ -466,7 +535,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "blind_god",
@@ -486,7 +558,10 @@
       "lighting_cue",
       "threshold_door"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lower_architecture",
@@ -505,7 +580,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lower_architecture",
@@ -524,7 +602,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lower_architecture",
@@ -543,7 +624,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lower_architecture",
@@ -563,7 +647,10 @@
       "lighting_cue",
       "earth_environment"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lower_architecture",
@@ -583,7 +670,10 @@
       "lighting_cue",
       "earth_environment"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "form_without_breath",
@@ -603,7 +693,10 @@
       "lighting_cue",
       "yaldabaoth_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "form_without_breath",
@@ -623,7 +716,10 @@
       "lighting_cue",
       "human_body"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "form_without_breath",
@@ -642,7 +738,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "form_without_breath",
@@ -662,7 +761,10 @@
       "lighting_cue",
       "human_body"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "form_without_breath",
@@ -682,7 +784,10 @@
       "lighting_cue",
       "human_body"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lilith_first_refusal",
@@ -703,7 +808,10 @@
       "lilith_character",
       "threshold_door"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lilith_first_refusal",
@@ -723,7 +831,10 @@
       "lighting_cue",
       "lilith_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lilith_first_refusal",
@@ -744,7 +855,10 @@
       "lilith_character",
       "threshold_door"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lilith_first_refusal",
@@ -764,7 +878,10 @@
       "lighting_cue",
       "lilith_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lilith_first_refusal",
@@ -784,7 +901,10 @@
       "lighting_cue",
       "lilith_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "eve_epinoia_knowledge",
@@ -804,7 +924,10 @@
       "lighting_cue",
       "serpent_manifestation"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "eve_epinoia_knowledge",
@@ -823,7 +946,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "eve_epinoia_knowledge",
@@ -842,7 +968,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "eve_epinoia_knowledge",
@@ -861,7 +990,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "eve_epinoia_knowledge",
@@ -882,7 +1014,10 @@
       "human_body",
       "eve_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "cain",
@@ -902,7 +1037,10 @@
       "lighting_cue",
       "abel_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "cain",
@@ -922,7 +1060,10 @@
       "lighting_cue",
       "earth_environment"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "cain",
@@ -942,7 +1083,10 @@
       "lighting_cue",
       "earth_environment"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "cain",
@@ -961,7 +1105,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "cain",
@@ -982,7 +1129,10 @@
       "cain_character",
       "abel_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lineage_of_mark",
@@ -1002,7 +1152,10 @@
       "lighting_cue",
       "cain_mark_vfx"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lineage_of_mark",
@@ -1022,7 +1175,10 @@
       "lighting_cue",
       "cain_mark_vfx"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lineage_of_mark",
@@ -1042,7 +1198,10 @@
       "lighting_cue",
       "cain_mark_vfx"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lineage_of_mark",
@@ -1062,7 +1221,10 @@
       "lighting_cue",
       "cain_mark_vfx"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "lineage_of_mark",
@@ -1084,7 +1246,10 @@
       "grimorium_fragments",
       "cain_mark_vfx"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "dismembered_book",
@@ -1104,7 +1269,10 @@
       "lighting_cue",
       "grimorium_fragments"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "dismembered_book",
@@ -1123,7 +1291,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "dismembered_book",
@@ -1142,7 +1313,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "dismembered_book",
@@ -1161,7 +1335,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "dismembered_book",
@@ -1181,7 +1358,10 @@
       "lighting_cue",
       "grimorium_fragments"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "see_govern_make",
@@ -1201,7 +1381,10 @@
       "lighting_cue",
       "harun_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "see_govern_make",
@@ -1220,7 +1403,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "see_govern_make",
@@ -1239,7 +1425,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "see_govern_make",
@@ -1258,7 +1447,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "see_govern_make",
@@ -1278,7 +1470,10 @@
       "lighting_cue",
       "threshold_door"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "aleppo_1585",
@@ -1297,7 +1492,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "aleppo_1585",
@@ -1316,7 +1514,10 @@
       "camera_rig",
       "lighting_cue"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "aleppo_1585",
@@ -1337,7 +1538,10 @@
       "human_body",
       "harun_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "aleppo_1585",
@@ -1357,7 +1561,10 @@
       "lighting_cue",
       "harun_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "aleppo_1585",
@@ -1377,7 +1584,10 @@
       "lighting_cue",
       "harun_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "aleppo_1585",
@@ -1397,7 +1607,10 @@
       "lighting_cue",
       "harun_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   },
   {
     "scene_id": "aleppo_1585",
@@ -1417,6 +1630,9 @@
       "lighting_cue",
       "harun_character"
     ],
-    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+    "asset_status": "proxy_runtime",
+    "final_asset_paths": [],
+    "runtime_proxy": "procedural_cinematic_stage",
+    "implementation_note": "Proxy procedural de runtime; não é arte cinematográfica final."
   }
 ]

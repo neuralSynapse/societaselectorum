@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/narrative/NarrativeRuntimeBridge.gd" id="1_bridge"]
 [ext_resource type="Script" path="res://scripts/narrative/CosmogonyPrologueDirector.gd" id="2_cosmogony"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/narrative/NarrativePresentation.tscn" id="6_presentation"]
 [ext_resource type="Script" path="res://scripts/narrative/CinematicShotDirector.gd" id="7_shots"]
 [ext_resource type="Script" path="res://scripts/narrative/NarrativeChoiceDirector.gd" id="8_choices"]
+[ext_resource type="Script" path="res://scripts/narrative/CinematicPresentationDirector.gd" id="9_cinematic_presentation"]
 
 [node name="NarrativeRuntime" type="Node"]
 script = ExtResource("1_bridge")
@@ -29,5 +30,29 @@ script = ExtResource("7_shots")
 
 [node name="NarrativeChoices" type="Node" parent="."]
 script = ExtResource("8_choices")
+
+[node name="CinematicStage" type="Node3D" parent="."]
+script = ExtResource("9_cinematic_presentation")
+
+[node name="CameraRig" type="Node3D" parent="CinematicStage"]
+
+[node name="CinematicCamera" type="Camera3D" parent="CinematicStage/CameraRig"]
+current = false
+fov = 68.0
+near = 0.05
+far = 200.0
+
+[node name="KeyLight" type="DirectionalLight3D" parent="CinematicStage"]
+rotation_degrees = Vector3(-42, -28, 0)
+light_energy = 0.45
+shadow_enabled = true
+
+[node name="FillLight" type="OmniLight3D" parent="CinematicStage"]
+position = Vector3(0.8, 1.0, 0.6)
+light_energy = 0.22
+omni_range = 4.0
+shadow_enabled = true
+
+[node name="ProxyRoot" type="Node3D" parent="CinematicStage"]
 
 [node name="Presentation" parent="." instance=ExtResource("6_presentation")]
