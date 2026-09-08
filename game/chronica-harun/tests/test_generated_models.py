@@ -37,11 +37,19 @@ def test_every_enemy_and_boss_has_unique_nonempty_glb_and_manifest():
     assert len(set(boss_hashes)) == len(boss_hashes)
 
 
-def test_generators_cover_readability_families_without_emissive_materials():
-    enemy_generator = (ROOT / 'tools/generate_models.py').read_text()
-    boss_generator = (ROOT / 'tools/generate_models.py').read_text()
+def test_generators_cover_readability_families_without_general_emission_wash():
+    enemy_generator = (ROOT / 'tools/production_art_enemies.py').read_text()
+    boss_generator = (ROOT / 'tools/production_art_bosses.py').read_text()
+    core_generator = (ROOT / 'tools/production_art_core.py').read_text()
+
     for token in ['crawler','eye','ritualist','shade','chain','beast','winged','construct','chorus','serpent','fire','walker']:
         assert token in enemy_generator
+
     for token in ['orbital_eye','horned_flame','stone_colossus','living_seal','mask_swarm','split_daemon','sevenfold_throne']:
         assert token in boss_generator
+
+    # Emission, when present at all, is centralized and capped by the production
+    # material library rather than scattered through creature builders.
     assert 'emissiveFactor' not in enemy_generator
+    assert 'emissiveFactor' not in boss_generator
+    assert 'MAX_EMISSIVE' in core_generator
