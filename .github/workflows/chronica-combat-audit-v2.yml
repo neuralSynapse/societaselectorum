@@ -1,0 +1,69 @@
+name: CHRONICA Combat Diversity Audit v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/chronica-combat-v2]
+    paths: ['.github/workflows/chronica-combat-audit-v2.yml']
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chronica-combat-v2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Combat data audit
+        run: |
+          python - <<'PY'
+          import json, hashlib, pathlib, collections
+          root=pathlib.Path('game/chronica-harun')
+          enemies=json.loads((root/'data/enemies/student_enemies.json').read_text())
+          bosses=json.loads((root/'data/bosses/student_bosses.json').read_text())
+          print('ENEMIES',len(enemies))
+          print('BOSSES',len(bosses))
+          families=collections.Counter(str(e.get('family','')) for e in enemies)
+          kinds=collections.Counter(str(e.get('attack',{}).get('attack_kind','')) for e in enemies)
+          patterns=collections.Counter(str(e.get('attack',{}).get('pattern','')) for e in enemies)
+          roles=collections.Counter(str(e.get('role','')) for e in enemies)
+          sigs=collections.Counter((str(e.get('family','')),str(e.get('attack',{}).get('attack_kind','')),str(e.get('attack',{}).get('pattern','')),round(float(e.get('move_speed',e.get('stats',{}).get('move_speed',0))),2),round(float(e.get('attack',{}).get('range',0)),2)) for e in enemies)
+          exact_attack=collections.Counter(json.dumps(e.get('attack',{}),sort_keys=True) for e in enemies)
+          print('FAMILIES',len(families),dict(families))
+          print('ATTACK_KINDS',len(kinds),dict(kinds))
+          print('PATTERNS',len(patterns),dict(patterns))
+          print('ROLES',len(roles),dict(roles))
+          print('MECHANICAL_SIGNATURES',len(sigs),'DUPLICATE_SIGNATURE_GROUPS',sum(1 for n in sigs.values() if n>1),'MAX_SIGNATURE_REUSE',max(sigs.values()))
+          print('UNIQUE_EXACT_ATTACKS',len(exact_attack),'MAX_EXACT_ATTACK_REUSE',max(exact_attack.values()))
+          print('ENEMY_IDS_UNIQUE',len({e['id'] for e in enemies})==len(enemies))
+          model_paths=[str(e.get('model_path','')) for e in enemies]
+          print('ENEMY_MODEL_PATHS_UNIQUE',len(set(model_paths)),len(model_paths))
+          boss_phase_counts=[]; boss_attack_sigs=[]
+          for b in bosses:
+              phases=b.get('phases',[]); boss_phase_counts.append(len(phases))
+              per=[]
+              for p in phases:
+                  at=[(str(a.get('attack_kind','')),str(a.get('pattern','')),round(float(a.get('damage',0)),2),round(float(a.get('windup',0)),2),round(float(a.get('telegraph_time',0)),2),round(float(a.get('recovery',0)),2)) for a in p.get('attacks',[])]
+                  per.append(tuple(at))
+                  boss_attack_sigs.extend(at)
+              print('BOSS',b.get('id'),'PHASES',len(phases),'PHASE_SIGNATURES_DISTINCT',len(set(per)),'ATTACKS',sum(len(p.get('attacks',[])) for p in phases))
+          print('BOSS_PHASE_COUNTS',collections.Counter(boss_phase_counts))
+          print('BOSS_UNIQUE_ATTACK_SIGNATURES',len(set(boss_attack_sigs)),'TOTAL',len(boss_attack_sigs))
+          print('BOSS_MODEL_PATHS_UNIQUE',len({str(b.get('model_path','')) for b in bosses}),len(bosses))
+          # Static code paths that determine whether the data can actually produce different behavior.
+          data_enemy=(root/'scripts/ai/DataEnemy.gd').read_text()
+          boss_code=(root/'scripts/bosses/DataBossController.gd').read_text()
+          for token in ['_pursue','_ranged_spacing','_phase_stalk','_hover_skirmish','_serpentine']:
+              print('RUNTIME_FAMILY_PATH',token,token in data_enemy)
+          for pattern in ['radial','fan','zone']:
+              print('RUNTIME_PROJECTILE_PATTERN',pattern,('"'+pattern+'"') in data_enemy and ('"'+pattern+'"') in boss_code)
+          print('BOSS_PHASE_RUNTIME', 'current_phase' in boss_code and 'phase_changed.emit' in boss_code)
+          PY
