@@ -39,6 +39,8 @@ var dodge_cooldown := 0.0
 
 func _ready() -> void:
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    # Keep the live ray aligned even when a cached scene import retains its default target.
+    interaction_ray.target_position = Vector3(0.0, -0.55, -3.2)
     health.died.connect(func(source_id: StringName): died.emit(source_id))
     health.damaged.connect(_on_health_damaged)
     focus = max_focus
@@ -99,8 +101,25 @@ func _physics_process(delta: float) -> void:
     move_and_slide()
 
 func get_interaction_target() -> Node:
-    if interaction_ray and interaction_ray.is_colliding():
-        return interaction_ray.get_collider()
+    if interaction_ray:
+        interaction_ray.force_raycast_update()
+        if interaction_ray.is_colliding():
+            return interaction_ray.get_collider()
+    # RayCast3D updates can lag one physics tick after a camera handoff or
+    # cinematic release. Query the same segment directly so attacks and
+    # interactions cannot silently miss during that transition.
+    if camera != null and get_world_3d() != null:
+        var query := PhysicsRayQueryParameters3D.create(
+            camera.global_position,
+            interaction_ray.to_global(interaction_ray.target_position) if interaction_ray else camera.global_position - camera.global_transform.basis.z * 3.2,
+            interaction_ray.collision_mask if interaction_ray else 14
+        )
+        query.collide_with_areas = true
+        query.collide_with_bodies = true
+        query.exclude = [get_rid()]
+        var result: Dictionary = get_world_3d().direct_space_state.intersect_ray(query)
+        if not result.is_empty():
+            return result.get("collider") as Node
     return null
 
 func get_aim_target() -> Node:
