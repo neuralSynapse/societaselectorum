@@ -1,0 +1,1666 @@
+[
+  {
+    "id": "blind_observer",
+    "display_name": "O Observador Cego",
+    "stage_id": "o_olho",
+    "model_path": "res://art/generated/bosses/blind_observer.glb",
+    "silhouette": "orbital_eye",
+    "max_hp": 900,
+    "move_speed": 1.5,
+    "reward_id": "blind_observer_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "blind_observer_p1_a1",
+            "display_name": "O Observador Cego · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 20
+          },
+          {
+            "id": "blind_observer_p1_a2",
+            "display_name": "O Observador Cego · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "fan",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 22
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "blind_observer_p2_a1",
+            "display_name": "O Observador Cego · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 25
+          },
+          {
+            "id": "blind_observer_p2_a2",
+            "display_name": "O Observador Cego · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "radial",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 27
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "blind_observer_p3_a1",
+            "display_name": "O Observador Cego · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 30
+          },
+          {
+            "id": "blind_observer_p3_a2",
+            "display_name": "O Observador Cego · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 32
+          }
+        ]
+      }
+    ],
+    "codex": "O Observador Cego encerra PERCEPÇÃO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "impulse_archon",
+    "display_name": "Arconte do Impulso",
+    "stage_id": "a_chama",
+    "model_path": "res://art/generated/bosses/impulse_archon.glb",
+    "silhouette": "horned_flame",
+    "max_hp": 1020,
+    "move_speed": 1.62,
+    "reward_id": "impulse_archon_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "impulse_archon_p1_a1",
+            "display_name": "Arconte do Impulso · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 22
+          },
+          {
+            "id": "impulse_archon_p1_a2",
+            "display_name": "Arconte do Impulso · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "radial",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 24
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "impulse_archon_p2_a1",
+            "display_name": "Arconte do Impulso · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 27
+          },
+          {
+            "id": "impulse_archon_p2_a2",
+            "display_name": "Arconte do Impulso · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "dash",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 29
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "impulse_archon_p3_a1",
+            "display_name": "Arconte do Impulso · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 32
+          },
+          {
+            "id": "impulse_archon_p3_a2",
+            "display_name": "Arconte do Impulso · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 34
+          }
+        ]
+      }
+    ],
+    "codex": "Arconte do Impulso encerra REGÊNCIA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "inert_stone_guardian",
+    "display_name": "Guardião da Pedra Inerte",
+    "stage_id": "a_fundacao",
+    "model_path": "res://art/generated/bosses/inert_stone_guardian.glb",
+    "silhouette": "stone_colossus",
+    "max_hp": 1140,
+    "move_speed": 1.74,
+    "reward_id": "inert_stone_guardian_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "inert_stone_guardian_p1_a1",
+            "display_name": "Guardião da Pedra Inerte · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 24
+          },
+          {
+            "id": "inert_stone_guardian_p1_a2",
+            "display_name": "Guardião da Pedra Inerte · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "dash",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 26
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "inert_stone_guardian_p2_a1",
+            "display_name": "Guardião da Pedra Inerte · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 29
+          },
+          {
+            "id": "inert_stone_guardian_p2_a2",
+            "display_name": "Guardião da Pedra Inerte · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "zone",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 31
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "inert_stone_guardian_p3_a1",
+            "display_name": "Guardião da Pedra Inerte · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 34
+          },
+          {
+            "id": "inert_stone_guardian_p3_a2",
+            "display_name": "Guardião da Pedra Inerte · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 36
+          }
+        ]
+      }
+    ],
+    "codex": "Guardião da Pedra Inerte encerra ESTRUTURA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "seal_of_no",
+    "display_name": "O Selo do Não",
+    "stage_id": "a_eleicao",
+    "model_path": "res://art/generated/bosses/seal_of_no.glb",
+    "silhouette": "living_seal",
+    "max_hp": 1260,
+    "move_speed": 1.8599999999999999,
+    "reward_id": "seal_of_no_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "seal_of_no_p1_a1",
+            "display_name": "O Selo do Não · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 26
+          },
+          {
+            "id": "seal_of_no_p1_a2",
+            "display_name": "O Selo do Não · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "zone",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 28
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "seal_of_no_p2_a1",
+            "display_name": "O Selo do Não · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 31
+          },
+          {
+            "id": "seal_of_no_p2_a2",
+            "display_name": "O Selo do Não · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "summon",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 33
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "seal_of_no_p3_a1",
+            "display_name": "O Selo do Não · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 36
+          },
+          {
+            "id": "seal_of_no_p3_a2",
+            "display_name": "O Selo do Não · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 38
+          }
+        ]
+      }
+    ],
+    "codex": "O Selo do Não encerra AUTOELEIÇÃO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "mask_collector",
+    "display_name": "O Cobrador de Máscaras",
+    "stage_id": "a_balanca",
+    "model_path": "res://art/generated/bosses/mask_collector.glb",
+    "silhouette": "mask_swarm",
+    "max_hp": 1380,
+    "move_speed": 1.5,
+    "reward_id": "mask_collector_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "mask_collector_p1_a1",
+            "display_name": "O Cobrador de Máscaras · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 28
+          },
+          {
+            "id": "mask_collector_p1_a2",
+            "display_name": "O Cobrador de Máscaras · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "summon",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 30
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "mask_collector_p2_a1",
+            "display_name": "O Cobrador de Máscaras · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 33
+          },
+          {
+            "id": "mask_collector_p2_a2",
+            "display_name": "O Cobrador de Máscaras · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "line",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 35
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "mask_collector_p3_a1",
+            "display_name": "O Cobrador de Máscaras · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 38
+          },
+          {
+            "id": "mask_collector_p3_a2",
+            "display_name": "O Cobrador de Máscaras · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 40
+          }
+        ]
+      }
+    ],
+    "codex": "O Cobrador de Máscaras encerra AUTORRESPONSABILIDADE. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "false_daimon",
+    "display_name": "O Falso Daimon",
+    "stage_id": "a_vontade",
+    "model_path": "res://art/generated/bosses/false_daimon.glb",
+    "silhouette": "split_daemon",
+    "max_hp": 1500,
+    "move_speed": 1.62,
+    "reward_id": "false_daimon_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "false_daimon_p1_a1",
+            "display_name": "O Falso Daimon · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 30
+          },
+          {
+            "id": "false_daimon_p1_a2",
+            "display_name": "O Falso Daimon · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "line",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 32
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "false_daimon_p2_a1",
+            "display_name": "O Falso Daimon · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 35
+          },
+          {
+            "id": "false_daimon_p2_a2",
+            "display_name": "O Falso Daimon · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "fan",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 37
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "false_daimon_p3_a1",
+            "display_name": "O Falso Daimon · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 40
+          },
+          {
+            "id": "false_daimon_p3_a2",
+            "display_name": "O Falso Daimon · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 42
+          }
+        ]
+      }
+    ],
+    "codex": "O Falso Daimon encerra VERDADEIRA VONTADE. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "stone_witness",
+    "display_name": "A Testemunha de Pedra",
+    "stage_id": "o_carater",
+    "model_path": "res://art/generated/bosses/stone_witness.glb",
+    "silhouette": "pillar_judge",
+    "max_hp": 1620,
+    "move_speed": 1.74,
+    "reward_id": "stone_witness_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "stone_witness_p1_a1",
+            "display_name": "A Testemunha de Pedra · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 32
+          },
+          {
+            "id": "stone_witness_p1_a2",
+            "display_name": "A Testemunha de Pedra · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "fan",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 34
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "stone_witness_p2_a1",
+            "display_name": "A Testemunha de Pedra · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 37
+          },
+          {
+            "id": "stone_witness_p2_a2",
+            "display_name": "A Testemunha de Pedra · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "radial",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 39
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "stone_witness_p3_a1",
+            "display_name": "A Testemunha de Pedra · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 42
+          },
+          {
+            "id": "stone_witness_p3_a2",
+            "display_name": "A Testemunha de Pedra · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 44
+          }
+        ]
+      }
+    ],
+    "codex": "A Testemunha de Pedra encerra CARÁTER. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "rhythm_devourer",
+    "display_name": "O Devorador de Ritmo",
+    "stage_id": "a_disciplina",
+    "model_path": "res://art/generated/bosses/rhythm_devourer.glb",
+    "silhouette": "clock_maw",
+    "max_hp": 1740,
+    "move_speed": 1.8599999999999999,
+    "reward_id": "rhythm_devourer_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "rhythm_devourer_p1_a1",
+            "display_name": "O Devorador de Ritmo · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 34
+          },
+          {
+            "id": "rhythm_devourer_p1_a2",
+            "display_name": "O Devorador de Ritmo · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "radial",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 36
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "rhythm_devourer_p2_a1",
+            "display_name": "O Devorador de Ritmo · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 39
+          },
+          {
+            "id": "rhythm_devourer_p2_a2",
+            "display_name": "O Devorador de Ritmo · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "dash",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 41
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "rhythm_devourer_p3_a1",
+            "display_name": "O Devorador de Ritmo · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 44
+          },
+          {
+            "id": "rhythm_devourer_p3_a2",
+            "display_name": "O Devorador de Ritmo · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 46
+          }
+        ]
+      }
+    ],
+    "codex": "O Devorador de Ritmo encerra DISCIPLINA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "clouding_one",
+    "display_name": "O Nublador",
+    "stage_id": "a_clareza",
+    "model_path": "res://art/generated/bosses/clouding_one.glb",
+    "silhouette": "fog_oracle",
+    "max_hp": 1860,
+    "move_speed": 1.5,
+    "reward_id": "clouding_one_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "clouding_one_p1_a1",
+            "display_name": "O Nublador · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 36
+          },
+          {
+            "id": "clouding_one_p1_a2",
+            "display_name": "O Nublador · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "dash",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 38
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "clouding_one_p2_a1",
+            "display_name": "O Nublador · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 41
+          },
+          {
+            "id": "clouding_one_p2_a2",
+            "display_name": "O Nublador · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "zone",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 43
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "clouding_one_p3_a1",
+            "display_name": "O Nublador · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 46
+          },
+          {
+            "id": "clouding_one_p3_a2",
+            "display_name": "O Nublador · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 48
+          }
+        ]
+      }
+    ],
+    "codex": "O Nublador encerra CLAREZA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "slag_dragon",
+    "display_name": "O Dragão da Escória",
+    "stage_id": "a_transmutacao",
+    "model_path": "res://art/generated/bosses/slag_dragon.glb",
+    "silhouette": "slag_dragon",
+    "max_hp": 1980,
+    "move_speed": 1.62,
+    "reward_id": "slag_dragon_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "slag_dragon_p1_a1",
+            "display_name": "O Dragão da Escória · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 38
+          },
+          {
+            "id": "slag_dragon_p1_a2",
+            "display_name": "O Dragão da Escória · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "zone",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 40
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "slag_dragon_p2_a1",
+            "display_name": "O Dragão da Escória · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 43
+          },
+          {
+            "id": "slag_dragon_p2_a2",
+            "display_name": "O Dragão da Escória · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "summon",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 45
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "slag_dragon_p3_a1",
+            "display_name": "O Dragão da Escória · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 48
+          },
+          {
+            "id": "slag_dragon_p3_a2",
+            "display_name": "O Dragão da Escória · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 50
+          }
+        ]
+      }
+    ],
+    "codex": "O Dragão da Escória encerra TRANSMUTAÇÃO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "exhaustion_tyrant",
+    "display_name": "O Tirano da Exaustão",
+    "stage_id": "o_corpo",
+    "model_path": "res://art/generated/bosses/exhaustion_tyrant.glb",
+    "silhouette": "rib_tyrant",
+    "max_hp": 2100,
+    "move_speed": 1.74,
+    "reward_id": "exhaustion_tyrant_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "exhaustion_tyrant_p1_a1",
+            "display_name": "O Tirano da Exaustão · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 40
+          },
+          {
+            "id": "exhaustion_tyrant_p1_a2",
+            "display_name": "O Tirano da Exaustão · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "summon",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 42
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "exhaustion_tyrant_p2_a1",
+            "display_name": "O Tirano da Exaustão · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 45
+          },
+          {
+            "id": "exhaustion_tyrant_p2_a2",
+            "display_name": "O Tirano da Exaustão · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "line",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 47
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "exhaustion_tyrant_p3_a1",
+            "display_name": "O Tirano da Exaustão · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 50
+          },
+          {
+            "id": "exhaustion_tyrant_p3_a2",
+            "display_name": "O Tirano da Exaustão · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 52
+          }
+        ]
+      }
+    ],
+    "codex": "O Tirano da Exaustão encerra CORPO E ENERGIA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "blind_architect",
+    "display_name": "O Arquiteto Cego",
+    "stage_id": "a_obra",
+    "model_path": "res://art/generated/bosses/blind_architect.glb",
+    "silhouette": "blind_architect",
+    "max_hp": 2220,
+    "move_speed": 1.8599999999999999,
+    "reward_id": "blind_architect_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "blind_architect_p1_a1",
+            "display_name": "O Arquiteto Cego · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 42
+          },
+          {
+            "id": "blind_architect_p1_a2",
+            "display_name": "O Arquiteto Cego · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "line",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 44
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "blind_architect_p2_a1",
+            "display_name": "O Arquiteto Cego · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 47
+          },
+          {
+            "id": "blind_architect_p2_a2",
+            "display_name": "O Arquiteto Cego · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "fan",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 49
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "blind_architect_p3_a1",
+            "display_name": "O Arquiteto Cego · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 52
+          },
+          {
+            "id": "blind_architect_p3_a2",
+            "display_name": "O Arquiteto Cego · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 54
+          }
+        ]
+      }
+    ],
+    "codex": "O Arquiteto Cego encerra OBRA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "archontic_banker",
+    "display_name": "O Banqueiro Arcôntico",
+    "stage_id": "a_fortuna",
+    "model_path": "res://art/generated/bosses/archontic_banker.glb",
+    "silhouette": "coin_throne",
+    "max_hp": 2340,
+    "move_speed": 1.5,
+    "reward_id": "archontic_banker_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "archontic_banker_p1_a1",
+            "display_name": "O Banqueiro Arcôntico · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 44
+          },
+          {
+            "id": "archontic_banker_p1_a2",
+            "display_name": "O Banqueiro Arcôntico · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "fan",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 46
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "archontic_banker_p2_a1",
+            "display_name": "O Banqueiro Arcôntico · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 49
+          },
+          {
+            "id": "archontic_banker_p2_a2",
+            "display_name": "O Banqueiro Arcôntico · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "radial",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 51
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "archontic_banker_p3_a1",
+            "display_name": "O Banqueiro Arcôntico · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 54
+          },
+          {
+            "id": "archontic_banker_p3_a2",
+            "display_name": "O Banqueiro Arcôntico · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 56
+          }
+        ]
+      }
+    ],
+    "codex": "O Banqueiro Arcôntico encerra FORTUNA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "approval_chorus",
+    "display_name": "O Coral da Aprovação",
+    "stage_id": "a_influencia",
+    "model_path": "res://art/generated/bosses/approval_chorus.glb",
+    "silhouette": "chorus_mass",
+    "max_hp": 2460,
+    "move_speed": 1.62,
+    "reward_id": "approval_chorus_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "approval_chorus_p1_a1",
+            "display_name": "O Coral da Aprovação · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "fan",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 46
+          },
+          {
+            "id": "approval_chorus_p1_a2",
+            "display_name": "O Coral da Aprovação · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "radial",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 48
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "approval_chorus_p2_a1",
+            "display_name": "O Coral da Aprovação · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 51
+          },
+          {
+            "id": "approval_chorus_p2_a2",
+            "display_name": "O Coral da Aprovação · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "dash",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 53
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "approval_chorus_p3_a1",
+            "display_name": "O Coral da Aprovação · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 56
+          },
+          {
+            "id": "approval_chorus_p3_a2",
+            "display_name": "O Coral da Aprovação · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 58
+          }
+        ]
+      }
+    ],
+    "codex": "O Coral da Aprovação encerra INFLUÊNCIA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "durable_name_guardian",
+    "display_name": "O Guardião do Nome Durável",
+    "stage_id": "o_legado",
+    "model_path": "res://art/generated/bosses/durable_name_guardian.glb",
+    "silhouette": "archive_guardian",
+    "max_hp": 2580,
+    "move_speed": 1.74,
+    "reward_id": "durable_name_guardian_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "durable_name_guardian_p1_a1",
+            "display_name": "O Guardião do Nome Durável · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "radial",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 48
+          },
+          {
+            "id": "durable_name_guardian_p1_a2",
+            "display_name": "O Guardião do Nome Durável · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "dash",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 50
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "durable_name_guardian_p2_a1",
+            "display_name": "O Guardião do Nome Durável · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 53
+          },
+          {
+            "id": "durable_name_guardian_p2_a2",
+            "display_name": "O Guardião do Nome Durável · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "zone",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 55
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "durable_name_guardian_p3_a1",
+            "display_name": "O Guardião do Nome Durável · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 58
+          },
+          {
+            "id": "durable_name_guardian_p3_a2",
+            "display_name": "O Guardião do Nome Durável · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 60
+          }
+        ]
+      }
+    ],
+    "codex": "O Guardião do Nome Durável encerra LEGADO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "electorum_dramatization",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  },
+  {
+    "id": "initiation_throne",
+    "display_name": "Trono da Iniciação",
+    "stage_id": "initiation_chamber",
+    "model_path": "res://art/generated/bosses/initiation_throne.glb",
+    "silhouette": "sevenfold_throne",
+    "max_hp": 2700,
+    "move_speed": 1.8599999999999999,
+    "reward_id": "initiation_throne_relic",
+    "phases": [
+      {
+        "index": 1,
+        "threshold": 1.0,
+        "arena_modifier": "stable",
+        "attacks": [
+          {
+            "id": "initiation_throne_p1_a1",
+            "display_name": "Trono da Iniciação · Movimento 1",
+            "attack_kind": "projectile",
+            "pattern": "dash",
+            "windup": 0.9,
+            "telegraph_time": 0.58,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 50
+          },
+          {
+            "id": "initiation_throne_p1_a2",
+            "display_name": "Trono da Iniciação · Movimento 2",
+            "attack_kind": "movement",
+            "pattern": "zone",
+            "windup": 0.96,
+            "telegraph_time": 0.6,
+            "active": 0.35,
+            "recovery": 0.82,
+            "damage": 52
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "threshold": 0.66,
+        "arena_modifier": "pressure",
+        "attacks": [
+          {
+            "id": "initiation_throne_p2_a1",
+            "display_name": "Trono da Iniciação · Movimento 3",
+            "attack_kind": "projectile",
+            "pattern": "zone",
+            "windup": 0.8,
+            "telegraph_time": 0.54,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 55
+          },
+          {
+            "id": "initiation_throne_p2_a2",
+            "display_name": "Trono da Iniciação · Movimento 4",
+            "attack_kind": "movement",
+            "pattern": "summon",
+            "windup": 0.86,
+            "telegraph_time": 0.56,
+            "active": 0.45,
+            "recovery": 0.74,
+            "damage": 57
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "threshold": 0.32,
+        "arena_modifier": "collapse",
+        "attacks": [
+          {
+            "id": "initiation_throne_p3_a1",
+            "display_name": "Trono da Iniciação · Movimento 5",
+            "attack_kind": "projectile",
+            "pattern": "summon",
+            "windup": 0.7,
+            "telegraph_time": 0.5,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 60
+          },
+          {
+            "id": "initiation_throne_p3_a2",
+            "display_name": "Trono da Iniciação · Movimento 6",
+            "attack_kind": "projectile",
+            "pattern": "line",
+            "windup": 0.76,
+            "telegraph_time": 0.52,
+            "active": 0.55,
+            "recovery": 0.66,
+            "damage": 62
+          }
+        ]
+      }
+    ],
+    "codex": "Trono da Iniciação encerra INICIAÇÃO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance": {
+      "class": "source_inspired_synthesis",
+      "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+    }
+  }
+]

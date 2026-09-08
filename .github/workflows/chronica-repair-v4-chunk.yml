@@ -1,0 +1,58 @@
+name: CHRONICA Repair v4 Chunk
+
+on:
+  push:
+    branches:
+      - fix/chronica-runtime-qa
+    paths:
+      - 'handoff/chronica-playable/v4/repair/**'
+      - '.github/workflows/chronica-repair-v4-chunk.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair-part-008:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/chronica-runtime-qa
+          fetch-depth: 0
+      - name: Assemble and verify exact part-008
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p handoff/chronica-playable/v4
+          cat \
+            handoff/chronica-playable/v4/repair/part-008-0.txt \
+            handoff/chronica-playable/v4/repair/part-008-1.txt \
+            handoff/chronica-playable/v4/repair/part-008-2.txt \
+            handoff/chronica-playable/v4/repair/part-008-3.txt \
+            > handoff/chronica-playable/v4/part-008.b64
+          python - <<'PY'
+          import base64, hashlib, pathlib
+          p=pathlib.Path('handoff/chronica-playable/v4/part-008.b64')
+          text=''.join(p.read_text().split())
+          data=base64.b64decode(text, validate=True)
+          assert len(text)==13336, len(text)
+          assert len(data)==10000, len(data)
+          got=hashlib.sha256(data).hexdigest()
+          want='a8f68b47f095b4c5d77413f01b7aeb1106cedaf70831f7d9bf9448ce4468bac7'
+          assert got==want, (got,want)
+          print('CHRONICA_V4_PART_008_REPAIRED_OK', got)
+          PY
+      - name: Persist exact chunk
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'chronica-repair-bot'
+          git config user.email 'chronica-repair-bot@users.noreply.github.com'
+          git add handoff/chronica-playable/v4/part-008.b64
+          if git diff --cached --quiet; then
+            echo 'Exact part-008 already persisted.'
+          else
+            git commit -m 'fix: restore exact v4 source part 008'
+            git push origin HEAD:fix/chronica-runtime-qa
+          fi

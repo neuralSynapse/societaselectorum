@@ -1,0 +1,1757 @@
+[
+  {
+    "id": "arcana",
+    "name": "Arcana",
+    "base_chance": 0.2,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "door_after_clear",
+    "risk": "low",
+    "reward_pool": [
+      "tarot"
+    ],
+    "telegraph": "tarot glyph rotating slowly",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "arcana",
+      "reward_pool": [
+        "tarot"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.arcana",
+    "sfx_hook": "sfx.room.arcana",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Arcana"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.arcana",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "reliquary",
+    "name": "Reliquary",
+    "base_chance": 0.13,
+    "min_stage": 1,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "key_or_cost",
+    "risk": "medium",
+    "reward_pool": [
+      "relics"
+    ],
+    "telegraph": "sealed reliquary arch",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "reliquary",
+      "reward_pool": [
+        "relics"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.reliquary",
+    "sfx_hook": "sfx.room.reliquary",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Reliquary"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.reliquary",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "instrumentarium",
+    "name": "Instrumentarium",
+    "base_chance": 0.16,
+    "min_stage": 1,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "door_after_clear",
+    "risk": "low",
+    "reward_pool": [
+      "instrumenta"
+    ],
+    "telegraph": "weapon silhouette rack",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "instrumentarium",
+      "reward_pool": [
+        "instrumenta"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.instrumentarium",
+    "sfx_hook": "sfx.room.instrumentarium",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Instrumentarium"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.instrumentarium",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "laboratorium",
+    "name": "Laboratorium",
+    "base_chance": 0.15,
+    "min_stage": 2,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "door_after_clear",
+    "risk": "medium",
+    "reward_pool": [
+      "pharmaka"
+    ],
+    "telegraph": "alchemical glass and planetary seal",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "laboratorium",
+      "reward_pool": [
+        "pharmaka"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.laboratorium",
+    "sfx_hook": "sfx.room.laboratorium",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Laboratorium"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.laboratorium",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "sigillar",
+    "name": "Sigillar",
+    "base_chance": 0.12,
+    "min_stage": 2,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "essence_cost",
+    "risk": "medium",
+    "reward_pool": [
+      "sigilla"
+    ],
+    "telegraph": "72-fold seal lattice",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "sigillar",
+      "reward_pool": [
+        "sigilla"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.sigillar",
+    "sfx_hook": "sfx.room.sigillar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Sigillar"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.sigillar",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "market",
+    "name": "Market",
+    "base_chance": 0.18,
+    "min_stage": 1,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "essence_cost",
+    "risk": "low",
+    "reward_pool": [
+      "mixed"
+    ],
+    "telegraph": "balanced scales",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "market",
+      "reward_pool": [
+        "mixed"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.market",
+    "sfx_hook": "sfx.room.market",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Market"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.market",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "bibliotheca",
+    "name": "Bibliotheca",
+    "base_chance": 0.11,
+    "min_stage": 2,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "codex_threshold",
+    "risk": "low",
+    "reward_pool": [
+      "codex"
+    ],
+    "telegraph": "book-and-eye lintel",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "bibliotheca",
+      "reward_pool": [
+        "codex"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.bibliotheca",
+    "sfx_hook": "sfx.room.bibliotheca",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Bibliotheca"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.bibliotheca",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "speculum",
+    "name": "Speculum",
+    "base_chance": 0.1,
+    "min_stage": 3,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "reflection_condition",
+    "risk": "medium",
+    "reward_pool": [
+      "transformations"
+    ],
+    "telegraph": "black mirror",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "speculum",
+      "reward_pool": [
+        "transformations"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.speculum",
+    "sfx_hook": "sfx.room.speculum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Speculum"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.speculum",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "planetary",
+    "name": "Planetary",
+    "base_chance": 0.1,
+    "min_stage": 3,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "planetary_condition",
+    "risk": "medium",
+    "reward_pool": [
+      "talismans"
+    ],
+    "telegraph": "planetary ring",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "planetary",
+      "reward_pool": [
+        "talismans"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.planetary",
+    "sfx_hook": "sfx.room.planetary",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Planetary"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.planetary",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "trial",
+    "name": "Trial",
+    "base_chance": 0.25,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "door_after_clear",
+    "risk": "high",
+    "reward_pool": [
+      "mixed"
+    ],
+    "telegraph": "red trial stele",
+    "room_size": [
+      12,
+      6,
+      12
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "trial",
+      "reward_pool": [
+        "mixed"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.trial",
+    "sfx_hook": "sfx.room.trial",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Trial"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.trial",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "cursed",
+    "name": "Cursed",
+    "base_chance": 0.08,
+    "min_stage": 4,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "curse_accept",
+    "risk": "high",
+    "reward_pool": [
+      "relics",
+      "tarot"
+    ],
+    "telegraph": "cracked inverted halo",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "cursed",
+      "reward_pool": [
+        "relics",
+        "tarot"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.cursed",
+    "sfx_hook": "sfx.room.cursed",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Cursed"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.cursed",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "secret",
+    "name": "Secret",
+    "base_chance": 0.75,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "rupture_charge",
+    "risk": "medium",
+    "reward_pool": [
+      "mixed"
+    ],
+    "telegraph": "hairline wall fracture",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "secret",
+      "reward_pool": [
+        "mixed"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.secret",
+    "sfx_hook": "sfx.room.secret",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Secret"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.secret",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "super_secret",
+    "name": "Super Secret",
+    "base_chance": 0.22,
+    "min_stage": 3,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false,
+      "requires_secret_found": true,
+      "min_cycle": 1
+    },
+    "access": "rupture_charge_plus_condition",
+    "risk": "high",
+    "reward_pool": [
+      "rare"
+    ],
+    "telegraph": "double fracture with cold draft",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "super_secret",
+      "reward_pool": [
+        "rare"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.super_secret",
+    "sfx_hook": "sfx.room.super_secret",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Super Secret"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.super_secret",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "archon",
+    "name": "Archon",
+    "base_chance": 0.11,
+    "min_stage": 4,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false
+    },
+    "access": "archon_route_or_mark",
+    "risk": "high",
+    "reward_pool": [
+      "sigilla",
+      "relics"
+    ],
+    "telegraph": "animal-mask lintel",
+    "room_size": [
+      12,
+      6,
+      12
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "archon",
+      "reward_pool": [
+        "sigilla",
+        "relics"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.archon",
+    "sfx_hook": "sfx.room.archon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Archon"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.archon",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "theophany",
+    "name": "Theophany",
+    "base_chance": 0.08,
+    "min_stage": 5,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false,
+      "requires_no_hostile_echo": true
+    },
+    "access": "vision_condition",
+    "risk": "variable",
+    "reward_pool": [
+      "blessings"
+    ],
+    "telegraph": "non-hostile radiant threshold",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "theophany",
+      "reward_pool": [
+        "blessings"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.theophany",
+    "sfx_hook": "sfx.room.theophany",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Theophany"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.theophany",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "historical_echo",
+    "name": "Historical Echo",
+    "base_chance": 0.07,
+    "min_stage": 4,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": false,
+      "requires_codex_entries": 4
+    },
+    "access": "codex_or_route_condition",
+    "risk": "low",
+    "reward_pool": [
+      "codex",
+      "insight"
+    ],
+    "telegraph": "documentary echo markers",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "historical_echo",
+      "reward_pool": [
+        "codex",
+        "insight"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.historical_echo",
+    "sfx_hook": "sfx.room.historical_echo",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Historical Echo"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.historical_echo",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "initiation",
+    "name": "Initiation",
+    "base_chance": 1.0,
+    "min_stage": 15,
+    "max_per_floor": 1,
+    "eligibility": {
+      "stage_id": "initiation_chamber"
+    },
+    "access": "stage_final",
+    "risk": "high",
+    "reward_pool": [
+      "initiation"
+    ],
+    "telegraph": "sevenfold threshold",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "initiation",
+      "reward_pool": [
+        "initiation"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.initiation",
+    "sfx_hook": "sfx.room.initiation",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Initiation"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.initiation",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "solar_benediction",
+    "name": "Solar Benediction",
+    "base_chance": 0.35,
+    "min_stage": 2,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": true
+    },
+    "access": "post_boss_exclusive",
+    "risk": "medium",
+    "reward_pool": [
+      "blessings"
+    ],
+    "telegraph": "upright solar aperture",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "solar_benediction",
+      "reward_pool": [
+        "blessings"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.solar_benediction",
+    "sfx_hook": "sfx.room.solar_benediction",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Solar Benediction"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.solar_benediction",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "chthonic_pact",
+    "name": "Chthonic Pact",
+    "base_chance": 0.35,
+    "min_stage": 2,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "forbidden_after_choice": true
+    },
+    "access": "post_boss_exclusive",
+    "risk": "high",
+    "reward_pool": [
+      "sigilla",
+      "relics"
+    ],
+    "telegraph": "descending pact aperture",
+    "room_size": [
+      8,
+      5,
+      8
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "chthonic_pact",
+      "reward_pool": [
+        "sigilla",
+        "relics"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.chthonic_pact",
+    "sfx_hook": "sfx.room.chthonic_pact",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Chthonic Pact"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    },
+    "runtime_event": "room.chthonic_pact",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    }
+  },
+  {
+    "id": "pneumatic",
+    "name": "Câmara Pneumática",
+    "base_chance": 0.45,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "postboss": true
+    },
+    "access": "postboss_portal",
+    "risk": "commitment",
+    "reward_pool": [
+      "blessings"
+    ],
+    "telegraph": "pneumatic_telegraph",
+    "room_size": [
+      9,
+      5,
+      9
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "pneumatic",
+      "reward_pool": "blessings"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.pneumatic",
+    "sfx_hook": "sfx.room.pneumatic",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Pneumática"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Sala autoral CHRONICA HARUN."
+    },
+    "entry": {
+      "mode": "postboss_portal",
+      "accepted_openers": []
+    },
+    "runtime_event": "room.pneumatic",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.pneumatic",
+    "discovery_feedback": "discover.room.pneumatic",
+    "exclusive_group": "postboss_path"
+  },
+  {
+    "id": "chthonic",
+    "name": "Câmara Ctônica",
+    "base_chance": 0.45,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "postboss": true
+    },
+    "access": "postboss_portal",
+    "risk": "curse_heat",
+    "reward_pool": [
+      "pact_reward"
+    ],
+    "telegraph": "chthonic_telegraph",
+    "room_size": [
+      9,
+      5,
+      9
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "chthonic",
+      "reward_pool": "pact_reward"
+    },
+    "cost": {
+      "resource": "max_hp",
+      "amount": 8
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.chthonic",
+    "sfx_hook": "sfx.room.chthonic",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara Ctônica"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Sala autoral CHRONICA HARUN."
+    },
+    "entry": {
+      "mode": "postboss_portal",
+      "accepted_openers": []
+    },
+    "runtime_event": "room.chthonic",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.chthonic",
+    "discovery_feedback": "discover.room.chthonic",
+    "exclusive_group": "postboss_path"
+  },
+  {
+    "id": "pact_table",
+    "name": "Mesa do Pacto",
+    "base_chance": 0.35,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1,
+      "postboss": true
+    },
+    "access": "postboss_portal",
+    "risk": "contract_debt",
+    "reward_pool": [
+      "sigilla"
+    ],
+    "telegraph": "pact_table_telegraph",
+    "room_size": [
+      9,
+      5,
+      9
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "pact_table",
+      "reward_pool": "sigilla"
+    },
+    "cost": {
+      "resource": "essence",
+      "amount": 12
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.pact_table",
+    "sfx_hook": "sfx.room.pact_table",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Mesa do Pacto"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Sala autoral CHRONICA HARUN."
+    },
+    "entry": {
+      "mode": "postboss_portal",
+      "accepted_openers": []
+    },
+    "runtime_event": "room.pact_table",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.pact_table",
+    "discovery_feedback": "discover.room.pact_table",
+    "exclusive_group": "postboss_path"
+  },
+  {
+    "id": "sacrifice",
+    "name": "Câmara do Sacrifício",
+    "base_chance": 0.2,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1
+    },
+    "access": "door_after_clear",
+    "risk": "blood_price",
+    "reward_pool": [
+      "sacrifice_reward"
+    ],
+    "telegraph": "sacrifice_telegraph",
+    "room_size": [
+      9,
+      5,
+      9
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "sacrifice",
+      "reward_pool": "sacrifice_reward"
+    },
+    "cost": {
+      "resource": "hp",
+      "amount": 12
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.sacrifice",
+    "sfx_hook": "sfx.room.sacrifice",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Câmara do Sacrifício"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Sala autoral CHRONICA HARUN."
+    },
+    "entry": {
+      "mode": "door_after_clear",
+      "accepted_openers": []
+    },
+    "runtime_event": "room.sacrifice",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.sacrifice",
+    "discovery_feedback": "discover.room.sacrifice"
+  },
+  {
+    "id": "eden",
+    "name": "Jardim do Éden",
+    "base_chance": 0.18,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1
+    },
+    "access": "eden_gate",
+    "risk": "choice",
+    "reward_pool": [
+      "eden_fruit"
+    ],
+    "telegraph": "eden_telegraph",
+    "room_size": [
+      9,
+      5,
+      9
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "eden",
+      "reward_pool": "eden_fruit"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.eden",
+    "sfx_hook": "sfx.room.eden",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Jardim do Éden"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Sala autoral CHRONICA HARUN."
+    },
+    "entry": {
+      "mode": "eden_gate",
+      "accepted_openers": []
+    },
+    "runtime_event": "room.eden",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.eden",
+    "discovery_feedback": "discover.room.eden"
+  },
+  {
+    "id": "arbor_mortis",
+    "name": "Arbor Mortis",
+    "base_chance": 0.14,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 1
+    },
+    "access": "mortis_gate",
+    "risk": "debt",
+    "reward_pool": [
+      "mortis_fruit"
+    ],
+    "telegraph": "arbor_mortis_telegraph",
+    "room_size": [
+      9,
+      5,
+      9
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "arbor_mortis",
+      "reward_pool": "mortis_fruit"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.arbor_mortis",
+    "sfx_hook": "sfx.room.arbor_mortis",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Arbor Mortis"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Sala autoral CHRONICA HARUN."
+    },
+    "entry": {
+      "mode": "mortis_gate",
+      "accepted_openers": []
+    },
+    "runtime_event": "room.arbor_mortis",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.arbor_mortis",
+    "discovery_feedback": "discover.room.arbor_mortis"
+  },
+  {
+    "id": "liminal_laboratory",
+    "name": "Laboratorium Liminale",
+    "base_chance": 0.08,
+    "min_stage": 0,
+    "max_per_floor": 1,
+    "eligibility": {
+      "min_rooms_cleared": 2,
+      "requires_quantum_lab": true
+    },
+    "access": "hidden_wall",
+    "risk": "decoherence",
+    "reward_pool": [
+      "quantum_branch"
+    ],
+    "telegraph": "liminal_laboratory_telegraph",
+    "room_size": [
+      9,
+      5,
+      9
+    ],
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "special_rooms",
+    "effect": {
+      "kind": "room_event",
+      "event": "liminal_laboratory",
+      "reward_pool": "quantum_branch"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "room",
+      "seconds": 0,
+      "rooms": 1
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.room.liminal_laboratory",
+    "sfx_hook": "sfx.room.liminal_laboratory",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "Salas Especiais",
+      "summary": "Laboratorium Liminale"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Sala autoral CHRONICA HARUN."
+    },
+    "entry": {
+      "mode": "hidden_wall",
+      "accepted_openers": []
+    },
+    "runtime_event": "room.liminal_laboratory",
+    "persistent_state": {
+      "visited": true,
+      "resolved": true
+    },
+    "map_icon": "map.room.liminal_laboratory",
+    "discovery_feedback": "discover.room.liminal_laboratory"
+  }
+]

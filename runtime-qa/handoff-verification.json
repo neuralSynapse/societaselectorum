@@ -1,0 +1,380 @@
+{
+  "manifest": "handoff/chronica-playable/v4/manifest.json",
+  "archive_sha256": "8c5c416178c26e611d87b41fff08f718df5ccbedb2f30ddb4c153acfc11d96a7",
+  "archive_bytes": 153508,
+  "source_head": "a558da28caa4f9b0f475e2a7e81a78c15696f415",
+  "missing_count": 0,
+  "missing": [],
+  "chunks": [
+    {
+      "chunk": "part-000.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "76fda5621a9b0b477356213cf4b9f5001adb90ca150d5ae72be99458872fe4d4",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "eba70a0f25580c1b6e2c9420f3c9ff6ecedd1751",
+          "path": "handoff/chronica-playable-v4/chunks/part-000.b64",
+          "bytes": 10000,
+          "sha256": "76fda5621a9b0b477356213cf4b9f5001adb90ca150d5ae72be99458872fe4d4"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "eba70a0f25580c1b6e2c9420f3c9ff6ecedd1751",
+          "path": "handoff/chronica-playable-v4/chunks/part-000.b64",
+          "bytes": 10000,
+          "sha256": "76fda5621a9b0b477356213cf4b9f5001adb90ca150d5ae72be99458872fe4d4"
+        },
+        {
+          "blob": "e80b2e5ec9e716955cd6d14dc500da604ae46a7d",
+          "path": "handoff/chronica-playable/runtime-v1/part-000.b64",
+          "bytes": 10000,
+          "sha256": "68ba38ce8ecfd792a8d75102399fda4e3b246c8095e09b2c64a493c610890b4f"
+        }
+      ]
+    },
+    {
+      "chunk": "part-001.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "74f155cf5d9edcb4f7f7f0d08425a3c9e6cd788adf82ae256c0e731f2b56a8ae",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "a6865b831dd8f2ac9d00f497858160273e242cb2",
+          "path": "handoff/chronica-playable-v4/chunks/part-001.b64",
+          "bytes": 10000,
+          "sha256": "74f155cf5d9edcb4f7f7f0d08425a3c9e6cd788adf82ae256c0e731f2b56a8ae"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "a6865b831dd8f2ac9d00f497858160273e242cb2",
+          "path": "handoff/chronica-playable-v4/chunks/part-001.b64",
+          "bytes": 10000,
+          "sha256": "74f155cf5d9edcb4f7f7f0d08425a3c9e6cd788adf82ae256c0e731f2b56a8ae"
+        },
+        {
+          "blob": "13d24e2ed1eb91236ce22c5b728ff9a67dc417fd",
+          "path": "handoff/chronica-playable/runtime-v1/part-001.b64",
+          "bytes": 10000,
+          "sha256": "6607d7a6e453e92cf58241068dd8d864b42976b29f9979416a7ddee6bba97ecd"
+        }
+      ]
+    },
+    {
+      "chunk": "part-002.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "99d14bdb70a56b5433e0dd30fb3c69e399468b876d5c447dd9d33bc187db0f9c",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "683f4a13fb0939c166266d74c4a7a716ae82eeba",
+          "path": "handoff/chronica-playable/v4/part-002.b64",
+          "bytes": 10000,
+          "sha256": "99d14bdb70a56b5433e0dd30fb3c69e399468b876d5c447dd9d33bc187db0f9c"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "683f4a13fb0939c166266d74c4a7a716ae82eeba",
+          "path": "handoff/chronica-playable/v4/part-002.b64",
+          "bytes": 10000,
+          "sha256": "99d14bdb70a56b5433e0dd30fb3c69e399468b876d5c447dd9d33bc187db0f9c"
+        }
+      ]
+    },
+    {
+      "chunk": "part-003.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "f64d03513fd833c4e9c543bb0284c8d214b52c1db97d0296d6ccae5fd40cd0a0",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "ae4c1e033fd6d595070ff48b8bd2e1df8ccd52d2",
+          "path": "handoff/chronica-playable/v4-chunks/part-003.b64",
+          "bytes": 10000,
+          "sha256": "f64d03513fd833c4e9c543bb0284c8d214b52c1db97d0296d6ccae5fd40cd0a0"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "ae4c1e033fd6d595070ff48b8bd2e1df8ccd52d2",
+          "path": "handoff/chronica-playable/v4-chunks/part-003.b64",
+          "bytes": 10000,
+          "sha256": "f64d03513fd833c4e9c543bb0284c8d214b52c1db97d0296d6ccae5fd40cd0a0"
+        }
+      ]
+    },
+    {
+      "chunk": "part-004.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "4a9017d1f420cadbb7c3d9472c1f00b7f33b96411b57f93fb781ca355f3dbdef",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "e205dbd7b7f522a67c4ce255ebbd0354957acc61",
+          "path": "handoff/chronica-playable-v4/chunks/part-004.b64",
+          "bytes": 10000,
+          "sha256": "4a9017d1f420cadbb7c3d9472c1f00b7f33b96411b57f93fb781ca355f3dbdef"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "e205dbd7b7f522a67c4ce255ebbd0354957acc61",
+          "path": "handoff/chronica-playable-v4/chunks/part-004.b64",
+          "bytes": 10000,
+          "sha256": "4a9017d1f420cadbb7c3d9472c1f00b7f33b96411b57f93fb781ca355f3dbdef"
+        }
+      ]
+    },
+    {
+      "chunk": "part-005.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "39083978182d3c538889809d0e4c289228aa6d817500543fd7e141bc389ffcb1",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "f578b928f6f37e06f80a3c7d59434c8f8231088c",
+          "path": "handoff/chronica-playable-v4/chunks/part-005.b64",
+          "bytes": 10000,
+          "sha256": "39083978182d3c538889809d0e4c289228aa6d817500543fd7e141bc389ffcb1"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "f578b928f6f37e06f80a3c7d59434c8f8231088c",
+          "path": "handoff/chronica-playable-v4/chunks/part-005.b64",
+          "bytes": 10000,
+          "sha256": "39083978182d3c538889809d0e4c289228aa6d817500543fd7e141bc389ffcb1"
+        }
+      ]
+    },
+    {
+      "chunk": "part-006.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "f14477b037f7f9dd0dd1b136ae2a172939d2f721f6241d326af371fde5b7bcc3",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "76a236ba10e7fb339fa29db5b8b81a4c5e8c3b06",
+          "path": "handoff/chronica-playable-v4/chunks/part-006.b64",
+          "bytes": 10000,
+          "sha256": "f14477b037f7f9dd0dd1b136ae2a172939d2f721f6241d326af371fde5b7bcc3"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "76a236ba10e7fb339fa29db5b8b81a4c5e8c3b06",
+          "path": "handoff/chronica-playable-v4/chunks/part-006.b64",
+          "bytes": 10000,
+          "sha256": "f14477b037f7f9dd0dd1b136ae2a172939d2f721f6241d326af371fde5b7bcc3"
+        }
+      ]
+    },
+    {
+      "chunk": "part-007.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "9183c88cdbb49991328017b552aac691d80d88cd789cf77fc8432156dc6354b9",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "c5feba545fb42ac82b6452565ef2e00c8bd3877b",
+          "path": "handoff/chronica-playable-v4/chunks/part-007.b64",
+          "bytes": 10000,
+          "sha256": "9183c88cdbb49991328017b552aac691d80d88cd789cf77fc8432156dc6354b9"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "c5feba545fb42ac82b6452565ef2e00c8bd3877b",
+          "path": "handoff/chronica-playable-v4/chunks/part-007.b64",
+          "bytes": 10000,
+          "sha256": "9183c88cdbb49991328017b552aac691d80d88cd789cf77fc8432156dc6354b9"
+        }
+      ]
+    },
+    {
+      "chunk": "part-008.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "a8f68b47f095b4c5d77413f01b7aeb1106cedaf70831f7d9bf9448ce4468bac7",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "6d6b9f0a031c9abc0fa95bb65045c2ae8e1a2065",
+          "path": "handoff/chronica-playable/v4/part-008.b64",
+          "bytes": 10000,
+          "sha256": "a8f68b47f095b4c5d77413f01b7aeb1106cedaf70831f7d9bf9448ce4468bac7"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "cc94e581885bd8578c32e29d1a8a051a60b48e15",
+          "path": "handoff/chronica-playable-v4/chunks/part-008.b64",
+          "bytes": 11524,
+          "sha256": "2c28e963df80135b5c8271a65ada7dcf3bb445baeb8f8259d912f6c78ea172f2"
+        },
+        {
+          "blob": "6d6b9f0a031c9abc0fa95bb65045c2ae8e1a2065",
+          "path": "handoff/chronica-playable/v4/part-008.b64",
+          "bytes": 10000,
+          "sha256": "a8f68b47f095b4c5d77413f01b7aeb1106cedaf70831f7d9bf9448ce4468bac7"
+        }
+      ]
+    },
+    {
+      "chunk": "part-009.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "72c38b00bb9a80b817c20f62cb0de66840e857cad82e8b80eeea20a234693e91",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "35afb42cd30d04dc01fc0ede44f2ced0bc71a666",
+          "path": "handoff/chronica-playable-v4/chunks/part-009.b64",
+          "bytes": 10000,
+          "sha256": "72c38b00bb9a80b817c20f62cb0de66840e857cad82e8b80eeea20a234693e91"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "35afb42cd30d04dc01fc0ede44f2ced0bc71a666",
+          "path": "handoff/chronica-playable-v4/chunks/part-009.b64",
+          "bytes": 10000,
+          "sha256": "72c38b00bb9a80b817c20f62cb0de66840e857cad82e8b80eeea20a234693e91"
+        }
+      ]
+    },
+    {
+      "chunk": "part-010.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "f855fdd356c7c6995136413bd34d18a6afa8401e753d7a7b02ebd7d0fe6aba13",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "a344434e232398356fc9c6c7022b7e555b4a8238",
+          "path": "handoff/chronica-playable-v4/chunks/part-010.b64",
+          "bytes": 10000,
+          "sha256": "f855fdd356c7c6995136413bd34d18a6afa8401e753d7a7b02ebd7d0fe6aba13"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "a344434e232398356fc9c6c7022b7e555b4a8238",
+          "path": "handoff/chronica-playable-v4/chunks/part-010.b64",
+          "bytes": 10000,
+          "sha256": "f855fdd356c7c6995136413bd34d18a6afa8401e753d7a7b02ebd7d0fe6aba13"
+        }
+      ]
+    },
+    {
+      "chunk": "part-011.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "23f3cb348ace6bd6c5e99c4109c29ad53603a046bf231f6f3cfcbfc29d66263d",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "75082509f31725a214f0ecdd4a3fe15bb2f08119",
+          "path": "handoff/chronica-playable/v4/part-011.b64",
+          "bytes": 10000,
+          "sha256": "23f3cb348ace6bd6c5e99c4109c29ad53603a046bf231f6f3cfcbfc29d66263d"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "75082509f31725a214f0ecdd4a3fe15bb2f08119",
+          "path": "handoff/chronica-playable/v4/part-011.b64",
+          "bytes": 10000,
+          "sha256": "23f3cb348ace6bd6c5e99c4109c29ad53603a046bf231f6f3cfcbfc29d66263d"
+        }
+      ]
+    },
+    {
+      "chunk": "part-012.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "4e50670dce7119dbd7d2adf01591eae11c3f00e20569fb9d911dcc764c53f777",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "5d3758858f5c9813201f77b9b47c9c0f40697afd",
+          "path": "handoff/chronica-playable/v4/part-012.b64",
+          "bytes": 10000,
+          "sha256": "4e50670dce7119dbd7d2adf01591eae11c3f00e20569fb9d911dcc764c53f777"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "5d3758858f5c9813201f77b9b47c9c0f40697afd",
+          "path": "handoff/chronica-playable/v4/part-012.b64",
+          "bytes": 10000,
+          "sha256": "4e50670dce7119dbd7d2adf01591eae11c3f00e20569fb9d911dcc764c53f777"
+        }
+      ]
+    },
+    {
+      "chunk": "part-013.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "3b7ce1e2a1d8492fc893529b2a19f975a5bf7ed0b8808ddccfdfdc8a99d2f347",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "f22c3db8b1eb7b7f73c9fefb9f5182821a8a4698",
+          "path": "handoff/chronica-playable-v4/chunks/part-013.b64",
+          "bytes": 10000,
+          "sha256": "3b7ce1e2a1d8492fc893529b2a19f975a5bf7ed0b8808ddccfdfdc8a99d2f347"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "f22c3db8b1eb7b7f73c9fefb9f5182821a8a4698",
+          "path": "handoff/chronica-playable-v4/chunks/part-013.b64",
+          "bytes": 10000,
+          "sha256": "3b7ce1e2a1d8492fc893529b2a19f975a5bf7ed0b8808ddccfdfdc8a99d2f347"
+        }
+      ]
+    },
+    {
+      "chunk": "part-014.b64",
+      "expected_bytes": 10000,
+      "expected_sha256": "59ef97b30048c19d5831793ded561c4bb9d6d8f082a9d3924721dfc002b3ee2d",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "40b27ae4e49ab676681017e368fbd31c9f676ea7",
+          "path": "handoff/chronica-playable-v4/chunks/part-014.b64",
+          "bytes": 10000,
+          "sha256": "59ef97b30048c19d5831793ded561c4bb9d6d8f082a9d3924721dfc002b3ee2d"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "40b27ae4e49ab676681017e368fbd31c9f676ea7",
+          "path": "handoff/chronica-playable-v4/chunks/part-014.b64",
+          "bytes": 10000,
+          "sha256": "59ef97b30048c19d5831793ded561c4bb9d6d8f082a9d3924721dfc002b3ee2d"
+        }
+      ]
+    },
+    {
+      "chunk": "part-015.b64",
+      "expected_bytes": 3508,
+      "expected_sha256": "945e5f5fa163ab6c1ece4885adb29bce2d22f47f0e89a9cecb68b46258183395",
+      "exact_found": true,
+      "exact": [
+        {
+          "blob": "daec3528dfd39a9e6601379a47586ef567728cd7",
+          "path": "handoff/chronica-playable-v4/chunks/part-015.b64",
+          "bytes": 3508,
+          "sha256": "945e5f5fa163ab6c1ece4885adb29bce2d22f47f0e89a9cecb68b46258183395"
+        }
+      ],
+      "observed": [
+        {
+          "blob": "daec3528dfd39a9e6601379a47586ef567728cd7",
+          "path": "handoff/chronica-playable-v4/chunks/part-015.b64",
+          "bytes": 3508,
+          "sha256": "945e5f5fa163ab6c1ece4885adb29bce2d22f47f0e89a9cecb68b46258183395"
+        }
+      ]
+    }
+  ]
+}

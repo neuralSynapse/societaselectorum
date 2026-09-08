@@ -1,0 +1,378 @@
+[
+  {
+    "id": "fog",
+    "name": "Névoa",
+    "effect_id": "map_visibility",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "effect_id": "map_visibility"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.fog",
+    "sfx_hook": "sfx.fog",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "curses",
+      "summary": "Névoa"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "silence",
+    "name": "Silêncio",
+    "effect_id": "power_lock",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "effect_id": "power_lock"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.silence",
+    "sfx_hook": "sfx.silence",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "curses",
+      "summary": "Silêncio"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "scarcity",
+    "name": "Escassez",
+    "effect_id": "reduced_drops",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "effect_id": "reduced_drops"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.scarcity",
+    "sfx_hook": "sfx.scarcity",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "curses",
+      "summary": "Escassez"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "focus_ruin",
+    "name": "Ruína de Foco",
+    "effect_id": "focus_regen_down",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "effect_id": "focus_regen_down"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.focus_ruin",
+    "sfx_hook": "sfx.focus_ruin",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "curses",
+      "summary": "Ruína de Foco"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "chamber_warp",
+    "name": "Distorção de Câmara",
+    "effect_id": "room_links_shift",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "effect_id": "room_links_shift"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.chamber_warp",
+    "sfx_hook": "sfx.chamber_warp",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "curses",
+      "summary": "Distorção de Câmara"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "labyrinth",
+    "name": "Labirinto",
+    "effect_id": "map_hidden",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "effect_id": "map_hidden"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.labyrinth",
+    "sfx_hook": "sfx.labyrinth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "curses",
+      "summary": "Labirinto"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "ritual_blindness",
+    "name": "Cegueira Ritual",
+    "effect_id": "enemy_hp_hidden",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "effect_id": "enemy_hp_hidden"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.ritual_blindness",
+    "sfx_hook": "sfx.ritual_blindness",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "curses",
+      "summary": "Cegueira Ritual"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "hostile_echo",
+    "name": "Eco Hostil",
+    "effect_id": "extra_echo_enemy",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "curses",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "curse",
+      "effect_id": "extra_echo_enemy"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.hostile_echo",
+    "sfx_hook": "sfx.hostile_echo",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "curses",
+      "summary": "Eco Hostil"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

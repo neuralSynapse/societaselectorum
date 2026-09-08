@@ -1,0 +1,83 @@
+name: CHRONICA Materialize v5 Source
+
+on:
+  push:
+    branches:
+      - release/chronica-playable-alpha-v5-2026-09-07
+    paths:
+      - '.github/workflows/chronica-materialize-v5.yml'
+      - 'runtime-v5/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release/chronica-playable-alpha-v5-2026-09-07
+          fetch-depth: 0
+      - name: Fetch source refs
+        run: git fetch origin '+refs/heads/*:refs/remotes/origin/*' --prune
+      - name: Restore exact integrated source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64, hashlib, pathlib, shutil, subprocess, tarfile
+          mapping = [
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-000.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-001.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-002.b64'),
+            ('release/chronica-playable-alpha-v2-2026-09-07','handoff/chronica-playable/v4-chunks/part-003.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-004.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-005.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-006.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-007.b64'),
+            ('fix/chronica-runtime-qa','handoff/chronica-playable/v4/part-008.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable-v4/chunks/part-009.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-010.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-011.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable/v4/part-012.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable-v4/chunks/part-013.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable-v4/chunks/part-014.b64'),
+            ('release/chronica-playable-alpha-v4-2026-09-07','handoff/chronica-playable-v4/chunks/part-015.b64'),
+          ]
+          pieces=[]
+          for branch,path in mapping:
+              raw=subprocess.check_output(['git','show',f'refs/remotes/origin/{branch}:{path}'])
+              pieces.append(base64.b64decode(b''.join(raw.split()), validate=True))
+          archive=b''.join(pieces)
+          assert len(archive)==153508, len(archive)
+          got=hashlib.sha256(archive).hexdigest()
+          want='8c5c416178c26e611d87b41fff08f718df5ccbedb2f30ddb4c153acfc11d96a7'
+          assert got==want,(got,want)
+          arc=pathlib.Path('/tmp/chronica-v4.tar.xz'); arc.write_bytes(archive)
+          restore=pathlib.Path('/tmp/chronica-restore')
+          if restore.exists(): shutil.rmtree(restore)
+          restore.mkdir()
+          with tarfile.open(arc,'r:xz') as tf: tf.extractall(restore)
+          projects=list(restore.rglob('project.godot'))
+          assert len(projects)==1,projects
+          src=projects[0].parent
+          dest=pathlib.Path('game/chronica-harun')
+          if dest.exists(): shutil.rmtree(dest)
+          dest.parent.mkdir(parents=True,exist_ok=True)
+          shutil.copytree(src,dest)
+          pathlib.Path('runtime-v5').mkdir(exist_ok=True)
+          pathlib.Path('runtime-v5/SOURCE_VERIFIED.txt').write_text(
+              f'archive_sha256={got}\narchive_bytes={len(archive)}\nsource_head=a558da28caa4f9b0f475e2a7e81a78c15696f415\n',encoding='utf-8')
+          print('CHRONICA_V5_SOURCE_RESTORED_OK',got)
+          PY
+      - name: Persist normal Git source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'chronica-materialize-bot'
+          git config user.email 'chronica-materialize-bot@users.noreply.github.com'
+          git add game/chronica-harun runtime-v5/SOURCE_VERIFIED.txt
+          git commit -m 'chore: materialize verified CHRONICA v5 Godot source tree'
+          git push origin HEAD:release/chronica-playable-alpha-v5-2026-09-07

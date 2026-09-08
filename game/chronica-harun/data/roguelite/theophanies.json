@@ -1,0 +1,252 @@
+[
+  {
+    "id": "lucifer_phosphoros",
+    "name": "Lúcifer / Phosphoros",
+    "appearance": "vision_or_patron",
+    "role": "luciferian",
+    "effect_id": "theophany_lucifer_phosphoros",
+    "conditions": {
+      "route": [
+        "luciferian",
+        "draconis"
+      ],
+      "min_stage": 4
+    },
+    "codex_note": "Lúcifer / Phosphoros: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "horus",
+    "name": "Hórus",
+    "appearance": "judge",
+    "role": "horus",
+    "effect_id": "theophany_horus",
+    "conditions": {
+      "precision_events": 3
+    },
+    "codex_note": "Hórus: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "thoth",
+    "name": "Thoth",
+    "appearance": "vision_or_patron",
+    "role": "thoth",
+    "effect_id": "theophany_thoth",
+    "conditions": {
+      "codex_entries": 8
+    },
+    "codex_note": "Thoth: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "belial",
+    "name": "Belial",
+    "appearance": "pact",
+    "role": "belial",
+    "effect_id": "theophany_belial",
+    "conditions": {
+      "route": [
+        "archontic",
+        "draconis"
+      ]
+    },
+    "codex_note": "Belial: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "paimon",
+    "name": "Paimon",
+    "appearance": "vision_or_patron",
+    "role": "paimon",
+    "effect_id": "theophany_paimon",
+    "conditions": {
+      "sigilla_bound": 1
+    },
+    "codex_note": "Paimon: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "lilith",
+    "name": "Lilith",
+    "appearance": "vision_or_patron",
+    "role": "lilith",
+    "effect_id": "theophany_lilith",
+    "conditions": {
+      "secrets_found": 1
+    },
+    "codex_note": "Lilith: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "sophia",
+    "name": "Sophia",
+    "appearance": "blessing",
+    "role": "sophia",
+    "effect_id": "theophany_sophia",
+    "conditions": {
+      "route": [
+        "sophia",
+        "pleroma"
+      ]
+    },
+    "codex_note": "Sophia: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "yaldabaoth",
+    "name": "Yaldabaoth",
+    "appearance": "judge",
+    "role": "yaldabaoth",
+    "effect_id": "theophany_yaldabaoth",
+    "conditions": {
+      "stage": [
+        "a_clareza",
+        "initiation_chamber"
+      ]
+    },
+    "codex_note": "Yaldabaoth: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "sabaoth",
+    "name": "Sabaoth",
+    "appearance": "blessing",
+    "role": "sabaoth",
+    "effect_id": "theophany_sabaoth",
+    "conditions": {
+      "archon_defeats": 3
+    },
+    "codex_note": "Sabaoth: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "seth",
+    "name": "Seth",
+    "appearance": "memory",
+    "role": "seth",
+    "effect_id": "theophany_seth",
+    "conditions": {
+      "route": [
+        "pleroma",
+        "student"
+      ]
+    },
+    "codex_note": "Seth: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "samael",
+    "name": "Samael",
+    "appearance": "judge",
+    "role": "samael",
+    "effect_id": "theophany_samael",
+    "conditions": {
+      "curse_count": 2
+    },
+    "codex_note": "Samael: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "baphomet",
+    "name": "Baphomet",
+    "appearance": "vision_or_patron",
+    "role": "baphomet",
+    "effect_id": "theophany_baphomet",
+    "conditions": {
+      "transformation_count": 1
+    },
+    "codex_note": "Baphomet: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "mammon",
+    "name": "Mammon",
+    "appearance": "pact",
+    "role": "mammon",
+    "effect_id": "theophany_mammon",
+    "conditions": {
+      "essence_spent": 15
+    },
+    "codex_note": "Mammon: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "agares",
+    "name": "Agares",
+    "appearance": "pact",
+    "role": "agares",
+    "effect_id": "theophany_agares",
+    "conditions": {
+      "sigillum": "sigil_02_agares"
+    },
+    "codex_note": "Agares: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "sitri",
+    "name": "Sitri",
+    "appearance": "pact",
+    "role": "sitri",
+    "effect_id": "theophany_sitri",
+    "conditions": {
+      "sigillum": "sigil_12_sitri"
+    },
+    "codex_note": "Sitri: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "ra",
+    "name": "Rá",
+    "appearance": "blessing",
+    "role": "ra",
+    "effect_id": "theophany_ra",
+    "conditions": {
+      "solar_room": true
+    },
+    "codex_note": "Rá: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "vishnu",
+    "name": "Vishnu",
+    "appearance": "vision_or_patron",
+    "role": "vishnu",
+    "effect_id": "theophany_vishnu",
+    "conditions": {
+      "survived_low_hp": true
+    },
+    "codex_note": "Vishnu: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "ganesh",
+    "name": "Ganesh",
+    "appearance": "blessing",
+    "role": "ganesh",
+    "effect_id": "theophany_ganesh",
+    "conditions": {
+      "blocked_route_reopened": true
+    },
+    "codex_note": "Ganesh: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  }
+]

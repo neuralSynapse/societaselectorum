@@ -1,0 +1,354 @@
+[
+  {
+    "id": "o_olho",
+    "index": 0,
+    "title": "O OLHO",
+    "subtitle": "PERCEPÇÃO",
+    "theme": "discernimento, atenção e visão do oculto",
+    "boss_id": "blind_observer",
+    "power_id": "revelatory_eye",
+    "common_enemy_ids": [
+      "o_olho_presence_01",
+      "o_olho_presence_02",
+      "o_olho_presence_03",
+      "o_olho_presence_04"
+    ],
+    "elite_id": "o_olho_elite",
+    "room_budget": [
+      1,
+      2,
+      3
+    ],
+    "next_stage": "a_chama"
+  },
+  {
+    "id": "a_chama",
+    "index": 1,
+    "title": "A CHAMA",
+    "subtitle": "REGÊNCIA",
+    "theme": "governo interno, foco e comando",
+    "boss_id": "impulse_archon",
+    "power_id": "black_flame_matrix",
+    "common_enemy_ids": [
+      "a_chama_presence_01",
+      "a_chama_presence_02",
+      "a_chama_presence_03",
+      "a_chama_presence_04"
+    ],
+    "elite_id": "a_chama_elite",
+    "room_budget": [
+      1,
+      2,
+      3
+    ],
+    "next_stage": "a_fundacao"
+  },
+  {
+    "id": "a_fundacao",
+    "index": 2,
+    "title": "A FUNDAÇÃO",
+    "subtitle": "ESTRUTURA",
+    "theme": "base, limite e sustentação",
+    "boss_id": "inert_stone_guardian",
+    "power_id": "foundation_hammer",
+    "common_enemy_ids": [
+      "a_fundacao_presence_01",
+      "a_fundacao_presence_02",
+      "a_fundacao_presence_03",
+      "a_fundacao_presence_04"
+    ],
+    "elite_id": "a_fundacao_elite",
+    "room_budget": [
+      1,
+      2,
+      3
+    ],
+    "next_stage": "a_eleicao"
+  },
+  {
+    "id": "a_eleicao",
+    "index": 3,
+    "title": "A ELEIÇÃO",
+    "subtitle": "AUTOELEIÇÃO",
+    "theme": "escolha consciente contra reflexo de massa",
+    "boss_id": "seal_of_no",
+    "power_id": "election_sigil",
+    "common_enemy_ids": [
+      "a_eleicao_presence_01",
+      "a_eleicao_presence_02",
+      "a_eleicao_presence_03",
+      "a_eleicao_presence_04"
+    ],
+    "elite_id": "a_eleicao_elite",
+    "room_budget": [
+      1,
+      2,
+      3
+    ],
+    "next_stage": "a_balanca"
+  },
+  {
+    "id": "a_balanca",
+    "index": 4,
+    "title": "A BALANÇA",
+    "subtitle": "AUTORRESPONSABILIDADE",
+    "theme": "custo, consequência e proporção",
+    "boss_id": "mask_collector",
+    "power_id": "inner_balance",
+    "common_enemy_ids": [
+      "a_balanca_presence_01",
+      "a_balanca_presence_02",
+      "a_balanca_presence_03",
+      "a_balanca_presence_04"
+    ],
+    "elite_id": "a_balanca_elite",
+    "room_budget": [
+      1,
+      2,
+      3
+    ],
+    "next_stage": "a_vontade"
+  },
+  {
+    "id": "a_vontade",
+    "index": 5,
+    "title": "A VONTADE",
+    "subtitle": "VERDADEIRA VONTADE",
+    "theme": "direção própria contra desejo implantado",
+    "boss_id": "false_daimon",
+    "power_id": "will_vector",
+    "common_enemy_ids": [
+      "a_vontade_presence_01",
+      "a_vontade_presence_02",
+      "a_vontade_presence_03",
+      "a_vontade_presence_04"
+    ],
+    "elite_id": "a_vontade_elite",
+    "room_budget": [
+      2,
+      2,
+      3
+    ],
+    "next_stage": "o_carater"
+  },
+  {
+    "id": "o_carater",
+    "index": 6,
+    "title": "O CARÁTER",
+    "subtitle": "CARÁTER",
+    "theme": "coerência entre palavra, ato e pressão",
+    "boss_id": "stone_witness",
+    "power_id": "character_column",
+    "common_enemy_ids": [
+      "o_carater_presence_01",
+      "o_carater_presence_02",
+      "o_carater_presence_03",
+      "o_carater_presence_04"
+    ],
+    "elite_id": "o_carater_elite",
+    "room_budget": [
+      2,
+      3,
+      3
+    ],
+    "next_stage": "a_disciplina"
+  },
+  {
+    "id": "a_disciplina",
+    "index": 7,
+    "title": "A DISCIPLINA",
+    "subtitle": "DISCIPLINA",
+    "theme": "ritmo, repetição e constância sob atrito",
+    "boss_id": "rhythm_devourer",
+    "power_id": "discipline_rhythm",
+    "common_enemy_ids": [
+      "a_disciplina_presence_01",
+      "a_disciplina_presence_02",
+      "a_disciplina_presence_03",
+      "a_disciplina_presence_04"
+    ],
+    "elite_id": "a_disciplina_elite",
+    "room_budget": [
+      2,
+      3,
+      4
+    ],
+    "next_stage": "a_clareza"
+  },
+  {
+    "id": "a_clareza",
+    "index": 8,
+    "title": "A CLAREZA",
+    "subtitle": "CLAREZA",
+    "theme": "redução de ruído e leitura de causalidade",
+    "boss_id": "clouding_one",
+    "power_id": "clarity_light",
+    "common_enemy_ids": [
+      "a_clareza_presence_01",
+      "a_clareza_presence_02",
+      "a_clareza_presence_03",
+      "a_clareza_presence_04"
+    ],
+    "elite_id": "a_clareza_elite",
+    "room_budget": [
+      2,
+      3,
+      4
+    ],
+    "next_stage": "a_transmutacao"
+  },
+  {
+    "id": "a_transmutacao",
+    "index": 9,
+    "title": "A TRANSMUTAÇÃO",
+    "subtitle": "TRANSMUTAÇÃO",
+    "theme": "converter dano, escória e conflito em recurso",
+    "boss_id": "slag_dragon",
+    "power_id": "transmutation_serpent",
+    "common_enemy_ids": [
+      "a_transmutacao_presence_01",
+      "a_transmutacao_presence_02",
+      "a_transmutacao_presence_03",
+      "a_transmutacao_presence_04"
+    ],
+    "elite_id": "a_transmutacao_elite",
+    "room_budget": [
+      2,
+      3,
+      4
+    ],
+    "next_stage": "o_corpo"
+  },
+  {
+    "id": "o_corpo",
+    "index": 10,
+    "title": "O CORPO",
+    "subtitle": "CORPO E ENERGIA",
+    "theme": "sustentar ação sem colapso de recurso",
+    "boss_id": "exhaustion_tyrant",
+    "power_id": "vital_pulse",
+    "common_enemy_ids": [
+      "o_corpo_presence_01",
+      "o_corpo_presence_02",
+      "o_corpo_presence_03",
+      "o_corpo_presence_04"
+    ],
+    "elite_id": "o_corpo_elite",
+    "room_budget": [
+      3,
+      3,
+      4
+    ],
+    "next_stage": "a_obra"
+  },
+  {
+    "id": "a_obra",
+    "index": 11,
+    "title": "A OBRA",
+    "subtitle": "OBRA",
+    "theme": "construir forma externa a partir da direção interna",
+    "boss_id": "blind_architect",
+    "power_id": "hand_of_work",
+    "common_enemy_ids": [
+      "a_obra_presence_01",
+      "a_obra_presence_02",
+      "a_obra_presence_03",
+      "a_obra_presence_04"
+    ],
+    "elite_id": "a_obra_elite",
+    "room_budget": [
+      3,
+      3,
+      4
+    ],
+    "next_stage": "a_fortuna"
+  },
+  {
+    "id": "a_fortuna",
+    "index": 12,
+    "title": "A FORTUNA",
+    "subtitle": "FORTUNA",
+    "theme": "troca, risco e recursos sem servidão ao acaso",
+    "boss_id": "archontic_banker",
+    "power_id": "sigillar_fortune",
+    "common_enemy_ids": [
+      "a_fortuna_presence_01",
+      "a_fortuna_presence_02",
+      "a_fortuna_presence_03",
+      "a_fortuna_presence_04"
+    ],
+    "elite_id": "a_fortuna_elite",
+    "room_budget": [
+      3,
+      4,
+      4
+    ],
+    "next_stage": "a_influencia"
+  },
+  {
+    "id": "a_influencia",
+    "index": 13,
+    "title": "A INFLUÊNCIA",
+    "subtitle": "INFLUÊNCIA",
+    "theme": "voz, comando e contágio social sem dissolução",
+    "boss_id": "approval_chorus",
+    "power_id": "verbum",
+    "common_enemy_ids": [
+      "a_influencia_presence_01",
+      "a_influencia_presence_02",
+      "a_influencia_presence_03",
+      "a_influencia_presence_04"
+    ],
+    "elite_id": "a_influencia_elite",
+    "room_budget": [
+      3,
+      4,
+      4
+    ],
+    "next_stage": "o_legado"
+  },
+  {
+    "id": "o_legado",
+    "index": 14,
+    "title": "O LEGADO",
+    "subtitle": "LEGADO",
+    "theme": "memória, nome e continuidade que sobrevivem ao ciclo",
+    "boss_id": "durable_name_guardian",
+    "power_id": "memoria_ignis",
+    "common_enemy_ids": [
+      "o_legado_presence_01",
+      "o_legado_presence_02",
+      "o_legado_presence_03",
+      "o_legado_presence_04"
+    ],
+    "elite_id": "o_legado_elite",
+    "room_budget": [
+      3,
+      4,
+      5
+    ],
+    "next_stage": "initiation_chamber"
+  },
+  {
+    "id": "initiation_chamber",
+    "index": 15,
+    "title": "CÂMARA DE INICIAÇÃO",
+    "subtitle": "INICIAÇÃO",
+    "theme": "síntese e passagem narrativa do Estudante ao estado Peregrinus Ignis",
+    "boss_id": "initiation_throne",
+    "power_id": "memoria_ignis",
+    "common_enemy_ids": [
+      "initiation_chamber_presence_01",
+      "initiation_chamber_presence_02",
+      "initiation_chamber_presence_03",
+      "initiation_chamber_presence_04"
+    ],
+    "elite_id": "initiation_chamber_elite",
+    "room_budget": [
+      3,
+      4,
+      5
+    ],
+    "next_stage": "PEREGRINUS_IGNIS_GAME"
+  }
+]

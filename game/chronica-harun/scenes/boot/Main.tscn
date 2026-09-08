@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/boot/Main.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/progression/StageDirector.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/narrative/VisionDirector.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/progression/MetaRunDirector.gd" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/systems/WorldExpansionRuntime.tscn" id="5"]
+[node name="Main" type="Node3D"]
+script = ExtResource("1")
+[node name="WorldRoot" type="Node3D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="WorldRoot"]
+[node name="KeyLight" type="DirectionalLight3D" parent="WorldRoot"]
+rotation_degrees = Vector3(-58,-30,0)
+light_energy = 0.65
+shadow_enabled = true
+[node name="UIRoot" type="CanvasLayer" parent="."]
+[node name="StageDirector" type="Node" parent="."]
+script = ExtResource("2")
+[node name="VisionDirector" type="Node" parent="."]
+script = ExtResource("3")
+[node name="MetaRunDirector" type="Node" parent="."]
+script = ExtResource("4")
+
+[node name="WorldExpansionRuntime" parent="." instance=ExtResource("5")]

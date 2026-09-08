@@ -1,0 +1,310 @@
+[
+  {
+    "id": "telekinesis",
+    "name": "Telecinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 1,
+    "ability": {
+      "kind": "force_grab",
+      "cost": {
+        "resource": "focus",
+        "amount": 14
+      },
+      "cooldown": 1.2,
+      "magnitude": 0.8
+    },
+    "combat_hooks": [
+      "push",
+      "pull",
+      "throw_world_prop"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:kinetic_focus"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "electrokinesis",
+    "name": "Eletrocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 1,
+    "ability": {
+      "kind": "chain_voltage",
+      "cost": {
+        "resource": "focus",
+        "amount": 18
+      },
+      "cooldown": 4.0,
+      "magnitude": 0.88
+    },
+    "combat_hooks": [
+      "chain",
+      "stun_machine",
+      "conductive_bonus"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:kinetic_focus"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "pyrokinesis",
+    "name": "Pirocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 1,
+    "ability": {
+      "kind": "ignite_field",
+      "cost": {
+        "resource": "focus",
+        "amount": 20
+      },
+      "cooldown": 5.0,
+      "magnitude": 0.96
+    },
+    "combat_hooks": [
+      "burn",
+      "area_denial",
+      "heat_stack"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:kinetic_focus"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "geokinesis",
+    "name": "Geocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 1,
+    "ability": {
+      "kind": "stone_raise",
+      "cost": {
+        "resource": "focus",
+        "amount": 18
+      },
+      "cooldown": 4.5,
+      "magnitude": 1.04
+    },
+    "combat_hooks": [
+      "cover",
+      "shard",
+      "stagger"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:remote_force"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "cryokinesis",
+    "name": "Criocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 2,
+    "ability": {
+      "kind": "freeze_vector",
+      "cost": {
+        "resource": "focus",
+        "amount": 18
+      },
+      "cooldown": 5.5,
+      "magnitude": 1.12
+    },
+    "combat_hooks": [
+      "slow",
+      "freeze_threshold",
+      "brittle"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:remote_force"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "aerokinesis",
+    "name": "Aerocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 2,
+    "ability": {
+      "kind": "pressure_wave",
+      "cost": {
+        "resource": "focus",
+        "amount": 12
+      },
+      "cooldown": 2.5,
+      "magnitude": 1.2
+    },
+    "combat_hooks": [
+      "push",
+      "projectile_deflect",
+      "mobility"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:remote_force"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "hydrokinesis",
+    "name": "Hidrocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 2,
+    "ability": {
+      "kind": "flow_bind",
+      "cost": {
+        "resource": "focus",
+        "amount": 14
+      },
+      "cooldown": 3.5,
+      "magnitude": 1.28
+    },
+    "combat_hooks": [
+      "slow",
+      "conductive_setup",
+      "healing_flow"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:field_control"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "technokinesis",
+    "name": "Tecnocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 2,
+    "ability": {
+      "kind": "machine_override",
+      "cost": {
+        "resource": "focus",
+        "amount": 22
+      },
+      "cooldown": 7.0,
+      "magnitude": 1.36
+    },
+    "combat_hooks": [
+      "turret_hack",
+      "door_override",
+      "device_pulse"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:field_control"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "biokinesis",
+    "name": "Biocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 3,
+    "ability": {
+      "kind": "vital_regulation",
+      "cost": {
+        "resource": "focus",
+        "amount": 24
+      },
+      "cooldown": 8.0,
+      "magnitude": 1.44
+    },
+    "combat_hooks": [
+      "self_heal",
+      "stamina",
+      "no_enemy_mind_control"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:field_control"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "sonokinesis",
+    "name": "Sonocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 3,
+    "ability": {
+      "kind": "resonance_burst",
+      "cost": {
+        "resource": "focus",
+        "amount": 16
+      },
+      "cooldown": 3.2,
+      "magnitude": 1.52
+    },
+    "combat_hooks": [
+      "interrupt",
+      "reveal_hidden",
+      "glass_break"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:kinetic_mastery"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  },
+  {
+    "id": "luminokinesis",
+    "name": "Luminocinese",
+    "source_liber": "liber_vis_psychicae",
+    "tier": 3,
+    "ability": {
+      "kind": "photon_lance",
+      "cost": {
+        "resource": "focus",
+        "amount": 18
+      },
+      "cooldown": 3.0,
+      "magnitude": 1.6
+    },
+    "combat_hooks": [
+      "line_damage",
+      "reveal",
+      "blind_hostile"
+    ],
+    "unlock": {
+      "node": "liber_vis_psychicae:kinetic_mastery"
+    },
+    "provenance": {
+      "level": "genealogical_source",
+      "scientific_status": "fictional_gameplay_dramatization",
+      "note": "Nome de família de cinese preservado como genealogia e mecânica ficcional; não afirma capacidade paranormal real."
+    }
+  }
+]
