@@ -30,6 +30,11 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+          python "$GAME_DIR/tools/generate_models.py"
+          python "$GAME_DIR/tools/generate_cinematic_asset_manifest.py"
+          git diff --exit-code -- "$GAME_DIR/data/narrative/cinematic_asset_manifest.json"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
           pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
           python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
           python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
@@ -51,7 +56,7 @@ jobs:
           set -euo pipefail
           godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/import.log
-          echo CINEMATIC_IMPORT=PASS
+          echo CINEMATIC_IMPORT=PASS | tee /tmp/import-gate.log
 
       - name: Main boot smoke
         shell: bash
@@ -63,7 +68,7 @@ jobs:
           set -e
           if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
-          echo CINEMATIC_BOOT=PASS
+          echo CINEMATIC_BOOT=PASS | tee /tmp/boot-gate.log
 
       - name: Build cinematic runtime probe
         shell: bash
@@ -107,7 +112,7 @@ jobs:
                       if not presentation.has_method("show_fragment_progress"): fail("fragment_method_missing")
                       if not presentation.has_method("enter_final_black"): fail("final_black_method_missing")
                       if presentation.has_method("show_fragment_progress"):
-                          presentation.show_fragment_progress(5, 5)
+                          presentation.show_fragment_progress(&"broken_map", 5, 5)
                       if presentation.has_method("show_title_reveal"):
                           presentation.show_title_reveal("GRIMORIUM ASCENSIONIS")
                       if presentation.has_method("show_story_message"):
@@ -150,7 +155,8 @@ jobs:
           grep -q 'passed' /tmp/pytest.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
-          grep -q 'CINEMATIC_IMPORT=PASS' <(echo CINEMATIC_IMPORT=PASS)
+          grep -q 'CINEMATIC_IMPORT=PASS' /tmp/import-gate.log
+          grep -q 'CINEMATIC_BOOT=PASS' /tmp/boot-gate.log
           grep -q 'CINEMATIC_PRESENTATION_RUNTIME_PASS' /tmp/cinematic-runtime.log
           echo CHRONICA_CINEMATICS_V1_GREEN=PASS
 
@@ -159,7 +165,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p "$GAME_DIR/evidence/logs"
-          for f in /tmp/pytest.log /tmp/story.log /tmp/complete.log /tmp/godot-version.log /tmp/import.log /tmp/boot.log /tmp/cinematic-runtime.log; do
+          for f in /tmp/pytest.log /tmp/story.log /tmp/complete.log /tmp/godot-version.log /tmp/import.log /tmp/import-gate.log /tmp/boot.log /tmp/boot-gate.log /tmp/cinematic-runtime.log; do
             if [[ -f "$f" ]]; then cp "$f" "$GAME_DIR/evidence/logs/$(basename "$f")"; fi
           done
           git rev-parse HEAD > "$GAME_DIR/evidence/HEAD.txt"
