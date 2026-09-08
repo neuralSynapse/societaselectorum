@@ -67,11 +67,11 @@ jobs:
           if len(present) == len(referenced):
               mode = 'committed-art'
           elif not present:
-              mode = 'placeholder-fallback'
+              mode = 'procedural-production-candidate'
           else:
               missing = [str(p) for p in referenced if not p.is_file()][:10]
               raise SystemExit(
-                  'Partial art tree detected. Refusing to overwrite committed art with placeholders. '
+                  'Partial art tree detected. Refusing to overwrite committed art with procedural candidates. '
                   f'Missing examples: {missing}'
               )
 
@@ -79,7 +79,7 @@ jobs:
           print(f'RC_ASSET_MODE={mode}')
           PY
 
-          if [[ "$(cat /tmp/asset-mode.txt)" == "placeholder-fallback" ]]; then
+          if [[ "$(cat /tmp/asset-mode.txt)" == "procedural-production-candidate" ]]; then
             python "$GAME_DIR/tools/generate_models.py"
           fi
 
@@ -105,15 +105,22 @@ jobs:
               print(f'RC_{label.upper()}_MODELS={expected}')
           PY
 
+          python "$GAME_DIR/tools/generate_cinematic_asset_manifest.py"
+          git diff --exit-code -- "$GAME_DIR/data/narrative/cinematic_asset_manifest.json"
           pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
           python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
           python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
+          python "$GAME_DIR/tools/validate_production_art.py" | tee /tmp/production-art.log
+          grep -q 'PRODUCTION ART VALIDATION: PASS' /tmp/production-art.log
+          echo RC_PRODUCTION_ART=PASS | tee /tmp/production-art-status.txt
           echo RC_SOURCE_VALIDATION=PASS | tee /tmp/source-validation-status.txt
 
       - name: Install Godot 4.3 and Windows templates
         shell: bash
         run: |
           set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb
           curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip -q /tmp/godot.zip -d /tmp/godot
           sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
@@ -163,6 +170,18 @@ jobs:
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value|AUDIO_VFX_RUNTIME_PROBE=FAIL' /tmp/audio-vfx.log
           echo RC_AUDIO_VFX_PROBE=PASS | tee /tmp/audio-vfx-status.txt
 
+      - name: Cinematic presentation runtime probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GAME_DIR/evidence"
+          xvfb-run -a godot --path "$GAME_DIR" --rendering-method gl_compatibility res://runtime_qa/CinematicPresentationProbe.tscn 2>&1 | tee /tmp/cinematic-runtime.log
+          grep -q 'CINEMATIC_PRESENTATION_RUNTIME_PASS' /tmp/cinematic-runtime.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value|CINEMATIC_PROBE_FAIL' /tmp/cinematic-runtime.log
+          test -s "$GAME_DIR/evidence/cinematic-runtime.png"
+          test -s "$GAME_DIR/evidence/cinematic-final-black.png"
+          echo RC_CINEMATIC_RUNTIME=PASS | tee /tmp/cinematic-runtime-status.txt
+
       - name: Export Windows executable
         shell: bash
         run: |
@@ -203,10 +222,12 @@ jobs:
           - Python suite: PASS
           - Complete validator: PASS
           - Story validator: PASS
+          - Production art validator: PASS
           - Import: PASS
           - Boot: PASS
           - Roguelite smoke: PASS
           - Audio/VFX probe: PASS
+          - Cinematic runtime probe: PASS
           - Windows export: PASS
           - EXE SHA-256: $EXE_SHA
           - ZIP SHA-256: $ZIP_SHA
@@ -222,10 +243,13 @@ jobs:
           grep -q 'passed' /tmp/pytest.log
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'PRODUCTION ART VALIDATION: PASS' /tmp/production-art.log
+          grep -qx 'RC_PRODUCTION_ART=PASS' /tmp/production-art-status.txt
           grep -qx 'RC_IMPORT=PASS' /tmp/import-status.txt
           grep -qx 'RC_BOOT=PASS' /tmp/boot-status.txt
           grep -qx 'RC_ROGUELITE_SMOKE=PASS' /tmp/roguelite-status.txt
           grep -qx 'RC_AUDIO_VFX_PROBE=PASS' /tmp/audio-vfx-status.txt
+          grep -qx 'RC_CINEMATIC_RUNTIME=PASS' /tmp/cinematic-runtime-status.txt
           grep -qx 'RC_WINDOWS_EXPORT=PASS' /tmp/export-status.txt
           grep -qx 'RC_PACKAGE=PASS' /tmp/package-status.txt
           test -s "$GAME_DIR/build/windows/CHRONICA_HARUN.exe"
@@ -241,6 +265,8 @@ jobs:
             game/chronica-harun/build/windows/CHRONICA_HARUN.exe.sha256
             game/chronica-harun/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip
             game/chronica-harun/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip.sha256
+            game/chronica-harun/evidence/cinematic-runtime.png
+            game/chronica-harun/evidence/cinematic-final-black.png
             integration-rc/BUILD_VERIFIED.md
           if-no-files-found: error
           retention-days: 30
