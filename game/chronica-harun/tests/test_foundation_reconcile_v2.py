@@ -199,7 +199,8 @@ def test_direct_run_restore_rejects_snapshots_without_seed() -> None:
     assert 'if not snapshot.has("run_seed"): return false' in restore_body
 
 
-def test_stage_director_does_not_overwrite_final_narrative_state_on_reload() -> None:
-    stage_director = _read("scripts/progression/StageDirector.gd")
-    configure_body = stage_director.split("func configure(next_world_root: Node3D, next_ui_root: CanvasLayer) -> void:", 1)[1].split("\nfunc ", 1)[0]
-    assert "GameState.journey_state != GameState.PEREGRINUS_IGNIS_GAME" in configure_body
+def test_boot_preserves_final_narrative_state_after_stage_configuration() -> None:
+    boot = _read("scripts/boot/Main.gd")
+    assert "var final_narrative_state := GameState.journey_state == GameState.PEREGRINUS_IGNIS_GAME" in boot
+    assert "if final_narrative_state:" in boot
+    assert "GameState.current_stage_id = StringName(GameState.PEREGRINUS_IGNIS_GAME)" in boot
