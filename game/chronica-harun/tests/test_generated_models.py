@@ -48,8 +48,9 @@ def test_generators_cover_readability_families_without_general_emission_wash():
     for token in ['orbital_eye','horned_flame','stone_colossus','living_seal','mask_swarm','split_daemon','sevenfold_throne']:
         assert token in boss_generator
 
-    # Emission, when present at all, is centralized and capped by the production
-    # material library rather than scattered through creature builders.
+    # Emission is centralized in the material library and measured as a QA
+    # metric instead of being scattered through creature/boss builders.
     assert 'emissiveFactor' not in enemy_generator
     assert 'emissiveFactor' not in boss_generator
-    assert 'MAX_EMISSIVE' in core_generator
+    assert 'emissiveFactor=list(spec["emission"])' in core_generator
+    assert 'max_emission_for_scene' in core_generator
