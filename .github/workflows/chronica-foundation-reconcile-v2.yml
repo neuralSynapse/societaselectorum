@@ -135,6 +135,11 @@ jobs:
               check(write_json(SaveService.SAVE_PATH, incompatible), "write_incompatible_failed")
               check(SaveService.load_campaign().is_empty(), "unsupported_save_version_accepted")
 
+              var missing_seed := snapshot.duplicate(true)
+              missing_seed.erase("run_seed")
+              check(write_json(SaveService.SAVE_PATH, missing_seed), "write_seedless_failed")
+              check(SaveService.load_campaign().is_empty(), "missing_seed_accepted")
+
               var malformed := FileAccess.open(SaveService.SAVE_PATH, FileAccess.WRITE)
               check(malformed != null, "open_malformed_failed")
               if malformed != null:
