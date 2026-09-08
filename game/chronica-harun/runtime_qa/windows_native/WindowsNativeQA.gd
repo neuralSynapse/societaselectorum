@@ -94,8 +94,8 @@ func _probe_pause_contract() -> void:
     var hud := hud_scene.instantiate()
     add_child(hud)
     _expect(hud.get_node_or_null("Root/PausePanel") != null, "pause_panel_missing")
-    var main_script := load("res://scripts/boot/Main.gd")
-    var main_probe := main_script.new()
+    var main_script: Script = load("res://scripts/boot/Main.gd") as Script
+    var main_probe: Node = main_script.new() as Node
     _expect(main_probe.has_method("set_pause_state"), "main_pause_state_handler_missing")
     main_probe.free()
     hud.queue_free()
