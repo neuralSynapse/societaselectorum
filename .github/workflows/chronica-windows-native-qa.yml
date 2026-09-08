@@ -13,6 +13,7 @@ env:
   GAME_DIR: game/chronica-harun
   GODOT_VERSION: 4.3-stable
   GODOT_TEMPLATE_DIR: 4.3.stable
+  PYTHONUTF8: '1'
 
 jobs:
   windows-native-qa:
