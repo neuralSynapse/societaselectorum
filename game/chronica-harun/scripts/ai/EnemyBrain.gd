@@ -107,7 +107,7 @@ func _on_telegraph_started(payload: Dictionary) -> void:
     var definition: Dictionary = payload.get("definition", {})
     if readable_telegraph:
         readable_telegraph.show_attack(definition, target, telegraph_origin.global_position)
-    AudioDirector.play_3d(&"enemy_windup", telegraph_origin.global_position)
+    AudioDirector.play_enemy_family(String(get("family")), &"windup", telegraph_origin.global_position)
 
 func _on_emission_requested(_payload: Dictionary) -> void:
     pass
