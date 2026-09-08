@@ -1,0 +1,479 @@
+name: CHRONICA Runtime GREEN Final
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix/chronica-runtime-qa
+    paths:
+      - .github/workflows/chronica-runtime-green-final.yml
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+  GODOT_VERSION: '4.3'
+
+jobs:
+  green-final:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/chronica-runtime-qa
+          fetch-depth: 0
+
+      - name: Record exact source
+        run: |
+          git rev-parse HEAD | tee /tmp/chronica-green-head.txt
+          git status --short
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+
+      - name: Generate runtime models
+        run: |
+          set -euo pipefail
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+          echo 'GREEN_MODELS=82+16'
+
+      - name: Python suite
+        run: |
+          set -euo pipefail
+          pytest -q "$GAME_DIR/tests" | tee /tmp/chronica-green-pytest.log
+
+      - name: Canon validators
+        run: |
+          set -euo pipefail
+          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/chronica-green-complete.log
+          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/chronica-green-story.log
+
+      - name: Install Godot 4.3
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version | tee /tmp/chronica-green-godot-version.log
+
+      - name: Strict Godot import
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/chronica-green-import.log
+          if grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/chronica-green-import.log; then
+            echo 'GREEN_IMPORT=FAIL' >&2
+            exit 1
+          fi
+          echo 'GREEN_IMPORT=PASS'
+
+      - name: Main boot smoke
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 12s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/chronica-green-boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          if grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/chronica-green-boot.log; then
+            echo 'GREEN_BOOT=FAIL' >&2
+            exit 1
+          fi
+          echo 'GREEN_BOOT=PASS'
+
+      - name: Build main runtime probe
+        run: |
+          set -euo pipefail
+          mkdir -p "$GAME_DIR/runtime_qa"
+          cat > "$GAME_DIR/runtime_qa/GreenRuntimeProbe.gd" <<'GD'
+          extends Node
+
+          var failures: Array[String] = []
+          var completion_summary: Dictionary = {}
+
+          func check(value: bool, label: String) -> void:
+              if value:
+                  print("GREEN_PASS ", label)
+              else:
+                  failures.append(label)
+                  push_error("GREEN_FAIL " + label)
+
+          func _ready() -> void:
+              call_deferred("run")
+
+          func _remove_save() -> void:
+              var path := ProjectSettings.globalize_path(SaveService.SAVE_PATH)
+              if FileAccess.file_exists(SaveService.SAVE_PATH):
+                  DirAccess.remove_absolute(path)
+
+          func run() -> void:
+              _remove_save()
+              GameState.start_new_campaign(424242)
+              check(SaveService.save_campaign(GameState.to_save_data()), "01_open_game_seeded_save")
+
+              var packed := load("res://scenes/boot/Main.tscn") as PackedScene
+              check(packed != null, "02_main_scene_resource")
+              if packed == null:
+                  finish(); return
+              var main := packed.instantiate()
+              add_child(main)
+              for _i in range(6): await get_tree().process_frame
+              await get_tree().physics_frame
+
+              var stage = main.get_node_or_null("StageDirector")
+              var expansion = main.get_node_or_null("WorldExpansionRuntime")
+              check(stage != null, "03_stage_director")
+              check(expansion != null, "04_world_expansion")
+              if stage == null or expansion == null:
+                  finish(); return
+              var player = stage.player
+              check(player != null, "05_player_spawn")
+              check(stage.hud != null, "06_hud_spawn")
+              if player == null:
+                  finish(); return
+
+              stage.stage_completed.connect(func(_stage_id, summary): completion_summary = summary.duplicate(true))
+
+              check(player.camera != null and player.camera.current, "07_first_person_default")
+              check(expansion.camera_modes.mode == &"first_person", "08_first_person_mode_state")
+              check(player.get_node("BodyMesh").visible == false, "09_fps_body_hidden")
+              check(player.get_node("Head/Camera3D/ViewModelRoot").visible, "10_fps_viewmodel_visible")
+              check(player.invert_y == false, "11_y_not_inverted")
+              check(stage.hud.choice_panel.visible == false, "12_no_unwanted_contract_or_choice_overlay")
+
+              for action in ["move_left","move_right","move_forward","move_back","primary_attack","camera_toggle","kinesis_1","kinesis_2","kinesis_3","rupture_charge"]:
+                  check(InputMap.has_action(action), "input_" + action)
+
+              Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+              var yaw_before: float = player.rotation.y
+              var pitch_before: float = player.pitch
+              var motion := InputEventMouseMotion.new()
+              motion.relative = Vector2(24.0, 16.0)
+              player._unhandled_input(motion)
+              check(absf(player.rotation.y - yaw_before) > 0.001, "13_mouse_look_horizontal")
+              check(player.pitch < pitch_before, "14_mouse_down_looks_down")
+
+              var pos_before: Vector3 = player.global_position
+              Input.action_press("move_forward")
+              for _i in range(10): await get_tree().physics_frame
+              Input.action_release("move_forward")
+              check(Vector2(player.global_position.x-pos_before.x, player.global_position.z-pos_before.z).length() > 0.02, "15_wasd_world_movement")
+
+              player.camera_mode_requested.emit()
+              await get_tree().process_frame
+              check(expansion.camera_modes.mode == &"over_shoulder", "16_external_camera")
+              player.camera_mode_requested.emit()
+              await get_tree().process_frame
+              check(expansion.camera_modes.mode == &"first_person", "17_return_to_first_person")
+
+              stage._spawn_combat_room("combat_1")
+              await get_tree().process_frame
+              check(not stage.active_enemies.is_empty(), "18_enemy_spawn")
+              var enemy = null
+              if not stage.active_enemies.is_empty():
+                  enemy = stage.active_enemies[0]
+                  enemy.set_room_active(false)
+                  check(not player.is_ancestor_of(enemy), "19_enemy_not_parented_to_player")
+                  var enemy_world_before: Vector3 = enemy.global_position
+                  Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+                  var motion2 := InputEventMouseMotion.new()
+                  motion2.relative = Vector2(-42.0, 11.0)
+                  player._unhandled_input(motion2)
+                  await get_tree().process_frame
+                  check(enemy.global_position.distance_to(enemy_world_before) < 0.001, "20_enemy_independent_of_camera")
+
+                  player.rotation = Vector3.ZERO
+                  player.pitch = 0.0
+                  player.head.rotation = Vector3.ZERO
+                  enemy.global_position = player.global_position + Vector3(0.0, 0.48, -2.2)
+                  player.interaction_ray.target_position = Vector3(0.0, -0.35, -5.0)
+                  await get_tree().physics_frame
+                  player.interaction_ray.force_raycast_update()
+                  check(player.get_aim_target() == enemy, "21_primary_aim_target")
+                  var enemy_hp_before: float = enemy.health.current_health
+                  player.primary_cooldown = 0.0
+                  stage._on_primary_attack()
+                  check(enemy.health.current_health < enemy_hp_before, "22_primary_attack_applies_damage")
+
+                  var telegraph = enemy.get_node_or_null("TelegraphVisual") as MeshInstance3D
+                  check(telegraph != null, "23_enemy_telegraph_node")
+                  if telegraph:
+                      var mat = telegraph.mesh.material
+                      check(mat is StandardMaterial3D and not (mat as StandardMaterial3D).emission_enabled, "24_enemy_telegraph_no_bloom_emission")
+                  var sm = enemy.get_attack_state_machine()
+                  sm.cancel()
+                  var hp_before_cast: float = player.health.current_health
+                  var projectiles_before: int = get_tree().get_nodes_in_group("hostile_projectiles").size()
+                  check(sm.begin_attack({"attack_kind":"projectile","pattern":"line","damage":9.0,"windup":0.0,"telegraph_time":0.35,"active":0.05,"recovery":0.05}, player), "25_enemy_attack_begin")
+                  sm._process(0.01)
+                  sm._process(0.01)
+                  check(sm.state == &"telegraph" and telegraph != null and telegraph.visible, "26_enemy_telegraph_visible_during_state")
+                  sm._process(0.40)
+                  check(telegraph == null or not telegraph.visible, "27_enemy_telegraph_hides_after_state")
+                  check(player.health.current_health == hp_before_cast, "28_ranged_cast_no_instant_damage")
+                  check(get_tree().get_nodes_in_group("hostile_projectiles").size() > projectiles_before, "29_ranged_emits_projectile")
+
+              var hostile = get_tree().get_nodes_in_group("hostile_projectiles")
+              if not hostile.is_empty():
+                  var projectile = hostile[-1]
+                  var mesh = projectile.get_node_or_null("Mesh")
+                  check(mesh != null and mesh.visible, "30_projectile_visible_mesh")
+                  var projectile_before: Vector3 = projectile.global_position
+                  for _i in range(3): await get_tree().physics_frame
+                  check(is_instance_valid(projectile) and projectile.global_position.distance_to(projectile_before) > 0.01, "31_projectile_travel")
+
+              var hp_before: float = player.health.current_health
+              player.health.invulnerable_for = 0.0
+              player.apply_damage(7.0, &"qa_damage")
+              check(player.health.current_health < hp_before, "32_player_receives_damage")
+
+              var combat_room = stage._room("combat_1")
+              stage.room_director.activate_room(&"combat_1")
+              check(combat_room != null and combat_room.locked, "33_combat_room_locks")
+
+              if enemy != null and is_instance_valid(enemy):
+                  enemy.health.invulnerable_for = 0.0
+                  enemy.apply_damage(99999.0, &"qa_kill")
+                  await get_tree().process_frame
+                  check(not stage.active_enemies.has(enemy), "34_enemy_kill_registered")
+              stage.room_director.clear_room(&"combat_1")
+              check(combat_room.cleared and not combat_room.locked, "35_room_clear_unlocks")
+
+              stage._spawn_pickup(stage._room("reward_1"), "tarot")
+              await get_tree().process_frame
+              var pickups = get_tree().get_nodes_in_group("pickups")
+              check(not pickups.is_empty(), "36_pickup_spawn")
+              if not pickups.is_empty():
+                  var pickup = pickups[-1]
+                  check(pickup.interact(player), "37_pickup_collect")
+                  await get_tree().process_frame
+                  check(not String(RogueliteContentService.ensure_build().get("arcana", "")).is_empty(), "38_arcana_enters_gameplay")
+                  check(RogueliteContentService.use_arcana({"player":player,"stage_id":String(GameState.current_stage_id)}), "39_arcana_use")
+
+              var instrument_ids: Array = ContentRegistry.all_ids("instrumenta")
+              check(not instrument_ids.is_empty(), "40_instrument_catalog_available")
+              if not instrument_ids.is_empty():
+                  check(RogueliteContentService.grant("instrumenta", StringName(instrument_ids[0])), "41_instrument_equip")
+                  var instrument_before: Dictionary = RogueliteContentService.ensure_build().get("instrumentum", {}).duplicate(true)
+                  var charges_before: int = int(instrument_before.get("charges", 0))
+                  stage._on_instrument_requested()
+                  var charges_after: int = int(RogueliteContentService.ensure_build().get("instrumentum", {}).get("charges", 0))
+                  check(charges_after == charges_before - 1, "42_instrument_use")
+
+              var loadout: Array = expansion.kinesis.current_loadout()
+              check(loadout.size() >= 1 and not String(loadout[0]).is_empty(), "43_kinesis_loadout")
+              if loadout.size() >= 1 and not String(loadout[0]).is_empty():
+                  var focus_before: float = player.focus
+                  stage._on_kinesis_slot_requested(0)
+                  check(player.focus < focus_before, "44_kinesis_slot_use")
+
+              var secret = stage._room("secret")
+              check(secret != null, "45_secret_room_exists")
+              if secret != null:
+                  check(not secret.visible, "46_secret_hidden_initially")
+                  var allowed := stage.open_secret(&"secret", 1)
+                  var physically_opened := stage.room_director.open_secret(&"secret", &"rupture_charge") if allowed else false
+                  check(allowed and physically_opened and secret.visible, "47_secret_reveal_and_open")
+
+              var special_found := false
+              var rooms_node = stage.floor_instance.get_node("Rooms")
+              for room in rooms_node.get_children():
+                  if room is RoomShell and not ContentRegistry.get_item("special_rooms", room.room_id).is_empty() and String(room.room_id) not in ["secret","super_secret"]:
+                      special_found = true
+                      stage.room_director.activate_room(room.room_id)
+                      check(stage.room_director.active_room == room.room_id, "48_special_room_entry")
+                      break
+              check(special_found, "49_special_room_generated")
+
+              if stage.boss == null:
+                  stage._spawn_boss()
+              await get_tree().process_frame
+              var boss = stage.boss
+              check(boss != null, "50_boss_spawn")
+              if boss != null:
+                  check(stage.hud.boss_panel.visible, "51_boss_hud_visible")
+                  var boss_telegraph = boss.get_node_or_null("TelegraphVisual") as MeshInstance3D
+                  check(boss_telegraph != null, "52_boss_telegraph_node")
+                  if boss_telegraph:
+                      var bmat = boss_telegraph.mesh.material
+                      check(bmat is StandardMaterial3D and not (bmat as StandardMaterial3D).emission_enabled, "53_boss_telegraph_no_bloom_emission")
+                  boss.attack_sm.cancel()
+                  check(boss.attack_sm.begin_attack({"attack_kind":"projectile","pattern":"fan","damage":10.0,"windup":0.0,"telegraph_time":0.30,"active":0.05,"recovery":0.05}, player), "54_boss_attack_begin")
+                  boss.attack_sm._process(0.01)
+                  boss.attack_sm._process(0.01)
+                  check(boss.attack_sm.state == &"telegraph" and boss_telegraph != null and boss_telegraph.visible, "55_boss_telegraph_visible_during_state")
+                  boss.attack_sm._process(0.35)
+                  check(boss_telegraph == null or not boss_telegraph.visible, "56_boss_telegraph_hides_after_state")
+
+                  var hud_before: float = stage.hud.boss_health.value
+                  boss.health.invulnerable_for = 0.0
+                  boss.apply_damage(boss.health.max_health * 0.10, &"qa")
+                  await get_tree().process_frame
+                  check(stage.hud.boss_health.value < hud_before, "57_boss_hud_tracks_each_hit")
+
+                  boss.health.invulnerable_for = 0.0
+                  boss.apply_damage(boss.health.max_health * 0.30, &"qa")
+                  await get_tree().process_frame
+                  check(boss.current_phase >= 1, "58_boss_phase_transition")
+
+                  var stage_before: int = GameState.stage_index
+                  var stage_id_before := String(GameState.current_stage_id)
+                  boss.health.invulnerable_for = 0.0
+                  boss.apply_damage(boss.health.current_health + 1000.0, &"qa_boss_kill")
+                  await get_tree().process_frame
+                  await get_tree().process_frame
+                  check(GameState.completion_marks.get(stage_id_before, false), "59_boss_kill_completion_mark")
+                  check(GameState.stage_index == stage_before + 1, "60_progression_advances")
+                  check(not completion_summary.is_empty(), "61_stage_completion_summary")
+                  check(completion_summary.has("post_boss_offer"), "62_post_boss_resolution_present")
+
+              check(stage.has_method("retry_current_stage"), "63_retry_api_available")
+              check(not GameState.to_save_data().has("real_progress_gate"), "64_no_institutional_progress_write")
+              finish()
+
+          func finish() -> void:
+              if failures.is_empty():
+                  print("GREEN_RUNTIME_PROBE_OK")
+                  get_tree().quit(0)
+              else:
+                  print("GREEN_RUNTIME_PROBE_FAILURES=", failures)
+                  get_tree().quit(1)
+          GD
+
+          cat > "$GAME_DIR/runtime_qa/GreenRuntimeProbe.tscn" <<'TSCN'
+          [gd_scene load_steps=2 format=3]
+          [ext_resource type="Script" path="res://runtime_qa/GreenRuntimeProbe.gd" id="1"]
+          [node name="GreenRuntimeProbe" type="Node"]
+          script = ExtResource("1")
+          TSCN
+
+      - name: Main runtime GREEN probe
+        run: |
+          set -euo pipefail
+          timeout 30s godot --headless --path "$GAME_DIR" res://runtime_qa/GreenRuntimeProbe.tscn 2>&1 | tee /tmp/chronica-green-runtime.log
+          grep -q 'GREEN_RUNTIME_PROBE_OK' /tmp/chronica-green-runtime.log
+
+      - name: Cross-process save writer
+        run: |
+          set -euo pipefail
+          cat > "$GAME_DIR/runtime_qa/SaveWriter.gd" <<'GD'
+          extends Node
+          func _ready() -> void:
+              var path := ProjectSettings.globalize_path(SaveService.SAVE_PATH)
+              if FileAccess.file_exists(SaveService.SAVE_PATH): DirAccess.remove_absolute(path)
+              GameState.start_new_campaign(909090)
+              GameState.stage_index = 5
+              var journey := ContentRegistry.get_student_journey()
+              GameState.current_stage_id = StringName(journey[5].get("id", ""))
+              GameState.cycle = 9
+              GameState.meta_progression["cross_process_marker"] = "persisted"
+              if not SaveService.save_campaign(GameState.to_save_data()): get_tree().quit(1); return
+              print("GREEN_SAVE_WRITER_OK")
+              get_tree().quit(0)
+          GD
+          cat > "$GAME_DIR/runtime_qa/SaveWriter.tscn" <<'TSCN'
+          [gd_scene load_steps=2 format=3]
+          [ext_resource type="Script" path="res://runtime_qa/SaveWriter.gd" id="1"]
+          [node name="SaveWriter" type="Node"]
+          script = ExtResource("1")
+          TSCN
+          godot --headless --path "$GAME_DIR" res://runtime_qa/SaveWriter.tscn 2>&1 | tee /tmp/chronica-green-save-writer.log
+          grep -q 'GREEN_SAVE_WRITER_OK' /tmp/chronica-green-save-writer.log
+
+      - name: Cross-process save reader
+        run: |
+          set -euo pipefail
+          cat > "$GAME_DIR/runtime_qa/SaveReader.gd" <<'GD'
+          extends Node
+          func _ready() -> void:
+              var data := SaveService.load_campaign()
+              var ok := int(data.get("run_seed", 0)) == 909090 and int(data.get("stage_index", -1)) == 5 and int(data.get("cycle", -1)) == 9 and String(data.get("meta_progression", {}).get("cross_process_marker", "")) == "persisted"
+              if ok:
+                  print("GREEN_CROSS_PROCESS_LOAD_OK")
+                  get_tree().quit(0)
+              else:
+                  push_error("GREEN_CROSS_PROCESS_LOAD_FAIL " + str(data))
+                  get_tree().quit(1)
+          GD
+          cat > "$GAME_DIR/runtime_qa/SaveReader.tscn" <<'TSCN'
+          [gd_scene load_steps=2 format=3]
+          [ext_resource type="Script" path="res://runtime_qa/SaveReader.gd" id="1"]
+          [node name="SaveReader" type="Node"]
+          script = ExtResource("1")
+          TSCN
+          godot --headless --path "$GAME_DIR" res://runtime_qa/SaveReader.tscn 2>&1 | tee /tmp/chronica-green-save-reader.log
+          grep -q 'GREEN_CROSS_PROCESS_LOAD_OK' /tmp/chronica-green-save-reader.log
+
+      - name: Real retry scene reload probe
+        run: |
+          set -euo pipefail
+          cat > "$GAME_DIR/runtime_qa/RetryProbe.gd" <<'GD'
+          extends Node
+          const MARKER := "user://chronica_retry_probe.marker"
+
+          func _ready() -> void:
+              call_deferred("run")
+
+          func run() -> void:
+              if FileAccess.file_exists(MARKER):
+                  DirAccess.remove_absolute(ProjectSettings.globalize_path(MARKER))
+                  var ok := GameState.stage_index == 3 and GameState.run_seed == 777777 and int(GameState.meta_progression.get("total_deaths", 0)) >= 1
+                  if ok:
+                      print("GREEN_RETRY_REAL_RELOAD_OK")
+                      get_tree().quit(0)
+                  else:
+                      push_error("GREEN_RETRY_STATE_LOST stage=%s seed=%s deaths=%s" % [GameState.stage_index, GameState.run_seed, GameState.meta_progression.get("total_deaths", 0)])
+                      get_tree().quit(1)
+                  return
+
+              var save_path := ProjectSettings.globalize_path(SaveService.SAVE_PATH)
+              if FileAccess.file_exists(SaveService.SAVE_PATH): DirAccess.remove_absolute(save_path)
+              GameState.start_new_campaign(777777)
+              GameState.stage_index = 3
+              var journey := ContentRegistry.get_student_journey()
+              GameState.current_stage_id = StringName(journey[3].get("id", ""))
+              if not SaveService.save_campaign(GameState.to_save_data()): get_tree().quit(1); return
+
+              var f := FileAccess.open(MARKER, FileAccess.WRITE)
+              f.store_string("armed")
+              f.close()
+
+              var main := (load("res://scenes/boot/Main.tscn") as PackedScene).instantiate()
+              add_child(main)
+              for _i in range(6): await get_tree().process_frame
+              var stage = main.get_node_or_null("StageDirector")
+              if stage == null or stage.player == null:
+                  push_error("GREEN_RETRY_SETUP_FAIL")
+                  get_tree().quit(1)
+                  return
+              stage._on_player_died(&"qa_retry")
+              await get_tree().create_timer(3.0).timeout
+              push_error("GREEN_RETRY_DID_NOT_RELOAD")
+              get_tree().quit(1)
+          GD
+          cat > "$GAME_DIR/runtime_qa/RetryProbe.tscn" <<'TSCN'
+          [gd_scene load_steps=2 format=3]
+          [ext_resource type="Script" path="res://runtime_qa/RetryProbe.gd" id="1"]
+          [node name="RetryProbe" type="Node"]
+          script = ExtResource("1")
+          TSCN
+          timeout 15s godot --headless --path "$GAME_DIR" res://runtime_qa/RetryProbe.tscn 2>&1 | tee /tmp/chronica-green-retry.log
+          grep -q 'GREEN_RETRY_REAL_RELOAD_OK' /tmp/chronica-green-retry.log
+
+      - name: Final literal gate
+        run: |
+          set -euo pipefail
+          grep -q 'passed' /tmp/chronica-green-pytest.log
+          grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/chronica-green-complete.log
+          grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/chronica-green-story.log
+          grep -q 'GREEN_RUNTIME_PROBE_OK' /tmp/chronica-green-runtime.log
+          grep -q 'GREEN_CROSS_PROCESS_LOAD_OK' /tmp/chronica-green-save-reader.log
+          grep -q 'GREEN_RETRY_REAL_RELOAD_OK' /tmp/chronica-green-retry.log
+          echo 'CHRONICA_RUNTIME_GREEN_FINAL=PASS'
