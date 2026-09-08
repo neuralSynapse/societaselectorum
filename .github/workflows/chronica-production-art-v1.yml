@@ -10,6 +10,7 @@ on:
       - 'game/chronica-harun/tools/validate_production_art.py'
       - 'game/chronica-harun/tools/render_production_art_proofs.py'
       - 'game/chronica-harun/tests/test_production_art_contract.py'
+      - 'game/chronica-harun/tests/test_generated_models.py'
       - 'game/chronica-harun/art/production/**'
       - '.github/workflows/chronica-production-art-v1.yml'
 
