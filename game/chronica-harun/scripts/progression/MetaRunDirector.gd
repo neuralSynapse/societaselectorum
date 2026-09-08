@@ -3,6 +3,24 @@ class_name MetaRunDirector
 
 signal meta_changed(state: Dictionary)
 
+func _ready() -> void:
+    var stage := get_parent()
+    if stage == null:
+        return
+    var has_room_director := false
+    for property in stage.get_property_list():
+        if String(property.get("name", "")) == "room_director":
+            has_room_director = true
+            break
+    if not has_room_director:
+        return
+    var director = stage.get("room_director")
+    if director is RoomDirector and not director.room_cleared.is_connected(_on_stage_room_cleared):
+        director.room_cleared.connect(_on_stage_room_cleared)
+
+func _on_stage_room_cleared(_room_id: StringName) -> void:
+    record_gauntlet_room_clear()
+
 func set_route(route_id: StringName) -> bool:
     if ContentRegistry.get_item("routes",route_id).is_empty(): return false
     GameState.route_state["route"] = String(route_id)
