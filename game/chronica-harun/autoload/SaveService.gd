@@ -24,4 +24,5 @@ func load_campaign() -> Dictionary:
     if not (parsed is Dictionary): return {}
     var data: Dictionary = parsed
     if int(data.get("campaign_version", -1)) != CAMPAIGN_VERSION: return {}
+    if not data.has("run_seed"): return {}
     return data
