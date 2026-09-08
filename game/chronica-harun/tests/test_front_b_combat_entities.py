@@ -16,6 +16,7 @@ def test_front_b_runtime_paths_and_test_arena_exist():
         "scripts/vision/VisionDirector.gd",
         "scripts/meta/MetaRunDirector.gd",
         "scenes/test/CombatEntityArena.tscn",
+        "scenes/test/CombatEntityArenaEmpty.tscn",
         "scripts/test/CombatEntityArena.gd",
     ]
     for rel in required:
@@ -56,6 +57,16 @@ def test_enemy_and_boss_wire_telegraph_and_impact_feedback():
         assert "telegraph_started" in source
         assert "projectile_origin.global_position" in source
     assert "impact_window_started" in boss
+
+
+def test_spatial_audio_has_procedural_fallback_and_family_variation():
+    audio = text("autoload/AudioDirector.gd")
+    enemy = text("scripts/ai/EnemyBrain.gd") + text("scripts/ai/DataEnemy.gd")
+    boss = text("scripts/bosses/DataBossController.gd")
+    for token in ["AudioStreamPlayer3D", "AudioStreamWAV", "play_enemy_family", "_procedural_stream"]:
+        assert token in audio
+    assert "play_enemy_family" in enemy
+    assert "play_enemy_family" in boss
 
 
 def test_enemy_catalog_is_individualized_and_attack_readable():
