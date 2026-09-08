@@ -1,0 +1,314 @@
+name: CHRONICA Foundation Reconcile v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/chronica-foundation-reconcile-v2]
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+
+jobs:
+  foundation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chronica-foundation-reconcile-v2
+          fetch-depth: 0
+
+      - name: Verify exclusive branch base lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 4342dcdaf154de952620208ca36f1ab0e76b228e HEAD
+          test "$(git branch --show-current)" = "feat/chronica-foundation-reconcile-v2"
+          echo FOUNDATION_BRANCH_LINEAGE=PASS
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python suite and validators
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+          pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
+          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
+          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
+
+      - name: Install Godot 4.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version | tee /tmp/godot-version.log
+
+      - name: Strict import
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|WARNING:.*parser' /tmp/import.log
+          echo FOUNDATION_IMPORT=PASS
+
+      - name: Main boot smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 12s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value|WARNING:.*parser' /tmp/boot.log
+          echo FOUNDATION_BOOT=PASS
+
+      - name: Build foundation runtime probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GAME_DIR/runtime_qa"
+          cat > "$GAME_DIR/runtime_qa/FoundationProbe.gd" <<'GD'
+          extends Node
+
+          var failures: Array[String] = []
+
+          func fail(label: String) -> void:
+              failures.append(label)
+              push_error("FOUNDATION_FAIL " + label)
+
+          func check(condition: bool, label: String) -> void:
+              if not condition:
+                  fail(label)
+
+          func write_json(path: String, data: Variant) -> bool:
+              var file := FileAccess.open(path, FileAccess.WRITE)
+              if file == null:
+                  return false
+              file.store_string(JSON.stringify(data))
+              file.close()
+              return true
+
+          func cleanup_campaign() -> void:
+              if FileAccess.file_exists(SaveService.SAVE_PATH):
+                  DirAccess.remove_absolute(ProjectSettings.globalize_path(SaveService.SAVE_PATH))
+
+          func _ready() -> void:
+              call_deferred("run")
+
+          func run() -> void:
+              cleanup_campaign()
+
+              GameState.start_new_campaign(424242)
+              GameState.selected_character_id = &"caim"
+              GameState.stage_index = 4
+              GameState.current_stage_id = &"a_balanca"
+              GameState.cycle = 2
+              GameState.completion_marks["a_eleicao"] = true
+
+              check(SaveService.save_campaign(GameState.snapshot_run()), "save_campaign_failed")
+              var snapshot := SaveService.load_campaign()
+              check(not snapshot.is_empty(), "valid_campaign_rejected")
+              check(int(snapshot.get("campaign_version", -1)) == SaveService.CAMPAIGN_VERSION, "campaign_version_missing")
+
+              GameState.start_new_campaign(111)
+              check(GameState.restore_run(snapshot), "restore_valid_snapshot_failed")
+              check(GameState.run_seed == 424242, "seed_not_restored")
+              check(GameState.stage_index == 4, "stage_index_not_restored")
+              check(String(GameState.current_stage_id) == "a_balanca", "stage_id_not_restored")
+              check(GameState.cycle == 2, "cycle_not_restored")
+              check(String(GameState.selected_character_id) == "caim", "character_not_restored")
+
+              var incompatible := snapshot.duplicate(true)
+              incompatible["campaign_version"] = SaveService.CAMPAIGN_VERSION + 100
+              check(write_json(SaveService.SAVE_PATH, incompatible), "write_incompatible_failed")
+              check(SaveService.load_campaign().is_empty(), "unsupported_save_version_accepted")
+
+              var malformed := FileAccess.open(SaveService.SAVE_PATH, FileAccess.WRITE)
+              check(malformed != null, "open_malformed_failed")
+              if malformed != null:
+                  malformed.store_string("{broken-json")
+                  malformed.close()
+              check(SaveService.load_campaign().is_empty(), "malformed_save_accepted")
+
+              GameState.start_new_campaign(777777)
+              var deterministic_a := GameState.snapshot_run()
+              GameState.start_new_campaign(777777)
+              var deterministic_b := GameState.snapshot_run()
+              check(int(deterministic_a["run_seed"]) == int(deterministic_b["run_seed"]), "explicit_seed_not_deterministic")
+              check(String(deterministic_a["current_stage_id"]) == String(deterministic_b["current_stage_id"]), "new_campaign_stage_not_deterministic")
+              check(int(deterministic_a["stage_index"]) == int(deterministic_b["stage_index"]), "new_campaign_index_not_deterministic")
+
+              cleanup_campaign()
+
+              if failures.is_empty():
+                  print("FOUNDATION_RUNTIME_PASS")
+                  get_tree().quit(0)
+              else:
+                  print("FOUNDATION_RUNTIME_FAILURES=", failures)
+                  get_tree().quit(1)
+          GD
+          cat > "$GAME_DIR/runtime_qa/FoundationProbe.tscn" <<'TSCN'
+          [gd_scene load_steps=2 format=3]
+          [ext_resource type="Script" path="res://runtime_qa/FoundationProbe.gd" id="1"]
+          [node name="FoundationProbe" type="Node"]
+          script = ExtResource("1")
+          TSCN
+
+      - name: Foundation runtime probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 20s godot --headless --path "$GAME_DIR" res://runtime_qa/FoundationProbe.tscn 2>&1 | tee /tmp/foundation-runtime.log
+          grep -q 'FOUNDATION_RUNTIME_PASS' /tmp/foundation-runtime.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Invalid call|Invalid access|Trying to assign value' /tmp/foundation-runtime.log
+
+      - name: Build combat family anti-regression probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > "$GAME_DIR/runtime_qa/CombatFamilyProbe.gd" <<'GD'
+          extends Node3D
+
+          const ENEMY_SCENE := preload("res://scenes/enemies/EnemyBase.tscn")
+          var failures: Array[String] = []
+          var enemies: Dictionary = {}
+          var starts: Dictionary = {}
+
+          func fail(label: String) -> void:
+              failures.append(label)
+              push_error("COMBAT_V2_FAIL " + label)
+
+          func _ready() -> void:
+              call_deferred("run")
+
+          func make_enemy(family: String, start: Vector3, projectile: bool) -> void:
+              var target: Node3D = get_node("Target")
+              var enemy = ENEMY_SCENE.instantiate()
+              add_child(enemy)
+              enemy.global_position = start
+              var attack: Dictionary = {
+                  "id":"qa_attack",
+                  "display_name":"QA",
+                  "attack_kind":"projectile" if projectile else "movement",
+                  "pattern":"line",
+                  "range":6.0 if projectile else 1.4,
+                  "windup":5.0,
+                  "telegraph_time":5.0,
+                  "active":0.1,
+                  "recovery":5.0,
+                  "damage":1.0
+              }
+              enemy.configure_from_data({
+                  "id":"qa_" + family,
+                  "display_name":family,
+                  "family":family,
+                  "role":"common",
+                  "move_speed":2.4,
+                  "max_hp":100.0,
+                  "attack":attack
+              }, target)
+              enemy.attack_cooldown = 999.0
+              enemies[family] = enemy
+              starts[family] = start
+
+          func run() -> void:
+              var target := Node3D.new()
+              target.name = "Target"
+              target.position = Vector3.ZERO
+              add_child(target)
+
+              make_enemy("ram_archon", Vector3(7,0,0), false)
+              make_enemy("hyena_archon", Vector3(7,0,1), false)
+              make_enemy("asinine_archon", Vector3(4.8,0,0), true)
+              make_enemy("chorus", Vector3(-4.8,0,0), true)
+              make_enemy("fire", Vector3(7,0,-1), false)
+              make_enemy("construct", Vector3(8,0,0), false)
+              make_enemy("walker", Vector3(7,0,2), false)
+
+              for _i in range(24):
+                  await get_tree().physics_frame
+
+              for family in enemies:
+                  var enemy = enemies[family]
+                  var displacement: Vector3 = enemy.global_position - starts[family]
+                  print("COMBAT_V2_MOVE ", family, " ", displacement)
+                  if Vector2(displacement.x, displacement.z).length() <= 0.02:
+                      fail("no_world_motion_" + family)
+
+              var asinine_disp: Vector3 = enemies["asinine_archon"].global_position - starts["asinine_archon"]
+              if absf(asinine_disp.z) <= 0.02:
+                  fail("asinine_missing_strafe")
+              var chorus_disp: Vector3 = enemies["chorus"].global_position - starts["chorus"]
+              if absf(chorus_disp.z) <= 0.02:
+                  fail("chorus_missing_orbit")
+              var hyena_disp: Vector3 = enemies["hyena_archon"].global_position - starts["hyena_archon"]
+              if absf(hyena_disp.z) <= 0.005:
+                  fail("hyena_missing_weave")
+
+              if failures.is_empty():
+                  print("COMBAT_FAMILY_RUNTIME_PASS")
+                  get_tree().quit(0)
+              else:
+                  print("COMBAT_FAMILY_RUNTIME_FAILURES=", failures)
+                  get_tree().quit(1)
+          GD
+          cat > "$GAME_DIR/runtime_qa/CombatFamilyProbe.tscn" <<'TSCN'
+          [gd_scene load_steps=2 format=3]
+          [ext_resource type="Script" path="res://runtime_qa/CombatFamilyProbe.gd" id="1"]
+          [node name="CombatFamilyProbe" type="Node3D"]
+          script = ExtResource("1")
+          TSCN
+
+      - name: Combat family anti-regression probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 20s godot --headless --path "$GAME_DIR" res://runtime_qa/CombatFamilyProbe.tscn 2>&1 | tee /tmp/family-runtime.log
+          grep -q 'COMBAT_FAMILY_RUNTIME_PASS' /tmp/family-runtime.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Invalid call|Invalid access' /tmp/family-runtime.log
+          rm -rf "$GAME_DIR/runtime_qa"
+
+      - name: Install Godot 4.3 export templates
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/templates.tpz https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          rm -rf /tmp/export-templates
+          mkdir -p /tmp/export-templates
+          unzip -q /tmp/templates.tpz -d /tmp/export-templates
+          mkdir -p "$HOME/.local/share/godot/export_templates/4.3.stable"
+          cp -R /tmp/export-templates/templates/. "$HOME/.local/share/godot/export_templates/4.3.stable/"
+
+      - name: Windows export contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/chronica-export
+          godot --headless --path "$GAME_DIR" --export-release "Windows Desktop" /tmp/chronica-export/CHRONICA_HARUN.exe 2>&1 | tee /tmp/windows-export.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|ERROR:' /tmp/windows-export.log
+          test -s /tmp/chronica-export/CHRONICA_HARUN.exe
+          echo FOUNDATION_WINDOWS_EXPORT=PASS | tee /tmp/export-gate.log
+
+      - name: Final foundation gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'passed' /tmp/pytest.log
+          grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
+          grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'FOUNDATION_RUNTIME_PASS' /tmp/foundation-runtime.log
+          grep -q 'COMBAT_FAMILY_RUNTIME_PASS' /tmp/family-runtime.log
+          grep -q 'FOUNDATION_WINDOWS_EXPORT=PASS' /tmp/export-gate.log
+          echo CHRONICA_FOUNDATION_RECONCILE_V2=PASS
