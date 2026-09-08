@@ -3,6 +3,24 @@ class_name MetaRunDirector
 
 signal meta_changed(state: Dictionary)
 
+func _ready() -> void:
+    var stage := get_parent()
+    if stage == null:
+        return
+    var has_room_director := false
+    for property in stage.get_property_list():
+        if String(property.get("name", "")) == "room_director":
+            has_room_director = true
+            break
+    if not has_room_director:
+        return
+    var director = stage.get("room_director")
+    if director is RoomDirector and not director.room_cleared.is_connected(_on_stage_room_cleared):
+        director.room_cleared.connect(_on_stage_room_cleared)
+
+func _on_stage_room_cleared(_room_id: StringName) -> void:
+    record_gauntlet_room_clear()
+
 func set_route(route_id: StringName) -> bool:
     if ContentRegistry.get_item("routes",route_id).is_empty(): return false
     GameState.route_state["route"] = String(route_id)
@@ -36,6 +54,51 @@ func unlock_gauntlet(gauntlet_id: StringName) -> bool:
     GameState.meta_progression["unlocked_gauntlets"] = unlocked
     _changed(); return true
 
+func start_gauntlet(gauntlet_id: StringName) -> bool:
+    var row := ContentRegistry.get_item("gauntlets",gauntlet_id)
+    if row.is_empty(): return false
+    var current := String(GameState.route_state.get("gauntlet", ""))
+    if bool(GameState.route_state.get("gauntlet_active", false)):
+        return current == String(gauntlet_id)
+    var unlocked: Array = GameState.meta_progression.get("unlocked_gauntlets", [])
+    if not unlocked.has(String(gauntlet_id)) and not unlock_gauntlet(gauntlet_id):
+        return false
+    GameState.route_state["gauntlet"] = String(gauntlet_id)
+    GameState.route_state["gauntlet_active"] = true
+    GameState.route_state["gauntlet_rooms_cleared"] = 0
+    GameState.run_stats["gauntlet_rooms_cleared"] = 0
+    _changed()
+    return true
+
+func record_gauntlet_room_clear() -> int:
+    if not bool(GameState.route_state.get("gauntlet_active", false)):
+        return 0
+    var count := int(GameState.route_state.get("gauntlet_rooms_cleared", 0)) + 1
+    GameState.route_state["gauntlet_rooms_cleared"] = count
+    GameState.run_stats["gauntlet_rooms_cleared"] = count
+    _changed()
+    return count
+
+func complete_gauntlet() -> bool:
+    if not bool(GameState.route_state.get("gauntlet_active", false)):
+        return false
+    var gauntlet_id := String(GameState.route_state.get("gauntlet", ""))
+    var row := ContentRegistry.get_item("gauntlets", StringName(gauntlet_id))
+    if row.is_empty(): return false
+    var mark := String(row.get("completion_mark", ""))
+    if not mark.is_empty():
+        var character_key := String(GameState.selected_character_id)
+        if not GameState.completion_marks_by_character.has(character_key):
+            GameState.completion_marks_by_character[character_key] = {}
+        GameState.completion_marks_by_character[character_key][mark] = true
+    var completed: Array = GameState.meta_progression.get("completed_gauntlets", [])
+    if not completed.has(gauntlet_id): completed.append(gauntlet_id)
+    GameState.meta_progression["completed_gauntlets"] = completed
+    GameState.meta_progression["gauntlets_completed"] = completed.size()
+    GameState.route_state["gauntlet_active"] = false
+    _changed()
+    return true
+
 func apply_floor_modifiers() -> Dictionary:
     var out := {"enemy_budget_delta":0,"telegraph_mult":1.0,"drop_mult":1.0,"map_hidden":false,"damage_mult":1.0}
     for curse_id in GameState.route_state.get("curses",[]):
@@ -50,7 +113,7 @@ func apply_floor_modifiers() -> Dictionary:
             "horus_eye": out.telegraph_mult *= 1.08
             "belial_order": out.enemy_budget_delta -= 1
     var gauntlet := String(GameState.route_state.get("gauntlet",""))
-    if not gauntlet.is_empty():
+    if not gauntlet.is_empty() and bool(GameState.route_state.get("gauntlet_active", true)):
         var g := ContentRegistry.get_item("gauntlets",StringName(gauntlet))
         for modifier in g.get("modifiers",[]):
             if modifier == "elite_budget_plus_one": out.enemy_budget_delta += 1
