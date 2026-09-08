@@ -20,7 +20,9 @@
     "update_channel": "manual-manifest"
   },
   "runtime_contract": {
-    "first_person_only": true,
+    "first_person_only": false,
+    "default_camera": "first_person",
+    "camera_modes": ["first_person", "over_shoulder"],
     "mouse_y_inverted_by_default": false,
     "world_space_entities": true,
     "projectile_telegraphs_required": true,
