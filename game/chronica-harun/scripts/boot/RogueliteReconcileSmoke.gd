@@ -38,7 +38,7 @@ func _catalog_contract() -> void:
     _expect(mutation_count == 45, "Power mutations must be 45")
     _expect(ContentRegistry.all("daimones").size() == 7, "Daimones must be 7")
     var room_ids := ContentRegistry.all_ids("special_rooms")
-    for id in ["arcana","reliquary","instrumentarium","laboratorium","sigillar","market","bibliotheca","speculum","planetary","trial","cursed","secret","super_secret","archon","theophany","historical","initiation","pneumatic","chthonic","pact_table"]:
+    for id in ["arcana","reliquary","instrumentarium","laboratorium","sigillar","market","bibliotheca","speculum","planetary","trial","cursed","secret","super_secret","archon","theophany","historical_echo","initiation","pneumatic","chthonic","pact_table"]:
         _expect(room_ids.has(id), "missing canonical special room: " + id)
 
 func _generation_eligibility_contract() -> void:
