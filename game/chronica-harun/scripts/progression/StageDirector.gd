@@ -26,6 +26,7 @@ var boss: DataBossController
 var world_root: Node3D
 var ui_root: CanvasLayer
 var rupture_charges := 1
+var retry_pending := false
 var primary_damage := 22.0
 var world_expansion: WorldExpansionRuntime
 
@@ -216,6 +217,7 @@ func _spawn_boss() -> void:
     boss.configure(StringName(stage_data.get("boss_id", "blind_observer")), player)
     room.add_child(boss)
     boss.position = Vector3(0, 0.1, 0)
+    boss.health.damaged.connect(_on_boss_health_damaged)
     boss.phase_changed.connect(_on_boss_phase)
     boss.boss_defeated.connect(_on_boss_defeated)
     room_director.register_enemy(&"boss", boss)
@@ -420,6 +422,11 @@ func _on_enemy_killed(enemy: Node) -> void:
     if int(mutation.get("fragment", false)) > 0: player.add_essence(1)
     daimon_runtime.on_enemy_killed({"elite": String(enemy.get("role")) == "elite"})
 
+func _on_boss_health_damaged(current: float, maximum: float, _amount: float, _source_id: StringName) -> void:
+    if boss == null or hud == null:
+        return
+    hud.show_boss(boss.display_name, current / maxf(1.0, maximum), boss.current_phase + 1)
+
 func _on_boss_phase(index: int) -> void:
     if boss: hud.show_boss(boss.display_name, boss.health.ratio(), index)
 
@@ -464,9 +471,17 @@ func _on_secret_opened(room_id: StringName) -> void:
     _spawn_pickup(_room(String(room_id)), "pharmaka")
 
 func _on_player_died(source_id: StringName) -> void:
+    if retry_pending:
+        return
+    retry_pending = true
     GameState.record_death(String(source_id))
     SaveService.save_campaign(GameState.to_save_data())
-    hud.show_message("A RUN TERMINOU · RETORNO À ETAPA ATUAL", 4.0)
+    hud.show_message("A RUN TERMINOU · RETORNO À ETAPA ATUAL", 1.25)
+    get_tree().create_timer(1.25).timeout.connect(retry_current_stage)
+
+func retry_current_stage() -> void:
+    SaveService.save_campaign(GameState.to_save_data())
+    get_tree().reload_current_scene()
 
 func _refresh_transformations() -> void:
     if player == null:

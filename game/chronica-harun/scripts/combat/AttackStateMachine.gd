@@ -18,6 +18,9 @@ var target: Node3D
 var elapsed := 0.0
 var busy := false
 
+func _ready() -> void:
+    _sync_telegraph_visual()
+
 func begin_attack(next_definition: Dictionary, next_target: Node3D) -> bool:
     if busy or next_definition.is_empty() or next_target == null:
         return false
@@ -75,7 +78,16 @@ func _set_state(next_state: StringName) -> void:
         push_error("Unknown attack state: %s" % next_state)
         return
     state = next_state
+    _sync_telegraph_visual()
     state_changed.emit(state)
+
+func _sync_telegraph_visual() -> void:
+    var host := get_parent()
+    if host == null:
+        return
+    var visual := host.get_node_or_null("TelegraphVisual") as GeometryInstance3D
+    if visual:
+        visual.visible = state == &"telegraph"
 
 func _payload() -> Dictionary:
     return {"definition": definition.duplicate(true), "target": target, "state": state}
