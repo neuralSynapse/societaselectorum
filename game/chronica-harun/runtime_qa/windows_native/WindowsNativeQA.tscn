@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://runtime_qa/windows_native/WindowsNativeQA.gd" id="1_windows_qa"]
+
+[node name="WindowsNativeQA" type="Node"]
+script = ExtResource("1_windows_qa")
