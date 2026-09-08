@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - qa/chronica-windows-visual-v1
+    paths-ignore:
+      - 'game/chronica-harun/runtime-qa/windows-native/QA_REPORT.md'
+      - 'game/chronica-harun/docs/windows-native-release-qa-final.md'
 
 permissions:
   contents: read
@@ -103,6 +106,23 @@ jobs:
           & $godot --version | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/godot-version.txt"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+      - name: Install rcedit 2.0.0 x64
+        shell: pwsh
+        run: |
+          $rceditDir = Join-Path $env:RUNNER_TEMP 'chronica-rcedit'
+          New-Item -ItemType Directory -Force -Path $rceditDir | Out-Null
+          $rcedit = Join-Path $rceditDir 'rcedit.exe'
+          Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe' -OutFile $rcedit
+          if (-not (Test-Path $rcedit)) { throw 'rcedit download failed' }
+          $size = (Get-Item $rcedit).Length
+          if ($size -lt 1000000) { throw "rcedit download is unexpectedly small: $size bytes" }
+          $sha = (Get-FileHash -Path $rcedit -Algorithm SHA256).Hash.ToLowerInvariant()
+          "RCEDIT_VERSION=2.0.0" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/rcedit.txt"
+          "RCEDIT_SIZE=$size" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/rcedit.txt" -Append
+          "RCEDIT_SHA256=$sha" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/rcedit.txt" -Append
+          $rceditDir | Out-File -FilePath $env:GITHUB_PATH -Append -Encoding utf8
+          "RCEDIT_BIN=$rcedit" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
       - name: Strict Godot import
         shell: pwsh
         run: |
@@ -125,6 +145,8 @@ jobs:
       - name: Export Windows release
         shell: pwsh
         run: |
+          $resolvedRcedit = (Get-Command rcedit.exe -ErrorAction Stop).Source
+          "RCEDIT_RESOLVED=$resolvedRcedit" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/rcedit-resolved.txt"
           New-Item -ItemType Directory -Force -Path "$env:GAME_DIR/build/windows" | Out-Null
           $log = "$env:GAME_DIR/runtime-qa/windows-native/logs/windows-export.txt"
           & $env:GODOT_BIN --headless --path "$env:GAME_DIR" --export-release 'Windows Desktop' 'build/windows/CHRONICA_HARUN.exe' 2>&1 | Tee-Object -FilePath $log
@@ -176,7 +198,8 @@ jobs:
             "| EXE launch/no immediate crash | $(if ($probe) { S ([bool]$probe.launch_pass) } else { 'FAIL' }) | native process launch |",
             "| ZIP integrity | $(if ($probe) { S ([bool]$probe.zip_integrity_pass) } else { 'FAIL' }) | extract + byte hash compare |",
             "| Version metadata | $(if ($probe) { S ([bool]$probe.version_metadata_pass) } else { 'FAIL' }) | FileVersionInfo |",
-            "| Icon metadata | $(if ($probe) { S ([bool]$probe.icon_present) } else { 'FAIL' }) | RT_GROUP_ICON / RT_ICON |",
+            "| PE icon resources | $(if ($probe) { S ([bool]$probe.icon_present) } else { 'FAIL' }) | RT_GROUP_ICON / RT_ICON |",
+            "| Canonical custom icon configured | $(if ($probe) { S ([bool]$probe.custom_icon_configured) } else { 'FAIL' }) | application/icon in export preset |",
             "| Visual render quality | $visualStatus | CI does not prove final visual quality |",
             "| Physical mouse pointer lock | $visualStatus | headless/native smoke is insufficient |",
             "| GPU/VFX quality | $visualStatus | no manual GPU visual inspection |",
