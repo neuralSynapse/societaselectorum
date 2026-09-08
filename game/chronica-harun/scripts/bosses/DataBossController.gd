@@ -17,10 +17,14 @@ var attack_index := 0
 var attack_clock := 0.8
 var move_speed := 1.7
 var dead := false
+var readable_telegraph: ReadableTelegraph
 
 @onready var health: Health = $Health
 @onready var attack_sm: AttackStateMachine = $AttackStateMachine
+@onready var telegraph_root: Node3D = $TelegraphRoot
+@onready var telegraph_origin: Marker3D = $TelegraphOrigin
 @onready var projectile_origin: Marker3D = $ProjectileOrigin
+@onready var impact_origin: Marker3D = $ImpactOrigin
 @onready var visual: Node3D = $Visual
 
 func configure(id: StringName, next_target: Node3D) -> bool:
@@ -43,7 +47,10 @@ func _ready() -> void:
     health.damaged.connect(_on_damaged)
     health.died.connect(_on_died)
     attack_sm.emission_requested.connect(_on_emission_requested)
-    attack_sm.telegraph_started.connect(func(_payload): AudioDirector.play_3d(&"enemy_windup", global_position))
+    attack_sm.telegraph_started.connect(_on_telegraph_started)
+    attack_sm.impact_window_started.connect(_on_impact_window_started)
+    readable_telegraph = ReadableTelegraph.new()
+    telegraph_root.add_child(readable_telegraph)
     _attach_model()
     add_to_group("bosses")
 
@@ -65,8 +72,15 @@ func _choose_attack() -> void:
         return
     var definition: Dictionary = attacks[attack_index % attacks.size()].duplicate(true)
     attack_index += 1
+    definition["damage"] = float(definition.get("damage", 20.0)) * (1.0 + current_phase * 0.12)
     if attack_sm.begin_attack(definition, target):
         attack_clock = float(definition.get("recovery", 0.7)) + 0.25
+
+func _on_telegraph_started(payload: Dictionary) -> void:
+    var definition: Dictionary = payload.get("definition", {})
+    if readable_telegraph:
+        readable_telegraph.show_attack(definition, target, telegraph_origin.global_position)
+    AudioDirector.play_3d(&"enemy_windup", telegraph_origin.global_position)
 
 func _on_emission_requested(payload: Dictionary) -> void:
     var definition: Dictionary = payload.get("definition", {})
@@ -95,6 +109,9 @@ func _projectile_pattern(pattern: String, definition: Dictionary) -> void:
         var projectile := PROJECTILE_SCENE.instantiate() as ReadableProjectile
         get_tree().current_scene.add_child(projectile)
         projectile.configure({"speed": 10.0 + current_phase * 1.4, "damage": float(definition.get("damage", 20.0)), "emission": 0.5, "lifetime": 5.2}, origin, direction, boss_id)
+        projectile.impacted.connect(func(position: Vector3, _body: Node):
+            CombatFeedback.impact(get_tree().current_scene, position, 1.15 + current_phase * 0.15)
+        )
     AudioDirector.play_3d(&"enemy_shot", origin)
 
 func _movement_attack(pattern: String) -> void:
@@ -107,20 +124,33 @@ func _movement_attack(pattern: String) -> void:
     velocity = delta.normalized() * (8.0 if pattern == "dash" else 5.0)
     move_and_slide()
 
-func _on_damaged(current: float, maximum: float, _amount: float, _source_id: StringName) -> void:
+func _on_impact_window_started(payload: Dictionary) -> void:
+    var definition: Dictionary = payload.get("definition", {})
+    CombatFeedback.impact(get_tree().current_scene, impact_origin.global_position, 1.2 + current_phase * 0.2)
+    if String(definition.get("attack_kind", "")) == "movement" and target != null:
+        if global_position.distance_to(target.global_position) <= float(definition.get("range", 2.0)) and target.has_method("apply_damage"):
+            target.apply_damage(float(definition.get("damage", 20.0)), boss_id)
+
+func _on_damaged(current: float, maximum: float, amount: float, _source_id: StringName) -> void:
+    CombatFeedback.hit_flash(visual, maxf(0.7, amount / 12.0))
     var ratio := current / maxf(1.0, maximum)
     var next_phase := 2 if ratio <= 0.32 else (1 if ratio <= 0.66 else 0)
     if next_phase != current_phase:
         current_phase = next_phase
         attack_index = 0
+        attack_clock = 0.35
         phase_changed.emit(current_phase + 1)
+        CombatFeedback.impact(get_tree().current_scene, global_position + Vector3.UP, 2.0 + current_phase * 0.35)
         AudioDirector.play_3d(&"boss_phase", global_position)
 
 func _on_died(_source_id: StringName) -> void:
     if dead:
         return
     dead = true
+    if readable_telegraph:
+        readable_telegraph.clear()
     boss_defeated.emit(boss_id, reward_id)
+    CombatFeedback.impact(get_tree().current_scene, global_position + Vector3.UP, 2.5)
     var tween := create_tween()
     tween.tween_property(self, "scale", Vector3.ZERO, 0.7)
     tween.tween_callback(queue_free)
@@ -140,9 +170,14 @@ func _attach_model() -> void:
             visual.add_child((resource as PackedScene).instantiate())
             return
     var fallback := MeshInstance3D.new()
-    var mesh := SphereMesh.new(); mesh.radius = 0.9; mesh.height = 1.8
+    var mesh := SphereMesh.new()
+    mesh.radius = 0.9
+    mesh.height = 1.8
     fallback.mesh = mesh
-    var material := StandardMaterial3D.new(); material.albedo_color = Color(0.12, 0.09, 0.06); material.roughness = 0.82; material.emission_enabled = false
+    var material := StandardMaterial3D.new()
+    material.albedo_color = Color(0.12, 0.09, 0.06)
+    material.roughness = 0.82
+    material.emission_enabled = false
     fallback.material_override = material
     fallback.position.y = 1.1
     visual.add_child(fallback)
