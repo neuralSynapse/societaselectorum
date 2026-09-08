@@ -110,4 +110,7 @@ func _on_emission_requested(payload: Dictionary) -> void:
         var projectile := PROJECTILE_SCENE.instantiate() as ReadableProjectile
         get_tree().current_scene.add_child(projectile)
         projectile.configure({"speed": 8.5 + move_speed, "damage": float(definition.get("damage", 10.0)), "lifetime": 5.0, "emission": 0.42}, origin, direction, enemy_id)
+        projectile.impacted.connect(func(position: Vector3, _body: Node):
+            CombatFeedback.impact(get_tree().current_scene, position, 0.7)
+        )
     AudioDirector.play_3d(&"enemy_shot", origin)
