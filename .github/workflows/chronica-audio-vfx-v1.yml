@@ -76,7 +76,10 @@ jobs:
           godot --headless --path "$GAME_DIR" res://runtime_qa/AudioVfxProbe.tscn 2>&1 | tee /tmp/audio-vfx-probe.log
           grep -q 'AUDIO_VFX_RUNTIME_PROBE=PASS' /tmp/audio-vfx-probe.log
           ! grep -q 'Audio event not installed' /tmp/audio-vfx-probe.log
-          ! grep -E '^ERROR:|SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/audio-vfx-probe.log
+          if grep -E 'ERROR:|SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/audio-vfx-probe.log; then
+            echo AUDIO_VFX_RUNTIME_DIAGNOSTICS=FAIL
+            exit 1
+          fi
           echo AUDIO_VFX_RUNTIME=PASS
 
       - name: Final GREEN gate
