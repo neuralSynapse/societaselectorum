@@ -183,7 +183,7 @@ func show_command_reveal(command: StringName, index: int) -> void:
     reveal_label.text = String(command)
     reveal_label.visible = true
     reveal_label.modulate = Color(1, 1, 1, 1)
-    reveal_label.theme_override_font_sizes.font_size = 54 + index * 4
+    reveal_label.add_theme_font_size_override("font_size", 54 + index * 4)
     reveal_timer = 1.35
     visible = true
 
