@@ -37,8 +37,10 @@ jobs:
           unzip -q /tmp/godot.zip -d /tmp/godot
           sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
           godot --version
-      - name: Prepare runtime assets
-        run: python "$GAME_DIR/tools/generate_models.py"
+      - name: Prepare runtime assets and class cache
+        run: |
+          python "$GAME_DIR/tools/generate_models.py"
+          godot --headless --editor --path "$GAME_DIR" --quit
       - name: Runtime scene probe
         shell: bash
         run: |
@@ -61,14 +63,15 @@ jobs:
           func run() -> void:
               GameState.start_new_campaign(424242)
               check(SaveService.save_campaign(GameState.to_save_data()), "initial_save")
-              var err := get_tree().change_scene_to_file("res://scenes/boot/Main.tscn")
-              check(err == OK, "main_scene_load_request")
+              var packed := load("res://scenes/boot/Main.tscn") as PackedScene
+              check(packed != null, "main_scene_resource")
+              if packed == null:
+                  finish(); return
+              var main := packed.instantiate()
+              add_child(main)
               for _i in range(5): await get_tree().process_frame
               await get_tree().physics_frame
-              var main := get_tree().current_scene
-              check(main != null, "main_scene_instantiated")
-              if main == null:
-                  finish(); return
+              check(main != null and is_instance_valid(main), "main_scene_instantiated")
               var stage = main.get_node_or_null("StageDirector")
               var expansion = main.get_node_or_null("WorldExpansionRuntime")
               check(stage != null, "stage_director_present")
@@ -125,9 +128,9 @@ jobs:
                   check(enemy.global_position.distance_to(enemy_pos) < 0.001, "enemy_position_independent_of_camera_rotation")
                   check(enemy.get_node_or_null("TelegraphVisual") != null, "enemy_visible_telegraph_node")
 
-              var projectile_scene = load("res://scenes/vfx/Projectile.tscn")
+              var projectile_scene = load("res://scenes/vfx/Projectile.tscn") as PackedScene
               var projectile = projectile_scene.instantiate()
-              main.add_child(projectile)
+              add_child(projectile)
               projectile.configure({"speed":8.0,"damage":5.0,"lifetime":3.0,"emission":0.4}, Vector3(30,3,30), Vector3.RIGHT, &"qa")
               var mesh = projectile.get_node_or_null("Mesh")
               check(mesh != null and mesh.visible, "projectile_visible_mesh")
