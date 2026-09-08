@@ -81,6 +81,15 @@ def test_boot_falls_back_from_absent_corrupt_or_incompatible_campaign() -> None:
     assert "GameState.load_save_data(snapshot)" in boot
 
 
+def test_loaded_campaign_reconciles_stage_index_and_journey_state() -> None:
+    game_state = _read("autoload/GameState.gd")
+    assert "func _reconcile_loaded_journey() -> void:" in game_state
+    load_body = game_state.split("func load_save_data(snapshot: Dictionary) -> void:", 1)[1].split("func snapshot_run()", 1)[0]
+    assert "_reconcile_loaded_journey()" in load_body
+    assert "if journey_state == PEREGRINUS_IGNIS_GAME:" in game_state
+    assert "current_stage_id = StringName(PEREGRINUS_IGNIS_GAME)" in game_state
+
+
 def test_no_institutional_progression_or_required_backend_dependency_in_runtime() -> None:
     runtime_files = list((ROOT / "autoload").glob("*.gd")) + list((ROOT / "scripts").rglob("*.gd"))
     forbidden = (
