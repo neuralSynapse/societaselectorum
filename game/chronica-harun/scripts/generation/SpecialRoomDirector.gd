@@ -16,13 +16,13 @@ func _load_definitions() -> Array:
     var parsed = JSON.parse_string(file.get_as_text())
     return parsed if parsed is Array else []
 
-func eligible_rooms(stage_index: int, cycle: int, context: Dictionary) -> Array:
+func eligible_rooms(stage_index: int, cycle: int, context: Dictionary, for_generation: bool = false) -> Array:
     var out: Array = []
     for room in definitions:
         if stage_index < int(room.get("min_stage",0)): continue
         var eligibility: Dictionary = room.get("eligibility",{})
         if eligibility.has("stage_id") and String(eligibility.stage_id) != String(context.get("stage_id","")): continue
-        if int(context.get("rooms_cleared",0)) < int(eligibility.get("min_rooms_cleared",0)): continue
+        if not for_generation and int(context.get("rooms_cleared",0)) < int(eligibility.get("min_rooms_cleared",0)): continue
         if cycle < int(eligibility.get("min_cycle",0)): continue
         if eligibility.get("requires_secret_found",false) and not context.get("secret_found",false): continue
         if eligibility.has("requires_codex_entries") and int(context.get("codex_entries",0)) < int(eligibility.requires_codex_entries): continue
@@ -35,7 +35,7 @@ func roll_floor_rooms(stage_index: int, cycle: int, context: Dictionary, seed: i
     var rng := RandomNumberGenerator.new()
     rng.seed = seed + stage_index * 1009 + cycle * 9176
     var rolled: Array = []
-    for room in eligible_rooms(stage_index, cycle, context):
+    for room in eligible_rooms(stage_index, cycle, context, true):
         if String(room.get("exclusive_group", "")) == "postboss_path" or room.id == "initiation": continue
         var chance := float(room.get("base_chance",0.0))
         if room.id == "secret": chance = minf(.95, chance + cycle*.025)
