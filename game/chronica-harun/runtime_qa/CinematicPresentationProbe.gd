@@ -26,13 +26,27 @@ func run() -> void:
         return
     var presentation := runtime.get_node_or_null("Presentation")
     var stage := runtime.get_node_or_null("CinematicStage")
-    var camera := runtime.get_node_or_null("CinematicStage/CameraRig/CinematicCamera")
+    var camera := runtime.get_node_or_null("CinematicStage/CameraRig/CinematicCamera") as Camera3D
+    var proxy_root := runtime.get_node_or_null("CinematicStage/ProxyRoot")
+    var world_root := main.get_node_or_null("WorldRoot") as Node3D
     if presentation == null: fail("presentation_missing")
     if stage == null: fail("cinematic_stage_missing")
     if camera == null: fail("cinematic_camera_missing")
     if presentation == null:
         finish()
         return
+
+    # Player-facing safety contract: placeholder/proxy cinematics must never seize
+    # first-run gameplay or replace the player's view with debug geometry.
+    if not bool(main.get("gameplay_enabled")):
+        fail("proxy_entry_disabled_gameplay")
+    if world_root == null or not world_root.visible or world_root.process_mode == Node.PROCESS_MODE_DISABLED:
+        fail("proxy_entry_disabled_world")
+    if camera != null and camera.current:
+        fail("proxy_entry_seized_camera")
+    if proxy_root != null and proxy_root.get_child_count() > 0:
+        fail("proxy_geometry_visible_to_player")
+
     if not presentation.has_method("show_title_reveal"): fail("title_reveal_method_missing")
     if not presentation.has_method("show_fragment_progress"): fail("fragment_method_missing")
     if not presentation.has_method("show_command_reveal"): fail("command_reveal_method_missing")
