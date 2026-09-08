@@ -72,7 +72,6 @@ def test_windows_release_probe_validates_pe_launch_resources_zip_hash_and_visual
         "MZ",
         "PE",
         "FileVersionInfo",
-        "EnumResourceNames",
         "RT_GROUP_ICON",
         "Start-Process",
         "Compress-Archive",
@@ -85,6 +84,21 @@ def test_windows_release_probe_validates_pe_launch_resources_zip_hash_and_visual
     ]
     for token in required:
         assert token in probe, f"release probe missing token: {token}"
+
+
+def test_windows_release_probe_reads_resource_type_ids_from_pe_bytes():
+    probe = _text("tools/windows_release_probe.ps1")
+    required = [
+        "Get-PeResourceTypeIds",
+        "resource_directory_rva",
+        "resource_type_ids",
+        "$RT_ICON = 3",
+        "$RT_GROUP_ICON = 14",
+    ]
+    for token in required:
+        assert token in probe, f"release probe missing deterministic PE resource parser token: {token}"
+    assert "LoadLibraryEx" not in probe, "release probe must not depend on loader callback state for PE resource detection"
+    assert "EnumResourceNames" not in probe, "release probe must inspect PE resource directory deterministically"
 
 
 def test_windows_export_preset_has_release_metadata_without_inventing_icon():
