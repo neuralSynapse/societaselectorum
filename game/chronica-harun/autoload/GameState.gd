@@ -81,7 +81,24 @@ func load_save_data(snapshot: Dictionary) -> void:
     run_build = snapshot.get("run_build",{}).duplicate(true)
     meta_progression = snapshot.get("meta_progression",{}).duplicate(true)
     route_state = snapshot.get("route_state",{"route":"student","curses":[],"blessings":[],"post_boss_choice":"","gauntlet":""}).duplicate(true)
+    _reconcile_loaded_journey()
     if run_stats.is_empty(): _reset_run_stats()
+
+func _reconcile_loaded_journey() -> void:
+    var journey := ContentRegistry.get_student_journey()
+    if journey.is_empty():
+        journey_state = JOURNEY_STUDENT
+        stage_index = 0
+        current_stage_id = &"o_olho"
+        return
+    if journey_state == PEREGRINUS_IGNIS_GAME:
+        stage_index = journey.size() - 1
+        current_stage_id = StringName(PEREGRINUS_IGNIS_GAME)
+        return
+    journey_state = JOURNEY_STUDENT
+    stage_index = clampi(stage_index, 0, journey.size() - 1)
+    var row: Dictionary = journey[stage_index]
+    current_stage_id = StringName(String(row.get("id", "o_olho")))
 
 func snapshot_run() -> Dictionary:
     return to_save_data().duplicate(true)
