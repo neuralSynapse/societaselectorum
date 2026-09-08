@@ -48,6 +48,8 @@ func open_secret(room_id: StringName, damage_kind: StringName = &"rupture_charge
     var room := rooms.get(room_id) as RoomShell
     if room == null:
         return false
+    if bool(room.get_meta("secret_connection_pending", false)) and not StageFloorBuilder.open_secret_connection(room):
+        return false
     secret_state[room_id] = true
     room.visible = true
     room.process_mode = Node.PROCESS_MODE_INHERIT
