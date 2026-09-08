@@ -145,6 +145,15 @@ jobs:
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
           echo RC_BOOT=PASS | tee /tmp/boot-status.txt
 
+      - name: Roguelite reconciliation smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" res://scenes/boot/RogueliteReconcileSmoke.tscn 2>&1 | tee /tmp/roguelite.log
+          grep -q 'ROGUELITE_RECONCILE_SMOKE_OK' /tmp/roguelite.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/roguelite.log
+          echo RC_ROGUELITE_SMOKE=PASS | tee /tmp/roguelite-status.txt
+
       - name: Export Windows executable
         shell: bash
         run: |
@@ -187,6 +196,7 @@ jobs:
           - Story validator: PASS
           - Import: PASS
           - Boot: PASS
+          - Roguelite smoke: PASS
           - Windows export: PASS
           - EXE SHA-256: $EXE_SHA
           - ZIP SHA-256: $ZIP_SHA
@@ -204,6 +214,7 @@ jobs:
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
           grep -qx 'RC_IMPORT=PASS' /tmp/import-status.txt
           grep -qx 'RC_BOOT=PASS' /tmp/boot-status.txt
+          grep -qx 'RC_ROGUELITE_SMOKE=PASS' /tmp/roguelite-status.txt
           grep -qx 'RC_WINDOWS_EXPORT=PASS' /tmp/export-status.txt
           grep -qx 'RC_PACKAGE=PASS' /tmp/package-status.txt
           test -s "$GAME_DIR/build/windows/CHRONICA_HARUN.exe"
