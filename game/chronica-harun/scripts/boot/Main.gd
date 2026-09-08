@@ -6,10 +6,11 @@ extends Node3D
 @onready var world_expansion: WorldExpansionRuntime = $WorldExpansionRuntime
 
 func _ready() -> void:
-    if SaveService.has_campaign():
-        GameState.load_save_data(SaveService.load_campaign())
-    else:
+    var snapshot := SaveService.load_campaign()
+    if snapshot.is_empty():
         GameState.start_new_campaign()
+    else:
+        GameState.load_save_data(snapshot)
     stage_director.stage_completed.connect(_on_stage_completed)
     stage_director.configure(world_root, ui_root)
     world_expansion.configure_player(stage_director.player)
