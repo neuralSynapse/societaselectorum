@@ -191,3 +191,15 @@ def test_static_scene_and_preload_resource_references_resolve() -> None:
                     missing.append(f"{path.relative_to(ROOT)} -> {resource}")
 
     assert not missing, "\n".join(missing)
+
+
+def test_direct_run_restore_rejects_snapshots_without_seed() -> None:
+    game_state = _read("autoload/GameState.gd")
+    restore_body = game_state.split("func restore_run(snapshot: Dictionary) -> bool:", 1)[1].split("\nfunc ", 1)[0]
+    assert 'if not snapshot.has("run_seed"): return false' in restore_body
+
+
+def test_stage_director_does_not_overwrite_final_narrative_state_on_reload() -> None:
+    stage_director = _read("scripts/progression/StageDirector.gd")
+    configure_body = stage_director.split("func configure(next_world_root: Node3D, next_ui_root: CanvasLayer) -> void:", 1)[1].split("\nfunc ", 1)[0]
+    assert "GameState.journey_state != GameState.PEREGRINUS_IGNIS_GAME" in configure_body
