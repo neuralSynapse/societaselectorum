@@ -100,28 +100,44 @@ jobs:
               var runtime := main.get_node_or_null("NarrativeRuntime")
               if runtime == null:
                   fail("narrative_runtime_missing")
-              else:
-                  var presentation := runtime.get_node_or_null("Presentation")
-                  var stage := runtime.get_node_or_null("CinematicStage")
-                  var camera := runtime.get_node_or_null("CinematicStage/CameraRig/CinematicCamera")
-                  if presentation == null: fail("presentation_missing")
-                  if stage == null: fail("cinematic_stage_missing")
-                  if camera == null: fail("cinematic_camera_missing")
-                  if presentation != null:
-                      if not presentation.has_method("show_title_reveal"): fail("title_reveal_method_missing")
-                      if not presentation.has_method("show_fragment_progress"): fail("fragment_method_missing")
-                      if not presentation.has_method("enter_final_black"): fail("final_black_method_missing")
-                      if presentation.has_method("show_fragment_progress"):
-                          presentation.show_fragment_progress(&"broken_map", 5, 5)
-                      if presentation.has_method("show_title_reveal"):
-                          presentation.show_title_reveal("GRIMORIUM ASCENSIONIS")
-                      if presentation.has_method("show_story_message"):
-                          presentation.show_story_message("VER · GOVERNAR · FAZER", 5.0)
+                  finish()
+                  return
+              var presentation := runtime.get_node_or_null("Presentation")
+              var stage := runtime.get_node_or_null("CinematicStage")
+              var camera := runtime.get_node_or_null("CinematicStage/CameraRig/CinematicCamera")
+              if presentation == null: fail("presentation_missing")
+              if stage == null: fail("cinematic_stage_missing")
+              if camera == null: fail("cinematic_camera_missing")
+              if presentation == null:
+                  finish()
+                  return
+              if not presentation.has_method("show_title_reveal"): fail("title_reveal_method_missing")
+              if not presentation.has_method("show_fragment_progress"): fail("fragment_method_missing")
+              if not presentation.has_method("show_command_reveal"): fail("command_reveal_method_missing")
+              if not presentation.has_method("enter_final_black"): fail("final_black_method_missing")
+              if presentation.has_method("show_fragment_progress"):
+                  presentation.show_fragment_progress(&"broken_map", 5, 5)
+              if presentation.has_method("show_title_reveal"):
+                  presentation.show_title_reveal("GRIMORIUM ASCENSIONIS")
+              if presentation.has_method("show_command_reveal"):
+                  presentation.show_command_reveal(&"VER", 0)
               await get_tree().process_frame
               await get_tree().process_frame
-              var image := get_viewport().get_texture().get_image()
-              var err := image.save_png("res://evidence/cinematic-runtime.png")
-              if err != OK: fail("screenshot_save_failed")
+              var reveal_image := get_viewport().get_texture().get_image()
+              var reveal_err := reveal_image.save_png("res://evidence/cinematic-runtime.png")
+              if reveal_err != OK: fail("screenshot_save_failed")
+              if presentation.has_method("enter_final_black"):
+                  presentation.enter_final_black("LUCIFER")
+                  await get_tree().create_timer(1.7, true).timeout
+                  var blackout := presentation.get_node_or_null("Root/Blackout") as ColorRect
+                  var reveal := presentation.get_node_or_null("Root/RevealLabel") as Label
+                  if blackout == null or not blackout.visible or blackout.color.a < 0.99:
+                      fail("final_black_not_opaque")
+                  if reveal == null or reveal.visible:
+                      fail("lucifer_not_cut_to_black")
+                  var black_image := get_viewport().get_texture().get_image()
+                  var black_err := black_image.save_png("res://evidence/cinematic-final-black.png")
+                  if black_err != OK: fail("final_black_screenshot_save_failed")
               finish()
 
           func finish() -> void:
@@ -147,6 +163,7 @@ jobs:
           grep -q 'CINEMATIC_PRESENTATION_RUNTIME_PASS' /tmp/cinematic-runtime.log
           if grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Invalid call|Invalid access|Trying to assign value' /tmp/cinematic-runtime.log; then exit 1; fi
           test -s "$GAME_DIR/evidence/cinematic-runtime.png"
+          test -s "$GAME_DIR/evidence/cinematic-final-black.png"
 
       - name: Final cinematic gate
         shell: bash
