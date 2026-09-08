@@ -1,0 +1,22 @@
+extends Node
+
+const SAVE_PATH := "user://chronica_harun_campaign.json"
+const CAMPAIGN_VERSION := 2
+
+func has_campaign() -> bool:
+    return FileAccess.file_exists(SAVE_PATH)
+
+func save_campaign(snapshot: Dictionary) -> bool:
+    var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+    if file == null: return false
+    var data := snapshot.duplicate(true)
+    data["campaign_version"] = CAMPAIGN_VERSION
+    file.store_string(JSON.stringify(data))
+    return true
+
+func load_campaign() -> Dictionary:
+    if not has_campaign(): return {}
+    var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
+    if file == null: return {}
+    var parsed = JSON.parse_string(file.get_as_text())
+    return parsed if parsed is Dictionary else {}

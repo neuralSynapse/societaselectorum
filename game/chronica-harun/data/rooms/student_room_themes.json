@@ -1,0 +1,306 @@
+[
+  {
+    "stage_id": "o_olho",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "o_olho_floor",
+    "wall_material": "o_olho_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.012,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_chama",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_chama_floor",
+    "wall_material": "a_chama_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.015,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_fundacao",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_fundacao_floor",
+    "wall_material": "a_fundacao_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.018,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_eleicao",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_eleicao_floor",
+    "wall_material": "a_eleicao_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.021,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_balanca",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_balanca_floor",
+    "wall_material": "a_balanca_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.024,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_vontade",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_vontade_floor",
+    "wall_material": "a_vontade_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.012,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "o_carater",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "o_carater_floor",
+    "wall_material": "o_carater_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.015,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_disciplina",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_disciplina_floor",
+    "wall_material": "a_disciplina_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.018,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_clareza",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_clareza_floor",
+    "wall_material": "a_clareza_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.021,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_transmutacao",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_transmutacao_floor",
+    "wall_material": "a_transmutacao_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.024,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "o_corpo",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "o_corpo_floor",
+    "wall_material": "o_corpo_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.012,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_obra",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_obra_floor",
+    "wall_material": "a_obra_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.015,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_fortuna",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_fortuna_floor",
+    "wall_material": "a_fortuna_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.018,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "a_influencia",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "a_influencia_floor",
+    "wall_material": "a_influencia_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.021,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "o_legado",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "o_legado_floor",
+    "wall_material": "o_legado_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.024,
+    "accent_emission_cap": 0.32
+  },
+  {
+    "stage_id": "initiation_chamber",
+    "palette": [
+      "#0b0a09",
+      "#1c1814",
+      "#4b4033",
+      "#8e7148"
+    ],
+    "floor_material": "initiation_chamber_floor",
+    "wall_material": "initiation_chamber_wall",
+    "props": [
+      "stele",
+      "arch",
+      "plinth",
+      "seal"
+    ],
+    "fog_density": 0.012,
+    "accent_emission_cap": 0.32
+  }
+]

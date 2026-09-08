@@ -1,0 +1,6 @@
+.worktrees/
+.godot/
+__pycache__/
+.pytest_cache/
+*.tmp
+*.log

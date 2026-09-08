@@ -1,0 +1,4178 @@
+[
+  {
+    "id": "sigil_01_bael",
+    "order": 1,
+    "name": "Bael",
+    "historical_rank": "King",
+    "effect_id": "sigil_01_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 13,
+    "cost_magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_01_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 13,
+      "cost": 16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_01_bael",
+    "sfx_hook": "sfx.sigil_01_bael",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Bael"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_02_agares",
+    "order": 2,
+    "name": "Agares",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_02_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 20,
+    "cost_magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_02_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 20,
+      "cost": 10
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_02_agares",
+    "sfx_hook": "sfx.sigil_02_agares",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Agares"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_03_vassago",
+    "order": 3,
+    "name": "Vassago",
+    "historical_rank": "Prince",
+    "effect_id": "sigil_03_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 8,
+    "cost_magnitude": 21,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_03_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 8,
+      "cost": 21
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_03_vassago",
+    "sfx_hook": "sfx.sigil_03_vassago",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Vassago"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_04_samigina",
+    "order": 4,
+    "name": "Samigina",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_04_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 15,
+    "cost_magnitude": 15,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_04_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 15,
+      "cost": 15
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_04_samigina",
+    "sfx_hook": "sfx.sigil_04_samigina",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Samigina"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_05_marbas",
+    "order": 5,
+    "name": "Marbas",
+    "historical_rank": "President",
+    "effect_id": "sigil_05_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 22,
+    "cost_magnitude": 9,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_05_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 22,
+      "cost": 9
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_05_marbas",
+    "sfx_hook": "sfx.sigil_05_marbas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Marbas"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_06_valefor",
+    "order": 6,
+    "name": "Valefor",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_06_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 10,
+    "cost_magnitude": 20,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_06_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 10,
+      "cost": 20
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_06_valefor",
+    "sfx_hook": "sfx.sigil_06_valefor",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Valefor"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_07_amon",
+    "order": 7,
+    "name": "Amon",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_07_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 17,
+    "cost_magnitude": 14,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_07_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 17,
+      "cost": 14
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_07_amon",
+    "sfx_hook": "sfx.sigil_07_amon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Amon"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_08_barbatos",
+    "order": 8,
+    "name": "Barbatos",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_08_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 24,
+    "cost_magnitude": 8,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_08_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 24,
+      "cost": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_08_barbatos",
+    "sfx_hook": "sfx.sigil_08_barbatos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Barbatos"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_09_paimon",
+    "order": 9,
+    "name": "Paimon",
+    "historical_rank": "King",
+    "effect_id": "sigil_09_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 12,
+    "cost_magnitude": 19,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_09_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 12,
+      "cost": 19
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_09_paimon",
+    "sfx_hook": "sfx.sigil_09_paimon",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Paimon"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_10_buer",
+    "order": 10,
+    "name": "Buer",
+    "historical_rank": "President",
+    "effect_id": "sigil_10_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 19,
+    "cost_magnitude": 13,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_10_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 19,
+      "cost": 13
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_10_buer",
+    "sfx_hook": "sfx.sigil_10_buer",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Buer"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_11_gusion",
+    "order": 11,
+    "name": "Gusion",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_11_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 7,
+    "cost_magnitude": 7,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_11_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 7,
+      "cost": 7
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_11_gusion",
+    "sfx_hook": "sfx.sigil_11_gusion",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Gusion"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_12_sitri",
+    "order": 12,
+    "name": "Sitri",
+    "historical_rank": "Prince",
+    "effect_id": "sigil_12_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 14,
+    "cost_magnitude": 18,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_12_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 14,
+      "cost": 18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_12_sitri",
+    "sfx_hook": "sfx.sigil_12_sitri",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Sitri"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_13_beleth",
+    "order": 13,
+    "name": "Beleth",
+    "historical_rank": "King",
+    "effect_id": "sigil_13_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 21,
+    "cost_magnitude": 12,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_13_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 21,
+      "cost": 12
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_13_beleth",
+    "sfx_hook": "sfx.sigil_13_beleth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Beleth"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_14_leraje",
+    "order": 14,
+    "name": "Leraje",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_14_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 9,
+    "cost_magnitude": 6,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_14_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 9,
+      "cost": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_14_leraje",
+    "sfx_hook": "sfx.sigil_14_leraje",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Leraje"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_15_eligos",
+    "order": 15,
+    "name": "Eligos",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_15_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 16,
+    "cost_magnitude": 17,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_15_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 16,
+      "cost": 17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_15_eligos",
+    "sfx_hook": "sfx.sigil_15_eligos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Eligos"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_16_zepar",
+    "order": 16,
+    "name": "Zepar",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_16_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 23,
+    "cost_magnitude": 11,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_16_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 23,
+      "cost": 11
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_16_zepar",
+    "sfx_hook": "sfx.sigil_16_zepar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Zepar"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_17_botis",
+    "order": 17,
+    "name": "Botis",
+    "historical_rank": "President / Earl",
+    "effect_id": "sigil_17_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 11,
+    "cost_magnitude": 5,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_17_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 11,
+      "cost": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_17_botis",
+    "sfx_hook": "sfx.sigil_17_botis",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Botis"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_18_bathin",
+    "order": 18,
+    "name": "Bathin",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_18_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 18,
+    "cost_magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_18_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 18,
+      "cost": 16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_18_bathin",
+    "sfx_hook": "sfx.sigil_18_bathin",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Bathin"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_19_sallos",
+    "order": 19,
+    "name": "Sallos",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_19_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 6,
+    "cost_magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_19_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 6,
+      "cost": 10
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_19_sallos",
+    "sfx_hook": "sfx.sigil_19_sallos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Sallos"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_20_purson",
+    "order": 20,
+    "name": "Purson",
+    "historical_rank": "King",
+    "effect_id": "sigil_20_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 13,
+    "cost_magnitude": 21,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_20_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 13,
+      "cost": 21
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_20_purson",
+    "sfx_hook": "sfx.sigil_20_purson",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Purson"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_21_marax",
+    "order": 21,
+    "name": "Marax",
+    "historical_rank": "Earl / President",
+    "effect_id": "sigil_21_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 20,
+    "cost_magnitude": 15,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_21_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 20,
+      "cost": 15
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_21_marax",
+    "sfx_hook": "sfx.sigil_21_marax",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Marax"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_22_ipos",
+    "order": 22,
+    "name": "Ipos",
+    "historical_rank": "Prince / Earl",
+    "effect_id": "sigil_22_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 8,
+    "cost_magnitude": 9,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_22_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 8,
+      "cost": 9
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_22_ipos",
+    "sfx_hook": "sfx.sigil_22_ipos",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Ipos"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_23_aim",
+    "order": 23,
+    "name": "Aim",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_23_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 15,
+    "cost_magnitude": 20,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_23_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 15,
+      "cost": 20
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_23_aim",
+    "sfx_hook": "sfx.sigil_23_aim",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Aim"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_24_naberius",
+    "order": 24,
+    "name": "Naberius",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_24_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 22,
+    "cost_magnitude": 14,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_24_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 22,
+      "cost": 14
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_24_naberius",
+    "sfx_hook": "sfx.sigil_24_naberius",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Naberius"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_25_glasya_labolas",
+    "order": 25,
+    "name": "Glasya-Labolas",
+    "historical_rank": "President / Earl",
+    "effect_id": "sigil_25_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 10,
+    "cost_magnitude": 8,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_25_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 10,
+      "cost": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_25_glasya_labolas",
+    "sfx_hook": "sfx.sigil_25_glasya_labolas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Glasya-Labolas"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_26_bune",
+    "order": 26,
+    "name": "Bune",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_26_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 17,
+    "cost_magnitude": 19,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_26_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 17,
+      "cost": 19
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_26_bune",
+    "sfx_hook": "sfx.sigil_26_bune",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Bune"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_27_ronove",
+    "order": 27,
+    "name": "Ronove",
+    "historical_rank": "Marquis / Earl",
+    "effect_id": "sigil_27_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 24,
+    "cost_magnitude": 13,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_27_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 24,
+      "cost": 13
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_27_ronove",
+    "sfx_hook": "sfx.sigil_27_ronove",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Ronove"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_28_berith",
+    "order": 28,
+    "name": "Berith",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_28_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 12,
+    "cost_magnitude": 7,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_28_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 12,
+      "cost": 7
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_28_berith",
+    "sfx_hook": "sfx.sigil_28_berith",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Berith"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_29_astaroth",
+    "order": 29,
+    "name": "Astaroth",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_29_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 19,
+    "cost_magnitude": 18,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_29_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 19,
+      "cost": 18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_29_astaroth",
+    "sfx_hook": "sfx.sigil_29_astaroth",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Astaroth"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_30_forneus",
+    "order": 30,
+    "name": "Forneus",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_30_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 7,
+    "cost_magnitude": 12,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_30_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 7,
+      "cost": 12
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_30_forneus",
+    "sfx_hook": "sfx.sigil_30_forneus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Forneus"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_31_foras",
+    "order": 31,
+    "name": "Foras",
+    "historical_rank": "President",
+    "effect_id": "sigil_31_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 14,
+    "cost_magnitude": 6,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_31_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 14,
+      "cost": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_31_foras",
+    "sfx_hook": "sfx.sigil_31_foras",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Foras"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_32_asmoday",
+    "order": 32,
+    "name": "Asmoday",
+    "historical_rank": "King",
+    "effect_id": "sigil_32_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 21,
+    "cost_magnitude": 17,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_32_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 21,
+      "cost": 17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_32_asmoday",
+    "sfx_hook": "sfx.sigil_32_asmoday",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Asmoday"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_33_gaap",
+    "order": 33,
+    "name": "Gaap",
+    "historical_rank": "President / Prince",
+    "effect_id": "sigil_33_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 9,
+    "cost_magnitude": 11,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_33_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 9,
+      "cost": 11
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_33_gaap",
+    "sfx_hook": "sfx.sigil_33_gaap",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Gaap"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_34_furfur",
+    "order": 34,
+    "name": "Furfur",
+    "historical_rank": "Earl",
+    "effect_id": "sigil_34_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 16,
+    "cost_magnitude": 5,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_34_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 16,
+      "cost": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_34_furfur",
+    "sfx_hook": "sfx.sigil_34_furfur",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Furfur"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_35_marchosias",
+    "order": 35,
+    "name": "Marchosias",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_35_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 23,
+    "cost_magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_35_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 23,
+      "cost": 16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_35_marchosias",
+    "sfx_hook": "sfx.sigil_35_marchosias",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Marchosias"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_36_stolas",
+    "order": 36,
+    "name": "Stolas",
+    "historical_rank": "Prince",
+    "effect_id": "sigil_36_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 11,
+    "cost_magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_36_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 11,
+      "cost": 10
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_36_stolas",
+    "sfx_hook": "sfx.sigil_36_stolas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Stolas"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_37_phenex",
+    "order": 37,
+    "name": "Phenex",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_37_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 18,
+    "cost_magnitude": 21,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_37_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 18,
+      "cost": 21
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_37_phenex",
+    "sfx_hook": "sfx.sigil_37_phenex",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Phenex"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_38_halphas",
+    "order": 38,
+    "name": "Halphas",
+    "historical_rank": "Earl",
+    "effect_id": "sigil_38_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 6,
+    "cost_magnitude": 15,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_38_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 6,
+      "cost": 15
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_38_halphas",
+    "sfx_hook": "sfx.sigil_38_halphas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Halphas"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_39_malphas",
+    "order": 39,
+    "name": "Malphas",
+    "historical_rank": "President",
+    "effect_id": "sigil_39_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 13,
+    "cost_magnitude": 9,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_39_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 13,
+      "cost": 9
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_39_malphas",
+    "sfx_hook": "sfx.sigil_39_malphas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Malphas"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_40_raum",
+    "order": 40,
+    "name": "Raum",
+    "historical_rank": "Earl",
+    "effect_id": "sigil_40_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 20,
+    "cost_magnitude": 20,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_40_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 20,
+      "cost": 20
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_40_raum",
+    "sfx_hook": "sfx.sigil_40_raum",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Raum"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_41_focalor",
+    "order": 41,
+    "name": "Focalor",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_41_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 8,
+    "cost_magnitude": 14,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_41_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 8,
+      "cost": 14
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_41_focalor",
+    "sfx_hook": "sfx.sigil_41_focalor",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Focalor"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_42_vepar",
+    "order": 42,
+    "name": "Vepar",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_42_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 15,
+    "cost_magnitude": 8,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_42_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 15,
+      "cost": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_42_vepar",
+    "sfx_hook": "sfx.sigil_42_vepar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Vepar"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_43_sabnock",
+    "order": 43,
+    "name": "Sabnock",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_43_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 22,
+    "cost_magnitude": 19,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_43_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 22,
+      "cost": 19
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_43_sabnock",
+    "sfx_hook": "sfx.sigil_43_sabnock",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Sabnock"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_44_shax",
+    "order": 44,
+    "name": "Shax",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_44_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 10,
+    "cost_magnitude": 13,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_44_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 10,
+      "cost": 13
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_44_shax",
+    "sfx_hook": "sfx.sigil_44_shax",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Shax"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_45_vine",
+    "order": 45,
+    "name": "Vine",
+    "historical_rank": "King / Earl",
+    "effect_id": "sigil_45_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 17,
+    "cost_magnitude": 7,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_45_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 17,
+      "cost": 7
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_45_vine",
+    "sfx_hook": "sfx.sigil_45_vine",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Vine"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_46_bifrons",
+    "order": 46,
+    "name": "Bifrons",
+    "historical_rank": "Earl",
+    "effect_id": "sigil_46_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 24,
+    "cost_magnitude": 18,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_46_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 24,
+      "cost": 18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_46_bifrons",
+    "sfx_hook": "sfx.sigil_46_bifrons",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Bifrons"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_47_uvall",
+    "order": 47,
+    "name": "Uvall",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_47_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 12,
+    "cost_magnitude": 12,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_47_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 12,
+      "cost": 12
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_47_uvall",
+    "sfx_hook": "sfx.sigil_47_uvall",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Uvall"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_48_haagenti",
+    "order": 48,
+    "name": "Haagenti",
+    "historical_rank": "President",
+    "effect_id": "sigil_48_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 19,
+    "cost_magnitude": 6,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_48_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 19,
+      "cost": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_48_haagenti",
+    "sfx_hook": "sfx.sigil_48_haagenti",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Haagenti"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_49_crocell",
+    "order": 49,
+    "name": "Crocell",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_49_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 7,
+    "cost_magnitude": 17,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_49_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 7,
+      "cost": 17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_49_crocell",
+    "sfx_hook": "sfx.sigil_49_crocell",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Crocell"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_50_furcas",
+    "order": 50,
+    "name": "Furcas",
+    "historical_rank": "Knight",
+    "effect_id": "sigil_50_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 14,
+    "cost_magnitude": 11,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_50_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 14,
+      "cost": 11
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_50_furcas",
+    "sfx_hook": "sfx.sigil_50_furcas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Furcas"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_51_balam",
+    "order": 51,
+    "name": "Balam",
+    "historical_rank": "King",
+    "effect_id": "sigil_51_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 21,
+    "cost_magnitude": 5,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_51_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 21,
+      "cost": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_51_balam",
+    "sfx_hook": "sfx.sigil_51_balam",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Balam"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_52_alloces",
+    "order": 52,
+    "name": "Alloces",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_52_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 9,
+    "cost_magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_52_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 9,
+      "cost": 16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_52_alloces",
+    "sfx_hook": "sfx.sigil_52_alloces",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Alloces"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_53_caim",
+    "order": 53,
+    "name": "Caim",
+    "historical_rank": "President",
+    "effect_id": "sigil_53_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 16,
+    "cost_magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_53_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 16,
+      "cost": 10
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_53_caim",
+    "sfx_hook": "sfx.sigil_53_caim",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Caim"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_54_murmur",
+    "order": 54,
+    "name": "Murmur",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_54_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 23,
+    "cost_magnitude": 21,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_54_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 23,
+      "cost": 21
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_54_murmur",
+    "sfx_hook": "sfx.sigil_54_murmur",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Murmur"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_55_orobas",
+    "order": 55,
+    "name": "Orobas",
+    "historical_rank": "Prince",
+    "effect_id": "sigil_55_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 11,
+    "cost_magnitude": 15,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_55_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 11,
+      "cost": 15
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_55_orobas",
+    "sfx_hook": "sfx.sigil_55_orobas",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Orobas"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_56_gremory",
+    "order": 56,
+    "name": "Gremory",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_56_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 18,
+    "cost_magnitude": 9,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_56_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 18,
+      "cost": 9
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_56_gremory",
+    "sfx_hook": "sfx.sigil_56_gremory",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Gremory"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_57_ose",
+    "order": 57,
+    "name": "Ose",
+    "historical_rank": "President",
+    "effect_id": "sigil_57_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 6,
+    "cost_magnitude": 20,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_57_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 6,
+      "cost": 20
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_57_ose",
+    "sfx_hook": "sfx.sigil_57_ose",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Ose"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_58_amy",
+    "order": 58,
+    "name": "Amy",
+    "historical_rank": "President",
+    "effect_id": "sigil_58_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 13,
+    "cost_magnitude": 14,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_58_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 13,
+      "cost": 14
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_58_amy",
+    "sfx_hook": "sfx.sigil_58_amy",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Amy"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_59_orias",
+    "order": 59,
+    "name": "Orias",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_59_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 20,
+    "cost_magnitude": 8,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_59_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 20,
+      "cost": 8
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_59_orias",
+    "sfx_hook": "sfx.sigil_59_orias",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Orias"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_60_vapula",
+    "order": 60,
+    "name": "Vapula",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_60_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 8,
+    "cost_magnitude": 19,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_60_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 8,
+      "cost": 19
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_60_vapula",
+    "sfx_hook": "sfx.sigil_60_vapula",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Vapula"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_61_zagan",
+    "order": 61,
+    "name": "Zagan",
+    "historical_rank": "King / President",
+    "effect_id": "sigil_61_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 15,
+    "cost_magnitude": 13,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_61_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 15,
+      "cost": 13
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_61_zagan",
+    "sfx_hook": "sfx.sigil_61_zagan",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Zagan"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_62_valac",
+    "order": 62,
+    "name": "Valac",
+    "historical_rank": "President",
+    "effect_id": "sigil_62_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 22,
+    "cost_magnitude": 7,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_62_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 22,
+      "cost": 7
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_62_valac",
+    "sfx_hook": "sfx.sigil_62_valac",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Valac"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_63_andras",
+    "order": 63,
+    "name": "Andras",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_63_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 10,
+    "cost_magnitude": 18,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_63_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 10,
+      "cost": 18
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_63_andras",
+    "sfx_hook": "sfx.sigil_63_andras",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Andras"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_64_haures",
+    "order": 64,
+    "name": "Haures",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_64_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 17,
+    "cost_magnitude": 12,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_64_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 17,
+      "cost": 12
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_64_haures",
+    "sfx_hook": "sfx.sigil_64_haures",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Haures"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_65_andrealphus",
+    "order": 65,
+    "name": "Andrealphus",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_65_authority",
+    "dominium": "authority",
+    "pretium": "focus",
+    "boon_magnitude": 24,
+    "cost_magnitude": 6,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_65_authority",
+      "dominium": "authority",
+      "pretium": "focus",
+      "boon": 24,
+      "cost": 6
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_65_andrealphus",
+    "sfx_hook": "sfx.sigil_65_andrealphus",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Andrealphus"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_66_cimejes",
+    "order": 66,
+    "name": "Cimejes",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_66_secret",
+    "dominium": "secret",
+    "pretium": "curse",
+    "boon_magnitude": 12,
+    "cost_magnitude": 17,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_66_secret",
+      "dominium": "secret",
+      "pretium": "curse",
+      "boon": 12,
+      "cost": 17
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_66_cimejes",
+    "sfx_hook": "sfx.sigil_66_cimejes",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Cimejes"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_67_amdusias",
+    "order": 67,
+    "name": "Amdusias",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_67_mobility",
+    "dominium": "mobility",
+    "pretium": "no_heal",
+    "boon_magnitude": 19,
+    "cost_magnitude": 11,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_67_mobility",
+      "dominium": "mobility",
+      "pretium": "no_heal",
+      "boon": 19,
+      "cost": 11
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_67_amdusias",
+    "sfx_hook": "sfx.sigil_67_amdusias",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Amdusias"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_68_belial",
+    "order": 68,
+    "name": "Belial",
+    "historical_rank": "King",
+    "effect_id": "sigil_68_guard",
+    "dominium": "guard",
+    "pretium": "max_hp",
+    "boon_magnitude": 7,
+    "cost_magnitude": 5,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_68_guard",
+      "dominium": "guard",
+      "pretium": "max_hp",
+      "boon": 7,
+      "cost": 5
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_68_belial",
+    "sfx_hook": "sfx.sigil_68_belial",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Belial"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_69_decarabia",
+    "order": 69,
+    "name": "Decarabia",
+    "historical_rank": "Marquis",
+    "effect_id": "sigil_69_fortune",
+    "dominium": "fortune",
+    "pretium": "threat",
+    "boon_magnitude": 14,
+    "cost_magnitude": 16,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_69_fortune",
+      "dominium": "fortune",
+      "pretium": "threat",
+      "boon": 14,
+      "cost": 16
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_69_decarabia",
+    "sfx_hook": "sfx.sigil_69_decarabia",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Decarabia"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_70_seere",
+    "order": 70,
+    "name": "Seere",
+    "historical_rank": "Prince",
+    "effect_id": "sigil_70_verbum",
+    "dominium": "verbum",
+    "pretium": "talisman_lock",
+    "boon_magnitude": 21,
+    "cost_magnitude": 10,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_70_verbum",
+      "dominium": "verbum",
+      "pretium": "talisman_lock",
+      "boon": 21,
+      "cost": 10
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_70_seere",
+    "sfx_hook": "sfx.sigil_70_seere",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Seere"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_71_dantalion",
+    "order": 71,
+    "name": "Dantalion",
+    "historical_rank": "Duke",
+    "effect_id": "sigil_71_rupture",
+    "dominium": "rupture",
+    "pretium": "essence",
+    "boon_magnitude": 9,
+    "cost_magnitude": 21,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_71_rupture",
+      "dominium": "rupture",
+      "pretium": "essence",
+      "boon": 9,
+      "cost": 21
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_71_dantalion",
+    "sfx_hook": "sfx.sigil_71_dantalion",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Dantalion"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sigil_72_andromalius",
+    "order": 72,
+    "name": "Andromalius",
+    "historical_rank": "Earl",
+    "effect_id": "sigil_72_vision",
+    "dominium": "vision",
+    "pretium": "instrument_charge",
+    "boon_magnitude": 16,
+    "cost_magnitude": 15,
+    "provenance_class": "tradition",
+    "gameplay_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "sigilla",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "sigillum_contract",
+      "effect_id": "sigil_72_vision",
+      "dominium": "vision",
+      "pretium": "instrument_charge",
+      "boon": 16,
+      "cost": 15
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sigil_72_andromalius",
+    "sfx_hook": "sfx.sigil_72_andromalius",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "sigilla",
+      "summary": "Andromalius"
+    },
+    "provenance": {
+      "level": "tradition",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

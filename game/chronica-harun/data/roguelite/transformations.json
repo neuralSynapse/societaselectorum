@@ -1,0 +1,738 @@
+[
+  {
+    "id": "mark_of_cain",
+    "requires": [
+      "cain_mark",
+      "rupture"
+    ],
+    "effect_id": "mark_of_cain_effect",
+    "visual_profile": {
+      "mesh_overlay": "scar_line",
+      "material_shift": "iron_to_ember",
+      "vfx": "red_sparks",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Mark Of Cain",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "mark_of_cain_effect",
+      "requires": [
+        "cain_mark",
+        "rupture"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.mark_of_cain",
+    "sfx_hook": "sfx.mark_of_cain",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Mark Of Cain"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "child_of_flame",
+    "requires": [
+      "black_flame_matrix",
+      "phosphoros_ash"
+    ],
+    "effect_id": "child_of_flame_effect",
+    "visual_profile": {
+      "mesh_overlay": "ember_crown",
+      "material_shift": "charcoal_to_gold",
+      "vfx": "black_flame_veil",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Child Of Flame",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "child_of_flame_effect",
+      "requires": [
+        "black_flame_matrix",
+        "phosphoros_ash"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.child_of_flame",
+    "sfx_hook": "sfx.child_of_flame",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Child Of Flame"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "open_eye",
+    "requires": [
+      "revelatory_eye",
+      "blind_eye"
+    ],
+    "effect_id": "open_eye_effect",
+    "visual_profile": {
+      "mesh_overlay": "third_eye_plate",
+      "material_shift": "ashen_to_cold_gold",
+      "vfx": "iris_scan",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Open Eye",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "open_eye_effect",
+      "requires": [
+        "revelatory_eye",
+        "blind_eye"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.open_eye",
+    "sfx_hook": "sfx.open_eye",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Open Eye"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "sophia_herald",
+    "requires": [
+      "mirror_sophia",
+      "pleroma_fragment"
+    ],
+    "effect_id": "sophia_herald_effect",
+    "visual_profile": {
+      "mesh_overlay": "mirror_shards",
+      "material_shift": "violet_to_pearl",
+      "vfx": "soft_refraction",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Sophia Herald",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "sophia_herald_effect",
+      "requires": [
+        "mirror_sophia",
+        "pleroma_fragment"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.sophia_herald",
+    "sfx_hook": "sfx.sophia_herald",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Sophia Herald"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "verbum_bearer",
+    "requires": [
+      "verbum",
+      "thoth_feather"
+    ],
+    "effect_id": "verbum_bearer_effect",
+    "visual_profile": {
+      "mesh_overlay": "script_band",
+      "material_shift": "ochre_to_ivory",
+      "vfx": "glyph_wave",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Verbum Bearer",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "verbum_bearer_effect",
+      "requires": [
+        "verbum",
+        "thoth_feather"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.verbum_bearer",
+    "sfx_hook": "sfx.verbum_bearer",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Verbum Bearer"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "transmutation_serpent_form",
+    "requires": [
+      "transmutation_serpent",
+      "pharmaka"
+    ],
+    "effect_id": "transmutation_serpent_form_effect",
+    "visual_profile": {
+      "mesh_overlay": "serpent_coil",
+      "material_shift": "copper_to_serpentine",
+      "vfx": "alchemical_mist",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Transmutation Serpent Form",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "transmutation_serpent_form_effect",
+      "requires": [
+        "transmutation_serpent",
+        "pharmaka"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.transmutation_serpent_form",
+    "sfx_hook": "sfx.transmutation_serpent_form",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Transmutation Serpent Form"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "peregrine_vestment",
+    "requires": [
+      "memoria_ignis",
+      "15_stages"
+    ],
+    "effect_id": "peregrine_vestment_effect",
+    "visual_profile": {
+      "mesh_overlay": "pilgrim_cloak",
+      "material_shift": "black_to_old_gold",
+      "vfx": "ember_steps",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Peregrine Vestment",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "peregrine_vestment_effect",
+      "requires": [
+        "memoria_ignis",
+        "15_stages"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.peregrine_vestment",
+    "sfx_hook": "sfx.peregrine_vestment",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Peregrine Vestment"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "archon_mask",
+    "requires": [
+      "sigillum",
+      "pact"
+    ],
+    "effect_id": "archon_mask_effect",
+    "visual_profile": {
+      "mesh_overlay": "archon_mask",
+      "material_shift": "bone_to_obsidian",
+      "vfx": "sigil_orbit",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Archon Mask",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "archon_mask_effect",
+      "requires": [
+        "sigillum",
+        "pact"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.archon_mask",
+    "sfx_hook": "sfx.archon_mask",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Archon Mask"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "legacy_seal",
+    "requires": [
+      "memoria_ignis",
+      "durable_name_guardian"
+    ],
+    "effect_id": "legacy_seal_effect",
+    "visual_profile": {
+      "mesh_overlay": "name_seal",
+      "material_shift": "iron_to_archive_gold",
+      "vfx": "memory_dust",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Legacy Seal",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "legacy_seal_effect",
+      "requires": [
+        "memoria_ignis",
+        "durable_name_guardian"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.legacy_seal",
+    "sfx_hook": "sfx.legacy_seal",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Legacy Seal"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "phosphoros_lamp",
+    "requires": [
+      "instrument_26",
+      "lucifer"
+    ],
+    "effect_id": "phosphoros_lamp_effect",
+    "visual_profile": {
+      "mesh_overlay": "lamp_halo",
+      "material_shift": "dark_to_cold_gold",
+      "vfx": "phosphoros_rays",
+      "emission_cap": 0.34
+    },
+    "provenance_class": "electorum_dramatization",
+    "name": "Phosphoros Lamp",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "phosphoros_lamp_effect",
+      "requires": [
+        "instrument_26",
+        "lucifer"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.phosphoros_lamp",
+    "sfx_hook": "sfx.phosphoros_lamp",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Phosphoros Lamp"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "corpus_ignis",
+    "name": "Corpus Ignis",
+    "requires": [
+      "black_flame_matrix",
+      "phosphoros_ash",
+      "wands"
+    ],
+    "effect_id": "corpus_ignis_effect",
+    "visual_profile": {
+      "mesh_overlay": "ember_skin",
+      "material_shift": "charcoal_to_ember",
+      "vfx": "low_black_flame",
+      "emission_cap": 0.32
+    },
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "corpus_ignis_effect",
+      "requires": [
+        "black_flame_matrix",
+        "phosphoros_ash",
+        "wands"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.corpus_ignis",
+    "sfx_hook": "sfx.corpus_ignis",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Corpus Ignis"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "hand_of_artificer",
+    "name": "Mão do Artífice",
+    "requires": [
+      "hand_of_work",
+      "foundation_hammer",
+      "disks"
+    ],
+    "effect_id": "hand_of_artificer_effect",
+    "visual_profile": {
+      "mesh_overlay": "ritual_gauntlet",
+      "material_shift": "stone_to_burnished_gold",
+      "vfx": "construction_sigils",
+      "emission_cap": 0.28
+    },
+    "provenance_class": "electorum_dramatization",
+    "rarity": "rare",
+    "pool": "transformations",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "transformation",
+      "effect_id": "hand_of_artificer_effect",
+      "requires": [
+        "hand_of_work",
+        "foundation_hammer",
+        "disks"
+      ]
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.hand_of_artificer",
+    "sfx_hook": "sfx.hand_of_artificer",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "transformations",
+      "summary": "Mão do Artífice"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

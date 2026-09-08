@@ -1,0 +1,331 @@
+[
+  {
+    "id": "daimon_lampadary",
+    "name": "Daimon Lampadário",
+    "effect_id": "reveal_secret",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "effect_id": "reveal_secret"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_lampadary",
+    "sfx_hook": "sfx.daimon_lampadary",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "daimones",
+      "summary": "Daimon Lampadário"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "daimon_serpentine",
+    "name": "Daimon Serpentino",
+    "effect_id": "execute_bite",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "effect_id": "execute_bite"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_serpentine",
+    "sfx_hook": "sfx.daimon_serpentine",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "daimones",
+      "summary": "Daimon Serpentino"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "daimon_scribe",
+    "name": "Daimon Escriba",
+    "effect_id": "arcana_echo",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "effect_id": "arcana_echo"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_scribe",
+    "sfx_hook": "sfx.daimon_scribe",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "daimones",
+      "summary": "Daimon Escriba"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "daimon_specular",
+    "name": "Daimon Specular",
+    "effect_id": "attack_echo",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "effect_id": "attack_echo"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_specular",
+    "sfx_hook": "sfx.daimon_specular",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "daimones",
+      "summary": "Daimon Specular"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "daimon_funerary",
+    "name": "Daimon Funerário",
+    "effect_id": "corpse_essence",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "effect_id": "corpse_essence"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_funerary",
+    "sfx_hook": "sfx.daimon_funerary",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "daimones",
+      "summary": "Daimon Funerário"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "daimon_saturnine",
+    "name": "Daimon Saturnino",
+    "effect_id": "projectile_intercept",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "effect_id": "projectile_intercept"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_saturnine",
+    "sfx_hook": "sfx.daimon_saturnine",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "daimones",
+      "summary": "Daimon Saturnino"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  },
+  {
+    "id": "daimon_solar",
+    "name": "Daimon Solar",
+    "effect_id": "curse_purge",
+    "provenance_class": "electorum_dramatization",
+    "rarity": "common",
+    "pool": "daimones",
+    "eligibility": {
+      "min_stage": 0,
+      "min_cycle": 0,
+      "requires_tags": [],
+      "forbids_tags": []
+    },
+    "effect": {
+      "kind": "daimon_action",
+      "effect_id": "curse_purge"
+    },
+    "cost": {
+      "resource": "none",
+      "amount": 0
+    },
+    "duration": {
+      "mode": "instant",
+      "seconds": 0,
+      "rooms": 0
+    },
+    "stacking": {
+      "mode": "none",
+      "max_stacks": 1
+    },
+    "synergies": [],
+    "exclusions": [],
+    "vfx_hook": "vfx.daimon_solar",
+    "sfx_hook": "sfx.daimon_solar",
+    "save_state": {
+      "scope": "run",
+      "persist": true
+    },
+    "codex": {
+      "category": "daimones",
+      "summary": "Daimon Solar"
+    },
+    "provenance": {
+      "level": "electorum_dramatization",
+      "source": "Cânone CHRONICA HARUN; efeito de gameplay é dramatização Electorum."
+    }
+  }
+]

@@ -1,0 +1,2993 @@
+{
+  "work": "CHRONICA HARUN",
+  "version": "2.0.0",
+  "canonized_at": "2026-09-07",
+  "real_author_credit": "Frater Horus Phosphorus",
+  "harun_is_character": true,
+  "canon_rules": {
+    "mode": "first_person_fps_roguelite",
+    "first_view_prologue_minutes": [
+      7,
+      9
+    ],
+    "skip_rule": "unlocks_after_first_prologue_completion",
+    "institutional_progression_write": false,
+    "provenance_classes": [
+      "source",
+      "tradition",
+      "interpretation",
+      "electorum_dramatization"
+    ],
+    "fictional_truths": [
+      "harun_direct_cain_lineage",
+      "luciferian_light_within_yaldabaoth_as_electorum_synthesis",
+      "lilith_before_eve_in_game_arc",
+      "grimorium_ascensionis_as_story_artifact"
+    ],
+    "source_integrity": [
+      "do_not_merge_sethian_and_valentinian_maps_as_one",
+      "do_not_universalize_archon_lists",
+      "do_not_moralize_sophia",
+      "do_not_blame_eve",
+      "do_not_glorify_cain_by_erasing_abel"
+    ],
+    "choice_rule": "Decisões narrativas da Jornada nunca exibem uma opção marcada como moralmente correta; estratégia e caráter emergem do custo assumido."
+  },
+  "prologue": [
+    {
+      "id": "before_dark",
+      "order": 0,
+      "title": "ANTES DO ESCURO",
+      "anchor": "Antes do primeiro céu, não havia lugar para onde cair.",
+      "narration": "Antes da distância, antes do peso, antes do nome, não havia um vazio esperando ser preenchido. Não havia sequer um fora. O que viria a ser chamado de existência ainda não havia aprendido a separar presença de ausência. E então, sem ruído, a possibilidade de perceber a si mesma surgiu.",
+      "visual": {
+        "scale": "pre-spatial",
+        "camera": "sem horizonte; pontos de referência recusados",
+        "key_images": [
+          "ausência de estrelas",
+          "geometria que só aparece quando o olhar tenta fixá-la"
+        ],
+        "rule_change": "nenhuma interface; nenhum retículo"
+      },
+      "audio": {
+        "music": "nenhuma",
+        "ambience": "pressão sub-audível e respiração espectral quase imperceptível",
+        "event": "um único harmônico nasce no último segundo"
+      },
+      "emotion": [
+        "assombro",
+        "desorientação",
+        "expectativa"
+      ],
+      "strategy": "Ensina que o jogador não deve confiar apenas em objetos visíveis: ausência, silêncio e mudança de regra também comunicam informação.",
+      "provenance": {
+        "primary_class": "interpretation",
+        "source_note": "Abertura poética contemporânea para introduzir a Fonte sem antropomorfização."
+      },
+      "duration_seconds": 20,
+      "tension": 0.1,
+      "cinematic_hook": "A imagem recusa até a ideia de vazio; algo parece observar antes de existir olhos.",
+      "exit_image": "Um único ponto impossível dobra a ausência ao redor de si.",
+      "player_learning": "Ausência e silêncio também são informação.",
+      "voiceover": [
+        "Antes do primeiro céu, não havia lugar para onde cair.",
+        "Não havia noite. Não havia distância. Não havia um fora.",
+        "Então a existência cometeu seu primeiro ato: percebeu a si mesma."
+      ],
+      "emotion_pivot": "cosmic_escalation",
+      "shots": [
+        {
+          "id": "before_dark_shot_01_refuse_horizon",
+          "duration_seconds": 3.6,
+          "camera": "sem horizonte; pontos de referência recusados; beat 1/5; slow hold",
+          "visual_event": "A imagem recusa até a ideia de vazio; algo parece observar antes de existir olhos.",
+          "audio_event": "pressão sub-audível e respiração espectral quase imperceptível",
+          "transition": "fade_from_black",
+          "tension": 0.01,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "before_dark_shot_02_hint_observer",
+          "duration_seconds": 4.4,
+          "camera": "sem horizonte; pontos de referência recusados; beat 2/5; controlled reveal",
+          "visual_event": "ausência de estrelas",
+          "audio_event": "nenhuma",
+          "transition": "match_cut",
+          "tension": 0.06,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "before_dark_shot_03_fold_absence",
+          "duration_seconds": 4.4,
+          "camera": "sem horizonte; pontos de referência recusados; beat 3/5; controlled reveal",
+          "visual_event": "geometria que só aparece quando o olhar tenta fixá-la",
+          "audio_event": "um único harmônico nasce no último segundo",
+          "transition": "slow_dissolve",
+          "tension": 0.1,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "before_dark_shot_04_birth_harmonic",
+          "duration_seconds": 4.0,
+          "camera": "sem horizonte; pontos de referência recusados; beat 4/5; controlled reveal",
+          "visual_event": "ausência de estrelas",
+          "audio_event": "nenhuma",
+          "transition": "hard_reframe",
+          "tension": 0.15,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "before_dark_shot_05_reveal_point",
+          "duration_seconds": 3.6,
+          "camera": "sem horizonte; pontos de referência recusados; beat 5/5; slow hold",
+          "visual_event": "Um único ponto impossível dobra a ausência ao redor de si.",
+          "audio_event": "um único harmônico nasce no último segundo",
+          "transition": "motivated_cut",
+          "tension": 0.19,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "pleroma",
+      "order": 1,
+      "title": "A PLENITUDE",
+      "anchor": "A plenitude não ocupava o infinito. O infinito ainda era pequeno demais para contê-la.",
+      "narration": "O Primeiro Pensamento tornou-se relação. Barbelo. A inteligência organizadora respondeu. Autogenes. E a plenitude deixou de parecer imóvel: Harmozel, Oroiael, Daveithai e Eleleth abriram domínios que não eram salas, mas maneiras de existir. Nada disputava o centro porque ainda não havia necessidade de centro.",
+      "visual": {
+        "scale": "metacosmic",
+        "camera": "travessia lenta entre campos não antropomórficos",
+        "key_images": [
+          "Barbelo como autoexpressão impossível de ver por um ângulo",
+          "Autogenes como geometria auto-organizante",
+          "quatro Luminares monumentalmente distintos"
+        ],
+        "rule_change": "cada Luminar altera discretamente perspectiva, tempo visual e densidade"
+      },
+      "audio": {
+        "music": "coro sem palavras, intervalos consonantes incompletos",
+        "ambience": "camadas harmônicas associadas a cada Luminar",
+        "event": "os quatro motivos se resolvem sem uníssono"
+      },
+      "emotion": [
+        "sublime",
+        "segurança",
+        "mistério"
+      ],
+      "strategy": "Apresenta relações e domínios antes de nomes; o Codex recebe os nomes e a proveniência quando cada forma é percebida.",
+      "provenance": {
+        "primary_class": "source",
+        "source_note": "Mapa sethiano simplificado: Espírito Invisível, Barbelo, Autogenes e quatro Luminares; não tratado como mapa universal de todas as tradições."
+      },
+      "duration_seconds": 36,
+      "tension": 0.22,
+      "cinematic_hook": "A plenitude nasce como relações vivas, bela demais para parecer arquitetura.",
+      "exit_image": "Eleleth permanece alguns instantes depois dos demais, como se algo estivesse prestes a ultrapassar sua borda.",
+      "player_learning": "Reconheça relações antes de decorar nomes.",
+      "voiceover": [
+        "O Primeiro Pensamento tornou-se relação, e a relação recebeu um nome: Barbelo.",
+        "Autogenes respondeu, e a plenitude floresceu sem precisar de centro.",
+        "Harmozel. Oroiael. Daveithai. Eleleth. Quatro modos de existir antes que existisse mundo."
+      ],
+      "emotion_pivot": "cosmic_escalation",
+      "shots": [
+        {
+          "id": "pleroma_shot_01_barbelo_relation",
+          "duration_seconds": 6.48,
+          "camera": "travessia lenta entre campos não antropomórficos; beat 1/5; slow hold",
+          "visual_event": "A plenitude nasce como relações vivas, bela demais para parecer arquitetura.",
+          "audio_event": "camadas harmônicas associadas a cada Luminar",
+          "transition": "fade_from_black",
+          "tension": 0.13,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "pleroma_shot_02_autogenes_order",
+          "duration_seconds": 7.92,
+          "camera": "travessia lenta entre campos não antropomórficos; beat 2/5; controlled reveal",
+          "visual_event": "Barbelo como autoexpressão impossível de ver por um ângulo",
+          "audio_event": "coro sem palavras, intervalos consonantes incompletos",
+          "transition": "match_cut",
+          "tension": 0.17,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "pleroma_shot_03_luminary_harmozel",
+          "duration_seconds": 7.92,
+          "camera": "travessia lenta entre campos não antropomórficos; beat 3/5; controlled reveal",
+          "visual_event": "Autogenes como geometria auto-organizante",
+          "audio_event": "os quatro motivos se resolvem sem uníssono",
+          "transition": "slow_dissolve",
+          "tension": 0.22,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "pleroma_shot_04_luminaries_expand",
+          "duration_seconds": 7.2,
+          "camera": "travessia lenta entre campos não antropomórficos; beat 4/5; controlled reveal",
+          "visual_event": "quatro Luminares monumentalmente distintos",
+          "audio_event": "coro sem palavras, intervalos consonantes incompletos",
+          "transition": "hard_reframe",
+          "tension": 0.27,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "pleroma_shot_05_hold_eleleth",
+          "duration_seconds": 6.48,
+          "camera": "travessia lenta entre campos não antropomórficos; beat 5/5; slow hold",
+          "visual_event": "Eleleth permanece alguns instantes depois dos demais, como se algo estivesse prestes a ultrapassar sua borda.",
+          "audio_event": "os quatro motivos se resolvem sem uníssono",
+          "transition": "motivated_cut",
+          "tension": 0.31,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "sophia_at_edge",
+      "order": 2,
+      "title": "SOPHIA NA BORDA",
+      "anchor": "Sabedoria também pode produzir aquilo que não sabe sustentar.",
+      "narration": "Em Eleleth, Sophia contemplou a própria potência. Não desejou o mal. Desejou criar. Mas desejo, origem e relação deixaram de coincidir. Uma única frequência desapareceu da plenitude. Ninguém gritou. O silêncio foi pior. Sophia estendeu a vontade para onde a harmonia já não podia acompanhá-la, e aquilo que nasceu levou consigo poder suficiente para existir, mas não memória suficiente para compreender de onde viera.",
+      "visual": {
+        "scale": "pleromatic_edge",
+        "camera": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada",
+        "key_images": [
+          "fio causal se separando sem romper por completo",
+          "campo de Sophia perde simetria",
+          "produto lançado para região inferior"
+        ],
+        "rule_change": "uma cor e uma frequência são removidas da cena inteira"
+      },
+      "audio": {
+        "music": "harmonia pleromática perde uma nota central",
+        "ambience": "pulso de Sophia desacelera",
+        "event": "silêncio absoluto no instante da produção"
+      },
+      "emotion": [
+        "tragédia",
+        "temor",
+        "compaixão"
+      ],
+      "strategy": "A cena codifica a diferença entre autonomia e cegueira de origem: criar exige reconhecer relações, limites e consequências.",
+      "provenance": {
+        "primary_class": "source",
+        "source_note": "Sophia pertence à ordem aeônica e produz sem concordância/consorte na recensão usada como eixo; a linguagem emocional é dramatização."
+      },
+      "duration_seconds": 36,
+      "tension": 0.48,
+      "cinematic_hook": "Uma única frequência desaparece do coro; ninguém percebe imediatamente, exceto Sophia.",
+      "exit_image": "Um fio de luz atravessa a borda e continua vibrando, embora já não pertença inteiramente ao Pleroma.",
+      "player_learning": "Potência sem relação pode produzir consequências além da intenção.",
+      "voiceover": [
+        "Sophia não desejou o mal. Desejou criar.",
+        "Mas desejo, origem e relação deixaram de coincidir.",
+        "Ela estendeu a vontade além da harmonia, e algo nasceu poderoso demais para desaparecer.",
+        "Poderoso demais também para lembrar de onde viera."
+      ],
+      "emotion_pivot": "cosmic_escalation",
+      "shots": [
+        {
+          "id": "sophia_at_edge_shot_01_sophia_contour",
+          "duration_seconds": 6.48,
+          "camera": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 1/5; slow hold",
+          "visual_event": "Uma única frequência desaparece do coro; ninguém percebe imediatamente, exceto Sophia.",
+          "audio_event": "pulso de Sophia desacelera",
+          "transition": "fade_from_black",
+          "tension": 0.39,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "sophia_at_edge_shot_02_missing_frequency",
+          "duration_seconds": 7.92,
+          "camera": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 2/5; controlled reveal",
+          "visual_event": "fio causal se separando sem romper por completo",
+          "audio_event": "harmonia pleromática perde uma nota central",
+          "transition": "match_cut",
+          "tension": 0.43,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "sophia_at_edge_shot_03_will_extends",
+          "duration_seconds": 7.92,
+          "camera": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 3/5; controlled reveal",
+          "visual_event": "campo de Sophia perde simetria",
+          "audio_event": "silêncio absoluto no instante da produção",
+          "transition": "slow_dissolve",
+          "tension": 0.48,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "sophia_at_edge_shot_04_relation_breaks",
+          "duration_seconds": 7.2,
+          "camera": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 4/5; controlled reveal",
+          "visual_event": "produto lançado para região inferior",
+          "audio_event": "harmonia pleromática perde uma nota central",
+          "transition": "hard_reframe",
+          "tension": 0.53,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "sophia_at_edge_shot_05_birth_falls",
+          "duration_seconds": 6.48,
+          "camera": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 5/5; slow hold",
+          "visual_event": "Um fio de luz atravessa a borda e continua vibrando, embora já não pertença inteiramente ao Pleroma.",
+          "audio_event": "silêncio absoluto no instante da produção",
+          "transition": "motivated_cut",
+          "tension": 0.57,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "first_scream",
+      "order": 3,
+      "title": "O PRIMEIRO GRITO",
+      "anchor": "Ele abriu os olhos antes de saber que olhos serviam para ver.",
+      "narration": "A criatura caiu para uma região que julgou ser tudo. Fogo correu por uma anatomia que ainda não possuía nome: leão, serpente, fome, autoridade. Yaldabaoth respirou. Seu primeiro fôlego queimou a névoa que o escondia; seu primeiro grito virou trovão; o trovão virou ordem. Ele procurou acima. Não viu. Procurou além. Não compreendeu. E confundiu o limite da própria percepção com o limite do real.",
+      "visual": {
+        "scale": "monumental_birth",
+        "camera": "muito próxima da superfície leonino-serpentina antes de revelar escala",
+        "key_images": [
+          "olho abre no escuro",
+          "fogo interno sob pele mineral",
+          "nuvem luminosa como prisão/berço"
+        ],
+        "rule_change": "a perspectiva ganha gravidade e horizonte pela primeira vez"
+      },
+      "audio": {
+        "music": "subgrave irregular",
+        "ambience": "fogo interno, pedra tensionando, respiração impossível",
+        "event": "grito se transforma em pulso arquitetônico"
+      },
+      "emotion": [
+        "terror",
+        "pena",
+        "ameaça"
+      ],
+      "strategy": "Ensina a origem do erro central do antagonismo arcôntico: informação parcial pode parecer total quando nada contradiz o observador.",
+      "provenance": {
+        "primary_class": "source",
+        "source_note": "Yaldabaoth como produto de Sophia, forma leonino-serpentina/fogo e ignorância do superior; encenação é Electorum."
+      },
+      "duration_seconds": 34,
+      "tension": 0.78,
+      "cinematic_hook": "Yaldabaoth abre os olhos antes de compreender visão; o primeiro grito vira trovão e depois comando.",
+      "exit_image": "O trovão cessa e a criatura percebe apenas o próprio domínio refletido em todas as direções.",
+      "player_learning": "O ataque mais perigoso pode nascer de percepção incompleta tratada como certeza.",
+      "voiceover": [
+        "Ele abriu os olhos antes de saber que olhos serviam para ver.",
+        "Leão. Serpente. Fogo. Fome. Nenhum nome bastava.",
+        "Seu primeiro grito virou trovão. O trovão virou ordem.",
+        "E a primeira mentira nasceu sem intenção: não vejo nada acima de mim, portanto nada existe acima de mim."
+      ],
+      "emotion_pivot": "cosmic_escalation",
+      "shots": [
+        {
+          "id": "first_scream_shot_01_impact_mist",
+          "duration_seconds": 6.12,
+          "camera": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 1/5; slow hold",
+          "visual_event": "Yaldabaoth abre os olhos antes de compreender visão; o primeiro grito vira trovão e depois comando.",
+          "audio_event": "fogo interno, pedra tensionando, respiração impossível",
+          "transition": "fade_from_black",
+          "tension": 0.69,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "first_scream_shot_02_anatomy_assembles",
+          "duration_seconds": 7.48,
+          "camera": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 2/5; controlled reveal",
+          "visual_event": "olho abre no escuro",
+          "audio_event": "subgrave irregular",
+          "transition": "match_cut",
+          "tension": 0.73,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "first_scream_shot_03_first_breath",
+          "duration_seconds": 7.48,
+          "camera": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 3/5; controlled reveal",
+          "visual_event": "fogo interno sob pele mineral",
+          "audio_event": "grito se transforma em pulso arquitetônico",
+          "transition": "slow_dissolve",
+          "tension": 0.78,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "first_scream_shot_04_first_scream",
+          "duration_seconds": 6.8,
+          "camera": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 4/5; controlled reveal",
+          "visual_event": "nuvem luminosa como prisão/berço",
+          "audio_event": "subgrave irregular",
+          "transition": "hard_reframe",
+          "tension": 0.83,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "first_scream_shot_05_authority_pulse",
+          "duration_seconds": 6.12,
+          "camera": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 5/5; slow hold",
+          "visual_event": "O trovão cessa e a criatura percebe apenas o próprio domínio refletido em todas as direções.",
+          "audio_event": "grito se transforma em pulso arquitetônico",
+          "transition": "motivated_cut",
+          "tension": 0.87,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "blind_god",
+      "order": 4,
+      "title": "O DEUS QUE NÃO SABIA QUE ERA FILHO",
+      "anchor": "A pior prisão é feita por quem acredita que não existe lado de fora.",
+      "narration": "Yaldabaoth fez o que poderes fazem quando confundem alcance com absoluto: multiplicou a própria certeza. Autoridades nasceram. Governos receberam funções. Esferas receberam limites. Listas divergentes atravessam a visão como documentos incompatíveis — sete, doze, trezentos e sessenta e cinco — porque nenhuma testemunha antiga deixou um organograma único para satisfazer leitores futuros. O jogo escolhe uma arquitetura. O Codex preserva a divergência.",
+      "visual": {
+        "scale": "archontic_multiplication",
+        "camera": "órbita entre autoridades em formação sem transformar lista em desfile escolar",
+        "key_images": [
+          "selos se multiplicam",
+          "tronos vazios recebem funções",
+          "linhas de governo fecham circuitos"
+        ],
+        "rule_change": "primeiras portas/limites visuais aparecem"
+      },
+      "audio": {
+        "music": "ritmo mecânico nasce de vozes sem língua",
+        "ambience": "correntes, selos, pedra, escrita",
+        "event": "declaração de exclusividade interrompe o coro"
+      },
+      "emotion": [
+        "opressão",
+        "fascínio",
+        "suspeita"
+      ],
+      "strategy": "Prepara o jogador para distinguir função legítima de totalização de autoridade e para buscar saídas em sistemas aparentemente completos.",
+      "provenance": {
+        "primary_class": "source",
+        "source_note": "Tradições divergem em listas e funções dos governantes; a síntese visual escolhida pelo jogo é explicitamente editorial."
+      },
+      "duration_seconds": 38,
+      "tension": 0.86,
+      "cinematic_hook": "Cada ordem de Yaldabaoth gera outra autoridade; o espaço começa a parecer uma burocracia sagrada sem saída.",
+      "exit_image": "Centenas de olhos menores se fecham ao mesmo tempo, como portas trancando por dentro.",
+      "player_learning": "Autoridade deve ser lida por alcance, não pelo volume de sua certeza.",
+      "voiceover": [
+        "Poderes fazem uma coisa previsível quando confundem alcance com absoluto: multiplicam a própria certeza.",
+        "Autoridades nasceram. Funções receberam tronos. Limites receberam nomes.",
+        "A pior prisão não é construída por quem conhece o lado de fora.",
+        "É construída por quem acredita que lado de fora algum existe."
+      ],
+      "emotion_pivot": "cosmic_escalation",
+      "shots": [
+        {
+          "id": "blind_god_shot_01_search_above",
+          "duration_seconds": 6.84,
+          "camera": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 1/5; slow hold",
+          "visual_event": "Cada ordem de Yaldabaoth gera outra autoridade; o espaço começa a parecer uma burocracia sagrada sem saída.",
+          "audio_event": "correntes, selos, pedra, escrita",
+          "transition": "fade_from_black",
+          "tension": 0.77,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "blind_god_shot_02_fail_to_perceive",
+          "duration_seconds": 8.36,
+          "camera": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 2/5; controlled reveal",
+          "visual_event": "selos se multiplicam",
+          "audio_event": "ritmo mecânico nasce de vozes sem língua",
+          "transition": "match_cut",
+          "tension": 0.81,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "blind_god_shot_03_authorities_multiply",
+          "duration_seconds": 8.36,
+          "camera": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 3/5; controlled reveal",
+          "visual_event": "tronos vazios recebem funções",
+          "audio_event": "declaração de exclusividade interrompe o coro",
+          "transition": "slow_dissolve",
+          "tension": 0.86,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "blind_god_shot_04_lists_conflict",
+          "duration_seconds": 7.6,
+          "camera": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 4/5; controlled reveal",
+          "visual_event": "linhas de governo fecham circuitos",
+          "audio_event": "ritmo mecânico nasce de vozes sem língua",
+          "transition": "hard_reframe",
+          "tension": 0.91,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "blind_god_shot_05_exclusive_claim",
+          "duration_seconds": 6.84,
+          "camera": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 5/5; slow hold",
+          "visual_event": "Centenas de olhos menores se fecham ao mesmo tempo, como portas trancando por dentro.",
+          "audio_event": "declaração de exclusividade interrompe o coro",
+          "transition": "motivated_cut",
+          "tension": 0.95,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "lower_architecture",
+      "order": 5,
+      "title": "A ARQUITETURA INFERIOR",
+      "anchor": "A prisão mais eficiente parecia uma catedral.",
+      "narration": "Céus foram medidos. Ciclos foram fechados. Matéria recebeu peso. Estrelas acenderam como instrumentos num mecanismo de precisão aterradora. A Terra apareceu não como erro tosco, mas como obra bela o bastante para convencer seus habitantes de que beleza e totalidade eram a mesma coisa. O terror não estava em uma parede quebrada. Estava numa parede perfeita demais para sugerir que pudesse existir uma porta.",
+      "visual": {
+        "scale": "cosmic_architecture",
+        "camera": "mergulho das esferas para matéria, estrelas e Terra",
+        "key_images": [
+          "catedral-máquina",
+          "céus concêntricos sem literalizar um único mapa textual",
+          "Terra como domínio dentro do campo demiúrgico"
+        ],
+        "rule_change": "o mundo passa a obedecer direção, distância, peso e oclusão"
+      },
+      "audio": {
+        "music": "órgão grave misturado a maquinaria astral",
+        "ambience": "rotações, vibrações planetárias ficcionais, metal distante",
+        "event": "o tema se resolve cedo demais, produzindo desconforto"
+      },
+      "emotion": [
+        "sublime sombrio",
+        "claustrofobia",
+        "curiosidade"
+      ],
+      "strategy": "Introduz a ideia de que um sistema funcional ainda pode conter vieses, filtros e limites invisíveis.",
+      "provenance": {
+        "primary_class": "electorum_dramatization",
+        "source_note": "Cosmos inferior e autoridades são inspirados no corpus; visualização física/científica é representação contemporânea, não cosmografia antiga literal."
+      },
+      "duration_seconds": 36,
+      "tension": 0.72,
+      "cinematic_hook": "O cosmos inferior é belo, preciso e sufocante; o terror vem do fato de funcionar.",
+      "exit_image": "A Terra gira dentro de anéis perfeitos enquanto uma fissura de luz pulsa no centro da máquina.",
+      "player_learning": "Sistemas eficientes também podem aprisionar quando impedem questionamento.",
+      "voiceover": [
+        "Céus foram medidos. Ciclos foram fechados. Estrelas acenderam como instrumentos.",
+        "A matéria recebeu peso, e a Terra recebeu forma.",
+        "A prisão mais eficiente parecia uma catedral.",
+        "Era bela o bastante para fazer totalidade parecer sinônimo de beleza."
+      ],
+      "emotion_pivot": "cosmic_escalation",
+      "shots": [
+        {
+          "id": "lower_architecture_shot_01_measure_heavens",
+          "duration_seconds": 6.48,
+          "camera": "mergulho das esferas para matéria, estrelas e Terra; beat 1/5; slow hold",
+          "visual_event": "O cosmos inferior é belo, preciso e sufocante; o terror vem do fato de funcionar.",
+          "audio_event": "rotações, vibrações planetárias ficcionais, metal distante",
+          "transition": "fade_from_black",
+          "tension": 0.63,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "lower_architecture_shot_02_ignite_stars",
+          "duration_seconds": 7.92,
+          "camera": "mergulho das esferas para matéria, estrelas e Terra; beat 2/5; controlled reveal",
+          "visual_event": "catedral-máquina",
+          "audio_event": "órgão grave misturado a maquinaria astral",
+          "transition": "match_cut",
+          "tension": 0.67,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "lower_architecture_shot_03_weight_matter",
+          "duration_seconds": 7.92,
+          "camera": "mergulho das esferas para matéria, estrelas e Terra; beat 3/5; controlled reveal",
+          "visual_event": "céus concêntricos sem literalizar um único mapa textual",
+          "audio_event": "o tema se resolve cedo demais, produzindo desconforto",
+          "transition": "slow_dissolve",
+          "tension": 0.72,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "lower_architecture_shot_04_earth_beauty",
+          "duration_seconds": 7.2,
+          "camera": "mergulho das esferas para matéria, estrelas e Terra; beat 4/5; controlled reveal",
+          "visual_event": "Terra como domínio dentro do campo demiúrgico",
+          "audio_event": "órgão grave misturado a maquinaria astral",
+          "transition": "hard_reframe",
+          "tension": 0.77,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "lower_architecture_shot_05_perfect_wall",
+          "duration_seconds": 6.48,
+          "camera": "mergulho das esferas para matéria, estrelas e Terra; beat 5/5; slow hold",
+          "visual_event": "A Terra gira dentro de anéis perfeitos enquanto uma fissura de luz pulsa no centro da máquina.",
+          "audio_event": "o tema se resolve cedo demais, produzindo desconforto",
+          "transition": "motivated_cut",
+          "tension": 0.81,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "form_without_breath",
+      "order": 6,
+      "title": "A FORMA QUE NÃO RESPIRAVA",
+      "anchor": "Eles moldaram a forma. A vida veio de uma luz que nenhum deles podia reivindicar.",
+      "narration": "Os governantes construíram uma forma à própria imagem de poder: osso, nervo, boca, olhos, mãos. Ela permaneceu no chão. Mandaram que se erguesse. Nada. Yaldabaoth aproximou-se para provar que sua obra obedeceria. Soprou. Algo atravessou a criatura — não apenas ar, mas potência. O corpo abriu os olhos. Por um instante, todos os governantes recuaram. Tinham fabricado a forma. O que os fitava de dentro dela não lhes pertencia por inteiro.",
+      "visual": {
+        "scale": "anthropogony",
+        "camera": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano",
+        "key_images": [
+          "corpo humano inerte",
+          "sopro como transferência causal",
+          "primeiro olhar humano refletindo luz não originada no cenário"
+        ],
+        "rule_change": "primeiro heartbeat corta toda música; câmera assume altura humana"
+      },
+      "audio": {
+        "music": "crescendo interrompido",
+        "ambience": "pele, pedra, respiração dos governantes",
+        "event": "um único batimento; depois respiração humana"
+      },
+      "emotion": [
+        "assombro",
+        "terror íntimo",
+        "nascimento"
+      ],
+      "strategy": "O jogador aprende que poder pode transferir recursos que não compreende; origem de uma capacidade e autoridade sobre ela não são a mesma coisa.",
+      "provenance": {
+        "primary_class": "source",
+        "source_note": "O despertar humano por transferência de potência do governante possui base no eixo usado pelo projeto.",
+        "luciferian_light": "electorum_dramatization",
+        "electorum_note": "O jogo identifica simbolicamente essa potência interna com o princípio luciferiano."
+      },
+      "duration_seconds": 42,
+      "tension": 0.9,
+      "cinematic_hook": "Os governantes constroem um corpo perfeito que não responde; o primeiro batimento acontece apenas após o sopro de Yaldabaoth.",
+      "exit_image": "Dentro do peito humano, uma luz acende e por um instante projeta uma sombra maior que o próprio cosmos inferior.",
+      "player_learning": "Nem toda potência pertence à autoridade que a transmite.",
+      "voiceover": [
+        "Eles moldaram osso, nervo, boca, olhos e mãos. A forma permaneceu imóvel.",
+        "Mandaram que se erguesse. Nada.",
+        "Yaldabaoth soprou para provar que sua obra obedeceria.",
+        "Algo atravessou o barro: uma luz que ele carregava, mas jamais compreendera.",
+        "O primeiro coração bateu. E os governantes sentiram medo de sua própria criação."
+      ],
+      "emotion_pivot": "cosmic_escalation",
+      "shots": [
+        {
+          "id": "form_without_breath_shot_01_assemble_form",
+          "duration_seconds": 7.56,
+          "camera": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 1/5; slow hold",
+          "visual_event": "Os governantes constroem um corpo perfeito que não responde; o primeiro batimento acontece apenas após o sopro de Yaldabaoth.",
+          "audio_event": "pele, pedra, respiração dos governantes",
+          "transition": "fade_from_black",
+          "tension": 0.81,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "form_without_breath_shot_02_command_rise",
+          "duration_seconds": 9.24,
+          "camera": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 2/5; controlled reveal",
+          "visual_event": "corpo humano inerte",
+          "audio_event": "crescendo interrompido",
+          "transition": "match_cut",
+          "tension": 0.85,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "form_without_breath_shot_03_inert_closeup",
+          "duration_seconds": 9.24,
+          "camera": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 3/5; controlled reveal",
+          "visual_event": "sopro como transferência causal",
+          "audio_event": "um único batimento; depois respiração humana",
+          "transition": "slow_dissolve",
+          "tension": 0.9,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "form_without_breath_shot_04_breath_transfer",
+          "duration_seconds": 8.4,
+          "camera": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 4/5; controlled reveal",
+          "visual_event": "primeiro olhar humano refletindo luz não originada no cenário",
+          "audio_event": "crescendo interrompido",
+          "transition": "hard_reframe",
+          "tension": 0.95,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "form_without_breath_shot_05_eyes_open",
+          "duration_seconds": 7.56,
+          "camera": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 5/5; slow hold",
+          "visual_event": "Dentro do peito humano, uma luz acende e por um instante projeta uma sombra maior que o próprio cosmos inferior.",
+          "audio_event": "um único batimento; depois respiração humana",
+          "transition": "motivated_cut",
+          "tension": 0.99,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "lilith_first_refusal",
+      "order": 7,
+      "title": "LILITH — A PRIMEIRA RECUSA",
+      "anchor": "A primeira liberdade não parece liberdade quando exige atravessar sozinho a noite.",
+      "narration": "Antes de Eva, nesta dramatização, houve Lilith. Ela não entrou no mundo para explicar o desejo de outro personagem. Entrou para recusar uma posição que exigia obediência sem reciprocidade. Quando a ordem do Jardim se fechou sobre ela, Lilith fez aquilo que toda autoridade teme mais do que uma revolta ruidosa: saiu sem pedir que o trono validasse sua saída. O portão fechou. Do lado de fora não havia promessa. Havia noite. Ela continuou andando.",
+      "visual": {
+        "scale": "garden_threshold",
+        "camera": "acompanha Lilith de costas; nunca voyeurística",
+        "key_images": [
+          "jardim geométrico demais",
+          "porta de pedra fechando",
+          "deserto noturno sem trilha pronta"
+        ],
+        "rule_change": "HUD desaparece; orientação espacial fica por som e céu"
+      },
+      "audio": {
+        "music": "cordas tensas quase sem resolução",
+        "ambience": "vento, passos, portão de pedra",
+        "event": "o último som do Jardim cessa quando ela não olha para trás"
+      },
+      "emotion": [
+        "liberdade",
+        "medo",
+        "solidão",
+        "dignidade"
+      ],
+      "strategy": "Escolher uma saída pode custar informação, proteção e pertencimento; autonomia é decisão com preço, não pose.",
+      "provenance": {
+        "primary_class": "electorum_dramatization",
+        "source_note": "Lilith antes de Eva combina recepções posteriores e construção autoral; não é atribuída ao corpus sethiano como sequência única."
+      },
+      "duration_seconds": 36,
+      "tension": 0.68,
+      "emotion_pivot": "freedom_has_a_cost",
+      "cinematic_hook": "A ameaça não é um monstro; é uma porta que se fecha quando Lilith decide não voltar.",
+      "exit_image": "Lilith cruza o limite do Jardim e a noite engole sua silhueta sem promessa de proteção.",
+      "player_learning": "Toda rota de autonomia possui custo e consequências persistentes.",
+      "voiceover": [
+        "Antes de Eva, nesta história, houve uma recusa.",
+        "Lilith não pediu um trono. Pediu reciprocidade.",
+        "Quando a ordem exigiu submissão, ela escolheu a noite.",
+        "A primeira liberdade não parece liberdade quando ninguém garante que você sobreviverá a ela."
+      ],
+      "shots": [
+        {
+          "id": "lilith_first_refusal_shot_01_garden_order",
+          "duration_seconds": 6.48,
+          "camera": "acompanha Lilith de costas; nunca voyeurística; beat 1/5; slow hold",
+          "visual_event": "A ameaça não é um monstro; é uma porta que se fecha quando Lilith decide não voltar.",
+          "audio_event": "vento, passos, portão de pedra",
+          "transition": "fade_from_black",
+          "tension": 0.59,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "lilith_first_refusal_shot_02_reciprocity_break",
+          "duration_seconds": 7.92,
+          "camera": "acompanha Lilith de costas; nunca voyeurística; beat 2/5; controlled reveal",
+          "visual_event": "jardim geométrico demais",
+          "audio_event": "cordas tensas quase sem resolução",
+          "transition": "match_cut",
+          "tension": 0.64,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "lilith_first_refusal_shot_03_refusal_closeup",
+          "duration_seconds": 7.92,
+          "camera": "acompanha Lilith de costas; nunca voyeurística; beat 3/5; controlled reveal",
+          "visual_event": "porta de pedra fechando",
+          "audio_event": "o último som do Jardim cessa quando ela não olha para trás",
+          "transition": "slow_dissolve",
+          "tension": 0.68,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "lilith_first_refusal_shot_04_gate_closes",
+          "duration_seconds": 7.2,
+          "camera": "acompanha Lilith de costas; nunca voyeurística; beat 4/5; controlled reveal",
+          "visual_event": "deserto noturno sem trilha pronta",
+          "audio_event": "cordas tensas quase sem resolução",
+          "transition": "hard_reframe",
+          "tension": 0.73,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "lilith_first_refusal_shot_05_walk_into_night",
+          "duration_seconds": 6.48,
+          "camera": "acompanha Lilith de costas; nunca voyeurística; beat 5/5; slow hold",
+          "visual_event": "Lilith cruza o limite do Jardim e a noite engole sua silhueta sem promessa de proteção.",
+          "audio_event": "o último som do Jardim cessa quando ela não olha para trás",
+          "transition": "motivated_cut",
+          "tension": 0.77,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "eve_epinoia_knowledge",
+      "order": 8,
+      "title": "EVA, EPINOIA E O DIREITO DE SABER",
+      "anchor": "Uma proibição pode controlar uma mão. Uma pergunta muda quem a mão se tornou.",
+      "narration": "Eva não surge como culpada por destruir um paraíso. Surge como consciência que percebe a própria possibilidade de conhecer. Epinoia não entrega uma resposta pronta; acende reconhecimento. A Árvore torna-se fronteira. A Serpente, ambígua entre tradições, torna-se pergunta. A autoridade diz: não atravesse. A consciência pergunta: por quê? O primeiro conflito humano não é apenas sobre fruto. É sobre quem possui o direito de decidir o que pode ser conhecido.",
+      "visual": {
+        "scale": "garden_epistemic",
+        "camera": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única",
+        "key_images": [
+          "árvore como fronteira cognitiva",
+          "reflexos contraditórios no fruto",
+          "autoridades observando de longe"
+        ],
+        "rule_change": "objetivos aparecem como perguntas, não ordens"
+      },
+      "audio": {
+        "music": "motivo humano recebe notas do Pleroma",
+        "ambience": "folhas, respiração, sussurros contraditórios",
+        "event": "o som da proibição vem de várias direções"
+      },
+      "emotion": [
+        "curiosidade",
+        "risco",
+        "despertar"
+      ],
+      "strategy": "Treina o jogador a buscar contraprova e contexto quando uma autoridade oferece interpretação pronta.",
+      "provenance": {
+        "primary_class": "interpretation",
+        "source_note": "Epinoia/consciência e conflito de conhecimento têm base no material gnóstico usado; a integração dramática com Eva/Árvore/Serpente preserva divergências no Codex."
+      },
+      "duration_seconds": 42,
+      "tension": 0.64,
+      "emotion_pivot": "knowledge_changes_the_knower",
+      "cinematic_hook": "A proibição é ouvida antes de a Árvore ser vista; a Serpente aparece primeiro apenas como sombra entre folhas.",
+      "exit_image": "Eva toca o fruto; a câmera não mostra catástrofe, apenas os olhos humanos aprendendo a focalizar algo antes invisível.",
+      "player_learning": "Conhecimento muda o agente e altera opções futuras.",
+      "voiceover": [
+        "Eva não entrou na história para carregar a culpa do mundo.",
+        "Ela percebeu que uma ordem pode controlar a mão sem governar a pergunta.",
+        "Epinoia acendeu reconhecimento. A Árvore tornou-se fronteira.",
+        "A Serpente tornou-se possibilidade.",
+        "Depois do conhecimento, o Jardim ainda existia. Mas ninguém dentro dele era o mesmo."
+      ],
+      "shots": [
+        {
+          "id": "eve_epinoia_knowledge_shot_01_eve_awareness",
+          "duration_seconds": 7.56,
+          "camera": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 1/5; slow hold",
+          "visual_event": "A proibição é ouvida antes de a Árvore ser vista; a Serpente aparece primeiro apenas como sombra entre folhas.",
+          "audio_event": "folhas, respiração, sussurros contraditórios",
+          "transition": "fade_from_black",
+          "tension": 0.55,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "eve_epinoia_knowledge_shot_02_epinoia_glint",
+          "duration_seconds": 9.24,
+          "camera": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 2/5; controlled reveal",
+          "visual_event": "árvore como fronteira cognitiva",
+          "audio_event": "motivo humano recebe notas do Pleroma",
+          "transition": "match_cut",
+          "tension": 0.59,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "eve_epinoia_knowledge_shot_03_tree_boundary",
+          "duration_seconds": 9.24,
+          "camera": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 3/5; controlled reveal",
+          "visual_event": "reflexos contraditórios no fruto",
+          "audio_event": "o som da proibição vem de várias direções",
+          "transition": "slow_dissolve",
+          "tension": 0.64,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "eve_epinoia_knowledge_shot_04_serpent_question",
+          "duration_seconds": 8.4,
+          "camera": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 4/5; controlled reveal",
+          "visual_event": "autoridades observando de longe",
+          "audio_event": "motivo humano recebe notas do Pleroma",
+          "transition": "hard_reframe",
+          "tension": 0.69,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "eve_epinoia_knowledge_shot_05_hand_reaches",
+          "duration_seconds": 7.56,
+          "camera": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 5/5; slow hold",
+          "visual_event": "Eva toca o fruto; a câmera não mostra catástrofe, apenas os olhos humanos aprendendo a focalizar algo antes invisível.",
+          "audio_event": "o som da proibição vem de várias direções",
+          "transition": "motivated_cut",
+          "tension": 0.73,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "cain",
+      "order": 9,
+      "title": "CAIM — A MARCA NÃO APAGA ABEL",
+      "anchor": "Uma obra pode responder ao futuro. Não pode comprar o passado.",
+      "narration": "Dois irmãos trabalharam. Dois ofereceram. Um percebeu diferença, alimentou raiva, recebeu advertência — e escolheu mesmo assim. A morte de Abel não recebe música heroica. Não recebe câmera lenta gloriosa. Acontece rápido demais. Depois vem o tempo que não volta. Caim é confrontado, tenta afastar a linguagem do próprio ato, teme a vingança e recebe uma marca que é consequência e proteção. Parte para o exílio. Mais tarde constrói. A cidade não absolve a mão. A mão, porém, ainda responde pelo que construirá depois.",
+      "visual": {
+        "scale": "human_tragedy",
+        "camera": "íntima e contida; a câmera permanece com a ausência após a morte",
+        "key_images": [
+          "terra cultivada",
+          "mãos manchadas de terra e sangue",
+          "marca sem forma dogmática fixa",
+          "primeira pedra de uma cidade"
+        ],
+        "rule_change": "nenhum input durante a morte; controle retorna no exílio"
+      },
+      "audio": {
+        "music": "cessa antes do golpe",
+        "ambience": "vento e tecido; depois silêncio longo",
+        "event": "o primeiro som após Abel é uma pá entrando na terra"
+      },
+      "emotion": [
+        "culpa",
+        "horror moral",
+        "luto",
+        "responsabilidade"
+      ],
+      "strategy": "Consequências irreversíveis não viram recursos descartáveis; o jogo associa força a responsabilidade posterior, não a impunidade.",
+      "provenance": {
+        "primary_class": "source",
+        "source_note": "Morte de Abel, confronto, consequência, medo, marca/proteção, exílio e construção possuem base no relato tradicional usado pelo corpus.",
+        "lineage_reading": "tradition",
+        "electorum_note": "Leituras caínitas de linhagem adversarial são recepção; o jogo não as projeta retroativamente como texto antigo."
+      },
+      "duration_seconds": 48,
+      "tension": 0.82,
+      "emotion_pivot": "irreversibility",
+      "cinematic_hook": "Toda música desaparece antes da morte de Abel; o golpe acontece sem espetáculo, rápido demais para ser heroico.",
+      "exit_image": "Caim segue para o exílio; ao fundo nasce a primeira fundação de uma cidade, enquanto a voz de Abel permanece ausente.",
+      "player_learning": "Consequência não é punição abstrata; decisões fecham possibilidades que não retornam.",
+      "voiceover": [
+        "Dois irmãos trabalharam. Dois ofereceram. Um transformou comparação em ferida.",
+        "Ele foi advertido. Escolheu mesmo assim.",
+        "Abel morreu rápido demais para qualquer mito tornar o momento belo.",
+        "A Marca não apagou o sangue. Também não autorizou a vingança total.",
+        "Caim partiu. Construiu. E descobriu que nenhuma obra compra de volta aquilo que uma escolha destruiu."
+      ],
+      "shots": [
+        {
+          "id": "cain_shot_01_brothers_work",
+          "duration_seconds": 8.64,
+          "camera": "íntima e contida; a câmera permanece com a ausência após a morte; beat 1/5; slow hold",
+          "visual_event": "Toda música desaparece antes da morte de Abel; o golpe acontece sem espetáculo, rápido demais para ser heroico.",
+          "audio_event": "vento e tecido; depois silêncio longo",
+          "transition": "fade_from_black",
+          "tension": 0.73,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "cain_shot_02_offerings_difference",
+          "duration_seconds": 10.56,
+          "camera": "íntima e contida; a câmera permanece com a ausência após a morte; beat 2/5; controlled reveal",
+          "visual_event": "terra cultivada",
+          "audio_event": "cessa antes do golpe",
+          "transition": "match_cut",
+          "tension": 0.77,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "cain_shot_03_warning_ignored",
+          "duration_seconds": 10.56,
+          "camera": "íntima e contida; a câmera permanece com a ausência após a morte; beat 3/5; controlled reveal",
+          "visual_event": "mãos manchadas de terra e sangue",
+          "audio_event": "o primeiro som após Abel é uma pá entrando na terra",
+          "transition": "slow_dissolve",
+          "tension": 0.82,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "cain_shot_04_abel_falls",
+          "duration_seconds": 9.6,
+          "camera": "íntima e contida; a câmera permanece com a ausência após a morte; beat 4/5; controlled reveal",
+          "visual_event": "marca sem forma dogmática fixa",
+          "audio_event": "cessa antes do golpe",
+          "transition": "hard_reframe",
+          "tension": 0.86,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "cain_shot_05_mark_and_exile",
+          "duration_seconds": 8.64,
+          "camera": "íntima e contida; a câmera permanece com a ausência após a morte; beat 5/5; slow hold",
+          "visual_event": "Caim segue para o exílio; ao fundo nasce a primeira fundação de uma cidade, enquanto a voz de Abel permanece ausente.",
+          "audio_event": "o primeiro som após Abel é uma pá entrando na terra",
+          "transition": "motivated_cut",
+          "tension": 0.91,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "lineage_of_mark",
+      "order": 10,
+      "title": "A LINHAGEM DA MARCA",
+      "anchor": "Herdar uma marca não é herdar inocência. É herdar uma pergunta.",
+      "narration": "A marca atravessou séculos não como medalha, mas como memória. Uma mão de ferreiro tornou-se mão de escriba. A mão de um fugitivo virou mão de mercador. A mão de uma mãe fechou os olhos de um morto. Manuscritos foram escondidos, queimados, copiados e vendidos. Em cada geração, alguém encontrou uma forma diferente de responder à mesma herança: romper, construir, repetir, reparar ou fugir. Até que a câmera chegou à mão de Harun.",
+      "visual": {
+        "scale": "historical_montage",
+        "camera": "match cuts de mãos, ferramentas e marcas discretamente recorrentes",
+        "key_images": [
+          "forja",
+          "tinta",
+          "estrada",
+          "ruína",
+          "manuscrito",
+          "mão de Harun jovem"
+        ],
+        "rule_change": "cada corte preserva exatamente a posição da mão e muda século/contexto"
+      },
+      "audio": {
+        "music": "mesmo pulso tocado por instrumentos de épocas diferentes",
+        "ambience": "forja vira pena, pena vira roda, roda vira batimento",
+        "event": "o pulso para quando Harun fecha a mão"
+      },
+      "emotion": [
+        "ancestralidade",
+        "peso",
+        "mistério",
+        "determinação"
+      ],
+      "strategy": "A linhagem não concede vantagem gratuita: abre quests, riscos, suspeitas e responsabilidades que outras builds não carregam.",
+      "provenance": {
+        "primary_class": "electorum_dramatization",
+        "direct_harun_descent": "electorum_dramatization",
+        "source_note": "Descendência direta de Harun a partir de Caim é cânone ficcional interno do jogo, não reivindicação histórica."
+      },
+      "duration_seconds": 40,
+      "tension": 0.5,
+      "emotion_pivot": "inheritance_without_innocence",
+      "cinematic_hook": "A mesma posição de mão atravessa séculos em match cuts, mas a Marca nunca aparece exatamente igual duas vezes.",
+      "exit_image": "O último match cut termina na mão de Harun jovem fechando-se sobre um fragmento de manuscrito.",
+      "player_learning": "Herança cria condições e dívidas; não determina automaticamente caráter.",
+      "voiceover": [
+        "A Marca atravessou séculos sem se tornar coroa.",
+        "Ferreiro. Escriba. Mercador. Fugitivo. Mãe. Soldado. Herege. Construtor.",
+        "Cada geração recebeu a mesma pergunta e inventou outra resposta.",
+        "Até que a memória chegou às mãos de Harun.",
+        "Ele não herdou inocência. Herdou uma dívida de entendimento."
+      ],
+      "shots": [
+        {
+          "id": "lineage_of_mark_shot_01_smith_hand",
+          "duration_seconds": 7.2,
+          "camera": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 1/5; slow hold",
+          "visual_event": "A mesma posição de mão atravessa séculos em match cuts, mas a Marca nunca aparece exatamente igual duas vezes.",
+          "audio_event": "forja vira pena, pena vira roda, roda vira batimento",
+          "transition": "fade_from_black",
+          "tension": 0.41,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "lineage_of_mark_shot_02_scribe_hand",
+          "duration_seconds": 8.8,
+          "camera": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 2/5; controlled reveal",
+          "visual_event": "forja",
+          "audio_event": "mesmo pulso tocado por instrumentos de épocas diferentes",
+          "transition": "match_cut",
+          "tension": 0.46,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "lineage_of_mark_shot_03_merchant_hand",
+          "duration_seconds": 8.8,
+          "camera": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 3/5; controlled reveal",
+          "visual_event": "tinta",
+          "audio_event": "o pulso para quando Harun fecha a mão",
+          "transition": "slow_dissolve",
+          "tension": 0.5,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "lineage_of_mark_shot_04_mourner_hand",
+          "duration_seconds": 8.0,
+          "camera": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 4/5; controlled reveal",
+          "visual_event": "estrada",
+          "audio_event": "mesmo pulso tocado por instrumentos de épocas diferentes",
+          "transition": "hard_reframe",
+          "tension": 0.55,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "lineage_of_mark_shot_05_harun_hand",
+          "duration_seconds": 7.2,
+          "camera": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 5/5; slow hold",
+          "visual_event": "O último match cut termina na mão de Harun jovem fechando-se sobre um fragmento de manuscrito.",
+          "audio_event": "o pulso para quando Harun fecha a mão",
+          "transition": "motivated_cut",
+          "tension": 0.59,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "dismembered_book",
+      "order": 11,
+      "title": "O LIVRO DESMEMBRADO",
+      "anchor": "O livro não estava perdido. Estava dividido entre pessoas que não sabiam que possuíam o mesmo livro.",
+      "narration": "Harun passou anos perseguindo fragmentos que pareciam incompatíveis. Uma folha escondida na margem de um comentário. Um caderno carbonizado num depósito abandonado. Uma placa cifrada cujo erro de simetria parecia acidente. Uma carta comprada de um homem que não sabia ler o próprio inventário. Um mapa cuja rota terminava no vazio. Nenhum fragmento prometia poder. Todos exigiam trabalho. Quando Harun os sobrepôs, percebeu que as lacunas se alinhavam. O texto ausente formava uma estrutura maior do que os textos presentes.",
+      "visual": {
+        "scale": "historical_occult_thriller",
+        "camera": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo",
+        "key_images": [
+          "folha marginal",
+          "caderno queimado",
+          "placa cifrada",
+          "carta",
+          "mapa",
+          "lacunas formando sigilo estrutural"
+        ],
+        "rule_change": "o jogador precisa observar e ordenar pistas; cenas podem falhar sem softlock"
+      },
+      "audio": {
+        "music": "ostinato investigativo com ruídos de escrita",
+        "ambience": "papel, mercados, chuva, respiração",
+        "event": "quando o último vazio se alinha, todos os ruídos cessam"
+      },
+      "emotion": [
+        "obsessão",
+        "descoberta",
+        "paranoia controlada",
+        "triunfo intelectual"
+      ],
+      "strategy": "Conhecimento é construído por comparação, exclusão, proveniência e lacuna; coleção sem método não produz sistema.",
+      "provenance": {
+        "primary_class": "electorum_dramatization",
+        "source_note": "A história de descoberta fragmentária do Grimorium é ficção canônica da CHRONICA."
+      },
+      "duration_seconds": 54,
+      "tension": 0.62,
+      "emotion_pivot": "obsession_becomes_method",
+      "cinematic_hook": "Fragmentos incompatíveis começam a compartilhar ausências idênticas; o que falta passa a ser mais informativo que o texto.",
+      "exit_image": "Cinco fragmentos sobrepostos deixam no centro um espaço vazio com a forma exata de um título ainda não revelado.",
+      "player_learning": "Comparar proveniência, contradição e lacuna produz conhecimento mais confiável que acumular peças.",
+      "voiceover": [
+        "Harun procurou um livro e encontrou erros espalhados pelo mundo.",
+        "Uma margem. Um caderno queimado. Uma placa cifrada. Uma carta. Um mapa que terminava no vazio.",
+        "Nada prometia poder. Tudo exigia trabalho.",
+        "Anos depois, Harun percebeu que os fragmentos não se completavam pelo texto.",
+        "Completavam-se por aquilo que faltava."
+      ],
+      "shots": [
+        {
+          "id": "dismembered_book_shot_01_fragment_margin",
+          "duration_seconds": 9.72,
+          "camera": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 1/5; slow hold",
+          "visual_event": "Fragmentos incompatíveis começam a compartilhar ausências idênticas; o que falta passa a ser mais informativo que o texto.",
+          "audio_event": "papel, mercados, chuva, respiração",
+          "transition": "fade_from_black",
+          "tension": 0.53,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "dismembered_book_shot_02_burned_notebook",
+          "duration_seconds": 11.88,
+          "camera": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 2/5; controlled reveal",
+          "visual_event": "folha marginal",
+          "audio_event": "ostinato investigativo com ruídos de escrita",
+          "transition": "match_cut",
+          "tension": 0.57,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "dismembered_book_shot_03_cipher_plate",
+          "duration_seconds": 11.88,
+          "camera": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 3/5; controlled reveal",
+          "visual_event": "caderno queimado",
+          "audio_event": "quando o último vazio se alinha, todos os ruídos cessam",
+          "transition": "slow_dissolve",
+          "tension": 0.62,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "dismembered_book_shot_04_illiterate_letter",
+          "duration_seconds": 10.8,
+          "camera": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 4/5; controlled reveal",
+          "visual_event": "placa cifrada",
+          "audio_event": "ostinato investigativo com ruídos de escrita",
+          "transition": "hard_reframe",
+          "tension": 0.67,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "dismembered_book_shot_05_void_map_alignment",
+          "duration_seconds": 9.72,
+          "camera": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 5/5; slow hold",
+          "visual_event": "Cinco fragmentos sobrepostos deixam no centro um espaço vazio com a forma exata de um título ainda não revelado.",
+          "audio_event": "quando o último vazio se alinha, todos os ruídos cessam",
+          "transition": "motivated_cut",
+          "tension": 0.71,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    },
+    {
+      "id": "see_govern_make",
+      "order": 12,
+      "title": "VER · GOVERNAR · FAZER",
+      "anchor": "O livro não disse que ele era escolhido. Deu-lhe trabalho.",
+      "narration": "O último fragmento revelou um título: GRIMORIUM ASCENSIONIS. Harun esperou uma profecia. Recebeu três verbos. VER. A página mudou. GOVERNAR. A luz da lamparina diminuiu. FAZER. O papel escureceu até virar pedra. O som de uma página tornou-se vento num corredor. Quando Harun ergueu os olhos, já não havia livro em suas mãos. Havia uma porta. E atrás dela, algo respirava.",
+      "visual": {
+        "scale": "seamless_gameplay_transition",
+        "camera": "close no livro vira perspectiva FPS no corredor sem corte",
+        "key_images": [
+          "título do Grimorium",
+          "três verbos",
+          "papel transformando-se em parede",
+          "porta do O Olho"
+        ],
+        "rule_change": "HUD de gameplay aparece somente depois do primeiro passo do jogador"
+      },
+      "audio": {
+        "music": "motivo do Pleroma reaparece distorcido",
+        "ambience": "folha vira vento e pedra",
+        "event": "respiração de criatura antes do controle ser liberado"
+      },
+      "emotion": [
+        "determinação",
+        "medo",
+        "agência"
+      ],
+      "strategy": "A história entrega o controle no exato ponto em que o tema deixa de ser explicação e vira prova.",
+      "provenance": {
+        "primary_class": "electorum_dramatization",
+        "source_note": "Grimorium, fórmula triádica e transição são cânone ficcional autoral."
+      },
+      "grimoire": {
+        "title": "GRIMORIUM ASCENSIONIS",
+        "fragment_ids": [
+          "marginal_leaf",
+          "burned_notebook",
+          "cipher_plate",
+          "merchant_letter",
+          "broken_map"
+        ],
+        "reveal_requires_all": true
+      },
+      "commands": [
+        "VER",
+        "GOVERNAR",
+        "FAZER"
+      ],
+      "authorial_credit": "Frater Horus Phosphorus",
+      "transition": {
+        "mode": "seamless_first_person",
+        "target_stage": "o_olho"
+      },
+      "duration_seconds": 38,
+      "tension": 0.88,
+      "emotion_pivot": "agency",
+      "cinematic_hook": "O título finalmente aparece e a página começa a adquirir textura de pedra antes que Harun termine de lê-lo.",
+      "exit_image": "O papel torna-se corredor em primeira pessoa; atrás da primeira porta, algo respira antes do HUD aparecer.",
+      "player_learning": "Conhecimento só se torna jornada quando exige decisão, governo e execução.",
+      "voiceover": [
+        "O vazio revelou um nome: GRIMORIUM ASCENSIONIS.",
+        "Harun esperou uma profecia. O livro recusou o conforto.",
+        "VER.",
+        "GOVERNAR.",
+        "FAZER.",
+        "Quando ergueu os olhos, já não havia livro em suas mãos. Havia uma porta."
+      ],
+      "shots": [
+        {
+          "id": "see_govern_make_shot_01_title_reveal",
+          "duration_seconds": 6.84,
+          "camera": "close no livro vira perspectiva FPS no corredor sem corte; beat 1/5; slow hold",
+          "visual_event": "O título finalmente aparece e a página começa a adquirir textura de pedra antes que Harun termine de lê-lo.",
+          "audio_event": "folha vira vento e pedra",
+          "transition": "fade_from_black",
+          "tension": 0.79,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "orientation"
+        },
+        {
+          "id": "see_govern_make_shot_02_see_command",
+          "duration_seconds": 8.36,
+          "camera": "close no livro vira perspectiva FPS no corredor sem corte; beat 2/5; controlled reveal",
+          "visual_event": "título do Grimorium",
+          "audio_event": "motivo do Pleroma reaparece distorcido",
+          "transition": "match_cut",
+          "tension": 0.83,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "promise"
+        },
+        {
+          "id": "see_govern_make_shot_03_govern_command",
+          "duration_seconds": 8.36,
+          "camera": "close no livro vira perspectiva FPS no corredor sem corte; beat 3/5; controlled reveal",
+          "visual_event": "três verbos",
+          "audio_event": "respiração de criatura antes do controle ser liberado",
+          "transition": "slow_dissolve",
+          "tension": 0.88,
+          "subtitle_mode": "silence",
+          "player_control": false,
+          "dramatic_function": "disturbance"
+        },
+        {
+          "id": "see_govern_make_shot_04_make_command",
+          "duration_seconds": 7.6,
+          "camera": "close no livro vira perspectiva FPS no corredor sem corte; beat 4/5; controlled reveal",
+          "visual_event": "papel transformando-se em parede",
+          "audio_event": "motivo do Pleroma reaparece distorcido",
+          "transition": "hard_reframe",
+          "tension": 0.93,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "reversal"
+        },
+        {
+          "id": "see_govern_make_shot_05_book_becomes_door",
+          "duration_seconds": 6.84,
+          "camera": "close no livro vira perspectiva FPS no corredor sem corte; beat 5/5; slow hold",
+          "visual_event": "O papel torna-se corredor em primeira pessoa; atrás da primeira porta, algo respira antes do HUD aparecer.",
+          "audio_event": "respiração de criatura antes do controle ser liberado",
+          "transition": "motivated_cut",
+          "tension": 0.97,
+          "subtitle_mode": "voiceover",
+          "player_control": false,
+          "dramatic_function": "hook_forward"
+        }
+      ]
+    }
+  ],
+  "student_journey": [
+    {
+      "order": 1,
+      "stage_id": "o_olho",
+      "title": "O OLHO",
+      "subtitle": "Percepção",
+      "harun_conflict": "Harun descobre que uma memória de infância foi moldada por versões contraditórias de pessoas em quem confiava. A primeira pista da linhagem aparece numa margem do Grimorium.",
+      "dramatic_question": "Se eu vi, significa que compreendi?",
+      "horror_device": "reflexos atrasados imitam o jogador com decisões ligeiramente diferentes",
+      "strategic_lesson": "Separar observação, inferência e autoridade antes de agir.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "O OLHO não começa com explicação. A primeira sala dramatiza: Se eu vi, significa que compreendi?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Uma memória de infância reaparece como cena jogável. Cada repetição altera apenas um detalhe, e Harun percebe que confiou mais no narrador da memória do que no que realmente lembrava."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun descobre que uma memória de infância foi moldada por versões contraditórias de pessoas em quem confiava. A primeira pista da linhagem aparece numa margem do Grimorium."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "reflexos atrasados imitam o jogador com decisões ligeiramente diferentes"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Percepção não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Observador Cego revela que sua força não está em esconder o mundo, mas em selecionar o enquadramento. Harun vence quando para de reagir à primeira interpretação disponível."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "O Olho Revelatório não concede onisciência; concede o direito de distinguir sinal, hipótese e manipulação."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Um corredor sem espelhos. Quando Harun olha para trás, três reflexos caminham onde não existe vidro.",
+      "personal_stake": "A primeira prova atinge a memória de Harun: versões incompatíveis de um mesmo acontecimento de infância colocam em dúvida aquilo que ele jurava ter visto.",
+      "choice_under_pressure": "Salvar um registro que confirma sua lembrança ou destruir o registro para revelar a camada falsificada por baixo.",
+      "boss_revelation": "O Observador Cego não mente. Ele mostra apenas fragmentos verdadeiros em ordens diferentes, obrigando Harun a perceber que verdade parcial também pode governar como prisão.",
+      "reward_meaning": "O Olho Revelatório não concede onisciência; concede o direito de distinguir sinal, hipótese e manipulação.",
+      "foreshadow": "Uma segunda sombra acompanha Harun por um único quadro e desaparece quando ele tenta encará-la.",
+      "stage_voiceover": [
+        "Ver não é compreender.",
+        "Memória não é prova.",
+        "Autoridade começa quando alguém decide qual fragmento você verá primeiro."
+      ],
+      "choice_event": {
+        "id": "choice_o_olho",
+        "prompt": "Qual verdade Harun preserva quando duas provas incompatíveis parecem autênticas?",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "preserve_surface",
+            "label": "Preservar o registro que confirma a própria memória",
+            "immediate_cost": "Aceita conviver com dúvida e perde acesso imediato à camada oculta.",
+            "story_consequence": "Harun admite que confirmação não é compreensão.",
+            "external_hook": "confirmation_over_depth"
+          },
+          {
+            "id": "burn_confirmation",
+            "label": "Destruir a prova favorável e revelar a camada inferior",
+            "immediate_cost": "Perde um registro reconfortante para sempre.",
+            "story_consequence": "Harun escolhe investigação acima de conforto.",
+            "external_hook": "truth_over_confirmation"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 2,
+      "stage_id": "a_chama",
+      "title": "A CHAMA",
+      "subtitle": "Regência",
+      "harun_conflict": "Uma provocação deliberada faz Harun ferir uma aliança que precisava. Ele aprende que intensidade sem governo oferece ao inimigo o próprio ritmo.",
+      "dramatic_question": "Quem governa quando eu sinto que preciso agir agora?",
+      "horror_device": "chamas respondem ao pulso e crescem quando o jogador ataca sem leitura",
+      "strategic_lesson": "Converter impulso em timing e reservar força para a janela certa.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "A CHAMA não começa com explicação. A primeira sala dramatiza: Quem governa quando eu sinto que preciso agir agora?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Harun encontra o registro de uma mensagem que nunca deveria ter enviado. O jogo permite relê-la, mas jamais apagá-la."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Uma provocação deliberada faz Harun ferir uma aliança que precisava. Ele aprende que intensidade sem governo oferece ao inimigo o próprio ritmo."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "chamas respondem ao pulso e crescem quando o jogador ataca sem leitura"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Regência não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Arconte do Impulso é alimentado pela urgência. Quando Harun desacelera, o monstro literalmente perde massa e alcance."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "A Chama Negra deixa de ser explosão e vira instrumento: poder que responde ao comando, não ao reflexo."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Uma sala escura acende conforme o pulso de Harun. Quanto mais rápido ele ataca, mais as paredes queimam.",
+      "personal_stake": "Harun recorda uma aliança rompida por uma reação que pareceu justa no instante e desastrosa minutos depois.",
+      "choice_under_pressure": "Responder imediatamente a uma provocação que concede dano extra ou conter-se para abrir uma janela de contra-ataque mais poderosa.",
+      "boss_revelation": "O Arconte do Impulso cresce com cada ação precipitada do jogador; ele não derrota Harun pela força, mas usando o ritmo de Harun contra ele.",
+      "reward_meaning": "A Chama Negra deixa de ser explosão e vira instrumento: poder que responde ao comando, não ao reflexo.",
+      "foreshadow": "Um pavio não acende mesmo quando toda a sala está em chamas.",
+      "stage_voiceover": [
+        "Fogo não pergunta se você está pronto.",
+        "O primeiro domínio é decidir quando não agir.",
+        "Aquilo que você não governa aprende a governar você."
+      ],
+      "choice_event": {
+        "id": "choice_a_chama",
+        "prompt": "O insulto foi deliberado. Harun responde agora ou governa o ritmo?",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "answer_now",
+            "label": "Responder enquanto a raiva ainda oferece força",
+            "immediate_cost": "Aumenta a ameaça imediata e rompe uma vantagem futura.",
+            "story_consequence": "Harun assume o preço de agir no impulso.",
+            "external_hook": "impulse_answer"
+          },
+          {
+            "id": "hold_fire",
+            "label": "Conter a resposta e esperar a janela certa",
+            "immediate_cost": "Abre mão de dano imediato e suporta a provocação.",
+            "story_consequence": "Harun transforma intensidade em timing.",
+            "external_hook": "governed_response"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 3,
+      "stage_id": "a_obra_fundacao",
+      "title": "A OBRA",
+      "subtitle": "Fundação",
+      "harun_conflict": "Harun tenta construir rápido demais e vê uma estrutura ruir. A culpa não é do material: ele omitiu fundações para chegar antes.",
+      "dramatic_question": "O que permanece quando a excitação termina?",
+      "horror_device": "salas reconstruídas durante a travessia revelam fundações ausentes",
+      "strategic_lesson": "Construir dependências antes de escalar resultado.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "A OBRA não começa com explicação. A primeira sala dramatiza: O que permanece quando a excitação termina?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Harun atravessa ruínas de algo que ele próprio projetou dentro da lógica do Grimorium. Cada sala evidencia uma dependência que foi ignorada."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun tenta construir rápido demais e vê uma estrutura ruir. A culpa não é do material: ele omitiu fundações para chegar antes."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "salas reconstruídas durante a travessia revelam fundações ausentes"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Fundação não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Guardião não é inimigo da obra. É a consequência acumulada de tudo que Harun tentou erguer sem suportes suficientes."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Fundação vira multiplicador de longo prazo: menos brilho imediato, mais capacidade de permanecer."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Uma ponte monumental cruza um abismo. O primeiro passo faz aparecer rachaduras que estavam escondidas sob ornamentação perfeita.",
+      "personal_stake": "Harun confronta uma construção que abandonou assim que a excitação inicial passou; alguém confiou nela e pagou pelo colapso.",
+      "choice_under_pressure": "Usar recursos para reforçar a fundação invisível ou gastá-los numa arma que facilita o próximo combate.",
+      "boss_revelation": "O Guardião da Pedra Inerte não persegue Harun. Ele apenas torna toda estrutura mal fundada progressivamente impossível de sustentar.",
+      "reward_meaning": "Fundação vira multiplicador de longo prazo: menos brilho imediato, mais capacidade de permanecer.",
+      "foreshadow": "Uma pequena pedra com a Marca aparece sob a estrutura, mais antiga que tudo ao redor.",
+      "stage_voiceover": [
+        "Toda obra cobra a fundação que você tentou economizar.",
+        "Velocidade impressiona até o primeiro peso real.",
+        "Construa para o dia em que o entusiasmo não vier."
+      ],
+      "choice_event": {
+        "id": "choice_a_obra_fundacao",
+        "prompt": "Uma estrutura incompleta já pode servir. Harun termina ou avança?",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "finish_foundation",
+            "label": "Concluir a fundação antes de seguir",
+            "immediate_cost": "Gasta recurso e tempo que poderiam ser usados na próxima câmara.",
+            "story_consequence": "Harun escolhe permanência sobre velocidade.",
+            "external_hook": "finish_before_scale"
+          },
+          {
+            "id": "advance_incomplete",
+            "label": "Avançar com a estrutura funcional, mas incompleta",
+            "immediate_cost": "Carrega uma fragilidade estrutural adiante.",
+            "story_consequence": "Harun aceita dívida de execução em troca de momentum.",
+            "external_hook": "debt_for_momentum"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 4,
+      "stage_id": "autoelection",
+      "title": "PERGAMINHO I",
+      "subtitle": "Autoeleição",
+      "harun_conflict": "Harun recusa um mestre abusivo, mas percebe que passou a tomar decisões apenas para provar que ninguém o governa.",
+      "dramatic_question": "Recusar uma autoridade basta para ser livre?",
+      "horror_device": "máscaras repetem elogios e insultos conforme a rota escolhida",
+      "strategic_lesson": "Escolher por função própria, não por obediência nem reação.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO I não começa com explicação. A primeira sala dramatiza: Recusar uma autoridade basta para ser livre?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "O jogador é recompensado por contrariar instruções durante várias salas. Depois percebe que a própria recompensa treinou um novo tipo de obediência."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun recusa um mestre abusivo, mas percebe que passou a tomar decisões apenas para provar que ninguém o governa."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "máscaras repetem elogios e insultos conforme a rota escolhida"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Autoeleição não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Selo do Não perde poder quando Harun escolhe de acordo com função, mesmo quando a escolha coincide com uma autoridade externa."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Autoeleição passa a significar origem interna do critério, não oposição compulsiva."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Centenas de máscaras pendem do teto e giram para acompanhar Harun. Algumas o insultam; outras o veneram com a mesma voz.",
+      "personal_stake": "Harun percebe que depois de romper com uma autoridade abusiva passou anos tomando decisões apenas para provar que ninguém o comandava.",
+      "choice_under_pressure": "Escolher uma rota que ninguém aprova, inclusive o próprio sistema de recompensa, ou seguir a rota que produz validação imediata.",
+      "boss_revelation": "O Selo do Não usa a rebeldia como coleira: toda recusa automática ativa uma punição previsível.",
+      "reward_meaning": "Autoeleição passa a significar origem interna do critério, não oposição compulsiva.",
+      "foreshadow": "Uma máscara sem rosto traz no verso o mesmo símbolo encontrado sob a fundação.",
+      "stage_voiceover": [
+        "Obediência pode usar a palavra sim. Reatividade usa a palavra não.",
+        "Nenhuma das duas garante liberdade.",
+        "Escolher-se exige um critério que sobreviva à ausência de plateia."
+      ],
+      "choice_event": {
+        "id": "choice_autoelection",
+        "prompt": "Uma autoridade oferece pertencimento em troca de obediência mínima.",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "refuse_belonging",
+            "label": "Recusar o pertencimento",
+            "immediate_cost": "Perde proteção e acesso imediato.",
+            "story_consequence": "Harun escolhe solidão com autoria.",
+            "external_hook": "autoelection_refusal"
+          },
+          {
+            "id": "enter_with_terms",
+            "label": "Entrar impondo termos próprios",
+            "immediate_cost": "Assume risco de contaminação e vigilância.",
+            "story_consequence": "Harun testa se autonomia pode sobreviver dentro da estrutura.",
+            "external_hook": "conditional_entry"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 5,
+      "stage_id": "autorresponsabilidade",
+      "title": "PERGAMINHO II",
+      "subtitle": "Autorresponsabilidade",
+      "harun_conflict": "Uma decisão de Harun produz uma consequência grave para alguém que confiou nele. O jogo não permite atribuir tudo a manipulação externa.",
+      "dramatic_question": "Que parte desta ruína tem minha assinatura?",
+      "horror_device": "fantasmas repetem justificativas do jogador enquanto evidências físicas contradizem cada uma",
+      "strategic_lesson": "Registrar causalidade própria antes de procurar culpados.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO II não começa com explicação. A primeira sala dramatiza: Que parte desta ruína tem minha assinatura?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "A pessoa ferida nunca aparece como fantasma acusador. Apenas objetos deixados por ela permanecem, o que torna a ausência mais pesada."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Uma decisão de Harun produz uma consequência grave para alguém que confiou nele. O jogo não permite atribuir tudo a manipulação externa."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "fantasmas repetem justificativas do jogador enquanto evidências físicas contradizem cada uma"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Autorresponsabilidade não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Cobrador não quer confissão moral. Ele quer que Harun continue pagando juros sobre causas que se recusa a reconhecer."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Responsabilidade vira liberdade operacional: reconhecer a própria causa devolve capacidade de corrigir."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Um tribunal vazio acusa Harun com a própria voz. Cada justificativa aparece gravada na pedra segundos antes de ele pensá-la.",
+      "personal_stake": "Uma decisão passada de Harun feriu alguém que confiava nele. Nenhuma entidade sobrenatural pode absorver a parcela que lhe pertence.",
+      "choice_under_pressure": "Aceitar um debuff duradouro ao reconhecer causalidade própria ou transferir a culpa e ganhar poder temporário.",
+      "boss_revelation": "O Cobrador de Máscaras cria cópias feitas das desculpas escolhidas pelo jogador. Quanto mais ele terceiriza responsabilidade, mais inimigos surgem.",
+      "reward_meaning": "Responsabilidade vira liberdade operacional: reconhecer a própria causa devolve capacidade de corrigir.",
+      "foreshadow": "Uma das máscaras usa a voz de alguém que Harun ainda não conhece: Nadir.",
+      "stage_voiceover": [
+        "Culpa paralisa quando vira identidade.",
+        "Responsabilidade move quando vira causalidade.",
+        "Pergunte menos quem merece condenação e mais qual parte você ainda pode corrigir."
+      ],
+      "choice_event": {
+        "id": "choice_autorresponsabilidade",
+        "prompt": "A ruína tem muitas causas. Qual parte Harun assina primeiro?",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "claim_own_part",
+            "label": "Assinar apenas a própria parcela verificável",
+            "immediate_cost": "Perde a defesa psicológica de culpar o todo.",
+            "story_consequence": "Harun assume aquilo que realmente controlou.",
+            "external_hook": "own_consequence"
+          },
+          {
+            "id": "repair_before_verdict",
+            "label": "Reparar antes de decidir quem teve culpa",
+            "immediate_cost": "Gasta recurso sem garantia de reconhecimento.",
+            "story_consequence": "Harun prioriza consequência sobre narrativa de inocência.",
+            "external_hook": "repair_first"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 6,
+      "stage_id": "verdadeira_vontade",
+      "title": "PERGAMINHO III",
+      "subtitle": "Verdadeira Vontade",
+      "harun_conflict": "Três desejos de Harun oferecem futuros plausíveis e incompatíveis. Nenhum monstro informa qual é o verdadeiro.",
+      "dramatic_question": "Qual direção continua válida quando a recompensa muda?",
+      "horror_device": "corredores recompensadores retornam ao mesmo ponto até o jogador abandonar o prêmio fácil",
+      "strategic_lesson": "Distinguir desejo, fuga, ambição e direção persistente.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO III não começa com explicação. A primeira sala dramatiza: Qual direção continua válida quando a recompensa muda?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Cada futuro oferecido contém algo genuinamente desejável. O terror vem de não existir uma opção caricaturalmente errada."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Três desejos de Harun oferecem futuros plausíveis e incompatíveis. Nenhum monstro informa qual é o verdadeiro."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "corredores recompensadores retornam ao mesmo ponto até o jogador abandonar o prêmio fácil"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Verdadeira Vontade não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Falso Daimon perde sua voz quando Harun escolhe uma direção que custa prazer imediato sem produzir martírio teatral."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Vontade deixa de ser intensidade subjetiva e passa a ser vetor consistente através de mudanças de humor e prêmio."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Três portas mostram futuros em que Harun vence. Todas parecem convincentes. Todas exigem abandonar algo diferente.",
+      "personal_stake": "Harun deseja poder, pertencimento e descanso ao mesmo tempo; nenhuma dessas coisas, isoladamente, responde por sua direção.",
+      "choice_under_pressure": "Abandonar uma recompensa extraordinária para seguir a única rota cujo valor permanece quando a recompensa é removida.",
+      "boss_revelation": "O Falso Daimon fala com a voz interna de Harun e sempre oferece exatamente o que ele quer naquele momento.",
+      "reward_meaning": "Vontade deixa de ser intensidade subjetiva e passa a ser vetor consistente através de mudanças de humor e prêmio.",
+      "foreshadow": "O Falso Daimon conhece um fragmento do Grimorium que Harun nunca mostrou a ninguém.",
+      "stage_voiceover": [
+        "Desejo é uma força. Não é uma bússola.",
+        "Fuga também sabe vestir linguagem sagrada.",
+        "Vontade permanece quando o prêmio troca de rosto."
+      ],
+      "choice_event": {
+        "id": "choice_verdadeira_vontade",
+        "prompt": "A recompensa muda. A direção ainda vale?",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "keep_vector",
+            "label": "Manter a direção sem a recompensa prometida",
+            "immediate_cost": "Abre mão do prêmio mais imediato.",
+            "story_consequence": "Harun descobre se a vontade sobrevive à retirada do incentivo.",
+            "external_hook": "will_without_reward"
+          },
+          {
+            "id": "change_vector",
+            "label": "Mudar de direção conscientemente",
+            "immediate_cost": "Perde progresso investido e assume a mudança como escolha.",
+            "story_consequence": "Harun distingue flexibilidade de deserção.",
+            "external_hook": "chosen_redirection"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 7,
+      "stage_id": "carater",
+      "title": "PERGAMINHO IV",
+      "subtitle": "Caráter",
+      "harun_conflict": "Harun pode ganhar uma vantagem decisiva quebrando uma palavra dada. Mantê-la custa uma rota e salva outra coisa que só será compreendida depois.",
+      "dramatic_question": "Quanto vale minha palavra quando ninguém pode cobrar?",
+      "horror_device": "a sala oferece saídas visualmente idênticas, mas uma carrega o som de uma promessa anterior",
+      "strategic_lesson": "Tratar compromisso como restrição estratégica escolhida.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO IV não começa com explicação. A primeira sala dramatiza: Quanto vale minha palavra quando ninguém pode cobrar?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "O jogo mostra exatamente o que Harun perderá se mantiver a palavra. Não há prêmio secreto imediato para transformar integridade em aposta conveniente."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun pode ganhar uma vantagem decisiva quebrando uma palavra dada. Mantê-la custa uma rota e salva outra coisa que só será compreendida depois."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "a sala oferece saídas visualmente idênticas, mas uma carrega o som de uma promessa anterior"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Caráter não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "A Testemunha de Pedra torna-se vulnerável apenas quando o comportamento atual de Harun permanece coerente com compromissos anteriores."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Caráter funciona como continuidade temporal: o Harun de agora aceita limites escolhidos pelo Harun de antes."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Uma porta de ouro só abre se Harun quebrar uma promessa feita muitas salas antes.",
+      "personal_stake": "Harun pode obter uma vantagem decisiva traindo uma palavra que ninguém vivo parece capaz de cobrar.",
+      "choice_under_pressure": "Manter a promessa e perder recurso raro ou quebrá-la e receber imediatamente aquilo que mais precisa.",
+      "boss_revelation": "A Testemunha de Pedra não julga discursos. Ela reproduz escolhas anteriores e bloqueia qualquer justificativa posterior.",
+      "reward_meaning": "Caráter funciona como continuidade temporal: o Harun de agora aceita limites escolhidos pelo Harun de antes.",
+      "foreshadow": "A porta recusada reaparece muito depois, aberta por outra pessoa.",
+      "stage_voiceover": [
+        "Caráter não aparece quando a escolha é barata.",
+        "A palavra ganha peso quando quebrá-la resolveria um problema real.",
+        "Você se torna previsível para si mesmo antes de se tornar confiável para alguém."
+      ],
+      "choice_event": {
+        "id": "choice_carater",
+        "prompt": "Ninguém verá o que Harun fizer nesta sala.",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "keep_oath",
+            "label": "Cumprir a palavra mesmo sem testemunha",
+            "immediate_cost": "Perde uma vantagem que jamais seria descoberta.",
+            "story_consequence": "Harun confirma que caráter não depende de fiscalização.",
+            "external_hook": "oath_without_witness"
+          },
+          {
+            "id": "break_and_record",
+            "label": "Quebrar a palavra e registrar o ato sem desculpa",
+            "immediate_cost": "Ganha vantagem e carrega a marca narrativa da quebra.",
+            "story_consequence": "Harun escolhe verdade sobre autoimagem, sem transformar confissão em absolvição.",
+            "external_hook": "owned_breach"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 8,
+      "stage_id": "disciplina",
+      "title": "PERGAMINHO V",
+      "subtitle": "Disciplina",
+      "harun_conflict": "O Grimorium deixa de responder. Nenhum símbolo novo, nenhuma visão, nenhum prêmio. Harun continua por um ciclo inteiro sem confirmação.",
+      "dramatic_question": "Eu trabalho quando o mundo não me responde?",
+      "horror_device": "o jogo remove feedbacks de recompensa sem retirar feedbacks necessários de combate",
+      "strategic_lesson": "Distinguir motivação de processo e manter cadência sem aplauso.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO V não começa com explicação. A primeira sala dramatiza: Eu trabalho quando o mundo não me responde?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Por um ciclo inteiro o jogo reduz celebrações, fanfarras e recompensas visuais, preservando apenas feedbacks funcionais necessários."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "O Grimorium deixa de responder. Nenhum símbolo novo, nenhuma visão, nenhum prêmio. Harun continua por um ciclo inteiro sem confirmação."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "o jogo remove feedbacks de recompensa sem retirar feedbacks necessários de combate"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Disciplina não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Devorador não pode consumir o que não depende de estímulo para continuar existindo."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Disciplina reduz dependência de feedback e transforma repetição em infraestrutura de poder."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "O Grimorium abre em páginas completamente vazias. Nenhuma runa responde. Nenhum som confirma progresso.",
+      "personal_stake": "Harun descobre o quanto dependia de sinais extraordinários para manter ações ordinárias.",
+      "choice_under_pressure": "Continuar a rotina sem recompensa visível ou abandonar o processo para buscar uma nova fonte de excitação.",
+      "boss_revelation": "O Devorador de Ritmo cresce toda vez que Harun quebra a própria cadência para perseguir estímulos laterais.",
+      "reward_meaning": "Disciplina reduz dependência de feedback e transforma repetição em infraestrutura de poder.",
+      "foreshadow": "No fim da etapa, uma única palavra surge numa página antes vazia: CONTINUA.",
+      "stage_voiceover": [
+        "A ausência de sinal também é uma prova.",
+        "O mundo não deve a você confirmação diária.",
+        "Continue o trabalho quando nenhuma voz disser que vale a pena."
+      ],
+      "choice_event": {
+        "id": "choice_disciplina",
+        "prompt": "Nada responde. Nenhuma recompensa aparece. O trabalho continua?",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "repeat_work",
+            "label": "Executar a tarefa sem feedback",
+            "immediate_cost": "Consome tempo e recurso sem recompensa visível.",
+            "story_consequence": "Harun pratica constância sem aplauso.",
+            "external_hook": "discipline_without_feedback"
+          },
+          {
+            "id": "stop_and_measure",
+            "label": "Interromper para medir se a repetição ainda serve",
+            "immediate_cost": "Perde o bônus de sequência.",
+            "story_consequence": "Harun recusa transformar disciplina em automatismo cego.",
+            "external_hook": "disciplined_reassessment"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 9,
+      "stage_id": "clareza",
+      "title": "PERGAMINHO VI",
+      "subtitle": "Clareza",
+      "harun_conflict": "Uma visão poderosa que orientou Harun é parcialmente falsificada por evidência posterior. Ele precisa revisar a interpretação sem negar que viveu a experiência.",
+      "dramatic_question": "Posso corrigir minha cosmologia sem destruir minha experiência?",
+      "horror_device": "uma teofania anterior reaparece com detalhes que contradizem a memória do jogador",
+      "strategic_lesson": "Preservar experiência, testar hipótese e revisar alcance.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO VI não começa com explicação. A primeira sala dramatiza: Posso corrigir minha cosmologia sem destruir minha experiência?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "O Codex literalmente corrige uma entrada antiga diante do jogador, preservando a versão anterior e mostrando o que mudou."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Uma visão poderosa que orientou Harun é parcialmente falsificada por evidência posterior. Ele precisa revisar a interpretação sem negar que viveu a experiência."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "uma teofania anterior reaparece com detalhes que contradizem a memória do jogador"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Clareza não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Nublador perde corpo quando Harun nomeia a diferença entre fato observado, inferência e interpretação."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Clareza concede revisão sem cinismo: experiência, hipótese e alcance deixam de ser tratados como a mesma coisa."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Uma teofania belíssima repete exatamente uma visão anterior de Harun. Desta vez, um detalhe impossível permanece visível.",
+      "personal_stake": "Harun precisa admitir que uma experiência transformadora foi real para ele e ainda assim interpretada de modo parcialmente falso.",
+      "choice_under_pressure": "Preservar uma crença que oferece poder ou aceitar evidência que reduz certeza e abre investigação.",
+      "boss_revelation": "O Nublador não cria mentiras do nada; ele amplifica a parte verdadeira de uma interpretação até ela ocupar todo o horizonte.",
+      "reward_meaning": "Clareza concede revisão sem cinismo: experiência, hipótese e alcance deixam de ser tratados como a mesma coisa.",
+      "foreshadow": "A segunda sombra reaparece, agora em posição incompatível com a luz da sala.",
+      "stage_voiceover": [
+        "Uma experiência pode ser real sem explicar a si mesma.",
+        "Certeza é sedutora porque poupa revisão.",
+        "Clareza exige coragem suficiente para corrigir até a própria cosmologia."
+      ],
+      "choice_event": {
+        "id": "choice_clareza",
+        "prompt": "Uma crença útil entra em conflito com nova evidência.",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "revise_model",
+            "label": "Revisar o próprio modelo",
+            "immediate_cost": "Perde uma certeza que organizava decisões anteriores.",
+            "story_consequence": "Harun protege a lucidez acima da identidade.",
+            "external_hook": "model_revision"
+          },
+          {
+            "id": "suspend_judgement",
+            "label": "Suspender o juízo sem substituir uma certeza por outra",
+            "immediate_cost": "Abre mão de uma resposta imediata.",
+            "story_consequence": "Harun aprende a suportar incerteza sem fabricar conclusão.",
+            "external_hook": "disciplined_uncertainty"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 10,
+      "stage_id": "transmutacao",
+      "title": "PERGAMINHO VII",
+      "subtitle": "Transmutação",
+      "harun_conflict": "Harun encontra um objeto ligado a vergonha e perda. Destruí-lo alivia; transformá-lo produz ferramenta, mas exige carregar a memória.",
+      "dramatic_question": "O que faço com aquilo que não posso desfazer?",
+      "horror_device": "resíduos de inimigos aderem ao cenário e só mudam quando usados como recurso",
+      "strategic_lesson": "Converter resíduo em capacidade sem chamá-lo de bênção.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO VII não começa com explicação. A primeira sala dramatiza: O que faço com aquilo que não posso desfazer?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Um objeto que Harun poderia simplesmente destruir reaparece em formas cada vez piores se descartado sem compreensão."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun encontra um objeto ligado a vergonha e perda. Destruí-lo alivia; transformá-lo produz ferramenta, mas exige carregar a memória."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "resíduos de inimigos aderem ao cenário e só mudam quando usados como recurso"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Transmutação não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Dragão enfraquece quando o jogador usa seus próprios resíduos contra ele, convertendo perigo acumulado em recurso."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Transmutar não significa chamar ferida de bênção; significa impedir que matéria morta continue governando o presente."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Objetos ligados às derrotas de Harun estão fundidos numa massa que pulsa como se respirasse.",
+      "personal_stake": "Harun quer destruir aquilo que o envergonha, mas percebe que apagar memória também apagaria informação útil.",
+      "choice_under_pressure": "Destruir um resíduo e obter alívio imediato ou carregá-lo como material instável até poder transformá-lo.",
+      "boss_revelation": "O Dragão da Escória é feito de tudo que Harun tentou expulsar sem metabolizar.",
+      "reward_meaning": "Transmutar não significa chamar ferida de bênção; significa impedir que matéria morta continue governando o presente.",
+      "foreshadow": "Uma escama do Dragão tem a mesma textura do papel queimado do Grimorium.",
+      "stage_voiceover": [
+        "Nem tudo que fere ensina.",
+        "Mas aquilo que permanece pode ser transformado em matéria de trabalho.",
+        "A cicatriz não precisa virar altar para deixar de ser prisão."
+      ],
+      "choice_event": {
+        "id": "choice_transmutacao",
+        "prompt": "O dano não pode ser desfeito. O que será feito com o resíduo?",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "forge_residue",
+            "label": "Converter o resíduo em instrumento",
+            "immediate_cost": "Exige manter contato com a memória da perda.",
+            "story_consequence": "Harun recusa desperdício sem chamar sofrimento de bênção.",
+            "external_hook": "residue_to_tool"
+          },
+          {
+            "id": "bury_residue",
+            "label": "Encerrar o ciclo e não reutilizar a ferida",
+            "immediate_cost": "Abre mão de um poder potencial.",
+            "story_consequence": "Harun escolhe não transformar toda dor em identidade produtiva.",
+            "external_hook": "refuse_exploitation_of_wound"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 11,
+      "stage_id": "corpo_energia",
+      "title": "PERGAMINHO VIII",
+      "subtitle": "Corpo e Energia",
+      "harun_conflict": "Harun força o corpo além do limite e quase perde a jornada por confundir vontade com combustível infinito.",
+      "dramatic_question": "Poder que destrói o operador ainda é poder?",
+      "horror_device": "respiração, visão e audição degradam antes do HP, tornando custo corporal legível",
+      "strategic_lesson": "Orçar energia, recuperar e usar limite como informação.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO VIII não começa com explicação. A primeira sala dramatiza: Poder que destrói o operador ainda é poder?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Durante uma sequência, a melhor decisão é literalmente parar num lugar seguro, algo que o jogo nunca havia recompensado antes."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun força o corpo além do limite e quase perde a jornada por confundir vontade com combustível infinito."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "respiração, visão e audição degradam antes do HP, tornando custo corporal legível"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Corpo e Energia não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Tirano entra em colapso quando Harun recusa a lógica de gastar tudo apenas porque ainda resta alguma coisa."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Corpo torna-se sensor estratégico: limite deixa de ser vergonha e passa a informar alocação de energia."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Harun corre por um corredor infinito enquanto a interface parece normal; primeiro muda a respiração, depois a audição, só então o corpo falha.",
+      "personal_stake": "Ele quase interrompe a jornada por tratar vontade como substituto de sono, recuperação e limite fisiológico.",
+      "choice_under_pressure": "Parar e perder uma oportunidade rara ou continuar exausto e arriscar efeitos persistentes nas próximas salas.",
+      "boss_revelation": "O Tirano da Exaustão não causa dano direto no início. Ele aumenta custo de tudo até cada ação se tornar ameaça.",
+      "reward_meaning": "Corpo torna-se sensor estratégico: limite deixa de ser vergonha e passa a informar alocação de energia.",
+      "foreshadow": "O som do primeiro sopro humano retorna misturado à respiração de Harun.",
+      "stage_voiceover": [
+        "Nenhuma vontade torna um corpo infinito.",
+        "Energia ignorada reaparece como dívida.",
+        "O operador também faz parte do sistema que pretende governar."
+      ],
+      "choice_event": {
+        "id": "choice_corpo_energia",
+        "prompt": "O poder disponível excede aquilo que o corpo pode sustentar.",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "spend_body",
+            "label": "Usar o corpo como combustível",
+            "immediate_cost": "Ganha potência imediata por custo físico persistente.",
+            "story_consequence": "Harun testa o limite e assume a dívida.",
+            "external_hook": "body_as_fuel"
+          },
+          {
+            "id": "preserve_operator",
+            "label": "Preservar o operador e reduzir potência",
+            "immediate_cost": "Perde a janela de força máxima.",
+            "story_consequence": "Harun reconhece que instrumento destruído interrompe a Obra.",
+            "external_hook": "preserve_operator"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 12,
+      "stage_id": "obra",
+      "title": "PERGAMINHO IX",
+      "subtitle": "Obra",
+      "harun_conflict": "Harun percebe que acumulou sistemas, símbolos e promessas demais e concluiu quase nada. O Grimorium exige que ele termine uma estrutura antes de abrir outra.",
+      "dramatic_question": "O que existe fora da minha cabeça por causa do que aprendi?",
+      "horror_device": "portas só aparecem quando objetos incompletos são terminados em vez de colecionados",
+      "strategic_lesson": "Priorizar entrega, acabamento e manutenção sobre acúmulo.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO IX não começa com explicação. A primeira sala dramatiza: O que existe fora da minha cabeça por causa do que aprendi?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Itens incompletos ocupam slots reais e impedem aquisição de novos até que sejam concluídos ou conscientemente descartados."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun percebe que acumulou sistemas, símbolos e promessas demais e concluiu quase nada. O Grimorium exige que ele termine uma estrutura antes de abrir outra."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "portas só aparecem quando objetos incompletos são terminados em vez de colecionados"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Obra não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Arquiteto perde salas inteiras quando Harun conclui uma única estrutura em vez de responder a cada distração."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Obra converte conhecimento em algo que existe fora da mente e exige manutenção depois da euforia."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Uma biblioteca colossal contém centenas de projetos iniciados por Harun. Nenhum deles possui última página.",
+      "personal_stake": "Ele percebe que aprender novos sistemas se tornou uma forma sofisticada de evitar terminar os anteriores.",
+      "choice_under_pressure": "Abrir uma nova ala cheia de conhecimento raro ou selá-la para concluir a única estrutura que já está em andamento.",
+      "boss_revelation": "O Arquiteto Cego constrói corredores sem saída usando cada projeto abandonado do jogador como matéria.",
+      "reward_meaning": "Obra converte conhecimento em algo que existe fora da mente e exige manutenção depois da euforia.",
+      "foreshadow": "Uma mesa pronta para um segundo estudante aparece vazia pela primeira vez.",
+      "stage_voiceover": [
+        "Acumular ferramentas não é construir.",
+        "Começar produz esperança. Terminar produz existência.",
+        "A obra começa quando alguma coisa precisa continuar funcionando sem sua excitação."
+      ],
+      "choice_event": {
+        "id": "choice_obra",
+        "prompt": "A ideia está perfeita na mente e imperfeita no mundo.",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "ship_imperfect",
+            "label": "Materializar agora",
+            "immediate_cost": "Aceita falha visível e crítica.",
+            "story_consequence": "Harun escolhe existência corrigível sobre perfeição imaginária.",
+            "external_hook": "ship_then_refine"
+          },
+          {
+            "id": "refine_once_more",
+            "label": "Refinar mais uma vez antes de publicar",
+            "immediate_cost": "Perde uma oportunidade temporal real.",
+            "story_consequence": "Harun aceita o custo de precisão adicional.",
+            "external_hook": "precision_over_window"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 13,
+      "stage_id": "fortuna",
+      "title": "PERGAMINHO X",
+      "subtitle": "Fortuna",
+      "harun_conflict": "Harun entra num pacto material onde cada benefício possui preço explícito e custos ocultos. Riqueza aparece como fluxo, risco e compromisso.",
+      "dramatic_question": "Qual preço ainda aceito quando conheço a conta inteira?",
+      "horror_device": "moedas e contratos alteram discretamente a geometria futura do andar",
+      "strategic_lesson": "Calcular custo total, opcionalidade, dívida e autonomia antes da troca.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO X não começa com explicação. A primeira sala dramatiza: Qual preço ainda aceito quando conheço a conta inteira?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Uma compra anterior altera discretamente o layout de três salas futuras, mostrando que decisões econômicas também constroem geografia."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun entra num pacto material onde cada benefício possui preço explícito e custos ocultos. Riqueza aparece como fluxo, risco e compromisso."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "moedas e contratos alteram discretamente a geometria futura do andar"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Fortuna não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Banqueiro perde autoridade quando Harun começa a calcular custo de oportunidade e não apenas ganho bruto."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Fortuna torna-se capacidade de manter fluxo, reserva, risco e autonomia simultaneamente."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Um mercado funciona dentro de uma catedral. Cada preço muda depois que Harun olha para outro produto.",
+      "personal_stake": "Harun entra numa troca material vantajosa e descobre que dependência futura estava embutida no preço inicial.",
+      "choice_under_pressure": "Aceitar poder imediato com custo futuro explícito ou preservar opcionalidade e sair aparentemente mais fraco.",
+      "boss_revelation": "O Banqueiro Arcôntico não rouba. Ele oferece contratos perfeitos para quem calcula apenas a primeira parcela.",
+      "reward_meaning": "Fortuna torna-se capacidade de manter fluxo, reserva, risco e autonomia simultaneamente.",
+      "foreshadow": "Um contrato menciona Aleppo antes de Harun ter qualquer motivo para ir até lá.",
+      "stage_voiceover": [
+        "Preço não é o mesmo que custo.",
+        "Toda troca reorganiza aquilo que você poderá escolher depois.",
+        "Fortuna é liberdade de movimento, não brilho acumulado."
+      ],
+      "choice_event": {
+        "id": "choice_fortuna",
+        "prompt": "O melhor acordo exige um preço que só será sentido depois.",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "take_deal",
+            "label": "Aceitar o preço conhecido",
+            "immediate_cost": "Recebe benefício e fixa dívida futura.",
+            "story_consequence": "Harun entra no pacto sem fingir que o custo desapareceu.",
+            "external_hook": "conscious_debt"
+          },
+          {
+            "id": "walk_away",
+            "label": "Recusar uma vantagem objetivamente forte",
+            "immediate_cost": "Perde poder e preserva liberdade futura.",
+            "story_consequence": "Harun prova que oportunidade não é obrigação.",
+            "external_hook": "refuse_profitable_chain"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 14,
+      "stage_id": "influencia",
+      "title": "PERGAMINHO XI",
+      "subtitle": "Influência",
+      "harun_conflict": "Harun descobre que seguidores começaram a copiar suas decisões sem compreendê-las. Quanto mais obediência recebe, mais perigoso fica seu sucesso.",
+      "dramatic_question": "Posso dirigir sem fabricar dependência?",
+      "horror_device": "NPCs repetem literalmente a última ação de Harun até serem ensinados a decidir",
+      "strategic_lesson": "Criar critérios transferíveis em vez de centralizar obediência.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO XI não começa com explicação. A primeira sala dramatiza: Posso dirigir sem fabricar dependência?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "NPCs aliados ficam mais fortes quando obedecem diretamente, mas só desbloqueiam autonomia se o jogador aceitar perder controle imediato."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun descobre que seguidores começaram a copiar suas decisões sem compreendê-las. Quanto mais obediência recebe, mais perigoso fica seu sucesso."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "NPCs repetem literalmente a última ação de Harun até serem ensinados a decidir"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Influência não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Coral morre quando seus membros deixam de repetir a mesma voz e passam a agir por critérios próprios."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Influência passa de obediência acumulada para capacidade distribuída."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Figuras sem rosto repetem perfeitamente os movimentos de Harun, inclusive seus erros.",
+      "personal_stake": "Harun percebe que pessoas começaram a copiá-lo por confiança, transformando a própria presença num risco para a autonomia alheia.",
+      "choice_under_pressure": "Dar uma ordem que resolve o problema imediatamente ou ensinar um critério que permite ao outro decidir sem ele.",
+      "boss_revelation": "O Coral da Aprovação fortalece Harun enquanto o transforma no centro obrigatório de todas as decisões.",
+      "reward_meaning": "Influência passa de obediência acumulada para capacidade distribuída.",
+      "foreshadow": "Uma figura jovem recusa uma ordem de Harun e, pela primeira vez, ele sorri em vez de corrigi-la.",
+      "stage_voiceover": [
+        "Ser seguido não prova que você sabe conduzir.",
+        "Dependência pode se fantasiar de lealdade.",
+        "A melhor influência sobrevive quando sua presença deixa de ser necessária."
+      ],
+      "choice_event": {
+        "id": "choice_influencia",
+        "prompt": "Harun pode vencer a discussão tornando o outro dependente dele.",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "create_dependency",
+            "label": "Usar a dependência como alavanca",
+            "immediate_cost": "Ganha obediência e perde confiança futura.",
+            "story_consequence": "Harun vê o custo de confundir influência com captura.",
+            "external_hook": "dependency_leverage"
+          },
+          {
+            "id": "teach_exit",
+            "label": "Dar ao outro meios de discordar e sair",
+            "immediate_cost": "Perde controle imediato.",
+            "story_consequence": "Harun escolhe autoridade que sobrevive à autonomia alheia.",
+            "external_hook": "autonomous_influence"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 15,
+      "stage_id": "legado",
+      "title": "PERGAMINHO XII",
+      "subtitle": "Legado",
+      "harun_conflict": "Harun precisa decidir quais partes do Grimorium serão preservadas, quais serão cifradas e quais deverão morrer com ele. Legado vira seleção, não acumulação.",
+      "dramatic_question": "O que merece sobreviver a mim?",
+      "horror_device": "arquivos falam com vozes de mortos e pedem preservação mesmo quando são nocivos",
+      "strategic_lesson": "Preservar função e contexto; destruir o que só perpetua cegueira.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "PERGAMINHO XII não começa com explicação. A primeira sala dramatiza: O que merece sobreviver a mim?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "Uma entrada antiga do Codex pede preservação, mas contradiz evidência acumulada. O jogador escolhe arquivar, corrigir ou destruir sua autoridade ativa."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "Harun precisa decidir quais partes do Grimorium serão preservadas, quais serão cifradas e quais deverão morrer com ele. Legado vira seleção, não acumulação."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "arquivos falam com vozes de mortos e pedem preservação mesmo quando são nocivos"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Legado não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "O Guardião só pode ser derrotado quando Harun aceita deixar uma parte de sua própria imagem morrer."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Legado vira seleção contextual: transmitir princípios vivos, não congelar a própria figura."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "opening_image": "Um arquivo interminável pede para ser salvo enquanto partes dele infectam outras estantes.",
+      "personal_stake": "Harun precisa decidir o que preservar de si e do Grimorium sem transformar memória em idolatria.",
+      "choice_under_pressure": "Salvar um documento raro por apego ou destruí-lo porque sua função futura seria apenas perpetuar cegueira.",
+      "boss_revelation": "O Guardião do Nome Durável tenta preservar tudo, inclusive erros corrigidos, porque confunde permanência com valor.",
+      "reward_meaning": "Legado vira seleção contextual: transmitir princípios vivos, não congelar a própria figura.",
+      "foreshadow": "Um segundo pavio aparece desenhado numa margem. O primeiro está aceso; o outro, não.",
+      "stage_voiceover": [
+        "Nem tudo que sobrevive merece continuar.",
+        "Memória sem contexto transforma aprendizado em dogma.",
+        "Legado é escolher o que ainda poderá viver sem precisar de você."
+      ],
+      "choice_event": {
+        "id": "choice_legado",
+        "prompt": "Nem tudo que Harun construiu merece sobreviver.",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "preserve_archive",
+            "label": "Preservar o arquivo inteiro",
+            "immediate_cost": "Carrega erros antigos junto com descobertas valiosas.",
+            "story_consequence": "Harun aceita que memória sem curadoria também transmite ruído.",
+            "external_hook": "preserve_whole_archive"
+          },
+          {
+            "id": "burn_selected",
+            "label": "Destruir deliberadamente parte do próprio legado",
+            "immediate_cost": "Perde conteúdo irreversível para impedir repetição de um erro.",
+            "story_consequence": "Harun assume que legado também exige poda.",
+            "external_hook": "curated_legacy"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    },
+    {
+      "order": 16,
+      "stage_id": "initiation_chamber",
+      "title": "CÂMARA DE INICIAÇÃO",
+      "subtitle": "Travessia do Limiar",
+      "harun_conflict": "A linhagem de Caim, as autoridades arcônticas e versões idealizadas do próprio Harun são colocadas no mesmo tribunal. Nenhuma linhagem o absolve, nenhum inimigo o define.",
+      "dramatic_question": "O que farei com aquilo que agora sei?",
+      "horror_device": "o boss usa ataques aprendidos das quinze provas e uma cópia de Harun executa hábitos do jogador",
+      "strategic_lesson": "Integrar percepção, governo e obra; assumir autoria sobre a próxima decisão.",
+      "beats": [
+        {
+          "id": "threshold",
+          "function": "presságio",
+          "text": "CÂMARA DE INICIAÇÃO não começa com explicação. A primeira sala dramatiza: O que farei com aquilo que agora sei?"
+        },
+        {
+          "id": "wound",
+          "function": "ferida pessoal",
+          "text": "A cópia de Harun executa hábitos aprendidos do jogador: esquivas, preferências de distância, uso de recursos e impulsos repetidos."
+        },
+        {
+          "id": "revelation",
+          "function": "memória",
+          "text": "A linhagem de Caim, as autoridades arcônticas e versões idealizadas do próprio Harun são colocadas no mesmo tribunal. Nenhuma linhagem o absolve, nenhum inimigo o define."
+        },
+        {
+          "id": "inversion",
+          "function": "terror estratégico",
+          "text": "o boss usa ataques aprendidos das quinze provas e uma cópia de Harun executa hábitos do jogador"
+        },
+        {
+          "id": "boss_intro",
+          "function": "confronto",
+          "text": "O boss de Travessia do Limiar não representa um conceito abstrato apenas; ele força Harun a escolher sob a mesma falha que a etapa revelou."
+        },
+        {
+          "id": "boss_truth",
+          "function": "verdade do confronto",
+          "text": "A última fase termina quando o jogador deixa de reagir ao próprio padrão e cria uma resposta nova. A vitória é integração, não superioridade."
+        },
+        {
+          "id": "completion",
+          "function": "integração",
+          "text": "Peregrinus Ignis é estado narrativo de jogo: Harun atravessou o limiar e agora responde pelo uso do que sabe. Nenhum Grau institucional é concedido."
+        }
+      ],
+      "provenance": {
+        "primary_class": "electorum_dramatization"
+      },
+      "completion_state": "PEREGRINUS_IGNIS_GAME",
+      "opening_image": "As quinze câmaras aparecem ao mesmo tempo ao redor de um tribunal vazio. No centro, uma versão de Harun ergue a cabeça antes do jogador mover o mouse.",
+      "personal_stake": "Toda a linhagem, as autoridades e as versões idealizadas de Harun deixam de servir como explicação. A próxima decisão não pode ser terceirizada ao sangue, ao destino ou ao Grimorium.",
+      "choice_under_pressure": "Usar a linhagem de Caim como justificativa de excepcionalidade ou carregá-la como responsabilidade sem privilégio moral.",
+      "boss_revelation": "O Trono da Iniciação não possui uma identidade única: alterna padrões das quinze provas e termina refletindo hábitos reais do jogador.",
+      "reward_meaning": "Peregrinus Ignis é estado narrativo de jogo: Harun atravessou o limiar e agora responde pelo uso do que sabe. Nenhum Grau institucional é concedido.",
+      "foreshadow": "Depois da vitória, a segunda sombra permanece mesmo quando todas as fontes de luz são apagadas.",
+      "stage_voiceover": [
+        "Nenhuma linhagem absolve você.",
+        "Nenhum inimigo define você.",
+        "Nenhum livro executa a próxima escolha em seu lugar.",
+        "Agora responda pelo que fará com aquilo que sabe."
+      ],
+      "choice_event": {
+        "id": "choice_initiation_chamber",
+        "prompt": "Diante da prova final, o Grimorium oferece autoridade. O que Harun fará com ela?",
+        "timing": "after_revelation_before_inversion",
+        "options": [
+          {
+            "id": "take_throne",
+            "label": "Tomar o trono e governar a estrutura",
+            "immediate_cost": "Aceita responsabilidade por tudo que a nova autoridade produzir.",
+            "story_consequence": "Harun testa se pode ocupar poder sem se tornar seu reflexo.",
+            "external_hook": "occupy_authority"
+          },
+          {
+            "id": "break_throne",
+            "label": "Romper o trono e atravessar sem substituí-lo",
+            "immediate_cost": "Perde acesso a uma forma de comando permanente.",
+            "story_consequence": "Harun escolhe capacidade sem necessidade de centralizar o mundo em si.",
+            "external_hook": "refuse_center"
+          }
+        ],
+        "design_rule": "Nenhuma opção é moralmente rotulada como correta; custo e consequência permanecem explícitos."
+      }
+    }
+  ],
+  "epilogue": {
+    "id": "aleppo_1585",
+    "title": "A SEGUNDA SOMBRA",
+    "location": "Aleppo",
+    "date_display": "c. 1585",
+    "harun_age": "aproximadamente 60",
+    "nadir_enters": true,
+    "second_wick_unlit": true,
+    "second_shadow_present": true,
+    "final_word": "LUCIFER",
+    "continuity_target": "OPUS_LUX_FERRE_LIVRO_ZERO",
+    "narration": "Anos depois da iniciação, uma imagem cósmica reduz-se ao reflexo de uma lamparina. Um pavio arde. O outro permanece seco. Duas sombras ocupam o teto. Nadir ibn Samir entra com uma carta e uma palavra que pode ser título, metáfora ou estrela. Harun não oferece resposta. Oferece uma pergunta. A CHRONICA termina no instante em que a jornada de Nadir começa.",
+    "visual": {
+      "transition": "último olho cósmico → reflexo no óleo da lamparina",
+      "room": "Aleppo; manuscritos, parede de cal, janela estreita",
+      "final_frame": "Harun, Nadir, um pavio aceso, dois contornos de sombra"
+    },
+    "audio": {
+      "music": "tema da Fonte reduzido a quatro notas em cordas graves",
+      "ambience": "cidade distante, chama, papel",
+      "final_event": "a palavra LUCIFER é seguida por corte seco para preto"
+    },
+    "provenance": {
+      "primary_class": "electorum_dramatization",
+      "continuity_class": "source",
+      "source_note": "Aleppo c.1585, Nadir, Harun, carta, Lucifer e segunda sombra preservam continuidade com Opus Lux Ferre; a montagem é do jogo."
+    },
+    "duration_seconds": 62,
+    "tension": 0.74,
+    "voiceover": [
+      "Anos passaram. O fogo continuou trabalhando em silêncio.",
+      "Aleppo, por volta de 1585. Um pavio arde. O outro permanece intacto.",
+      "Nadir ibn Samir entra com uma carta e uma pergunta que ainda não sabe formular.",
+      "Harun olha para a segunda sombra no teto e não explica o que vê.",
+      "Ele apenas pronuncia a palavra que encerra uma jornada e abre outra: LUCIFER."
+    ],
+    "cut_to_black_after_final_word": true,
+    "dramatic_function": "Fechar a formação de Harun no instante em que ele se torna capaz de não viver a jornada pelo discípulo.",
+    "strategic_function": "Converter domínio em transmissão sem dependência; o mentor oferece pergunta, não resposta.",
+    "shots": [
+      {
+        "id": "aleppo_shot_01_cosmic_eye_to_oil",
+        "duration_seconds": 8.0,
+        "camera": "macro cosmic eye contracts into reflection on lamp oil; impossible scale match cut",
+        "visual_event": "the final cosmic eye becomes a trembling reflection in a brass oil lamp",
+        "audio_event": "cosmic low frequency narrows into room tone and a single string harmonic",
+        "transition": "match_cut",
+        "tension": 0.58,
+        "subtitle_mode": "voiceover",
+        "player_control": false,
+        "dramatic_function": "collapse_cosmos_to_human_scale"
+      },
+      {
+        "id": "aleppo_shot_02_date_and_room",
+        "duration_seconds": 9.0,
+        "camera": "slow lateral reveal across lime wall, manuscripts, narrow window, Harun in profile",
+        "visual_event": "ALEPPO · c. 1585 appears briefly; one wick burns and the second remains dry",
+        "audio_event": "distant city, paper fiber, lamp flame, four-note Source motif",
+        "transition": "slow_dissolve",
+        "tension": 0.61,
+        "subtitle_mode": "voiceover",
+        "player_control": false,
+        "dramatic_function": "establish_continuity"
+      },
+      {
+        "id": "aleppo_shot_03_second_shadow",
+        "duration_seconds": 9.0,
+        "camera": "hold on ceiling before panning down; shadow information precedes source",
+        "visual_event": "two human-like shadows occupy the ceiling although only Harun is visible",
+        "audio_event": "room tone drops 3 dB; faint breath not localized in the room",
+        "transition": "hard_reframe",
+        "tension": 0.76,
+        "subtitle_mode": "silence",
+        "player_control": false,
+        "dramatic_function": "return_horror_motif"
+      },
+      {
+        "id": "aleppo_shot_04_nadir_enters",
+        "duration_seconds": 9.0,
+        "camera": "door frame foreground; Nadir enters without heroic reveal and keeps the letter low",
+        "visual_event": "Nadir ibn Samir enters with a folded letter; Harun does not turn immediately",
+        "audio_event": "door hinge, two steps, fabric, no musical accent",
+        "transition": "motivated_cut",
+        "tension": 0.68,
+        "subtitle_mode": "voiceover",
+        "player_control": false,
+        "dramatic_function": "handoff_generation"
+      },
+      {
+        "id": "aleppo_shot_05_question_not_answer",
+        "duration_seconds": 9.0,
+        "camera": "medium two-shot with lamp between Harun and Nadir; empty space preserved above them",
+        "visual_event": "Harun studies the letter, then the unlit wick, then asks a question instead of explaining",
+        "audio_event": "four-note theme leaves final interval unresolved",
+        "transition": "shot_reverse_hold",
+        "tension": 0.7,
+        "subtitle_mode": "voiceover",
+        "player_control": false,
+        "dramatic_function": "complete_harun_arc"
+      },
+      {
+        "id": "aleppo_shot_06_shadow_moves_first",
+        "duration_seconds": 8.0,
+        "camera": "very slow push toward Harun while focus shifts to ceiling",
+        "visual_event": "the second shadow moves a fraction before either man does; Harun notices and says nothing",
+        "audio_event": "single impossible scrape above; city ambience continues as if nothing happened",
+        "transition": "focus_pull",
+        "tension": 0.86,
+        "subtitle_mode": "silence",
+        "player_control": false,
+        "dramatic_function": "final_supernatural_doubt"
+      },
+      {
+        "id": "aleppo_shot_07_lucifer_cut",
+        "duration_seconds": 10.0,
+        "camera": "close on Harun; cut to unlit wick on final syllable; immediate black",
+        "visual_event": "Harun pronounces LUCIFER. The unlit wick remains unlit. Black frame holds after the word.",
+        "audio_event": "LUCIFER is dry and centered; all ambience cuts immediately after the word",
+        "transition": "hard_cut_to_black",
+        "tension": 0.92,
+        "subtitle_mode": "voiceover",
+        "player_control": false,
+        "dramatic_function": "close_chronica_open_opus_lux_ferre"
+      }
+    ]
+  },
+  "cinematic_profile": {
+    "first_view_target_seconds": [
+      420,
+      540
+    ],
+    "estimated_total_seconds": 500,
+    "narration_density": "cinematic_sparse",
+    "horror_rule": "dread_before_explanation",
+    "suspense_rule": "show_consequence_before_full_explanation",
+    "emotion_rule": "every_cosmic_event_must_cast_a_human_shadow",
+    "strategy_rule": "every_revelation_teaches_a_gameplay_grammar",
+    "music_rule": "silence_and_negative_space_are_compositional_events",
+    "cutscene_rule": "never_interrupt_player_for_lore_that_can_be_discovered_in_motion",
+    "shot_language": {
+      "orientation": "planos longos e poucos cortes enquanto o mundo parece compreensível",
+      "disturbance": "reframes lentos revelam informação já presente no quadro",
+      "terror": "ameaça entra pelo som ou pela mudança de regra antes de ganhar forma",
+      "violence": "impacto curto; consequência longa; sem glamourização gratuita",
+      "revelation": "match cuts ligam eras e motivos antes de explicações verbais",
+      "control": "primeira devolução de controle acontece diante de uma porta e uma respiração, não de um tutorial textual"
+    }
+  },
+  "recurring_motifs": {
+    "missing_frequency": {
+      "meaning": "Uma verdade ausente que só se torna visível pelo que deixou de vibrar.",
+      "appearances": [
+        "sophia_at_edge",
+        "clareza",
+        "aleppo_1585"
+      ]
+    },
+    "breath": {
+      "meaning": "Potência transmitida sem domínio pleno; vida, ameaça e responsabilidade.",
+      "appearances": [
+        "first_scream",
+        "form_without_breath",
+        "corpo_energia",
+        "aleppo_1585"
+      ]
+    },
+    "hand_and_mark": {
+      "meaning": "Ação, herança e autoria. A mão prova o que a cosmologia apenas afirma.",
+      "appearances": [
+        "cain",
+        "lineage_of_mark",
+        "a_obra_fundacao",
+        "obra",
+        "aleppo_1585"
+      ]
+    },
+    "door": {
+      "meaning": "Toda revelação fecha uma possibilidade e abre outra. Conhecimento é irreversível.",
+      "appearances": [
+        "lilith_first_refusal",
+        "see_govern_make",
+        "autoelection",
+        "verdadeira_vontade",
+        "initiation_chamber"
+      ]
+    },
+    "second_shadow": {
+      "meaning": "Presença que excede explicação imediata; dúvida, companhia e leitura incompleta.",
+      "appearances": [
+        "o_olho",
+        "clareza",
+        "aleppo_1585"
+      ]
+    },
+    "unlit_wick": {
+      "meaning": "Potência ainda não atualizada; algo que pode arder, mas ainda não foi escolhido.",
+      "appearances": [
+        "a_chama",
+        "legado",
+        "aleppo_1585"
+      ]
+    }
+  }
+}

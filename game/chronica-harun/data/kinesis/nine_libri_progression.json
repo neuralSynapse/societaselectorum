@@ -1,0 +1,410 @@
+[
+  {
+    "id": "liber_harun",
+    "index": 0,
+    "name": "Liber Harun — A Casa das Muitas Mãos",
+    "gameplay_identity": "autoria e integração",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 0
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_harun:many_hands",
+          "name": "Many Hands",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_harun:jurisdiction",
+          "name": "Jurisdiction",
+          "cost": 1,
+          "prerequisite": "liber_harun:many_hands"
+        },
+        {
+          "id": "liber_harun:founder_memory",
+          "name": "Founder Memory",
+          "cost": 2,
+          "prerequisite": "liber_harun:jurisdiction"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": false,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  },
+  {
+    "id": "liber_vis_psychicae",
+    "index": 1,
+    "name": "Liber Vis Psychicae — Livro da Força Psíquica",
+    "gameplay_identity": "movimento dirigido e famílias de cineses",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 2
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_vis_psychicae:kinetic_focus",
+          "name": "Kinetic Focus",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_vis_psychicae:remote_force",
+          "name": "Remote Force",
+          "cost": 1,
+          "prerequisite": "liber_vis_psychicae:kinetic_focus"
+        },
+        {
+          "id": "liber_vis_psychicae:field_control",
+          "name": "Field Control",
+          "cost": 2,
+          "prerequisite": "liber_vis_psychicae:remote_force"
+        },
+        {
+          "id": "liber_vis_psychicae:kinetic_mastery",
+          "name": "Kinetic Mastery",
+          "cost": 2,
+          "prerequisite": "liber_vis_psychicae:field_control"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": true,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  },
+  {
+    "id": "liber_atramenti_sanguinis",
+    "index": 2,
+    "name": "Liber Atramenti Sanguinis — A Doutrina da Tinta de Sangue",
+    "gameplay_identity": "troca, carga, circulação e transmutação",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 4
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_atramenti_sanguinis:absorb",
+          "name": "Absorb",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_atramenti_sanguinis:donate",
+          "name": "Donate",
+          "cost": 1,
+          "prerequisite": "liber_atramenti_sanguinis:absorb"
+        },
+        {
+          "id": "liber_atramenti_sanguinis:convert",
+          "name": "Convert",
+          "cost": 2,
+          "prerequisite": "liber_atramenti_sanguinis:donate"
+        },
+        {
+          "id": "liber_atramenti_sanguinis:blood_ink_aegis",
+          "name": "Blood Ink Aegis",
+          "cost": 2,
+          "prerequisite": "liber_atramenti_sanguinis:convert"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": false,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  },
+  {
+    "id": "liber_ars_occulta",
+    "index": 3,
+    "name": "Liber Ars Occulta — Manual Maior das Artes Ocultas",
+    "gameplay_identity": "sigilos, rito, palavra e instrumentos",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 6
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_ars_occulta:sigil_cast",
+          "name": "Sigil Cast",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_ars_occulta:thoughtform",
+          "name": "Thoughtform",
+          "cost": 1,
+          "prerequisite": "liber_ars_occulta:sigil_cast"
+        },
+        {
+          "id": "liber_ars_occulta:ritual_weapon",
+          "name": "Ritual Weapon",
+          "cost": 2,
+          "prerequisite": "liber_ars_occulta:thoughtform"
+        },
+        {
+          "id": "liber_ars_occulta:grimorium_chain",
+          "name": "Grimorium Chain",
+          "cost": 2,
+          "prerequisite": "liber_ars_occulta:ritual_weapon"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": false,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  },
+  {
+    "id": "liber_paradoxi_temporalis",
+    "index": 4,
+    "name": "Liber Paradoxi Temporalis — Mecânicas do Tempo, Consciência e Paradoxo",
+    "gameplay_identity": "tempo, probabilidade e rupturas",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 8
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_paradoxi_temporalis:probability_mark",
+          "name": "Probability Mark",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_paradoxi_temporalis:retro_echo",
+          "name": "Retro Echo",
+          "cost": 1,
+          "prerequisite": "liber_paradoxi_temporalis:probability_mark"
+        },
+        {
+          "id": "liber_paradoxi_temporalis:temporal_rift",
+          "name": "Temporal Rift",
+          "cost": 2,
+          "prerequisite": "liber_paradoxi_temporalis:retro_echo"
+        },
+        {
+          "id": "liber_paradoxi_temporalis:branch_witness",
+          "name": "Branch Witness",
+          "cost": 2,
+          "prerequisite": "liber_paradoxi_temporalis:temporal_rift"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": false,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  },
+  {
+    "id": "liber_architecturae_mentis",
+    "index": 5,
+    "name": "Liber Architecturae Mentis — Mundus Interior",
+    "gameplay_identity": "atenção, memória, linguagem e arquitetura mental",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 10
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_architecturae_mentis:mind_palace",
+          "name": "Mind Palace",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_architecturae_mentis:attention_gate",
+          "name": "Attention Gate",
+          "cost": 1,
+          "prerequisite": "liber_architecturae_mentis:mind_palace"
+        },
+        {
+          "id": "liber_architecturae_mentis:memory_anchor",
+          "name": "Memory Anchor",
+          "cost": 2,
+          "prerequisite": "liber_architecturae_mentis:attention_gate"
+        },
+        {
+          "id": "liber_architecturae_mentis:cognitive_decoy",
+          "name": "Cognitive Decoy",
+          "cost": 2,
+          "prerequisite": "liber_architecturae_mentis:memory_anchor"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": false,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  },
+  {
+    "id": "liber_somniorum_projectionis",
+    "index": 6,
+    "name": "Liber Somniorum et Projectionis — Sonhos, Lucidez e Projeção",
+    "gameplay_identity": "sonho, projeção e estados liminares",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 12
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_somniorum_projectionis:lucid_step",
+          "name": "Lucid Step",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_somniorum_projectionis:dream_double",
+          "name": "Dream Double",
+          "cost": 1,
+          "prerequisite": "liber_somniorum_projectionis:lucid_step"
+        },
+        {
+          "id": "liber_somniorum_projectionis:projection",
+          "name": "Projection",
+          "cost": 2,
+          "prerequisite": "liber_somniorum_projectionis:dream_double"
+        },
+        {
+          "id": "liber_somniorum_projectionis:oneiric_gate",
+          "name": "Oneiric Gate",
+          "cost": 2,
+          "prerequisite": "liber_somniorum_projectionis:projection"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": false,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  },
+  {
+    "id": "liber_laboratorii_arcani",
+    "index": 7,
+    "name": "Liber Laboratorii Arcani — O Laboratório, o Atlas e a Evidência",
+    "gameplay_identity": "teste, hipótese, medida e controle",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 14
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_laboratorii_arcani:hypothesis",
+          "name": "Hypothesis",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_laboratorii_arcani:control_variable",
+          "name": "Control Variable",
+          "cost": 1,
+          "prerequisite": "liber_laboratorii_arcani:hypothesis"
+        },
+        {
+          "id": "liber_laboratorii_arcani:quantum_lab",
+          "name": "Quantum Lab",
+          "cost": 2,
+          "prerequisite": "liber_laboratorii_arcani:control_variable"
+        },
+        {
+          "id": "liber_laboratorii_arcani:null_result_bonus",
+          "name": "Null Result Bonus",
+          "cost": 2,
+          "prerequisite": "liber_laboratorii_arcani:quantum_lab"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": false,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  },
+  {
+    "id": "liber_manifestationis_hermeticae",
+    "index": 8,
+    "name": "Liber Manifestationis Hermeticae — A Carta do Futuro e a Obra no Mundo",
+    "gameplay_identity": "obra futura, planejamento e manifestação como design",
+    "unlock_condition": {
+      "kind": "student_stage_or_codex",
+      "stage_index": 15
+    },
+    "progression_tree": {
+      "nodes": [
+        {
+          "id": "liber_manifestationis_hermeticae:future_letter",
+          "name": "Future Letter",
+          "cost": 1,
+          "prerequisite": null
+        },
+        {
+          "id": "liber_manifestationis_hermeticae:reverse_plan",
+          "name": "Reverse Plan",
+          "cost": 1,
+          "prerequisite": "liber_manifestationis_hermeticae:future_letter"
+        },
+        {
+          "id": "liber_manifestationis_hermeticae:materialize_choice",
+          "name": "Materialize Choice",
+          "cost": 2,
+          "prerequisite": "liber_manifestationis_hermeticae:reverse_plan"
+        },
+        {
+          "id": "liber_manifestationis_hermeticae:work_manifest",
+          "name": "Work Manifest",
+          "cost": 2,
+          "prerequisite": "liber_manifestationis_hermeticae:materialize_choice"
+        }
+      ]
+    },
+    "genealogy": {
+      "kinesis_field": false,
+      "note": "Kinesis é campo/genealogia técnica; Magnum Opus Harun é a coleção governante de nove Libri."
+    },
+    "provenance": {
+      "level": "internal_canon",
+      "epistemic_rule": "Experiência, hipótese, observação e afirmação científica permanecem distintas."
+    }
+  }
+]

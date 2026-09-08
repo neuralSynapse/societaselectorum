@@ -1,0 +1,33 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/narrative/NarrativeRuntimeBridge.gd" id="1_bridge"]
+[ext_resource type="Script" path="res://scripts/narrative/CosmogonyPrologueDirector.gd" id="2_cosmogony"]
+[ext_resource type="Script" path="res://scripts/narrative/HarunOriginDirector.gd" id="3_origin"]
+[ext_resource type="Script" path="res://scripts/narrative/ChronicaStoryDirector.gd" id="4_story"]
+[ext_resource type="Script" path="res://scripts/narrative/StoryCodexService.gd" id="5_codex"]
+[ext_resource type="PackedScene" path="res://scenes/narrative/NarrativePresentation.tscn" id="6_presentation"]
+[ext_resource type="Script" path="res://scripts/narrative/CinematicShotDirector.gd" id="7_shots"]
+[ext_resource type="Script" path="res://scripts/narrative/NarrativeChoiceDirector.gd" id="8_choices"]
+
+[node name="NarrativeRuntime" type="Node"]
+script = ExtResource("1_bridge")
+
+[node name="CosmogonyPrologue" type="Node" parent="."]
+script = ExtResource("2_cosmogony")
+
+[node name="HarunOrigin" type="Node" parent="."]
+script = ExtResource("3_origin")
+
+[node name="ChronicaStory" type="Node" parent="."]
+script = ExtResource("4_story")
+
+[node name="StoryCodex" type="Node" parent="."]
+script = ExtResource("5_codex")
+
+[node name="CinematicShots" type="Node" parent="."]
+script = ExtResource("7_shots")
+
+[node name="NarrativeChoices" type="Node" parent="."]
+script = ExtResource("8_choices")
+
+[node name="Presentation" parent="." instance=ExtResource("6_presentation")]

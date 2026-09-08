@@ -1,0 +1,326 @@
+[
+  {
+    "id": "story_scene:before_dark",
+    "title": "ANTES DO ESCURO",
+    "body": "Antes da distância, antes do peso, antes do nome, não havia um vazio esperando ser preenchido. Não havia sequer um fora. O que viria a ser chamado de existência ainda não havia aprendido a separar presença de ausência. E então, sem ruído, a possibilidade de perceber a si mesma surgiu.",
+    "provenance_class": "interpretation",
+    "source_note": "Abertura poética contemporânea para introduzir a Fonte sem antropomorfização.",
+    "unlock_key": "scene:before_dark",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:pleroma",
+    "title": "A PLENITUDE",
+    "body": "O Primeiro Pensamento tornou-se relação. Barbelo. A inteligência organizadora respondeu. Autogenes. E a plenitude deixou de parecer imóvel: Harmozel, Oroiael, Daveithai e Eleleth abriram domínios que não eram salas, mas maneiras de existir. Nada disputava o centro porque ainda não havia necessidade de centro.",
+    "provenance_class": "source",
+    "source_note": "Mapa sethiano simplificado: Espírito Invisível, Barbelo, Autogenes e quatro Luminares; não tratado como mapa universal de todas as tradições.",
+    "unlock_key": "scene:pleroma",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:sophia_at_edge",
+    "title": "SOPHIA NA BORDA",
+    "body": "Em Eleleth, Sophia contemplou a própria potência. Não desejou o mal. Desejou criar. Mas desejo, origem e relação deixaram de coincidir. Uma única frequência desapareceu da plenitude. Ninguém gritou. O silêncio foi pior. Sophia estendeu a vontade para onde a harmonia já não podia acompanhá-la, e aquilo que nasceu levou consigo poder suficiente para existir, mas não memória suficiente para compreender de onde viera.",
+    "provenance_class": "source",
+    "source_note": "Sophia pertence à ordem aeônica e produz sem concordância/consorte na recensão usada como eixo; a linguagem emocional é dramatização.",
+    "unlock_key": "scene:sophia_at_edge",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:first_scream",
+    "title": "O PRIMEIRO GRITO",
+    "body": "A criatura caiu para uma região que julgou ser tudo. Fogo correu por uma anatomia que ainda não possuía nome: leão, serpente, fome, autoridade. Yaldabaoth respirou. Seu primeiro fôlego queimou a névoa que o escondia; seu primeiro grito virou trovão; o trovão virou ordem. Ele procurou acima. Não viu. Procurou além. Não compreendeu. E confundiu o limite da própria percepção com o limite do real.",
+    "provenance_class": "source",
+    "source_note": "Yaldabaoth como produto de Sophia, forma leonino-serpentina/fogo e ignorância do superior; encenação é Electorum.",
+    "unlock_key": "scene:first_scream",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:blind_god",
+    "title": "O DEUS QUE NÃO SABIA QUE ERA FILHO",
+    "body": "Yaldabaoth fez o que poderes fazem quando confundem alcance com absoluto: multiplicou a própria certeza. Autoridades nasceram. Governos receberam funções. Esferas receberam limites. Listas divergentes atravessam a visão como documentos incompatíveis — sete, doze, trezentos e sessenta e cinco — porque nenhuma testemunha antiga deixou um organograma único para satisfazer leitores futuros. O jogo escolhe uma arquitetura. O Codex preserva a divergência.",
+    "provenance_class": "source",
+    "source_note": "Tradições divergem em listas e funções dos governantes; a síntese visual escolhida pelo jogo é explicitamente editorial.",
+    "unlock_key": "scene:blind_god",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:lower_architecture",
+    "title": "A ARQUITETURA INFERIOR",
+    "body": "Céus foram medidos. Ciclos foram fechados. Matéria recebeu peso. Estrelas acenderam como instrumentos num mecanismo de precisão aterradora. A Terra apareceu não como erro tosco, mas como obra bela o bastante para convencer seus habitantes de que beleza e totalidade eram a mesma coisa. O terror não estava em uma parede quebrada. Estava numa parede perfeita demais para sugerir que pudesse existir uma porta.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Cosmos inferior e autoridades são inspirados no corpus; visualização física/científica é representação contemporânea, não cosmografia antiga literal.",
+    "unlock_key": "scene:lower_architecture",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:form_without_breath",
+    "title": "A FORMA QUE NÃO RESPIRAVA",
+    "body": "Os governantes construíram uma forma à própria imagem de poder: osso, nervo, boca, olhos, mãos. Ela permaneceu no chão. Mandaram que se erguesse. Nada. Yaldabaoth aproximou-se para provar que sua obra obedeceria. Soprou. Algo atravessou a criatura — não apenas ar, mas potência. O corpo abriu os olhos. Por um instante, todos os governantes recuaram. Tinham fabricado a forma. O que os fitava de dentro dela não lhes pertencia por inteiro.",
+    "provenance_class": "source",
+    "source_note": "O despertar humano por transferência de potência do governante possui base no eixo usado pelo projeto.",
+    "unlock_key": "scene:form_without_breath",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:lilith_first_refusal",
+    "title": "LILITH — A PRIMEIRA RECUSA",
+    "body": "Antes de Eva, nesta dramatização, houve Lilith. Ela não entrou no mundo para explicar o desejo de outro personagem. Entrou para recusar uma posição que exigia obediência sem reciprocidade. Quando a ordem do Jardim se fechou sobre ela, Lilith fez aquilo que toda autoridade teme mais do que uma revolta ruidosa: saiu sem pedir que o trono validasse sua saída. O portão fechou. Do lado de fora não havia promessa. Havia noite. Ela continuou andando.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Lilith antes de Eva combina recepções posteriores e construção autoral; não é atribuída ao corpus sethiano como sequência única.",
+    "unlock_key": "scene:lilith_first_refusal",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:eve_epinoia_knowledge",
+    "title": "EVA, EPINOIA E O DIREITO DE SABER",
+    "body": "Eva não surge como culpada por destruir um paraíso. Surge como consciência que percebe a própria possibilidade de conhecer. Epinoia não entrega uma resposta pronta; acende reconhecimento. A Árvore torna-se fronteira. A Serpente, ambígua entre tradições, torna-se pergunta. A autoridade diz: não atravesse. A consciência pergunta: por quê? O primeiro conflito humano não é apenas sobre fruto. É sobre quem possui o direito de decidir o que pode ser conhecido.",
+    "provenance_class": "interpretation",
+    "source_note": "Epinoia/consciência e conflito de conhecimento têm base no material gnóstico usado; a integração dramática com Eva/Árvore/Serpente preserva divergências no Codex.",
+    "unlock_key": "scene:eve_epinoia_knowledge",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:cain",
+    "title": "CAIM — A MARCA NÃO APAGA ABEL",
+    "body": "Dois irmãos trabalharam. Dois ofereceram. Um percebeu diferença, alimentou raiva, recebeu advertência — e escolheu mesmo assim. A morte de Abel não recebe música heroica. Não recebe câmera lenta gloriosa. Acontece rápido demais. Depois vem o tempo que não volta. Caim é confrontado, tenta afastar a linguagem do próprio ato, teme a vingança e recebe uma marca que é consequência e proteção. Parte para o exílio. Mais tarde constrói. A cidade não absolve a mão. A mão, porém, ainda responde pelo que construirá depois.",
+    "provenance_class": "source",
+    "source_note": "Morte de Abel, confronto, consequência, medo, marca/proteção, exílio e construção possuem base no relato tradicional usado pelo corpus.",
+    "unlock_key": "scene:cain",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:lineage_of_mark",
+    "title": "A LINHAGEM DA MARCA",
+    "body": "A marca atravessou séculos não como medalha, mas como memória. Uma mão de ferreiro tornou-se mão de escriba. A mão de um fugitivo virou mão de mercador. A mão de uma mãe fechou os olhos de um morto. Manuscritos foram escondidos, queimados, copiados e vendidos. Em cada geração, alguém encontrou uma forma diferente de responder à mesma herança: romper, construir, repetir, reparar ou fugir. Até que a câmera chegou à mão de Harun.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Descendência direta de Harun a partir de Caim é cânone ficcional interno do jogo, não reivindicação histórica.",
+    "unlock_key": "scene:lineage_of_mark",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:dismembered_book",
+    "title": "O LIVRO DESMEMBRADO",
+    "body": "Harun passou anos perseguindo fragmentos que pareciam incompatíveis. Uma folha escondida na margem de um comentário. Um caderno carbonizado num depósito abandonado. Uma placa cifrada cujo erro de simetria parecia acidente. Uma carta comprada de um homem que não sabia ler o próprio inventário. Um mapa cuja rota terminava no vazio. Nenhum fragmento prometia poder. Todos exigiam trabalho. Quando Harun os sobrepôs, percebeu que as lacunas se alinhavam. O texto ausente formava uma estrutura maior do que os textos presentes.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "A história de descoberta fragmentária do Grimorium é ficção canônica da CHRONICA.",
+    "unlock_key": "scene:dismembered_book",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_scene:see_govern_make",
+    "title": "VER · GOVERNAR · FAZER",
+    "body": "O último fragmento revelou um título: GRIMORIUM ASCENSIONIS. Harun esperou uma profecia. Recebeu três verbos. VER. A página mudou. GOVERNAR. A luz da lamparina diminuiu. FAZER. O papel escureceu até virar pedra. O som de uma página tornou-se vento num corredor. Quando Harun ergueu os olhos, já não havia livro em suas mãos. Havia uma porta. E atrás dela, algo respirava.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Grimorium, fórmula triádica e transição são cânone ficcional autoral.",
+    "unlock_key": "scene:see_govern_make",
+    "category": "chronica_prologue"
+  },
+  {
+    "id": "story_stage:o_olho",
+    "title": "O OLHO · Percepção",
+    "body": "A primeira prova atinge a memória de Harun: versões incompatíveis de um mesmo acontecimento de infância colocam em dúvida aquilo que ele jurava ter visto. O Observador Cego não mente. Ele mostra apenas fragmentos verdadeiros em ordens diferentes, obrigando Harun a perceber que verdade parcial também pode governar como prisão. O Olho Revelatório não concede onisciência; concede o direito de distinguir sinal, hipótese e manipulação.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:o_olho",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:a_chama",
+    "title": "A CHAMA · Regência",
+    "body": "Harun recorda uma aliança rompida por uma reação que pareceu justa no instante e desastrosa minutos depois. O Arconte do Impulso cresce com cada ação precipitada do jogador; ele não derrota Harun pela força, mas usando o ritmo de Harun contra ele. A Chama Negra deixa de ser explosão e vira instrumento: poder que responde ao comando, não ao reflexo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:a_chama",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:a_obra_fundacao",
+    "title": "A OBRA · Fundação",
+    "body": "Harun confronta uma construção que abandonou assim que a excitação inicial passou; alguém confiou nela e pagou pelo colapso. O Guardião da Pedra Inerte não persegue Harun. Ele apenas torna toda estrutura mal fundada progressivamente impossível de sustentar. Fundação vira multiplicador de longo prazo: menos brilho imediato, mais capacidade de permanecer.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:a_obra_fundacao",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:autoelection",
+    "title": "PERGAMINHO I · Autoeleição",
+    "body": "Harun percebe que depois de romper com uma autoridade abusiva passou anos tomando decisões apenas para provar que ninguém o comandava. O Selo do Não usa a rebeldia como coleira: toda recusa automática ativa uma punição previsível. Autoeleição passa a significar origem interna do critério, não oposição compulsiva.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:autoelection",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:autorresponsabilidade",
+    "title": "PERGAMINHO II · Autorresponsabilidade",
+    "body": "Uma decisão passada de Harun feriu alguém que confiava nele. Nenhuma entidade sobrenatural pode absorver a parcela que lhe pertence. O Cobrador de Máscaras cria cópias feitas das desculpas escolhidas pelo jogador. Quanto mais ele terceiriza responsabilidade, mais inimigos surgem. Responsabilidade vira liberdade operacional: reconhecer a própria causa devolve capacidade de corrigir.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:autorresponsabilidade",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:verdadeira_vontade",
+    "title": "PERGAMINHO III · Verdadeira Vontade",
+    "body": "Harun deseja poder, pertencimento e descanso ao mesmo tempo; nenhuma dessas coisas, isoladamente, responde por sua direção. O Falso Daimon fala com a voz interna de Harun e sempre oferece exatamente o que ele quer naquele momento. Vontade deixa de ser intensidade subjetiva e passa a ser vetor consistente através de mudanças de humor e prêmio.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:verdadeira_vontade",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:carater",
+    "title": "PERGAMINHO IV · Caráter",
+    "body": "Harun pode obter uma vantagem decisiva traindo uma palavra que ninguém vivo parece capaz de cobrar. A Testemunha de Pedra não julga discursos. Ela reproduz escolhas anteriores e bloqueia qualquer justificativa posterior. Caráter funciona como continuidade temporal: o Harun de agora aceita limites escolhidos pelo Harun de antes.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:carater",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:disciplina",
+    "title": "PERGAMINHO V · Disciplina",
+    "body": "Harun descobre o quanto dependia de sinais extraordinários para manter ações ordinárias. O Devorador de Ritmo cresce toda vez que Harun quebra a própria cadência para perseguir estímulos laterais. Disciplina reduz dependência de feedback e transforma repetição em infraestrutura de poder.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:disciplina",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:clareza",
+    "title": "PERGAMINHO VI · Clareza",
+    "body": "Harun precisa admitir que uma experiência transformadora foi real para ele e ainda assim interpretada de modo parcialmente falso. O Nublador não cria mentiras do nada; ele amplifica a parte verdadeira de uma interpretação até ela ocupar todo o horizonte. Clareza concede revisão sem cinismo: experiência, hipótese e alcance deixam de ser tratados como a mesma coisa.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:clareza",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:transmutacao",
+    "title": "PERGAMINHO VII · Transmutação",
+    "body": "Harun quer destruir aquilo que o envergonha, mas percebe que apagar memória também apagaria informação útil. O Dragão da Escória é feito de tudo que Harun tentou expulsar sem metabolizar. Transmutar não significa chamar ferida de bênção; significa impedir que matéria morta continue governando o presente.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:transmutacao",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:corpo_energia",
+    "title": "PERGAMINHO VIII · Corpo e Energia",
+    "body": "Ele quase interrompe a jornada por tratar vontade como substituto de sono, recuperação e limite fisiológico. O Tirano da Exaustão não causa dano direto no início. Ele aumenta custo de tudo até cada ação se tornar ameaça. Corpo torna-se sensor estratégico: limite deixa de ser vergonha e passa a informar alocação de energia.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:corpo_energia",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:obra",
+    "title": "PERGAMINHO IX · Obra",
+    "body": "Ele percebe que aprender novos sistemas se tornou uma forma sofisticada de evitar terminar os anteriores. O Arquiteto Cego constrói corredores sem saída usando cada projeto abandonado do jogador como matéria. Obra converte conhecimento em algo que existe fora da mente e exige manutenção depois da euforia.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:obra",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:fortuna",
+    "title": "PERGAMINHO X · Fortuna",
+    "body": "Harun entra numa troca material vantajosa e descobre que dependência futura estava embutida no preço inicial. O Banqueiro Arcôntico não rouba. Ele oferece contratos perfeitos para quem calcula apenas a primeira parcela. Fortuna torna-se capacidade de manter fluxo, reserva, risco e autonomia simultaneamente.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:fortuna",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:influencia",
+    "title": "PERGAMINHO XI · Influência",
+    "body": "Harun percebe que pessoas começaram a copiá-lo por confiança, transformando a própria presença num risco para a autonomia alheia. O Coral da Aprovação fortalece Harun enquanto o transforma no centro obrigatório de todas as decisões. Influência passa de obediência acumulada para capacidade distribuída.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:influencia",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:legado",
+    "title": "PERGAMINHO XII · Legado",
+    "body": "Harun precisa decidir o que preservar de si e do Grimorium sem transformar memória em idolatria. O Guardião do Nome Durável tenta preservar tudo, inclusive erros corrigidos, porque confunde permanência com valor. Legado vira seleção contextual: transmitir princípios vivos, não congelar a própria figura.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:legado",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_stage:initiation_chamber",
+    "title": "CÂMARA DE INICIAÇÃO · Travessia do Limiar",
+    "body": "Toda a linhagem, as autoridades e as versões idealizadas de Harun deixam de servir como explicação. A próxima decisão não pode ser terceirizada ao sangue, ao destino ou ao Grimorium. O Trono da Iniciação não possui uma identidade única: alterna padrões das quinze provas e termina refletindo hábitos reais do jogador. Peregrinus Ignis é estado narrativo de jogo: Harun atravessou o limiar e agora responde pelo uso do que sabe. Nenhum Grau institucional é concedido.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Arco de Harun e mecânica narrativa pertencem à dramatização canônica da CHRONICA.",
+    "unlock_key": "stage:initiation_chamber",
+    "category": "student_journey"
+  },
+  {
+    "id": "story_motif:missing_frequency",
+    "title": "MISSING FREQUENCY",
+    "body": "Uma verdade ausente que só se torna visível pelo que deixou de vibrar.",
+    "provenance_class": "interpretation",
+    "source_note": "Motivo cinematográfico/editorial usado para ligar eventos e leituras do cânone.",
+    "unlock_key": "motif:missing_frequency",
+    "category": "motif"
+  },
+  {
+    "id": "story_motif:breath",
+    "title": "BREATH",
+    "body": "Potência transmitida sem domínio pleno; vida, ameaça e responsabilidade.",
+    "provenance_class": "interpretation",
+    "source_note": "Motivo cinematográfico/editorial usado para ligar eventos e leituras do cânone.",
+    "unlock_key": "motif:breath",
+    "category": "motif"
+  },
+  {
+    "id": "story_motif:hand_and_mark",
+    "title": "HAND AND MARK",
+    "body": "Ação, herança e autoria. A mão prova o que a cosmologia apenas afirma.",
+    "provenance_class": "interpretation",
+    "source_note": "Motivo cinematográfico/editorial usado para ligar eventos e leituras do cânone.",
+    "unlock_key": "motif:hand_and_mark",
+    "category": "motif"
+  },
+  {
+    "id": "story_motif:door",
+    "title": "DOOR",
+    "body": "Toda revelação fecha uma possibilidade e abre outra. Conhecimento é irreversível.",
+    "provenance_class": "interpretation",
+    "source_note": "Motivo cinematográfico/editorial usado para ligar eventos e leituras do cânone.",
+    "unlock_key": "motif:door",
+    "category": "motif"
+  },
+  {
+    "id": "story_motif:second_shadow",
+    "title": "SECOND SHADOW",
+    "body": "Presença que excede explicação imediata; dúvida, companhia e leitura incompleta.",
+    "provenance_class": "interpretation",
+    "source_note": "Motivo cinematográfico/editorial usado para ligar eventos e leituras do cânone.",
+    "unlock_key": "motif:second_shadow",
+    "category": "motif"
+  },
+  {
+    "id": "story_motif:unlit_wick",
+    "title": "UNLIT WICK",
+    "body": "Potência ainda não atualizada; algo que pode arder, mas ainda não foi escolhido.",
+    "provenance_class": "interpretation",
+    "source_note": "Motivo cinematográfico/editorial usado para ligar eventos e leituras do cânone.",
+    "unlock_key": "motif:unlit_wick",
+    "category": "motif"
+  },
+  {
+    "id": "story_epilogue:aleppo_1585",
+    "title": "A SEGUNDA SOMBRA",
+    "body": "Anos depois da iniciação, uma imagem cósmica reduz-se ao reflexo de uma lamparina. Um pavio arde. O outro permanece seco. Duas sombras ocupam o teto. Nadir ibn Samir entra com uma carta e uma palavra que pode ser título, metáfora ou estrela. Harun não oferece resposta. Oferece uma pergunta. A CHRONICA termina no instante em que a jornada de Nadir começa.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Aleppo c.1585, Nadir, Harun, carta, Lucifer e segunda sombra preservam continuidade com Opus Lux Ferre; a montagem é do jogo.",
+    "unlock_key": "epilogue:aleppo_1585",
+    "category": "epilogue"
+  }
+]
