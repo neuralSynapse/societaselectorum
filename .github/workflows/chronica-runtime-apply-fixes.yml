@@ -1,0 +1,234 @@
+name: CHRONICA Runtime Apply Fixes
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [fix/chronica-runtime-qa]
+    paths: ['.github/workflows/chronica-runtime-apply-fixes.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/chronica-runtime-qa
+          fetch-depth: 0
+
+      - name: Patch only runtime defects proven by red probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('game/chronica-harun')
+
+          def replace_once(path, old, new):
+              p = root / path
+              text = p.read_text(encoding='utf-8')
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{path}: expected exactly one replacement target, found {count}')
+              p.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          # 1) Telegraph signal existed but had no visible runtime representation.
+          replace_once(
+              'scripts/combat/AttackStateMachine.gd',
+              'var busy := false\n\nfunc begin_attack',
+              '''var busy := false
+
+func _ready() -> void:
+    _sync_telegraph_visual()
+
+func begin_attack''')
+          replace_once(
+              'scripts/combat/AttackStateMachine.gd',
+              '''    state = next_state
+    state_changed.emit(state)
+
+func _payload()''',
+              '''    state = next_state
+    _sync_telegraph_visual()
+    state_changed.emit(state)
+
+func _sync_telegraph_visual() -> void:
+    var host := get_parent()
+    if host == null:
+        return
+    var visual := host.get_node_or_null("TelegraphVisual") as GeometryInstance3D
+    if visual:
+        visual.visible = state == &"telegraph"
+
+func _payload()''')
+
+          enemy = root / 'scenes/enemies/EnemyBase.tscn'
+          text = enemy.read_text(encoding='utf-8')
+          if '[sub_resource type="CylinderMesh" id="TelegraphMesh"]' in text:
+              raise SystemExit('EnemyBase already contains TelegraphMesh; refusing duplicate patch')
+          text = text.replace('[gd_scene load_steps=6 format=3]', '[gd_scene load_steps=7 format=3]', 1)
+          text = text.replace(
+              'shading_mode = 0\n\n[node name="EnemyBase"',
+              '''shading_mode = 0
+[sub_resource type="CylinderMesh" id="TelegraphMesh"]
+material = SubResource("TelegraphMaterial")
+top_radius = 1.15
+bottom_radius = 1.15
+height = 0.025
+radial_segments = 48
+
+[node name="EnemyBase"''', 1)
+          text = text.replace(
+              '[node name="TelegraphOrigin" type="Marker3D" parent="."]',
+              '''[node name="TelegraphVisual" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.035, 0)
+visible = false
+mesh = SubResource("TelegraphMesh")
+cast_shadow = 0
+[node name="TelegraphOrigin" type="Marker3D" parent="."]''', 1)
+          enemy.write_text(text, encoding='utf-8')
+
+          boss_scene = root / 'scenes/bosses/BossBase.tscn'
+          text = boss_scene.read_text(encoding='utf-8')
+          if '[sub_resource type="CylinderMesh" id="TelegraphMesh"]' in text:
+              raise SystemExit('BossBase already contains TelegraphMesh; refusing duplicate patch')
+          text = text.replace('[gd_scene load_steps=6 format=3]', '[gd_scene load_steps=7 format=3]', 1)
+          text = text.replace(
+              'transparency = 1\n[node name="BossBase"',
+              '''transparency = 1
+shading_mode = 0
+[sub_resource type="CylinderMesh" id="TelegraphMesh"]
+material = SubResource("TelegraphMaterial")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.03
+radial_segments = 64
+[node name="BossBase"''', 1)
+          text = text.replace(
+              '[node name="TelegraphOrigin" type="Marker3D" parent="."]',
+              '''[node name="TelegraphVisual" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.04, 0)
+visible = false
+mesh = SubResource("TelegraphMesh")
+cast_shadow = 0
+[node name="TelegraphOrigin" type="Marker3D" parent="."]''', 1)
+          boss_scene.write_text(text, encoding='utf-8')
+
+          # 2) Boss HUD was updated only on phase transitions, not every hit.
+          replace_once(
+              'scripts/progression/StageDirector.gd',
+              '''    boss.position = Vector3(0, 0.1, 0)
+    boss.phase_changed.connect(_on_boss_phase)''',
+              '''    boss.position = Vector3(0, 0.1, 0)
+    boss.health.damaged.connect(_on_boss_health_damaged)
+    boss.phase_changed.connect(_on_boss_phase)''')
+          replace_once(
+              'scripts/progression/StageDirector.gd',
+              '''func _on_boss_phase(index: int) -> void:
+    if boss: hud.show_boss(boss.display_name, boss.health.ratio(), index)
+''',
+              '''func _on_boss_health_damaged(current: float, maximum: float, _amount: float, _source_id: StringName) -> void:
+    if boss == null or hud == null:
+        return
+    hud.show_boss(boss.display_name, current / maxf(1.0, maximum), boss.current_phase + 1)
+
+func _on_boss_phase(index: int) -> void:
+    if boss: hud.show_boss(boss.display_name, boss.health.ratio(), index)
+''')
+
+          # 3) Death persisted state but supplied no working retry path.
+          replace_once(
+              'scripts/progression/StageDirector.gd',
+              '''var rupture_charges := 1
+var primary_damage := 22.0''',
+              '''var rupture_charges := 1
+var retry_pending := false
+var primary_damage := 22.0''')
+          replace_once(
+              'scripts/progression/StageDirector.gd',
+              '''func _on_player_died(source_id: StringName) -> void:
+    GameState.record_death(String(source_id))
+    SaveService.save_campaign(GameState.to_save_data())
+    hud.show_message("A RUN TERMINOU · RETORNO À ETAPA ATUAL", 4.0)
+
+func _refresh_transformations()''',
+              '''func _on_player_died(source_id: StringName) -> void:
+    if retry_pending:
+        return
+    retry_pending = true
+    GameState.record_death(String(source_id))
+    SaveService.save_campaign(GameState.to_save_data())
+    hud.show_message("A RUN TERMINOU · RETORNO À ETAPA ATUAL", 1.25)
+    get_tree().create_timer(1.25).timeout.connect(retry_current_stage)
+
+func retry_current_stage() -> void:
+    SaveService.save_campaign(GameState.to_save_data())
+    get_tree().reload_current_scene()
+
+func _refresh_transformations()''')
+          PY
+
+      - name: Verify patch boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          files="$(git diff --name-only)"
+          printf '%s\n' "$files"
+          python - <<'PY'
+          import subprocess
+          allowed = {
+            'game/chronica-harun/scripts/combat/AttackStateMachine.gd',
+            'game/chronica-harun/scripts/progression/StageDirector.gd',
+            'game/chronica-harun/scenes/enemies/EnemyBase.tscn',
+            'game/chronica-harun/scenes/bosses/BossBase.tscn',
+          }
+          changed=set(subprocess.check_output(['git','diff','--name-only'],text=True).splitlines())
+          if changed != allowed:
+              raise SystemExit(f'unexpected runtime patch set: {sorted(changed)}')
+          PY
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install validation dependencies
+        run: python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+
+      - name: Install Godot 4.3
+        run: |
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version
+
+      - name: Generate runtime models
+        run: python game/chronica-harun/tools/generate_models.py
+
+      - name: Pytest after fixes
+        run: cd game/chronica-harun && pytest -q
+
+      - name: Strict Godot import after fixes
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --editor --path game/chronica-harun --quit 2>&1 | tee /tmp/import-after-fixes.log
+          ! grep -E "SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value" /tmp/import-after-fixes.log
+
+      - name: Commit verified fixes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'chronica-runtime-qa-bot'
+          git config user.email 'chronica-runtime-qa-bot@users.noreply.github.com'
+          git add game/chronica-harun/scripts/combat/AttackStateMachine.gd \
+                  game/chronica-harun/scripts/progression/StageDirector.gd \
+                  game/chronica-harun/scenes/enemies/EnemyBase.tscn \
+                  game/chronica-harun/scenes/bosses/BossBase.tscn
+          git commit -m 'fix: repair telegraphs boss HUD and stage retry'
+          git push origin HEAD:fix/chronica-runtime-qa
