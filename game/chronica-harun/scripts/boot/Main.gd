@@ -11,8 +11,11 @@ func _ready() -> void:
         GameState.start_new_campaign()
     else:
         GameState.load_save_data(snapshot)
+    var final_narrative_state := GameState.journey_state == GameState.PEREGRINUS_IGNIS_GAME
     stage_director.stage_completed.connect(_on_stage_completed)
     stage_director.configure(world_root, ui_root)
+    if final_narrative_state:
+        GameState.current_stage_id = StringName(GameState.PEREGRINUS_IGNIS_GAME)
     world_expansion.configure_player(stage_director.player)
     stage_director.attach_world_expansion(world_expansion)
     world_expansion.on_stage_started(GameState.current_stage_id)
