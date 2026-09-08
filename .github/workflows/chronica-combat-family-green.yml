@@ -20,4 +20,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -q pytest
-      - run: pytest -q game/chronica-harun/tests/test_enemy_family_runtime_diversity.py
+      - name: Verify family movement diversity
+        run: pytest -q game/chronica-harun/tests/test_enemy_family_runtime_diversity.py
