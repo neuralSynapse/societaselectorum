@@ -1,0 +1,37 @@
+name: CHRONICA Cinematic Manifest Sync
+
+on:
+  push:
+    branches: [feat/chronica-cinematics-v1]
+    paths:
+      - game/chronica-harun/tools/generate_cinematic_asset_manifest.py
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chronica-cinematics-v1
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate manifest
+        run: python game/chronica-harun/tools/generate_cinematic_asset_manifest.py
+      - name: Commit generated manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- game/chronica-harun/data/narrative/cinematic_asset_manifest.json; then
+            echo MANIFEST_ALREADY_CURRENT=1
+            exit 0
+          fi
+          git config user.name neuralSynapse
+          git config user.email secretasocietasectorum@gmail.com
+          git add game/chronica-harun/data/narrative/cinematic_asset_manifest.json
+          git commit -m "chore: regenerate cinematic asset manifest"
+          git push origin HEAD:feat/chronica-cinematics-v1
