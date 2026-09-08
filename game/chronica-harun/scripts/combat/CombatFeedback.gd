@@ -6,8 +6,8 @@ static func impact(root: Node, position: Vector3, intensity: float = 1.0) -> voi
         return
     var holder := Node3D.new()
     holder.name = "CombatImpactFeedback"
-    holder.global_position = position
     root.add_child(holder)
+    holder.global_position = position
 
     var mesh_instance := MeshInstance3D.new()
     var mesh := SphereMesh.new()
