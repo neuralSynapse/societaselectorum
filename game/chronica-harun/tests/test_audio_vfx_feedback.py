@@ -32,7 +32,7 @@ def test_vfx_director_is_safe_autoload_with_emission_caps():
     src = read("autoload/VFXDirector.gd")
     for event_id in [
         "player_primary", "player_power", "kinesis", "instrumenta", "tarot_activate",
-        "enemy_windup", "enemy_telegraph", "enemy_projectile", "projectile_impact",
+        "enemy_windup", "enemy_telegraph", "enemy_projectile", "projectile_travel", "projectile_impact",
         "enemy_hit", "enemy_death", "boss_windup", "boss_attack", "boss_phase",
         "boss_death", "pickup", "secret_rupture", "special_room_activate",
     ]:
@@ -53,16 +53,18 @@ def test_projectile_is_visible_has_rendered_trail_and_physically_travels():
     assert script.index("global_position += direction * speed * delta") < script.index("body.apply_damage")
 
 
-def test_attack_contract_preserves_telegraph_before_emission_and_no_ranged_cast_damage():
+def test_attack_contract_preserves_telegraph_before_emission_and_ranged_damage_on_collision():
     state = read("scripts/combat/AttackStateMachine.gd")
-    assert state.index("telegraph_started.emit") < state.index("emission_requested.emit")
+    projectile = read("scripts/combat/Projectile.gd")
     enemy = read("scripts/ai/DataEnemy.gd")
     boss = read("scripts/bosses/DataBossController.gd")
+    assert state.index("telegraph_started.emit") < state.index("emission_requested.emit")
     assert "PROJECTILE_SCENE.instantiate" in enemy
     assert "PROJECTILE_SCENE.instantiate" in boss
-    for src in (enemy, boss):
-        emission = src[src.index("func _on_emission_requested"):]
-        assert "target.apply_damage" not in emission.split("func ", 1)[0]
+    assert "func _on_body_entered" in projectile
+    damage_line = projectile.index("body.apply_damage")
+    travel_line = projectile.index("global_position += direction * speed * delta")
+    assert travel_line < damage_line
 
 
 def test_enemy_and_boss_feedback_hooks_cover_required_combat_states():
@@ -77,16 +79,19 @@ def test_enemy_and_boss_feedback_hooks_cover_required_combat_states():
 
 
 def test_player_content_pickup_secret_and_special_room_feedback_hooks_exist():
-    stage = read("scripts/progression/StageDirector.gd")
+    vfx = read("autoload/VFXDirector.gd")
     pickup = read("scripts/pickups/PickupController.gd")
     player = read("scripts/player/PlayerController.gd")
+    stage = read("scripts/progression/StageDirector.gd")
     for token in [
         "player_primary", "player_power", "kinesis", "instrumenta", "tarot_activate",
         "secret_rupture", "special_room_activate",
     ]:
-        assert token in stage
+        assert token in vfx
+    assert 'AudioDirector.play_3d(&"secret_break"' in stage
     assert "pickup" in pickup and "VFXDirector" in pickup
-    assert "player_hit" in player and "VFXDirector" in player
+    assert 'AudioDirector.play_3d(&"player_hit"' in player
+    assert '"player_hit"' in vfx
 
 
 def test_boss_phase_feedback_is_emitted_from_actual_phase_transition():
@@ -94,3 +99,10 @@ def test_boss_phase_feedback_is_emitted_from_actual_phase_transition():
     transition = boss[boss.index("if next_phase != current_phase:"):]
     assert 'AudioDirector.play_3d(&"boss_phase"' in transition
     assert 'VFXDirector.emit_feedback(&"boss_phase"' in transition
+
+
+def test_runtime_probe_covers_audio_projectile_and_boss_phase():
+    probe = read("runtime_qa/AudioVfxProbe.gd")
+    assert "AUDIO_VFX_RUNTIME_PROBE=PASS" in probe
+    assert "projectile did not physically travel" in probe
+    assert "boss phase feedback did not fire" in probe

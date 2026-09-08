@@ -21,7 +21,7 @@ func configure(profile: Dictionary, origin: Vector3, travel_direction: Vector3, 
     speed = float(profile.get("speed", speed))
     damage = float(profile.get("damage", damage))
     lifetime = float(profile.get("lifetime", lifetime))
-    emission_budget = minf(0.75, float(profile.get("emission", emission_budget)))
+    emission_budget = minf(VFXDirector.MAX_EMISSION, float(profile.get("emission", emission_budget)))
     source_id = from_source
     active = true
     var mesh_instance := get_node_or_null("Mesh") as MeshInstance3D
@@ -44,9 +44,14 @@ func _on_body_entered(body: Node) -> void:
     if body.has_method("apply_damage"):
         var mutation_result := PowerMutationRuntime.on_projectile_about_to_hit({"source_id": String(source_id)})
         if mutation_result.get("ignore", false):
+            VFXDirector.emit_feedback(&"projectile_impact", global_position, -direction, {"ignored":true})
+            AudioDirector.play_3d(&"projectile_impact", global_position)
+            active = false
             queue_free()
             return
         body.apply_damage(damage, source_id)
+    VFXDirector.emit_feedback(&"projectile_impact", global_position, -direction, {"source_id":String(source_id)})
+    AudioDirector.play_3d(&"projectile_impact", global_position)
     impacted.emit(global_position, body)
     active = false
     queue_free()

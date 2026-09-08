@@ -1,40 +1,68 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/combat/Projectile.gd" id="1"]
-[sub_resource type="SphereMesh" id="Mesh"]
-radius = 0.085
-height = 0.17
-[sub_resource type="SphereShape3D" id="Shape"]
-radius = 0.12
-[sub_resource type="StandardMaterial3D" id="Material"]
-albedo_color = Color(0.46, 0.24, 0.11, 1)
-roughness = 0.42
+
+[sub_resource type="StandardMaterial3D" id="ProjectileMaterial"]
+albedo_color = Color(0.55, 0.29, 0.09, 1)
+metallic = 0.08
+roughness = 0.36
 emission_enabled = true
-emission = Color(0.33, 0.16, 0.07, 1)
-emission_energy_multiplier = 0.45
+emission = Color(0.38, 0.17, 0.045, 1)
+emission_energy_multiplier = 0.38
+
+[sub_resource type="SphereMesh" id="ProjectileMesh"]
+material = SubResource("ProjectileMaterial")
+radius = 0.12
+height = 0.24
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereShape3D" id="ProjectileShape"]
+radius = 0.14
+
 [sub_resource type="ParticleProcessMaterial" id="TrailProcess"]
 direction = Vector3(0, 0, 1)
+spread = 16.0
 initial_velocity_min = 0.35
 initial_velocity_max = 0.75
 gravity = Vector3(0, 0, 0)
-scale_min = 0.025
-scale_max = 0.05
+scale_min = 0.55
+scale_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="TrailMaterial"]
+albedo_color = Color(0.42, 0.19, 0.045, 1)
+roughness = 0.48
+emission_enabled = true
+emission = Color(0.30, 0.12, 0.025, 1)
+emission_energy_multiplier = 0.18
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="TrailMesh"]
+material = SubResource("TrailMaterial")
+size = Vector2(0.055, 0.055)
 
 [node name="Projectile" type="Area3D"]
 script = ExtResource("1")
-monitoring = true
-collision_layer = 4
+collision_layer = 8
 collision_mask = 1
+monitoring = true
+monitorable = true
+
 [node name="Mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("Mesh")
-material_override = SubResource("Material")
+mesh = SubResource("ProjectileMesh")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("Shape")
+shape = SubResource("ProjectileShape")
+
 [node name="Trail" type="GPUParticles3D" parent="."]
-amount = 18
-lifetime = 0.3
+amount = 16
+lifetime = 0.32
+local_coords = false
 process_material = SubResource("TrailProcess")
+draw_pass_1 = SubResource("TrailMesh")
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-max_distance = 26.0
-unit_size = 2.0
+max_distance = 24.0
+unit_size = 1.5
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

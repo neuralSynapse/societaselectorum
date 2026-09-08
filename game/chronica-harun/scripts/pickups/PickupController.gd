@@ -26,8 +26,9 @@ func interact(actor: Node) -> bool:
     if not RogueliteContentService.grant(String(category), content_id):
         return false
     consumed = true
+    VFXDirector.emit_feedback(&"pickup", global_position, Vector3.UP, {"category":String(category), "content_id":String(content_id)})
+    AudioDirector.play_3d(&"pickup", global_position)
     collected.emit(category, content_id, actor)
-    AudioDirector.play_ui(&"pickup")
     visible = false
     monitoring = false
     queue_free()

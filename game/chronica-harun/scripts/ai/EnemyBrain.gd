@@ -22,7 +22,9 @@ var attack_definition: Dictionary = {}
 var attack_cooldown := 0.0
 
 func _ready() -> void:
+    health.damaged.connect(_on_damaged_feedback)
     health.died.connect(_on_died)
+    attack_sm.state_changed.connect(_on_attack_state_changed)
     attack_sm.telegraph_started.connect(_on_telegraph_started)
     attack_sm.emission_requested.connect(_on_emission_requested)
     attack_sm.impact_window_started.connect(_on_impact_window)
@@ -93,9 +95,14 @@ func request_attack(definition: Dictionary) -> bool:
 func apply_damage(amount: float, source_id: StringName = &"") -> bool:
     return health.apply_damage(amount, source_id)
 
+func _on_attack_state_changed(state: StringName) -> void:
+    if state == &"windup":
+        VFXDirector.emit_feedback(&"enemy_windup", global_position + Vector3.UP * 0.9, Vector3.UP)
+        AudioDirector.play_3d(&"enemy_windup", global_position)
+
 func _on_telegraph_started(_payload: Dictionary) -> void:
     face_target()
-    AudioDirector.play_3d(&"enemy_windup", global_position)
+    VFXDirector.emit_feedback(&"enemy_telegraph", global_position + Vector3.UP * 0.03, Vector3.UP)
 
 func _on_emission_requested(_payload: Dictionary) -> void:
     pass
@@ -108,7 +115,13 @@ func _on_impact_window(payload: Dictionary) -> void:
         if target.has_method("apply_damage"):
             target.apply_damage(float(definition.get("damage", 10.0)), enemy_id)
 
+func _on_damaged_feedback(_current: float, _maximum: float, _amount: float, _source_id: StringName) -> void:
+    VFXDirector.emit_feedback(&"enemy_hit", global_position + Vector3.UP * 0.8, Vector3.UP)
+    AudioDirector.play_3d(&"enemy_hit", global_position)
+
 func _on_died(source_id: StringName) -> void:
+    VFXDirector.emit_feedback(&"enemy_death", global_position + Vector3.UP * 0.08, Vector3.UP)
+    AudioDirector.play_3d(&"enemy_death", global_position)
     died.emit(source_id)
     set_physics_process(false)
     var tween := create_tween()

@@ -42,8 +42,9 @@ func _ready() -> void:
     health.current_health = health.max_health
     health.damaged.connect(_on_damaged)
     health.died.connect(_on_died)
+    attack_sm.state_changed.connect(_on_attack_state_changed)
     attack_sm.emission_requested.connect(_on_emission_requested)
-    attack_sm.telegraph_started.connect(func(_payload): AudioDirector.play_3d(&"enemy_windup", global_position))
+    attack_sm.telegraph_started.connect(_on_telegraph_started)
     _attach_model()
     add_to_group("bosses")
 
@@ -68,9 +69,19 @@ func _choose_attack() -> void:
     if attack_sm.begin_attack(definition, target):
         attack_clock = float(definition.get("recovery", 0.7)) + 0.25
 
+func _on_attack_state_changed(state: StringName) -> void:
+    if state == &"windup":
+        VFXDirector.emit_feedback(&"boss_windup", global_position + Vector3.UP * 1.0, Vector3.UP)
+        AudioDirector.play_3d(&"boss_windup", global_position)
+
+func _on_telegraph_started(_payload: Dictionary) -> void:
+    VFXDirector.emit_feedback(&"enemy_telegraph", global_position + Vector3.UP * 0.03, Vector3.UP, {"boss":true})
+
 func _on_emission_requested(payload: Dictionary) -> void:
     var definition: Dictionary = payload.get("definition", {})
     var pattern := String(definition.get("pattern", "line"))
+    VFXDirector.emit_feedback(&"boss_attack", projectile_origin.global_position, -global_transform.basis.z, {"pattern":pattern})
+    AudioDirector.play_3d(&"boss_attack", projectile_origin.global_position)
     if String(definition.get("attack_kind", "")) == "movement":
         _movement_attack(pattern)
     else:
@@ -108,18 +119,23 @@ func _movement_attack(pattern: String) -> void:
     move_and_slide()
 
 func _on_damaged(current: float, maximum: float, _amount: float, _source_id: StringName) -> void:
+    VFXDirector.emit_feedback(&"enemy_hit", global_position + Vector3.UP * 1.0, Vector3.UP, {"boss":true})
+    AudioDirector.play_3d(&"enemy_hit", global_position)
     var ratio := current / maxf(1.0, maximum)
     var next_phase := 2 if ratio <= 0.32 else (1 if ratio <= 0.66 else 0)
     if next_phase != current_phase:
         current_phase = next_phase
         attack_index = 0
         phase_changed.emit(current_phase + 1)
+        VFXDirector.emit_feedback(&"boss_phase", global_position + Vector3.UP * 0.05, Vector3.UP, {"phase":current_phase + 1})
         AudioDirector.play_3d(&"boss_phase", global_position)
 
 func _on_died(_source_id: StringName) -> void:
     if dead:
         return
     dead = true
+    VFXDirector.emit_feedback(&"boss_death", global_position + Vector3.UP * 0.08, Vector3.UP)
+    AudioDirector.play_3d(&"boss_death", global_position)
     boss_defeated.emit(boss_id, reward_id)
     var tween := create_tween()
     tween.tween_property(self, "scale", Vector3.ZERO, 0.7)

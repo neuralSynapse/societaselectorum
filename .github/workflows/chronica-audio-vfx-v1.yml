@@ -69,11 +69,22 @@ jobs:
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
           echo AUDIO_VFX_BOOT=PASS
 
-      - name: Final baseline gate
+      - name: Audio VFX runtime probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" res://runtime_qa/AudioVfxProbe.tscn 2>&1 | tee /tmp/audio-vfx-probe.log
+          grep -q 'AUDIO_VFX_RUNTIME_PROBE=PASS' /tmp/audio-vfx-probe.log
+          ! grep -q 'Audio event not installed' /tmp/audio-vfx-probe.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/audio-vfx-probe.log
+          echo AUDIO_VFX_RUNTIME=PASS
+
+      - name: Final GREEN gate
         shell: bash
         run: |
           set -euo pipefail
           grep -q 'passed' /tmp/pytest.log
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
-          echo CHRONICA_AUDIO_VFX_BASELINE_GREEN=PASS
+          grep -q 'AUDIO_VFX_RUNTIME_PROBE=PASS' /tmp/audio-vfx-probe.log
+          echo CHRONICA_AUDIO_VFX_GREEN=PASS
