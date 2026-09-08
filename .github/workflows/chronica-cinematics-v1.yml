@@ -1,0 +1,173 @@
+name: CHRONICA Cinematics v1 Gate
+
+on:
+  push:
+    branches: [feat/chronica-cinematics-v1]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+
+jobs:
+  cinematic-green:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chronica-cinematics-v1
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python suite and validators
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+          pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
+          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
+          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
+
+      - name: Install Godot 4.3 and Xvfb
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version | tee /tmp/godot-version.log
+
+      - name: Strict Godot import
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/import.log
+          echo CINEMATIC_IMPORT=PASS
+
+      - name: Main boot smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 12s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
+          echo CINEMATIC_BOOT=PASS
+
+      - name: Build cinematic runtime probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GAME_DIR/runtime_qa" "$GAME_DIR/evidence"
+          cat > "$GAME_DIR/runtime_qa/CinematicPresentationProbe.gd" <<'GD'
+          extends Node
+
+          var failures: Array[String] = []
+
+          func fail(label: String) -> void:
+              failures.append(label)
+              push_error("CINEMATIC_PROBE_FAIL " + label)
+
+          func _ready() -> void:
+              call_deferred("run")
+
+          func run() -> void:
+              var packed := load("res://scenes/boot/Main.tscn") as PackedScene
+              if packed == null:
+                  fail("main_scene_missing")
+                  finish()
+                  return
+              var main := packed.instantiate()
+              add_child(main)
+              await get_tree().process_frame
+              await get_tree().process_frame
+              var runtime := main.get_node_or_null("NarrativeRuntime")
+              if runtime == null:
+                  fail("narrative_runtime_missing")
+              else:
+                  var presentation := runtime.get_node_or_null("Presentation")
+                  var stage := runtime.get_node_or_null("CinematicStage")
+                  var camera := runtime.get_node_or_null("CinematicStage/CameraRig/CinematicCamera")
+                  if presentation == null: fail("presentation_missing")
+                  if stage == null: fail("cinematic_stage_missing")
+                  if camera == null: fail("cinematic_camera_missing")
+                  if presentation != null:
+                      if not presentation.has_method("show_title_reveal"): fail("title_reveal_method_missing")
+                      if not presentation.has_method("show_fragment_progress"): fail("fragment_method_missing")
+                      if not presentation.has_method("enter_final_black"): fail("final_black_method_missing")
+                      if presentation.has_method("show_fragment_progress"):
+                          presentation.show_fragment_progress(5, 5)
+                      if presentation.has_method("show_title_reveal"):
+                          presentation.show_title_reveal("GRIMORIUM ASCENSIONIS")
+                      if presentation.has_method("show_story_message"):
+                          presentation.show_story_message("VER · GOVERNAR · FAZER", 5.0)
+              await get_tree().process_frame
+              await get_tree().process_frame
+              var image := get_viewport().get_texture().get_image()
+              var err := image.save_png("res://evidence/cinematic-runtime.png")
+              if err != OK: fail("screenshot_save_failed")
+              finish()
+
+          func finish() -> void:
+              if failures.is_empty():
+                  print("CINEMATIC_PRESENTATION_RUNTIME_PASS")
+                  get_tree().quit(0)
+              else:
+                  print("CINEMATIC_PRESENTATION_RUNTIME_FAILURES=", failures)
+                  get_tree().quit(1)
+          GD
+          cat > "$GAME_DIR/runtime_qa/CinematicPresentationProbe.tscn" <<'TSCN'
+          [gd_scene load_steps=2 format=3]
+          [ext_resource type="Script" path="res://runtime_qa/CinematicPresentationProbe.gd" id="1"]
+          [node name="CinematicPresentationProbe" type="Node"]
+          script = ExtResource("1")
+          TSCN
+
+      - name: Cinematic runtime and render evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          xvfb-run -a godot --path "$GAME_DIR" --rendering-method gl_compatibility res://runtime_qa/CinematicPresentationProbe.tscn 2>&1 | tee /tmp/cinematic-runtime.log
+          grep -q 'CINEMATIC_PRESENTATION_RUNTIME_PASS' /tmp/cinematic-runtime.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Invalid call|Invalid access' /tmp/cinematic-runtime.log
+          test -s "$GAME_DIR/evidence/cinematic-runtime.png"
+
+      - name: Final cinematic gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'passed' /tmp/pytest.log
+          grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
+          grep -q 'CINEMATIC_IMPORT=PASS' <(echo CINEMATIC_IMPORT=PASS)
+          grep -q 'CINEMATIC_PRESENTATION_RUNTIME_PASS' /tmp/cinematic-runtime.log
+          echo CHRONICA_CINEMATICS_V1_GREEN=PASS
+
+      - name: Collect evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p "$GAME_DIR/evidence/logs"
+          for f in /tmp/pytest.log /tmp/story.log /tmp/complete.log /tmp/godot-version.log /tmp/import.log /tmp/boot.log /tmp/cinematic-runtime.log; do
+            if [[ -f "$f" ]]; then cp "$f" "$GAME_DIR/evidence/logs/$(basename "$f")"; fi
+          done
+          git rev-parse HEAD > "$GAME_DIR/evidence/HEAD.txt"
+
+      - name: Upload cinematic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chronica-cinematics-v1-evidence
+          path: game/chronica-harun/evidence
+          if-no-files-found: warn
