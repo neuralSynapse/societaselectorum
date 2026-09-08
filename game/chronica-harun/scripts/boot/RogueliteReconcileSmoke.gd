@@ -8,10 +8,12 @@ func _ready() -> void:
 func _run() -> void:
     _catalog_contract()
     _generation_eligibility_contract()
+    _special_room_runtime_contract()
     _pickup_buildcraft_contract()
     _transformation_contract()
     _secret_physical_contract()
     _postboss_contract()
+    _gauntlet_contract()
     _save_roundtrip_contract()
     if failures.is_empty():
         print("ROGUELITE_RECONCILE_SMOKE_OK")
@@ -51,6 +53,21 @@ func _generation_eligibility_contract() -> void:
     _expect(generation_ids.has("arcana"), "min_rooms_cleared blocked Arcana generation")
     _expect(not runtime_ids.has("arcana"), "Arcana runtime eligibility ignored min_rooms_cleared")
     _expect(SpecialRoomDirector.MAX_SECRET_ROOMS == 2, "secret room max changed")
+
+func _special_room_runtime_contract() -> void:
+    var runtime := SpecialRoomRuntime.new()
+    add_child(runtime)
+    var ordinary := ["arcana","reliquary","instrumentarium","laboratorium","sigillar","market","bibliotheca","speculum","planetary","trial","cursed","secret","super_secret","archon","theophany","historical_echo","initiation"]
+    for id in ordinary:
+        var result := runtime.resolve_room(StringName(id), {"smoke":true})
+        _expect(not result.is_empty(), "special room runtime rejected: " + id)
+        _expect(String(result.get("room_id", "")) == id, "special room runtime returned wrong id: " + id)
+    for id in ["pneumatic","chthonic","pact_table"]:
+        GameState.route_state["post_boss_choice"] = ""
+        var result := runtime.resolve_room(StringName(id), {"smoke":true})
+        _expect(not result.is_empty(), "post-boss room runtime rejected: " + id)
+    GameState.route_state["post_boss_choice"] = ""
+    runtime.queue_free()
 
 func _pickup_buildcraft_contract() -> void:
     GameState.start_new_campaign(777)
@@ -138,6 +155,23 @@ func _postboss_contract() -> void:
     _expect(director.record_post_boss_choice(&"pneumatic"), "Pneumatic post-boss choice rejected")
     _expect(not director.record_post_boss_choice(&"chthonic"), "post-boss mutual exclusivity failed")
     _expect(String(GameState.route_state.get("post_boss_choice", "")) == "pneumatic", "post-boss choice was not persisted")
+
+func _gauntlet_contract() -> void:
+    GameState.route_state["gauntlet"] = ""
+    GameState.route_state["gauntlet_active"] = false
+    GameState.meta_progression["student_completion"] = true
+    var meta := MetaRunDirector.new()
+    add_child(meta)
+    _expect(meta.unlock_gauntlet(&"blind_crown"), "current gauntlet unlock failed")
+    _expect(meta.start_gauntlet(&"blind_crown"), "current gauntlet start failed")
+    _expect(bool(GameState.route_state.get("gauntlet_active", false)), "gauntlet did not become active")
+    _expect(bool(meta.apply_floor_modifiers().get("map_hidden", false)), "gauntlet modifier did not reach floor runtime")
+    _expect(meta.record_gauntlet_room_clear() == 1, "gauntlet room count did not advance")
+    _expect(meta.complete_gauntlet(), "gauntlet completion failed")
+    _expect(GameState.meta_progression.get("completed_gauntlets", []).has("blind_crown"), "gauntlet completion did not persist")
+    var marks: Dictionary = GameState.completion_marks_by_character.get(String(GameState.selected_character_id), {})
+    _expect(bool(marks.get("gauntlet_blind_crown", false)), "gauntlet completion mark missing")
+    meta.queue_free()
 
 func _save_roundtrip_contract() -> void:
     GameState.run_stats["secret_found"] = true
