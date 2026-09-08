@@ -68,11 +68,13 @@ Frontend design context was saved for continuity:
 
 ## QA truth
 
-Source persistence on WebsitePublisher was verified by reading the live stored page after publication, and the missing `clamp` runtime blocker was corrected.
+Source persistence on WebsitePublisher was verified by reading the stored live page after publication, and the missing `clamp` runtime blocker was corrected.
 
-Full interactive visual QA has NOT yet been verified on this WebsitePublisher version. The Opera Browser Connector was attempted but returned `Browser not connected`, so no claim is made that the current WebGL scene has been visually inspected or that every input/combat path has been exercised in this runtime.
+The complete inline ES-module runtime from WebsitePublisher page version 2 was also reconstructed locally and checked with Node.js 22 using `node --check`; it returned exit code 0 with no JavaScript syntax errors.
 
-This distinction is mandatory: do not call this final visual QA until a real browser can load and play the published page.
+Full interactive visual QA has NOT yet been verified on this WebsitePublisher version. The Opera Browser Connector was attempted but returned `Browser not connected`. A local Chromium 144 binary is available, but the container has no DNS/network access, so it cannot load the public WebsitePublisher page or the external Three.js CDN module. Therefore no claim is made that the current WebGL scene has been visually inspected or that every input/combat path has been exercised in this runtime.
+
+This distinction is mandatory: do not call this final visual QA until a real connected browser can load and play the published page.
 
 ## Next priorities
 
