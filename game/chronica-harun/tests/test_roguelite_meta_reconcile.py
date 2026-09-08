@@ -15,9 +15,10 @@ def test_gauntlet_runtime_can_start_track_and_complete_current_catalog_challenge
     assert 'completed_gauntlets' in meta
 
 
-def test_stage_runtime_counts_real_room_clears_for_active_gauntlets():
-    stage = source('scripts/progression/StageDirector.gd')
-    assert 'record_gauntlet_room_clear' in stage
+def test_meta_runtime_counts_real_room_clears_for_active_gauntlets():
+    meta = source('scripts/progression/MetaRunDirector.gd')
+    assert 'room_cleared.connect(_on_stage_room_cleared)' in meta
+    assert 'record_gauntlet_room_clear()' in meta
 
 
 def test_current_gauntlet_catalog_is_preserved_not_replaced_by_historical_ids():
