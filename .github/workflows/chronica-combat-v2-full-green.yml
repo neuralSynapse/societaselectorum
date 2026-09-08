@@ -1,0 +1,184 @@
+name: CHRONICA Combat v2 Full GREEN
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/chronica-combat-v2]
+    paths: ['.github/workflows/chronica-combat-v2-full-green.yml']
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+
+jobs:
+  green:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chronica-combat-v2
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python suite and validators
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+          pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
+          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
+          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
+
+      - name: Install Godot 4.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version | tee /tmp/godot-version.log
+
+      - name: Strict import
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/import.log
+          echo COMBAT_V2_IMPORT=PASS
+
+      - name: Main boot smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 12s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
+          echo COMBAT_V2_BOOT=PASS
+
+      - name: Build family runtime probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GAME_DIR/runtime_qa"
+          cat > "$GAME_DIR/runtime_qa/CombatFamilyProbe.gd" <<'GD'
+          extends Node3D
+
+          const ENEMY_SCENE := preload("res://scenes/enemies/EnemyBase.tscn")
+          var failures: Array[String] = []
+          var enemies: Dictionary = {}
+          var starts: Dictionary = {}
+
+          func fail(label: String) -> void:
+              failures.append(label)
+              push_error("COMBAT_V2_FAIL " + label)
+
+          func _ready() -> void:
+              call_deferred("run")
+
+          func make_enemy(family: String, start: Vector3, projectile: bool) -> void:
+              var target: Node3D = get_node("Target")
+              var enemy = ENEMY_SCENE.instantiate()
+              add_child(enemy)
+              enemy.global_position = start
+              var attack: Dictionary = {
+                  "id":"qa_attack",
+                  "display_name":"QA",
+                  "attack_kind":"projectile" if projectile else "movement",
+                  "pattern":"line",
+                  "range":6.0 if projectile else 1.4,
+                  "windup":5.0,
+                  "telegraph_time":5.0,
+                  "active":0.1,
+                  "recovery":5.0,
+                  "damage":1.0
+              }
+              enemy.configure_from_data({
+                  "id":"qa_" + family,
+                  "display_name":family,
+                  "family":family,
+                  "role":"common",
+                  "move_speed":2.4,
+                  "max_hp":100.0,
+                  "attack":attack
+              }, target)
+              enemy.attack_cooldown = 999.0
+              enemies[family] = enemy
+              starts[family] = start
+
+          func run() -> void:
+              var target := Node3D.new()
+              target.name = "Target"
+              target.position = Vector3.ZERO
+              add_child(target)
+
+              make_enemy("ram_archon", Vector3(7,0,0), false)
+              make_enemy("hyena_archon", Vector3(7,0,1), false)
+              make_enemy("asinine_archon", Vector3(4.8,0,0), true)
+              make_enemy("chorus", Vector3(-4.8,0,0), true)
+              make_enemy("fire", Vector3(7,0,-1), false)
+              make_enemy("construct", Vector3(8,0,0), false)
+              make_enemy("walker", Vector3(7,0,2), false)
+
+              for _i in range(24):
+                  await get_tree().physics_frame
+
+              for family in enemies:
+                  var enemy = enemies[family]
+                  var displacement: Vector3 = enemy.global_position - starts[family]
+                  print("COMBAT_V2_MOVE ", family, " ", displacement)
+                  if Vector2(displacement.x, displacement.z).length() <= 0.02:
+                      fail("no_world_motion_" + family)
+
+              var asinine_disp: Vector3 = enemies["asinine_archon"].global_position - starts["asinine_archon"]
+              if absf(asinine_disp.z) <= 0.02:
+                  fail("asinine_missing_strafe")
+              var chorus_disp: Vector3 = enemies["chorus"].global_position - starts["chorus"]
+              if absf(chorus_disp.z) <= 0.02:
+                  fail("chorus_missing_orbit")
+              var hyena_disp: Vector3 = enemies["hyena_archon"].global_position - starts["hyena_archon"]
+              if absf(hyena_disp.z) <= 0.005:
+                  fail("hyena_missing_weave")
+
+              if failures.is_empty():
+                  print("COMBAT_FAMILY_RUNTIME_PASS")
+                  get_tree().quit(0)
+              else:
+                  print("COMBAT_FAMILY_RUNTIME_FAILURES=", failures)
+                  get_tree().quit(1)
+          GD
+          cat > "$GAME_DIR/runtime_qa/CombatFamilyProbe.tscn" <<'TSCN'
+          [gd_scene load_steps=2 format=3]
+          [ext_resource type="Script" path="res://runtime_qa/CombatFamilyProbe.gd" id="1"]
+          [node name="CombatFamilyProbe" type="Node3D"]
+          script = ExtResource("1")
+          TSCN
+
+      - name: Family runtime probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 20s godot --headless --path "$GAME_DIR" res://runtime_qa/CombatFamilyProbe.tscn 2>&1 | tee /tmp/family-runtime.log
+          grep -q 'COMBAT_FAMILY_RUNTIME_PASS' /tmp/family-runtime.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Invalid call|Invalid access' /tmp/family-runtime.log
+
+      - name: Final combat v2 gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'passed' /tmp/pytest.log
+          grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
+          grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'COMBAT_FAMILY_RUNTIME_PASS' /tmp/family-runtime.log
+          echo CHRONICA_COMBAT_V2_FULL_GREEN=PASS
