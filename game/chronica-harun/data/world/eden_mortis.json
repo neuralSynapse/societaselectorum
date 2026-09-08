@@ -1,0 +1,272 @@
+{
+  "eden": {
+    "id": "room_eden",
+    "name": "Jardim do Éden",
+    "first_entry_free": true,
+    "repeat_entry_cost": {
+      "resource": "eden_key",
+      "amount": 1
+    },
+    "tree": "arbor_vitae",
+    "rule": "one_fruit_per_visit",
+    "spawn": {
+      "base_chance": 0.28,
+      "after_boss_bonus": 0.12,
+      "guaranteed_first_campaign": true
+    }
+  },
+  "arbor_mortis": {
+    "id": "room_arbor_mortis",
+    "name": "Jardim da Arbor Mortis",
+    "first_entry_free": false,
+    "repeat_entry_cost": {
+      "resource": "mortis_key",
+      "amount": 1
+    },
+    "tree": "arbor_mortis",
+    "risk": {
+      "kind": "debt",
+      "minimum_tier": 1
+    },
+    "rule": "one_fruit_with_cost",
+    "spawn": {
+      "base_chance": 0.16,
+      "curse_bonus": 0.08
+    }
+  },
+  "fruits": [
+    {
+      "id": "fruit_knowledge_good_evil",
+      "name": "Fruto do Conhecimento do Bem e do Mal",
+      "tree": "arbor_vitae",
+      "effect": {
+        "kind": "reveal_consequence",
+        "telegraph_bonus": 0.18,
+        "choice_preview": true,
+        "burden": "responsibility_mark"
+      },
+      "unlock": {
+        "mode": "first_eden_visit"
+      },
+      "provenance": {
+        "level": "mythic_tradition",
+        "note": "Motivo tradicional reinterpretado como escolha e consequência; mecânica é dramatização Electorum."
+      },
+      "vfx_hook": "vfx.eden.knowledge",
+      "sfx_hook": "sfx.eden.knowledge"
+    },
+    {
+      "id": "fruit_life",
+      "name": "Fruto da Vida",
+      "tree": "arbor_vitae",
+      "effect": {
+        "kind": "vital_extension",
+        "max_hp": 12,
+        "heal": 20,
+        "next_shop_cost_pct": 0.1
+      },
+      "unlock": {
+        "mode": "eden_mastery",
+        "count": 1
+      },
+      "provenance": {
+        "level": "mythic_tradition",
+        "note": "Árvore da Vida como motivo tradicional; valores são gameplay autoral."
+      },
+      "vfx_hook": "vfx.eden.life",
+      "sfx_hook": "sfx.eden.life"
+    },
+    {
+      "id": "fruit_golden_hesperides",
+      "name": "Maçã Dourada das Hespérides",
+      "tree": "arbor_vitae",
+      "effect": {
+        "kind": "fortune_seed",
+        "essence": 12,
+        "rare_room_weight": 0.12
+      },
+      "unlock": {
+        "mode": "fortune_mark"
+      },
+      "provenance": {
+        "level": "mythic_tradition",
+        "note": "Motivo das Hespérides mantido distinto do fruto do Gênesis."
+      },
+      "vfx_hook": "vfx.eden.golden",
+      "sfx_hook": "sfx.eden.golden"
+    },
+    {
+      "id": "fruit_sophia",
+      "name": "Figo de Sophia",
+      "tree": "arbor_vitae",
+      "effect": {
+        "kind": "focus_transmutation",
+        "focus_cap": 15,
+        "pharmakon_cleanse": 1
+      },
+      "unlock": {
+        "mode": "theophany_seen",
+        "id": "sophia"
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.eden.sophia",
+      "sfx_hook": "sfx.eden.sophia"
+    },
+    {
+      "id": "fruit_phosphoros",
+      "name": "Romã de Phosphoros",
+      "tree": "arbor_vitae",
+      "effect": {
+        "kind": "black_flame_seed",
+        "damage_mult": 0.12,
+        "curse_heat": 1
+      },
+      "unlock": {
+        "mode": "stage_complete",
+        "id": "a_chama"
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.eden.phosphoros",
+      "sfx_hook": "sfx.eden.phosphoros"
+    },
+    {
+      "id": "fruit_thoth",
+      "name": "Tâmara de Thoth",
+      "tree": "arbor_vitae",
+      "effect": {
+        "kind": "arcana_memory",
+        "echo_next_arcana": true,
+        "codex_unlocks": 2
+      },
+      "unlock": {
+        "mode": "historical_or_theophany",
+        "id": "thoth"
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.eden.thoth",
+      "sfx_hook": "sfx.eden.thoth"
+    },
+    {
+      "id": "fruit_iron",
+      "name": "Fruto de Ferro",
+      "tree": "arbor_mortis",
+      "effect": {
+        "kind": "armor_for_blood",
+        "armor": 18,
+        "max_hp_cost": 8
+      },
+      "unlock": {
+        "mode": "mortis_visit"
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.mortis.iron",
+      "sfx_hook": "sfx.mortis.iron"
+    },
+    {
+      "id": "fruit_ash",
+      "name": "Fruto de Cinza",
+      "tree": "arbor_mortis",
+      "effect": {
+        "kind": "death_echo",
+        "revive_once": true,
+        "damage_taken_after_revive": 0.2
+      },
+      "unlock": {
+        "mode": "death_count",
+        "count": 3
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.mortis.ash",
+      "sfx_hook": "sfx.mortis.ash"
+    },
+    {
+      "id": "fruit_debt",
+      "name": "Fruto da Dívida",
+      "tree": "arbor_mortis",
+      "effect": {
+        "kind": "borrow_power",
+        "damage_mult": 0.22,
+        "future_essence_tax": 14
+      },
+      "unlock": {
+        "mode": "pact_seen"
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.mortis.debt",
+      "sfx_hook": "sfx.mortis.debt"
+    },
+    {
+      "id": "fruit_silence",
+      "name": "Fruto do Silêncio",
+      "tree": "arbor_mortis",
+      "effect": {
+        "kind": "silence_trade",
+        "enemy_cast_slow": 0.22,
+        "instrument_lock_rooms": 2
+      },
+      "unlock": {
+        "mode": "curse_seen",
+        "id": "silence"
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.mortis.silence",
+      "sfx_hook": "sfx.mortis.silence"
+    },
+    {
+      "id": "fruit_serpent",
+      "name": "Fruto da Serpente Negra",
+      "tree": "arbor_mortis",
+      "effect": {
+        "kind": "poison_transmutation",
+        "execute_threshold": 0.16,
+        "self_decay_per_room": 2
+      },
+      "unlock": {
+        "mode": "transmutation_mark"
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.mortis.serpent",
+      "sfx_hook": "sfx.mortis.serpent"
+    },
+    {
+      "id": "fruit_oblivion",
+      "name": "Fruto do Esquecimento",
+      "tree": "arbor_mortis",
+      "effect": {
+        "kind": "forget_for_reroll",
+        "remove_random_blessing": 1,
+        "legendary_reroll": true
+      },
+      "unlock": {
+        "mode": "legacy_mark"
+      },
+      "provenance": {
+        "level": "electorum_dramatization"
+      },
+      "vfx_hook": "vfx.mortis.oblivion",
+      "sfx_hook": "sfx.mortis.oblivion"
+    }
+  ],
+  "design_rule": {
+    "mirrored_but_not_reskinned": true,
+    "eden_is_choice_and_knowledge": true,
+    "mortis_is_power_through_cost": true,
+    "copy_external_game_room": false
+  }
+}

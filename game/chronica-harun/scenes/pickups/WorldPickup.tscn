@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/pickups/PickupController.gd" id="1"]
+[sub_resource type="CylinderMesh" id="PedestalMesh"]
+top_radius = 0.4
+bottom_radius = 0.5
+height = 0.22
+[sub_resource type="BoxMesh" id="IconMesh"]
+size = Vector3(0.32, 0.45, 0.08)
+[sub_resource type="SphereShape3D" id="Shape"]
+radius = 0.62
+[sub_resource type="StandardMaterial3D" id="Material"]
+albedo_color = Color(0.22, 0.16, 0.08, 1)
+roughness = 0.68
+emission_enabled = true
+emission = Color(0.16, 0.10, 0.04, 1)
+emission_energy_multiplier = 0.28
+[node name="WorldPickup" type="Area3D"]
+script = ExtResource("1")
+collision_layer = 8
+collision_mask = 1
+monitoring = true
+[node name="Pedestal" type="MeshInstance3D" parent="."]
+mesh = SubResource("PedestalMesh")
+material_override = SubResource("Material")
+position = Vector3(0, 0.11, 0)
+[node name="Icon" type="MeshInstance3D" parent="."]
+mesh = SubResource("IconMesh")
+material_override = SubResource("Material")
+position = Vector3(0, 0.72, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape")
+position = Vector3(0, 0.58, 0)

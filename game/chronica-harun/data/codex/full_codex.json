@@ -1,0 +1,996 @@
+[
+  {
+    "id": "method:source",
+    "title": "FONTE",
+    "body": "O que uma fonte primária ou testemunho documental permite afirmar.",
+    "provenance_class": "source",
+    "source_note": "Regra epistemológica do projeto."
+  },
+  {
+    "id": "method:tradition",
+    "title": "TRADIÇÃO",
+    "body": "Recepção ou estrutura historicamente transmitida, sem confundi-la com uma fonte única.",
+    "provenance_class": "tradition",
+    "source_note": "Regra epistemológica do projeto."
+  },
+  {
+    "id": "method:interpretation",
+    "title": "INTERPRETAÇÃO",
+    "body": "Leitura filosófica ou comparativa explicitamente marcada.",
+    "provenance_class": "interpretation",
+    "source_note": "Regra epistemológica do projeto."
+  },
+  {
+    "id": "method:electorum",
+    "title": "DRAMATIZAÇÃO ELECTORUM",
+    "body": "Mecânica, síntese ou encenação autoral do videogame.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Regra autoral do projeto."
+  },
+  {
+    "id": "stage:o_olho",
+    "title": "O OLHO · PERCEPÇÃO",
+    "body": "discernimento, atenção e visão do oculto",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_chama",
+    "title": "A CHAMA · REGÊNCIA",
+    "body": "governo interno, foco e comando",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_fundacao",
+    "title": "A FUNDAÇÃO · ESTRUTURA",
+    "body": "base, limite e sustentação",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_eleicao",
+    "title": "A ELEIÇÃO · AUTOELEIÇÃO",
+    "body": "escolha consciente contra reflexo de massa",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_balanca",
+    "title": "A BALANÇA · AUTORRESPONSABILIDADE",
+    "body": "custo, consequência e proporção",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_vontade",
+    "title": "A VONTADE · VERDADEIRA VONTADE",
+    "body": "direção própria contra desejo implantado",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:o_carater",
+    "title": "O CARÁTER · CARÁTER",
+    "body": "coerência entre palavra, ato e pressão",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_disciplina",
+    "title": "A DISCIPLINA · DISCIPLINA",
+    "body": "ritmo, repetição e constância sob atrito",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_clareza",
+    "title": "A CLAREZA · CLAREZA",
+    "body": "redução de ruído e leitura de causalidade",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_transmutacao",
+    "title": "A TRANSMUTAÇÃO · TRANSMUTAÇÃO",
+    "body": "converter dano, escória e conflito em recurso",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:o_corpo",
+    "title": "O CORPO · CORPO E ENERGIA",
+    "body": "sustentar ação sem colapso de recurso",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_obra",
+    "title": "A OBRA · OBRA",
+    "body": "construir forma externa a partir da direção interna",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_fortuna",
+    "title": "A FORTUNA · FORTUNA",
+    "body": "troca, risco e recursos sem servidão ao acaso",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:a_influencia",
+    "title": "A INFLUÊNCIA · INFLUÊNCIA",
+    "body": "voz, comando e contágio social sem dissolução",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:o_legado",
+    "title": "O LEGADO · LEGADO",
+    "body": "memória, nome e continuidade que sobrevivem ao ciclo",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "stage:initiation_chamber",
+    "title": "CÂMARA DE INICIAÇÃO · INICIAÇÃO",
+    "body": "síntese e passagem narrativa do Estudante ao estado Peregrinus Ignis",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Etapa ficcional de gameplay."
+  },
+  {
+    "id": "enemy:o_olho_presence_01",
+    "title": "Athoth",
+    "body": "Forma de prova de PERCEPÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_olho_presence_02",
+    "title": "Eloaios",
+    "body": "Forma de prova de PERCEPÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_olho_presence_03",
+    "title": "Astaphaios",
+    "body": "Forma de prova de PERCEPÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_olho_presence_04",
+    "title": "Yao",
+    "body": "Forma de prova de PERCEPÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_olho_elite",
+    "title": "Adonin",
+    "body": "Autoridade intermediária de PERCEPÇÃO; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_chama_presence_01",
+    "title": "Regência · Presença 1",
+    "body": "Forma de prova de REGÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_chama_presence_02",
+    "title": "Regência · Presença 2",
+    "body": "Forma de prova de REGÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_chama_presence_03",
+    "title": "Regência · Presença 3",
+    "body": "Forma de prova de REGÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_chama_presence_04",
+    "title": "Regência · Presença 4",
+    "body": "Forma de prova de REGÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_chama_elite",
+    "title": "Sabbataios",
+    "body": "Autoridade intermediária de REGÊNCIA; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_fundacao_presence_01",
+    "title": "Estrutura · Presença 1",
+    "body": "Forma de prova de ESTRUTURA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_fundacao_presence_02",
+    "title": "Estrutura · Presença 2",
+    "body": "Forma de prova de ESTRUTURA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_fundacao_presence_03",
+    "title": "Estrutura · Presença 3",
+    "body": "Forma de prova de ESTRUTURA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_fundacao_presence_04",
+    "title": "Estrutura · Presença 4",
+    "body": "Forma de prova de ESTRUTURA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_fundacao_elite",
+    "title": "Sabaoth",
+    "body": "Autoridade intermediária de ESTRUTURA; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_eleicao_presence_01",
+    "title": "Autoeleição · Presença 1",
+    "body": "Forma de prova de AUTOELEIÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_eleicao_presence_02",
+    "title": "Autoeleição · Presença 2",
+    "body": "Forma de prova de AUTOELEIÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_eleicao_presence_03",
+    "title": "Autoeleição · Presença 3",
+    "body": "Forma de prova de AUTOELEIÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_eleicao_presence_04",
+    "title": "Autoeleição · Presença 4",
+    "body": "Forma de prova de AUTOELEIÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_eleicao_elite",
+    "title": "Autoeleição · Autoridade",
+    "body": "Autoridade intermediária de AUTOELEIÇÃO; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_balanca_presence_01",
+    "title": "Autorresponsabilidade · Presença 1",
+    "body": "Forma de prova de AUTORRESPONSABILIDADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_balanca_presence_02",
+    "title": "Autorresponsabilidade · Presença 2",
+    "body": "Forma de prova de AUTORRESPONSABILIDADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_balanca_presence_03",
+    "title": "Autorresponsabilidade · Presença 3",
+    "body": "Forma de prova de AUTORRESPONSABILIDADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_balanca_presence_04",
+    "title": "Autorresponsabilidade · Presença 4",
+    "body": "Forma de prova de AUTORRESPONSABILIDADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_balanca_elite",
+    "title": "Autorresponsabilidade · Autoridade",
+    "body": "Autoridade intermediária de AUTORRESPONSABILIDADE; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_vontade_presence_01",
+    "title": "Verdadeira Vontade · Presença 1",
+    "body": "Forma de prova de VERDADEIRA VONTADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_vontade_presence_02",
+    "title": "Verdadeira Vontade · Presença 2",
+    "body": "Forma de prova de VERDADEIRA VONTADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_vontade_presence_03",
+    "title": "Verdadeira Vontade · Presença 3",
+    "body": "Forma de prova de VERDADEIRA VONTADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_vontade_presence_04",
+    "title": "Verdadeira Vontade · Presença 4",
+    "body": "Forma de prova de VERDADEIRA VONTADE. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_vontade_elite",
+    "title": "Verdadeira Vontade · Autoridade",
+    "body": "Autoridade intermediária de VERDADEIRA VONTADE; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:o_carater_presence_01",
+    "title": "Caráter · Presença 1",
+    "body": "Forma de prova de CARÁTER. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_carater_presence_02",
+    "title": "Caráter · Presença 2",
+    "body": "Forma de prova de CARÁTER. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_carater_presence_03",
+    "title": "Caráter · Presença 3",
+    "body": "Forma de prova de CARÁTER. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_carater_presence_04",
+    "title": "Caráter · Presença 4",
+    "body": "Forma de prova de CARÁTER. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_carater_elite",
+    "title": "Caráter · Autoridade",
+    "body": "Autoridade intermediária de CARÁTER; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_disciplina_presence_01",
+    "title": "Disciplina · Presença 1",
+    "body": "Forma de prova de DISCIPLINA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_disciplina_presence_02",
+    "title": "Disciplina · Presença 2",
+    "body": "Forma de prova de DISCIPLINA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_disciplina_presence_03",
+    "title": "Disciplina · Presença 3",
+    "body": "Forma de prova de DISCIPLINA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_disciplina_presence_04",
+    "title": "Disciplina · Presença 4",
+    "body": "Forma de prova de DISCIPLINA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_disciplina_elite",
+    "title": "Disciplina · Autoridade",
+    "body": "Autoridade intermediária de DISCIPLINA; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_clareza_presence_01",
+    "title": "Clareza · Presença 1",
+    "body": "Forma de prova de CLAREZA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_clareza_presence_02",
+    "title": "Clareza · Presença 2",
+    "body": "Forma de prova de CLAREZA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_clareza_presence_03",
+    "title": "Clareza · Presença 3",
+    "body": "Forma de prova de CLAREZA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_clareza_presence_04",
+    "title": "Clareza · Presença 4",
+    "body": "Forma de prova de CLAREZA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_clareza_elite",
+    "title": "Clareza · Autoridade",
+    "body": "Autoridade intermediária de CLAREZA; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_transmutacao_presence_01",
+    "title": "Transmutação · Presença 1",
+    "body": "Forma de prova de TRANSMUTAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_transmutacao_presence_02",
+    "title": "Transmutação · Presença 2",
+    "body": "Forma de prova de TRANSMUTAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_transmutacao_presence_03",
+    "title": "Transmutação · Presença 3",
+    "body": "Forma de prova de TRANSMUTAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_transmutacao_presence_04",
+    "title": "Transmutação · Presença 4",
+    "body": "Forma de prova de TRANSMUTAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_transmutacao_elite",
+    "title": "Transmutação · Autoridade",
+    "body": "Autoridade intermediária de TRANSMUTAÇÃO; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:o_corpo_presence_01",
+    "title": "Corpo E Energia · Presença 1",
+    "body": "Forma de prova de CORPO E ENERGIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_corpo_presence_02",
+    "title": "Corpo E Energia · Presença 2",
+    "body": "Forma de prova de CORPO E ENERGIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_corpo_presence_03",
+    "title": "Corpo E Energia · Presença 3",
+    "body": "Forma de prova de CORPO E ENERGIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_corpo_presence_04",
+    "title": "Corpo E Energia · Presença 4",
+    "body": "Forma de prova de CORPO E ENERGIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_corpo_elite",
+    "title": "Corpo E Energia · Autoridade",
+    "body": "Autoridade intermediária de CORPO E ENERGIA; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_obra_presence_01",
+    "title": "Obra · Presença 1",
+    "body": "Forma de prova de OBRA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_obra_presence_02",
+    "title": "Obra · Presença 2",
+    "body": "Forma de prova de OBRA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_obra_presence_03",
+    "title": "Obra · Presença 3",
+    "body": "Forma de prova de OBRA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_obra_presence_04",
+    "title": "Obra · Presença 4",
+    "body": "Forma de prova de OBRA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_obra_elite",
+    "title": "Obra · Autoridade",
+    "body": "Autoridade intermediária de OBRA; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_fortuna_presence_01",
+    "title": "Fortuna · Presença 1",
+    "body": "Forma de prova de FORTUNA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_fortuna_presence_02",
+    "title": "Fortuna · Presença 2",
+    "body": "Forma de prova de FORTUNA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_fortuna_presence_03",
+    "title": "Fortuna · Presença 3",
+    "body": "Forma de prova de FORTUNA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_fortuna_presence_04",
+    "title": "Fortuna · Presença 4",
+    "body": "Forma de prova de FORTUNA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_fortuna_elite",
+    "title": "Fortuna · Autoridade",
+    "body": "Autoridade intermediária de FORTUNA; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:a_influencia_presence_01",
+    "title": "Influência · Presença 1",
+    "body": "Forma de prova de INFLUÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_influencia_presence_02",
+    "title": "Influência · Presença 2",
+    "body": "Forma de prova de INFLUÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_influencia_presence_03",
+    "title": "Influência · Presença 3",
+    "body": "Forma de prova de INFLUÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_influencia_presence_04",
+    "title": "Influência · Presença 4",
+    "body": "Forma de prova de INFLUÊNCIA. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:a_influencia_elite",
+    "title": "Influência · Autoridade",
+    "body": "Autoridade intermediária de INFLUÊNCIA; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:o_legado_presence_01",
+    "title": "Legado · Presença 1",
+    "body": "Forma de prova de LEGADO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_legado_presence_02",
+    "title": "Legado · Presença 2",
+    "body": "Forma de prova de LEGADO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_legado_presence_03",
+    "title": "Legado · Presença 3",
+    "body": "Forma de prova de LEGADO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_legado_presence_04",
+    "title": "Legado · Presença 4",
+    "body": "Forma de prova de LEGADO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:o_legado_elite",
+    "title": "Legado · Autoridade",
+    "body": "Autoridade intermediária de LEGADO; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:initiation_chamber_presence_01",
+    "title": "Iniciação · Presença 1",
+    "body": "Forma de prova de INICIAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:initiation_chamber_presence_02",
+    "title": "Iniciação · Presença 2",
+    "body": "Forma de prova de INICIAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:initiation_chamber_presence_03",
+    "title": "Iniciação · Presença 3",
+    "body": "Forma de prova de INICIAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:initiation_chamber_presence_04",
+    "title": "Iniciação · Presença 4",
+    "body": "Forma de prova de INICIAÇÃO. A identidade de gameplay é dramatização Electorum.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral; nomes tradicionais, quando usados, são marcados separadamente."
+  },
+  {
+    "id": "enemy:initiation_chamber_elite",
+    "title": "Iniciação · Autoridade",
+    "body": "Autoridade intermediária de INICIAÇÃO; forma autoral de jogo.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Dramatização de mecânica."
+  },
+  {
+    "id": "enemy:rare_witness_1",
+    "title": "Testemunha do Limite",
+    "body": "Presença rara da Jornada.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral."
+  },
+  {
+    "id": "enemy:rare_witness_2",
+    "title": "Serpente do Intervalo",
+    "body": "Presença rara da Jornada.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Gameplay autoral."
+  },
+  {
+    "id": "boss:blind_observer",
+    "title": "O Observador Cego",
+    "body": "O Observador Cego encerra PERCEPÇÃO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:impulse_archon",
+    "title": "Arconte do Impulso",
+    "body": "Arconte do Impulso encerra REGÊNCIA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:inert_stone_guardian",
+    "title": "Guardião da Pedra Inerte",
+    "body": "Guardião da Pedra Inerte encerra ESTRUTURA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:seal_of_no",
+    "title": "O Selo do Não",
+    "body": "O Selo do Não encerra AUTOELEIÇÃO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:mask_collector",
+    "title": "O Cobrador de Máscaras",
+    "body": "O Cobrador de Máscaras encerra AUTORRESPONSABILIDADE. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:false_daimon",
+    "title": "O Falso Daimon",
+    "body": "O Falso Daimon encerra VERDADEIRA VONTADE. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:stone_witness",
+    "title": "A Testemunha de Pedra",
+    "body": "A Testemunha de Pedra encerra CARÁTER. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:rhythm_devourer",
+    "title": "O Devorador de Ritmo",
+    "body": "O Devorador de Ritmo encerra DISCIPLINA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:clouding_one",
+    "title": "O Nublador",
+    "body": "O Nublador encerra CLAREZA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:slag_dragon",
+    "title": "O Dragão da Escória",
+    "body": "O Dragão da Escória encerra TRANSMUTAÇÃO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:exhaustion_tyrant",
+    "title": "O Tirano da Exaustão",
+    "body": "O Tirano da Exaustão encerra CORPO E ENERGIA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:blind_architect",
+    "title": "O Arquiteto Cego",
+    "body": "O Arquiteto Cego encerra OBRA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:archontic_banker",
+    "title": "O Banqueiro Arcôntico",
+    "body": "O Banqueiro Arcôntico encerra FORTUNA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:approval_chorus",
+    "title": "O Coral da Aprovação",
+    "body": "O Coral da Aprovação encerra INFLUÊNCIA. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:durable_name_guardian",
+    "title": "O Guardião do Nome Durável",
+    "body": "O Guardião do Nome Durável encerra LEGADO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "electorum_dramatization",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "boss:initiation_throne",
+    "title": "Trono da Iniciação",
+    "body": "Trono da Iniciação encerra INICIAÇÃO. As fases são dramatização Electorum, não reconstrução histórica.",
+    "provenance_class": "source_inspired_synthesis",
+    "source_note": "Motivos tradicionais são separados de mecânicas autorais."
+  },
+  {
+    "id": "theophany:lucifer_phosphoros",
+    "title": "Lúcifer / Phosphoros",
+    "body": "Lúcifer / Phosphoros: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:horus",
+    "title": "Hórus",
+    "body": "Hórus: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:thoth",
+    "title": "Thoth",
+    "body": "Thoth: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:belial",
+    "title": "Belial",
+    "body": "Belial: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:paimon",
+    "title": "Paimon",
+    "body": "Paimon: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:lilith",
+    "title": "Lilith",
+    "body": "Lilith: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:sophia",
+    "title": "Sophia",
+    "body": "Sophia: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:yaldabaoth",
+    "title": "Yaldabaoth",
+    "body": "Yaldabaoth: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:sabaoth",
+    "title": "Sabaoth",
+    "body": "Sabaoth: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:seth",
+    "title": "Seth",
+    "body": "Seth: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:samael",
+    "title": "Samael",
+    "body": "Samael: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:baphomet",
+    "title": "Baphomet",
+    "body": "Baphomet: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:mammon",
+    "title": "Mammon",
+    "body": "Mammon: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:agares",
+    "title": "Agares",
+    "body": "Agares: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:sitri",
+    "title": "Sitri",
+    "body": "Sitri: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:ra",
+    "title": "Rá",
+    "body": "Rá: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:vishnu",
+    "title": "Vishnu",
+    "body": "Vishnu: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "theophany:ganesh",
+    "title": "Ganesh",
+    "body": "Ganesh: aparição contextual de jogo. O papel tradicional e a dramatização mecânica permanecem separados.",
+    "provenance_class": "tradition",
+    "source_note": "Tradição/recepção identificada no Codex; efeito e condição são dramatização Electorum."
+  },
+  {
+    "id": "echo:aleister_crowley",
+    "title": "Aleister Crowley",
+    "body": "Aleister Crowley: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "echo:michael_w_ford",
+    "title": "Michael W. Ford",
+    "body": "Michael W. Ford: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "echo:paracelsus",
+    "title": "Paracelso",
+    "body": "Paracelso: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "echo:eliphas_levi",
+    "title": "Éliphas Lévi",
+    "body": "Éliphas Lévi: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "echo:giordano_bruno",
+    "title": "Giordano Bruno",
+    "body": "Giordano Bruno: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "source",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  },
+  {
+    "id": "echo:hermes_trismegistus",
+    "title": "Hermes Trismegistus",
+    "body": "Hermes Trismegistus: eco documental/narrativo, nunca inimigo genérico.",
+    "provenance_class": "tradition",
+    "source_note": "Figura histórica/tradicional separada da dramatização Electorum."
+  }
+]

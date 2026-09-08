@@ -1,0 +1,1422 @@
+[
+  {
+    "scene_id": "before_dark",
+    "scene_title": "ANTES DO ESCURO",
+    "shot_id": "before_dark_shot_01_refuse_horizon",
+    "order_in_scene": 1,
+    "duration_seconds": 3.6,
+    "camera_contract": "sem horizonte; pontos de referência recusados; beat 1/5; slow hold",
+    "visual_contract": "A imagem recusa até a ideia de vazio; algo parece observar antes de existir olhos.",
+    "audio_contract": "pressão sub-audível e respiração espectral quase imperceptível",
+    "transition": "fade_from_black",
+    "tension": 0.01,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "before_dark",
+    "scene_title": "ANTES DO ESCURO",
+    "shot_id": "before_dark_shot_02_hint_observer",
+    "order_in_scene": 2,
+    "duration_seconds": 4.4,
+    "camera_contract": "sem horizonte; pontos de referência recusados; beat 2/5; controlled reveal",
+    "visual_contract": "ausência de estrelas",
+    "audio_contract": "nenhuma",
+    "transition": "match_cut",
+    "tension": 0.06,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "before_dark",
+    "scene_title": "ANTES DO ESCURO",
+    "shot_id": "before_dark_shot_03_fold_absence",
+    "order_in_scene": 3,
+    "duration_seconds": 4.4,
+    "camera_contract": "sem horizonte; pontos de referência recusados; beat 3/5; controlled reveal",
+    "visual_contract": "geometria que só aparece quando o olhar tenta fixá-la",
+    "audio_contract": "um único harmônico nasce no último segundo",
+    "transition": "slow_dissolve",
+    "tension": 0.1,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "before_dark",
+    "scene_title": "ANTES DO ESCURO",
+    "shot_id": "before_dark_shot_04_birth_harmonic",
+    "order_in_scene": 4,
+    "duration_seconds": 4.0,
+    "camera_contract": "sem horizonte; pontos de referência recusados; beat 4/5; controlled reveal",
+    "visual_contract": "ausência de estrelas",
+    "audio_contract": "nenhuma",
+    "transition": "hard_reframe",
+    "tension": 0.15,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "before_dark",
+    "scene_title": "ANTES DO ESCURO",
+    "shot_id": "before_dark_shot_05_reveal_point",
+    "order_in_scene": 5,
+    "duration_seconds": 3.6,
+    "camera_contract": "sem horizonte; pontos de referência recusados; beat 5/5; slow hold",
+    "visual_contract": "Um único ponto impossível dobra a ausência ao redor de si.",
+    "audio_contract": "um único harmônico nasce no último segundo",
+    "transition": "motivated_cut",
+    "tension": 0.19,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "pleroma",
+    "scene_title": "A PLENITUDE",
+    "shot_id": "pleroma_shot_01_barbelo_relation",
+    "order_in_scene": 1,
+    "duration_seconds": 6.48,
+    "camera_contract": "travessia lenta entre campos não antropomórficos; beat 1/5; slow hold",
+    "visual_contract": "A plenitude nasce como relações vivas, bela demais para parecer arquitetura.",
+    "audio_contract": "camadas harmônicas associadas a cada Luminar",
+    "transition": "fade_from_black",
+    "tension": 0.13,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cosmic_field"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "pleroma",
+    "scene_title": "A PLENITUDE",
+    "shot_id": "pleroma_shot_02_autogenes_order",
+    "order_in_scene": 2,
+    "duration_seconds": 7.92,
+    "camera_contract": "travessia lenta entre campos não antropomórficos; beat 2/5; controlled reveal",
+    "visual_contract": "Barbelo como autoexpressão impossível de ver por um ângulo",
+    "audio_contract": "coro sem palavras, intervalos consonantes incompletos",
+    "transition": "match_cut",
+    "tension": 0.17,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cosmic_field"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "pleroma",
+    "scene_title": "A PLENITUDE",
+    "shot_id": "pleroma_shot_03_luminary_harmozel",
+    "order_in_scene": 3,
+    "duration_seconds": 7.92,
+    "camera_contract": "travessia lenta entre campos não antropomórficos; beat 3/5; controlled reveal",
+    "visual_contract": "Autogenes como geometria auto-organizante",
+    "audio_contract": "os quatro motivos se resolvem sem uníssono",
+    "transition": "slow_dissolve",
+    "tension": 0.22,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cosmic_field"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "pleroma",
+    "scene_title": "A PLENITUDE",
+    "shot_id": "pleroma_shot_04_luminaries_expand",
+    "order_in_scene": 4,
+    "duration_seconds": 7.2,
+    "camera_contract": "travessia lenta entre campos não antropomórficos; beat 4/5; controlled reveal",
+    "visual_contract": "quatro Luminares monumentalmente distintos",
+    "audio_contract": "coro sem palavras, intervalos consonantes incompletos",
+    "transition": "hard_reframe",
+    "tension": 0.27,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cosmic_field"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "pleroma",
+    "scene_title": "A PLENITUDE",
+    "shot_id": "pleroma_shot_05_hold_eleleth",
+    "order_in_scene": 5,
+    "duration_seconds": 6.48,
+    "camera_contract": "travessia lenta entre campos não antropomórficos; beat 5/5; slow hold",
+    "visual_contract": "Eleleth permanece alguns instantes depois dos demais, como se algo estivesse prestes a ultrapassar sua borda.",
+    "audio_contract": "os quatro motivos se resolvem sem uníssono",
+    "transition": "motivated_cut",
+    "tension": 0.31,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cosmic_field"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "sophia_at_edge",
+    "scene_title": "SOPHIA NA BORDA",
+    "shot_id": "sophia_at_edge_shot_01_sophia_contour",
+    "order_in_scene": 1,
+    "duration_seconds": 6.48,
+    "camera_contract": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 1/5; slow hold",
+    "visual_contract": "Uma única frequência desaparece do coro; ninguém percebe imediatamente, exceto Sophia.",
+    "audio_contract": "pulso de Sophia desacelera",
+    "transition": "fade_from_black",
+    "tension": 0.39,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "sophia_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "sophia_at_edge",
+    "scene_title": "SOPHIA NA BORDA",
+    "shot_id": "sophia_at_edge_shot_02_missing_frequency",
+    "order_in_scene": 2,
+    "duration_seconds": 7.92,
+    "camera_contract": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 2/5; controlled reveal",
+    "visual_contract": "fio causal se separando sem romper por completo",
+    "audio_contract": "harmonia pleromática perde uma nota central",
+    "transition": "match_cut",
+    "tension": 0.43,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "sophia_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "sophia_at_edge",
+    "scene_title": "SOPHIA NA BORDA",
+    "shot_id": "sophia_at_edge_shot_03_will_extends",
+    "order_in_scene": 3,
+    "duration_seconds": 7.92,
+    "camera_contract": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 3/5; controlled reveal",
+    "visual_contract": "campo de Sophia perde simetria",
+    "audio_contract": "silêncio absoluto no instante da produção",
+    "transition": "slow_dissolve",
+    "tension": 0.48,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "sophia_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "sophia_at_edge",
+    "scene_title": "SOPHIA NA BORDA",
+    "shot_id": "sophia_at_edge_shot_04_relation_breaks",
+    "order_in_scene": 4,
+    "duration_seconds": 7.2,
+    "camera_contract": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 4/5; controlled reveal",
+    "visual_contract": "produto lançado para região inferior",
+    "audio_contract": "harmonia pleromática perde uma nota central",
+    "transition": "hard_reframe",
+    "tension": 0.53,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "sophia_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "sophia_at_edge",
+    "scene_title": "SOPHIA NA BORDA",
+    "shot_id": "sophia_at_edge_shot_05_birth_falls",
+    "order_in_scene": 5,
+    "duration_seconds": 6.48,
+    "camera_contract": "aproximação de Eleleth para Sophia; a borda aparece somente quando atravessada; beat 5/5; slow hold",
+    "visual_contract": "Um fio de luz atravessa a borda e continua vibrando, embora já não pertença inteiramente ao Pleroma.",
+    "audio_contract": "silêncio absoluto no instante da produção",
+    "transition": "motivated_cut",
+    "tension": 0.57,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cosmic_field",
+      "sophia_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "first_scream",
+    "scene_title": "O PRIMEIRO GRITO",
+    "shot_id": "first_scream_shot_01_impact_mist",
+    "order_in_scene": 1,
+    "duration_seconds": 6.12,
+    "camera_contract": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 1/5; slow hold",
+    "visual_contract": "Yaldabaoth abre os olhos antes de compreender visão; o primeiro grito vira trovão e depois comando.",
+    "audio_contract": "fogo interno, pedra tensionando, respiração impossível",
+    "transition": "fade_from_black",
+    "tension": 0.69,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "yaldabaoth_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "first_scream",
+    "scene_title": "O PRIMEIRO GRITO",
+    "shot_id": "first_scream_shot_02_anatomy_assembles",
+    "order_in_scene": 2,
+    "duration_seconds": 7.48,
+    "camera_contract": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 2/5; controlled reveal",
+    "visual_contract": "olho abre no escuro",
+    "audio_contract": "subgrave irregular",
+    "transition": "match_cut",
+    "tension": 0.73,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "first_scream",
+    "scene_title": "O PRIMEIRO GRITO",
+    "shot_id": "first_scream_shot_03_first_breath",
+    "order_in_scene": 3,
+    "duration_seconds": 7.48,
+    "camera_contract": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 3/5; controlled reveal",
+    "visual_contract": "fogo interno sob pele mineral",
+    "audio_contract": "grito se transforma em pulso arquitetônico",
+    "transition": "slow_dissolve",
+    "tension": 0.78,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "first_scream",
+    "scene_title": "O PRIMEIRO GRITO",
+    "shot_id": "first_scream_shot_04_first_scream",
+    "order_in_scene": 4,
+    "duration_seconds": 6.8,
+    "camera_contract": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 4/5; controlled reveal",
+    "visual_contract": "nuvem luminosa como prisão/berço",
+    "audio_contract": "subgrave irregular",
+    "transition": "hard_reframe",
+    "tension": 0.83,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "first_scream",
+    "scene_title": "O PRIMEIRO GRITO",
+    "shot_id": "first_scream_shot_05_authority_pulse",
+    "order_in_scene": 5,
+    "duration_seconds": 6.12,
+    "camera_contract": "muito próxima da superfície leonino-serpentina antes de revelar escala; beat 5/5; slow hold",
+    "visual_contract": "O trovão cessa e a criatura percebe apenas o próprio domínio refletido em todas as direções.",
+    "audio_contract": "grito se transforma em pulso arquitetônico",
+    "transition": "motivated_cut",
+    "tension": 0.87,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "blind_god",
+    "scene_title": "O DEUS QUE NÃO SABIA QUE ERA FILHO",
+    "shot_id": "blind_god_shot_01_search_above",
+    "order_in_scene": 1,
+    "duration_seconds": 6.84,
+    "camera_contract": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 1/5; slow hold",
+    "visual_contract": "Cada ordem de Yaldabaoth gera outra autoridade; o espaço começa a parecer uma burocracia sagrada sem saída.",
+    "audio_contract": "correntes, selos, pedra, escrita",
+    "transition": "fade_from_black",
+    "tension": 0.77,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "yaldabaoth_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "blind_god",
+    "scene_title": "O DEUS QUE NÃO SABIA QUE ERA FILHO",
+    "shot_id": "blind_god_shot_02_fail_to_perceive",
+    "order_in_scene": 2,
+    "duration_seconds": 8.36,
+    "camera_contract": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 2/5; controlled reveal",
+    "visual_contract": "selos se multiplicam",
+    "audio_contract": "ritmo mecânico nasce de vozes sem língua",
+    "transition": "match_cut",
+    "tension": 0.81,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "blind_god",
+    "scene_title": "O DEUS QUE NÃO SABIA QUE ERA FILHO",
+    "shot_id": "blind_god_shot_03_authorities_multiply",
+    "order_in_scene": 3,
+    "duration_seconds": 8.36,
+    "camera_contract": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 3/5; controlled reveal",
+    "visual_contract": "tronos vazios recebem funções",
+    "audio_contract": "declaração de exclusividade interrompe o coro",
+    "transition": "slow_dissolve",
+    "tension": 0.86,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "blind_god",
+    "scene_title": "O DEUS QUE NÃO SABIA QUE ERA FILHO",
+    "shot_id": "blind_god_shot_04_lists_conflict",
+    "order_in_scene": 4,
+    "duration_seconds": 7.6,
+    "camera_contract": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 4/5; controlled reveal",
+    "visual_contract": "linhas de governo fecham circuitos",
+    "audio_contract": "ritmo mecânico nasce de vozes sem língua",
+    "transition": "hard_reframe",
+    "tension": 0.91,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "blind_god",
+    "scene_title": "O DEUS QUE NÃO SABIA QUE ERA FILHO",
+    "shot_id": "blind_god_shot_05_exclusive_claim",
+    "order_in_scene": 5,
+    "duration_seconds": 6.84,
+    "camera_contract": "órbita entre autoridades em formação sem transformar lista em desfile escolar; beat 5/5; slow hold",
+    "visual_contract": "Centenas de olhos menores se fecham ao mesmo tempo, como portas trancando por dentro.",
+    "audio_contract": "declaração de exclusividade interrompe o coro",
+    "transition": "motivated_cut",
+    "tension": 0.95,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "threshold_door"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lower_architecture",
+    "scene_title": "A ARQUITETURA INFERIOR",
+    "shot_id": "lower_architecture_shot_01_measure_heavens",
+    "order_in_scene": 1,
+    "duration_seconds": 6.48,
+    "camera_contract": "mergulho das esferas para matéria, estrelas e Terra; beat 1/5; slow hold",
+    "visual_contract": "O cosmos inferior é belo, preciso e sufocante; o terror vem do fato de funcionar.",
+    "audio_contract": "rotações, vibrações planetárias ficcionais, metal distante",
+    "transition": "fade_from_black",
+    "tension": 0.63,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lower_architecture",
+    "scene_title": "A ARQUITETURA INFERIOR",
+    "shot_id": "lower_architecture_shot_02_ignite_stars",
+    "order_in_scene": 2,
+    "duration_seconds": 7.92,
+    "camera_contract": "mergulho das esferas para matéria, estrelas e Terra; beat 2/5; controlled reveal",
+    "visual_contract": "catedral-máquina",
+    "audio_contract": "órgão grave misturado a maquinaria astral",
+    "transition": "match_cut",
+    "tension": 0.67,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lower_architecture",
+    "scene_title": "A ARQUITETURA INFERIOR",
+    "shot_id": "lower_architecture_shot_03_weight_matter",
+    "order_in_scene": 3,
+    "duration_seconds": 7.92,
+    "camera_contract": "mergulho das esferas para matéria, estrelas e Terra; beat 3/5; controlled reveal",
+    "visual_contract": "céus concêntricos sem literalizar um único mapa textual",
+    "audio_contract": "o tema se resolve cedo demais, produzindo desconforto",
+    "transition": "slow_dissolve",
+    "tension": 0.72,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lower_architecture",
+    "scene_title": "A ARQUITETURA INFERIOR",
+    "shot_id": "lower_architecture_shot_04_earth_beauty",
+    "order_in_scene": 4,
+    "duration_seconds": 7.2,
+    "camera_contract": "mergulho das esferas para matéria, estrelas e Terra; beat 4/5; controlled reveal",
+    "visual_contract": "Terra como domínio dentro do campo demiúrgico",
+    "audio_contract": "órgão grave misturado a maquinaria astral",
+    "transition": "hard_reframe",
+    "tension": 0.77,
+    "priority": "C",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "earth_environment"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lower_architecture",
+    "scene_title": "A ARQUITETURA INFERIOR",
+    "shot_id": "lower_architecture_shot_05_perfect_wall",
+    "order_in_scene": 5,
+    "duration_seconds": 6.48,
+    "camera_contract": "mergulho das esferas para matéria, estrelas e Terra; beat 5/5; slow hold",
+    "visual_contract": "A Terra gira dentro de anéis perfeitos enquanto uma fissura de luz pulsa no centro da máquina.",
+    "audio_contract": "o tema se resolve cedo demais, produzindo desconforto",
+    "transition": "motivated_cut",
+    "tension": 0.81,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "earth_environment"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "form_without_breath",
+    "scene_title": "A FORMA QUE NÃO RESPIRAVA",
+    "shot_id": "form_without_breath_shot_01_assemble_form",
+    "order_in_scene": 1,
+    "duration_seconds": 7.56,
+    "camera_contract": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 1/5; slow hold",
+    "visual_contract": "Os governantes constroem um corpo perfeito que não responde; o primeiro batimento acontece apenas após o sopro de Yaldabaoth.",
+    "audio_contract": "pele, pedra, respiração dos governantes",
+    "transition": "fade_from_black",
+    "tension": 0.81,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "yaldabaoth_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "form_without_breath",
+    "scene_title": "A FORMA QUE NÃO RESPIRAVA",
+    "shot_id": "form_without_breath_shot_02_command_rise",
+    "order_in_scene": 2,
+    "duration_seconds": 9.24,
+    "camera_contract": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 2/5; controlled reveal",
+    "visual_contract": "corpo humano inerte",
+    "audio_contract": "crescendo interrompido",
+    "transition": "match_cut",
+    "tension": 0.85,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "human_body"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "form_without_breath",
+    "scene_title": "A FORMA QUE NÃO RESPIRAVA",
+    "shot_id": "form_without_breath_shot_03_inert_closeup",
+    "order_in_scene": 3,
+    "duration_seconds": 9.24,
+    "camera_contract": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 3/5; controlled reveal",
+    "visual_contract": "sopro como transferência causal",
+    "audio_contract": "um único batimento; depois respiração humana",
+    "transition": "slow_dissolve",
+    "tension": 0.9,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "form_without_breath",
+    "scene_title": "A FORMA QUE NÃO RESPIRAVA",
+    "shot_id": "form_without_breath_shot_04_breath_transfer",
+    "order_in_scene": 4,
+    "duration_seconds": 8.4,
+    "camera_contract": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 4/5; controlled reveal",
+    "visual_contract": "primeiro olhar humano refletindo luz não originada no cenário",
+    "audio_contract": "crescendo interrompido",
+    "transition": "hard_reframe",
+    "tension": 0.95,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "human_body"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "form_without_breath",
+    "scene_title": "A FORMA QUE NÃO RESPIRAVA",
+    "shot_id": "form_without_breath_shot_05_eyes_open",
+    "order_in_scene": 5,
+    "duration_seconds": 7.56,
+    "camera_contract": "travelling clínico pelas mãos dos governantes; depois câmera entra no peito humano; beat 5/5; slow hold",
+    "visual_contract": "Dentro do peito humano, uma luz acende e por um instante projeta uma sombra maior que o próprio cosmos inferior.",
+    "audio_contract": "um único batimento; depois respiração humana",
+    "transition": "motivated_cut",
+    "tension": 0.99,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "human_body"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lilith_first_refusal",
+    "scene_title": "LILITH — A PRIMEIRA RECUSA",
+    "shot_id": "lilith_first_refusal_shot_01_garden_order",
+    "order_in_scene": 1,
+    "duration_seconds": 6.48,
+    "camera_contract": "acompanha Lilith de costas; nunca voyeurística; beat 1/5; slow hold",
+    "visual_contract": "A ameaça não é um monstro; é uma porta que se fecha quando Lilith decide não voltar.",
+    "audio_contract": "vento, passos, portão de pedra",
+    "transition": "fade_from_black",
+    "tension": 0.59,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "lilith_character",
+      "threshold_door"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lilith_first_refusal",
+    "scene_title": "LILITH — A PRIMEIRA RECUSA",
+    "shot_id": "lilith_first_refusal_shot_02_reciprocity_break",
+    "order_in_scene": 2,
+    "duration_seconds": 7.92,
+    "camera_contract": "acompanha Lilith de costas; nunca voyeurística; beat 2/5; controlled reveal",
+    "visual_contract": "jardim geométrico demais",
+    "audio_contract": "cordas tensas quase sem resolução",
+    "transition": "match_cut",
+    "tension": 0.64,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "lilith_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lilith_first_refusal",
+    "scene_title": "LILITH — A PRIMEIRA RECUSA",
+    "shot_id": "lilith_first_refusal_shot_03_refusal_closeup",
+    "order_in_scene": 3,
+    "duration_seconds": 7.92,
+    "camera_contract": "acompanha Lilith de costas; nunca voyeurística; beat 3/5; controlled reveal",
+    "visual_contract": "porta de pedra fechando",
+    "audio_contract": "o último som do Jardim cessa quando ela não olha para trás",
+    "transition": "slow_dissolve",
+    "tension": 0.68,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "lilith_character",
+      "threshold_door"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lilith_first_refusal",
+    "scene_title": "LILITH — A PRIMEIRA RECUSA",
+    "shot_id": "lilith_first_refusal_shot_04_gate_closes",
+    "order_in_scene": 4,
+    "duration_seconds": 7.2,
+    "camera_contract": "acompanha Lilith de costas; nunca voyeurística; beat 4/5; controlled reveal",
+    "visual_contract": "deserto noturno sem trilha pronta",
+    "audio_contract": "cordas tensas quase sem resolução",
+    "transition": "hard_reframe",
+    "tension": 0.73,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "lilith_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lilith_first_refusal",
+    "scene_title": "LILITH — A PRIMEIRA RECUSA",
+    "shot_id": "lilith_first_refusal_shot_05_walk_into_night",
+    "order_in_scene": 5,
+    "duration_seconds": 6.48,
+    "camera_contract": "acompanha Lilith de costas; nunca voyeurística; beat 5/5; slow hold",
+    "visual_contract": "Lilith cruza o limite do Jardim e a noite engole sua silhueta sem promessa de proteção.",
+    "audio_contract": "o último som do Jardim cessa quando ela não olha para trás",
+    "transition": "motivated_cut",
+    "tension": 0.77,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "lilith_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "eve_epinoia_knowledge",
+    "scene_title": "EVA, EPINOIA E O DIREITO DE SABER",
+    "shot_id": "eve_epinoia_knowledge_shot_01_eve_awareness",
+    "order_in_scene": 1,
+    "duration_seconds": 7.56,
+    "camera_contract": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 1/5; slow hold",
+    "visual_contract": "A proibição é ouvida antes de a Árvore ser vista; a Serpente aparece primeiro apenas como sombra entre folhas.",
+    "audio_contract": "folhas, respiração, sussurros contraditórios",
+    "transition": "fade_from_black",
+    "tension": 0.55,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "serpent_manifestation"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "eve_epinoia_knowledge",
+    "scene_title": "EVA, EPINOIA E O DIREITO DE SABER",
+    "shot_id": "eve_epinoia_knowledge_shot_02_epinoia_glint",
+    "order_in_scene": 2,
+    "duration_seconds": 9.24,
+    "camera_contract": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 2/5; controlled reveal",
+    "visual_contract": "árvore como fronteira cognitiva",
+    "audio_contract": "motivo humano recebe notas do Pleroma",
+    "transition": "match_cut",
+    "tension": 0.59,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "eve_epinoia_knowledge",
+    "scene_title": "EVA, EPINOIA E O DIREITO DE SABER",
+    "shot_id": "eve_epinoia_knowledge_shot_03_tree_boundary",
+    "order_in_scene": 3,
+    "duration_seconds": 9.24,
+    "camera_contract": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 3/5; controlled reveal",
+    "visual_contract": "reflexos contraditórios no fruto",
+    "audio_contract": "o som da proibição vem de várias direções",
+    "transition": "slow_dissolve",
+    "tension": 0.64,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "eve_epinoia_knowledge",
+    "scene_title": "EVA, EPINOIA E O DIREITO DE SABER",
+    "shot_id": "eve_epinoia_knowledge_shot_04_serpent_question",
+    "order_in_scene": 4,
+    "duration_seconds": 8.4,
+    "camera_contract": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 4/5; controlled reveal",
+    "visual_contract": "autoridades observando de longe",
+    "audio_contract": "motivo humano recebe notas do Pleroma",
+    "transition": "hard_reframe",
+    "tension": 0.69,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "eve_epinoia_knowledge",
+    "scene_title": "EVA, EPINOIA E O DIREITO DE SABER",
+    "shot_id": "eve_epinoia_knowledge_shot_05_hand_reaches",
+    "order_in_scene": 5,
+    "duration_seconds": 7.56,
+    "camera_contract": "close em olhar, mão e distância até a árvore; a serpente nunca recebe leitura moral única; beat 5/5; slow hold",
+    "visual_contract": "Eva toca o fruto; a câmera não mostra catástrofe, apenas os olhos humanos aprendendo a focalizar algo antes invisível.",
+    "audio_contract": "o som da proibição vem de várias direções",
+    "transition": "motivated_cut",
+    "tension": 0.73,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "human_body",
+      "eve_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "cain",
+    "scene_title": "CAIM — A MARCA NÃO APAGA ABEL",
+    "shot_id": "cain_shot_01_brothers_work",
+    "order_in_scene": 1,
+    "duration_seconds": 8.64,
+    "camera_contract": "íntima e contida; a câmera permanece com a ausência após a morte; beat 1/5; slow hold",
+    "visual_contract": "Toda música desaparece antes da morte de Abel; o golpe acontece sem espetáculo, rápido demais para ser heroico.",
+    "audio_contract": "vento e tecido; depois silêncio longo",
+    "transition": "fade_from_black",
+    "tension": 0.73,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "abel_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "cain",
+    "scene_title": "CAIM — A MARCA NÃO APAGA ABEL",
+    "shot_id": "cain_shot_02_offerings_difference",
+    "order_in_scene": 2,
+    "duration_seconds": 10.56,
+    "camera_contract": "íntima e contida; a câmera permanece com a ausência após a morte; beat 2/5; controlled reveal",
+    "visual_contract": "terra cultivada",
+    "audio_contract": "cessa antes do golpe",
+    "transition": "match_cut",
+    "tension": 0.77,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "earth_environment"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "cain",
+    "scene_title": "CAIM — A MARCA NÃO APAGA ABEL",
+    "shot_id": "cain_shot_03_warning_ignored",
+    "order_in_scene": 3,
+    "duration_seconds": 10.56,
+    "camera_contract": "íntima e contida; a câmera permanece com a ausência após a morte; beat 3/5; controlled reveal",
+    "visual_contract": "mãos manchadas de terra e sangue",
+    "audio_contract": "o primeiro som após Abel é uma pá entrando na terra",
+    "transition": "slow_dissolve",
+    "tension": 0.82,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "earth_environment"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "cain",
+    "scene_title": "CAIM — A MARCA NÃO APAGA ABEL",
+    "shot_id": "cain_shot_04_abel_falls",
+    "order_in_scene": 4,
+    "duration_seconds": 9.6,
+    "camera_contract": "íntima e contida; a câmera permanece com a ausência após a morte; beat 4/5; controlled reveal",
+    "visual_contract": "marca sem forma dogmática fixa",
+    "audio_contract": "cessa antes do golpe",
+    "transition": "hard_reframe",
+    "tension": 0.86,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "cain",
+    "scene_title": "CAIM — A MARCA NÃO APAGA ABEL",
+    "shot_id": "cain_shot_05_mark_and_exile",
+    "order_in_scene": 5,
+    "duration_seconds": 8.64,
+    "camera_contract": "íntima e contida; a câmera permanece com a ausência após a morte; beat 5/5; slow hold",
+    "visual_contract": "Caim segue para o exílio; ao fundo nasce a primeira fundação de uma cidade, enquanto a voz de Abel permanece ausente.",
+    "audio_contract": "o primeiro som após Abel é uma pá entrando na terra",
+    "transition": "motivated_cut",
+    "tension": 0.91,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cain_character",
+      "abel_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lineage_of_mark",
+    "scene_title": "A LINHAGEM DA MARCA",
+    "shot_id": "lineage_of_mark_shot_01_smith_hand",
+    "order_in_scene": 1,
+    "duration_seconds": 7.2,
+    "camera_contract": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 1/5; slow hold",
+    "visual_contract": "A mesma posição de mão atravessa séculos em match cuts, mas a Marca nunca aparece exatamente igual duas vezes.",
+    "audio_contract": "forja vira pena, pena vira roda, roda vira batimento",
+    "transition": "fade_from_black",
+    "tension": 0.41,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cain_mark_vfx"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lineage_of_mark",
+    "scene_title": "A LINHAGEM DA MARCA",
+    "shot_id": "lineage_of_mark_shot_02_scribe_hand",
+    "order_in_scene": 2,
+    "duration_seconds": 8.8,
+    "camera_contract": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 2/5; controlled reveal",
+    "visual_contract": "forja",
+    "audio_contract": "mesmo pulso tocado por instrumentos de épocas diferentes",
+    "transition": "match_cut",
+    "tension": 0.46,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cain_mark_vfx"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lineage_of_mark",
+    "scene_title": "A LINHAGEM DA MARCA",
+    "shot_id": "lineage_of_mark_shot_03_merchant_hand",
+    "order_in_scene": 3,
+    "duration_seconds": 8.8,
+    "camera_contract": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 3/5; controlled reveal",
+    "visual_contract": "tinta",
+    "audio_contract": "o pulso para quando Harun fecha a mão",
+    "transition": "slow_dissolve",
+    "tension": 0.5,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cain_mark_vfx"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lineage_of_mark",
+    "scene_title": "A LINHAGEM DA MARCA",
+    "shot_id": "lineage_of_mark_shot_04_mourner_hand",
+    "order_in_scene": 4,
+    "duration_seconds": 8.0,
+    "camera_contract": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 4/5; controlled reveal",
+    "visual_contract": "estrada",
+    "audio_contract": "mesmo pulso tocado por instrumentos de épocas diferentes",
+    "transition": "hard_reframe",
+    "tension": 0.55,
+    "priority": "B",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "cain_mark_vfx"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "lineage_of_mark",
+    "scene_title": "A LINHAGEM DA MARCA",
+    "shot_id": "lineage_of_mark_shot_05_harun_hand",
+    "order_in_scene": 5,
+    "duration_seconds": 7.2,
+    "camera_contract": "match cuts de mãos, ferramentas e marcas discretamente recorrentes; beat 5/5; slow hold",
+    "visual_contract": "O último match cut termina na mão de Harun jovem fechando-se sobre um fragmento de manuscrito.",
+    "audio_contract": "o pulso para quando Harun fecha a mão",
+    "transition": "motivated_cut",
+    "tension": 0.59,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "harun_character",
+      "grimorium_fragments",
+      "cain_mark_vfx"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "dismembered_book",
+    "scene_title": "O LIVRO DESMEMBRADO",
+    "shot_id": "dismembered_book_shot_01_fragment_margin",
+    "order_in_scene": 1,
+    "duration_seconds": 9.72,
+    "camera_contract": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 1/5; slow hold",
+    "visual_contract": "Fragmentos incompatíveis começam a compartilhar ausências idênticas; o que falta passa a ser mais informativo que o texto.",
+    "audio_contract": "papel, mercados, chuva, respiração",
+    "transition": "fade_from_black",
+    "tension": 0.53,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "grimorium_fragments"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "dismembered_book",
+    "scene_title": "O LIVRO DESMEMBRADO",
+    "shot_id": "dismembered_book_shot_02_burned_notebook",
+    "order_in_scene": 2,
+    "duration_seconds": 11.88,
+    "camera_contract": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 2/5; controlled reveal",
+    "visual_contract": "folha marginal",
+    "audio_contract": "ostinato investigativo com ruídos de escrita",
+    "transition": "match_cut",
+    "tension": 0.57,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "dismembered_book",
+    "scene_title": "O LIVRO DESMEMBRADO",
+    "shot_id": "dismembered_book_shot_03_cipher_plate",
+    "order_in_scene": 3,
+    "duration_seconds": 11.88,
+    "camera_contract": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 3/5; controlled reveal",
+    "visual_contract": "caderno queimado",
+    "audio_contract": "quando o último vazio se alinha, todos os ruídos cessam",
+    "transition": "slow_dissolve",
+    "tension": 0.62,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "dismembered_book",
+    "scene_title": "O LIVRO DESMEMBRADO",
+    "shot_id": "dismembered_book_shot_04_illiterate_letter",
+    "order_in_scene": 4,
+    "duration_seconds": 10.8,
+    "camera_contract": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 4/5; controlled reveal",
+    "visual_contract": "placa cifrada",
+    "audio_contract": "ostinato investigativo com ruídos de escrita",
+    "transition": "hard_reframe",
+    "tension": 0.67,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "dismembered_book",
+    "scene_title": "O LIVRO DESMEMBRADO",
+    "shot_id": "dismembered_book_shot_05_void_map_alignment",
+    "order_in_scene": 5,
+    "duration_seconds": 9.72,
+    "camera_contract": "investigação em primeira pessoa; fragmentos nunca se encaixam de modo mágico instantâneo; beat 5/5; slow hold",
+    "visual_contract": "Cinco fragmentos sobrepostos deixam no centro um espaço vazio com a forma exata de um título ainda não revelado.",
+    "audio_contract": "quando o último vazio se alinha, todos os ruídos cessam",
+    "transition": "motivated_cut",
+    "tension": 0.71,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "grimorium_fragments"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "see_govern_make",
+    "scene_title": "VER · GOVERNAR · FAZER",
+    "shot_id": "see_govern_make_shot_01_title_reveal",
+    "order_in_scene": 1,
+    "duration_seconds": 6.84,
+    "camera_contract": "close no livro vira perspectiva FPS no corredor sem corte; beat 1/5; slow hold",
+    "visual_contract": "O título finalmente aparece e a página começa a adquirir textura de pedra antes que Harun termine de lê-lo.",
+    "audio_contract": "folha vira vento e pedra",
+    "transition": "fade_from_black",
+    "tension": 0.79,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "harun_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "see_govern_make",
+    "scene_title": "VER · GOVERNAR · FAZER",
+    "shot_id": "see_govern_make_shot_02_see_command",
+    "order_in_scene": 2,
+    "duration_seconds": 8.36,
+    "camera_contract": "close no livro vira perspectiva FPS no corredor sem corte; beat 2/5; controlled reveal",
+    "visual_contract": "título do Grimorium",
+    "audio_contract": "motivo do Pleroma reaparece distorcido",
+    "transition": "match_cut",
+    "tension": 0.83,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "see_govern_make",
+    "scene_title": "VER · GOVERNAR · FAZER",
+    "shot_id": "see_govern_make_shot_03_govern_command",
+    "order_in_scene": 3,
+    "duration_seconds": 8.36,
+    "camera_contract": "close no livro vira perspectiva FPS no corredor sem corte; beat 3/5; controlled reveal",
+    "visual_contract": "três verbos",
+    "audio_contract": "respiração de criatura antes do controle ser liberado",
+    "transition": "slow_dissolve",
+    "tension": 0.88,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "see_govern_make",
+    "scene_title": "VER · GOVERNAR · FAZER",
+    "shot_id": "see_govern_make_shot_04_make_command",
+    "order_in_scene": 4,
+    "duration_seconds": 7.6,
+    "camera_contract": "close no livro vira perspectiva FPS no corredor sem corte; beat 4/5; controlled reveal",
+    "visual_contract": "papel transformando-se em parede",
+    "audio_contract": "motivo do Pleroma reaparece distorcido",
+    "transition": "hard_reframe",
+    "tension": 0.93,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "see_govern_make",
+    "scene_title": "VER · GOVERNAR · FAZER",
+    "shot_id": "see_govern_make_shot_05_book_becomes_door",
+    "order_in_scene": 5,
+    "duration_seconds": 6.84,
+    "camera_contract": "close no livro vira perspectiva FPS no corredor sem corte; beat 5/5; slow hold",
+    "visual_contract": "O papel torna-se corredor em primeira pessoa; atrás da primeira porta, algo respira antes do HUD aparecer.",
+    "audio_contract": "respiração de criatura antes do controle ser liberado",
+    "transition": "motivated_cut",
+    "tension": 0.97,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "threshold_door"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "aleppo_1585",
+    "scene_title": "A SEGUNDA SOMBRA",
+    "shot_id": "aleppo_shot_01_cosmic_eye_to_oil",
+    "order_in_scene": 1,
+    "duration_seconds": 8.0,
+    "camera_contract": "macro cosmic eye contracts into reflection on lamp oil; impossible scale match cut",
+    "visual_contract": "the final cosmic eye becomes a trembling reflection in a brass oil lamp",
+    "audio_contract": "cosmic low frequency narrows into room tone and a single string harmonic",
+    "transition": "match_cut",
+    "tension": 0.58,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "aleppo_1585",
+    "scene_title": "A SEGUNDA SOMBRA",
+    "shot_id": "aleppo_shot_02_date_and_room",
+    "order_in_scene": 2,
+    "duration_seconds": 9.0,
+    "camera_contract": "slow lateral reveal across lime wall, manuscripts, narrow window, Harun in profile",
+    "visual_contract": "ALEPPO · c. 1585 appears briefly; one wick burns and the second remains dry",
+    "audio_contract": "distant city, paper fiber, lamp flame, four-note Source motif",
+    "transition": "slow_dissolve",
+    "tension": 0.61,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "aleppo_1585",
+    "scene_title": "A SEGUNDA SOMBRA",
+    "shot_id": "aleppo_shot_03_second_shadow",
+    "order_in_scene": 3,
+    "duration_seconds": 9.0,
+    "camera_contract": "hold on ceiling before panning down; shadow information precedes source",
+    "visual_contract": "two human-like shadows occupy the ceiling although only Harun is visible",
+    "audio_contract": "room tone drops 3 dB; faint breath not localized in the room",
+    "transition": "hard_reframe",
+    "tension": 0.76,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "human_body",
+      "harun_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "aleppo_1585",
+    "scene_title": "A SEGUNDA SOMBRA",
+    "shot_id": "aleppo_shot_04_nadir_enters",
+    "order_in_scene": 4,
+    "duration_seconds": 9.0,
+    "camera_contract": "door frame foreground; Nadir enters without heroic reveal and keeps the letter low",
+    "visual_contract": "Nadir ibn Samir enters with a folded letter; Harun does not turn immediately",
+    "audio_contract": "door hinge, two steps, fabric, no musical accent",
+    "transition": "motivated_cut",
+    "tension": 0.68,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "harun_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "aleppo_1585",
+    "scene_title": "A SEGUNDA SOMBRA",
+    "shot_id": "aleppo_shot_05_question_not_answer",
+    "order_in_scene": 5,
+    "duration_seconds": 9.0,
+    "camera_contract": "medium two-shot with lamp between Harun and Nadir; empty space preserved above them",
+    "visual_contract": "Harun studies the letter, then the unlit wick, then asks a question instead of explaining",
+    "audio_contract": "four-note theme leaves final interval unresolved",
+    "transition": "shot_reverse_hold",
+    "tension": 0.7,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "harun_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "aleppo_1585",
+    "scene_title": "A SEGUNDA SOMBRA",
+    "shot_id": "aleppo_shot_06_shadow_moves_first",
+    "order_in_scene": 6,
+    "duration_seconds": 8.0,
+    "camera_contract": "very slow push toward Harun while focus shifts to ceiling",
+    "visual_contract": "the second shadow moves a fraction before either man does; Harun notices and says nothing",
+    "audio_contract": "single impossible scrape above; city ambience continues as if nothing happened",
+    "transition": "focus_pull",
+    "tension": 0.86,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "harun_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  },
+  {
+    "scene_id": "aleppo_1585",
+    "scene_title": "A SEGUNDA SOMBRA",
+    "shot_id": "aleppo_shot_07_lucifer_cut",
+    "order_in_scene": 7,
+    "duration_seconds": 10.0,
+    "camera_contract": "close on Harun; cut to unlit wick on final syllable; immediate black",
+    "visual_contract": "Harun pronounces LUCIFER. The unlit wick remains unlit. Black frame holds after the word.",
+    "audio_contract": "LUCIFER is dry and centered; all ambience cuts immediately after the word",
+    "transition": "hard_cut_to_black",
+    "tension": 0.92,
+    "priority": "A",
+    "runtime_owner": "narrative",
+    "asset_needs": [
+      "camera_rig",
+      "lighting_cue",
+      "harun_character"
+    ],
+    "implementation_note": "Pode usar proxy procedural durante integração; arte final deve respeitar escala, silhueta e motivo sem substituir proveniência por espetáculo."
+  }
+]
