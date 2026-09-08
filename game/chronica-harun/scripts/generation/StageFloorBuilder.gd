@@ -75,16 +75,45 @@ static func spawn_special_room(rooms: Node3D, definition: Dictionary, index: int
     room.set_meta("risk", definition.get("risk", "low"))
     rooms.add_child(room)
     _apply_theme(room, theme)
-    if id in ["secret", "super_secret"]:
+    var is_secret := id in ["secret", "super_secret"]
+    if is_secret:
         room.visible = false
         room.process_mode = Node.PROCESS_MODE_DISABLED
     if host and corridors:
-        if room.position.z < host.position.z:
-            _open_pair(host, "NorthWall", room, "SouthWall")
+        var host_wall := "NorthWall" if room.position.z < host.position.z else "SouthWall"
+        var room_wall := "SouthWall" if room.position.z < host.position.z else "NorthWall"
+        if is_secret:
+            room.set_meta("secret_connection_pending", true)
+            room.set_meta("secret_host_name", String(host.name))
+            room.set_meta("secret_host_wall", host_wall)
+            room.set_meta("secret_room_wall", room_wall)
         else:
-            _open_pair(host, "SouthWall", room, "NorthWall")
-        _add_corridor(corridors, host.position, room.position, theme)
+            _open_pair(host, host_wall, room, room_wall)
+            _add_corridor(corridors, host.position, room.position, theme)
     return room
+
+static func open_secret_connection(room: RoomShell) -> bool:
+    if room == null or not bool(room.get_meta("secret_connection_pending", false)):
+        return false
+    var rooms := room.get_parent() as Node3D
+    if rooms == null:
+        return false
+    var floor := rooms.get_parent() as Node3D
+    if floor == null:
+        return false
+    var host := rooms.get_node_or_null(NodePath(String(room.get_meta("secret_host_name", "")))) as RoomShell
+    var corridors := floor.get_node_or_null("Corridors") as Node3D
+    if host == null or corridors == null:
+        return false
+    var host_wall := String(room.get_meta("secret_host_wall", ""))
+    var room_wall := String(room.get_meta("secret_room_wall", ""))
+    if host_wall.is_empty() or room_wall.is_empty():
+        return false
+    _open_pair(host, host_wall, room, room_wall)
+    _add_corridor(corridors, host.position, room.position, floor.get_meta("theme", {}))
+    room.set_meta("secret_connection_pending", false)
+    room.set_meta("secret_connection_open", true)
+    return true
 
 static func _spawn_room(parent: Node3D, id: String, role: String, pos: Vector3, theme: Dictionary) -> RoomShell:
     var room: RoomShell = ROOM_SCENE.instantiate()
