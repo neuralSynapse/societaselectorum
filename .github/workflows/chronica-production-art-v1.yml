@@ -1,0 +1,103 @@
+name: CHRONICA Production Art v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/chronica-production-art-v1]
+    paths:
+      - 'game/chronica-harun/tools/generate_models.py'
+      - 'game/chronica-harun/tools/validate_production_art.py'
+      - 'game/chronica-harun/tools/render_production_art_proofs.py'
+      - 'game/chronica-harun/tests/test_production_art_contract.py'
+      - 'game/chronica-harun/art/production/**'
+      - '.github/workflows/chronica-production-art-v1.yml'
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+
+jobs:
+  production-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chronica-production-art-v1
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python art dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check -q pytest trimesh numpy pillow matplotlib
+
+      - name: Production art contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          pytest -q "$GAME_DIR/tests/test_production_art_contract.py"
+
+      - name: Generate candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+
+      - name: Full Python suite and validators
+        shell: bash
+        run: |
+          set -euo pipefail
+          pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
+          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
+          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
+          python "$GAME_DIR/tools/validate_production_art.py" | tee /tmp/art.log
+
+      - name: Render proof sheets
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$GAME_DIR/tools/render_production_art_proofs.py"
+
+      - name: Install Godot 4.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version
+
+      - name: Strict Godot import
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/import.log
+          echo PRODUCTION_ART_GODOT_IMPORT=PASS
+
+      - name: Upload production art proof bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: chronica-production-art-v1-proofs
+          if-no-files-found: error
+          path: |
+            game/chronica-harun/art/production/*.json
+            game/chronica-harun/art/production/proofs/*.png
+
+      - name: Final gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
+          grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'PRODUCTION ART VALIDATION: PASS' /tmp/art.log
+          echo CHRONICA_PRODUCTION_ART_V1=PASS
