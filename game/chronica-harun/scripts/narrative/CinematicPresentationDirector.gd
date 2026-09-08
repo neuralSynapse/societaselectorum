@@ -48,6 +48,18 @@ func end_sequence(sequence_id: StringName) -> void:
     if sequence_id == &"see_govern_make":
         handoff_ready.emit()
 
+func prepare_gameplay_handoff(target_camera: Camera3D) -> void:
+    _clear_proxies()
+    if target_camera == null:
+        handoff_ready.emit()
+        return
+    camera_rig.global_transform = target_camera.global_transform
+    cinematic_camera.position = Vector3.ZERO
+    cinematic_camera.rotation = Vector3.ZERO
+    cinematic_camera.fov = target_camera.fov
+    cinematic_camera.current = true
+    handoff_ready.emit()
+
 func release_camera() -> void:
     active = false
     cinematic_camera.current = false
@@ -94,27 +106,27 @@ func _stage_camera(contract: String, tension: float) -> void:
     var target_pos := Vector3.ZERO
     var target_rot := Vector3.ZERO
     var target_fov := 68.0
-    if "sem horizonte" in low:
+    if low.contains("sem horizonte"):
         target_pos = Vector3(0.0, 0.35, 1.8)
         target_rot = Vector3(deg_to_rad(-7.0), deg_to_rad(-5.0), deg_to_rad(1.5))
         target_fov = 76.0
-    elif "travessia lenta" in low or "slow lateral" in low:
+    elif low.contains("travessia lenta") or low.contains("slow lateral"):
         target_pos = Vector3(-1.6, 0.45, 2.4)
         target_rot = Vector3(deg_to_rad(-3.0), deg_to_rad(12.0), 0.0)
         target_fov = 70.0
-    elif "aproximação" in low or "push" in low:
+    elif low.contains("aproximação") or low.contains("push"):
         target_pos = Vector3(0.0, 0.3, 1.2)
         target_rot = Vector3(deg_to_rad(-2.0), 0.0, 0.0)
         target_fov = 56.0
-    elif "íntima" in low or "close" in low or "macro" in low:
+    elif low.contains("íntima") or low.contains("close") or low.contains("macro"):
         target_pos = Vector3(0.35, 0.2, 0.85)
         target_rot = Vector3(deg_to_rad(-1.5), deg_to_rad(-7.0), 0.0)
         target_fov = 50.0
-    elif "match cuts" in low:
+    elif low.contains("match cuts"):
         target_pos = Vector3(-0.75, 0.2, 1.4)
         target_rot = Vector3(0.0, deg_to_rad(8.0), 0.0)
         target_fov = 62.0
-    elif "primeira pessoa" in low or "first-person" in low or "first person" in low:
+    elif low.contains("primeira pessoa") or low.contains("first-person") or low.contains("first person"):
         target_pos = Vector3(0.0, 0.05, 0.25)
         target_rot = Vector3.ZERO
         target_fov = 74.0
