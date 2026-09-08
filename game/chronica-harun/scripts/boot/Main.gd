@@ -7,8 +7,10 @@ extends Node3D
 @onready var narrative_runtime: NarrativeRuntimeBridge = $NarrativeRuntime
 
 var gameplay_enabled := true
+var pause_active := false
 
 func _ready() -> void:
+    process_mode = Node.PROCESS_MODE_ALWAYS
     var snapshot := SaveService.load_campaign()
     if snapshot.is_empty():
         GameState.start_new_campaign()
@@ -28,11 +30,29 @@ func _ready() -> void:
     var blocking_entry := _cinematic_can_take_player_control() and (entry_sequence == &"cosmogony" or entry_sequence == &"harun_origin" or entry_sequence == &"epilogue")
     _set_gameplay_enabled(not blocking_entry)
 
+func _unhandled_input(event: InputEvent) -> void:
+    if event.is_action_pressed("pause") and gameplay_enabled:
+        set_pause_state(not pause_active)
+        get_viewport().set_input_as_handled()
+
+func set_pause_state(paused: bool) -> void:
+    pause_active = paused
+    if stage_director != null and stage_director.hud != null:
+        stage_director.hud.set_pause_visible(paused)
+    get_tree().paused = paused
+    Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if paused else Input.MOUSE_MODE_CAPTURED
+
+func _exit_tree() -> void:
+    if get_tree() != null:
+        get_tree().paused = false
+
 func _cinematic_can_take_player_control() -> bool:
     return narrative_runtime != null and narrative_runtime.cinematic_stage != null and narrative_runtime.cinematic_stage.can_take_player_control()
 
 func _set_gameplay_enabled(enabled: bool) -> void:
     gameplay_enabled = enabled
+    if not enabled and pause_active:
+        set_pause_state(false)
     world_root.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
     world_root.visible = enabled
     if stage_director.player != null:

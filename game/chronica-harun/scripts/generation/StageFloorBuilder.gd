@@ -154,21 +154,70 @@ static func _disable_wall(room: RoomShell, wall_name: String) -> void:
     if wall:
         wall.visible = false
         wall.process_mode = Node.PROCESS_MODE_DISABLED
+        if wall is CollisionObject3D:
+            (wall as CollisionObject3D).collision_layer = 0
+            (wall as CollisionObject3D).collision_mask = 0
+        var collision := wall.get_node_or_null("CollisionShape3D") as CollisionShape3D
+        if collision:
+            collision.disabled = true
 
 static func _add_corridor(parent: Node3D, a: Vector3, b: Vector3, theme: Dictionary) -> void:
     var mid := (a + b) * 0.5
     var delta := b - a
-    var mesh_instance := MeshInstance3D.new()
-    mesh_instance.name = "Corridor_%d" % parent.get_child_count()
-    var mesh := BoxMesh.new()
+    var floor_size := Vector3.ZERO
     if absf(delta.x) > absf(delta.z):
-        mesh.size = Vector3(maxf(2.0, absf(delta.x) - 9.7), 0.14, 2.4)
+        floor_size = Vector3(maxf(2.0, absf(delta.x) - 9.7), 0.14, 2.4)
     else:
-        mesh.size = Vector3(2.4, 0.14, maxf(2.0, absf(delta.z) - 9.7))
-    mesh_instance.mesh = mesh
-    mesh_instance.position = mid + Vector3(0, -0.02, 0)
-    mesh_instance.material_override = _material(String(theme.get("palette", ["#0c0b0a"])[0]), 0.95)
-    parent.add_child(mesh_instance)
+        floor_size = Vector3(2.4, 0.14, maxf(2.0, absf(delta.z) - 9.7))
+
+    var body := StaticBody3D.new()
+    body.name = "Corridor_%d" % parent.get_child_count()
+    body.collision_layer = 2
+    body.collision_mask = 0
+    body.position = mid + Vector3(0, -0.02, 0)
+
+    var floor_mesh := MeshInstance3D.new()
+    floor_mesh.name = "Mesh"
+    var mesh := BoxMesh.new()
+    mesh.size = floor_size
+    floor_mesh.mesh = mesh
+    floor_mesh.material_override = _material(String(theme.get("palette", ["#0c0b0a"])[0]), 0.95)
+    body.add_child(floor_mesh)
+
+    var floor_collision := CollisionShape3D.new()
+    floor_collision.name = "CollisionShape3D"
+    var floor_shape := BoxShape3D.new()
+    floor_shape.size = floor_size
+    floor_collision.shape = floor_shape
+    body.add_child(floor_collision)
+
+    var wall_material := _material(String(theme.get("palette", ["#0c0b0a", "#1c1814"])[mini(1, theme.get("palette", ["#0c0b0a", "#1c1814"]).size() - 1)]), 0.92)
+    if floor_size.x > floor_size.z:
+        _add_corridor_guard(body, "GuardA", Vector3(floor_size.x, 2.8, 0.18), Vector3(0, 1.4, -1.2), wall_material)
+        _add_corridor_guard(body, "GuardB", Vector3(floor_size.x, 2.8, 0.18), Vector3(0, 1.4, 1.2), wall_material)
+    else:
+        _add_corridor_guard(body, "GuardA", Vector3(0.18, 2.8, floor_size.z), Vector3(-1.2, 1.4, 0), wall_material)
+        _add_corridor_guard(body, "GuardB", Vector3(0.18, 2.8, floor_size.z), Vector3(1.2, 1.4, 0), wall_material)
+
+    parent.add_child(body)
+
+static func _add_corridor_guard(body: StaticBody3D, guard_name: String, size: Vector3, local_position: Vector3, material: Material) -> void:
+    var guard_mesh := MeshInstance3D.new()
+    guard_mesh.name = guard_name + "Mesh"
+    var mesh := BoxMesh.new()
+    mesh.size = size
+    guard_mesh.mesh = mesh
+    guard_mesh.position = local_position
+    guard_mesh.material_override = material
+    body.add_child(guard_mesh)
+
+    var guard_collision := CollisionShape3D.new()
+    guard_collision.name = guard_name + "Collision"
+    var shape := BoxShape3D.new()
+    shape.size = size
+    guard_collision.shape = shape
+    guard_collision.position = local_position
+    body.add_child(guard_collision)
 
 static func _theme(stage_id: StringName) -> Dictionary:
     var file := FileAccess.open("res://data/rooms/student_room_themes.json", FileAccess.READ)

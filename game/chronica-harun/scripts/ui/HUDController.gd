@@ -20,10 +20,13 @@ class_name HUDController
 @onready var choice_panel: PanelContainer = $Root/ChoicePanel
 @onready var choice_title: Label = $Root/ChoicePanel/VBox/Title
 @onready var choice_options: VBoxContainer = $Root/ChoicePanel/VBox/Options
+@onready var pause_panel: PanelContainer = $Root/PausePanel
 
 var choice_callback: Callable
-
 var hide_timer := 0.0
+
+func _ready() -> void:
+    process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(delta: float) -> void:
     if hide_timer > 0.0:
@@ -46,6 +49,9 @@ func bind_player(player: PlayerController) -> void:
 
 func set_objective(text: String) -> void:
     objective.text = text
+
+func set_pause_visible(value: bool) -> void:
+    pause_panel.visible = value
 
 func show_identification(display_name: String, role: String, attack_name: String) -> void:
     identity_name.text = display_name.to_upper()
