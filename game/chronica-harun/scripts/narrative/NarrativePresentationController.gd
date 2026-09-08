@@ -42,8 +42,11 @@ func _ready() -> void:
     reveal_label.visible = false
     fragment_status.visible = false
     evidence_label.visible = false
+    call_deferred("_bind_parent_bridge")
+
+func _bind_parent_bridge() -> void:
     var parent_bridge := get_parent() as NarrativeRuntimeBridge
-    if parent_bridge:
+    if parent_bridge != null:
         bind_bridge(parent_bridge)
 
 func bind_bridge(next_bridge: NarrativeRuntimeBridge) -> void:
