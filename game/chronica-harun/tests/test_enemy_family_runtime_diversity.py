@@ -23,7 +23,7 @@ def test_repeated_enemy_families_have_distinct_runtime_movement_paths():
         '"hyena_archon":': "_zigzag_hunt",
         '"asinine_archon":': "_strafe_ranged",
         '"chorus":': "_orbit_ranged",
-        '"fire":': "_burst_pursuit",
+        '"fire", "beast":': "_burst_pursuit",
         '"construct":': "_anchor_advance",
         '"walker":': "_skitter_flank",
     }
