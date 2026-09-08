@@ -50,6 +50,11 @@ func emit_feedback(event_id: StringName, position: Vector3, direction: Vector3 =
     var key := String(event_id)
     if not EFFECTS.has(key):
         return null
+    # Headless CI uses the dummy renderer, which cannot realize procedural primitive
+    # meshes safely. Keep the event contract alive while skipping render-only nodes.
+    if DisplayServer.get_name() == "headless":
+        feedback_emitted.emit(event_id, position)
+        return null
     var spec: Dictionary = EFFECTS[key]
     var root := Node3D.new()
     root.name = "VFX_%s" % key
