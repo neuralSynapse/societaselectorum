@@ -15,17 +15,24 @@ signal identified(enemy_id: StringName, display_name: String, role: String, atta
 @onready var attack_sm: AttackStateMachine = $AttackStateMachine
 @onready var projectile_origin: Marker3D = $ProjectileOrigin
 @onready var telegraph_origin: Marker3D = $TelegraphOrigin
+@onready var telegraph_root: Node3D = $TelegraphRoot
+@onready var impact_origin: Marker3D = $ImpactOrigin
+@onready var visual: Node3D = $Visual
 
 var target: Node3D
 var room_active := true
 var attack_definition: Dictionary = {}
 var attack_cooldown := 0.0
+var readable_telegraph: ReadableTelegraph
 
 func _ready() -> void:
     health.died.connect(_on_died)
+    health.damaged.connect(_on_damaged)
     attack_sm.telegraph_started.connect(_on_telegraph_started)
     attack_sm.emission_requested.connect(_on_emission_requested)
     attack_sm.impact_window_started.connect(_on_impact_window)
+    readable_telegraph = ReadableTelegraph.new()
+    telegraph_root.add_child(readable_telegraph)
     add_to_group("enemies")
 
 func set_target(next_target: Node3D) -> void:
@@ -35,6 +42,8 @@ func set_room_active(value: bool) -> void:
     room_active = value
     if not value:
         velocity = Vector3.ZERO
+        if readable_telegraph:
+            readable_telegraph.clear()
 
 func reveal_identity() -> void:
     identified.emit(enemy_id, display_name, role, attack_name)
@@ -93,9 +102,12 @@ func request_attack(definition: Dictionary) -> bool:
 func apply_damage(amount: float, source_id: StringName = &"") -> bool:
     return health.apply_damage(amount, source_id)
 
-func _on_telegraph_started(_payload: Dictionary) -> void:
+func _on_telegraph_started(payload: Dictionary) -> void:
     face_target()
-    AudioDirector.play_3d(&"enemy_windup", global_position)
+    var definition: Dictionary = payload.get("definition", {})
+    if readable_telegraph:
+        readable_telegraph.show_attack(definition, target, telegraph_origin.global_position)
+    AudioDirector.play_3d(&"enemy_windup", telegraph_origin.global_position)
 
 func _on_emission_requested(_payload: Dictionary) -> void:
     pass
@@ -104,11 +116,17 @@ func _on_impact_window(payload: Dictionary) -> void:
     var definition: Dictionary = payload.get("definition", {})
     if String(definition.get("attack_kind", "")) != "movement":
         return
+    CombatFeedback.impact(get_tree().current_scene, impact_origin.global_position, 0.8)
     if target and distance_to_target() <= float(definition.get("range", 1.4)):
         if target.has_method("apply_damage"):
             target.apply_damage(float(definition.get("damage", 10.0)), enemy_id)
 
+func _on_damaged(_current: float, _maximum: float, amount: float, _source_id: StringName) -> void:
+    CombatFeedback.hit_flash(visual, maxf(0.5, amount / 10.0))
+
 func _on_died(source_id: StringName) -> void:
+    if readable_telegraph:
+        readable_telegraph.clear()
     died.emit(source_id)
     set_physics_process(false)
     var tween := create_tween()
