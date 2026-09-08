@@ -6,6 +6,7 @@ on:
     branches: [feat/chronica-production-art-v1]
     paths:
       - 'game/chronica-harun/tools/generate_models.py'
+      - 'game/chronica-harun/tools/production_art_*.py'
       - 'game/chronica-harun/tools/validate_production_art.py'
       - 'game/chronica-harun/tools/render_production_art_proofs.py'
       - 'game/chronica-harun/tests/test_production_art_contract.py'
@@ -48,26 +49,37 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python "$GAME_DIR/tools/generate_models.py"
+          python "$GAME_DIR/tools/generate_models.py" 2>&1 | tee /tmp/generate.log
           test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
           test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
 
       - name: Full Python suite and validators
         shell: bash
         run: |
-          set -euo pipefail
-          pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
-          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
-          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
-          python "$GAME_DIR/tools/validate_production_art.py" | tee /tmp/art.log
+          set +e
+          pytest -q "$GAME_DIR/tests" 2>&1 | tee /tmp/pytest.log
+          PYTEST_STATUS=${PIPESTATUS[0]}
+          python "$GAME_DIR/tools/validate_complete_game.py" 2>&1 | tee /tmp/complete.log
+          COMPLETE_STATUS=${PIPESTATUS[0]}
+          python "$GAME_DIR/tools/validate_story_canon.py" 2>&1 | tee /tmp/story.log
+          STORY_STATUS=${PIPESTATUS[0]}
+          python "$GAME_DIR/tools/validate_production_art.py" 2>&1 | tee /tmp/art.log
+          ART_STATUS=${PIPESTATUS[0]}
+          set -e
+          test "$PYTEST_STATUS" -eq 0
+          test "$COMPLETE_STATUS" -eq 0
+          test "$STORY_STATUS" -eq 0
+          test "$ART_STATUS" -eq 0
 
       - name: Render proof sheets
+        if: success()
         shell: bash
         run: |
           set -euo pipefail
-          python "$GAME_DIR/tools/render_production_art_proofs.py"
+          python "$GAME_DIR/tools/render_production_art_proofs.py" 2>&1 | tee /tmp/render.log
 
       - name: Install Godot 4.3
+        if: success()
         shell: bash
         run: |
           set -euo pipefail
@@ -77,6 +89,7 @@ jobs:
           godot --version
 
       - name: Strict Godot import
+        if: success()
         shell: bash
         run: |
           set -euo pipefail
@@ -84,20 +97,30 @@ jobs:
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/import.log
           echo PRODUCTION_ART_GODOT_IMPORT=PASS
 
-      - name: Upload production art proof bundle
+      - name: Upload production art diagnostics and proofs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: chronica-production-art-v1-proofs
-          if-no-files-found: error
+          if-no-files-found: warn
           path: |
+            /tmp/generate.log
+            /tmp/pytest.log
+            /tmp/complete.log
+            /tmp/story.log
+            /tmp/art.log
+            /tmp/render.log
+            /tmp/import.log
             game/chronica-harun/art/production/*.json
             game/chronica-harun/art/production/proofs/*.png
 
       - name: Final gate
+        if: success()
         shell: bash
         run: |
           set -euo pipefail
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
           grep -q 'PRODUCTION ART VALIDATION: PASS' /tmp/art.log
+          grep -q 'PRODUCTION_ART_GODOT_IMPORT=PASS' /tmp/import.log
           echo CHRONICA_PRODUCTION_ART_V1=PASS
