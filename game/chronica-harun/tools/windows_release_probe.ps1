@@ -63,52 +63,111 @@ if (Test-Path $presetPath) {
     }
 }
 
-Add-Type @"
-using System;
-using System.Runtime.InteropServices;
+function Get-PeResourceTypeIds {
+    param(
+        [Parameter(Mandatory = $true)]
+        [byte[]]$PeBytes,
+        [Parameter(Mandatory = $true)]
+        [int]$PeHeaderOffset
+    )
 
-public static class ChronicaResourceProbe
-{
-    public delegate bool EnumResNameProc(IntPtr hModule, IntPtr lpszType, IntPtr lpszName, IntPtr lParam);
+    $optionalHeaderOffset = $PeHeaderOffset + 24
+    if (($optionalHeaderOffset + 120) -ge $PeBytes.Length) {
+        throw 'PE optional header is outside the file'
+    }
 
-    [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-    public static extern IntPtr LoadLibraryEx(string lpFileName, IntPtr hFile, uint dwFlags);
+    $magic = [System.BitConverter]::ToUInt16($PeBytes, $optionalHeaderOffset)
+    if ($magic -eq 0x20b) {
+        # PE32+: data directories begin 112 bytes into IMAGE_OPTIONAL_HEADER64.
+        $dataDirectoryOffset = $optionalHeaderOffset + 112
+    }
+    elseif ($magic -eq 0x10b) {
+        # PE32: data directories begin 96 bytes into IMAGE_OPTIONAL_HEADER32.
+        $dataDirectoryOffset = $optionalHeaderOffset + 96
+    }
+    else {
+        throw ('Unsupported PE optional header magic: 0x{0:x}' -f $magic)
+    }
 
-    [DllImport("kernel32.dll", SetLastError = true)]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool FreeLibrary(IntPtr hModule);
+    # IMAGE_DIRECTORY_ENTRY_RESOURCE = 2. Each directory entry is 8 bytes.
+    $resourceDirectoryEntryOffset = $dataDirectoryOffset + (2 * 8)
+    $resourceDirectoryRva = [System.BitConverter]::ToUInt32($PeBytes, $resourceDirectoryEntryOffset)
+    $resourceDirectorySize = [System.BitConverter]::ToUInt32($PeBytes, $resourceDirectoryEntryOffset + 4)
 
-    [DllImport("kernel32.dll", SetLastError = true)]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool EnumResourceNames(IntPtr hModule, IntPtr lpszType, EnumResNameProc lpEnumFunc, IntPtr lParam);
-}
-"@
-
-function Test-NativeResourceType {
-    param([int]$TypeId)
-    $LOAD_LIBRARY_AS_DATAFILE = 0x00000002
-    $module = [ChronicaResourceProbe]::LoadLibraryEx($exe, [IntPtr]::Zero, $LOAD_LIBRARY_AS_DATAFILE)
-    if ($module -eq [IntPtr]::Zero) { return $false }
-    try {
-        $script:resourceFound = $false
-        $callback = [ChronicaResourceProbe+EnumResNameProc]{
-            param($hModule, $lpszType, $lpszName, $lParam)
-            $script:resourceFound = $true
-            return $false
+    if ($resourceDirectoryRva -eq 0 -or $resourceDirectorySize -eq 0) {
+        return [pscustomobject]@{
+            resource_directory_rva = ('0x{0:x8}' -f $resourceDirectoryRva)
+            resource_directory_size = [uint32]$resourceDirectorySize
+            resource_type_ids = @()
         }
-        [void][ChronicaResourceProbe]::EnumResourceNames($module, [IntPtr]$TypeId, $callback, [IntPtr]::Zero)
-        return [bool]$script:resourceFound
     }
-    finally {
-        [void][ChronicaResourceProbe]::FreeLibrary($module)
+
+    $numberOfSections = [System.BitConverter]::ToUInt16($PeBytes, $PeHeaderOffset + 6)
+    $sizeOfOptionalHeader = [System.BitConverter]::ToUInt16($PeBytes, $PeHeaderOffset + 20)
+    $sectionTableOffset = $optionalHeaderOffset + $sizeOfOptionalHeader
+    $resourceFileOffset = $null
+
+    for ($i = 0; $i -lt $numberOfSections; $i++) {
+        $sectionOffset = $sectionTableOffset + ($i * 40)
+        if (($sectionOffset + 40) -gt $PeBytes.Length) {
+            throw 'PE section table is truncated'
+        }
+
+        $virtualSize = [System.BitConverter]::ToUInt32($PeBytes, $sectionOffset + 8)
+        $virtualAddress = [System.BitConverter]::ToUInt32($PeBytes, $sectionOffset + 12)
+        $sizeOfRawData = [System.BitConverter]::ToUInt32($PeBytes, $sectionOffset + 16)
+        $pointerToRawData = [System.BitConverter]::ToUInt32($PeBytes, $sectionOffset + 20)
+        $sectionSpan = [Math]::Max([uint64]$virtualSize, [uint64]$sizeOfRawData)
+        $sectionEnd = [uint64]$virtualAddress + $sectionSpan
+
+        if ([uint64]$resourceDirectoryRva -ge [uint64]$virtualAddress -and [uint64]$resourceDirectoryRva -lt $sectionEnd) {
+            $resourceFileOffset = [uint64]$pointerToRawData + ([uint64]$resourceDirectoryRva - [uint64]$virtualAddress)
+            break
+        }
+    }
+
+    if ($null -eq $resourceFileOffset) {
+        throw ('PE resource directory RVA 0x{0:x8} does not map to a section' -f $resourceDirectoryRva)
+    }
+    if (($resourceFileOffset + 16) -gt [uint64]$PeBytes.Length) {
+        throw 'PE resource directory root is outside the file'
+    }
+
+    # IMAGE_RESOURCE_DIRECTORY root: named count at +12, ID count at +14.
+    $namedCount = [System.BitConverter]::ToUInt16($PeBytes, [int]$resourceFileOffset + 12)
+    $idCount = [System.BitConverter]::ToUInt16($PeBytes, [int]$resourceFileOffset + 14)
+    $entryCount = [int]$namedCount + [int]$idCount
+    $resourceTypeIds = New-Object System.Collections.Generic.List[int]
+
+    for ($entryIndex = 0; $entryIndex -lt $entryCount; $entryIndex++) {
+        $entryOffset = [uint64]$resourceFileOffset + 16 + ([uint64]$entryIndex * 8)
+        if (($entryOffset + 8) -gt [uint64]$PeBytes.Length) {
+            throw 'PE resource directory entries are truncated'
+        }
+        $nameOrId = [System.BitConverter]::ToUInt32($PeBytes, [int]$entryOffset)
+        $isNamed = ($nameOrId -band 0x80000000) -ne 0
+        if (-not $isNamed) {
+            [void]$resourceTypeIds.Add([int]($nameOrId -band 0x0000ffff))
+        }
+    }
+
+    return [pscustomobject]@{
+        resource_directory_rva = ('0x{0:x8}' -f $resourceDirectoryRva)
+        resource_directory_size = [uint32]$resourceDirectorySize
+        resource_type_ids = @($resourceTypeIds)
     }
 }
+
+# Read top-level PE resource type IDs directly from the executable bytes. This is
+# deterministic and does not depend on loader/callback state in hosted Windows CI.
+$resourceInfo = Get-PeResourceTypeIds -PeBytes $bytes -PeHeaderOffset $peOffset
+$resourceTypeIds = @($resourceInfo.resource_type_ids)
 
 # Win32 resource IDs: RT_ICON = 3, RT_GROUP_ICON = 14.
 $RT_ICON = 3
 $RT_GROUP_ICON = 14
-$iconResource = Test-NativeResourceType -TypeId $RT_ICON
-$groupIconResource = Test-NativeResourceType -TypeId $RT_GROUP_ICON
+$iconResource = $resourceTypeIds -contains $RT_ICON
+$groupIconResource = $resourceTypeIds -contains $RT_GROUP_ICON
 $iconPresent = $iconResource -and $groupIconResource
 
 $launchPass = $false
@@ -207,6 +266,9 @@ $probe = [ordered]@{
     amd64 = $amd64
     pe32_plus = $pe32Plus
     pe_valid = $peValid
+    resource_directory_rva = $resourceInfo.resource_directory_rva
+    resource_directory_size = $resourceInfo.resource_directory_size
+    resource_type_ids = @($resourceTypeIds)
     launch_pass = $launchPass
     launch_exit_immediate = $launchExitImmediate
     launch_exit_code = $launchExitCode
