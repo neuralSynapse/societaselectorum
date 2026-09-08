@@ -2,6 +2,7 @@ extends Node
 
 const SAVE_PATH := "user://chronica_harun_campaign.json"
 const RETRY_SENTINEL := "user://windows_native_qa_retry_sentinel.txt"
+const PLAYER_SCENE := preload("res://scenes/player/Player.tscn")
 const REQUIRED_INPUTS: Array[StringName] = [
     &"move_left", &"move_right", &"move_forward", &"move_back",
     &"jump", &"interact", &"primary_attack", &"power", &"instrument",
@@ -12,6 +13,7 @@ const REQUIRED_INPUTS: Array[StringName] = [
 var failures: Array[String] = []
 
 func _ready() -> void:
+    process_mode = Node.PROCESS_MODE_ALWAYS
     call_deferred("_run")
 
 func _fail(label: String) -> void:
@@ -36,6 +38,75 @@ func _finish() -> void:
     else:
         print("WINDOWS_QA_FAILURES=", failures)
         get_tree().quit(1)
+
+func _make_test_floor() -> StaticBody3D:
+    var body := StaticBody3D.new()
+    body.collision_layer = 2
+    var shape := CollisionShape3D.new()
+    var box := BoxShape3D.new()
+    box.size = Vector3(20.0, 0.2, 20.0)
+    shape.shape = box
+    shape.position = Vector3(0.0, -0.1, 0.0)
+    body.add_child(shape)
+    return body
+
+func _probe_lateral_movement() -> void:
+    var arena := Node3D.new()
+    add_child(arena)
+    arena.add_child(_make_test_floor())
+    var player := PLAYER_SCENE.instantiate() as PlayerController
+    arena.add_child(player)
+    player.global_position = Vector3(0.0, 0.15, 0.0)
+    await get_tree().physics_frame
+    var start_x := player.global_position.x
+    Input.action_press(&"move_right")
+    for _i in range(18):
+        await get_tree().physics_frame
+    Input.action_release(&"move_right")
+    var right_x := player.global_position.x
+    _expect(right_x > start_x + 0.20, "move_right_no_lateral_displacement")
+    Input.action_press(&"move_left")
+    for _i in range(18):
+        await get_tree().physics_frame
+    Input.action_release(&"move_left")
+    var left_x := player.global_position.x
+    _expect(left_x < right_x - 0.20, "move_left_no_lateral_displacement")
+    print("WINDOWS_QA_LATERAL_MOVEMENT_PASS")
+    arena.queue_free()
+    await get_tree().process_frame
+
+func _probe_floor_collision_contract() -> void:
+    var stage := {"id":"o_olho", "index":0}
+    var floor := StageFloorBuilder.build(stage, 424242, 0, {})
+    add_child(floor)
+    var corridors := floor.get_node("Corridors") as Node3D
+    _expect(corridors.get_child_count() > 0, "corridors_missing")
+    for corridor in corridors.get_children():
+        _expect(corridor is StaticBody3D, "corridor_missing_static_body_collision")
+        if corridor is StaticBody3D:
+            _expect(corridor.get_node_or_null("CollisionShape3D") != null, "corridor_missing_collision_shape")
+    print("WINDOWS_QA_FLOOR_COLLISION_PASS")
+    floor.queue_free()
+    await get_tree().process_frame
+
+func _probe_pause_contract() -> void:
+    var hud_scene := load("res://scenes/ui/HUD.tscn") as PackedScene
+    var hud := hud_scene.instantiate()
+    add_child(hud)
+    _expect(hud.get_node_or_null("Root/PausePanel") != null, "pause_panel_missing")
+    var main_script := load("res://scripts/boot/Main.gd")
+    var main_probe := main_script.new()
+    _expect(main_probe.has_method("set_pause_state"), "main_pause_state_handler_missing")
+    main_probe.free()
+    hud.queue_free()
+    await get_tree().process_frame
+    print("WINDOWS_QA_PAUSE_CONTRACT_PASS")
+
+func _probe_fall_recovery_contract() -> void:
+    var player_script_text := FileAccess.get_file_as_string("res://scripts/player/PlayerController.gd")
+    _expect(player_script_text.contains("fall_recovery_y"), "player_fall_recovery_threshold_missing")
+    _expect(player_script_text.contains("safe_position"), "player_safe_position_missing")
+    print("WINDOWS_QA_FALL_RECOVERY_CONTRACT_PASS")
 
 func _run() -> void:
     _expect(OS.get_name() == "Windows", "os_not_windows")
@@ -84,6 +155,11 @@ func _run() -> void:
     for action in REQUIRED_INPUTS:
         _expect(InputMap.has_action(action), "missing_input_" + String(action))
     print("WINDOWS_QA_INPUT_PASS")
+
+    await _probe_lateral_movement()
+    await _probe_floor_collision_contract()
+    await _probe_pause_contract()
+    _probe_fall_recovery_contract()
 
     var camera_modes := CameraModeController.new()
     add_child(camera_modes)
