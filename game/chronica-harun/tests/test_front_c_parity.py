@@ -69,3 +69,21 @@ def test_game_state_has_front_c_save_load_contract():
     state = (ROOT/'autoload/GameState.gd').read_text()
     for token in ['func snapshot_run','func restore_run','func save_run','func load_run']:
         assert token in state
+
+
+def test_front_c_uses_only_canonical_catalog_filenames():
+    legacy = ['tarot.json', 'sigilla.json', 'talismans.json']
+    canonical = ['tarot_thoth.json', 'sigilla_goetia.json', 'talismans_decanic.json']
+    present = {p.name for p in ROG.glob('*.json')}
+    for name in legacy:
+        assert name not in present, f'legacy duplicate catalog must stay absent: {name}'
+    for name in canonical:
+        assert name in present, f'canonical catalog missing: {name}'
+
+
+def test_content_registry_points_to_canonical_catalogs_only():
+    registry = (ROOT/'autoload/ContentRegistry.gd').read_text()
+    for name in ['tarot_thoth.json', 'sigilla_goetia.json', 'talismans_decanic.json']:
+        assert name in registry
+    for legacy in ['res://data/roguelite/tarot.json', 'res://data/roguelite/sigilla.json', 'res://data/roguelite/talismans.json']:
+        assert legacy not in registry
