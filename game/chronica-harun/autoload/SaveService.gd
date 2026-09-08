@@ -19,4 +19,7 @@ func load_campaign() -> Dictionary:
     var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
     if file == null: return {}
     var parsed = JSON.parse_string(file.get_as_text())
-    return parsed if parsed is Dictionary else {}
+    if not (parsed is Dictionary): return {}
+    var data: Dictionary = parsed
+    if int(data.get("campaign_version", -1)) != CAMPAIGN_VERSION: return {}
+    return data
