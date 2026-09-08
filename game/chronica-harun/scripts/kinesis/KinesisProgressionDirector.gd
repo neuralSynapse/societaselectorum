@@ -49,7 +49,7 @@ func use_ability(ability_id: StringName, player: PlayerController = null, contex
     if String(cost.get("resource", "")) == "focus" and player != null:
         if not player.spend_focus(float(cost.get("amount", 0.0))): return {}
     cooldowns[String(ability_id)] = float(ability.get("ability", {}).get("cooldown", 0.0))
-    var payload := ability.get("ability", {}).duplicate(true)
+    var payload: Dictionary = ability.get("ability", {}).duplicate(true)
     payload["id"] = String(ability_id)
     payload["combat_hooks"] = ability.get("combat_hooks", []).duplicate(true)
     payload["context"] = context

@@ -35,7 +35,7 @@ func enter_superposition(seed: int, context: Dictionary = {}) -> Array:
     active_branches.clear(); measured_branch = {}
     var archetypes := ["combat_shortcut","mentor_echo","eden_fragment","arsenal_vault","future_reward","mortis_debt","timeline_secret"]
     for i in count:
-        var kind := archetypes[rng.randi_range(0, archetypes.size()-1)]
+        var kind: String = String(archetypes[rng.randi_range(0, archetypes.size()-1)])
         active_branches.append({"id":"branch_%d" % i,"kind":kind,"weight":rng.randf_range(.7,1.3),"context_echo":context.duplicate(true)})
     GameState.meta_progression["quantum_observations"] = int(GameState.meta_progression.get("quantum_observations", 0)) + 1
     superposition_entered.emit(active_branches.duplicate(true))
