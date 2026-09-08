@@ -76,11 +76,14 @@ func _choose_attack() -> void:
     if attack_sm.begin_attack(definition, target):
         attack_clock = float(definition.get("recovery", 0.7)) + 0.25
 
+func _audio_family() -> String:
+    return String(content_data.get("family", content_data.get("lineage", content_data.get("archetype", "boss"))))
+
 func _on_telegraph_started(payload: Dictionary) -> void:
     var definition: Dictionary = payload.get("definition", {})
     if readable_telegraph:
         readable_telegraph.show_attack(definition, target, telegraph_origin.global_position)
-    AudioDirector.play_3d(&"enemy_windup", telegraph_origin.global_position)
+    AudioDirector.play_enemy_family(_audio_family(), &"windup", telegraph_origin.global_position)
 
 func _on_emission_requested(payload: Dictionary) -> void:
     var definition: Dictionary = payload.get("definition", {})
@@ -112,7 +115,7 @@ func _projectile_pattern(pattern: String, definition: Dictionary) -> void:
         projectile.impacted.connect(func(position: Vector3, _body: Node):
             CombatFeedback.impact(get_tree().current_scene, position, 1.15 + current_phase * 0.15)
         )
-    AudioDirector.play_3d(&"enemy_shot", origin)
+    AudioDirector.play_enemy_family(_audio_family(), &"shot", origin)
 
 func _movement_attack(pattern: String) -> void:
     if target == null:
@@ -141,7 +144,7 @@ func _on_damaged(current: float, maximum: float, amount: float, _source_id: Stri
         attack_clock = 0.35
         phase_changed.emit(current_phase + 1)
         CombatFeedback.impact(get_tree().current_scene, global_position + Vector3.UP, 2.0 + current_phase * 0.35)
-        AudioDirector.play_3d(&"boss_phase", global_position)
+        AudioDirector.play_enemy_family(_audio_family(), &"phase", global_position)
 
 func _on_died(_source_id: StringName) -> void:
     if dead:
