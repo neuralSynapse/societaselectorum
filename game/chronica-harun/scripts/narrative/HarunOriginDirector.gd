@@ -18,11 +18,13 @@ var fragment_ids: Array = []
 var found_fragments: Array = []
 var reveal_requires_all := true
 var title_has_been_revealed := false
+var revealed_commands: Array[StringName] = []
 
 func configure(state: Dictionary = {}) -> void:
     story_state = state
     found_fragments = story_state.get("grimorium_fragments", []).duplicate(true)
     title_has_been_revealed = bool(story_state.get("grimorium_title_revealed", false))
+    revealed_commands.clear()
     var story := _load_story()
     var all_scenes: Array = story.get("prologue", [])
     scenes = all_scenes.slice(10, 13)
@@ -71,6 +73,18 @@ func reveal_title() -> bool:
     story_state_persist_requested.emit(story_state.duplicate(true))
     return true
 
+func reveal_command(command: StringName, command_index: int) -> bool:
+    var allowed := [&"VER", &"GOVERNAR", &"FAZER"]
+    if command_index < 0 or command_index >= allowed.size():
+        return false
+    if allowed[command_index] != command:
+        return false
+    if revealed_commands.has(command):
+        return false
+    revealed_commands.append(command)
+    command_revealed.emit(command, command_index)
+    return true
+
 func advance() -> bool:
     if index < 0:
         return false
@@ -80,9 +94,6 @@ func advance() -> bool:
         reveal_title()
     index += 1
     if index >= scenes.size():
-        var commands := ["VER", "GOVERNAR", "FAZER"]
-        for i in commands.size():
-            command_revealed.emit(StringName(commands[i]), i)
         origin_finished.emit(&"o_olho")
         return true
     _emit_scene()
