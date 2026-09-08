@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = ROOT.parents[1]
 STORY = json.loads((ROOT / "data/narrative/chronica_story_bible.json").read_text(encoding="utf-8"))
 
 
@@ -144,3 +145,10 @@ def test_manifest_labels_proxy_vs_final_assets_explicitly():
         assert "final_asset_paths" in row
         if row["asset_status"] == "final":
             assert row["final_asset_paths"], row["shot_id"]
+
+
+def test_ci_gate_fails_explicitly_on_godot_script_errors():
+    workflow = (REPO_ROOT / ".github/workflows/chronica-cinematics-v1.yml").read_text(encoding="utf-8")
+    assert "if grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script" in workflow
+    assert "then exit 1; fi" in workflow
+    assert "! grep -E 'SCRIPT ERROR:" not in workflow
