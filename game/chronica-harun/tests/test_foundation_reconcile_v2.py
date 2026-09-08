@@ -46,9 +46,9 @@ def test_project_boot_autoload_input_and_camera_contract() -> None:
         assert f"{action}=" in project
 
     camera = json.loads(_read("data/settings/camera_modes.json"))
-    assert camera["default_mode"] == "first_person"
-    assert camera["invert_y_default"] is False
-    assert camera["rules"]["enemy_positions_are_world_space"] is True
+    assert camera["default"] == "first_person"
+    assert camera["modes"]["first_person"]["distance"] == 0.0
+    assert camera["rules"]["enemies_never_parented_to_camera"] is True
 
 
 def test_roster_keeps_harun_caim_lilith_contract() -> None:
@@ -57,8 +57,8 @@ def test_roster_keeps_harun_caim_lilith_contract() -> None:
 
     assert {"harun", "caim", "lilith"} <= set(by_id)
     assert by_id["harun"]["unlock"]["kind"] == "default"
-    assert by_id["caim"]["unlock"] == {"kind": "stage_mark", "stage_id": "a_balanca"}
-    assert by_id["lilith"]["unlock"] == {"kind": "stage_mark", "stage_id": "a_eleicao"}
+    assert by_id["caim"]["unlock"] == {"kind": "stage_mark", "id": "a_balanca"}
+    assert by_id["lilith"]["unlock"] == {"kind": "stage_mark", "id": "a_eleicao"}
 
 
 def test_save_schema_version_is_consistent_and_load_is_strict() -> None:
