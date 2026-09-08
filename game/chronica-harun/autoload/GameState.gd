@@ -105,6 +105,7 @@ func snapshot_run() -> Dictionary:
 
 func restore_run(snapshot: Dictionary) -> bool:
     if snapshot.is_empty(): return false
+    if not snapshot.has("run_seed"): return false
     load_save_data(snapshot)
     return true
 
