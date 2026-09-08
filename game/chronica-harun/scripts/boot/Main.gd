@@ -25,8 +25,11 @@ func _ready() -> void:
     if not narrative_runtime.gameplay_handoff_requested.is_connected(_on_gameplay_handoff):
         narrative_runtime.gameplay_handoff_requested.connect(_on_gameplay_handoff)
     var entry_sequence := narrative_runtime.start_entry_flow()
-    var blocking_entry := entry_sequence == &"cosmogony" or entry_sequence == &"harun_origin" or entry_sequence == &"epilogue"
+    var blocking_entry := _cinematic_can_take_player_control() and (entry_sequence == &"cosmogony" or entry_sequence == &"harun_origin" or entry_sequence == &"epilogue")
     _set_gameplay_enabled(not blocking_entry)
+
+func _cinematic_can_take_player_control() -> bool:
+    return narrative_runtime != null and narrative_runtime.cinematic_stage != null and narrative_runtime.cinematic_stage.can_take_player_control()
 
 func _set_gameplay_enabled(enabled: bool) -> void:
     gameplay_enabled = enabled
@@ -41,14 +44,16 @@ func _set_gameplay_enabled(enabled: bool) -> void:
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if enabled else Input.MOUSE_MODE_HIDDEN
 
 func _on_cinematic_sequence_started(_sequence_id: StringName, _sequence: Dictionary) -> void:
-    _set_gameplay_enabled(false)
+    if _cinematic_can_take_player_control():
+        _set_gameplay_enabled(false)
 
 func _on_gameplay_handoff(_target_stage: StringName) -> void:
     world_root.visible = true
     if stage_director.player != null and stage_director.player.camera != null:
-        narrative_runtime.cinematic_stage.prepare_gameplay_handoff(stage_director.player.camera)
-        await get_tree().process_frame
-        narrative_runtime.cinematic_stage.release_camera()
+        if _cinematic_can_take_player_control():
+            narrative_runtime.cinematic_stage.prepare_gameplay_handoff(stage_director.player.camera)
+            await get_tree().process_frame
+            narrative_runtime.cinematic_stage.release_camera()
         stage_director.player.camera.make_current()
     _set_gameplay_enabled(true)
 

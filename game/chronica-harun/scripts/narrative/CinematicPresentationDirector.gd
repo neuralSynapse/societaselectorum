@@ -37,8 +37,20 @@ func bind_bridge(bridge: NarrativeRuntimeBridge) -> void:
     if not bridge.cinematic_visual.is_connected(stage_payload):
         bridge.cinematic_visual.connect(stage_payload)
 
+func can_take_player_control() -> bool:
+    # The current cinematic manifest is entirely proxy_runtime. Until real
+    # player-facing cinematic assets exist, the presentation layer must never
+    # steal the gameplay camera or disable the world.
+    return false
+
 func begin_sequence(sequence_id: StringName, _sequence: Dictionary = {}) -> void:
     current_sequence_id = sequence_id
+    if not can_take_player_control():
+        active = false
+        visible = false
+        cinematic_camera.current = false
+        _clear_proxies()
+        return
     active = true
     visible = true
     cinematic_camera.current = true
@@ -49,6 +61,10 @@ func end_sequence(sequence_id: StringName) -> void:
         handoff_ready.emit()
 
 func prepare_gameplay_handoff(target_camera: Camera3D) -> void:
+    if not can_take_player_control():
+        release_camera()
+        handoff_ready.emit()
+        return
     _clear_proxies()
     if target_camera == null:
         handoff_ready.emit()
@@ -75,6 +91,10 @@ func stage_shot(sequence_id: StringName, shot_id: StringName, shot: Dictionary) 
     current_sequence_id = sequence_id
     current_shot_id = shot_id
     current_tension = clampf(float(shot.get("tension", 0.0)), 0.0, 1.0)
+    if not can_take_player_control():
+        _clear_proxies()
+        proxy_asset_used.emit(StringName("proxy_runtime:" + String(current_shot_id)))
+        return
     if not active:
         begin_sequence(sequence_id)
     begin_transition(StringName(shot.get("transition", "cut")), current_tension)
@@ -141,39 +161,10 @@ func _stage_camera(contract: String, tension: float) -> void:
     tween.tween_property(camera_rig, "rotation", target_rot, 1.0 + tension * 1.2)
     tween.tween_property(cinematic_camera, "fov", target_fov, 0.9)
 
-func _stage_proxy(visual_event: String, tension: float) -> void:
+func _stage_proxy(_visual_event: String, _tension: float) -> void:
+    # Keep proxy_runtime as an internal evidence state only. Player-facing
+    # builds must never render primitive placeholder geometry.
     _clear_proxies()
-    var seed_value: int = absi(hash(visual_event + String(current_shot_id)))
-    var count: int = 1 + (seed_value % 4)
-    for i in range(count):
-        var mesh_instance := MeshInstance3D.new()
-        mesh_instance.name = "RuntimeProxy_%02d" % i
-        if (seed_value + i) % 3 == 0:
-            var sphere := SphereMesh.new()
-            sphere.radius = 0.22 + 0.08 * i
-            sphere.height = sphere.radius * 2.0
-            mesh_instance.mesh = sphere
-        elif (seed_value + i) % 3 == 1:
-            var box := BoxMesh.new()
-            box.size = Vector3(0.32 + i * 0.08, 0.5 + i * 0.06, 0.24 + i * 0.04)
-            mesh_instance.mesh = box
-        else:
-            var torus := TorusMesh.new()
-            torus.inner_radius = 0.18 + i * 0.04
-            torus.outer_radius = 0.46 + i * 0.06
-            mesh_instance.mesh = torus
-        var material := StandardMaterial3D.new()
-        var hue := fmod(float(seed_value % 1000) / 1000.0 + float(i) * 0.11, 1.0)
-        material.albedo_color = Color.from_hsv(hue, 0.28 + tension * 0.45, 0.28 + tension * 0.52, 0.88)
-        material.emission_enabled = true
-        material.emission = material.albedo_color * (0.25 + tension * 0.45)
-        material.emission_energy_multiplier = 0.8 + tension * 1.8
-        mesh_instance.material_override = material
-        mesh_instance.position = Vector3((float(i) - float(count - 1) * 0.5) * 0.72, sin(float(i) * 1.8) * 0.24, -2.6 - float(i) * 0.32)
-        mesh_instance.rotation = Vector3(0.2 * i, 0.35 * i, 0.12 * i)
-        mesh_instance.set_meta("asset_status", "proxy_runtime")
-        mesh_instance.set_meta("visual_contract", visual_event)
-        proxy_root.add_child(mesh_instance)
     proxy_asset_used.emit(StringName("proxy_runtime:" + String(current_shot_id)))
 
 func _stage_light(tension: float) -> void:
