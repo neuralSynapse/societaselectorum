@@ -96,7 +96,7 @@ jobs:
           set -euo pipefail
           godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/import.log
-          echo PRODUCTION_ART_GODOT_IMPORT=PASS
+          echo PRODUCTION_ART_GODOT_IMPORT=PASS | tee -a /tmp/import.log
 
       - name: Upload production art diagnostics and proofs
         if: always()
