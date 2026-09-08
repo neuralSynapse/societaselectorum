@@ -168,9 +168,9 @@ func _stage_proxy(_visual_event: String, _tension: float) -> void:
     proxy_asset_used.emit(StringName("proxy_runtime:" + String(current_shot_id)))
 
 func _stage_light(tension: float) -> void:
-    key_light.light_energy = lerpf(0.28, 1.2, tension)
-    fill_light.light_energy = lerpf(0.08, 0.72, tension)
-    fill_light.omni_range = lerpf(2.5, 6.5, tension)
+    key_light.light_energy = lerpf(0.55, 1.2, tension)
+    fill_light.light_energy = lerpf(0.28, 0.72, tension)
+    fill_light.omni_range = lerpf(5.0, 7.5, tension)
 
 func _clear_proxies() -> void:
     for child in proxy_root.get_children():
