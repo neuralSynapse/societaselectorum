@@ -37,4 +37,4 @@ E       FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/wo
 /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/pathlib.py:1013: FileNotFoundError
 =========================== short test summary info ============================
 FAILED tests/test_generated_models.py::test_every_enemy_and_boss_has_unique_nonempty_glb_and_manifest - FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/societaselectorum/societaselectorum/game/chronica-harun/art/generated/enemies/manifest.json'
-1 failed, 86 passed in 0.25s
+1 failed, 86 passed in 0.32s
