@@ -19,18 +19,13 @@ func show_attack(definition: Dictionary, target: Node3D, origin: Vector3) -> voi
         if direction.length_squared() > 0.001:
             direction = direction.normalized()
     match pattern:
-        "line", "dash":
-            _add_strip(direction, attack_range, 0.34 if pattern == "line" else 0.62)
+        "line", "dash": _add_strip(direction, attack_range, 0.34 if pattern == "line" else 0.62)
         "fan":
-            for angle in [-0.34, 0.0, 0.34]:
-                _add_strip(direction.rotated(Vector3.UP, angle), attack_range, 0.28)
+            for angle in [-0.34, 0.0, 0.34]: _add_strip(direction.rotated(Vector3.UP, angle), attack_range, 0.28)
         "radial":
-            for i in range(12):
-                _add_strip(Vector3.FORWARD.rotated(Vector3.UP, i * TAU / 12.0), attack_range * 0.72, 0.22)
-        "zone", "summon":
-            _add_zone(attack_range * (0.42 if pattern == "zone" else 0.3))
-        _:
-            _add_strip(direction, attack_range, 0.34)
+            for i in range(12): _add_strip(Vector3.FORWARD.rotated(Vector3.UP, i * TAU / 12.0), attack_range * 0.72, 0.22)
+        "zone", "summon": _add_zone(attack_range * (0.42 if pattern == "zone" else 0.3))
+        _: _add_strip(direction, attack_range, 0.34)
     var timer := get_tree().create_timer(duration)
     timer.timeout.connect(func():
         if generation == _generation:
@@ -40,8 +35,7 @@ func show_attack(definition: Dictionary, target: Node3D, origin: Vector3) -> voi
 func clear() -> void:
     _generation += 1
     for mesh in _active:
-        if is_instance_valid(mesh):
-            mesh.queue_free()
+        if is_instance_valid(mesh): mesh.queue_free()
     _active.clear()
 
 func _material() -> StandardMaterial3D:
@@ -49,7 +43,6 @@ func _material() -> StandardMaterial3D:
     material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
     material.albedo_color = Color(0.95, 0.32, 0.08, 0.27)
     material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-    material.no_depth_test = false
     return material
 
 func _add_strip(direction: Vector3, length: float, width: float) -> void:
@@ -58,11 +51,11 @@ func _add_strip(direction: Vector3, length: float, width: float) -> void:
     mesh.size = Vector3(width, 0.025, length)
     mesh_instance.mesh = mesh
     mesh_instance.material_override = _material()
+    add_child(mesh_instance)
     var midpoint := direction * (length * 0.5)
     mesh_instance.position = midpoint + Vector3(0.0, 0.035, 0.0)
     if direction.length_squared() > 0.001:
-        mesh_instance.look_at(global_position + direction, Vector3.UP)
-    add_child(mesh_instance)
+        mesh_instance.look_at(mesh_instance.global_position + direction, Vector3.UP)
     _active.append(mesh_instance)
 
 func _add_zone(radius: float) -> void:
@@ -73,6 +66,6 @@ func _add_zone(radius: float) -> void:
     mesh.height = 0.025
     mesh_instance.mesh = mesh
     mesh_instance.material_override = _material()
-    mesh_instance.position.y = 0.035
     add_child(mesh_instance)
+    mesh_instance.position.y = 0.035
     _active.append(mesh_instance)
