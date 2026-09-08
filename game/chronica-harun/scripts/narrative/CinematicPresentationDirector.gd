@@ -143,8 +143,8 @@ func _stage_camera(contract: String, tension: float) -> void:
 
 func _stage_proxy(visual_event: String, tension: float) -> void:
     _clear_proxies()
-    var seed_value := abs(hash(visual_event + String(current_shot_id)))
-    var count := 1 + (seed_value % 4)
+    var seed_value: int = absi(hash(visual_event + String(current_shot_id)))
+    var count: int = 1 + (seed_value % 4)
     for i in range(count):
         var mesh_instance := MeshInstance3D.new()
         mesh_instance.name = "RuntimeProxy_%02d" % i
