@@ -1,0 +1,79 @@
+name: CHRONICA Audio VFX v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/chronica-audio-vfx-v1]
+    paths:
+      - 'game/chronica-harun/**'
+      - '.github/workflows/chronica-audio-vfx-v1.yml'
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+
+jobs:
+  audio-vfx-green:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chronica-audio-vfx-v1
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python suite and validators
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+          pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
+          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
+          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
+
+      - name: Install Godot 4.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version | tee /tmp/godot-version.log
+
+      - name: Strict import
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/import.log
+          echo AUDIO_VFX_IMPORT=PASS
+
+      - name: Main boot smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 12s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
+          echo AUDIO_VFX_BOOT=PASS
+
+      - name: Final baseline gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'passed' /tmp/pytest.log
+          grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
+          grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          echo CHRONICA_AUDIO_VFX_BASELINE_GREEN=PASS
