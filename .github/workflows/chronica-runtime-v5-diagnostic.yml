@@ -1,0 +1,231 @@
+name: CHRONICA Runtime v5 Diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix/chronica-runtime-qa
+    paths:
+      - '.github/workflows/chronica-runtime-v5-diagnostic.yml'
+      - 'runtime-qa/TRIGGER_V5_DIAGNOSTIC.txt'
+
+permissions:
+  contents: read
+
+env:
+  V5_REF: release/chronica-playable-alpha-v5-2026-09-07
+  GAME_DIR: /tmp/chronica-v5/game/chronica-harun
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/chronica-runtime-qa
+          fetch-depth: 0
+
+      - name: Fetch v5
+        run: |
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' --prune
+          rm -rf /tmp/chronica-v5
+          git worktree add --detach /tmp/chronica-v5 "origin/$V5_REF"
+          git -C /tmp/chronica-v5 rev-parse HEAD
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install test dependencies
+        run: python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+
+      - name: Install Godot 4.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version
+
+      - name: Generate required runtime models
+        run: |
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+
+      - name: Exact pytest
+        shell: bash
+        run: |
+          cd "$GAME_DIR"
+          pytest -q
+
+      - name: Strict Godot import
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --editor --path "$GAME_DIR" --quit 2>&1 | tee /tmp/import.log
+          ! grep -E "SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value" /tmp/import.log
+
+      - name: Strict boot smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 10s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          ! grep -E "SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value" /tmp/boot.log
+
+      - name: Runtime anti-regression diagnostic
+        shell: bash
+        run: |
+          mkdir -p "$GAME_DIR/runtime_qa"
+          cat > "$GAME_DIR/runtime_qa/RuntimeDiagnostic.gd" <<'GD'
+          extends SceneTree
+
+          var failures: Array[String] = []
+
+          func check(value: bool, label: String) -> void:
+              if value:
+                  print("QA_PASS ", label)
+              else:
+                  failures.append(label)
+                  push_error("QA_FAIL " + label)
+
+          func _initialize() -> void:
+              call_deferred("run")
+
+          func run() -> void:
+              GameState.start_new_campaign(424242)
+              SaveService.save_campaign(GameState.to_save_data())
+              var err := change_scene_to_file("res://scenes/boot/Main.tscn")
+              check(err == OK, "main_scene_load_request")
+              for _i in range(4): await process_frame
+              await physics_frame
+              var main := current_scene
+              check(main != null, "main_scene_instantiated")
+              if main == null:
+                  finish(); return
+              var stage = main.get_node_or_null("StageDirector")
+              var expansion = main.get_node_or_null("WorldExpansionRuntime")
+              check(stage != null, "stage_director_present")
+              check(expansion != null, "world_expansion_present")
+              if stage == null or expansion == null:
+                  finish(); return
+              var player = stage.player
+              check(player != null, "player_spawned")
+              check(stage.hud != null, "hud_spawned")
+              if player == null:
+                  finish(); return
+
+              check(player.camera != null and player.camera.current, "first_person_camera_current")
+              check(expansion.camera_modes != null and expansion.camera_modes.mode == &"first_person", "first_person_default")
+              check(player.get_node("BodyMesh").visible == false, "first_person_body_hidden")
+              check(player.get_node("Head/Camera3D/ViewModelRoot").visible, "first_person_viewmodel_visible")
+              check(player.invert_y == false, "vertical_look_not_inverted")
+              for action in ["move_left","move_right","move_forward","move_back","primary_attack","camera_toggle","kinesis_1","kinesis_2","kinesis_3","rupture_charge"]:
+                  check(InputMap.has_action(action), "input_" + action)
+
+              var yaw_before: float = player.rotation.y
+              var pitch_before: float = player.pitch
+              var motion := InputEventMouseMotion.new()
+              motion.relative = Vector2(20.0, 14.0)
+              player._unhandled_input(motion)
+              check(absf(player.rotation.y - yaw_before) > 0.001, "mouse_look_horizontal")
+              check(player.pitch < pitch_before, "mouse_down_looks_down_normal_y")
+
+              var pos_before: Vector3 = player.global_position
+              Input.action_press("move_forward")
+              for _i in range(5): await physics_frame
+              Input.action_release("move_forward")
+              check(Vector2(player.global_position.x-pos_before.x, player.global_position.z-pos_before.z).length() > 0.01, "wasd_world_movement")
+
+              player.camera_mode_requested.emit()
+              await process_frame
+              check(expansion.camera_modes.mode == &"over_shoulder", "external_camera_toggle")
+              player.camera_mode_requested.emit()
+              await process_frame
+              check(expansion.camera_modes.mode == &"first_person", "camera_toggle_returns_first_person")
+
+              stage._spawn_combat_room("combat_1")
+              await process_frame
+              check(not stage.active_enemies.is_empty(), "combat_enemy_spawn")
+              if not stage.active_enemies.is_empty():
+                  var enemy = stage.active_enemies[0]
+                  enemy.set_room_active(false)
+                  check(not player.is_ancestor_of(enemy), "enemy_not_parented_to_camera_or_player")
+                  var enemy_pos: Vector3 = enemy.global_position
+                  var motion2 := InputEventMouseMotion.new(); motion2.relative = Vector2(-35.0, 9.0)
+                  player._unhandled_input(motion2)
+                  await process_frame
+                  check(enemy.global_position.distance_to(enemy_pos) < 0.001, "enemy_position_independent_of_camera_rotation")
+                  var telegraph = enemy.get_node_or_null("TelegraphVisual")
+                  check(telegraph != null, "enemy_visible_telegraph_node")
+
+              var projectile_scene = load("res://scenes/vfx/Projectile.tscn")
+              var projectile = projectile_scene.instantiate()
+              main.add_child(projectile)
+              projectile.configure({"speed":8.0,"damage":5.0,"lifetime":3.0,"emission":0.4}, Vector3(30,3,30), Vector3.RIGHT, &"qa")
+              var mesh = projectile.get_node_or_null("Mesh")
+              check(mesh != null and mesh.visible, "projectile_visible_mesh")
+              var projectile_before: Vector3 = projectile.global_position
+              for _i in range(3): await physics_frame
+              check(projectile.global_position.distance_to(projectile_before) > 0.01, "projectile_has_travel")
+
+              var hp_before: float = player.health.current_health
+              player.health.invulnerable_for = 0.0
+              player.apply_damage(7.0, &"qa_damage")
+              check(player.health.current_health < hp_before, "player_receives_damage")
+
+              var combat_room = stage._room("combat_1")
+              stage.room_director.activate_room(&"combat_1")
+              check(combat_room.locked, "combat_room_locks")
+              stage.room_director.clear_room(&"combat_1")
+              check(combat_room.cleared and not combat_room.locked, "room_clear_unlocks_doors")
+              var threshold = stage._room("threshold")
+              check(not threshold.get_node("EastWall").visible and not combat_room.get_node("WestWall").visible, "doorway_physically_open")
+
+              if stage.boss == null: stage._spawn_boss()
+              await process_frame
+              var boss = stage.boss
+              check(boss != null, "boss_spawned")
+              if boss != null:
+                  check(stage.hud.boss_panel.visible, "boss_hud_visible")
+                  var hud_before: float = stage.hud.boss_health.value
+                  boss.health.invulnerable_for = 0.0
+                  boss.apply_damage(boss.health.max_health * 0.10, &"qa")
+                  await process_frame
+                  check(stage.hud.boss_health.value < hud_before, "boss_hud_tracks_damage_continuously")
+                  boss.health.invulnerable_for = 0.0
+                  boss.apply_damage(boss.health.max_health * 0.30, &"qa")
+                  await process_frame
+                  check(boss.current_phase >= 1, "boss_phase_transition")
+
+              check(stage.has_method("retry_current_stage"), "retry_api_available")
+
+              var snapshot := GameState.to_save_data()
+              snapshot["cycle"] = 7
+              check(SaveService.save_campaign(snapshot), "save_campaign")
+              GameState.cycle = 1
+              check(GameState.load_run(), "load_campaign")
+              check(GameState.cycle == 7, "load_preserves_campaign_progress")
+
+              finish()
+
+          func finish() -> void:
+              if failures.is_empty():
+                  print("QA_DIAGNOSTIC_GREEN")
+                  quit(0)
+              else:
+                  print("QA_DIAGNOSTIC_FAILURES=", failures)
+                  quit(1)
+          GD
+          set +e
+          godot --headless --path "$GAME_DIR" --script res://runtime_qa/RuntimeDiagnostic.gd 2>&1 | tee /tmp/runtime-diagnostic.log
+          code=${PIPESTATUS[0]}
+          set -e
+          echo "diagnostic_exit=$code"
+          exit "$code"
