@@ -172,7 +172,7 @@ jobs:
           set -euo pipefail
           timeout 20s godot --headless --path "$GAME_DIR" res://runtime_qa/FoundationProbe.tscn 2>&1 | tee /tmp/foundation-runtime.log
           grep -q 'FOUNDATION_RUNTIME_PASS' /tmp/foundation-runtime.log
-          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Invalid call|Invalid access|Trying to assign value' /tmp/foundation-runtime.log
+          ! grep -E 'ERROR:|SCRIPT ERROR:|Parse Error:|Failed to load script|Invalid call|Invalid access|Trying to assign value' /tmp/foundation-runtime.log
 
       - name: Build combat family anti-regression probe
         shell: bash
