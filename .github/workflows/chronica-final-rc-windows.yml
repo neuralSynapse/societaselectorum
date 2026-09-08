@@ -1,0 +1,149 @@
+name: CHRONICA Final Integration Windows RC
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [integration/chronica-final-v1]
+    paths: ['.github/workflows/chronica-final-rc-windows.yml']
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+
+jobs:
+  build-windows-rc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integration/chronica-final-v1
+          fetch-depth: 0
+
+      - name: Source identity
+        run: |
+          git rev-parse HEAD | tee /tmp/source-head.txt
+          git status --short
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate assets and validate source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+          pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
+          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
+          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
+
+      - name: Install Godot 4.3 and Windows templates
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          curl -L --fail --retry 3 -o /tmp/templates.tpz https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          rm -rf /tmp/export_templates
+          mkdir -p /tmp/export_templates
+          unzip -q /tmp/templates.tpz -d /tmp/export_templates
+          mkdir -p "$HOME/.local/share/godot/export_templates/4.3.stable"
+          cp -a /tmp/export_templates/templates/. "$HOME/.local/share/godot/export_templates/4.3.stable/"
+          godot --version | tee /tmp/godot-version.txt
+
+      - name: Strict Godot import
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed' /tmp/import.log
+          echo RC_IMPORT=PASS
+
+      - name: Main boot smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 12s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
+          echo RC_BOOT=PASS
+
+      - name: Export Windows executable
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GAME_DIR/build/windows"
+          godot --headless --path "$GAME_DIR" --export-release "Windows Desktop" build/windows/CHRONICA_HARUN.exe 2>&1 | tee /tmp/export.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|ERROR: Cannot export' /tmp/export.log
+          test -s "$GAME_DIR/build/windows/CHRONICA_HARUN.exe"
+          sha256sum "$GAME_DIR/build/windows/CHRONICA_HARUN.exe" | tee "$GAME_DIR/build/windows/CHRONICA_HARUN.exe.sha256"
+          echo RC_WINDOWS_EXPORT=PASS
+
+      - name: Package RC
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GAME_DIR/build/windows"
+          zip -9 CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip CHRONICA_HARUN.exe CHRONICA_HARUN.exe.sha256
+          test -s CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip
+          sha256sum CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip | tee CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip.sha256
+          ls -lh CHRONICA_HARUN.exe CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip
+
+      - name: Verification record
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p integration-rc
+          HEAD=$(cat /tmp/source-head.txt)
+          GODOT=$(cat /tmp/godot-version.txt)
+          EXE_SHA=$(cut -d' ' -f1 "$GAME_DIR/build/windows/CHRONICA_HARUN.exe.sha256")
+          ZIP_SHA=$(cut -d' ' -f1 "$GAME_DIR/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip.sha256")
+          cat > integration-rc/BUILD_VERIFIED.md <<EOF
+          # CHRONICA HARUN · Integration Windows RC
+          - Source HEAD: $HEAD
+          - Godot: $GODOT
+          - Python suite: PASS
+          - Complete validator: PASS
+          - Story validator: PASS
+          - Import: PASS
+          - Boot: PASS
+          - Windows export: PASS
+          - EXE SHA-256: $EXE_SHA
+          - ZIP SHA-256: $ZIP_SHA
+          EOF
+          cat integration-rc/BUILD_VERIFIED.md
+
+      - name: Final RC gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'passed' /tmp/pytest.log
+          grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
+          grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'RC_IMPORT=PASS' <(echo RC_IMPORT=PASS)
+          test -s "$GAME_DIR/build/windows/CHRONICA_HARUN.exe"
+          test -s "$GAME_DIR/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip"
+          echo CHRONICA_WINDOWS_INTEGRATION_RC=PASS
+
+      - name: Upload verified Windows RC
+        uses: actions/upload-artifact@v4
+        with:
+          name: CHRONICA_HARUN_WINDOWS_ALPHA_RC
+          path: |
+            game/chronica-harun/build/windows/CHRONICA_HARUN.exe
+            game/chronica-harun/build/windows/CHRONICA_HARUN.exe.sha256
+            game/chronica-harun/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip
+            game/chronica-harun/build/windows/CHRONICA_HARUN_WINDOWS_ALPHA_RC.zip.sha256
+            integration-rc/BUILD_VERIFIED.md
+          if-no-files-found: error
+          retention-days: 30
