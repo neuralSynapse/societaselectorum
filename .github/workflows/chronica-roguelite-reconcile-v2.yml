@@ -71,6 +71,15 @@ jobs:
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
           echo C2_BOOT=PASS
 
+      - name: Roguelite reconciliation runtime smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" res://scenes/boot/RogueliteReconcileSmoke.tscn 2>&1 | tee /tmp/roguelite-smoke.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value|C2_SMOKE:' /tmp/roguelite-smoke.log
+          grep -q 'ROGUELITE_RECONCILE_SMOKE_OK' /tmp/roguelite-smoke.log
+          echo C2_ROGUELITE_RUNTIME=PASS
+
       - name: Final baseline gate
         shell: bash
         run: |
@@ -79,4 +88,5 @@ jobs:
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
           grep -q '4.3' /tmp/godot-version.log
-          echo CHRONICA_ROGUELITE_RECONCILE_BASELINE=PASS
+          grep -q 'ROGUELITE_RECONCILE_SMOKE_OK' /tmp/roguelite-smoke.log
+          echo CHRONICA_ROGUELITE_RECONCILE_GREEN=PASS
