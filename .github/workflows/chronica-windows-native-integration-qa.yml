@@ -1,0 +1,277 @@
+name: CHRONICA HARUN Windows Native Integration QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - integration/chronica-final-v1
+    paths-ignore:
+      - 'game/chronica-harun/runtime-qa/windows-native/INTEGRATION_QA_REPORT.md'
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+  PYTHONUTF8: '1'
+
+jobs:
+  windows-native-integration-qa:
+    runs-on: windows-latest
+    timeout-minutes: 50
+
+    steps:
+      - name: Checkout exact integration SHA
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record source and runner identity
+        shell: pwsh
+        run: |
+          $head = (git rev-parse HEAD).Trim()
+          if ($head -ne $env:GITHUB_SHA) { throw "Checkout mismatch: $head != $env:GITHUB_SHA" }
+          New-Item -ItemType Directory -Force -Path "$env:GAME_DIR/runtime-qa/windows-native/logs" | Out-Null
+          "SOURCE_HEAD=$head" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/source.txt"
+          "RUNNER_OS=$env:RUNNER_OS" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/runner.txt"
+          "RUNNER_NAME=$env:RUNNER_NAME" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/runner.txt" -Append
+          "RUNNER_ARCH=$env:RUNNER_ARCH" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/runner.txt" -Append
+          if ($env:RUNNER_OS -ne 'Windows') { throw "Expected Windows runner, got $env:RUNNER_OS" }
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python QA dependencies
+        shell: pwsh
+        run: |
+          python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+
+      - name: Resolve production art safely
+        shell: pwsh
+        run: |
+          @'
+          import json
+          from pathlib import Path
+          root = Path('game/chronica-harun')
+          specs = [
+              (root / 'data/enemies/student_enemies.json', 82),
+              (root / 'data/bosses/student_bosses.json', 16),
+          ]
+          referenced = []
+          for path, expected in specs:
+              rows = json.loads(path.read_text(encoding='utf-8'))
+              if len(rows) != expected:
+                  raise SystemExit(f'{path}: expected {expected} rows, got {len(rows)}')
+              model_paths = [row.get('model_path', '') for row in rows]
+              if any(not p.startswith('res://') for p in model_paths):
+                  raise SystemExit(f'{path}: every model_path must be a res:// path')
+              if len(set(model_paths)) != expected:
+                  raise SystemExit(f'{path}: model_path values must be unique')
+              referenced.extend(root / p.removeprefix('res://') for p in model_paths)
+          present = [p for p in referenced if p.is_file()]
+          if len(present) == len(referenced):
+              mode = 'committed-art'
+          elif not present:
+              mode = 'procedural-production-candidate'
+          else:
+              missing = [str(p) for p in referenced if not p.is_file()][:10]
+              raise SystemExit('Partial art tree detected; refusing overwrite. Missing: ' + repr(missing))
+          Path('game/chronica-harun/runtime-qa/windows-native/logs/asset-mode.txt').write_text(mode + '\n', encoding='utf-8')
+          print('WINDOWS_QA_ASSET_MODE=' + mode)
+          '@ | python -
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $mode = (Get-Content "$env:GAME_DIR/runtime-qa/windows-native/logs/asset-mode.txt" -Raw).Trim()
+          if ($mode -eq 'procedural-production-candidate') {
+            python "$env:GAME_DIR/tools/generate_models.py"
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+
+      - name: Full Python suite and validators
+        shell: pwsh
+        run: |
+          python "$env:GAME_DIR/tools/generate_cinematic_asset_manifest.py"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git diff --exit-code -- "$env:GAME_DIR/data/narrative/cinematic_asset_manifest.json"
+          if ($LASTEXITCODE -ne 0) { throw 'Cinematic asset manifest is stale' }
+
+          $pytestLog = "$env:GAME_DIR/runtime-qa/windows-native/logs/pytest.txt"
+          python -m pytest -q "$env:GAME_DIR/tests" 2>&1 | Tee-Object -FilePath $pytestLog
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+          $completeLog = "$env:GAME_DIR/runtime-qa/windows-native/logs/complete-validator.txt"
+          python "$env:GAME_DIR/tools/validate_complete_game.py" 2>&1 | Tee-Object -FilePath $completeLog
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (-not (Select-String -Path $completeLog -Pattern 'COMPLETE GAME VALIDATION: PASS' -Quiet)) { throw 'Complete validator missing PASS' }
+
+          $storyLog = "$env:GAME_DIR/runtime-qa/windows-native/logs/story-validator.txt"
+          python "$env:GAME_DIR/tools/validate_story_canon.py" 2>&1 | Tee-Object -FilePath $storyLog
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (-not (Select-String -Path $storyLog -Pattern 'CHRONICA STORY CANON VALIDATION: PASS' -Quiet)) { throw 'Story validator missing PASS' }
+
+          $artLog = "$env:GAME_DIR/runtime-qa/windows-native/logs/production-art-validator.txt"
+          python "$env:GAME_DIR/tools/validate_production_art.py" 2>&1 | Tee-Object -FilePath $artLog
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (-not (Select-String -Path $artLog -Pattern 'PRODUCTION ART VALIDATION: PASS' -Quiet)) { throw 'Production art validator missing PASS' }
+
+      - name: Install Godot 4.3 stable and export templates
+        shell: pwsh
+        run: |
+          $tools = Join-Path $env:RUNNER_TEMP 'chronica-godot'
+          New-Item -ItemType Directory -Force -Path $tools | Out-Null
+          $godotZip = Join-Path $tools 'godot.zip'
+          $templatesTpz = Join-Path $tools 'templates.tpz'
+          $templatesZip = Join-Path $tools 'templates.zip'
+          Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_win64.exe.zip' -OutFile $godotZip
+          Expand-Archive -Path $godotZip -DestinationPath $tools -Force
+          $godot = (Get-ChildItem $tools -Filter 'Godot_v4.3-stable_win64.exe' -Recurse | Select-Object -First 1).FullName
+          if (-not $godot) { throw 'Godot 4.3 Windows executable not found' }
+          Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz' -OutFile $templatesTpz
+          Copy-Item $templatesTpz $templatesZip -Force
+          $tplExtract = Join-Path $tools 'tpl-extract'
+          Expand-Archive -Path $templatesZip -DestinationPath $tplExtract -Force
+          $tplSource = Join-Path $tplExtract 'templates'
+          if (-not (Test-Path $tplSource)) { throw 'Godot export templates directory not found' }
+          $tplDest = Join-Path $env:APPDATA 'Godot/export_templates/4.3.stable'
+          New-Item -ItemType Directory -Force -Path $tplDest | Out-Null
+          Copy-Item (Join-Path $tplSource '*') $tplDest -Recurse -Force
+          "GODOT_BIN=$godot" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          & $godot --version | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/godot-version.txt"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Install rcedit 2.0.0 x64
+        shell: pwsh
+        run: |
+          $rceditDir = Join-Path $env:RUNNER_TEMP 'chronica-rcedit'
+          New-Item -ItemType Directory -Force -Path $rceditDir | Out-Null
+          $rcedit = Join-Path $rceditDir 'rcedit.exe'
+          Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe' -OutFile $rcedit
+          if (-not (Test-Path $rcedit)) { throw 'rcedit download failed' }
+          $size = (Get-Item $rcedit).Length
+          if ($size -lt 1000000) { throw "rcedit unexpectedly small: $size bytes" }
+          $sha = (Get-FileHash -Path $rcedit -Algorithm SHA256).Hash.ToLowerInvariant()
+          "RCEDIT_VERSION=2.0.0" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/rcedit.txt"
+          "RCEDIT_SIZE=$size" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/rcedit.txt" -Append
+          "RCEDIT_SHA256=$sha" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/rcedit.txt" -Append
+          $rceditDir | Out-File -FilePath $env:GITHUB_PATH -Append -Encoding utf8
+
+      - name: Strict Godot import
+        shell: pwsh
+        run: |
+          $log = "$env:GAME_DIR/runtime-qa/windows-native/logs/godot-import.txt"
+          & $env:GODOT_BIN --headless --path "$env:GAME_DIR" --editor --quit 2>&1 | Tee-Object -FilePath $log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $fatal = 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value'
+          if (Select-String -Path $log -Pattern $fatal -Quiet) { throw 'Fatal Godot import error found' }
+
+      - name: Windows-native runtime harness
+        shell: pwsh
+        run: |
+          $log = "$env:GAME_DIR/runtime-qa/windows-native/logs/windows-runtime.txt"
+          & $env:GODOT_BIN --headless --path "$env:GAME_DIR" 'res://runtime_qa/windows_native/WindowsNativeQA.tscn' 2>&1 | Tee-Object -FilePath $log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          foreach ($marker in @('WINDOWS_QA_SAVE_LOAD_PASS','WINDOWS_QA_RETRY_PASS','WINDOWS_QA_INPUT_PASS','WINDOWS_QA_CAMERA_PASS','WINDOWS_QA_RUNTIME_PASS')) {
+            if (-not (Select-String -Path $log -Pattern $marker -Quiet)) { throw "Windows runtime marker missing: $marker" }
+          }
+          $fatal = 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value'
+          if (Select-String -Path $log -Pattern $fatal -Quiet) { throw 'Fatal Godot runtime error found' }
+
+      - name: Export Windows release
+        shell: pwsh
+        run: |
+          $resolvedRcedit = (Get-Command rcedit.exe -ErrorAction Stop).Source
+          "RCEDIT_RESOLVED=$resolvedRcedit" | Tee-Object -FilePath "$env:GAME_DIR/runtime-qa/windows-native/logs/rcedit-resolved.txt"
+          New-Item -ItemType Directory -Force -Path "$env:GAME_DIR/build/windows" | Out-Null
+          $log = "$env:GAME_DIR/runtime-qa/windows-native/logs/windows-export.txt"
+          & $env:GODOT_BIN --headless --path "$env:GAME_DIR" --export-release 'Windows Desktop' 'build/windows/CHRONICA_HARUN.exe' 2>&1 | Tee-Object -FilePath $log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (Select-String -Path $log -Pattern 'Could not start rcedit executable' -Quiet) { throw 'rcedit stamping warning reproduced' }
+          $exe = "$env:GAME_DIR/build/windows/CHRONICA_HARUN.exe"
+          if (-not (Test-Path $exe)) { throw 'CHRONICA_HARUN.exe was not created' }
+
+      - name: PE launch resource ZIP and SHA probe
+        id: release_probe
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          & "$env:GAME_DIR/tools/windows_release_probe.ps1" -GameDir "$env:GAME_DIR"
+          exit $LASTEXITCODE
+
+      - name: Build integration QA report
+        if: always()
+        shell: pwsh
+        run: |
+          $root = "$env:GAME_DIR/runtime-qa/windows-native"
+          New-Item -ItemType Directory -Force -Path $root | Out-Null
+          $probePath = Join-Path $root 'release-probe.json'
+          $runtimeLog = Join-Path $root 'logs/windows-runtime.txt'
+          $probe = $null
+          if (Test-Path $probePath) { $probe = Get-Content $probePath -Raw | ConvertFrom-Json }
+          function S([bool]$value) { if ($value) { 'PASS' } else { 'FAIL' } }
+          function Has([string]$marker) { return (Test-Path $runtimeLog) -and (Select-String -Path $runtimeLog -Pattern $marker -Quiet) }
+          $visualStatus = 'NOT TESTABLE IN CI'
+          $lines = @(
+            '# CHRONICA HARUN · Windows Native Integration QA Report',
+            '',
+            "Run: $env:GITHUB_RUN_ID",
+            "Commit: $env:GITHUB_SHA",
+            "Runner: $env:RUNNER_OS / $env:RUNNER_ARCH",
+            '',
+            '| Check | Status | Evidence |',
+            '|---|---|---|',
+            "| Windows runner | $(S ($env:RUNNER_OS -eq 'Windows')) | $env:RUNNER_OS / $env:RUNNER_ARCH |",
+            "| Save/load | $(S (Has 'WINDOWS_QA_SAVE_LOAD_PASS')) | runtime harness |",
+            "| Retry/reload | $(S (Has 'WINDOWS_QA_RETRY_PASS')) | runtime harness |",
+            "| Input map | $(S (Has 'WINDOWS_QA_INPUT_PASS')) | runtime harness |",
+            "| Camera default/toggle | $(S (Has 'WINDOWS_QA_CAMERA_PASS')) | first_person -> over_shoulder -> first_person |",
+            "| PE executable | $(if ($probe) { S ([bool]$probe.pe_valid) } else { 'FAIL' }) | release-probe.json |",
+            "| x86_64 / AMD64 | $(if ($probe) { S ([bool]$probe.amd64) } else { 'FAIL' }) | machine 0x8664 |",
+            "| EXE launch/no immediate crash | $(if ($probe) { S ([bool]$probe.launch_pass) } else { 'FAIL' }) | native process launch |",
+            "| ZIP integrity | $(if ($probe) { S ([bool]$probe.zip_integrity_pass) } else { 'FAIL' }) | extract + SHA equality |",
+            "| Version metadata | $(if ($probe) { S ([bool]$probe.version_metadata_pass) } else { 'FAIL' }) | FileVersionInfo |",
+            "| PE icon resources | $(if ($probe) { S ([bool]$probe.icon_present) } else { 'FAIL' }) | RT_GROUP_ICON / RT_ICON |",
+            "| Canonical custom icon configured | $(if ($probe) { S ([bool]$probe.custom_icon_configured) } else { 'FAIL' }) | application/icon |",
+            "| Final visual quality | $visualStatus | no interactive visual acceptance |",
+            "| Physical mouse pointer lock | $visualStatus | headless/native smoke insufficient |",
+            "| GPU/VFX quality | $visualStatus | no controlled GPU acceptance |",
+            "| Real fullscreen behavior | $visualStatus | no interactive desktop acceptance |",
+            '',
+            '**VISUAL QA NOT VERIFIED**'
+          )
+          $lines | Set-Content -Path (Join-Path $root 'INTEGRATION_QA_REPORT.md') -Encoding utf8
+          Get-Content (Join-Path $root 'INTEGRATION_QA_REPORT.md')
+
+      - name: Upload Windows integration QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chronica-windows-native-integration-qa
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            game/chronica-harun/build/windows/CHRONICA_HARUN.exe
+            game/chronica-harun/build/windows/CHRONICA_HARUN-Windows-x86_64.zip
+            game/chronica-harun/build/windows/CHRONICA_HARUN.exe.sha256.txt
+            game/chronica-harun/runtime-qa/windows-native/**
+
+      - name: Release-readiness truth gate
+        if: always()
+        shell: pwsh
+        run: |
+          $probePath = "$env:GAME_DIR/runtime-qa/windows-native/release-probe.json"
+          if (-not (Test-Path $probePath)) { throw 'Windows release probe did not produce evidence' }
+          $probe = Get-Content $probePath -Raw | ConvertFrom-Json
+          if (-not $probe.pe_valid) { throw 'PE validation failed' }
+          if (-not $probe.amd64) { throw 'AMD64 validation failed' }
+          if (-not $probe.launch_pass) { throw 'Native launch validation failed' }
+          if (-not $probe.zip_integrity_pass) { throw 'ZIP integrity failed' }
+          if (-not $probe.version_metadata_pass) { throw 'Version metadata failed' }
+          if (-not $probe.icon_present) { throw 'PE icon resource validation failed' }
+          if (-not $probe.custom_icon_configured) {
+            Write-Host 'WINDOWS_RELEASE_BLOCKER=CUSTOM_ICON_NOT_CONFIGURED'
+            Write-Host 'VISUAL QA NOT VERIFIED'
+            throw 'Canonical CHRONICA HARUN Windows icon is not configured'
+          }
+          Write-Host 'WINDOWS_NATIVE_RELEASE_READINESS=PASS'
+          Write-Host 'VISUAL QA NOT VERIFIED'
