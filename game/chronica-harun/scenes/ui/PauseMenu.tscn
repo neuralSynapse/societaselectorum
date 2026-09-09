@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/PauseController.gd" id="1_pause"]
+
+[sub_resource type="StyleBoxFlat" id="PausePanel"]
+bg_color = Color(0.035, 0.028, 0.022, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.58, 0.43, 0.22, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="PauseController" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+script = ExtResource("1_pause")
+
+[node name="Overlay" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Dim" type="ColorRect" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.01, 0.008, 0.006, 0.78)
+mouse_filter = 1
+
+[node name="Center" type="CenterContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Overlay/Center"]
+custom_minimum_size = Vector2(420, 280)
+layout_mode = 2
+theme_override_styles/panel = SubResource("PausePanel")
+
+[node name="Margin" type="MarginContainer" parent="Overlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 34
+
+[node name="VBox" type="VBoxContainer" parent="Overlay/Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="Overlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.72, 0.43, 1)
+theme_override_font_sizes/font_size = 28
+text = "PAUSADO"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Overlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.68, 0.62, 1)
+theme_override_font_sizes/font_size = 14
+text = "CHRONICA HĀRŪN"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Overlay/Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="Overlay/Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+text = "RETOMAR"
+
+[node name="QuitButton" type="Button" parent="Overlay/Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+text = "SAIR PARA O DESKTOP"
