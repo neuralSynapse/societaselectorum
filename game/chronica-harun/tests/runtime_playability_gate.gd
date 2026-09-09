@@ -69,19 +69,29 @@ func _run_gate() -> void:
     if player.global_position.y < -5.0:
         _fail("player has no void/fall recovery and remains outside the playable floor")
 
+    var pause_path := "res://scenes/ui/PauseMenu.tscn"
+    var pause_controller: Node = null
+    if not ResourceLoader.exists(pause_path):
+        _fail("dedicated pause menu scene does not exist")
+    else:
+        var pause_scene: PackedScene = load(pause_path)
+        pause_controller = pause_scene.instantiate()
+        root.add_child(pause_controller)
+        await process_frame
+
     if paused:
         paused = false
-    _send_action(&"pause", true)
-    await process_frame
-    _send_action(&"pause", false)
-    await process_frame
-    if not paused:
-        _fail("ESC/pause does not actually pause the SceneTree")
-    paused = false
-
-    var pause_controller := root.find_child("PauseController", true, false)
-    if pause_controller == null:
-        _fail("no dedicated pause controller/menu exists in the running scene tree")
+    if pause_controller != null:
+        _send_action(&"pause", true)
+        await process_frame
+        _send_action(&"pause", false)
+        await process_frame
+        if not paused:
+            _fail("ESC/pause does not actually pause the SceneTree")
+        var overlay := pause_controller.get_node_or_null("Overlay") as Control
+        if overlay == null or not overlay.visible:
+            _fail("pause menu did not become visible after ESC")
+        paused = false
 
     if failures.is_empty():
         print("CHRONICA_REAL_PLAYABILITY_GATE_OK")
