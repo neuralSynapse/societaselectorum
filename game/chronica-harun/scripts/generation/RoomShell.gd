@@ -27,6 +27,14 @@ func set_locked(value: bool) -> void:
                 child.collision_layer = 2 if value else 0
                 child.visible = value
 
+func set_portal_gate_locked(door_name: StringName, value: bool) -> void:
+    locked = value
+    set_meta("locked", value)
+    var door := get_node_or_null("DoorSet/%s" % String(door_name)) as StaticBody3D
+    if door:
+        door.collision_layer = 2 if value else 0
+        door.visible = value
+
 func mark_cleared() -> void:
     cleared = true
     set_locked(false)
