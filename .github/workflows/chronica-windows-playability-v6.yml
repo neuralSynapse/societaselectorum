@@ -114,6 +114,27 @@ jobs:
             throw 'Windows O OLHO initial weapon assertion failed'
           }
 
+      - name: Run full-scene death recovery gate on Windows
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $logPath = "$env:RUNNER_TEMP/chronica-win-death-recovery.log"
+          $errPath = "$env:RUNNER_TEMP/chronica-win-death-recovery.err.log"
+          $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'res://tests/DeathRecoveryGate.tscn') -PassThru -NoNewWindow -RedirectStandardOutput $logPath -RedirectStandardError $errPath
+          if (-not $process.WaitForExit(30000)) {
+            Stop-Process -Id $process.Id -Force
+            throw 'Windows death recovery gate timed out'
+          }
+          Get-Content $logPath -ErrorAction SilentlyContinue
+          Get-Content $errPath -ErrorAction SilentlyContinue
+          if ($process.ExitCode -ne 0) { throw "Windows death recovery gate exited $($process.ExitCode)" }
+          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_DEATH_RECOVERY_GATE_OK' -Quiet)) {
+            throw 'Windows death recovery success marker missing'
+          }
+          if (Select-String -Path $logPath,$errPath -Pattern 'DEATH_RECOVERY_GATE_FAIL' -Quiet) {
+            throw 'Windows death recovery assertion failed'
+          }
+
       - name: Boot real Main scene on Windows
         shell: pwsh
         run: |
