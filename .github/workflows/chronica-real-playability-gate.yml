@@ -99,6 +99,10 @@ jobs:
           if [[ "$code" -ne 0 ]]; then exit "$code"; fi
           grep -q 'CHRONICA_DEATH_RECOVERY_GATE_OK' /tmp/chronica-death-recovery.log || exit 1
           if grep -q 'DEATH_RECOVERY_GATE_FAIL' /tmp/chronica-death-recovery.log; then exit 1; fi
+          if grep -E 'ObjectDB instances leaked at exit|resources still in use at exit' /tmp/chronica-death-recovery.log; then
+            echo 'Death recovery test leaked runtime objects/resources at shutdown.' >&2
+            exit 1
+          fi
 
       - name: Run O OLHO full stage completion gate
         id: stage_completion_gate
