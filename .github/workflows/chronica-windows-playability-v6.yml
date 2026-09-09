@@ -79,19 +79,12 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $logPath = "$env:RUNNER_TEMP/chronica-win-playability.log"
           $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'res://tests/RuntimePlayabilityGate.tscn') -PassThru -NoNewWindow -RedirectStandardOutput $logPath -RedirectStandardError "$env:RUNNER_TEMP/chronica-win-playability.err.log"
-          if (-not $process.WaitForExit(45000)) {
-            Stop-Process -Id $process.Id -Force
-            throw 'Windows playability gate timed out'
-          }
+          if (-not $process.WaitForExit(45000)) { Stop-Process -Id $process.Id -Force; throw 'Windows playability gate timed out' }
           Get-Content $logPath -ErrorAction SilentlyContinue
           Get-Content "$env:RUNNER_TEMP/chronica-win-playability.err.log" -ErrorAction SilentlyContinue
           if ($process.ExitCode -ne 0) { throw "Windows playability gate exited $($process.ExitCode)" }
-          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_REAL_PLAYABILITY_GATE_OK' -Quiet)) {
-            throw 'Windows playability success marker missing'
-          }
-          if (Select-String -Path $logPath -Pattern 'PLAYABILITY_GATE_FAIL' -Quiet) {
-            throw 'Windows playability assertion failed'
-          }
+          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_REAL_PLAYABILITY_GATE_OK' -Quiet)) { throw 'Windows playability success marker missing' }
+          if (Select-String -Path $logPath -Pattern 'PLAYABILITY_GATE_FAIL' -Quiet) { throw 'Windows playability assertion failed' }
 
       - name: Run canonical O OLHO initial weapon gate on Windows
         shell: pwsh
@@ -100,19 +93,12 @@ jobs:
           $logPath = "$env:RUNNER_TEMP/chronica-win-initial-weapon.log"
           $errPath = "$env:RUNNER_TEMP/chronica-win-initial-weapon.err.log"
           $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'res://tests/InitialWeaponGate.tscn') -PassThru -NoNewWindow -RedirectStandardOutput $logPath -RedirectStandardError $errPath
-          if (-not $process.WaitForExit(50000)) {
-            Stop-Process -Id $process.Id -Force
-            throw 'Windows O OLHO initial weapon gate timed out'
-          }
+          if (-not $process.WaitForExit(50000)) { Stop-Process -Id $process.Id -Force; throw 'Windows O OLHO initial weapon gate timed out' }
           Get-Content $logPath -ErrorAction SilentlyContinue
           Get-Content $errPath -ErrorAction SilentlyContinue
           if ($process.ExitCode -ne 0) { throw "Windows O OLHO initial weapon gate exited $($process.ExitCode)" }
-          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_INITIAL_WEAPON_GATE_OK' -Quiet)) {
-            throw 'Windows O OLHO initial weapon success marker missing'
-          }
-          if (Select-String -Path $logPath,$errPath -Pattern 'INITIAL_WEAPON_GATE_FAIL' -Quiet) {
-            throw 'Windows O OLHO initial weapon assertion failed'
-          }
+          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_INITIAL_WEAPON_GATE_OK' -Quiet)) { throw 'Windows O OLHO initial weapon success marker missing' }
+          if (Select-String -Path $logPath,$errPath -Pattern 'INITIAL_WEAPON_GATE_FAIL' -Quiet) { throw 'Windows O OLHO initial weapon assertion failed' }
 
       - name: Run full-scene death recovery gate on Windows
         shell: pwsh
@@ -121,19 +107,26 @@ jobs:
           $logPath = "$env:RUNNER_TEMP/chronica-win-death-recovery.log"
           $errPath = "$env:RUNNER_TEMP/chronica-win-death-recovery.err.log"
           $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'res://tests/DeathRecoveryGate.tscn') -PassThru -NoNewWindow -RedirectStandardOutput $logPath -RedirectStandardError $errPath
-          if (-not $process.WaitForExit(30000)) {
-            Stop-Process -Id $process.Id -Force
-            throw 'Windows death recovery gate timed out'
-          }
+          if (-not $process.WaitForExit(30000)) { Stop-Process -Id $process.Id -Force; throw 'Windows death recovery gate timed out' }
           Get-Content $logPath -ErrorAction SilentlyContinue
           Get-Content $errPath -ErrorAction SilentlyContinue
           if ($process.ExitCode -ne 0) { throw "Windows death recovery gate exited $($process.ExitCode)" }
-          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_DEATH_RECOVERY_GATE_OK' -Quiet)) {
-            throw 'Windows death recovery success marker missing'
-          }
-          if (Select-String -Path $logPath,$errPath -Pattern 'DEATH_RECOVERY_GATE_FAIL' -Quiet) {
-            throw 'Windows death recovery assertion failed'
-          }
+          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_DEATH_RECOVERY_GATE_OK' -Quiet)) { throw 'Windows death recovery success marker missing' }
+          if (Select-String -Path $logPath,$errPath -Pattern 'DEATH_RECOVERY_GATE_FAIL' -Quiet) { throw 'Windows death recovery assertion failed' }
+
+      - name: Run O OLHO full stage completion gate on Windows
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $logPath = "$env:RUNNER_TEMP/chronica-win-stage-completion.log"
+          $errPath = "$env:RUNNER_TEMP/chronica-win-stage-completion.err.log"
+          $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'res://tests/StageCompletionGate.tscn') -PassThru -NoNewWindow -RedirectStandardOutput $logPath -RedirectStandardError $errPath
+          if (-not $process.WaitForExit(40000)) { Stop-Process -Id $process.Id -Force; throw 'Windows O OLHO stage completion gate timed out' }
+          Get-Content $logPath -ErrorAction SilentlyContinue
+          Get-Content $errPath -ErrorAction SilentlyContinue
+          if ($process.ExitCode -ne 0) { throw "Windows O OLHO stage completion gate exited $($process.ExitCode)" }
+          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_STAGE_COMPLETION_GATE_OK' -Quiet)) { throw 'Windows O OLHO stage completion success marker missing' }
+          if (Select-String -Path $logPath,$errPath -Pattern 'STAGE_COMPLETION_GATE_FAIL' -Quiet) { throw 'Windows O OLHO stage completion assertion failed' }
 
       - name: Boot real Main scene on Windows
         shell: pwsh
@@ -142,10 +135,7 @@ jobs:
           $stdout = "$env:RUNNER_TEMP/chronica-main-boot.log"
           $stderr = "$env:RUNNER_TEMP/chronica-main-boot.err.log"
           $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'--quit-after','240') -PassThru -NoNewWindow -RedirectStandardOutput $stdout -RedirectStandardError $stderr
-          if (-not $process.WaitForExit(30000)) {
-            Stop-Process -Id $process.Id -Force
-            throw 'Main scene boot smoke timed out'
-          }
+          if (-not $process.WaitForExit(30000)) { Stop-Process -Id $process.Id -Force; throw 'Main scene boot smoke timed out' }
           Get-Content $stdout -ErrorAction SilentlyContinue
           Get-Content $stderr -ErrorAction SilentlyContinue
           if ($process.ExitCode -ne 0) { throw "Main scene boot exited $($process.ExitCode)" }
@@ -162,6 +152,7 @@ jobs:
           $exe = "$env:GAME_DIR/build/windows/CHRONICA_HARUN.exe"
           if (-not (Test-Path $exe)) { throw 'Exported EXE missing' }
           if ((Get-Item $exe).Length -lt 1048576) { throw 'Exported EXE is implausibly small' }
+          if (Select-String -Path "$env:RUNNER_TEMP/chronica-win-export.log" -Pattern 'Could not start rcedit|Could not create child process: rcedit' -Quiet) { throw 'rcedit warning returned despite resource modification being disabled' }
 
       - name: Launch exported EXE and reject immediate crash
         shell: pwsh
@@ -170,9 +161,7 @@ jobs:
           $exe = Resolve-Path "$env:GAME_DIR/build/windows/CHRONICA_HARUN.exe"
           $process = Start-Process -FilePath $exe -PassThru
           Start-Sleep -Seconds 8
-          if ($process.HasExited) {
-            throw "Exported EXE exited unexpectedly with code $($process.ExitCode)"
-          }
+          if ($process.HasExited) { throw "Exported EXE exited unexpectedly with code $($process.ExitCode)" }
           Stop-Process -Id $process.Id -Force
 
       - name: Package candidate and checksum
