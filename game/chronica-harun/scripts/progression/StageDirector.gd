@@ -7,6 +7,7 @@ signal special_reward_spawned(room_id: StringName, category: StringName, item_id
 const PLAYER_SCENE := preload("res://scenes/player/Player.tscn")
 const HUD_SCENE := preload("res://scenes/ui/HUD.tscn")
 const PICKUP_SCENE := preload("res://scenes/pickups/WorldPickup.tscn")
+const INITIAL_WEAPON_SCENE := preload("res://scenes/pickups/InitialWeaponPickup.tscn")
 const BOSS_SCENE := preload("res://scenes/bosses/BossBase.tscn")
 
 var special_rooms := SpecialRoomDirector.new()
@@ -28,6 +29,8 @@ var ui_root: CanvasLayer
 var rupture_charges := 1
 var primary_damage := 22.0
 var world_expansion: WorldExpansionRuntime
+var initial_weapon_pickup: InitialWeaponPickup
+var initial_weapon_gate_room: RoomShell
 
 func configure(next_world_root: Node3D, next_ui_root: CanvasLayer) -> void:
     world_root = next_world_root
@@ -54,6 +57,7 @@ func configure(next_world_root: Node3D, next_ui_root: CanvasLayer) -> void:
     ui_root.add_child(hud)
     hud.bind_player(player)
     hud.set_objective("%s · %s" % [stage_data.get("title", "JORNADA"), stage_data.get("subtitle", "PROVA")])
+    _configure_initial_weapon_opening()
     _connect_runtime()
     _refresh_transformations()
     daimon_runtime.on_floor_started(_special_context())
@@ -161,6 +165,46 @@ func _room(id: String) -> RoomShell:
         return direct
     return floor_instance.get_node_or_null("Rooms/special_" + id) as RoomShell
 
+func get_initial_weapon_pickup() -> Node:
+    return initial_weapon_pickup
+
+func _configure_initial_weapon_opening() -> void:
+    var current_id := String(stage_data.get("id", ""))
+    if current_id != "o_olho":
+        player.equip_initial_weapon()
+        return
+
+    initial_weapon_gate_room = _room("threshold")
+    if bool(GameState.meta_progression.get("initial_weapon_acquired", false)):
+        player.equip_initial_weapon()
+        if initial_weapon_gate_room:
+            initial_weapon_gate_room.set_portal_gate_locked(&"EastDoor", false)
+        return
+
+    player.set_primary_attack_enabled(false)
+    if initial_weapon_gate_room == null:
+        push_error("O OLHO threshold missing; cannot enforce initial weapon gate")
+        return
+
+    initial_weapon_gate_room.set_portal_gate_locked(&"EastDoor", true)
+    initial_weapon_pickup = INITIAL_WEAPON_SCENE.instantiate() as InitialWeaponPickup
+    initial_weapon_gate_room.add_child(initial_weapon_pickup)
+    var anchor := initial_weapon_gate_room.get_node_or_null("PickupAnchor") as Marker3D
+    initial_weapon_pickup.position = (anchor.position if anchor else Vector3.ZERO) + Vector3(1.8, 0.0, -1.6)
+    initial_weapon_pickup.collected.connect(_on_initial_weapon_collected)
+    hud.show_message("O OLHO NÃO FERE · ELE REVELA", 3.5)
+
+func _on_initial_weapon_collected(actor: Node) -> void:
+    if actor != player:
+        return
+    player.equip_initial_weapon()
+    GameState.meta_progression["initial_weapon_acquired"] = true
+    GameState.run_stats["initial_weapon_acquired"] = true
+    if initial_weapon_gate_room:
+        initial_weapon_gate_room.set_portal_gate_locked(&"EastDoor", false)
+    SaveService.save_campaign(GameState.to_save_data())
+    hud.show_message("LÂMINA ADQUIRIDA · O LIMIAR SE ABRE", 3.5)
+
 func _on_room_entered(room_id: StringName) -> void:
     var id := String(room_id)
     if id.begins_with("combat_") and not room_spawned.has(id):
@@ -222,11 +266,13 @@ func _spawn_boss() -> void:
     hud.show_boss(boss.display_name, 1.0, 1)
 
 func _on_primary_attack() -> void:
-    if player.primary_cooldown > 0.0:
+    if player.primary_cooldown > 0.0 or not player.is_primary_attack_enabled():
         return
     player.primary_cooldown = 0.32
     var target := player.get_aim_target()
     if target == null or not target.has_method("apply_damage"):
+        return
+    if player.get_aim_distance() > player.primary_attack_range:
         return
     var hp_ratio := 1.0
     if target.get("health") is Health:
@@ -238,10 +284,13 @@ func _on_power_requested() -> void:
     var power_id := StringName(stage_data.get("power_id", ""))
     if power_id == &"":
         return
-    if not player.spend_focus(20.0):
+    var power := ContentRegistry.get_power(power_id)
+    var cost_data: Dictionary = power.get("cost", {})
+    var resource := String(cost_data.get("resource", "focus"))
+    var amount := float(cost_data.get("amount", 20.0))
+    if resource == "focus" and amount > 0.0 and not player.spend_focus(amount):
         hud.show_message("FOCO INSUFICIENTE")
         return
-    var power := ContentRegistry.get_power(power_id)
     _apply_power(String(power.get("effect_id", power_id)))
 
 func _apply_power(effect_id: String) -> void:
@@ -249,7 +298,11 @@ func _apply_power(effect_id: String) -> void:
         "revelatory_eye", "revelatory_eye_base":
             for enemy in active_enemies:
                 if is_instance_valid(enemy): enemy.set_meta("revealed_until", Time.get_ticks_msec() + 6000)
-            hud.show_message("OLHO REVELATÓRIO · O OCULTO SE TORNA LEGÍVEL")
+            if initial_weapon_pickup and is_instance_valid(initial_weapon_pickup) and not initial_weapon_pickup.is_revealed():
+                initial_weapon_pickup.reveal()
+                hud.show_message("OLHO REVELATÓRIO · UMA LÂMINA ESTAVA OCULTA", 4.0)
+            else:
+                hud.show_message("OLHO REVELATÓRIO · O OCULTO SE TORNA LEGÍVEL")
         "black_flame_matrix_base":
             for enemy in active_enemies:
                 if is_instance_valid(enemy) and enemy.global_position.distance_to(player.global_position) <= 5.5:
