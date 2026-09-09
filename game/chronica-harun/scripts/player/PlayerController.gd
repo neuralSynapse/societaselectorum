@@ -24,11 +24,13 @@ signal kinesis_slot_requested(slot: int)
 @export var max_stamina := 100.0
 @export var fall_recovery_y := -10.0
 @export var recovery_height_offset := 0.35
+@export var primary_attack_range := 1.65
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var interaction_ray: RayCast3D = $Head/Camera3D/InteractionRay
 @onready var health: Health = $Health
+@onready var initial_weapon_view: Node3D = $Head/Camera3D/ViewModelRoot/InitialWeapon
 
 var gravity := 9.8
 var pitch := 0.0
@@ -40,6 +42,8 @@ var primary_cooldown := 0.0
 var dodge_cooldown := 0.0
 var last_safe_position := Vector3.ZERO
 var has_safe_position := false
+var primary_attack_enabled := true
+var initial_weapon_equipped := false
 
 func _ready() -> void:
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -49,6 +53,8 @@ func _ready() -> void:
     stamina = max_stamina
     last_safe_position = global_position
     has_safe_position = true
+    if initial_weapon_view:
+        initial_weapon_view.visible = initial_weapon_equipped
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -59,7 +65,8 @@ func _unhandled_input(event: InputEvent) -> void:
         if target and target.has_method("interact"):
             target.interact(self)
     elif event.is_action_pressed("primary_attack"):
-        primary_attack_requested.emit()
+        if primary_attack_enabled:
+            primary_attack_requested.emit()
     elif event.is_action_pressed("power"):
         power_requested.emit()
     elif event.is_action_pressed("instrument"):
@@ -118,6 +125,21 @@ func _recover_from_fall() -> void:
     global_position = target + Vector3.UP * recovery_height_offset
     velocity = Vector3.ZERO
 
+func set_primary_attack_enabled(value: bool) -> void:
+    primary_attack_enabled = value
+
+func is_primary_attack_enabled() -> bool:
+    return primary_attack_enabled
+
+func equip_initial_weapon() -> void:
+    initial_weapon_equipped = true
+    primary_attack_enabled = true
+    if initial_weapon_view:
+        initial_weapon_view.visible = true
+
+func has_initial_weapon() -> bool:
+    return initial_weapon_equipped
+
 func get_interaction_target() -> Node:
     if interaction_ray and interaction_ray.is_colliding():
         return interaction_ray.get_collider()
@@ -125,6 +147,11 @@ func get_interaction_target() -> Node:
 
 func get_aim_target() -> Node:
     return get_interaction_target()
+
+func get_aim_distance() -> float:
+    if interaction_ray and interaction_ray.is_colliding():
+        return camera.global_position.distance_to(interaction_ray.get_collision_point())
+    return INF
 
 func spend_focus(amount: float) -> bool:
     if amount <= 0.0 or focus < amount:
