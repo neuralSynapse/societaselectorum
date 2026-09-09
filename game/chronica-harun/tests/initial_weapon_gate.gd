@@ -109,6 +109,7 @@ func _run_gate() -> void:
     if not bool(GameState.meta_progression.get("initial_weapon_acquired", false)):
         _fail("campaign state does not remember physical weapon acquisition")
 
+    # Enter the first mandatory encounter using the actual player and physics route.
     if player:
         await _settle_player(player, Vector3(0.0, 1.2, 0.0))
         Input.action_press("move_right")
@@ -117,6 +118,53 @@ func _run_gate() -> void:
         await _physics_frames(10)
         if player.global_position.x < 9.0:
             _fail("first mandatory combat route does not become physically traversable after acquisition")
+
+    var combat_room := stage.floor_instance.get_node_or_null("Rooms/combat_1") as RoomShell
+    if combat_room == null:
+        _fail("first mandatory combat room is missing")
+    else:
+        if not stage.room_spawned.has("combat_1"):
+            _fail("entering combat_1 does not spawn its encounter")
+        if stage.active_enemies.is_empty():
+            _fail("combat_1 starts with no enemies")
+        if not combat_room.locked:
+            _fail("combat_1 does not lock while its enemies are alive")
+
+        # Resolve the encounter through the real health/death signals so RoomDirector must clear it.
+        var enemies := stage.active_enemies.duplicate()
+        for enemy in enemies:
+            if is_instance_valid(enemy) and enemy.has_method("apply_damage"):
+                enemy.call("apply_damage", 99999.0, &"playability_gate")
+        await _physics_frames(30)
+
+        if not combat_room.cleared:
+            _fail("combat_1 does not mark itself cleared after all enemies die")
+        if combat_room.locked:
+            _fail("combat_1 remains locked after all enemies die")
+        if int(GameState.run_stats.get("rooms_cleared", 0)) < 1:
+            _fail("combat clear does not advance run statistics")
+
+        var reward_room := stage.floor_instance.get_node_or_null("Rooms/reward_1") as RoomShell
+        if reward_room == null:
+            _fail("reward room after combat_1 is missing")
+        else:
+            var reward_found := false
+            for child in reward_room.get_children():
+                if child is PickupController:
+                    reward_found = true
+                    break
+            if not reward_found:
+                _fail("clearing combat_1 does not spawn its reward pickup")
+
+    # The clear must also let the player physically leave combat_1 toward the reward room.
+    if player and combat_room:
+        await _settle_player(player, Vector3(14.0, 1.2, 0.0))
+        Input.action_press("move_right")
+        await _physics_frames(210)
+        Input.action_release("move_right")
+        await _physics_frames(8)
+        if player.global_position.x < 23.0:
+            _fail("player cannot leave cleared combat_1 toward reward_1")
 
     var snapshot := GameState.to_save_data()
     GameState.start_new_campaign(94102)
