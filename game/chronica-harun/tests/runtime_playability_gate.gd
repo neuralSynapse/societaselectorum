@@ -1,6 +1,8 @@
 extends Node
 
 var failures: Array[String] = []
+var attack_events := 0
+var interact_events := 0
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
@@ -13,6 +15,17 @@ func _fail(message: String) -> void:
 func _physics_frames(count: int) -> void:
     for _i in range(count):
         await get_tree().physics_frame
+
+func _settle_player(player: PlayerController, position: Vector3) -> void:
+    player.global_position = position
+    player.velocity = Vector3.ZERO
+    await _physics_frames(16)
+
+func _on_attack_test() -> void:
+    attack_events += 1
+
+func _on_interact_test(_target: Node) -> void:
+    interact_events += 1
 
 func _run_gate() -> void:
     var host := Node3D.new()
@@ -49,9 +62,50 @@ func _run_gate() -> void:
     var player_scene: PackedScene = load("res://scenes/player/Player.tscn")
     var player := player_scene.instantiate() as PlayerController
     host.add_child(player)
-    player.global_position = Vector3(0.0, 1.2, 0.0)
-    await _physics_frames(20)
+    await _settle_player(player, Vector3(0.0, 1.2, 0.0))
 
+    # Each movement direction gets an isolated position/velocity so inertia cannot fake a pass.
+    await _settle_player(player, Vector3(0.0, 1.2, 0.0))
+    Input.action_press("move_left")
+    await _physics_frames(45)
+    Input.action_release("move_left")
+    if player.global_position.x > -1.0:
+        _fail("move_left/A does not move the real player left")
+
+    await _settle_player(player, Vector3(0.0, 1.2, 0.0))
+    Input.action_press("move_right")
+    await _physics_frames(45)
+    Input.action_release("move_right")
+    if player.global_position.x < 1.0:
+        _fail("move_right/D does not move the real player right")
+
+    await _settle_player(player, Vector3(0.0, 1.2, 0.0))
+    Input.action_press("move_forward")
+    await _physics_frames(45)
+    Input.action_release("move_forward")
+    if player.global_position.z > -1.0:
+        _fail("move_forward/W does not move the real player forward")
+
+    await _settle_player(player, Vector3(0.0, 1.2, 0.0))
+    Input.action_press("move_back")
+    await _physics_frames(45)
+    Input.action_release("move_back")
+    if player.global_position.z < 1.0:
+        _fail("move_back/S does not move the real player backward")
+
+    # Verify the first-person camera actually responds to mouse motion.
+    await _settle_player(player, Vector3(0.0, 1.2, 0.0))
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    var yaw_before := player.rotation.y
+    var mouse_event := InputEventMouseMotion.new()
+    mouse_event.relative = Vector2(24.0, 0.0)
+    player._unhandled_input(mouse_event)
+    if is_equal_approx(player.rotation.y, yaw_before):
+        _fail("mouse motion does not rotate the first-person player camera rig")
+    player.rotation.y = 0.0
+
+    # Verify the room-to-room route is physically traversable, not merely drawn.
+    await _settle_player(player, Vector3(0.0, 1.2, 0.0))
     var start_x := player.global_position.x
     Input.action_press("move_right")
     await _physics_frames(210)
@@ -60,11 +114,36 @@ func _run_gate() -> void:
     if player.global_position.x < start_x + 9.0:
         _fail("player cannot traverse threshold -> corridor -> next room using real movement")
 
+    # Push into the corridor rail. The player must remain on the bridge instead of leaving the map.
+    await _settle_player(player, Vector3(7.0, 1.2, 0.0))
+    Input.action_press("move_back")
+    await _physics_frames(90)
+    Input.action_release("move_back")
+    if absf(player.global_position.z) > 1.05 or player.global_position.y < -2.0:
+        _fail("corridor side protection does not keep the player on the walkable route")
+
+    # Deliberately throw the player into the void and demand automatic recovery.
     player.global_position = Vector3(0.0, -40.0, 0.0)
     player.velocity = Vector3.ZERO
     await _physics_frames(8)
     if player.global_position.y < -5.0:
         _fail("player has no void/fall recovery and remains outside the playable floor")
+
+    # Basic first-person action contract must respond to actual action events.
+    player.primary_attack_requested.connect(_on_attack_test)
+    player.interact_requested.connect(_on_interact_test)
+    var attack_event := InputEventAction.new()
+    attack_event.action = &"primary_attack"
+    attack_event.pressed = true
+    player._unhandled_input(attack_event)
+    if attack_events != 1:
+        _fail("primary attack input does not reach the player combat contract")
+    var interact_event := InputEventAction.new()
+    interact_event.action = &"interact"
+    interact_event.pressed = true
+    player._unhandled_input(interact_event)
+    if interact_events != 1:
+        _fail("interact/E input does not reach the player interaction contract")
 
     var pause_path := "res://scenes/ui/PauseMenu.tscn"
     var pause_controller: Node = null
