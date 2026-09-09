@@ -1,0 +1,158 @@
+name: CHRONICA Windows Native Playability V6
+
+on:
+  push:
+    branches:
+      - fix/chronica-playable-runtime-v6-2026-09-08
+    paths:
+      - '.github/workflows/chronica-windows-playability-v6.yml'
+      - 'game/chronica-harun/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+  GODOT_VERSION: '4.3'
+
+jobs:
+  windows-native:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python validation dependencies
+        shell: pwsh
+        run: python -m pip install --disable-pip-version-check -q pytest trimesh numpy
+
+      - name: Generate required enemy and boss GLBs
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python "$env:GAME_DIR/tools/generate_models.py"
+          $enemyCount = (Get-ChildItem "$env:GAME_DIR/art/generated/enemies" -Filter *.glb).Count
+          $bossCount = (Get-ChildItem "$env:GAME_DIR/art/generated/bosses" -Filter *.glb).Count
+          if ($enemyCount -ne 82) { throw "Expected 82 enemy GLBs, found $enemyCount" }
+          if ($bossCount -ne 16) { throw "Expected 16 boss GLBs, found $bossCount" }
+
+      - name: Run Python regression suite
+        shell: pwsh
+        run: pytest -q "$env:GAME_DIR/tests"
+
+      - name: Install Godot 4.3 Windows and export templates
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $godotZip = "$env:RUNNER_TEMP/godot.zip"
+          $templates = "$env:RUNNER_TEMP/templates.tpz"
+          Invoke-WebRequest -Uri "https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_win64.exe.zip" -OutFile $godotZip
+          Expand-Archive -Path $godotZip -DestinationPath "$env:RUNNER_TEMP/godot" -Force
+          Invoke-WebRequest -Uri "https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz" -OutFile $templates
+          Expand-Archive -Path $templates -DestinationPath "$env:RUNNER_TEMP/export_templates" -Force
+          $templateDir = Join-Path $env:APPDATA 'Godot/export_templates/4.3.stable'
+          New-Item -ItemType Directory -Force -Path $templateDir | Out-Null
+          Copy-Item "$env:RUNNER_TEMP/export_templates/templates/*" $templateDir -Recurse -Force
+          $console = Get-ChildItem "$env:RUNNER_TEMP/godot" -Filter '*console.exe' | Select-Object -First 1
+          if (-not $console) { throw 'Godot console executable not found' }
+          "GODOT_EXE=$($console.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          & $console.FullName --version
+
+      - name: Import project on Windows and reject parser errors
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $log = & $env:GODOT_EXE --headless --path "$env:GAME_DIR" --editor --quit 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/chronica-win-import.log"
+          if ($LASTEXITCODE -ne 0) { throw "Godot import exited $LASTEXITCODE" }
+          $blocking = Select-String -Path "$env:RUNNER_TEMP/chronica-win-import.log" -Pattern 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed'
+          if ($blocking) { throw 'Blocking Godot import error detected' }
+
+      - name: Run strengthened playability gate on Windows
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $logPath = "$env:RUNNER_TEMP/chronica-win-playability.log"
+          $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'res://tests/RuntimePlayabilityGate.tscn') -PassThru -NoNewWindow -RedirectStandardOutput $logPath -RedirectStandardError "$env:RUNNER_TEMP/chronica-win-playability.err.log"
+          if (-not $process.WaitForExit(45000)) {
+            Stop-Process -Id $process.Id -Force
+            throw 'Windows playability gate timed out'
+          }
+          Get-Content $logPath -ErrorAction SilentlyContinue
+          Get-Content "$env:RUNNER_TEMP/chronica-win-playability.err.log" -ErrorAction SilentlyContinue
+          if ($process.ExitCode -ne 0) { throw "Windows playability gate exited $($process.ExitCode)" }
+          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_REAL_PLAYABILITY_GATE_OK' -Quiet)) {
+            throw 'Windows playability success marker missing'
+          }
+          if (Select-String -Path $logPath -Pattern 'PLAYABILITY_GATE_FAIL' -Quiet) {
+            throw 'Windows playability assertion failed'
+          }
+
+      - name: Boot real Main scene on Windows
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $stdout = "$env:RUNNER_TEMP/chronica-main-boot.log"
+          $stderr = "$env:RUNNER_TEMP/chronica-main-boot.err.log"
+          $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'--quit-after','240') -PassThru -NoNewWindow -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not $process.WaitForExit(30000)) {
+            Stop-Process -Id $process.Id -Force
+            throw 'Main scene boot smoke timed out'
+          }
+          Get-Content $stdout -ErrorAction SilentlyContinue
+          Get-Content $stderr -ErrorAction SilentlyContinue
+          if ($process.ExitCode -ne 0) { throw "Main scene boot exited $($process.ExitCode)" }
+          $blocking = Select-String -Path $stdout,$stderr -Pattern 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed'
+          if ($blocking) { throw 'Blocking runtime script/load error during Main boot' }
+
+      - name: Export Windows release executable
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force -Path "$env:GAME_DIR/build/windows" | Out-Null
+          & $env:GODOT_EXE --headless --path "$env:GAME_DIR" --export-release 'Windows Desktop' 'build/windows/CHRONICA_HARUN.exe' 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/chronica-win-export.log"
+          if ($LASTEXITCODE -ne 0) { throw "Windows export exited $LASTEXITCODE" }
+          $exe = "$env:GAME_DIR/build/windows/CHRONICA_HARUN.exe"
+          if (-not (Test-Path $exe)) { throw 'Exported EXE missing' }
+          if ((Get-Item $exe).Length -lt 1048576) { throw 'Exported EXE is implausibly small' }
+
+      - name: Launch exported EXE and reject immediate crash
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $exe = Resolve-Path "$env:GAME_DIR/build/windows/CHRONICA_HARUN.exe"
+          $process = Start-Process -FilePath $exe -PassThru
+          Start-Sleep -Seconds 8
+          if ($process.HasExited) {
+            throw "Exported EXE exited unexpectedly with code $($process.ExitCode)"
+          }
+          Stop-Process -Id $process.Id -Force
+
+      - name: Package candidate and checksum
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $exe = "$env:GAME_DIR/build/windows/CHRONICA_HARUN.exe"
+          $sha = (Get-FileHash $exe -Algorithm SHA256).Hash.ToLower()
+          $size = (Get-Item $exe).Length
+          "SHA256=$sha" | Out-File -FilePath "$env:GAME_DIR/build/windows/SHA256.txt" -Encoding ascii
+          "SIZE_BYTES=$size" | Out-File -FilePath "$env:GAME_DIR/build/windows/BUILD_INFO.txt" -Encoding ascii
+          "HEAD=$env:GITHUB_SHA" | Out-File -FilePath "$env:GAME_DIR/build/windows/BUILD_INFO.txt" -Encoding ascii -Append
+          Compress-Archive -Path $exe,"$env:GAME_DIR/build/windows/SHA256.txt","$env:GAME_DIR/build/windows/BUILD_INFO.txt" -DestinationPath "$env:GAME_DIR/build/windows/CHRONICA_HARUN_WINDOWS_V6.zip" -Force
+          Write-Host "EXE SHA-256: $sha"
+          Write-Host "EXE size: $size bytes"
+
+      - name: Upload Windows candidate for QA only
+        uses: actions/upload-artifact@v4
+        with:
+          name: CHRONICA-HARUN-WINDOWS-V6-QA
+          path: |
+            game/chronica-harun/build/windows/CHRONICA_HARUN_WINDOWS_V6.zip
+            game/chronica-harun/build/windows/SHA256.txt
+            game/chronica-harun/build/windows/BUILD_INFO.txt
+          if-no-files-found: error
+          retention-days: 14
