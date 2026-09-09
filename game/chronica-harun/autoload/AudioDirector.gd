@@ -13,7 +13,7 @@ const EVENT_PATHS := {
 }
 var streams: Dictionary = {}
 var pool: Array[AudioStreamPlayer3D] = []
-var warned: Dictionary = {}
+var reported_missing: Dictionary = {}
 
 func _ready() -> void:
     for key in EVENT_PATHS:
@@ -30,9 +30,9 @@ func _ready() -> void:
 func play_3d(event_id: StringName, position: Vector3) -> void:
     var key := String(event_id)
     if not streams.has(key):
-        if not warned.has(key):
-            warned[key] = true
-            push_warning("Audio event not installed: %s" % key)
+        if not reported_missing.has(key):
+            reported_missing[key] = true
+            print_verbose("Optional audio event not installed; using silent fallback: %s" % key)
         return
     for player in pool:
         if not player.playing:
@@ -45,6 +45,9 @@ func play_3d(event_id: StringName, position: Vector3) -> void:
 func play_ui(event_id: StringName) -> void:
     var key := String(event_id)
     if not streams.has(key):
+        if not reported_missing.has(key):
+            reported_missing[key] = true
+            print_verbose("Optional UI audio event not installed; using silent fallback: %s" % key)
         return
     var player := AudioStreamPlayer.new()
     add_child(player)
