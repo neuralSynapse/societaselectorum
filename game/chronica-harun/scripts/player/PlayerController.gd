@@ -22,6 +22,8 @@ signal kinesis_slot_requested(slot: int)
 @export var invert_y := false
 @export var max_focus := 100.0
 @export var max_stamina := 100.0
+@export var fall_recovery_y := -10.0
+@export var recovery_height_offset := 0.35
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -36,6 +38,8 @@ var essence := 0
 var shield := 0.0
 var primary_cooldown := 0.0
 var dodge_cooldown := 0.0
+var last_safe_position := Vector3.ZERO
+var has_safe_position := false
 
 func _ready() -> void:
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -43,6 +47,8 @@ func _ready() -> void:
     health.damaged.connect(_on_health_damaged)
     focus = max_focus
     stamina = max_stamina
+    last_safe_position = global_position
+    has_safe_position = true
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -51,9 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
         pitch -= event.relative.y * mouse_sensitivity * vertical_sign
         pitch = clamp(pitch, deg_to_rad(-84.0), deg_to_rad(84.0))
         head.rotation.x = pitch
-    if event.is_action_pressed("pause"):
-        Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
-    elif event.is_action_pressed("interact"):
+    if event.is_action_pressed("interact"):
         var target := get_interaction_target()
         interact_requested.emit(target)
         if target and target.has_method("interact"):
@@ -78,6 +82,10 @@ func _unhandled_input(event: InputEvent) -> void:
         kinesis_slot_requested.emit(2)
 
 func _physics_process(delta: float) -> void:
+    if global_position.y < fall_recovery_y:
+        _recover_from_fall()
+        return
+
     primary_cooldown = maxf(0.0, primary_cooldown - delta)
     dodge_cooldown = maxf(0.0, dodge_cooldown - delta)
     stamina = minf(max_stamina, stamina + 22.0 * delta)
@@ -97,6 +105,15 @@ func _physics_process(delta: float) -> void:
     elif Input.is_action_just_pressed("jump"):
         velocity.y = jump_velocity
     move_and_slide()
+
+    if is_on_floor() and global_position.y > fall_recovery_y + 1.0:
+        last_safe_position = global_position
+        has_safe_position = true
+
+func _recover_from_fall() -> void:
+    var target := last_safe_position if has_safe_position else Vector3.ZERO
+    global_position = target + Vector3.UP * recovery_height_offset
+    velocity = Vector3.ZERO
 
 func get_interaction_target() -> Node:
     if interaction_ray and interaction_ray.is_colliding():
