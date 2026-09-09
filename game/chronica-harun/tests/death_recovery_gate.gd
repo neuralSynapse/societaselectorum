@@ -12,6 +12,18 @@ func _fail(message: String) -> void:
     GameState.meta_progression.erase(TEST_MARKER)
     get_tree().quit(1)
 
+func _settle_reload_before_exit() -> void:
+    # A real SceneTree reload frees the previous world incrementally. Give the
+    # deletion queue enough process/physics turns to release those objects
+    # before the headless test process exits, otherwise Godot reports a false
+    # shutdown leak even though the production reload itself succeeded.
+    for _i in range(6):
+        await get_tree().process_frame
+    for _i in range(3):
+        await get_tree().physics_frame
+    for _i in range(3):
+        await get_tree().process_frame
+
 func _run_gate() -> void:
     # SceneTree.reload_current_scene() preserves autoloads. The marker lets the
     # second load prove that a real scene reload happened after player death.
@@ -22,6 +34,7 @@ func _run_gate() -> void:
         if deaths < 1 or total_deaths < 1:
             _fail("scene reloaded but death counters were not persisted")
             return
+        await _settle_reload_before_exit()
         print("CHRONICA_DEATH_RECOVERY_GATE_OK")
         get_tree().quit(0)
         return
