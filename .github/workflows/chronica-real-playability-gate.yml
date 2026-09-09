@@ -100,6 +100,19 @@ jobs:
           grep -q 'CHRONICA_DEATH_RECOVERY_GATE_OK' /tmp/chronica-death-recovery.log || exit 1
           if grep -q 'DEATH_RECOVERY_GATE_FAIL' /tmp/chronica-death-recovery.log; then exit 1; fi
 
+      - name: Run O OLHO full stage completion gate
+        id: stage_completion_gate
+        shell: bash
+        run: |
+          set -uo pipefail
+          set +e
+          timeout 35s godot --headless --path "$GAME_DIR" res://tests/StageCompletionGate.tscn 2>&1 | tee /tmp/chronica-stage-completion.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          if [[ "$code" -ne 0 ]]; then exit "$code"; fi
+          grep -q 'CHRONICA_STAGE_COMPLETION_GATE_OK' /tmp/chronica-stage-completion.log || exit 1
+          if grep -q 'STAGE_COMPLETION_GATE_FAIL' /tmp/chronica-stage-completion.log; then exit 1; fi
+
       - name: Prepare gate diagnostic artifact
         if: always()
         shell: bash
@@ -114,6 +127,7 @@ jobs:
             echo "- runtime exit code: ${{ steps.runtime_gate.outputs.exit_code }}"
             echo "- initial weapon gate exit code: ${{ steps.initial_weapon_gate.outputs.exit_code }}"
             echo "- death recovery gate exit code: ${{ steps.death_recovery_gate.outputs.exit_code }}"
+            echo "- stage completion gate exit code: ${{ steps.stage_completion_gate.outputs.exit_code }}"
             echo
             echo '## Runtime playability'
             echo '```text'
@@ -129,11 +143,17 @@ jobs:
             echo '```text'
             if [[ -f /tmp/chronica-death-recovery.log ]]; then tail -n 120 /tmp/chronica-death-recovery.log; else echo 'death recovery gate did not start'; fi
             echo '```'
+            echo
+            echo '## O OLHO stage completion gate'
+            echo '```text'
+            if [[ -f /tmp/chronica-stage-completion.log ]]; then tail -n 160 /tmp/chronica-stage-completion.log; else echo 'stage completion gate did not start'; fi
+            echo '```'
           } > /tmp/chronica-diagnostics/PLAYABILITY_GATE.md
           cp /tmp/chronica-import.log /tmp/chronica-diagnostics/import.log 2>/dev/null || true
           cp /tmp/chronica-playability.log /tmp/chronica-diagnostics/playability.log 2>/dev/null || true
           cp /tmp/chronica-initial-weapon.log /tmp/chronica-diagnostics/initial-weapon.log 2>/dev/null || true
           cp /tmp/chronica-death-recovery.log /tmp/chronica-diagnostics/death-recovery.log 2>/dev/null || true
+          cp /tmp/chronica-stage-completion.log /tmp/chronica-diagnostics/stage-completion.log 2>/dev/null || true
 
       - name: Upload gate diagnostics
         if: always()
