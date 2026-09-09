@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   GAME_DIR: game/chronica-harun
@@ -95,14 +95,14 @@ jobs:
             exit 1
           fi
 
-      - name: Persist gate diagnostic
+      - name: Prepare gate diagnostic artifact
         if: always()
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p runtime-v6
+          mkdir -p /tmp/chronica-diagnostics
           {
-            echo '# CHRONICA real playability gate · latest diagnostic'
+            echo '# CHRONICA real playability gate · diagnostic'
             echo
             echo "- head: $GITHUB_SHA"
             echo "- workflow run: $GITHUB_RUN_ID"
@@ -111,26 +111,23 @@ jobs:
             echo
             echo '## Runtime playability'
             echo '```text'
-            if [[ -f /tmp/chronica-playability.log ]]; then
-              tail -n 160 /tmp/chronica-playability.log
-            else
-              echo 'runtime gate did not start; inspect earlier workflow steps'
-            fi
+            if [[ -f /tmp/chronica-playability.log ]]; then tail -n 200 /tmp/chronica-playability.log; else echo 'runtime gate did not start'; fi
             echo '```'
             echo
             echo '## O OLHO initial weapon gate'
             echo '```text'
-            if [[ -f /tmp/chronica-initial-weapon.log ]]; then
-              tail -n 160 /tmp/chronica-initial-weapon.log
-            else
-              echo 'initial weapon gate did not start; inspect earlier workflow steps'
-            fi
+            if [[ -f /tmp/chronica-initial-weapon.log ]]; then tail -n 200 /tmp/chronica-initial-weapon.log; else echo 'initial weapon gate did not start'; fi
             echo '```'
-          } > runtime-v6/PLAYABILITY_GATE_LAST.md
-          git config user.name 'chronica-qa-bot'
-          git config user.email 'chronica-qa-bot@users.noreply.github.com'
-          git add runtime-v6/PLAYABILITY_GATE_LAST.md
-          if ! git diff --cached --quiet; then
-            git commit -m 'test: record latest real playability gate diagnostic'
-            git push origin HEAD:fix/chronica-playable-runtime-v6-2026-09-08
-          fi
+          } > /tmp/chronica-diagnostics/PLAYABILITY_GATE.md
+          cp /tmp/chronica-import.log /tmp/chronica-diagnostics/import.log 2>/dev/null || true
+          cp /tmp/chronica-playability.log /tmp/chronica-diagnostics/playability.log 2>/dev/null || true
+          cp /tmp/chronica-initial-weapon.log /tmp/chronica-diagnostics/initial-weapon.log 2>/dev/null || true
+
+      - name: Upload gate diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: CHRONICA-PLAYABILITY-DIAGNOSTICS
+          path: /tmp/chronica-diagnostics/
+          if-no-files-found: error
+          retention-days: 14
