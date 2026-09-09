@@ -78,6 +78,23 @@ jobs:
             exit 1
           fi
 
+      - name: Run canonical O OLHO initial weapon gate
+        id: initial_weapon_gate
+        shell: bash
+        run: |
+          set -uo pipefail
+          set +e
+          timeout 45s godot --headless --path "$GAME_DIR" res://tests/InitialWeaponGate.tscn 2>&1 | tee /tmp/chronica-initial-weapon.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          if [[ "$code" -ne 0 ]]; then
+            exit "$code"
+          fi
+          grep -q 'CHRONICA_INITIAL_WEAPON_GATE_OK' /tmp/chronica-initial-weapon.log || exit 1
+          if grep -q 'INITIAL_WEAPON_GATE_FAIL' /tmp/chronica-initial-weapon.log; then
+            exit 1
+          fi
+
       - name: Persist gate diagnostic
         if: always()
         shell: bash
@@ -90,12 +107,23 @@ jobs:
             echo "- head: $GITHUB_SHA"
             echo "- workflow run: $GITHUB_RUN_ID"
             echo "- runtime exit code: ${{ steps.runtime_gate.outputs.exit_code }}"
+            echo "- initial weapon gate exit code: ${{ steps.initial_weapon_gate.outputs.exit_code }}"
             echo
+            echo '## Runtime playability'
             echo '```text'
             if [[ -f /tmp/chronica-playability.log ]]; then
-              tail -n 220 /tmp/chronica-playability.log
+              tail -n 160 /tmp/chronica-playability.log
             else
               echo 'runtime gate did not start; inspect earlier workflow steps'
+            fi
+            echo '```'
+            echo
+            echo '## O OLHO initial weapon gate'
+            echo '```text'
+            if [[ -f /tmp/chronica-initial-weapon.log ]]; then
+              tail -n 160 /tmp/chronica-initial-weapon.log
+            else
+              echo 'initial weapon gate did not start; inspect earlier workflow steps'
             fi
             echo '```'
           } > runtime-v6/PLAYABILITY_GATE_LAST.md
