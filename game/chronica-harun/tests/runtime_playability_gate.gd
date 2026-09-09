@@ -1,8 +1,9 @@
-extends SceneTree
+extends Node
 
 var failures: Array[String] = []
 
-func _initialize() -> void:
+func _ready() -> void:
+    process_mode = Node.PROCESS_MODE_ALWAYS
     call_deferred("_run_gate")
 
 func _fail(message: String) -> void:
@@ -11,16 +12,16 @@ func _fail(message: String) -> void:
 
 func _physics_frames(count: int) -> void:
     for _i in range(count):
-        await physics_frame
+        await get_tree().physics_frame
 
 func _run_gate() -> void:
     var host := Node3D.new()
-    host.name = "RuntimePlayabilityGate"
-    root.add_child(host)
+    host.name = "RuntimePlayabilityGateHost"
+    add_child(host)
 
     var stage := StageFloorBuilder.build({"id":"o_olho", "index":0}, 93017, 1, {})
     host.add_child(stage)
-    await process_frame
+    await get_tree().process_frame
 
     var corridors := stage.get_node_or_null("Corridors")
     if corridors == null or corridors.get_child_count() == 0:
@@ -72,28 +73,28 @@ func _run_gate() -> void:
     else:
         var pause_scene: PackedScene = load(pause_path)
         pause_controller = pause_scene.instantiate()
-        root.add_child(pause_controller)
-        await process_frame
+        add_child(pause_controller)
+        await get_tree().process_frame
 
-    if paused:
-        paused = false
+    if get_tree().paused:
+        get_tree().paused = false
     if pause_controller != null:
         var pause_event := InputEventAction.new()
         pause_event.action = &"pause"
         pause_event.pressed = true
         pause_controller._unhandled_input(pause_event)
-        if not paused:
+        if not get_tree().paused:
             _fail("ESC/pause action does not actually pause the SceneTree")
         var overlay := pause_controller.get_node_or_null("Overlay") as Control
         if overlay == null or not overlay.visible:
             _fail("pause menu did not become visible after ESC action")
         pause_controller.resume_game()
-        if paused:
+        if get_tree().paused:
             _fail("resume does not unpause the SceneTree")
 
     if failures.is_empty():
         print("CHRONICA_REAL_PLAYABILITY_GATE_OK")
-        quit(0)
+        get_tree().quit(0)
     else:
         printerr("CHRONICA_REAL_PLAYABILITY_GATE_FAILED_COUNT=%d" % failures.size())
-        quit(1)
+        get_tree().quit(1)
