@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   GAME_DIR: game/chronica-harun
@@ -62,11 +62,47 @@ jobs:
           fi
 
       - name: Run real movement collision fall and ESC gate
+        id: runtime_gate
+        shell: bash
+        run: |
+          set -uo pipefail
+          set +e
+          timeout 40s godot --headless --path "$GAME_DIR" -s res://tests/runtime_playability_gate.gd 2>&1 | tee /tmp/chronica-playability.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          if [[ "$code" -ne 0 ]]; then
+            exit "$code"
+          fi
+          grep -q 'CHRONICA_REAL_PLAYABILITY_GATE_OK' /tmp/chronica-playability.log || exit 1
+          if grep -q 'PLAYABILITY_GATE_FAIL' /tmp/chronica-playability.log; then
+            exit 1
+          fi
+
+      - name: Persist gate diagnostic
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
-          timeout 40s godot --headless --path "$GAME_DIR" -s res://tests/runtime_playability_gate.gd 2>&1 | tee /tmp/chronica-playability.log
-          grep -q 'CHRONICA_REAL_PLAYABILITY_GATE_OK' /tmp/chronica-playability.log
-          if grep -q 'PLAYABILITY_GATE_FAIL' /tmp/chronica-playability.log; then
-            exit 1
+          mkdir -p runtime-v6
+          {
+            echo '# CHRONICA real playability gate · latest diagnostic'
+            echo
+            echo "- head: $GITHUB_SHA"
+            echo "- workflow run: $GITHUB_RUN_ID"
+            echo "- runtime exit code: ${{ steps.runtime_gate.outputs.exit_code }}"
+            echo
+            echo '```text'
+            if [[ -f /tmp/chronica-playability.log ]]; then
+              tail -n 220 /tmp/chronica-playability.log
+            else
+              echo 'runtime gate did not start; inspect earlier workflow steps'
+            fi
+            echo '```'
+          } > runtime-v6/PLAYABILITY_GATE_LAST.md
+          git config user.name 'chronica-qa-bot'
+          git config user.email 'chronica-qa-bot@users.noreply.github.com'
+          git add runtime-v6/PLAYABILITY_GATE_LAST.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'test: record latest real playability gate diagnostic'
+            git push origin HEAD:fix/chronica-playable-runtime-v6-2026-09-08
           fi
