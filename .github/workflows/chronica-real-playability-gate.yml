@@ -67,7 +67,7 @@ jobs:
         run: |
           set -uo pipefail
           set +e
-          timeout 40s godot --headless --path "$GAME_DIR" -s res://tests/runtime_playability_gate.gd 2>&1 | tee /tmp/chronica-playability.log
+          timeout 40s godot --headless --path "$GAME_DIR" res://tests/RuntimePlayabilityGate.tscn 2>&1 | tee /tmp/chronica-playability.log
           code=${PIPESTATUS[0]}
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           if [[ "$code" -ne 0 ]]; then
