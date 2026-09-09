@@ -15,6 +15,7 @@ permissions:
 env:
   GAME_DIR: game/chronica-harun
   GODOT_VERSION: '4.3'
+  PYTHONUTF8: '1'
 
 jobs:
   windows-native:
