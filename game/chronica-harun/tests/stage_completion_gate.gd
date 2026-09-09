@@ -31,7 +31,7 @@ func _kill_active_enemies(stage: StageDirector, room_id: StringName) -> void:
         return
     if not room.locked:
         _fail("%s did not lock when combat activated" % room_id)
-    var enemies := stage.room_director.enemies_by_room.get(room_id, []).duplicate()
+    var enemies: Array = stage.room_director.enemies_by_room.get(room_id, []).duplicate()
     if enemies.is_empty():
         _fail("%s spawned no enemies" % room_id)
         return
