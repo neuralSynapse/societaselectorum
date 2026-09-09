@@ -3,6 +3,12 @@ class_name StageFloorBuilder
 
 const ROOM_SCENE := preload("res://scenes/rooms/RoomShell.tscn")
 const ROOM_DIRECTOR_SCRIPT := preload("res://scripts/generation/RoomDirector.gd")
+const PORTAL_WIDTH := 2.8
+const ROOM_SPAN := 10.0
+const CORRIDOR_WIDTH := 2.4
+const CORRIDOR_FLOOR_HEIGHT := 0.2
+const CORRIDOR_RAIL_HEIGHT := 1.15
+const CORRIDOR_RAIL_THICKNESS := 0.18
 
 const BASE_LAYOUT := [
     {"id":"threshold","role":"threshold","pos":Vector3(0,0,0)},
@@ -121,25 +127,85 @@ static func _open_pair(a: RoomShell, wall_a: String, b: RoomShell, wall_b: Strin
     _disable_wall(b, wall_b)
 
 static func _disable_wall(room: RoomShell, wall_name: String) -> void:
-    var wall := room.get_node_or_null(wall_name)
-    if wall:
-        wall.visible = false
-        wall.process_mode = Node.PROCESS_MODE_DISABLED
+    var wall := room.get_node_or_null(wall_name) as StaticBody3D
+    if wall == null:
+        return
+    if wall.get_meta("portal_open", false):
+        return
+
+    wall.set_meta("portal_open", true)
+    wall.collision_layer = 0
+    var original_mesh := wall.get_node_or_null("Mesh") as MeshInstance3D
+    var original_collision := wall.get_node_or_null("CollisionShape3D") as CollisionShape3D
+    var material = original_mesh.material_override if original_mesh else null
+    if original_mesh:
+        original_mesh.visible = false
+    if original_collision:
+        original_collision.disabled = true
+
+    var segment_span := (ROOM_SPAN - PORTAL_WIDTH) * 0.5
+    var segment_center := (PORTAL_WIDTH + segment_span) * 0.5
+    if wall_name in ["NorthWall", "SouthWall"]:
+        _add_static_box(wall, "PortalSideA", Vector3(segment_span, 4.2, 0.22), Vector3(-segment_center, 0, 0), material)
+        _add_static_box(wall, "PortalSideB", Vector3(segment_span, 4.2, 0.22), Vector3(segment_center, 0, 0), material)
+    else:
+        _add_static_box(wall, "PortalSideA", Vector3(0.22, 4.2, segment_span), Vector3(0, 0, -segment_center), material)
+        _add_static_box(wall, "PortalSideB", Vector3(0.22, 4.2, segment_span), Vector3(0, 0, segment_center), material)
 
 static func _add_corridor(parent: Node3D, a: Vector3, b: Vector3, theme: Dictionary) -> void:
     var mid := (a + b) * 0.5
     var delta := b - a
-    var mesh_instance := MeshInstance3D.new()
-    mesh_instance.name = "Corridor_%d" % parent.get_child_count()
-    var mesh := BoxMesh.new()
+    var length := maxf(2.0, maxf(absf(delta.x), absf(delta.z)) - 9.7)
+    var floor_size: Vector3
+    var rail_a_position: Vector3
+    var rail_b_position: Vector3
+    var rail_size: Vector3
+
     if absf(delta.x) > absf(delta.z):
-        mesh.size = Vector3(maxf(2.0, absf(delta.x) - 9.7), 0.14, 2.4)
+        floor_size = Vector3(length, CORRIDOR_FLOOR_HEIGHT, CORRIDOR_WIDTH)
+        rail_size = Vector3(length, CORRIDOR_RAIL_HEIGHT, CORRIDOR_RAIL_THICKNESS)
+        rail_a_position = mid + Vector3(0, CORRIDOR_RAIL_HEIGHT * 0.5, -(CORRIDOR_WIDTH * 0.5))
+        rail_b_position = mid + Vector3(0, CORRIDOR_RAIL_HEIGHT * 0.5, CORRIDOR_WIDTH * 0.5)
     else:
-        mesh.size = Vector3(2.4, 0.14, maxf(2.0, absf(delta.z) - 9.7))
+        floor_size = Vector3(CORRIDOR_WIDTH, CORRIDOR_FLOOR_HEIGHT, length)
+        rail_size = Vector3(CORRIDOR_RAIL_THICKNESS, CORRIDOR_RAIL_HEIGHT, length)
+        rail_a_position = mid + Vector3(-(CORRIDOR_WIDTH * 0.5), CORRIDOR_RAIL_HEIGHT * 0.5, 0)
+        rail_b_position = mid + Vector3(CORRIDOR_WIDTH * 0.5, CORRIDOR_RAIL_HEIGHT * 0.5, 0)
+
+    var floor_material := _material(String(theme.get("palette", ["#0c0b0a"])[0]), 0.95)
+    var rail_palette: Array = theme.get("palette", ["#0c0b0a", "#1c1814"])
+    var rail_color := String(rail_palette[1]) if rail_palette.size() > 1 else "#1c1814"
+    var rail_material := _material(rail_color, 0.9)
+    var corridor := _add_static_box(parent, "Corridor_%d" % parent.get_child_count(), floor_size, mid + Vector3(0, -0.02, 0), floor_material)
+    corridor.set_meta("walkable_corridor", true)
+    _add_static_box(parent, "%s_RailA" % corridor.name, rail_size, rail_a_position, rail_material)
+    _add_static_box(parent, "%s_RailB" % corridor.name, rail_size, rail_b_position, rail_material)
+
+static func _add_static_box(parent: Node, node_name: String, size: Vector3, position: Vector3, material = null) -> StaticBody3D:
+    var body := StaticBody3D.new()
+    body.name = node_name
+    body.collision_layer = 2
+    body.collision_mask = 0
+    body.position = position
+
+    var mesh_instance := MeshInstance3D.new()
+    mesh_instance.name = "Mesh"
+    var mesh := BoxMesh.new()
+    mesh.size = size
     mesh_instance.mesh = mesh
-    mesh_instance.position = mid + Vector3(0, -0.02, 0)
-    mesh_instance.material_override = _material(String(theme.get("palette", ["#0c0b0a"])[0]), 0.95)
-    parent.add_child(mesh_instance)
+    if material:
+        mesh_instance.material_override = material
+    body.add_child(mesh_instance)
+
+    var collision := CollisionShape3D.new()
+    collision.name = "CollisionShape3D"
+    var shape := BoxShape3D.new()
+    shape.size = size
+    collision.shape = shape
+    body.add_child(collision)
+
+    parent.add_child(body)
+    return body
 
 static func _theme(stage_id: StringName) -> Dictionary:
     var file := FileAccess.open("res://data/rooms/student_room_themes.json", FileAccess.READ)
