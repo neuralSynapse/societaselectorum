@@ -93,6 +93,27 @@ jobs:
             throw 'Windows playability assertion failed'
           }
 
+      - name: Run canonical O OLHO initial weapon gate on Windows
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $logPath = "$env:RUNNER_TEMP/chronica-win-initial-weapon.log"
+          $errPath = "$env:RUNNER_TEMP/chronica-win-initial-weapon.err.log"
+          $process = Start-Process -FilePath $env:GODOT_EXE -ArgumentList @('--headless','--path',"$env:GAME_DIR",'res://tests/InitialWeaponGate.tscn') -PassThru -NoNewWindow -RedirectStandardOutput $logPath -RedirectStandardError $errPath
+          if (-not $process.WaitForExit(50000)) {
+            Stop-Process -Id $process.Id -Force
+            throw 'Windows O OLHO initial weapon gate timed out'
+          }
+          Get-Content $logPath -ErrorAction SilentlyContinue
+          Get-Content $errPath -ErrorAction SilentlyContinue
+          if ($process.ExitCode -ne 0) { throw "Windows O OLHO initial weapon gate exited $($process.ExitCode)" }
+          if (-not (Select-String -Path $logPath -Pattern 'CHRONICA_INITIAL_WEAPON_GATE_OK' -Quiet)) {
+            throw 'Windows O OLHO initial weapon success marker missing'
+          }
+          if (Select-String -Path $logPath,$errPath -Pattern 'INITIAL_WEAPON_GATE_FAIL' -Quiet) {
+            throw 'Windows O OLHO initial weapon assertion failed'
+          }
+
       - name: Boot real Main scene on Windows
         shell: pwsh
         run: |
