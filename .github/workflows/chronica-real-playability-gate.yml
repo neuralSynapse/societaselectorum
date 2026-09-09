@@ -70,13 +70,9 @@ jobs:
           timeout 40s godot --headless --path "$GAME_DIR" res://tests/RuntimePlayabilityGate.tscn 2>&1 | tee /tmp/chronica-playability.log
           code=${PIPESTATUS[0]}
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
-          if [[ "$code" -ne 0 ]]; then
-            exit "$code"
-          fi
+          if [[ "$code" -ne 0 ]]; then exit "$code"; fi
           grep -q 'CHRONICA_REAL_PLAYABILITY_GATE_OK' /tmp/chronica-playability.log || exit 1
-          if grep -q 'PLAYABILITY_GATE_FAIL' /tmp/chronica-playability.log; then
-            exit 1
-          fi
+          if grep -q 'PLAYABILITY_GATE_FAIL' /tmp/chronica-playability.log; then exit 1; fi
 
       - name: Run canonical O OLHO initial weapon gate
         id: initial_weapon_gate
@@ -87,13 +83,22 @@ jobs:
           timeout 45s godot --headless --path "$GAME_DIR" res://tests/InitialWeaponGate.tscn 2>&1 | tee /tmp/chronica-initial-weapon.log
           code=${PIPESTATUS[0]}
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
-          if [[ "$code" -ne 0 ]]; then
-            exit "$code"
-          fi
+          if [[ "$code" -ne 0 ]]; then exit "$code"; fi
           grep -q 'CHRONICA_INITIAL_WEAPON_GATE_OK' /tmp/chronica-initial-weapon.log || exit 1
-          if grep -q 'INITIAL_WEAPON_GATE_FAIL' /tmp/chronica-initial-weapon.log; then
-            exit 1
-          fi
+          if grep -q 'INITIAL_WEAPON_GATE_FAIL' /tmp/chronica-initial-weapon.log; then exit 1; fi
+
+      - name: Run full-scene death recovery gate
+        id: death_recovery_gate
+        shell: bash
+        run: |
+          set -uo pipefail
+          set +e
+          timeout 25s godot --headless --path "$GAME_DIR" res://tests/DeathRecoveryGate.tscn 2>&1 | tee /tmp/chronica-death-recovery.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          if [[ "$code" -ne 0 ]]; then exit "$code"; fi
+          grep -q 'CHRONICA_DEATH_RECOVERY_GATE_OK' /tmp/chronica-death-recovery.log || exit 1
+          if grep -q 'DEATH_RECOVERY_GATE_FAIL' /tmp/chronica-death-recovery.log; then exit 1; fi
 
       - name: Prepare gate diagnostic artifact
         if: always()
@@ -108,6 +113,7 @@ jobs:
             echo "- workflow run: $GITHUB_RUN_ID"
             echo "- runtime exit code: ${{ steps.runtime_gate.outputs.exit_code }}"
             echo "- initial weapon gate exit code: ${{ steps.initial_weapon_gate.outputs.exit_code }}"
+            echo "- death recovery gate exit code: ${{ steps.death_recovery_gate.outputs.exit_code }}"
             echo
             echo '## Runtime playability'
             echo '```text'
@@ -118,10 +124,16 @@ jobs:
             echo '```text'
             if [[ -f /tmp/chronica-initial-weapon.log ]]; then tail -n 200 /tmp/chronica-initial-weapon.log; else echo 'initial weapon gate did not start'; fi
             echo '```'
+            echo
+            echo '## Death recovery gate'
+            echo '```text'
+            if [[ -f /tmp/chronica-death-recovery.log ]]; then tail -n 120 /tmp/chronica-death-recovery.log; else echo 'death recovery gate did not start'; fi
+            echo '```'
           } > /tmp/chronica-diagnostics/PLAYABILITY_GATE.md
           cp /tmp/chronica-import.log /tmp/chronica-diagnostics/import.log 2>/dev/null || true
           cp /tmp/chronica-playability.log /tmp/chronica-diagnostics/playability.log 2>/dev/null || true
           cp /tmp/chronica-initial-weapon.log /tmp/chronica-diagnostics/initial-weapon.log 2>/dev/null || true
+          cp /tmp/chronica-death-recovery.log /tmp/chronica-diagnostics/death-recovery.log 2>/dev/null || true
 
       - name: Upload gate diagnostics
         if: always()
