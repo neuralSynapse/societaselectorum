@@ -142,6 +142,63 @@ func _run_gate() -> void:
     if interact_events != 1:
         _fail("interact/E input does not reach the player interaction contract")
 
+    # Canonical O OLHO opening: perception first, physical weapon before mandatory combat.
+    var weapon_scene_path := "res://scenes/pickups/InitialWeaponPickup.tscn"
+    if not ResourceLoader.exists(weapon_scene_path):
+        _fail("O OLHO has no dedicated physical weapon pickup scene")
+    if not player.has_method("set_primary_attack_enabled") or not player.has_method("has_initial_weapon"):
+        _fail("player has no explicit initial-weapon/attack gating contract")
+
+    GameState.start_new_campaign(93018)
+    var canonical_world := Node3D.new()
+    canonical_world.name = "CanonicalOlhoWorld"
+    add_child(canonical_world)
+    var canonical_ui := CanvasLayer.new()
+    canonical_ui.name = "CanonicalOlhoUI"
+    add_child(canonical_ui)
+    var canonical_stage := StageDirector.new()
+    canonical_stage.name = "CanonicalOlhoStageDirector"
+    add_child(canonical_stage)
+    canonical_stage.configure(canonical_world, canonical_ui)
+    await get_tree().process_frame
+
+    var canonical_player := canonical_stage.player
+    var canonical_threshold := canonical_stage.floor_instance.get_node_or_null("Rooms/threshold") as RoomShell
+    if canonical_player == null or canonical_threshold == null:
+        _fail("O OLHO canonical runtime did not create player and threshold")
+    elif not canonical_stage.has_method("get_initial_weapon_pickup"):
+        _fail("O OLHO stage has no initial weapon acquisition flow")
+    else:
+        var weapon = canonical_stage.call("get_initial_weapon_pickup")
+        if weapon == null:
+            _fail("O OLHO initial weapon pickup was not spawned")
+        else:
+            if weapon.visible:
+                _fail("physical weapon is visible before the Revelatory Eye reveals it")
+            if not canonical_threshold.locked:
+                _fail("first mandatory combat route is open before physical weapon acquisition")
+            if canonical_player.has_method("has_initial_weapon") and bool(canonical_player.call("has_initial_weapon")):
+                _fail("Harun starts O OLHO already armed instead of beginning with perception")
+            if canonical_player.has_method("is_primary_attack_enabled") and bool(canonical_player.call("is_primary_attack_enabled")):
+                _fail("primary attack is enabled before the physical weapon is acquired")
+
+            canonical_stage.call("_apply_power", "revelatory_eye_base")
+            await get_tree().process_frame
+            if not weapon.visible:
+                _fail("Revelatory Eye does not reveal the physical weapon")
+            if not weapon.has_method("interact") or not bool(weapon.call("interact", canonical_player)):
+                _fail("revealed physical weapon cannot be acquired with interaction")
+            else:
+                await get_tree().process_frame
+                if canonical_player.has_method("has_initial_weapon") and not bool(canonical_player.call("has_initial_weapon")):
+                    _fail("weapon interaction does not equip the player")
+                if canonical_player.has_method("is_primary_attack_enabled") and not bool(canonical_player.call("is_primary_attack_enabled")):
+                    _fail("physical weapon acquisition does not enable primary attack")
+                if canonical_threshold.locked:
+                    _fail("physical weapon acquisition does not unlock the first mandatory combat route")
+                if not bool(GameState.meta_progression.get("initial_weapon_acquired", false)):
+                    _fail("physical weapon acquisition is not persisted in campaign progression")
+
     var pause_path := "res://scenes/ui/PauseMenu.tscn"
     var pause_controller: Node = null
     if not ResourceLoader.exists(pause_path):
