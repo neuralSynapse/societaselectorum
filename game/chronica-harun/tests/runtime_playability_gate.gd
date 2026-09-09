@@ -13,12 +13,6 @@ func _physics_frames(count: int) -> void:
     for _i in range(count):
         await physics_frame
 
-func _send_action(action: StringName, pressed: bool) -> void:
-    var event := InputEventAction.new()
-    event.action = action
-    event.pressed = pressed
-    Input.parse_input_event(event)
-
 func _run_gate() -> void:
     var host := Node3D.new()
     host.name = "RuntimePlayabilityGate"
@@ -48,6 +42,8 @@ func _run_gate() -> void:
             _fail("threshold east wall missing")
         elif east_wall.collision_layer != 0:
             _fail("opened room wall still collides and blocks corridor passage")
+        elif east_wall.get_node_or_null("PortalSideA") == null or east_wall.get_node_or_null("PortalSideB") == null:
+            _fail("opened room wall has no physical side segments around the portal")
 
     var player_scene: PackedScene = load("res://scenes/player/Player.tscn")
     var player := player_scene.instantiate() as PlayerController
@@ -82,16 +78,18 @@ func _run_gate() -> void:
     if paused:
         paused = false
     if pause_controller != null:
-        _send_action(&"pause", true)
-        await process_frame
-        _send_action(&"pause", false)
-        await process_frame
+        var pause_event := InputEventAction.new()
+        pause_event.action = &"pause"
+        pause_event.pressed = true
+        pause_controller._unhandled_input(pause_event)
         if not paused:
-            _fail("ESC/pause does not actually pause the SceneTree")
+            _fail("ESC/pause action does not actually pause the SceneTree")
         var overlay := pause_controller.get_node_or_null("Overlay") as Control
         if overlay == null or not overlay.visible:
-            _fail("pause menu did not become visible after ESC")
-        paused = false
+            _fail("pause menu did not become visible after ESC action")
+        pause_controller.resume_game()
+        if paused:
+            _fail("resume does not unpause the SceneTree")
 
     if failures.is_empty():
         print("CHRONICA_REAL_PLAYABILITY_GATE_OK")
