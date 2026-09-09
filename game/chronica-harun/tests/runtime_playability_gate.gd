@@ -93,15 +93,12 @@ func _run_gate() -> void:
     if player.global_position.z < 1.0:
         _fail("move_back/S does not move the real player backward")
 
-    # Verify the first-person camera actually responds to mouse motion.
+    # Verify first-person look math without depending on a headless OS cursor capture mode.
     await _settle_player(player, Vector3(0.0, 1.2, 0.0))
-    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
     var yaw_before := player.rotation.y
-    var mouse_event := InputEventMouseMotion.new()
-    mouse_event.relative = Vector2(24.0, 0.0)
-    player._unhandled_input(mouse_event)
+    player._apply_mouse_look(Vector2(24.0, 0.0))
     if is_equal_approx(player.rotation.y, yaw_before):
-        _fail("mouse motion does not rotate the first-person player camera rig")
+        _fail("mouse look does not rotate the first-person player camera rig")
     player.rotation.y = 0.0
 
     # Verify the room-to-room route is physically traversable, not merely drawn.
