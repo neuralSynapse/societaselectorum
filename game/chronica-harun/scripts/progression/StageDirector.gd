@@ -520,6 +520,7 @@ func _on_player_died(source_id: StringName) -> void:
     GameState.record_death(String(source_id))
     SaveService.save_campaign(GameState.to_save_data())
     hud.show_message("A RUN TERMINOU · RETORNO À ETAPA ATUAL", 4.0)
+    get_tree().call_deferred("reload_current_scene")
 
 func _refresh_transformations() -> void:
     if player == null:
