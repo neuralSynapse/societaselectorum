@@ -30,6 +30,14 @@ jobs:
       - name: Install Python validation dependencies
         run: python -m pip install --disable-pip-version-check -q pytest trimesh numpy
 
+      - name: Generate required enemy and boss GLBs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$GAME_DIR/tools/generate_models.py"
+          test "$(find "$GAME_DIR/art/generated/enemies" -name '*.glb' | wc -l)" -eq 82
+          test "$(find "$GAME_DIR/art/generated/bosses" -name '*.glb' | wc -l)" -eq 16
+
       - name: Run Python regression suite
         run: pytest -q "$GAME_DIR/tests"
 
