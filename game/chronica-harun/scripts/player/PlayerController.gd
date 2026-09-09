@@ -52,11 +52,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-        rotation.y -= event.relative.x * mouse_sensitivity
-        var vertical_sign := -1.0 if invert_y else 1.0
-        pitch -= event.relative.y * mouse_sensitivity * vertical_sign
-        pitch = clamp(pitch, deg_to_rad(-84.0), deg_to_rad(84.0))
-        head.rotation.x = pitch
+        _apply_mouse_look(event.relative)
     if event.is_action_pressed("interact"):
         var target := get_interaction_target()
         interact_requested.emit(target)
@@ -80,6 +76,13 @@ func _unhandled_input(event: InputEvent) -> void:
         kinesis_slot_requested.emit(1)
     elif event.is_action_pressed("kinesis_3"):
         kinesis_slot_requested.emit(2)
+
+func _apply_mouse_look(relative: Vector2) -> void:
+    rotation.y -= relative.x * mouse_sensitivity
+    var vertical_sign := -1.0 if invert_y else 1.0
+    pitch -= relative.y * mouse_sensitivity * vertical_sign
+    pitch = clamp(pitch, deg_to_rad(-84.0), deg_to_rad(84.0))
+    head.rotation.x = pitch
 
 func _physics_process(delta: float) -> void:
     if global_position.y < fall_recovery_y:
