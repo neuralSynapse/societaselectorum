@@ -15,6 +15,7 @@ signal camera_mode_requested
 signal kinesis_slot_requested(slot: int)
 signal dodge_started(perfect_window: float)
 signal dodge_completed(perfect: bool)
+signal mouse_capture_changed(captured: bool)
 
 @export var walk_speed := 4.8
 @export var sprint_speed := 7.2
@@ -56,7 +57,14 @@ var dodge_was_perfect := false
 var safe_position := Vector3.ZERO
 
 func _ready() -> void:
-    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    # Browsers reject pointer lock unless it originates from a real user gesture.
+    # Native desktop keeps the immediate capture behaviour.
+    if OS.has_feature("web"):
+        Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+        mouse_capture_changed.emit(false)
+    else:
+        Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+        mouse_capture_changed.emit(true)
     health.died.connect(func(source_id: StringName): died.emit(source_id))
     health.damaged.connect(_on_health_damaged)
     focus = max_focus
@@ -64,6 +72,8 @@ func _ready() -> void:
     safe_position = global_position
 
 func _unhandled_input(event: InputEvent) -> void:
+    if _request_mouse_capture_from_user_gesture(event):
+        return
     if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
         rotation.y -= event.relative.x * mouse_sensitivity
         var vertical_sign := -1.0 if invert_y else 1.0
@@ -97,6 +107,18 @@ func _unhandled_input(event: InputEvent) -> void:
         kinesis_slot_requested.emit(1)
     elif event.is_action_pressed("kinesis_3"):
         kinesis_slot_requested.emit(2)
+
+func _request_mouse_capture_from_user_gesture(event: InputEvent) -> bool:
+    if not OS.has_feature("web") or Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+        return false
+    if event is InputEventMouseButton:
+        var mouse_event := event as InputEventMouseButton
+        if mouse_event.pressed and mouse_event.button_index == MOUSE_BUTTON_LEFT:
+            Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+            mouse_capture_changed.emit(true)
+            get_viewport().set_input_as_handled()
+            return true
+    return false
 
 func _physics_process(delta: float) -> void:
     primary_cooldown = maxf(0.0, primary_cooldown - delta)
