@@ -43,3 +43,37 @@ def test_web_export_generates_production_models_before_export():
     generate_index = workflow.index('python "$GAME_DIR/tools/generate_models.py"')
     export_index = workflow.index('godot --headless --path "$GAME_DIR" --export-release "Web"')
     assert generate_index < export_index
+
+
+def test_definitive_world_uses_cinematic_environment_not_empty_worldenvironment():
+    main_scene = read("scenes/boot/Main.tscn")
+    assert '[sub_resource type="Environment"' in main_scene
+    assert "environment = SubResource(" in main_scene
+    assert "background_color" in main_scene
+    assert "ambient_light_color" in main_scene
+    assert "fog_enabled = true" in main_scene
+    assert "tonemap_mode" in main_scene
+    assert 'name="MoonRim"' in main_scene
+
+
+def test_rooms_have_ruin_depth_not_only_clean_procedural_arches():
+    room = read("scripts/generation/RoomShell.gd")
+    for marker in [
+        "RuinDebris",
+        "WallReliefs",
+        "RitualCandles",
+        "BlindStatues",
+        "func _add_ruin_debris(",
+        "func _add_wall_reliefs(",
+        "func _add_ritual_candles(",
+        "func _add_blind_statues(",
+    ]:
+        assert marker in room
+
+
+def test_first_person_power_palette_is_gold_and_deep_violet_not_neon_red_magenta():
+    player_scene = read("scenes/player/Player.tscn")
+    assert "emission_energy_multiplier = 2.4" in player_scene
+    assert "emission_energy_multiplier = 2.2" in player_scene
+    assert "light_energy = 0.9" in player_scene
+    assert "light_energy = 0.8" in player_scene
