@@ -14,7 +14,12 @@ var canonical_boot_gate: CanvasLayer
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
-    pending_snapshot = SaveService.load_campaign()
+    var snapshot := SaveService.load_campaign()
+    if snapshot.is_empty():
+        GameState.start_new_campaign()
+    else:
+        GameState.load_save_data(snapshot)
+    pending_snapshot = snapshot
     world_root.visible = false
     ui_root.visible = false
     Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
