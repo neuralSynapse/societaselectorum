@@ -23,3 +23,8 @@ func load_campaign() -> Dictionary:
     var data: Dictionary = parsed
     if int(data.get("campaign_version", -1)) != CAMPAIGN_VERSION: return {}
     return data
+
+func delete_campaign() -> bool:
+    if not FileAccess.file_exists(SAVE_PATH):
+        return true
+    return DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH)) == OK
