@@ -68,7 +68,7 @@ def test_acquired_power_becomes_runtime_active_power():
     assert 'CombatLoadoutDirector="*res://autoload/CombatLoadoutDirector.gd"' in project
     assert 'build.get("active_power"' in router
     assert "node is StageDirector" in router
-    assert "current_power_id" in router
+    assert 'stage_data["power_id"]' in router
 
 
 def test_first_person_viewmodel_matches_power_fantasy():
