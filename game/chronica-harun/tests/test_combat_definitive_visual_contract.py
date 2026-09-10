@@ -10,20 +10,13 @@ def read(relative: str) -> str:
 def test_hud_exposes_reference_layout_surfaces():
     hud = read("scenes/ui/HUD.tscn")
     required_nodes = [
-        'name="PlayerPanel"',
-        'name="PlayerName"',
-        'name="PlayerLevel"',
-        'name="LifeValue"',
-        'name="FocusValue"',
-        'name="EnemyMarkers"',
-        'name="RewardFeed"',
-        'name="PowerSlots"',
-        'name="PowerAcquiredPanel"',
+        'name="PlayerPanel"', 'name="PlayerName"', 'name="PlayerLevel"',
+        'name="LifeValue"', 'name="FocusValue"', 'name="EnemyMarkers"',
+        'name="RewardFeed"', 'name="PowerSlots"', 'name="PowerAcquiredPanel"',
         'name="PowerAcquiredName"',
     ]
     for node in required_nodes:
         assert node in hud, f"HUD definitive surface missing: {node}"
-
     message_block = hud.split('[node name="Message"', 1)[1].split("[node ", 1)[0]
     assert "offset_top = 820.0" not in message_block
     assert "anchor_top" in message_block
@@ -32,12 +25,8 @@ def test_hud_exposes_reference_layout_surfaces():
 def test_hud_controller_tracks_enemy_health_and_acquisition_feedback():
     controller = read("scripts/ui/HUDController.gd")
     for method in [
-        "func track_enemy(",
-        "func untrack_enemy(",
-        "func show_power_acquired(",
-        "func push_reward(",
-        "func set_power_slots(",
-        "func _scan_combatants(",
+        "func track_enemy(", "func untrack_enemy(", "func show_power_acquired(",
+        "func push_reward(", "func set_power_slots(", "func _scan_combatants(",
         "func _on_build_changed_definitive(",
     ]:
         assert method in controller, f"HUD runtime method missing: {method}"
@@ -85,15 +74,21 @@ def test_acquired_power_becomes_runtime_active_power():
 def test_first_person_viewmodel_matches_power_fantasy():
     player_scene = read("scenes/player/Player.tscn")
     for token in [
-        'name="LeftGauntlet"',
-        'name="LeftSigilRingOuter"',
-        'name="LeftSigilRingInner"',
-        'name="RightGauntlet"',
-        'name="RightVoidOrb"',
-        'name="LeftPowerLight"',
+        'name="LeftGauntlet"', 'name="LeftSigilRingOuter"', 'name="LeftSigilRingInner"',
+        'name="RightGauntlet"', 'name="RightVoidOrb"', 'name="LeftPowerLight"',
         'name="RightPowerLight"',
     ]:
         assert token in player_scene, f"first-person reference element missing: {token}"
+
+
+def test_combat_room_uses_gothic_occult_presentation_without_changing_footprint():
+    room = read("scenes/rooms/RoomShell.tscn")
+    script = read("scripts/generation/RoomShell.gd")
+    for token in ["DarkStoneMaterial", "RitualMetalMaterial", "FloorSigil", "WarmKeyLight"]:
+        assert token in room, f"combat room presentation missing: {token}"
+    assert "func _build_gothic_dressing(" in script
+    assert "GothicDressing" in script
+    assert 'size = Vector3(10, 0.2, 10)' in room, "room footprint must remain generation-compatible"
 
 
 def test_vfx_and_audio_have_dodge_power_feedback():
