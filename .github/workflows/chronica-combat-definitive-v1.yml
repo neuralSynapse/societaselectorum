@@ -150,7 +150,7 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: github-pages
+      name: chronica-preview
       url: ${{ steps.deployment.outputs.page_url }}chronica-harun-definitive/
     steps:
       - name: Configure GitHub Pages
