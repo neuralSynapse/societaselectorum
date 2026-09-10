@@ -11,6 +11,12 @@ func _prepare_capture() -> void:
     await get_tree().process_frame
     await get_tree().process_frame
 
+    # The public game now waits at the canonical SOCIETAS campaign gate.
+    # QA explicitly starts a fresh campaign so capture still exercises the live runtime.
+    main.call("_start_new_campaign_from_gate")
+    await get_tree().process_frame
+    await get_tree().process_frame
+
     var stage := main.get_node_or_null("StageDirector") as StageDirector
     if stage == null or stage.player == null or stage.hud == null or stage.floor_instance == null:
         push_error("Definitive visual probe could not resolve live StageDirector runtime")
