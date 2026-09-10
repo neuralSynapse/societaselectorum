@@ -133,6 +133,19 @@ def test_combat_room_uses_gothic_occult_presentation_without_changing_footprint(
     assert 'size = Vector3(10, 0.2, 10)' in room, "room footprint must remain generation-compatible"
 
 
+def test_runtime_visual_acceptance_probe_exports_actual_capture():
+    probe_scene = read("runtime_qa/DefinitiveVisualProbe.tscn")
+    probe = read("runtime_qa/DefinitiveVisualProbe.gd")
+    workflow = read("../../.github/workflows/chronica-combat-definitive-v1.yml")
+    assert "scenes/boot/Main.tscn" in probe_scene
+    assert "EnemyFactory.spawn" in probe
+    assert "BossBase.tscn" in probe
+    assert "get_viewport().get_texture().get_image()" in probe
+    assert "definitive_visual.png" in probe
+    assert "Definitive visual capture" in workflow
+    assert "actions/upload-artifact@v4" in workflow
+
+
 def test_vfx_and_audio_have_dodge_power_feedback():
     vfx = read("autoload/VFXDirector.gd")
     audio = read("autoload/AudioDirector.gd")
