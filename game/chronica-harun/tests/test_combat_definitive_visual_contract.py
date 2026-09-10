@@ -38,10 +38,14 @@ def test_hud_controller_tracks_enemy_health_and_acquisition_feedback():
         "func show_power_acquired(",
         "func push_reward(",
         "func set_power_slots(",
+        "func _scan_combatants(",
+        "func _on_build_changed_definitive(",
     ]:
         assert method in controller, f"HUD runtime method missing: {method}"
     assert "unproject_position" in controller
     assert "get_health_ratio" in controller
+    assert "node_added.connect" in controller
+    assert "build_changed.connect" in controller
 
 
 def test_enemy_and_boss_publish_level_and_health_ratio():
@@ -56,20 +60,41 @@ def test_enemy_and_boss_publish_level_and_health_ratio():
 def test_harun_has_real_dodge_with_invulnerability_and_mutation_hook():
     player = read("scripts/player/PlayerController.gd")
     project = read("project.godot")
-    assert '"dodge"' in project
+    assert 'dodge={' in project
     assert "dodge_invulnerability" in player
     assert "func _start_dodge(" in player
     assert "PowerMutationRuntime.on_dodge" in player
     assert "dodge_started" in player
 
 
-def test_stage_director_wires_enemy_markers_and_power_acquisition():
-    stage = read("scripts/progression/StageDirector.gd")
-    assert "hud.track_enemy(enemy" in stage
-    assert "hud.untrack_enemy(enemy" in stage
-    assert "hud.track_enemy(boss" in stage
-    assert "hud.show_power_acquired" in stage
-    assert "hud.set_power_slots" in stage
+def test_powers_can_be_acquired_into_the_run_build():
+    service = read("autoload/RogueliteContentService.gd")
+    assert '"powers":[]' in service
+    assert '"powers": return add_power(id)' in service
+    assert "func add_power(" in service
+
+
+def test_first_person_viewmodel_matches_power_fantasy():
+    player_scene = read("scenes/player/Player.tscn")
+    for token in [
+        'name="LeftGauntlet"',
+        'name="LeftSigilRingOuter"',
+        'name="LeftSigilRingInner"',
+        'name="RightGauntlet"',
+        'name="RightVoidOrb"',
+        'name="LeftPowerLight"',
+        'name="RightPowerLight"',
+    ]:
+        assert token in player_scene, f"first-person reference element missing: {token}"
+
+
+def test_vfx_and_audio_have_dodge_power_feedback():
+    vfx = read("autoload/VFXDirector.gd")
+    audio = read("autoload/AudioDirector.gd")
+    for event in ['"player_dodge"', '"perfect_dodge"', '"power_reveal"']:
+        assert event in vfx, f"VFX event missing: {event}"
+    assert '"perfect_dodge"' in audio
+    assert '"power_reveal"' in audio
 
 
 def test_definitive_hud_uses_ritual_red_violet_gold_language():
