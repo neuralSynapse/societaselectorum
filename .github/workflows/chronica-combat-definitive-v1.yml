@@ -64,6 +64,25 @@ jobs:
           if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
 
+      - name: Definitive visual capture
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb
+          rm -rf /tmp/chronica-definitive
+          mkdir -p /tmp/chronica-definitive
+          xvfb-run -a -s "-screen 0 1920x1080x24" godot --path "$GAME_DIR" res://runtime_qa/DefinitiveVisualProbe.tscn 2>&1 | tee /tmp/visual.log
+          grep -q 'DEFINITIVE_VISUAL_CAPTURE=PASS' /tmp/visual.log
+          test -s /tmp/chronica-definitive/definitive_visual.png
+
+      - name: Upload definitive visual
+        uses: actions/upload-artifact@v4
+        with:
+          name: chronica-combat-definitive-visual
+          path: /tmp/chronica-definitive/definitive_visual.png
+          if-no-files-found: error
+
       - name: Definitive contract gate
         shell: bash
         run: |
@@ -71,6 +90,8 @@ jobs:
           grep -q 'passed' /tmp/pytest.log
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'DEFINITIVE_VISUAL_CAPTURE=PASS' /tmp/visual.log
+          test -s /tmp/chronica-definitive/definitive_visual.png
           grep -q 'DefinitivePowerRuntime' "$GAME_DIR/project.godot"
           grep -q 'foundation_hammer_base' "$GAME_DIR/autoload/DefinitivePowerRuntime.gd"
           grep -q 'memoria_ignis_base' "$GAME_DIR/autoload/DefinitivePowerRuntime.gd"
