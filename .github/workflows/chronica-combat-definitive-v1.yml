@@ -1,0 +1,76 @@
+name: CHRONICA Combat Definitive v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/chronica-combat-definitive-v1]
+    paths:
+      - 'game/chronica-harun/**'
+      - '.github/workflows/chronica-combat-definitive-v1.yml'
+
+permissions:
+  contents: read
+
+env:
+  GAME_DIR: game/chronica-harun
+
+jobs:
+  definitive-green:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python contracts and validators
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check -q pytest
+          pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
+          python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
+          python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
+
+      - name: Install Godot 4.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          godot --version | tee /tmp/godot-version.log
+
+      - name: Strict Godot import
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" --editor --quit 2>&1 | tee /tmp/import.log
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/import.log
+
+      - name: Main boot smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 14s godot --headless --path "$GAME_DIR" res://scenes/boot/Main.tscn 2>&1 | tee /tmp/boot.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
+          ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
+
+      - name: Definitive contract gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'passed' /tmp/pytest.log
+          grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
+          grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'DefinitivePowerRuntime' "$GAME_DIR/project.godot"
+          grep -q 'foundation_hammer_base' "$GAME_DIR/autoload/DefinitivePowerRuntime.gd"
+          grep -q 'memoria_ignis_base' "$GAME_DIR/autoload/DefinitivePowerRuntime.gd"
+          echo CHRONICA_COMBAT_DEFINITIVE_V1_GREEN=PASS
