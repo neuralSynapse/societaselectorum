@@ -41,12 +41,19 @@ var acquired_hide_timer := 0.0
 var player_ref: PlayerController
 var tracked_enemies: Dictionary = {}
 var slot_payloads: Array = []
+var current_kinesis_loadout: Array = []
+var known_mutations: Array[String] = []
+var known_powers: Array[String] = []
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
     message.visible = false
     message_backdrop.visible = false
     acquired_panel.visible = false
+    get_tree().node_added.connect(_on_tree_node_added)
+    RogueliteContentService.build_changed.connect(_on_build_changed_definitive)
+    _capture_known_build()
+    call_deferred("_scan_combatants")
 
 func _process(delta: float) -> void:
     if hide_timer > 0.0:
@@ -60,6 +67,7 @@ func _process(delta: float) -> void:
         if acquired_hide_timer <= 0.0:
             acquired_panel.visible = false
     _update_enemy_markers()
+    _update_boss_panel()
     _update_power_cooldowns()
 
 func bind_player(player: PlayerController) -> void:
@@ -82,6 +90,7 @@ func bind_player(player: PlayerController) -> void:
     if not player.essence_changed.is_connected(_on_essence_changed):
         player.essence_changed.connect(_on_essence_changed)
     refresh_build()
+    _refresh_power_slots_from_state()
 
 func set_objective(text: String) -> void:
     objective.text = text
@@ -102,7 +111,7 @@ func show_boss(display_name: String, hp_ratio: float, phase: int, level: int = 1
     boss_level.text = "N%d" % maxi(1, level)
     boss_health.value = clampf(hp_ratio, 0.0, 1.0) * 100.0
     boss_phase.text = "FASE %s" % _roman(maxi(1, phase))
-    boss_power.text = power_name.to_upper()
+    boss_power.text = power_name.replace("_", " ").to_upper()
 
 func hide_boss() -> void:
     boss_panel.visible = false
@@ -116,22 +125,30 @@ func show_message(text: String, duration := 2.5) -> void:
 func refresh_build() -> void:
     var build := RogueliteContentService.ensure_build()
     var labels: Array[String] = []
-    for key in ["arcana", "pharmakon", "sigillum", "instrumentum", "daimon", "route"]:
+    for key in ["arcana", "pharmakon", "sigillum", "daimon", "route"]:
         var value := String(build.get(key, ""))
         if not value.is_empty():
             labels.append(value.replace("_", " ").to_upper())
+    var instrument: Dictionary = build.get("instrumentum", {})
+    if not instrument.is_empty():
+        labels.append(String(instrument.get("id", "INSTRUMENTUM")).replace("_", " ").to_upper())
+    var powers: Array = build.get("powers", [])
+    if not powers.is_empty():
+        labels.append("PODERES %d" % powers.size())
     var mutations: Array = build.get("mutations", [])
     if not mutations.is_empty():
         labels.append("MUTAÇÕES %d" % mutations.size())
     build_label.text = " · ".join(labels) if not labels.is_empty() else "VONTADE SEM FORMA"
 
 func set_kinesis_loadout(loadout: Array) -> void:
+    current_kinesis_loadout = loadout.duplicate(true)
     var labels: Array[String] = []
     for i in range(loadout.size()):
         var value := String(loadout[i])
         if not value.is_empty():
             labels.append("%d %s" % [i + 1, value.replace("_", " ").to_upper()])
     kinesis_state.text = "KINESIS  " + "  ·  ".join(labels)
+    _refresh_power_slots_from_state()
 
 func set_camera_mode(mode: StringName) -> void:
     camera_mode.text = ("1ª PESSOA" if String(mode) == "first_person" else "3ª PESSOA") + " · V"
@@ -173,8 +190,10 @@ func push_reward(text: String) -> void:
     label.add_theme_constant_override("shadow_offset_y", 1)
     label.add_theme_font_size_override("font_size", 14)
     reward_feed.add_child(label)
-    while reward_feed.get_child_count() > 5:
-        reward_feed.get_child(0).queue_free()
+    if reward_feed.get_child_count() > 5:
+        var oldest := reward_feed.get_child(0)
+        reward_feed.remove_child(oldest)
+        oldest.queue_free()
     var tween := create_tween()
     tween.tween_interval(2.8)
     tween.tween_property(label, "modulate:a", 0.0, 0.5)
@@ -188,6 +207,7 @@ func track_enemy(enemy: Node3D, boss_view := false) -> void:
         return
     if boss_view:
         tracked_enemies[id] = {"enemy": enemy, "marker": null, "boss": true}
+        _bind_boss(enemy as DataBossController)
         return
     var marker := _create_enemy_marker(enemy)
     enemy_markers.add_child(marker)
@@ -196,7 +216,9 @@ func track_enemy(enemy: Node3D, boss_view := false) -> void:
 func untrack_enemy(enemy: Node) -> void:
     if enemy == null:
         return
-    var id := enemy.get_instance_id()
+    _untrack_by_id(enemy.get_instance_id())
+
+func _untrack_by_id(id: int) -> void:
     if not tracked_enemies.has(id):
         return
     var entry: Dictionary = tracked_enemies[id]
@@ -204,6 +226,132 @@ func untrack_enemy(enemy: Node) -> void:
     if marker != null and is_instance_valid(marker):
         marker.queue_free()
     tracked_enemies.erase(id)
+
+func _scan_combatants() -> void:
+    for node in get_tree().get_nodes_in_group("enemies"):
+        if node is Node3D:
+            track_enemy(node as Node3D)
+    for node in get_tree().get_nodes_in_group("bosses"):
+        if node is Node3D:
+            track_enemy(node as Node3D, true)
+
+func _on_tree_node_added(node: Node) -> void:
+    if node is EnemyBrain:
+        call_deferred("track_enemy", node as Node3D, false)
+    elif node is DataBossController:
+        call_deferred("track_enemy", node as Node3D, true)
+
+func _bind_boss(next_boss: DataBossController) -> void:
+    if next_boss == null or not is_instance_valid(next_boss):
+        return
+    if not next_boss.combat_status_changed.is_connected(_on_boss_status_changed):
+        next_boss.combat_status_changed.connect(_on_boss_status_changed)
+    if not next_boss.phase_changed.is_connected(_on_boss_phase_changed):
+        next_boss.phase_changed.connect(_on_boss_phase_changed.bind(next_boss))
+    if not next_boss.boss_defeated.is_connected(_on_tracked_boss_defeated):
+        next_boss.boss_defeated.connect(_on_tracked_boss_defeated.bind(next_boss))
+    show_boss(next_boss.display_name, next_boss.get_health_ratio(), next_boss.current_phase + 1, next_boss.combat_level, next_boss.get_attack_name())
+
+func _on_boss_status_changed(next_boss: DataBossController, ratio: float) -> void:
+    if next_boss == null or not is_instance_valid(next_boss):
+        return
+    show_boss(next_boss.display_name, ratio, next_boss.current_phase + 1, next_boss.combat_level, next_boss.get_attack_name())
+
+func _on_boss_phase_changed(index: int, next_boss: DataBossController) -> void:
+    if next_boss == null or not is_instance_valid(next_boss):
+        return
+    show_boss(next_boss.display_name, next_boss.get_health_ratio(), index, next_boss.combat_level, next_boss.get_attack_name())
+    show_message("%s · FASE %s" % [next_boss.display_name.to_upper(), _roman(index)], 1.8)
+
+func _on_tracked_boss_defeated(_boss_id: StringName, _reward_id: StringName, next_boss: DataBossController) -> void:
+    if next_boss != null:
+        _untrack_by_id(next_boss.get_instance_id())
+    hide_boss()
+
+func _capture_known_build() -> void:
+    var build := RogueliteContentService.ensure_build()
+    known_mutations.clear()
+    known_powers.clear()
+    for id in build.get("mutations", []):
+        known_mutations.append(String(id))
+    for id in build.get("powers", []):
+        known_powers.append(String(id))
+
+func _on_build_changed_definitive(build: Dictionary) -> void:
+    var next_powers: Array[String] = []
+    for id in build.get("powers", []):
+        var power_id := String(id)
+        next_powers.append(power_id)
+        if not known_powers.has(power_id):
+            _announce_power(power_id)
+    var next_mutations: Array[String] = []
+    for id in build.get("mutations", []):
+        var mutation_id := String(id)
+        next_mutations.append(mutation_id)
+        if not known_mutations.has(mutation_id):
+            _announce_mutation(mutation_id)
+    known_powers = next_powers
+    known_mutations = next_mutations
+    refresh_build()
+    _refresh_power_slots_from_state()
+
+func _announce_power(power_id: String) -> void:
+    var power := ContentRegistry.get_power(StringName(power_id))
+    var label := String(power.get("name", power_id)).to_upper()
+    var description := String(power.get("effect_text", power.get("codex", {}).get("summary", "Nova matriz de poder integrada.")))
+    show_power_acquired(label, description)
+    push_reward("+ PODER · %s" % label)
+    AudioDirector.play_ui(&"power_reveal")
+    if player_ref != null and is_instance_valid(player_ref):
+        VFXDirector.emit_feedback(&"power_reveal", player_ref.global_position + Vector3.UP, Vector3.UP)
+
+func _announce_mutation(mutation_id: String) -> void:
+    var label := _mutation_label(mutation_id)
+    show_power_acquired(label, "A matriz de Harun sofreu uma mutação permanente nesta run.")
+    push_reward("+ MUTAÇÃO · %s" % label)
+    AudioDirector.play_ui(&"power_reveal")
+    if player_ref != null and is_instance_valid(player_ref):
+        VFXDirector.emit_feedback(&"power_reveal", player_ref.global_position + Vector3.UP, Vector3.UP)
+
+func _mutation_label(mutation_id: String) -> String:
+    for power in ContentRegistry.all("powers"):
+        var power_name := String(power.get("name", power.get("id", "PODER")))
+        for mutation in power.get("mutations", []):
+            if String(mutation.get("id", "")) == mutation_id:
+                return "%s · FORMA %d" % [power_name.to_upper(), int(mutation.get("tier", 1))]
+    return mutation_id.replace("_", " ").to_upper()
+
+func _refresh_power_slots_from_state() -> void:
+    var build := RogueliteContentService.ensure_build()
+    var active_power_id := String(build.get("active_power", ""))
+    if active_power_id.is_empty():
+        var journey := ContentRegistry.get_student_journey()
+        if not journey.is_empty():
+            var stage: Dictionary = journey[clampi(GameState.stage_index, 0, journey.size() - 1)]
+            active_power_id = String(stage.get("power_id", ""))
+    var active_power_name := "PODER"
+    if not active_power_id.is_empty():
+        var power := ContentRegistry.get_power(StringName(active_power_id))
+        active_power_name = String(power.get("name", active_power_id))
+    var kinesis_name := "KINESIS"
+    if not current_kinesis_loadout.is_empty() and not String(current_kinesis_loadout[0]).is_empty():
+        kinesis_name = String(current_kinesis_loadout[0])
+    var utility_name := "RITUAL"
+    var utility_key := "R"
+    var instrument: Dictionary = build.get("instrumentum", {})
+    if not instrument.is_empty():
+        var instrument_id := StringName(instrument.get("id", ""))
+        var instrument_data := ContentRegistry.get_item("instrumenta", instrument_id)
+        utility_name = String(instrument_data.get("name", instrument_id))
+    elif not String(build.get("arcana", "")).is_empty():
+        utility_name = String(build.get("arcana", "ARCANO"))
+        utility_key = "C"
+    set_power_slots([
+        {"name":"ATAQUE", "key":"LMB"},
+        {"name":active_power_name, "key":"RMB"},
+        {"name":kinesis_name, "key":"1–3"},
+        {"name":utility_name, "key":utility_key}
+    ])
 
 func show_choice(title: String, options: Array, callback: Callable) -> void:
     for child in choice_options.get_children():
@@ -334,11 +482,18 @@ func _update_enemy_markers() -> void:
                 marker.position = screen_pos - Vector2(marker.size.x * 0.5, marker.size.y + 12.0)
         marker.visible = visible
     for id in stale:
-        var entry: Dictionary = tracked_enemies.get(id, {})
-        var marker: Control = entry.get("marker") as Control
-        if marker != null and is_instance_valid(marker):
-            marker.queue_free()
-        tracked_enemies.erase(id)
+        _untrack_by_id(id)
+
+func _update_boss_panel() -> void:
+    for entry_value in tracked_enemies.values():
+        var entry: Dictionary = entry_value
+        if not bool(entry.get("boss", false)):
+            continue
+        var tracked_boss: DataBossController = entry.get("enemy") as DataBossController
+        if tracked_boss == null or not is_instance_valid(tracked_boss):
+            continue
+        show_boss(tracked_boss.display_name, tracked_boss.get_health_ratio(), tracked_boss.current_phase + 1, tracked_boss.combat_level, tracked_boss.get_attack_name())
+        return
 
 func _update_power_cooldowns() -> void:
     if player_ref == null or not is_instance_valid(player_ref) or power_slots.get_child_count() < 2:
@@ -346,7 +501,8 @@ func _update_power_cooldowns() -> void:
     var primary := power_slots.get_child(0).get_node("Cooldown") as Label
     primary.text = "%.1f" % player_ref.primary_cooldown if player_ref.primary_cooldown > 0.05 else ""
     var power := power_slots.get_child(1).get_node("Cooldown") as Label
-    power.text = "%.1f" % player_ref.get_power_cooldown() if player_ref.has_method("get_power_cooldown") and player_ref.get_power_cooldown() > 0.05 else ""
+    var remaining := player_ref.get_power_cooldown()
+    power.text = "%.1f" % remaining if remaining > 0.05 else ""
 
 func _roman(value: int) -> String:
     match value:
