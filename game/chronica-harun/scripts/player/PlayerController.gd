@@ -31,6 +31,7 @@ signal dodge_completed(perfect: bool)
 @export var perfect_dodge_window := 0.09
 @export var dodge_stamina_cost := 26.0
 @export var dodge_recovery := 0.72
+@export var power_recovery := 0.85
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -50,7 +51,8 @@ var dodge_time_remaining := 0.0
 var dodge_invulnerability_remaining := 0.0
 var dodge_elapsed := 0.0
 var dodge_direction := Vector3.ZERO
-var dodge_contact_resolved := false
+var dodge_contact_checked := false
+var dodge_was_perfect := false
 var safe_position := Vector3.ZERO
 
 func _ready() -> void:
@@ -76,7 +78,9 @@ func _unhandled_input(event: InputEvent) -> void:
     elif event.is_action_pressed("primary_attack"):
         primary_attack_requested.emit()
     elif event.is_action_pressed("power"):
-        power_requested.emit()
+        if power_cooldown <= 0.0:
+            power_cooldown = power_recovery
+            power_requested.emit()
     elif event.is_action_pressed("dodge"):
         _start_dodge()
     elif event.is_action_pressed("instrument"):
@@ -109,7 +113,7 @@ func _physics_process(delta: float) -> void:
         move_and_slide()
         _update_safe_position()
         if dodge_time_remaining <= 0.0:
-            dodge_completed.emit(dodge_contact_resolved)
+            dodge_completed.emit(dodge_was_perfect)
         return
 
     stamina = minf(max_stamina, stamina + 22.0 * delta)
@@ -145,12 +149,13 @@ func _start_dodge() -> bool:
     dodge_time_remaining = dodge_duration
     dodge_invulnerability_remaining = dodge_invulnerability
     dodge_elapsed = 0.0
-    dodge_contact_resolved = false
+    dodge_contact_checked = false
+    dodge_was_perfect = false
     dodge_cooldown = dodge_recovery
     _apply_dodge_mutation(PowerMutationRuntime.on_dodge(false, {"stamina": stamina}))
     dodge_started.emit(perfect_dodge_window)
     VFXDirector.emit_feedback(&"player_dodge", global_position + Vector3.UP * 0.85, dodge_direction)
-    AudioDirector.play_3d(&"player_dodge", global_position)
+    AudioDirector.play_3d(&"dodge", global_position)
     return true
 
 func _update_safe_position() -> void:
@@ -193,10 +198,10 @@ func get_power_cooldown() -> float:
 
 func apply_damage(amount: float, source_id: StringName = &"") -> bool:
     if dodge_invulnerability_remaining > 0.0:
-        if not dodge_contact_resolved:
-            var perfect := dodge_elapsed <= perfect_dodge_window
-            dodge_contact_resolved = perfect
-            if perfect:
+        if not dodge_contact_checked:
+            dodge_contact_checked = true
+            dodge_was_perfect = dodge_elapsed <= perfect_dodge_window
+            if dodge_was_perfect:
                 _apply_dodge_mutation(PowerMutationRuntime.on_dodge(true, {"source_id": source_id, "stamina": stamina}))
                 VFXDirector.emit_feedback(&"perfect_dodge", global_position + Vector3.UP * 0.9, dodge_direction)
                 AudioDirector.play_3d(&"perfect_dodge", global_position)
