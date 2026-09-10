@@ -86,6 +86,25 @@ jobs:
           path: game/chronica-harun/build/web/
           if-no-files-found: error
 
+      - name: Prepare playable Pages preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/chronica-pages
+          mkdir -p /tmp/chronica-pages/chronica-harun-definitive
+          cp -a "$GAME_DIR/build/web/." /tmp/chronica-pages/chronica-harun-definitive/
+          cat > /tmp/chronica-pages/index.html <<'EOF'
+          <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0; url=./chronica-harun-definitive/"><title>CHRONICA HARUN</title></head><body><a href="./chronica-harun-definitive/">Abrir CHRONICA HARUN</a></body></html>
+          EOF
+          test -s /tmp/chronica-pages/chronica-harun-definitive/index.html
+          test -s /tmp/chronica-pages/chronica-harun-definitive/index.wasm
+          test -s /tmp/chronica-pages/chronica-harun-definitive/index.pck
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: /tmp/chronica-pages
+
       - name: Definitive visual capture
         shell: bash
         run: |
@@ -117,7 +136,28 @@ jobs:
           test -s "$GAME_DIR/build/web/index.html"
           test -s "$GAME_DIR/build/web/index.wasm"
           test -s "$GAME_DIR/build/web/index.pck"
+          test -s /tmp/chronica-pages/chronica-harun-definitive/index.html
           grep -q 'DefinitivePowerRuntime' "$GAME_DIR/project.godot"
           grep -q 'foundation_hammer_base' "$GAME_DIR/autoload/DefinitivePowerRuntime.gd"
           grep -q 'memoria_ignis_base' "$GAME_DIR/autoload/DefinitivePowerRuntime.gd"
           echo CHRONICA_COMBAT_DEFINITIVE_V1_GREEN=PASS
+
+  deploy-web-preview:
+    needs: definitive-green
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}chronica-harun-definitive/
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Deploy playable preview
+        id: deployment
+        uses: actions/deploy-pages@v4
