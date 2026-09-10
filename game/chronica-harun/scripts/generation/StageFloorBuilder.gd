@@ -3,6 +3,10 @@ class_name StageFloorBuilder
 
 const ROOM_SCENE := preload("res://scenes/rooms/RoomShell.tscn")
 const ROOM_DIRECTOR_SCRIPT := preload("res://scripts/generation/RoomDirector.gd")
+const DOORWAY_WIDTH := 2.4
+const ROOM_SPAN := 10.0
+const WALL_HEIGHT := 4.2
+const WALL_THICKNESS := 0.22
 
 const BASE_LAYOUT := [
     {"id":"threshold","role":"threshold","pos":Vector3(0,0,0)},
@@ -146,8 +150,72 @@ static func _connect(by_id: Dictionary, corridors: Node3D, a_id: String, b_id: S
     _add_corridor(corridors, a.position, b.position, theme)
 
 static func _open_pair(a: RoomShell, wall_a: String, b: RoomShell, wall_b: String) -> void:
-    _disable_wall(a, wall_a)
-    _disable_wall(b, wall_b)
+    _open_doorway(a, wall_a)
+    _open_doorway(b, wall_b)
+
+static func _open_doorway(room: RoomShell, wall_name: String) -> void:
+    if room == null:
+        return
+    var wall := room.get_node_or_null(wall_name)
+    if wall == null:
+        return
+    var wall_mesh := wall.get_node_or_null("Mesh") as MeshInstance3D
+    var material: Material = wall_mesh.material_override if wall_mesh != null else null
+    _disable_wall(room, wall_name)
+    var guard_root_name := "DoorwayGuards_%s" % wall_name
+    if room.get_node_or_null(guard_root_name) != null:
+        return
+    var guard_root := Node3D.new()
+    guard_root.name = guard_root_name
+    room.add_child(guard_root)
+    var segment_length := (ROOM_SPAN - DOORWAY_WIDTH) * 0.5
+    var offset := DOORWAY_WIDTH * 0.5 + segment_length * 0.5
+    var side_size := Vector3.ZERO
+    var side_a := Vector3.ZERO
+    var side_b := Vector3.ZERO
+    match wall_name:
+        "NorthWall":
+            side_size = Vector3(segment_length, WALL_HEIGHT, WALL_THICKNESS)
+            side_a = Vector3(-offset, WALL_HEIGHT * 0.5, -ROOM_SPAN * 0.5)
+            side_b = Vector3(offset, WALL_HEIGHT * 0.5, -ROOM_SPAN * 0.5)
+        "SouthWall":
+            side_size = Vector3(segment_length, WALL_HEIGHT, WALL_THICKNESS)
+            side_a = Vector3(-offset, WALL_HEIGHT * 0.5, ROOM_SPAN * 0.5)
+            side_b = Vector3(offset, WALL_HEIGHT * 0.5, ROOM_SPAN * 0.5)
+        "EastWall":
+            side_size = Vector3(WALL_THICKNESS, WALL_HEIGHT, segment_length)
+            side_a = Vector3(ROOM_SPAN * 0.5, WALL_HEIGHT * 0.5, -offset)
+            side_b = Vector3(ROOM_SPAN * 0.5, WALL_HEIGHT * 0.5, offset)
+        "WestWall":
+            side_size = Vector3(WALL_THICKNESS, WALL_HEIGHT, segment_length)
+            side_a = Vector3(-ROOM_SPAN * 0.5, WALL_HEIGHT * 0.5, -offset)
+            side_b = Vector3(-ROOM_SPAN * 0.5, WALL_HEIGHT * 0.5, offset)
+        _:
+            return
+    _add_doorway_side(guard_root, "SideA", side_size, side_a, material)
+    _add_doorway_side(guard_root, "SideB", side_size, side_b, material)
+
+static func _add_doorway_side(parent: Node3D, side_name: String, size: Vector3, local_position: Vector3, material: Material) -> void:
+    var body := StaticBody3D.new()
+    body.name = side_name
+    body.collision_layer = 2
+    body.collision_mask = 0
+    body.position = local_position
+    var mesh_instance := MeshInstance3D.new()
+    mesh_instance.name = "Mesh"
+    var mesh := BoxMesh.new()
+    mesh.size = size
+    mesh_instance.mesh = mesh
+    if material != null:
+        mesh_instance.material_override = material
+    body.add_child(mesh_instance)
+    var collision := CollisionShape3D.new()
+    collision.name = "CollisionShape3D"
+    var shape := BoxShape3D.new()
+    shape.size = size
+    collision.shape = shape
+    body.add_child(collision)
+    parent.add_child(body)
 
 static func _disable_wall(room: RoomShell, wall_name: String) -> void:
     var wall := room.get_node_or_null(wall_name)
@@ -166,9 +234,9 @@ static func _add_corridor(parent: Node3D, a: Vector3, b: Vector3, theme: Diction
     var delta := b - a
     var floor_size := Vector3.ZERO
     if absf(delta.x) > absf(delta.z):
-        floor_size = Vector3(maxf(2.0, absf(delta.x) - 9.7), 0.14, 2.4)
+        floor_size = Vector3(maxf(2.0, absf(delta.x) - 9.7), 0.14, DOORWAY_WIDTH)
     else:
-        floor_size = Vector3(2.4, 0.14, maxf(2.0, absf(delta.z) - 9.7))
+        floor_size = Vector3(DOORWAY_WIDTH, 0.14, maxf(2.0, absf(delta.z) - 9.7))
 
     var body := StaticBody3D.new()
     body.name = "Corridor_%d" % parent.get_child_count()
@@ -193,11 +261,11 @@ static func _add_corridor(parent: Node3D, a: Vector3, b: Vector3, theme: Diction
 
     var wall_material := _material(String(theme.get("palette", ["#0c0b0a", "#1c1814"])[mini(1, theme.get("palette", ["#0c0b0a", "#1c1814"]).size() - 1)]), 0.92)
     if floor_size.x > floor_size.z:
-        _add_corridor_guard(body, "GuardA", Vector3(floor_size.x, 2.8, 0.18), Vector3(0, 1.4, -1.2), wall_material)
-        _add_corridor_guard(body, "GuardB", Vector3(floor_size.x, 2.8, 0.18), Vector3(0, 1.4, 1.2), wall_material)
+        _add_corridor_guard(body, "GuardA", Vector3(floor_size.x, 2.8, 0.18), Vector3(0, 1.4, -DOORWAY_WIDTH * 0.5), wall_material)
+        _add_corridor_guard(body, "GuardB", Vector3(floor_size.x, 2.8, 0.18), Vector3(0, 1.4, DOORWAY_WIDTH * 0.5), wall_material)
     else:
-        _add_corridor_guard(body, "GuardA", Vector3(0.18, 2.8, floor_size.z), Vector3(-1.2, 1.4, 0), wall_material)
-        _add_corridor_guard(body, "GuardB", Vector3(0.18, 2.8, floor_size.z), Vector3(1.2, 1.4, 0), wall_material)
+        _add_corridor_guard(body, "GuardA", Vector3(0.18, 2.8, floor_size.z), Vector3(-DOORWAY_WIDTH * 0.5, 1.4, 0), wall_material)
+        _add_corridor_guard(body, "GuardB", Vector3(0.18, 2.8, floor_size.z), Vector3(DOORWAY_WIDTH * 0.5, 1.4, 0), wall_material)
 
     parent.add_child(body)
 
