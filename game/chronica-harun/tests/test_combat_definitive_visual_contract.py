@@ -71,6 +71,24 @@ def test_acquired_power_becomes_runtime_active_power():
     assert 'stage_data["power_id"]' in router
 
 
+def test_all_fifteen_matrix_powers_have_live_runtime_behaviour():
+    project = read("project.godot")
+    runtime = read("autoload/DefinitivePowerRuntime.gd")
+    assert 'DefinitivePowerRuntime="*res://autoload/DefinitivePowerRuntime.gd"' in project
+    assert "func _replace_stage_power_handler(" in runtime
+    assert "func _activate_power(" in runtime
+    for effect_id in [
+        "revelatory_eye_base", "black_flame_matrix_base", "foundation_hammer_base",
+        "election_sigil_base", "inner_balance_base", "will_vector_base",
+        "character_column_base", "discipline_rhythm_base", "clarity_light_base",
+        "transmutation_serpent_base", "vital_pulse_base", "hand_of_work_base",
+        "sigillar_fortune_base", "verbum_base", "memoria_ignis_base",
+    ]:
+        assert f'"{effect_id}"' in runtime, f"matrix power runtime missing: {effect_id}"
+    assert "get_signal_connection_list" in runtime
+    assert "VFXDirector.emit_feedback(&\"power_reveal\"" in runtime
+
+
 def test_first_person_viewmodel_matches_power_fantasy():
     player_scene = read("scenes/player/Player.tscn")
     for token in [
