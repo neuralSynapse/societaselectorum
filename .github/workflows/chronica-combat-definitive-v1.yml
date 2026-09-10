@@ -31,7 +31,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -m pip install --disable-pip-version-check -q pytest
+          python -m pip install --disable-pip-version-check -q pytest trimesh numpy
           pytest -q "$GAME_DIR/tests" | tee /tmp/pytest.log
           python "$GAME_DIR/tools/validate_complete_game.py" | tee /tmp/complete.log
           python "$GAME_DIR/tools/validate_story_canon.py" | tee /tmp/story.log
