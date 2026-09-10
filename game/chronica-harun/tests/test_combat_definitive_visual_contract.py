@@ -119,8 +119,11 @@ def test_combat_room_uses_gothic_occult_presentation_without_changing_footprint(
     script = read("scripts/generation/RoomShell.gd")
     for token in ["DarkStoneMaterial", "RitualMetalMaterial", "FloorSigil", "WarmKeyLight"]:
         assert token in room, f"combat room presentation missing: {token}"
-    assert "func _build_gothic_dressing(" in script
-    assert "GothicDressing" in script
+    for token in ["GothicDressing", "VaultRibs", "RitualLanterns", "DoorArches"]:
+        assert token in script, f"runtime gothic chamber layer missing: {token}"
+    for method in ["func _add_vault_ribs(", "func _add_ritual_lanterns(", "func _add_door_arches(", "func _apply_role_lighting("]:
+        assert method in script, f"gothic room builder missing: {method}"
+    assert 'room_role == &"boss"' in script
     assert 'size = Vector3(10, 0.2, 10)' in room, "room footprint must remain generation-compatible"
 
 
