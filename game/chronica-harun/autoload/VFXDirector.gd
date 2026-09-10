@@ -7,6 +7,9 @@ const TELEGRAPH_MAX_EMISSION := 0.08
 const EFFECTS := {
     "player_primary": {"color":Color(0.72,0.43,0.12), "size":0.20, "end_scale":2.2, "duration":0.10, "emission":0.24, "shape":"sphere"},
     "player_power": {"color":Color(0.52,0.08,0.05), "size":0.34, "end_scale":2.8, "duration":0.22, "emission":0.30, "shape":"sphere"},
+    "player_dodge": {"color":Color(0.31,0.13,0.55), "size":0.22, "end_scale":2.5, "duration":0.16, "emission":0.20, "shape":"disc"},
+    "perfect_dodge": {"color":Color(0.95,0.57,0.12), "size":0.30, "end_scale":3.4, "duration":0.20, "emission":0.44, "shape":"disc"},
+    "power_reveal": {"color":Color(0.91,0.39,0.08), "size":0.42, "end_scale":3.0, "duration":0.36, "emission":0.48, "shape":"disc"},
     "kinesis": {"color":Color(0.63,0.37,0.10), "size":0.27, "end_scale":2.5, "duration":0.17, "emission":0.22, "shape":"sphere"},
     "instrumenta": {"color":Color(0.74,0.46,0.14), "size":0.32, "end_scale":2.6, "duration":0.20, "emission":0.26, "shape":"disc"},
     "tarot_activate": {"color":Color(0.78,0.52,0.18), "size":0.30, "end_scale":2.4, "duration":0.22, "emission":0.24, "shape":"disc"},
@@ -50,8 +53,6 @@ func emit_feedback(event_id: StringName, position: Vector3, direction: Vector3 =
     var key := String(event_id)
     if not EFFECTS.has(key):
         return null
-    # Headless CI uses the dummy renderer, which cannot realize procedural primitive
-    # meshes safely. Keep the event contract alive while skipping render-only nodes.
     if DisplayServer.get_name() == "headless":
         feedback_emitted.emit(event_id, position)
         return null
@@ -167,6 +168,9 @@ func _on_audio_event(event_id: StringName, position: Vector3, spatial: bool) -> 
     match String(event_id):
         "enemy_shot": emit_feedback(&"enemy_projectile", position, Vector3.UP)
         "secret_break": emit_feedback(&"secret_rupture", position, Vector3.UP)
+        "power_reveal":
+            var reveal_position := position if spatial else (_active_player().global_position + Vector3.UP if _active_player() else Vector3.ZERO)
+            emit_feedback(&"power_reveal", reveal_position, Vector3.UP)
         "player_hit":
             var hit_position := position if spatial else (_active_player().global_position if _active_player() else Vector3.ZERO)
             emit_feedback(&"player_hit", hit_position, Vector3.UP)
