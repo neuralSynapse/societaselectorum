@@ -104,14 +104,20 @@ def test_all_fifteen_matrix_powers_have_live_runtime_behaviour():
     assert "VFXDirector.emit_feedback(&\"power_reveal\"" in runtime
 
 
-def test_first_person_viewmodel_matches_power_fantasy():
+def test_first_person_viewmodel_matches_power_fantasy_and_animates_casting():
     player_scene = read("scenes/player/Player.tscn")
+    presentation = read("scripts/player/FirstPersonPresentation.gd")
     for token in [
         'name="LeftGauntlet"', 'name="LeftSigilRingOuter"', 'name="LeftSigilRingInner"',
         'name="RightGauntlet"', 'name="RightVoidOrb"', 'name="LeftPowerLight"',
-        'name="RightPowerLight"',
+        'name="RightPowerLight"', 'script = ExtResource("3")',
     ]:
         assert token in player_scene, f"first-person reference element missing: {token}"
+    for method in ["func _on_primary_attack(", "func _on_power(", "func _on_dodge(", "func _process("]:
+        assert method in presentation, f"first-person presentation missing: {method}"
+    assert "LeftSigilRingOuter" in presentation
+    assert "RightOrbRingOuter" in presentation
+    assert "create_tween" in presentation
 
 
 def test_combat_room_uses_gothic_occult_presentation_without_changing_footprint():
