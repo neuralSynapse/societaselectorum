@@ -14,6 +14,7 @@ RogueliteContentService="*res://autoload/RogueliteContentService.gd"
 AudioDirector="*res://autoload/AudioDirector.gd"
 VFXDirector="*res://autoload/VFXDirector.gd"
 CombatLoadoutDirector="*res://autoload/CombatLoadoutDirector.gd"
+DefinitivePowerRuntime="*res://autoload/DefinitivePowerRuntime.gd"
 
 [display]
 window/size/viewport_width=1920
