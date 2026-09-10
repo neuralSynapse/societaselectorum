@@ -3,6 +3,7 @@ class_name DataBossController
 
 signal phase_changed(index: int)
 signal boss_defeated(boss_id: StringName, reward_id: StringName)
+signal combat_status_changed(boss: DataBossController, health_ratio: float)
 
 const PROJECTILE_SCENE := preload("res://scenes/vfx/Projectile.tscn")
 
@@ -17,6 +18,8 @@ var attack_index := 0
 var attack_clock := 0.8
 var move_speed := 1.7
 var dead := false
+var combat_level := 1
+var current_attack_name := ""
 
 @onready var health: Health = $Health
 @onready var attack_sm: AttackStateMachine = $AttackStateMachine
@@ -34,6 +37,7 @@ func configure(id: StringName, next_target: Node3D) -> bool:
     reward_id = StringName(data.get("reward_id", ""))
     phases = data.get("phases", []).duplicate(true)
     move_speed = float(data.get("move_speed", 1.7))
+    combat_level = int(data.get("level", maxi(1, GameState.stage_index + GameState.cycle + 4)))
     target = next_target
     return true
 
@@ -59,12 +63,21 @@ func _process(delta: float) -> void:
 func apply_damage(amount: float, source_id: StringName = &"") -> bool:
     return health.apply_damage(amount, source_id)
 
+func get_health_ratio() -> float:
+    if health == null:
+        return 0.0
+    return health.ratio()
+
+func get_attack_name() -> String:
+    return current_attack_name
+
 func _choose_attack() -> void:
     var phase_data: Dictionary = phases[current_phase]
     var attacks: Array = phase_data.get("attacks", [])
     if attacks.is_empty():
         return
     var definition: Dictionary = attacks[attack_index % attacks.size()].duplicate(true)
+    current_attack_name = String(definition.get("display_name", definition.get("name", definition.get("id", "PODER"))))
     attack_index += 1
     if attack_sm.begin_attack(definition, target):
         attack_clock = float(definition.get("recovery", 0.7)) + 0.25
@@ -122,6 +135,7 @@ func _on_damaged(current: float, maximum: float, _amount: float, _source_id: Str
     VFXDirector.emit_feedback(&"enemy_hit", global_position + Vector3.UP * 1.0, Vector3.UP, {"boss":true})
     AudioDirector.play_3d(&"enemy_hit", global_position)
     var ratio := current / maxf(1.0, maximum)
+    combat_status_changed.emit(self, ratio)
     var next_phase := 2 if ratio <= 0.32 else (1 if ratio <= 0.66 else 0)
     if next_phase != current_phase:
         current_phase = next_phase
@@ -134,6 +148,7 @@ func _on_died(_source_id: StringName) -> void:
     if dead:
         return
     dead = true
+    combat_status_changed.emit(self, 0.0)
     VFXDirector.emit_feedback(&"boss_death", global_position + Vector3.UP * 0.08, Vector3.UP)
     AudioDirector.play_3d(&"boss_death", global_position)
     boss_defeated.emit(boss_id, reward_id)
