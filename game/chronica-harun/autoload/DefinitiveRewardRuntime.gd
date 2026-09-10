@@ -61,7 +61,10 @@ func _ensure_stage_power() -> void:
     SaveService.save_campaign(GameState.to_save_data())
 
 func _on_room_cleared(room_id: StringName) -> void:
-    if room_id != &"trial":
+    # combat_2 is part of every base floor. The optional trial room only appears
+    # on later cycles, so tying progression to it would make the first runs never
+    # receive a mutation choice.
+    if room_id != &"combat_2":
         return
     if bool(GameState.run_stats.get("mutation_offer_presented", false)):
         return
@@ -92,7 +95,7 @@ func _offer_stage_mutations() -> void:
     var labels: Array[String] = []
     for mutation in available:
         var tier := int(mutation.get("tier", 1))
-        var effect := String(mutation.get("effect_id", mutation.get("id", "FORMA"))).replace("_", " ").to_upper()
+        var effect := _effect_label(String(mutation.get("effect_id", mutation.get("id", "FORMA"))))
         labels.append("FORMA %s · %s" % [_roman(tier), effect])
     stage_director.hud.show_choice(
         "MUTAÇÃO · %s" % String(power.get("name", power_id)).to_upper(),
@@ -109,6 +112,26 @@ func _choose_mutation(index: int, available: Array) -> void:
         return
     if RogueliteContentService.add_mutation(mutation_id):
         SaveService.save_campaign(GameState.to_save_data())
+
+func _effect_label(effect_id: String) -> String:
+    var labels := {
+        "revealed_crit":"CRÍTICO SOBRE O REVELADO", "projectile_vision":"VISÃO DE PROJÉTEIS", "secret_map":"MAPA DO OCULTO",
+        "ember_corpse":"BRASA DO CORPO", "hurt_fuels_flame":"DOR ALIMENTA A CHAMA", "chain_flame":"CHAMA ENCADEADA",
+        "shockwave":"ONDA DE FUNDAÇÃO", "break_armor_secret":"RUPTURA DE ARMADURA", "elite_stamina":"VIGOR DO ELITE",
+        "first_mark_crit":"PRIMEIRA MARCA CRÍTICA", "fear_immunity":"IMUNIDADE AO TEMOR", "choice_shield":"ESCUDO DA ESCOLHA",
+        "hp_to_focus":"VIDA EM FOCO", "focus_to_shield":"FOCO EM ESCUDO", "balance_cleanse":"PURIFICAÇÃO DA BALANÇA",
+        "projectile_dash":"INVESTIDA PROTEGIDA", "unstoppable_action":"AÇÃO IRREFREÁVEL", "execute_low":"EXECUÇÃO DA VONTADE",
+        "still_defense":"DEFESA IMÓVEL", "block_attack":"BLOQUEIO DE IMPACTO", "calm_focus":"FOCO DA QUIETUDE",
+        "combo_recharge":"RECARGA POR RITMO", "perfect_dodge_charge":"CARGA DA ESQUIVA PERFEITA", "no_damage_speed":"RITMO SEM DANO",
+        "telegraph_reveal":"LEITURA DO TELÉGRAFO", "visual_cleanse":"LIMPEZA VISUAL", "route_marker":"MARCA DA ROTA",
+        "hurt_to_focus":"FERIDA EM FOCO", "curse_to_buff":"MALDIÇÃO TRANSMUTADA", "overflow_to_essence":"EXCESSO EM ESSÊNCIA",
+        "room_heal":"REGENERAÇÃO DE CÂMARA", "perfect_dodge_stamina":"VIGOR DA ESQUIVA", "low_hp_speed":"PULSO DE LIMIAR",
+        "temporary_ward":"GUARDA TEMPORÁRIA", "virtual_charge":"CARGA DA OBRA", "break_fragment":"FRAGMENTO DA RUPTURA",
+        "reward_reroll":"REORDENAR RECOMPENSA", "essence_rare_room":"ESSÊNCIA DO RARO", "pact_refund":"RETORNO DO PACTO",
+        "push_wave":"ONDA DO VERBUM", "silence_ranged":"SILÊNCIO À DISTÂNCIA", "temporary_dominate":"DOMÍNIO TEMPORÁRIO",
+        "first_card_free":"PRIMEIRO ARCANO LIVRE", "instrument_charge_memory":"MEMÓRIA DE CARGA", "build_trait_memory":"MEMÓRIA DA FORMA"
+    }
+    return String(labels.get(effect_id, effect_id.replace("_", " ").to_upper()))
 
 func _roman(value: int) -> String:
     match value:
