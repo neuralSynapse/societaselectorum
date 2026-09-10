@@ -177,4 +177,4 @@ def test_browser_build_is_published_as_a_playable_pages_preview():
     assert "actions/deploy-pages" in workflow
     assert "pages: write" in workflow
     assert "id-token: write" in workflow
-    assert "github-pages" in workflow
+    assert "chronica-preview" in workflow
