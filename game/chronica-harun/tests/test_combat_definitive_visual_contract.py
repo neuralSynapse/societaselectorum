@@ -169,3 +169,12 @@ def test_definitive_game_has_browser_export_contract():
     assert 'export_path="build/web/index.html"' in presets
     assert 'godot --headless --path "$GAME_DIR" --export-release "Web"' in workflow
     assert 'chronica-combat-definitive-web' in workflow
+
+
+def test_browser_build_is_published_as_a_playable_pages_preview():
+    workflow = read("../../.github/workflows/chronica-combat-definitive-v1.yml")
+    assert "actions/upload-pages-artifact" in workflow
+    assert "actions/deploy-pages" in workflow
+    assert "pages: write" in workflow
+    assert "id-token: write" in workflow
+    assert "github-pages" in workflow
