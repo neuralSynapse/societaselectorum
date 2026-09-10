@@ -41,17 +41,22 @@ func _build_gothic_dressing() -> void:
     add_child(dressing)
 
     var stone := StandardMaterial3D.new()
-    stone.albedo_color = Color(0.045, 0.035, 0.032, 1.0)
-    stone.metallic = 0.16
-    stone.roughness = 0.78
+    stone.albedo_color = Color(0.082, 0.064, 0.058, 1.0)
+    stone.metallic = 0.08
+    stone.roughness = 0.86
+
+    var dark_stone := StandardMaterial3D.new()
+    dark_stone.albedo_color = Color(0.032, 0.027, 0.031, 1.0)
+    dark_stone.metallic = 0.04
+    dark_stone.roughness = 0.92
 
     var bronze := StandardMaterial3D.new()
-    bronze.albedo_color = Color(0.20, 0.075, 0.024, 1.0)
-    bronze.metallic = 0.82
-    bronze.roughness = 0.30
+    bronze.albedo_color = Color(0.24, 0.135, 0.045, 1.0)
+    bronze.metallic = 0.76
+    bronze.roughness = 0.35
     bronze.emission_enabled = true
-    bronze.emission = Color(0.16, 0.025, 0.006, 1.0)
-    bronze.emission_energy_multiplier = 0.32
+    bronze.emission = Color(0.16, 0.070, 0.014, 1.0)
+    bronze.emission_energy_multiplier = 0.18
 
     for position in [Vector3(-4.15, 2.0, -4.15), Vector3(4.15, 2.0, -4.15), Vector3(-4.15, 2.0, 4.15), Vector3(4.15, 2.0, 4.15)]:
         _add_pillar(dressing, position, stone, bronze)
@@ -72,6 +77,26 @@ func _build_gothic_dressing() -> void:
     door_arches.name = "DoorArches"
     dressing.add_child(door_arches)
     _add_door_arches(door_arches, stone, bronze)
+
+    var reliefs := Node3D.new()
+    reliefs.name = "WallReliefs"
+    dressing.add_child(reliefs)
+    _add_wall_reliefs(reliefs, dark_stone, bronze)
+
+    var statues := Node3D.new()
+    statues.name = "BlindStatues"
+    dressing.add_child(statues)
+    _add_blind_statues(statues, stone, dark_stone, bronze)
+
+    var debris := Node3D.new()
+    debris.name = "RuinDebris"
+    dressing.add_child(debris)
+    _add_ruin_debris(debris, stone, dark_stone)
+
+    var candles := Node3D.new()
+    candles.name = "RitualCandles"
+    dressing.add_child(candles)
+    _add_ritual_candles(candles)
 
     var lanterns := Node3D.new()
     lanterns.name = "RitualLanterns"
@@ -186,19 +211,171 @@ func _add_beam_between(parent: Node3D, start: Vector3, finish: Vector3, material
     beam.position = (start + finish) * 0.5
     beam.look_at(parent.to_global(finish), Vector3.UP)
 
+func _add_wall_reliefs(parent: Node3D, dark_stone: Material, bronze: Material) -> void:
+    var panels := [
+        {"position": Vector3(-2.95, 1.8, -4.66), "rotation": Vector3.ZERO},
+        {"position": Vector3(2.95, 1.8, -4.66), "rotation": Vector3.ZERO},
+        {"position": Vector3(-2.95, 1.8, 4.66), "rotation": Vector3.ZERO},
+        {"position": Vector3(2.95, 1.8, 4.66), "rotation": Vector3.ZERO},
+        {"position": Vector3(-4.66, 1.8, -2.95), "rotation": Vector3(0, PI * 0.5, 0)},
+        {"position": Vector3(4.66, 1.8, 2.95), "rotation": Vector3(0, PI * 0.5, 0)}
+    ]
+    for spec in panels:
+        var relief := Node3D.new()
+        relief.position = spec["position"]
+        relief.rotation = spec["rotation"]
+        parent.add_child(relief)
+
+        var slab := MeshInstance3D.new()
+        var slab_mesh := BoxMesh.new()
+        slab_mesh.size = Vector3(1.05, 1.65, 0.075)
+        slab.mesh = slab_mesh
+        slab.material_override = dark_stone
+        relief.add_child(slab)
+
+        var halo := MeshInstance3D.new()
+        halo.position = Vector3(0, 0.24, -0.065)
+        var halo_mesh := TorusMesh.new()
+        halo_mesh.inner_radius = 0.24
+        halo_mesh.outer_radius = 0.285
+        halo_mesh.rings = 20
+        halo_mesh.ring_segments = 6
+        halo.mesh = halo_mesh
+        halo.material_override = bronze
+        relief.add_child(halo)
+
+        _add_wall_rib(relief, Vector3(0, -0.20, -0.065), Vector3(0.055, 0.75, 0.045), bronze)
+        _add_wall_rib(relief, Vector3(0, -0.20, -0.065), Vector3(0.52, 0.055, 0.045), bronze)
+
+func _add_blind_statues(parent: Node3D, stone: Material, dark_stone: Material, bronze: Material) -> void:
+    var positions := [Vector3(-3.55, 0, -3.1), Vector3(3.55, 0, 3.1)]
+    if room_role == &"boss":
+        positions.append(Vector3(3.55, 0, -3.1))
+        positions.append(Vector3(-3.55, 0, 3.1))
+    for index in range(positions.size()):
+        var statue := Node3D.new()
+        statue.name = "BlindWitness_%d" % index
+        statue.position = positions[index]
+        statue.rotation.y = (-0.55 if positions[index].x < 0.0 else 2.58)
+        parent.add_child(statue)
+
+        var robe := MeshInstance3D.new()
+        robe.position = Vector3(0, 0.78, 0)
+        var robe_mesh := CylinderMesh.new()
+        robe_mesh.top_radius = 0.20
+        robe_mesh.bottom_radius = 0.42
+        robe_mesh.height = 1.48
+        robe_mesh.radial_segments = 8
+        robe.mesh = robe_mesh
+        robe.material_override = stone
+        statue.add_child(robe)
+
+        var shoulders := MeshInstance3D.new()
+        shoulders.position = Vector3(0, 1.44, 0)
+        var shoulder_mesh := BoxMesh.new()
+        shoulder_mesh.size = Vector3(0.72, 0.17, 0.30)
+        shoulders.mesh = shoulder_mesh
+        shoulders.material_override = dark_stone
+        statue.add_child(shoulders)
+
+        var head := MeshInstance3D.new()
+        head.position = Vector3(0, 1.72, -0.015)
+        var head_mesh := SphereMesh.new()
+        head_mesh.radius = 0.22
+        head_mesh.height = 0.43
+        head.mesh = head_mesh
+        head.material_override = stone
+        statue.add_child(head)
+
+        var blindfold := MeshInstance3D.new()
+        blindfold.position = Vector3(0, 1.75, -0.20)
+        var blindfold_mesh := BoxMesh.new()
+        blindfold_mesh.size = Vector3(0.46, 0.095, 0.075)
+        blindfold.mesh = blindfold_mesh
+        blindfold.material_override = bronze
+        statue.add_child(blindfold)
+
+func _add_ruin_debris(parent: Node3D, stone: Material, dark_stone: Material) -> void:
+    var fragments := [
+        [Vector3(-4.08, 0.16, -2.65), Vector3(0.58, 0.24, 0.34), 0.22],
+        [Vector3(-3.72, 0.10, 2.82), Vector3(0.36, 0.16, 0.62), -0.48],
+        [Vector3(4.10, 0.13, -2.55), Vector3(0.50, 0.20, 0.28), 0.70],
+        [Vector3(3.76, 0.17, 2.62), Vector3(0.28, 0.26, 0.74), -0.32],
+        [Vector3(-2.80, 0.11, -4.05), Vector3(0.72, 0.17, 0.31), 0.42],
+        [Vector3(2.70, 0.13, -4.10), Vector3(0.40, 0.21, 0.65), -0.58],
+        [Vector3(-2.60, 0.12, 4.06), Vector3(0.55, 0.19, 0.34), 0.66],
+        [Vector3(2.85, 0.10, 4.10), Vector3(0.68, 0.15, 0.27), -0.18],
+        [Vector3(-4.00, 0.24, 0.92), Vector3(0.32, 0.42, 0.31), 0.35],
+        [Vector3(4.04, 0.22, -0.88), Vector3(0.30, 0.38, 0.34), -0.40]
+    ]
+    for index in range(fragments.size()):
+        var fragment := MeshInstance3D.new()
+        fragment.name = "Rubble_%02d" % index
+        fragment.position = fragments[index][0]
+        fragment.rotation = Vector3(0.10 * (index % 3), fragments[index][2], 0.08 * ((index + 1) % 2))
+        var mesh := BoxMesh.new()
+        mesh.size = fragments[index][1]
+        fragment.mesh = mesh
+        fragment.material_override = stone if index % 2 == 0 else dark_stone
+        parent.add_child(fragment)
+
+func _add_ritual_candles(parent: Node3D) -> void:
+    var wax := StandardMaterial3D.new()
+    wax.albedo_color = Color(0.44, 0.34, 0.24, 1.0)
+    wax.roughness = 0.92
+
+    var flame := StandardMaterial3D.new()
+    flame.albedo_color = Color(0.94, 0.48, 0.12, 1.0)
+    flame.emission_enabled = true
+    flame.emission = Color(1.0, 0.32, 0.055, 1.0)
+    flame.emission_energy_multiplier = 1.35
+    flame.roughness = 0.35
+
+    var points := [
+        Vector3(-3.25, 0, -3.85), Vector3(-2.92, 0, -3.93),
+        Vector3(3.18, 0, 3.86), Vector3(2.88, 0, 3.92),
+        Vector3(-3.88, 0, 3.12), Vector3(3.87, 0, -3.06)
+    ]
+    if room_role == &"boss":
+        points.append(Vector3(-1.20, 0, -3.82))
+        points.append(Vector3(1.20, 0, -3.82))
+    for index in range(points.size()):
+        var candle := MeshInstance3D.new()
+        candle.name = "Candle_%02d" % index
+        candle.position = points[index] + Vector3(0, 0.14 + 0.025 * (index % 3), 0)
+        var candle_mesh := CylinderMesh.new()
+        candle_mesh.top_radius = 0.035
+        candle_mesh.bottom_radius = 0.045
+        candle_mesh.height = 0.26 + 0.05 * (index % 3)
+        candle_mesh.radial_segments = 7
+        candle.mesh = candle_mesh
+        candle.material_override = wax
+        parent.add_child(candle)
+
+        var flame_mesh_instance := MeshInstance3D.new()
+        flame_mesh_instance.position = points[index] + Vector3(0, 0.31 + 0.05 * (index % 3), 0)
+        var flame_mesh := SphereMesh.new()
+        flame_mesh.radius = 0.035
+        flame_mesh.height = 0.09
+        flame_mesh.radial_segments = 8
+        flame_mesh.rings = 4
+        flame_mesh_instance.mesh = flame_mesh
+        flame_mesh_instance.material_override = flame
+        parent.add_child(flame_mesh_instance)
+
 func _add_ritual_lanterns(parent: Node3D) -> void:
-    var flame_color := Color(1.0, 0.20, 0.045, 1.0)
+    var flame_color := Color(1.0, 0.34, 0.08, 1.0)
     if room_role in [&"reward", &"sanctuary"]:
         flame_color = Color(0.92, 0.55, 0.16, 1.0)
     elif room_role == &"threshold":
-        flame_color = Color(0.46, 0.12, 0.82, 1.0)
+        flame_color = Color(0.36, 0.12, 0.62, 1.0)
 
     var material := StandardMaterial3D.new()
-    material.albedo_color = flame_color.darkened(0.46)
+    material.albedo_color = flame_color.darkened(0.50)
     material.emission_enabled = true
     material.emission = flame_color
-    material.emission_energy_multiplier = 1.6 if room_role == &"boss" else 1.0
-    material.roughness = 0.35
+    material.emission_energy_multiplier = 1.10 if room_role == &"boss" else 0.78
+    material.roughness = 0.42
 
     var points := [Vector3(-3.55, 2.3, 0), Vector3(3.55, 2.3, 0)]
     if room_role == &"boss":
@@ -219,9 +396,9 @@ func _add_ritual_lanterns(parent: Node3D) -> void:
         var light := OmniLight3D.new()
         light.position = point
         light.light_color = flame_color
-        light.light_energy = 0.72 if room_role == &"boss" else 0.42
-        light.omni_range = 3.6
-        light.omni_attenuation = 1.8
+        light.light_energy = 0.64 if room_role == &"boss" else 0.38
+        light.omni_range = 4.1
+        light.omni_attenuation = 1.7
         light.shadow_enabled = false
         parent.add_child(light)
 
@@ -247,24 +424,30 @@ func _apply_role_lighting() -> void:
         return
 
     if room_role == &"boss":
-        warm.light_energy = 1.95
-        warm.omni_range = 8.4
-        violet.light_energy = 1.18
-        violet.omni_range = 7.2
+        warm.light_energy = 1.72
+        warm.omni_range = 8.8
+        warm.light_color = Color(1.0, 0.40, 0.10, 1.0)
+        violet.light_energy = 0.82
+        violet.omni_range = 7.6
+        violet.light_color = Color(0.32, 0.10, 0.58, 1.0)
         if floor_sigil: floor_sigil.scale = Vector3.ONE * 1.18
     elif room_role in [&"elite", &"trial", &"archon"]:
-        warm.light_energy = 1.65
-        violet.light_energy = 0.88
+        warm.light_energy = 1.45
+        warm.light_color = Color(1.0, 0.43, 0.12, 1.0)
+        violet.light_energy = 0.66
         if floor_sigil: floor_sigil.scale = Vector3.ONE * 1.07
     elif room_role in [&"reward", &"sanctuary"]:
-        warm.light_energy = 1.12
+        warm.light_energy = 1.16
         warm.light_color = Color(1.0, 0.56, 0.20, 1.0)
-        violet.light_energy = 0.30
+        violet.light_energy = 0.26
         if floor_sigil: floor_sigil.scale = Vector3.ONE * 0.88
     elif room_role == &"threshold":
-        warm.light_energy = 0.72
-        violet.light_energy = 0.92
+        warm.light_energy = 0.78
+        violet.light_energy = 0.66
+        violet.light_color = Color(0.30, 0.10, 0.56, 1.0)
         if floor_sigil: floor_sigil.scale = Vector3.ONE * 0.82
     else:
-        warm.light_energy = 1.42
-        violet.light_energy = 0.62
+        warm.light_energy = 1.24
+        warm.light_color = Color(1.0, 0.41, 0.11, 1.0)
+        violet.light_energy = 0.46
+        violet.light_color = Color(0.30, 0.09, 0.54, 1.0)
