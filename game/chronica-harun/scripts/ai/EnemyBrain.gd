@@ -3,11 +3,13 @@ class_name EnemyBrain
 
 signal died(source_id: StringName)
 signal identified(enemy_id: StringName, display_name: String, role: String, attack_name: String)
+signal combat_status_changed(enemy: EnemyBrain, health_ratio: float)
 
 @export var enemy_id: StringName = &"enemy"
 @export var display_name := "Presença"
 @export var role := "unknown"
 @export var attack_name := "Ataque"
+@export var combat_level := 1
 @export var move_speed := 2.8
 @export var preferred_range := 1.2
 
@@ -23,6 +25,7 @@ var attack_cooldown := 0.0
 
 func _ready() -> void:
     health.damaged.connect(_on_damaged_feedback)
+    health.healed.connect(_on_healed_feedback)
     health.died.connect(_on_died)
     attack_sm.state_changed.connect(_on_attack_state_changed)
     attack_sm.telegraph_started.connect(_on_telegraph_started)
@@ -40,6 +43,18 @@ func set_room_active(value: bool) -> void:
 
 func reveal_identity() -> void:
     identified.emit(enemy_id, display_name, role, attack_name)
+    combat_status_changed.emit(self, get_health_ratio())
+
+func get_health_ratio() -> float:
+    if health == null:
+        return 0.0
+    return health.ratio()
+
+func get_combat_label() -> String:
+    return "%s · N%d" % [display_name.to_upper(), maxi(1, combat_level)]
+
+func get_attack_name() -> String:
+    return attack_name
 
 func _physics_process(delta: float) -> void:
     if not room_active or target == null or health.dead:
@@ -116,10 +131,15 @@ func _on_impact_window(payload: Dictionary) -> void:
             target.apply_damage(float(definition.get("damage", 10.0)), enemy_id)
 
 func _on_damaged_feedback(_current: float, _maximum: float, _amount: float, _source_id: StringName) -> void:
+    combat_status_changed.emit(self, get_health_ratio())
     VFXDirector.emit_feedback(&"enemy_hit", global_position + Vector3.UP * 0.8, Vector3.UP)
     AudioDirector.play_3d(&"enemy_hit", global_position)
 
+func _on_healed_feedback(_current: float, _maximum: float, _amount: float) -> void:
+    combat_status_changed.emit(self, get_health_ratio())
+
 func _on_died(source_id: StringName) -> void:
+    combat_status_changed.emit(self, 0.0)
     VFXDirector.emit_feedback(&"enemy_death", global_position + Vector3.UP * 0.08, Vector3.UP)
     AudioDirector.play_3d(&"enemy_death", global_position)
     died.emit(source_id)
