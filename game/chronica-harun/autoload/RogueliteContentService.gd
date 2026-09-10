@@ -7,10 +7,12 @@ func ensure_build() -> Dictionary:
     if GameState.run_build.is_empty():
         GameState.run_build = {
             "arcana":"", "pharmakon":"", "sigillum":"", "talismans":[],
-            "instrumentum":{}, "relics":[], "daimon":"", "mutations":[],
+            "instrumentum":{}, "relics":[], "daimon":"", "mutations":[], "powers":[],
             "transformations":[], "route":String(GameState.route_state.get("route","student")),
             "known_pharmaka":[], "flags":{}
         }
+    elif not GameState.run_build.has("powers"):
+        GameState.run_build["powers"] = []
     return GameState.run_build
 
 func grant(category: String, id: StringName) -> bool:
@@ -25,6 +27,7 @@ func grant(category: String, id: StringName) -> bool:
         "talismans": return equip_talisman(id)
         "relics": return equip_relic(id)
         "daimones": return set_daimon(id)
+        "powers": return add_power(id)
         "blessings":
             var list: Array = GameState.route_state.get("blessings", [])
             if not list.has(String(id)): list.append(String(id))
@@ -139,6 +142,18 @@ func set_daimon(id: StringName) -> bool:
     if ContentRegistry.get_item("daimones", id).is_empty(): return false
     ensure_build()["daimon"] = String(id)
     _changed(); return true
+
+func add_power(id: StringName) -> bool:
+    var power := ContentRegistry.get_power(id)
+    if power.is_empty(): return false
+    var build := ensure_build()
+    var list: Array = build.get("powers", [])
+    if not list.has(String(id)):
+        list.append(String(id))
+        build["powers"] = list
+        build["active_power"] = String(id)
+        _changed()
+    return true
 
 func add_mutation(id: StringName) -> bool:
     var exists := false
