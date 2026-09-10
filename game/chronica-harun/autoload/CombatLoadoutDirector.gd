@@ -46,5 +46,7 @@ func _on_build_changed(build: Dictionary) -> void:
 func _apply_active_power() -> void:
     if active_power == &"" or stage_director == null or not is_instance_valid(stage_director):
         return
-    if stage_director.current_power_id != active_power:
-        stage_director.current_power_id = active_power
+    if stage_director.stage_data.is_empty():
+        return
+    if StringName(stage_director.stage_data.get("power_id", "")) != active_power:
+        stage_director.stage_data["power_id"] = String(active_power)
