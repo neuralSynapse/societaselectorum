@@ -24,7 +24,6 @@ def test_hud_exposes_reference_layout_surfaces():
     for node in required_nodes:
         assert node in hud, f"HUD definitive surface missing: {node}"
 
-    # Narration belongs to the upper band, never the old bottom-of-screen placement.
     message_block = hud.split('[node name="Message"', 1)[1].split("[node ", 1)[0]
     assert "offset_top = 820.0" not in message_block
     assert "anchor_top" in message_block
@@ -74,6 +73,15 @@ def test_powers_can_be_acquired_into_the_run_build():
     assert "func add_power(" in service
 
 
+def test_acquired_power_becomes_runtime_active_power():
+    project = read("project.godot")
+    router = read("autoload/CombatLoadoutDirector.gd")
+    assert 'CombatLoadoutDirector="*res://autoload/CombatLoadoutDirector.gd"' in project
+    assert 'build.get("active_power"' in router
+    assert "node is StageDirector" in router
+    assert "current_power_id" in router
+
+
 def test_first_person_viewmodel_matches_power_fantasy():
     player_scene = read("scenes/player/Player.tscn")
     for token in [
@@ -99,6 +107,5 @@ def test_vfx_and_audio_have_dodge_power_feedback():
 
 def test_definitive_hud_uses_ritual_red_violet_gold_language():
     hud = read("scenes/ui/HUD.tscn")
-    # Styles are data, not screenshots. These named resources make the palette intentional and testable.
     for token in ["PlayerLifeFill", "PlayerFocusFill", "BossLifeFill", "GoldFrame"]:
         assert token in hud, f"missing ritual UI style: {token}"
