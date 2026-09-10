@@ -159,3 +159,13 @@ def test_definitive_hud_uses_ritual_red_violet_gold_language():
     hud = read("scenes/ui/HUD.tscn")
     for token in ["PlayerLifeFill", "PlayerFocusFill", "BossLifeFill", "GoldFrame"]:
         assert token in hud, f"missing ritual UI style: {token}"
+
+
+def test_definitive_game_has_browser_export_contract():
+    presets = read("export_presets.cfg")
+    workflow = read("../../.github/workflows/chronica-combat-definitive-v1.yml")
+    assert 'name="Web"' in presets
+    assert 'platform="Web"' in presets
+    assert 'export_path="build/web/index.html"' in presets
+    assert 'godot --headless --path "$GAME_DIR" --export-release "Web"' in workflow
+    assert 'chronica-combat-definitive-web' in workflow
