@@ -32,6 +32,7 @@ move_right={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":68)
 move_forward={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":87)]}
 move_back={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":83)]}
 jump={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":32)]}
+dodge={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":81),Object(InputEventJoypadButton,"button_index":1)]}
 interact={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":69)]}
 primary_attack={"deadzone":0.5,"events":[Object(InputEventMouseButton,"button_index":1)]}
 power={"deadzone":0.5,"events":[Object(InputEventMouseButton,"button_index":2)]}
