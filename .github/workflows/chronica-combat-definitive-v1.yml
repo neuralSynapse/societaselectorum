@@ -74,7 +74,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$GAME_DIR/build/web"
-          godot --headless --path "$GAME_DIR" --export-release "Web" "$GAME_DIR/build/web/index.html" 2>&1 | tee /tmp/web-export.log
+          godot --headless --path "$GAME_DIR" --export-release "Web" "build/web/index.html" 2>&1 | tee /tmp/web-export.log
           test -s "$GAME_DIR/build/web/index.html"
           test -s "$GAME_DIR/build/web/index.wasm"
           test -s "$GAME_DIR/build/web/index.pck"
