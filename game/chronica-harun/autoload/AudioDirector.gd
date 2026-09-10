@@ -6,6 +6,7 @@ const SAMPLE_RATE := 22050
 const EVENT_SPECS := {
     "footsteps": {"path":"res://audio/ambience/footsteps_stone.ogg", "frequency":92.0, "duration":0.08, "gain":0.18, "noise":0.72},
     "dodge": {"path":"res://audio/combat/player_dodge.ogg", "frequency":180.0, "duration":0.11, "gain":0.22, "noise":0.44},
+    "perfect_dodge": {"path":"res://audio/combat/perfect_dodge.ogg", "frequency":620.0, "duration":0.14, "gain":0.25, "noise":0.08},
     "player_hit": {"path":"res://audio/combat/player_hit.ogg", "frequency":116.0, "duration":0.16, "gain":0.32, "noise":0.58},
     "player_primary": {"path":"res://audio/combat/player_primary.ogg", "frequency":340.0, "duration":0.10, "gain":0.24, "noise":0.20},
     "player_power": {"path":"res://audio/combat/player_power.ogg", "frequency":210.0, "duration":0.24, "gain":0.28, "noise":0.24},
