@@ -62,13 +62,26 @@ def test_powers_can_be_acquired_into_the_run_build():
     assert "func add_power(" in service
 
 
-def test_acquired_power_becomes_runtime_active_power():
-    project = read("project.godot")
+def test_active_power_does_not_overwrite_canonical_stage_data():
     router = read("autoload/CombatLoadoutDirector.gd")
-    assert 'CombatLoadoutDirector="*res://autoload/CombatLoadoutDirector.gd"' in project
+    runtime = read("autoload/DefinitivePowerRuntime.gd")
     assert 'build.get("active_power"' in router
-    assert "node is StageDirector" in router
-    assert 'stage_data["power_id"]' in router
+    assert 'build.get("active_power"' in runtime
+    assert 'stage_data["power_id"]' not in router
+
+
+def test_stage_power_is_acquired_and_trial_offers_one_of_its_three_mutations():
+    project = read("project.godot")
+    rewards = read("autoload/DefinitiveRewardRuntime.gd")
+    assert 'DefinitiveRewardRuntime="*res://autoload/DefinitiveRewardRuntime.gd"' in project
+    assert "func _ensure_stage_power(" in rewards
+    assert "func _offer_stage_mutations(" in rewards
+    assert "room_cleared.connect" in rewards
+    assert 'room_id != &"trial"' in rewards
+    assert "RogueliteContentService.add_power" in rewards
+    assert "RogueliteContentService.add_mutation" in rewards
+    assert "hud.show_choice" in rewards
+    assert "SaveService.save_campaign" in rewards
 
 
 def test_all_fifteen_matrix_powers_have_live_runtime_behaviour():
