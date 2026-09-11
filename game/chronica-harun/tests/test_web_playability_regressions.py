@@ -96,7 +96,13 @@ def test_entry_rooms_have_a_web_safe_visibility_fill():
 
 def test_player_primary_vfx_travels_forward_instead_of_expanding_toward_camera():
     vfx = read("autoload/VFXDirector.gd")
+    motion = read("scripts/vfx/TransientVFXMotion.gd")
     assert '"player_primary"' in vfx
-    assert '"travel":' in vfx
+    assert '"travel":5.6' in vfx
+    assert '"start_scale":0.52' in vfx
+    assert '"end_scale":0.52' in vfx
     assert 'var travel := float(spec.get("travel", 0.0))' in vfx
-    assert 'position + direction.normalized() * travel' in vfx
+    assert "TRANSIENT_VFX_MOTION" in vfx
+    assert "root.configure(direction, travel, duration" in vfx
+    assert "velocity = direction.normalized() * (travel / lifetime)" in motion
+    assert "position += velocity * delta" in motion
