@@ -9,6 +9,9 @@ var locked := false
 var cleared := false
 
 func _ready() -> void:
+    _infer_open_doorways_from_guards()
+    if not child_entered_tree.is_connected(_on_room_child_entered):
+        child_entered_tree.connect(_on_room_child_entered)
     _build_gothic_dressing()
     _apply_role_lighting()
     var trigger := get_node_or_null("EncounterTrigger") as Area3D
@@ -18,6 +21,17 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
     if body is PlayerController:
         player_entered.emit(room_id)
+
+func _infer_open_doorways_from_guards() -> void:
+    for wall_name in ["NorthWall", "SouthWall", "EastWall", "WestWall"]:
+        if get_node_or_null("DoorwayGuards_" + wall_name) != null:
+            mark_doorway_open(wall_name)
+
+func _on_room_child_entered(node: Node) -> void:
+    var node_name := String(node.name)
+    var prefix := "DoorwayGuards_"
+    if node_name.begins_with(prefix):
+        call_deferred("mark_doorway_open", node_name.trim_prefix(prefix))
 
 func mark_doorway_open(wall_name: String) -> void:
     var open_doorways: Array = get_meta("open_doorways", [])
