@@ -67,7 +67,8 @@ func spawn_encounter(stage_data: Dictionary, room: Node3D) -> Dictionary:
     var data: Dictionary = roster_by_id[character_id]
     var echo := _build_echo(data, stage_data)
     room.add_child(echo)
-    echo.position = Vector3(2.4, 0.0, -1.7)
+    echo.position = Vector3(1.45, 0.0, -3.8)
+    echo.scale = Vector3.ONE * 0.78
     active_echoes.append(echo)
     var display_name := String(data.get("name", character_id))
     var line := String(ENCOUNTER_LINES.get(character_id, "Uma presença reconhece a passagem de Harun."))
