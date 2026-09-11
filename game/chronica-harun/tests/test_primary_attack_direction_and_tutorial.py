@@ -44,8 +44,8 @@ def test_right_mouse_power_is_visually_distinct_and_uses_right_hand_origin():
 
 
 def test_portal_zero_start_room_teaches_core_controls_on_the_floor():
-    stage = read("scripts/progression/StageDirector.gd")
-    assert "_install_start_floor_tutorial" in stage
+    runtime = read("autoload/VFXDirector.gd")
+    assert "_install_start_floor_tutorial" in runtime
     for token in [
         "TutorialFloorGuide",
         "WASD · MOVER",
@@ -57,4 +57,4 @@ def test_portal_zero_start_room_teaches_core_controls_on_the_floor():
         "SEM CUSTO DE FOCO",
         "CONSOME FOCO",
     ]:
-        assert token in stage
+        assert token in runtime
