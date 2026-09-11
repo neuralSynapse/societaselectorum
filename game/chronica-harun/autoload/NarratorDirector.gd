@@ -18,6 +18,7 @@ var _last_text_by_path: Dictionary = {}
 var _last_spoken_text := ""
 var _last_spoken_at_msec := 0
 var _scan_accumulator := 0.0
+var _estimated_queue_until_msec := 0
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
@@ -43,13 +44,17 @@ func speak(text: String, channel: StringName = &"narration", interrupt := true) 
         return 0.0
     var now := Time.get_ticks_msec()
     if normalized == _last_spoken_text and now - _last_spoken_at_msec < 900:
-        return estimate_duration(normalized)
+        return maxf(estimate_duration(normalized), float(maxi(0, _estimated_queue_until_msec - now)) / 1000.0)
     if interrupt:
         stop()
+        _estimated_queue_until_msec = now
     _last_spoken_text = normalized
     _last_spoken_at_msec = now
     _utterance_id += 1
     var duration := estimate_duration(normalized)
+    var queue_start := maxi(now, _estimated_queue_until_msec)
+    _estimated_queue_until_msec = queue_start + int(duration * 1000.0)
+    var visible_hold := float(maxi(0, _estimated_queue_until_msec - now)) / 1000.0
     var spoken := false
     if OS.has_feature("web"):
         spoken = _speak_web(normalized, interrupt)
@@ -57,15 +62,16 @@ func speak(text: String, channel: StringName = &"narration", interrupt := true) 
             spoken = _speak_native(normalized, interrupt)
     else:
         spoken = _speak_native(normalized, interrupt)
-    narration_started.emit(normalized, channel, duration)
+    narration_started.emit(normalized, channel, visible_hold)
     if not spoken and OS.is_debug_build():
         print("NARRATOR_FALLBACK_SILENT text=", normalized)
-    return duration
+    return visible_hold
 
 func stop() -> void:
     if OS.has_feature("web"):
         JavaScriptBridge.eval("(()=>{try{if(window.speechSynthesis){window.speechSynthesis.cancel();return true;}}catch(e){}return false;})()", true)
     DisplayServer.tts_stop()
+    _estimated_queue_until_msec = Time.get_ticks_msec()
     narration_stopped.emit()
 
 func estimate_duration(text: String) -> float:
@@ -90,7 +96,7 @@ func _scan_visible_narrative_labels() -> void:
                 continue
             var label := candidate as Label
             var raw_text := label.text
-            if node_name == "Message" and "\n" not in raw_text:
+            if not _should_narrate(node_name, raw_text):
                 continue
             var path := String(label.get_path())
             var text := _normalize_text(raw_text)
@@ -98,8 +104,19 @@ func _scan_visible_narrative_labels() -> void:
             _last_text_by_path[path] = text
             if text.is_empty() or text == previous or not label.is_visible_in_tree():
                 continue
-            var duration := speak(text, StringName(node_name.to_lower()), true)
-            _extend_visible_duration(label, node_name, duration)
+            var hold_duration := speak(text, StringName(node_name.to_lower()), false)
+            _extend_visible_duration(label, node_name, hold_duration)
+
+func _should_narrate(node_name: String, raw_text: String) -> bool:
+    if raw_text.strip_edges().is_empty():
+        return false
+    if node_name == "Message":
+        return "\n" in raw_text
+    if node_name == "StoryMessage":
+        var upper := raw_text.strip_edges().to_upper()
+        if upper.begins_with("CLIQUE NA CENA"):
+            return false
+    return true
 
 func _extend_visible_duration(label: Label, node_name: String, duration: float) -> void:
     if duration <= 0.0:
