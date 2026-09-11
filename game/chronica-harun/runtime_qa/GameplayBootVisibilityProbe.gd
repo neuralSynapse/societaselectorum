@@ -44,10 +44,38 @@ func _run_probe() -> void:
                 get_tree().quit(6)
                 return
 
+    var encounter_nodes := get_tree().get_nodes_in_group("narrative_encounter")
+    if encounter_nodes.is_empty():
+        push_error("Boot visibility probe found no canonical narrative encounter")
+        get_tree().quit(7)
+        return
+    var encounter := encounter_nodes[0] as Node3D
+    if encounter == null:
+        push_error("Boot visibility probe could not resolve encounter as Node3D")
+        get_tree().quit(8)
+        return
+    var camera := stage.player.camera
+    var encounter_center := encounter.global_position + Vector3(0.0, 1.35 * encounter.scale.y, 0.0)
+    if camera.is_position_behind(encounter_center):
+        push_error("Boot encounter spawned behind gameplay camera")
+        get_tree().quit(9)
+        return
+    var camera_space := camera.global_transform.affine_inverse() * encounter_center
+    var depth := -camera_space.z
+    var screen_position := camera.unproject_position(encounter_center)
+    var viewport_size := get_viewport().get_visible_rect().size
+    var min_screen_x := viewport_size.x * 0.14
+    var max_screen_x := viewport_size.x * 0.86
+    if depth < 2.8 or encounter.scale.x > 0.86 or screen_position.x < min_screen_x or screen_position.x > max_screen_x:
+        push_error("Boot encounter staging obstructs gameplay: depth=%.3f scale=%.3f screen_x=%.1f viewport_x=%.1f" % [depth, encounter.scale.x, screen_position.x, viewport_size.x])
+        get_tree().quit(10)
+        return
+    print("BOOT_ENCOUNTER_STAGING=PASS depth=%.3f scale=%.3f screen_x=%.1f" % [depth, encounter.scale.x, screen_position.x])
+
     var image := get_viewport().get_texture().get_image()
     if image == null or image.is_empty():
         push_error("Boot visibility probe produced an empty viewport image")
-        get_tree().quit(7)
+        get_tree().quit(11)
         return
 
     var mean_luminance := _sample_mean_luminance(image)
@@ -55,7 +83,7 @@ func _run_probe() -> void:
     if mean_luminance < 0.028 or visible_ratio < 0.12:
         push_error("Boot gameplay is too dark: mean_luminance=%.4f visible_ratio=%.4f" % [mean_luminance, visible_ratio])
         _save_capture(image)
-        get_tree().quit(8)
+        get_tree().quit(12)
         return
 
     _save_capture(image)
