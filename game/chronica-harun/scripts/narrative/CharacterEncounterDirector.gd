@@ -81,13 +81,17 @@ func clear_encounters() -> void:
     active_echoes.clear()
 
 func _build_echo(data: Dictionary, stage_data: Dictionary) -> Node3D:
+    var character_id := String(data.get("id", "presence"))
+    if character_id == "aspect_thoth":
+        return _build_thoth_echo(data, stage_data)
+
     var root := Node3D.new()
-    root.name = "Encounter_%s" % String(data.get("id", "presence"))
+    root.name = "Encounter_%s" % character_id
     root.add_to_group("narrative_encounter")
-    root.set_meta("character_id", String(data.get("id", "")))
+    root.set_meta("character_id", character_id)
     root.set_meta("stage_id", String(stage_data.get("id", "")))
 
-    var palette := _palette_for(String(data.get("id", "")))
+    var palette := _palette_for(character_id)
     var material := StandardMaterial3D.new()
     material.albedo_color = palette[0]
     material.metallic = 0.34
@@ -126,7 +130,7 @@ func _build_echo(data: Dictionary, stage_data: Dictionary) -> Node3D:
     halo.material_override = halo_material
     root.add_child(halo)
 
-    _add_identity_details(root, String(data.get("id", "")), halo_material)
+    _add_identity_details(root, character_id, halo_material)
 
     var label := Label3D.new()
     label.text = String(data.get("name", "PRESENÇA")).to_upper()
@@ -145,6 +149,157 @@ func _build_echo(data: Dictionary, stage_data: Dictionary) -> Node3D:
     light.shadow_enabled = false
     root.add_child(light)
     return root
+
+func _build_thoth_echo(data: Dictionary, stage_data: Dictionary) -> Node3D:
+    var root := Node3D.new()
+    root.name = "Encounter_aspect_thoth"
+    root.add_to_group("narrative_encounter")
+    root.set_meta("character_id", "aspect_thoth")
+    root.set_meta("stage_id", String(stage_data.get("id", "")))
+    root.set_meta("presentation", "ibis_scribe_manifestation")
+
+    var midnight := StandardMaterial3D.new()
+    midnight.albedo_color = Color("09141B")
+    midnight.metallic = 0.46
+    midnight.roughness = 0.34
+    midnight.emission_enabled = true
+    midnight.emission = Color("17485B")
+    midnight.emission_energy_multiplier = 0.42
+
+    var lapis := StandardMaterial3D.new()
+    lapis.albedo_color = Color("123244")
+    lapis.metallic = 0.58
+    lapis.roughness = 0.28
+    lapis.emission_enabled = true
+    lapis.emission = Color("2D93AE")
+    lapis.emission_energy_multiplier = 0.72
+
+    var gold := StandardMaterial3D.new()
+    gold.albedo_color = Color("A86F25")
+    gold.metallic = 0.78
+    gold.roughness = 0.22
+    gold.emission_enabled = true
+    gold.emission = Color("C9933A")
+    gold.emission_energy_multiplier = 0.8
+
+    var ivory := StandardMaterial3D.new()
+    ivory.albedo_color = Color("C9C1AC")
+    ivory.metallic = 0.12
+    ivory.roughness = 0.42
+    ivory.emission_enabled = true
+    ivory.emission = Color("7FC7D6")
+    ivory.emission_energy_multiplier = 0.35
+
+    var robe_mesh := CylinderMesh.new()
+    robe_mesh.top_radius = 0.31
+    robe_mesh.bottom_radius = 0.56
+    robe_mesh.height = 1.55
+    _mesh_node(root, "ThothRobe", robe_mesh, Vector3(0, 0.82, 0), Vector3.ONE, midnight)
+
+    var collar_mesh := TorusMesh.new()
+    collar_mesh.inner_radius = 0.28
+    collar_mesh.outer_radius = 0.43
+    var collar := _mesh_node(root, "ThothCollar", collar_mesh, Vector3(0, 1.57, 0), Vector3.ONE, gold)
+    collar.rotation_degrees = Vector3(90, 0, 0)
+
+    var head_mesh := SphereMesh.new()
+    head_mesh.radius = 0.27
+    head_mesh.height = 0.54
+    _mesh_node(root, "IbisHead", head_mesh, Vector3(0, 1.94, -0.02), Vector3(0.86, 0.95, 0.82), lapis)
+
+    var beak_mesh := CylinderMesh.new()
+    beak_mesh.top_radius = 0.015
+    beak_mesh.bottom_radius = 0.12
+    beak_mesh.height = 0.72
+    var beak := _mesh_node(root, "IbisBeak", beak_mesh, Vector3(0, 1.91, -0.48), Vector3.ONE, ivory)
+    beak.rotation_degrees = Vector3(-90, 0, 0)
+
+    for side in [-1.0, 1.0]:
+        var eye_mesh := SphereMesh.new()
+        eye_mesh.radius = 0.035
+        eye_mesh.height = 0.07
+        _mesh_node(root, "IbisEye%s" % ("L" if side < 0.0 else "R"), eye_mesh, Vector3(0.18 * side, 2.02, -0.205), Vector3.ONE, gold)
+
+    var disk_mesh := SphereMesh.new()
+    disk_mesh.radius = 0.37
+    disk_mesh.height = 0.74
+    _mesh_node(root, "LunarDisk", disk_mesh, Vector3(0, 2.43, 0.10), Vector3(1.0, 1.0, 0.12), gold)
+
+    var halo_mesh := TorusMesh.new()
+    halo_mesh.inner_radius = 0.46
+    halo_mesh.outer_radius = 0.51
+    var halo := _mesh_node(root, "LunarHalo", halo_mesh, Vector3(0, 2.43, 0.10), Vector3.ONE, lapis)
+    halo.rotation_degrees = Vector3(90, 0, 0)
+
+    for side in [-1.0, 1.0]:
+        var arm_mesh := CylinderMesh.new()
+        arm_mesh.top_radius = 0.075
+        arm_mesh.bottom_radius = 0.105
+        arm_mesh.height = 0.92
+        var arm := _mesh_node(root, "ScribeArm%s" % ("L" if side < 0.0 else "R"), arm_mesh, Vector3(0.43 * side, 1.20, -0.02), Vector3.ONE, midnight)
+        arm.rotation_degrees = Vector3(0, 0, 13.0 * side)
+
+    var tablet_mesh := BoxMesh.new()
+    tablet_mesh.size = Vector3(0.52, 0.68, 0.08)
+    var tablet := _mesh_node(root, "ScribeTablet", tablet_mesh, Vector3(-0.54, 1.08, -0.30), Vector3.ONE, gold)
+    tablet.rotation_degrees = Vector3(-8, 12, -7)
+
+    for row in range(4):
+        var glyph_mesh := BoxMesh.new()
+        glyph_mesh.size = Vector3(0.31 - float(row) * 0.025, 0.018, 0.014)
+        _mesh_node(root, "TabletGlyph%d" % row, glyph_mesh, Vector3(-0.54, 1.25 - row * 0.115, -0.346), Vector3.ONE, ivory)
+
+    var staff_mesh := CylinderMesh.new()
+    staff_mesh.top_radius = 0.035
+    staff_mesh.bottom_radius = 0.045
+    staff_mesh.height = 2.10
+    _mesh_node(root, "StaffOfThoth", staff_mesh, Vector3(0.58, 1.02, 0.03), Vector3.ONE, gold)
+
+    var staff_ring_mesh := TorusMesh.new()
+    staff_ring_mesh.inner_radius = 0.14
+    staff_ring_mesh.outer_radius = 0.18
+    var staff_ring := _mesh_node(root, "StaffCrescent", staff_ring_mesh, Vector3(0.58, 2.11, 0.03), Vector3.ONE, lapis)
+    staff_ring.rotation_degrees = Vector3(90, 0, 0)
+
+    var label := Label3D.new()
+    label.name = "ThothPresenceLabel"
+    label.text = "ASPECTO DE THOTH · PERCEPÇÃO"
+    label.position = Vector3(0, 2.92, 0)
+    label.font_size = 27
+    label.outline_size = 9
+    label.modulate = Color("E7D6AC")
+    label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    root.add_child(label)
+
+    var key_light := OmniLight3D.new()
+    key_light.name = "ThothLapisLight"
+    key_light.light_color = Color("5EB7CE")
+    key_light.light_energy = 0.72
+    key_light.omni_range = 4.8
+    key_light.position = Vector3(0, 1.75, 0.35)
+    key_light.shadow_enabled = false
+    root.add_child(key_light)
+
+    var gold_light := OmniLight3D.new()
+    gold_light.name = "ThothGoldLight"
+    gold_light.light_color = Color("D39C45")
+    gold_light.light_energy = 0.48
+    gold_light.omni_range = 3.2
+    gold_light.position = Vector3(-0.45, 1.15, -0.25)
+    gold_light.shadow_enabled = false
+    root.add_child(gold_light)
+
+    return root
+
+func _mesh_node(parent: Node3D, node_name: String, mesh: PrimitiveMesh, position: Vector3, scale_value: Vector3, material: Material) -> MeshInstance3D:
+    var node := MeshInstance3D.new()
+    node.name = node_name
+    node.mesh = mesh
+    node.position = position
+    node.scale = scale_value
+    node.material_override = material
+    parent.add_child(node)
+    return node
 
 func _add_identity_details(root: Node3D, character_id: String, material: StandardMaterial3D) -> void:
     if character_id in ["caim", "aspect_horus"]:
@@ -166,17 +321,6 @@ func _add_identity_details(root: Node3D, character_id: String, material: Standar
             wing.rotation_degrees = Vector3(0, 0, -22.0 * side)
             wing.material_override = material
             root.add_child(wing)
-    elif character_id == "aspect_thoth":
-        var beak := MeshInstance3D.new()
-        var mesh := CylinderMesh.new()
-        mesh.top_radius = 0.02
-        mesh.bottom_radius = 0.12
-        mesh.height = 0.55
-        beak.mesh = mesh
-        beak.position = Vector3(0, 1.98, -0.48)
-        beak.rotation_degrees = Vector3(90, 0, 0)
-        beak.material_override = material
-        root.add_child(beak)
     elif character_id in ["aspect_belial", "sabaoth", "baphometic_hermaphrodite"]:
         for side in [-1.0, 1.0]:
             var horn := MeshInstance3D.new()
