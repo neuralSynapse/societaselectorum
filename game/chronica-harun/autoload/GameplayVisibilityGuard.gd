@@ -6,11 +6,13 @@ const MAX_FOG_DENSITY := 0.006
 const MIN_ROOM_FILL := 3.25
 const MIN_ROOM_FILL_RANGE := 10.5
 const MIN_KEY_LIGHT := 1.15
+const WEB_ROOM_STREAM_RADIUS := 9.5
+const WEB_ROOM_STREAM_INTERVAL := 0.12
 
 var _main: Node = null
 var _remaining := 0.0
 var _pulse := 0.0
-var _diagnostic_announced := false
+var _stream_pulse := 0.0
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
@@ -21,10 +23,22 @@ func enforce(main: Node, duration_seconds: float = 5.0) -> void:
     _main = main
     _remaining = maxf(_remaining, duration_seconds)
     _pulse = 0.0
+    _stream_pulse = 0.0
     _enforce_now(main)
 
 func _process(delta: float) -> void:
-    if _remaining <= 0.0 or _main == null or not is_instance_valid(_main):
+    if _main == null or not is_instance_valid(_main):
+        return
+
+    if OS.has_feature("web"):
+        _stream_pulse -= delta
+        if _stream_pulse <= 0.0:
+            _stream_pulse = WEB_ROOM_STREAM_INTERVAL
+            var stage := _main.get_node_or_null("StageDirector") as StageDirector
+            if stage != null:
+                _stream_web_rooms(stage)
+
+    if _remaining <= 0.0:
         return
     _remaining -= delta
     _pulse -= delta
@@ -95,47 +109,46 @@ func _enforce_world_lights(world_root: Node3D) -> void:
         rim.light_energy = maxf(rim.light_energy, 0.42)
 
 func _enforce_stage(stage: StageDirector) -> void:
+    if OS.has_feature("web"):
+        _stream_web_rooms(stage)
     if stage.floor_instance != null:
-        stage.floor_instance.visible = true
         var rooms := stage.floor_instance.get_node_or_null("Rooms")
         if rooms != null:
             for room_value in rooms.get_children():
                 if room_value is RoomShell:
-                    var room := room_value as RoomShell
-                    room.visible = String(room.room_id) == "threshold"
-                    if room.visible:
-                        _enforce_room(room)
-            if OS.has_feature("web") and not _diagnostic_announced:
-                _diagnostic_announced = true
-                print("WEB_ROOM_ISOLATION_DIAGNOSTIC threshold_only=true")
+                    _enforce_room(room_value as RoomShell)
     if stage.player != null and is_instance_valid(stage.player):
         stage.player.visible = true
         stage.player.process_mode = Node.PROCESS_MODE_INHERIT
         if stage.player.camera != null:
             stage.player.camera.current = true
             stage.player.camera.make_current()
-            _install_web_geometry_probe(stage.player.camera)
     if stage.hud != null and is_instance_valid(stage.hud):
         stage.hud.visible = true
 
-func _install_web_geometry_probe(camera: Camera3D) -> void:
-    if not OS.has_feature("web") or camera == null or camera.has_node("WebGeometryProbe"):
+func _stream_web_rooms(stage: StageDirector) -> void:
+    if not OS.has_feature("web") or stage == null or stage.floor_instance == null:
         return
-    var probe := MeshInstance3D.new()
-    probe.name = "WebGeometryProbe"
-    probe.position = Vector3(0, 0, -1.3)
-    var mesh := BoxMesh.new()
-    mesh.size = Vector3(0.42, 0.42, 0.42)
-    probe.mesh = mesh
-    var material := StandardMaterial3D.new()
-    material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-    material.albedo_color = Color(1.0, 0.0, 0.8, 1.0)
-    material.emission_enabled = true
-    material.emission = Color(1.0, 0.0, 0.8, 1.0)
-    material.emission_energy_multiplier = 2.0
-    probe.material_override = material
-    camera.add_child(probe)
-    print("WEB_GEOMETRY_PROBE installed path=%s" % String(probe.get_path()))
+    if stage.player == null or not is_instance_valid(stage.player):
+        return
+    var rooms := stage.floor_instance.get_node_or_null("Rooms")
+    if rooms == null:
+        return
+    var player_position := stage.player.global_position
+    for room_value in rooms.get_children():
+        if not (room_value is RoomShell):
+            continue
+        var room := room_value as RoomShell
+        var secret_pending := bool(room.get_meta("secret_connection_pending", false))
+        var secret_open := bool(room.get_meta("secret_connection_open", false))
+        if secret_pending and not secret_open:
+            room.visible = false
+            continue
+        if secret_open and room.process_mode == Node.PROCESS_MODE_DISABLED:
+            room.process_mode = Node.PROCESS_MODE_INHERIT
+        var delta := room.global_position - player_position
+        var planar_distance := Vector2(delta.x, delta.z).length()
+        room.visible = planar_distance <= WEB_ROOM_STREAM_RADIUS
 
 func _enforce_room(room: RoomShell) -> void:
     if room == null or not is_instance_valid(room) or not room.visible:
