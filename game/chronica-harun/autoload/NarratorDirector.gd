@@ -4,7 +4,7 @@ signal narration_started(text: String, channel: StringName, estimated_duration: 
 signal narration_stopped
 
 const LANGUAGE := "pt-BR"
-const NARRATIVE_LABEL_NAMES := ["Subtitle", "StoryMessage", "ChoicePrompt"]
+const NARRATIVE_LABEL_NAMES := ["Subtitle", "StoryMessage", "ChoicePrompt", "RevealLabel", "Message"]
 const MIN_DURATION := 2.4
 const MAX_DURATION := 22.0
 
@@ -89,13 +89,36 @@ func _scan_visible_narrative_labels() -> void:
             if not (candidate is Label):
                 continue
             var label := candidate as Label
+            var raw_text := label.text
+            if node_name == "Message" and "\n" not in raw_text:
+                continue
             var path := String(label.get_path())
-            var text := _normalize_text(label.text)
+            var text := _normalize_text(raw_text)
             var previous := String(_last_text_by_path.get(path, ""))
             _last_text_by_path[path] = text
             if text.is_empty() or text == previous or not label.is_visible_in_tree():
                 continue
-            speak(text, StringName(node_name.to_lower()), true)
+            var duration := speak(text, StringName(node_name.to_lower()), true)
+            _extend_visible_duration(label, node_name, duration)
+
+func _extend_visible_duration(label: Label, node_name: String, duration: float) -> void:
+    if duration <= 0.0:
+        return
+    var current: Node = label
+    while current != null:
+        if node_name == "Subtitle" and current is NarrativePresentationController:
+            var presentation := current as NarrativePresentationController
+            presentation.line_timer = maxf(presentation.line_timer, duration + 0.25)
+            return
+        if node_name == "StoryMessage" and current is NarrativePresentationController:
+            var presentation := current as NarrativePresentationController
+            presentation.message_timer = maxf(presentation.message_timer, duration + 0.25)
+            return
+        if node_name == "Message" and current is HUDController:
+            var hud := current as HUDController
+            hud.hide_timer = maxf(hud.hide_timer, duration + 0.25)
+            return
+        current = current.get_parent()
 
 func _select_native_voice() -> String:
     var voices := DisplayServer.tts_get_voices()
