@@ -18,6 +18,7 @@ DefinitivePowerRuntime="*res://autoload/DefinitivePowerRuntime.gd"
 DefinitiveRewardRuntime="*res://autoload/DefinitiveRewardRuntime.gd"
 InitiaticRuntime="*res://autoload/InitiaticRuntimeIntegrator.gd"
 CanonicalHUDRuntime="*res://autoload/CanonicalHUDRuntime.gd"
+GameplayVisibilityGuard="*res://autoload/GameplayVisibilityGuard.gd"
 
 [display]
 window/size/viewport_width=1920
