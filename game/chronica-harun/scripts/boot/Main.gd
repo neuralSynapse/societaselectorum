@@ -108,7 +108,7 @@ func _show_canonical_boot_gate(has_save: bool) -> void:
     stack.add_child(invocation)
 
     var continuity := Label.new()
-    continuity.text = "Cosmogênese → Origem de Harun → Portal 0 · Aspirante — Initiatio Luciferi → Estudante → I · Peregrinus Ignis → 33 Graus"
+    continuity.text = "Cosmogênese · Origem de Harun · Portal 0 · Aspirante — Initiatio Luciferi · Estudante · I · Peregrinus Ignis · 33 Graus"
     continuity.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     continuity.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
     continuity.add_theme_color_override("font_color", Color(0.76, 0.69, 0.59, 1.0))
@@ -184,6 +184,8 @@ func _boot_campaign_runtime() -> void:
     var entry_sequence := narrative_runtime.start_entry_flow()
     var blocking_entry := _cinematic_can_take_player_control() and (entry_sequence == &"cosmogony" or entry_sequence == &"harun_origin" or entry_sequence == &"epilogue")
     _set_gameplay_enabled(not blocking_entry)
+    if not blocking_entry:
+        GameplayVisibilityGuard.enforce(self, 6.0)
     if not blocking_entry and stage_director.hud != null and OS.has_feature("web"):
         stage_director.hud.show_message("CLIQUE NA CENA PARA CAPTURAR A CÂMERA", 5.5)
 
@@ -205,8 +207,10 @@ func set_pause_state(paused: bool) -> void:
         Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
         if stage_director != null and stage_director.hud != null:
             stage_director.hud.show_message("CLIQUE NA CENA PARA RETOMAR A CÂMERA", 3.5)
+        GameplayVisibilityGuard.enforce(self, 2.5)
     else:
         Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+        GameplayVisibilityGuard.enforce(self, 2.5)
 
 func _exit_tree() -> void:
     if get_tree() != null:
@@ -225,9 +229,15 @@ func _set_gameplay_enabled(enabled: bool) -> void:
         stage_director.player.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
         if stage_director.player.camera != null:
             stage_director.player.camera.current = enabled
+            if enabled:
+                stage_director.player.camera.make_current()
     if stage_director.hud != null:
         stage_director.hud.visible = enabled
     if enabled:
+        var presentation := narrative_runtime.get_node_or_null("Presentation")
+        if presentation != null and presentation.has_method("ensure_gameplay_safe"):
+            presentation.call("ensure_gameplay_safe")
+        GameplayVisibilityGuard.enforce(self, 5.0)
         Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if OS.has_feature("web") else Input.MOUSE_MODE_CAPTURED
     else:
         Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -245,6 +255,7 @@ func _on_gameplay_handoff(_target_stage: StringName) -> void:
             narrative_runtime.cinematic_stage.release_camera()
         stage_director.player.camera.make_current()
     _set_gameplay_enabled(true)
+    GameplayVisibilityGuard.enforce(self, 6.0)
     if stage_director.hud != null and OS.has_feature("web"):
         stage_director.hud.show_message("CLIQUE NA CENA PARA CONTROLAR A CÂMERA", 4.0)
 
