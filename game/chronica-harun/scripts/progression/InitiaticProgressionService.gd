@@ -109,18 +109,18 @@ static func build_degree_stage_data(degree: int) -> Dictionary:
     var row := degree_row(degree)
     if row.is_empty():
         return {}
-    var enemy_ids := ContentRegistry.all_ids("enemies")
-    var boss_ids := ContentRegistry.all_ids("bosses")
-    var power_ids := ContentRegistry.all_ids("powers")
+    var enemy_ids: Array = ContentRegistry.all_ids("enemies")
+    var boss_ids: Array = ContentRegistry.all_ids("bosses")
+    var power_ids: Array = ContentRegistry.all_ids("powers")
     if enemy_ids.is_empty() or boss_ids.is_empty():
         return {}
     var seed := degree * 7919
     var common: Array = []
     for offset in range(3):
-        common.append(enemy_ids[abs(seed + offset * 97) % enemy_ids.size()])
-    var elite_id := enemy_ids[abs(seed + 431) % enemy_ids.size()]
-    var boss_id := boss_ids[abs(seed + 911) % boss_ids.size()]
-    var power_id := ""
+        common.append(String(enemy_ids[abs(seed + offset * 97) % enemy_ids.size()]))
+    var elite_id: String = String(enemy_ids[abs(seed + 431) % enemy_ids.size()])
+    var boss_id: String = String(boss_ids[abs(seed + 911) % boss_ids.size()])
+    var power_id: String = ""
     if not power_ids.is_empty():
         power_id = String(power_ids[abs(seed + 3571) % power_ids.size()])
     var subtitle := String(row.get("tree", "")).replace("ARBOR_", "ARBOR ").replace("_", " ")
