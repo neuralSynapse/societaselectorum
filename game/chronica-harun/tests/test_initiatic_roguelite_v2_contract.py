@@ -153,3 +153,14 @@ def test_ci_runs_real_boot_visibility_probe_without_disabling_narrative_runtime(
     assert "PROCESS_MODE_DISABLED" not in probe
     assert "GameplayBootVisibilityProbe.tscn" in workflow
     assert "BOOT_GAMEPLAY_VISIBILITY=PASS" in workflow
+
+
+def test_only_real_connections_look_like_doors_and_only_real_exits_can_lock():
+    builder = read("scripts/generation/StageFloorBuilder.gd")
+    room = read("scripts/generation/RoomShell.gd")
+    narrative = read("scripts/narrative/ReactiveNarrativeDirector.gd")
+    assert "mark_doorway_open" in builder
+    assert 'get_meta("open_doorways"' in room
+    assert "_add_door_arch_for_wall" in room
+    assert "should_block" in room
+    assert "PASSAGENS SELADAS" in narrative
