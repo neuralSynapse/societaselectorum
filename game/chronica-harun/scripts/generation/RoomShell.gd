@@ -202,6 +202,10 @@ func _add_beam_between(parent: Node3D, start: Vector3, finish: Vector3, material
     var length := direction.length()
     if length <= 0.001:
         return
+    var direction_normalized := direction / length
+    var safe_up := Vector3.UP
+    if absf(direction_normalized.dot(Vector3.UP)) > 0.98:
+        safe_up = Vector3.FORWARD
     var beam := MeshInstance3D.new()
     var mesh := BoxMesh.new()
     mesh.size = Vector3(thickness, thickness, length)
@@ -209,7 +213,7 @@ func _add_beam_between(parent: Node3D, start: Vector3, finish: Vector3, material
     beam.material_override = material
     parent.add_child(beam)
     beam.position = (start + finish) * 0.5
-    beam.look_at(parent.to_global(finish), Vector3.UP)
+    beam.look_at(parent.to_global(finish), safe_up)
 
 func _add_wall_reliefs(parent: Node3D, dark_stone: Material, bronze: Material) -> void:
     var panels := [
