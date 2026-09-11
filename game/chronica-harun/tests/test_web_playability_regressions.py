@@ -105,4 +105,6 @@ def test_player_primary_vfx_travels_forward_instead_of_expanding_toward_camera()
     assert "TRANSIENT_VFX_MOTION" in vfx
     assert "root.configure(direction, travel, duration" in vfx
     assert "velocity = direction.normalized() * (travel / lifetime)" in motion
-    assert "position += velocity * delta" in motion
+    assert "MAX_SIMULATION_STEP" in motion
+    assert "MIN_FRAMES_ALIVE" in motion
+    assert "position += velocity * safe_delta" in motion
