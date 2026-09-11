@@ -17,6 +17,7 @@ CombatLoadoutDirector="*res://autoload/CombatLoadoutDirector.gd"
 DefinitivePowerRuntime="*res://autoload/DefinitivePowerRuntime.gd"
 DefinitiveRewardRuntime="*res://autoload/DefinitiveRewardRuntime.gd"
 InitiaticRuntime="*res://autoload/InitiaticRuntimeIntegrator.gd"
+CanonicalHUDRuntime="*res://autoload/CanonicalHUDRuntime.gd"
 
 [display]
 window/size/viewport_width=1920
