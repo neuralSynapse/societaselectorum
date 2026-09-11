@@ -72,8 +72,18 @@ func get_object(category: String) -> Dictionary:
 func get_initiatic_path() -> Dictionary:
     return get_object("initiatic_path")
 
-func get_student_journey() -> Array:
+func get_base_student_journey() -> Array:
     return all("journey")
+
+func get_student_journey() -> Array:
+    if Engine.has_singleton("GameState"):
+        return get_base_student_journey()
+    if typeof(GameState) != TYPE_NIL and String(GameState.journey_state) == "DEGREE":
+        var degree_stages: Array = []
+        for degree in range(1, 34):
+            degree_stages.append(InitiaticProgressionService.build_degree_stage_data(degree))
+        return degree_stages
+    return get_base_student_journey()
 
 func get_enemy(id: StringName) -> Dictionary:
     return get_item("enemies", id)
