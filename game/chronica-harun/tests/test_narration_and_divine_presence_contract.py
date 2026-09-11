@@ -10,6 +10,7 @@ def read(path: str) -> str:
 def test_narrator_is_autoloaded_and_has_web_and_native_backends():
     project = read("project.godot")
     assert 'NarratorDirector="*res://autoload/NarratorDirector.gd"' in project
+    assert "general/text_to_speech=true" in project
     narrator = read("autoload/NarratorDirector.gd")
     assert "DisplayServer.tts_speak" in narrator
     assert "speechSynthesis" in narrator
@@ -38,3 +39,11 @@ def test_thoth_is_not_the_generic_capsule_placeholder_anymore():
     for token in ["ThothRobe", "IbisHead", "IbisBeak", "LunarDisk", "ScribeTablet", "StaffOfThoth"]:
         assert token in encounters
     assert '"ASPECTO DE THOTH · PERCEPÇÃO"' in encounters
+
+
+def test_gothic_beams_do_not_use_an_invalid_up_vector_when_vertical():
+    room = read("scripts/generation/RoomShell.gd")
+    beam = room[room.index("func _add_beam_between"):]
+    assert "direction_normalized" in beam[:1800]
+    assert "safe_up" in beam[:1800]
+    assert "absf(direction_normalized.dot(Vector3.UP))" in beam[:1800]
