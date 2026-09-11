@@ -67,5 +67,39 @@ func _run_probe() -> void:
         get_tree().quit(3)
         return
     print("PLAYER_ENEMY_COLLISION=PASS z=%.3f" % player.global_position.z)
+
+    player.queue_free()
+    enemy.queue_free()
+    wall.queue_free()
+    target.queue_free()
+    await get_tree().physics_frame
+
+    var journey := ContentRegistry.get_student_journey()
+    if journey.is_empty():
+        push_error("No journey available for doorway probe")
+        get_tree().quit(4)
+        return
+    var floor := StageFloorBuilder.build(journey[0], 9301, 1, {})
+    add_child(floor)
+    var threshold := floor.get_node("Rooms/threshold") as RoomShell
+    var doorway_player := PLAYER_SCENE.instantiate() as PlayerController
+    add_child(doorway_player)
+    doorway_player.global_position = threshold.global_position + Vector3(0.0, 0.15, 0.0)
+    doorway_player.set_physics_process(false)
+    doorway_player.set_process_input(false)
+
+    await get_tree().physics_frame
+    await get_tree().physics_frame
+
+    for _step in range(150):
+        await get_tree().physics_frame
+        doorway_player.velocity = Vector3(5.2, 0.0, 0.0)
+        doorway_player.move_and_slide()
+
+    if doorway_player.global_position.x <= 6.0:
+        push_error("Threshold exit is physically blocked: x=%.3f" % doorway_player.global_position.x)
+        get_tree().quit(5)
+        return
+    print("THRESHOLD_DOORWAY_COLLISION=PASS x=%.3f" % doorway_player.global_position.x)
     print("COLLISION_RUNTIME=PASS")
     get_tree().quit(0)
