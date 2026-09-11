@@ -45,9 +45,7 @@ func _enforce_now(main: Node) -> void:
 
     var narrative := main.get_node_or_null("NarrativeRuntime")
     if narrative != null:
-        var presentation := narrative.get_node_or_null("Presentation")
-        if presentation != null and presentation.has_method("ensure_gameplay_safe"):
-            presentation.call("ensure_gameplay_safe")
+        _enforce_presentation(narrative)
         var cinematic_stage := narrative.get_node_or_null("CinematicStage") as Node3D
         if cinematic_stage != null and cinematic_stage.has_method("can_take_player_control"):
             if not bool(cinematic_stage.call("can_take_player_control")):
@@ -55,6 +53,24 @@ func _enforce_now(main: Node) -> void:
                 var cinematic_camera := cinematic_stage.get_node_or_null("CameraRig/CinematicCamera") as Camera3D
                 if cinematic_camera != null:
                     cinematic_camera.current = false
+
+func _enforce_presentation(narrative: Node) -> void:
+    var presentation := narrative.get_node_or_null("Presentation")
+    if presentation == null:
+        return
+    var blackout := presentation.get_node_or_null("Root/Blackout") as ColorRect
+    if blackout != null:
+        blackout.visible = false
+        blackout.color = Color(0, 0, 0, 0)
+    var veil := presentation.get_node_or_null("Root/CinematicVeil") as ColorRect
+    if veil != null:
+        veil.visible = false
+        veil.color = Color(0, 0, 0, 0)
+    var choice_panel := presentation.get_node_or_null("Root/ChoicePanel") as Control
+    var choice_dimmer := presentation.get_node_or_null("Root/ChoiceDimmer") as ColorRect
+    if choice_dimmer != null and (choice_panel == null or not choice_panel.visible):
+        choice_dimmer.visible = false
+        choice_dimmer.color = Color(0, 0, 0, 0)
 
 func _enforce_environment(world_root: Node3D) -> void:
     var world_environment := world_root.get_node_or_null("WorldEnvironment") as WorldEnvironment
