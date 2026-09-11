@@ -127,6 +127,9 @@ script = ExtResource("3")
 position = Vector3(-0.39, -0.34, -0.63)
 rotation = Vector3(-0.42, -0.10, -0.12)
 
+[node name="PrimaryMuzzle" type="Marker3D" parent="Head/Camera3D/ViewModelRoot/LeftGauntlet"]
+position = Vector3(0, 0.07, -0.48)
+
 [node name="LeftHand" type="MeshInstance3D" parent="Head/Camera3D/ViewModelRoot/LeftGauntlet"]
 position = Vector3(0, 0.01, -0.06)
 rotation = Vector3(-0.22, 0, 0)
@@ -231,7 +234,7 @@ cast_shadow = 0
 
 [node name="Forearm" type="MeshInstance3D" parent="Head/Camera3D/ViewModelRoot/RightGauntlet"]
 position = Vector3(0, -0.14, 0.16)
-rotation = Vector3(1.32, 0, 0)
+rotation = Vector3(1.32, 0.0, 0.0)
 mesh = SubResource("ForearmMesh")
 material_override = SubResource("LeatherMaterial")
 cast_shadow = 0
