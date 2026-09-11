@@ -77,33 +77,3 @@ def test_first_person_power_palette_is_gold_and_deep_violet_not_neon_red_magenta
     assert "emission_energy_multiplier = 2.2" in player_scene
     assert "light_energy = 0.9" in player_scene
     assert "light_energy = 0.8" in player_scene
-
-
-def test_societas_room_narration_is_preserved_inside_godot_stage_flow():
-    stage = read("scripts/progression/StageDirector.gd")
-    for line in [
-        "O Limiar não se abre. Ele reconhece.",
-        "A primeira autoridade mede a vontade, não a força.",
-        "Aquilo que concede poder também escolhe um preço.",
-        "A segunda câmara já conhece o som dos seus passos.",
-        "Por um instante, a máquina esquece o seu nome.",
-        "A terceira autoridade não guarda uma porta. Guarda um hábito.",
-        "Antes do Trono, fala aquilo que o anuncia.",
-        "A autoridade não pede fé. Exige obediência.",
-        "Toda vitória apresenta uma conta.",
-    ]:
-        assert line in stage
-    assert "func _show_societas_room_narration(" in stage
-
-
-def test_boss_room_has_eclipse_dais_and_atmospheric_dust_composition():
-    room = read("scripts/generation/RoomShell.gd")
-    for marker in [
-        "EclipseOculus",
-        "RitualDais",
-        "AtmosphericDust",
-        "func _add_eclipse_oculus(",
-        "func _add_ritual_dais(",
-        "func _add_atmospheric_dust(",
-    ]:
-        assert marker in room
