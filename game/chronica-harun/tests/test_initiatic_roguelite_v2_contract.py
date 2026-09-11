@@ -12,17 +12,25 @@ def load(path: str):
     return json.loads(read(path))
 
 
-def test_initiatic_path_has_actus_ingressus_student_and_33_degrees():
+def test_initiatic_path_has_portal_zero_student_and_33_degrees():
     data = load("data/progression/initiatic_path.json")
-    assert data["pre_student"]["id"] == "actus_ingressus"
-    assert data["pre_student"]["is_degree"] is False
-    assert [row["id"] for row in data["pre_student"]["scrolls"]] == ["o_olho", "a_chama", "a_obra_fundacao"]
+    portal = data["pre_student"]
+    assert portal["id"] == "portal_0_aspirante"
+    assert portal["name"] == "PORTAL 0 · ASPIRANTE"
+    assert portal["rite"] == "INITIATIO LUCIFERI"
+    assert portal["is_degree"] is False
+    assert [row["id"] for row in portal["scrolls"]] == ["o_olho", "a_chama", "a_obra_fundacao"]
     assert len(data["student"]["scrolls"]) == 12
     assert data["student"]["is_degree"] is False
     assert len(data["degrees"]) == 33
     assert [row["degree"] for row in data["degrees"]] == list(range(1, 34))
-    assert data["degrees"][0]["title"] == "INCEPTIO"
-    assert data["degrees"][0]["initiatic_title"] == "PEREGRINUS IGNIS"
+    assert data["degrees"][0]["title"] == "PEREGRINUS IGNIS"
+    assert data["degrees"][1]["title"] == "OCULUS HORI"
+    assert data["degrees"][10]["title"] == "VIGIL ARCANI"
+    assert data["degrees"][11]["title"] == "LILITH"
+    assert data["degrees"][21]["title"] == "ADAMAS ATER"
+    assert data["degrees"][22]["title"] == "CONIUNCTIO ARBORUM"
+    assert data["degrees"][32]["title"] == "IPSISSIMUS"
     assert data["degrees"][22]["tree"] == "ARBOR_DRACONIS"
     assert data["degrees"][22]["hidden_until_degree"] == 22
 
@@ -32,7 +40,7 @@ def test_33_scroll_corpus_is_distributed_without_inventing_a_scroll_per_degree()
     scrolls = data["scroll_corpus"]
     assert len(scrolls) == 33
     assert [row["number"] for row in scrolls] == list(range(1, 34))
-    assert [row["phase"] for row in scrolls[:3]] == ["ACTUS_INGRESSUS"] * 3
+    assert [row["phase"] for row in scrolls[:3]] == ["PORTAL_0_ASPIRANTE"] * 3
     assert [row["phase"] for row in scrolls[3:15]] == ["STUDENT"] * 12
     advanced = scrolls[15:]
     assert len(advanced) == 18
@@ -44,7 +52,7 @@ def test_33_scroll_corpus_is_distributed_without_inventing_a_scroll_per_degree()
 def test_draconis_is_programmatically_hidden_until_mortis_completion():
     service = read("scripts/progression/InitiaticProgressionService.gd")
     assert "hidden_until_degree" in service
-    assert "degree_completed >= hidden_until_degree" in service or "degree_completed >= int(row.get(\"hidden_until_degree\"" in service
+    assert "degree_completed() < hidden_until_degree" in service or "degree_completed >= hidden_until_degree" in service
     assert "ARBOR_DRACONIS" in service
 
 
@@ -60,16 +68,19 @@ def test_content_registry_exposes_initiatic_path_and_existing_roguelite_catalogs
     assert "laboratorium" in room_ids
 
 
-def test_narrative_choice_ui_uses_structured_rows_and_no_fixed_54px_long_option_contract():
-    hud = read("scripts/ui/HUDController.gd")
+def test_narrative_choice_ui_is_structured_and_not_fixed_height_text_collision():
+    controller = read("scripts/narrative/NarrativePresentationController.gd")
+    scene = read("scenes/narrative/NarrativePresentation.tscn")
     narrative = read("scripts/narrative/NarrativeChoiceDirector.gd")
     assert "immediate_cost" in narrative
     assert "story_consequence" in narrative
-    assert "_build_choice_row" in hud
-    assert "ChoiceModalDimmer" in hud or "choice_modal_dimmer" in hud
-    choice_block = hud[hud.index("func show_choice"):]
-    assert "custom_minimum_size = Vector2(0, 54)" not in choice_block[:2500]
-    assert "InputEventKey" in hud or "KEY_1" in hud
+    assert "_build_choice_card" in controller
+    assert "choice_modal_dimmer" in controller
+    assert "ChoiceDimmer" in scene
+    assert "CUSTO IMEDIATO" in controller
+    assert "CONSEQUÊNCIA" in controller
+    assert "KEY_1" in controller and "KEY_2" in controller
+    assert "custom_minimum_size = Vector2(0, 54)" not in controller
 
 
 def test_pause_menu_is_a_real_navigation_surface():
@@ -87,7 +98,7 @@ def test_roster_and_runtime_encounters_are_connected():
     for expected in ["Frater Harun", "Caim", "Lilith", "Nadir", "Seth", "Sabaoth · Ruptura", "Aspecto de Sophia", "Aspecto de Thoth", "Aspecto de Hórus", "Aspecto de Belial"]:
         assert expected in names
     runtime = read("scripts/narrative/CharacterEncounterDirector.gd")
-    assert "playable_roster.json" in runtime or 'ContentRegistry.all("characters")' in runtime
+    assert 'ContentRegistry.all("characters")' in runtime
     assert "encounter" in runtime.lower()
 
 
