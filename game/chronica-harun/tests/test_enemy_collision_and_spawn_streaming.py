@@ -14,6 +14,7 @@ def test_enemies_collide_with_player_world_and_each_other():
     # Mask 3 makes enemy movement respect both instead of walking through walls.
     assert 'collision_mask = 3' in scene
     assert 'safe_margin = 0.06' in scene
+    assert 'radius = 0.52' in scene
 
 
 def test_player_keeps_solid_world_and_enemy_collision_margin():
@@ -28,10 +29,13 @@ def test_enemy_models_are_never_loaded_synchronously_during_spawn():
     assert 'ResourceLoader.load_threaded_request' in factory
     assert 'ResourceLoader.load_threaded_get_status' in factory
     assert 'THREAD_LOAD_LOADED' in factory
+    assert 'EnemyModelStream.gd' in factory
 
 
-def test_combat_room_spawn_is_distributed_across_physics_frames():
-    stage = read("scripts/progression/StageDirector.gd")
-    spawn = stage[stage.index("func _spawn_combat_room"):stage.index("func _spawn_elite_room")]
-    assert 'await get_tree().physics_frame' in spawn
-    assert 'EnemyFactory.request_model' in stage
+def test_enemy_model_attachment_is_staggered_after_threaded_load():
+    streamer = read("scripts/content/EnemyModelStream.gd")
+    assert 'STAGGER_BUCKETS := 6' in streamer
+    assert 'ResourceLoader.load_threaded_get_status' in streamer
+    assert 'ResourceLoader.THREAD_LOAD_LOADED' in streamer
+    assert 'frame_index % STAGGER_BUCKETS' in streamer
+    assert 'visual.add_child(instance)' in streamer
