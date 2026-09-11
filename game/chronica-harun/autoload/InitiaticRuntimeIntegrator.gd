@@ -21,12 +21,21 @@ func _ready() -> void:
     call_deferred("_scan_existing_nodes")
 
 func _process(_delta: float) -> void:
-    var paused := get_tree().paused
-    if paused != _last_pause_state:
-        _last_pause_state = paused
-        _set_pause_surface(paused)
-    if paused:
+    var manual_paused := _manual_pause_active()
+    if manual_paused != _last_pause_state:
+        _last_pause_state = manual_paused
+        _set_pause_surface(manual_paused)
+    if manual_paused:
         _hide_legacy_pause_placeholder()
+    elif pause_root != null and pause_root.visible:
+        pause_root.visible = false
+
+func _manual_pause_active() -> bool:
+    var main := get_tree().current_scene
+    if main == null:
+        return false
+    var state = main.get("pause_active")
+    return bool(state) if state != null else false
 
 func _scan_existing_nodes() -> void:
     for node in get_tree().get_nodes_in_group("enemies"):
