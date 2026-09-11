@@ -69,6 +69,15 @@ jobs:
           if [[ "$code" -ne 0 && "$code" -ne 124 ]]; then exit "$code"; fi
           ! grep -E 'SCRIPT ERROR:|Parse Error:|Failed to load script|Failed loading resource|Compilation failed|Invalid call|Invalid access|Trying to assign value' /tmp/boot.log
 
+      - name: Real gameplay collision probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$GAME_DIR" res://runtime_qa/CollisionRuntimeProbe.tscn 2>&1 | tee /tmp/collision-runtime.log
+          grep -q 'ENEMY_WALL_COLLISION=PASS' /tmp/collision-runtime.log
+          grep -q 'PLAYER_ENEMY_COLLISION=PASS' /tmp/collision-runtime.log
+          grep -q 'COLLISION_RUNTIME=PASS' /tmp/collision-runtime.log
+
       - name: Export browser build
         shell: bash
         run: |
@@ -174,6 +183,7 @@ jobs:
           grep -q 'passed' /tmp/pytest.log
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'COLLISION_RUNTIME=PASS' /tmp/collision-runtime.log
           grep -q 'WEB_GAMEPLAY_VISIBILITY=PASS' /tmp/web-visibility.log
           grep -q 'BOOT_GAMEPLAY_VISIBILITY=PASS' /tmp/boot-visibility.log
           grep -q 'DEFINITIVE_VISUAL_CAPTURE=PASS' /tmp/visual.log
