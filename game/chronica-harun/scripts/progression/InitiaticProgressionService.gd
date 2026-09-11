@@ -2,7 +2,7 @@ extends RefCounted
 class_name InitiaticProgressionService
 
 const PATH_KEY := "initiatic_path"
-const PHASE_INGRESSUS := "ACTUS_INGRESSUS"
+const PHASE_PORTAL_0 := "PORTAL_0_ASPIRANTE"
 const PHASE_STUDENT := "STUDENT"
 const PHASE_DEGREE := "DEGREE"
 const TREE_DRACONIS := "ARBOR_DRACONIS"
@@ -12,7 +12,7 @@ static func path() -> Dictionary:
 
 static func phase_for_legacy_stage(stage_index: int) -> String:
     if stage_index <= 2:
-        return PHASE_INGRESSUS
+        return PHASE_PORTAL_0
     if stage_index <= 14:
         return PHASE_STUDENT
     return "INITIATION_BRIDGE"
@@ -24,7 +24,11 @@ static func current_phase_label() -> String:
             return "GRAUS"
         return "GRAU %s · %s" % [String(row.get("roman", "")), String(row.get("title", ""))]
     var phase := phase_for_legacy_stage(GameState.stage_index)
-    return "ACTUS INGRESSUS" if phase == PHASE_INGRESSUS else ("ESTUDANTE" if phase == PHASE_STUDENT else "CÂMARA DE INICIAÇÃO")
+    if phase == PHASE_PORTAL_0:
+        return "PORTAL 0 · ASPIRANTE — INITIATIO LUCIFERI"
+    if phase == PHASE_STUDENT:
+        return "ESTUDANTE"
+    return "CÂMARA DE INICIAÇÃO"
 
 static func current_degree() -> int:
     return clampi(int(GameState.meta_progression.get("degree_current", 0)), 0, 33)
@@ -39,17 +43,22 @@ static func current_degree_row() -> Dictionary:
     return degree_row(degree)
 
 static func degree_row(degree: int) -> Dictionary:
-    for row in path().get("degrees", []):
-        if int(row.get("degree", 0)) == degree:
-            return row
+    for row_value in path().get("degrees", []):
+        if row_value is Dictionary:
+            var row: Dictionary = row_value
+            if int(row.get("degree", 0)) == degree:
+                return row
     return {}
 
 static func visible_degrees() -> Array:
     var result: Array = []
-    var degree_completed := degree_completed()
-    for row in path().get("degrees", []):
+    var completed := degree_completed()
+    for row_value in path().get("degrees", []):
+        if not (row_value is Dictionary):
+            continue
+        var row: Dictionary = row_value
         var hidden_until_degree := int(row.get("hidden_until_degree", 0))
-        if String(row.get("tree", "")) == TREE_DRACONIS and not degree_completed >= hidden_until_degree:
+        if String(row.get("tree", "")) == TREE_DRACONIS and completed < hidden_until_degree:
             continue
         result.append(row)
     return result
@@ -72,7 +81,7 @@ static func begin_degree_path() -> bool:
         return false
     GameState.journey_state = PHASE_DEGREE
     GameState.meta_progression["degree_current"] = maxi(1, int(GameState.meta_progression.get("degree_current", 1)))
-    GameState.current_stage_id = StringName(degree_row(current_degree()).get("id", "grade_01_inceptio"))
+    GameState.current_stage_id = StringName(degree_row(current_degree()).get("id", "grade_01_peregrinus_ignis"))
     return true
 
 static func complete_current_degree() -> Dictionary:
@@ -114,10 +123,7 @@ static func build_degree_stage_data(degree: int) -> Dictionary:
     var power_id := ""
     if not power_ids.is_empty():
         power_id = String(power_ids[abs(seed + 3571) % power_ids.size()])
-    var initiatic_title := String(row.get("initiatic_title", ""))
     var subtitle := String(row.get("tree", "")).replace("ARBOR_", "ARBOR ").replace("_", " ")
-    if not initiatic_title.is_empty():
-        subtitle = "%s · %s" % [initiatic_title, subtitle]
     return {
         "id": String(row.get("id", "grade_%02d" % degree)),
         "title": "GRAU %s · %s" % [String(row.get("roman", degree)), String(row.get("title", ""))],
@@ -143,6 +149,7 @@ static func build_degree_stage_data(degree: int) -> Dictionary:
 static func journey_snapshot() -> Dictionary:
     return {
         "phase": current_phase_label(),
+        "entry_chain": String(path().get("entry_chain", "Portal 0 · Aspirante — Initiatio Luciferi → Estudante → I · Peregrinus Ignis")),
         "legacy_stage_index": GameState.stage_index,
         "degree_current": current_degree(),
         "degree_completed": degree_completed(),
