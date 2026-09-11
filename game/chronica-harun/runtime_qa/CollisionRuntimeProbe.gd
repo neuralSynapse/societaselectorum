@@ -101,5 +101,36 @@ func _run_probe() -> void:
         get_tree().quit(5)
         return
     print("THRESHOLD_DOORWAY_COLLISION=PASS x=%.3f" % doorway_player.global_position.x)
+
+    var room_director := floor.get_node("RoomDirector") as RoomDirector
+    var combat_room := floor.get_node("Rooms/combat_1") as RoomShell
+    room_director.register_room(combat_room)
+    room_director.activate_room(&"combat_1")
+    if not combat_room.locked:
+        push_error("Combat room did not lock on first activation")
+        get_tree().quit(6)
+        return
+    room_director.clear_room(&"combat_1")
+    if combat_room.locked or not combat_room.cleared:
+        push_error("Combat room did not clear correctly")
+        get_tree().quit(7)
+        return
+    room_director.activate_room(&"combat_1")
+    if combat_room.locked:
+        push_error("Cleared combat room relocked on reentry")
+        get_tree().quit(8)
+        return
+
+    var replacement := RoomShell.new()
+    replacement.room_id = &"combat_1"
+    replacement.room_role = &"combat"
+    floor.add_child(replacement)
+    room_director.register_room(replacement)
+    room_director.activate_room(&"combat_1")
+    if replacement.locked or not replacement.cleared:
+        push_error("Cleared room state did not survive room instance refresh")
+        get_tree().quit(9)
+        return
+    print("CLEARED_ROOM_REENTRY=PASS")
     print("COLLISION_RUNTIME=PASS")
     get_tree().quit(0)
