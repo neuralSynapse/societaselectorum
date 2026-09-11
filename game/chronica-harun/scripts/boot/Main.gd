@@ -188,6 +188,8 @@ func _boot_campaign_runtime() -> void:
         GameplayVisibilityGuard.enforce(self, 6.0)
     if not blocking_entry and stage_director.hud != null and OS.has_feature("web"):
         stage_director.hud.show_message("CLIQUE NA CENA PARA CAPTURAR A CÂMERA", 5.5)
+    if OS.has_feature("web"):
+        call_deferred("_run_web_render_diagnostics")
 
 func _unhandled_input(event: InputEvent) -> void:
     if not campaign_booted:
@@ -258,6 +260,98 @@ func _on_gameplay_handoff(_target_stage: StringName) -> void:
     GameplayVisibilityGuard.enforce(self, 6.0)
     if stage_director.hud != null and OS.has_feature("web"):
         stage_director.hud.show_message("CLIQUE NA CENA PARA CONTROLAR A CÂMERA", 4.0)
+
+func _run_web_render_diagnostics() -> void:
+    _emit_web_render_diag("post_boot")
+    await get_tree().create_timer(1.0).timeout
+    _emit_web_render_diag("t_plus_1s")
+    await get_tree().create_timer(4.0).timeout
+    _emit_web_render_diag("t_plus_5s")
+
+func _emit_web_render_diag(tag: String) -> void:
+    if not OS.has_feature("web"):
+        return
+    var viewport := get_viewport()
+    var active_camera := viewport.get_camera_3d()
+    var player := stage_director.player
+    var player_camera: Camera3D = player.camera if player != null else null
+    var floor := stage_director.floor_instance
+    var floor_mesh_total := 0
+    var floor_mesh_visible := 0
+    if floor != null:
+        for node in floor.find_children("*", "MeshInstance3D", true, false):
+            floor_mesh_total += 1
+            if node is MeshInstance3D and (node as MeshInstance3D).is_visible_in_tree():
+                floor_mesh_visible += 1
+
+    var viewmodel_visible := false
+    var player_position := Vector3.ZERO
+    var camera_position := Vector3.ZERO
+    var camera_rotation := Vector3.ZERO
+    var camera_current := false
+    var camera_matches_viewport := false
+    var camera_cull_mask := 0
+    if player != null:
+        player_position = player.global_position
+        var viewmodel := player.get_node_or_null("Head/Camera3D/ViewModelRoot") as Node3D
+        viewmodel_visible = viewmodel != null and viewmodel.is_visible_in_tree()
+    if player_camera != null:
+        camera_position = player_camera.global_position
+        camera_rotation = player_camera.global_rotation
+        camera_current = player_camera.current and player_camera.is_current()
+        camera_matches_viewport = active_camera == player_camera
+        camera_cull_mask = player_camera.cull_mask
+
+    var environment_text := "none"
+    var world_environment := world_root.get_node_or_null("WorldEnvironment") as WorldEnvironment
+    if world_environment != null and world_environment.environment != null:
+        var environment := world_environment.environment
+        environment_text = "ambient=%.3f exposure=%.3f fog=%s fog_density=%.4f" % [
+            environment.ambient_light_energy,
+            environment.tonemap_exposure,
+            str(environment.fog_enabled),
+            environment.fog_density,
+        ]
+
+    print("WEB_RENDER_DIAG tag=%s gameplay=%s world_visible=%s world_tree_visible=%s world_process=%d floor=%s floor_visible=%s meshes=%d visible_meshes=%d player=%s player_visible=%s player_pos=%s camera=%s camera_current=%s camera_matches_viewport=%s camera_pos=%s camera_rot=%s cull_mask=%d viewmodel_visible=%s env={%s}" % [
+        tag,
+        str(gameplay_enabled),
+        str(world_root.visible),
+        str(world_root.is_visible_in_tree()),
+        world_root.process_mode,
+        str(floor != null),
+        str(floor != null and floor.is_visible_in_tree()),
+        floor_mesh_total,
+        floor_mesh_visible,
+        str(player != null),
+        str(player != null and player.is_visible_in_tree()),
+        str(player_position),
+        str(active_camera != null),
+        str(camera_current),
+        str(camera_matches_viewport),
+        str(camera_position),
+        str(camera_rotation),
+        camera_cull_mask,
+        str(viewmodel_visible),
+        environment_text,
+    ])
+    _emit_web_fullscreen_overlay_diag(tag, viewport.get_visible_rect().size)
+
+func _emit_web_fullscreen_overlay_diag(tag: String, viewport_size: Vector2) -> void:
+    var root := get_tree().current_scene
+    if root == null:
+        return
+    var overlays: Array[String] = []
+    for node in root.find_children("*", "ColorRect", true, false):
+        if not (node is ColorRect):
+            continue
+        var rect := node as ColorRect
+        if not rect.is_visible_in_tree():
+            continue
+        var size := rect.get_global_rect().size
+        if size.x >= viewport_size.x * 0.75 and size.y >= viewport_size.y * 0.75:
+            overlays.append("%s size=%s color=%s" % [String(rect.get_path()), str(size), str(rect.color)])
+    print("WEB_RENDER_OVERLAYS tag=%s count=%d values=%s" % [tag, overlays.size(), " | ".join(overlays)])
 
 func _on_stage_completed(stage_id: StringName, _summary: Dictionary) -> void:
     world_expansion.on_boss_defeated(stage_id)
