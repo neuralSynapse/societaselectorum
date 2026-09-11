@@ -9,6 +9,7 @@ signal choice_selected(option_id: StringName)
 @onready var subtitle: Label = $Root/Subtitle
 @onready var skip_hint: Label = $Root/SkipHint
 @onready var story_message: Label = $Root/StoryMessage
+@onready var choice_modal_dimmer: ColorRect = $Root/ChoiceDimmer
 @onready var choice_panel: PanelContainer = $Root/ChoicePanel
 @onready var choice_prompt: Label = $Root/ChoicePanel/Margin/Column/ChoicePrompt
 @onready var choice_options: VBoxContainer = $Root/ChoicePanel/Margin/Column/ChoiceOptions
@@ -39,6 +40,7 @@ func _ready() -> void:
     visible = false
     blackout.visible = false
     cinematic_veil.visible = false
+    choice_modal_dimmer.visible = false
     reveal_label.visible = false
     fragment_status.visible = false
     evidence_label.visible = false
@@ -229,6 +231,8 @@ func release_to_gameplay(_target_stage: StringName = &"") -> void:
     evidence_label.visible = false
     cinematic_veil.visible = false
     blackout.visible = false
+    choice_modal_dimmer.visible = false
+    choice_panel.visible = false
     visible = false
 
 func present_choice(_stage_id: StringName, choice: Dictionary) -> void:
@@ -237,30 +241,89 @@ func present_choice(_stage_id: StringName, choice: Dictionary) -> void:
     paused_before_choice = get_tree().paused
     get_tree().paused = true
     visible = true
+    choice_modal_dimmer.visible = true
     choice_panel.visible = true
     choice_prompt.text = String(choice.get("prompt", "Escolha."))
     choice_consequence.visible = false
     choice_consequence.text = ""
     for child in choice_options.get_children():
         child.queue_free()
-    for option in choice.get("options", []):
-        var button := Button.new()
-        button.text = "%s\nCUSTO: %s" % [String(option.get("label", "Escolher")), String(option.get("immediate_cost", "desconhecido"))]
-        button.custom_minimum_size = Vector2(0, 64)
+    var index := 0
+    for option_value in choice.get("options", []):
+        if not (option_value is Dictionary):
+            continue
+        var option: Dictionary = option_value
         var option_id := StringName(option.get("id", ""))
         choice_option_ids.append(option_id)
-        button.pressed.connect(func(): _select_choice(option_id))
-        choice_options.add_child(button)
+        choice_options.add_child(_build_choice_card(option, index, option_id))
+        index += 1
+    Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func _build_choice_card(option: Dictionary, index: int, option_id: StringName) -> Control:
+    var panel := PanelContainer.new()
+    panel.custom_minimum_size = Vector2(0, 132)
+    var style := StyleBoxFlat.new()
+    style.bg_color = Color(0.018, 0.014, 0.021, 0.98)
+    style.border_width_left = 1
+    style.border_width_top = 1
+    style.border_width_right = 1
+    style.border_width_bottom = 1
+    style.border_color = Color(0.58, 0.43, 0.22, 0.88)
+    style.corner_radius_top_left = 7
+    style.corner_radius_top_right = 7
+    style.corner_radius_bottom_left = 7
+    style.corner_radius_bottom_right = 7
+    panel.add_theme_stylebox_override("panel", style)
+
+    var margin := MarginContainer.new()
+    margin.add_theme_constant_override("margin_left", 16)
+    margin.add_theme_constant_override("margin_top", 10)
+    margin.add_theme_constant_override("margin_right", 16)
+    margin.add_theme_constant_override("margin_bottom", 10)
+    panel.add_child(margin)
+
+    var column := VBoxContainer.new()
+    column.add_theme_constant_override("separation", 5)
+    margin.add_child(column)
+
+    var button := Button.new()
+    button.name = "ChoiceButton"
+    button.text = "%d · %s" % [index + 1, String(option.get("label", "Escolher"))]
+    button.custom_minimum_size = Vector2(0, 46)
+    button.add_theme_font_size_override("font_size", 17)
+    button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+    button.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+    button.pressed.connect(func(): _select_choice(option_id))
+    column.add_child(button)
+
+    var cost := Label.new()
+    cost.text = "CUSTO IMEDIATO · %s" % String(option.get("immediate_cost", "Nenhum custo explícito."))
+    cost.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    cost.add_theme_font_size_override("font_size", 13)
+    cost.add_theme_color_override("font_color", Color(0.83, 0.66, 0.43, 1.0))
+    column.add_child(cost)
+
+    var consequence := Label.new()
+    consequence.text = "CONSEQUÊNCIA · %s" % String(option.get("story_consequence", "A escolha altera a rota narrativa."))
+    consequence.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    consequence.add_theme_font_size_override("font_size", 13)
+    consequence.add_theme_color_override("font_color", Color(0.72, 0.69, 0.66, 1.0))
+    column.add_child(consequence)
+    return panel
 
 func resolve_choice(option: Dictionary) -> void:
     choice_locked = true
-    choice_consequence.text = String(option.get("story_consequence", "A escolha foi registrada."))
+    choice_consequence.text = "ESCOLHA REGISTRADA · %s" % String(option.get("story_consequence", "A escolha foi registrada."))
     choice_consequence.visible = true
-    for child in choice_options.get_children():
-        if child is Button:
-            child.disabled = true
+    _set_choice_buttons_disabled(choice_options, true)
     var timer := get_tree().create_timer(2.4, true)
     timer.timeout.connect(_finish_choice_display)
+
+func _set_choice_buttons_disabled(node: Node, disabled: bool) -> void:
+    for child in node.get_children():
+        if child is Button:
+            (child as Button).disabled = disabled
+        _set_choice_buttons_disabled(child, disabled)
 
 func _select_choice(option_id: StringName) -> void:
     if choice_locked:
@@ -273,8 +336,14 @@ func _on_choice_resolved(_stage_id: StringName, _choice_id: StringName, option: 
 
 func _finish_choice_display() -> void:
     choice_panel.visible = false
+    choice_modal_dimmer.visible = false
     get_tree().paused = paused_before_choice
     choice_option_ids.clear()
+    if OS.has_feature("web"):
+        Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+        show_story_message("CLIQUE NA CENA PARA RETOMAR A CÂMERA", 2.6)
+    else:
+        Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _has_player_facing_cinematic_visuals() -> bool:
     return bridge != null and bridge.cinematic_stage != null and bridge.cinematic_stage.can_take_player_control()
