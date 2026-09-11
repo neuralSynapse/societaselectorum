@@ -16,6 +16,7 @@ VFXDirector="*res://autoload/VFXDirector.gd"
 CombatLoadoutDirector="*res://autoload/CombatLoadoutDirector.gd"
 DefinitivePowerRuntime="*res://autoload/DefinitivePowerRuntime.gd"
 DefinitiveRewardRuntime="*res://autoload/DefinitiveRewardRuntime.gd"
+InitiaticRuntime="*res://autoload/InitiaticRuntimeIntegrator.gd"
 
 [display]
 window/size/viewport_width=1920
