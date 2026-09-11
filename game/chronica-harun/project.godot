@@ -21,6 +21,9 @@ InitiaticRuntime="*res://autoload/InitiaticRuntimeIntegrator.gd"
 CanonicalHUDRuntime="*res://autoload/CanonicalHUDRuntime.gd"
 GameplayVisibilityGuard="*res://autoload/GameplayVisibilityGuard.gd"
 
+[audio]
+general/text_to_speech=true
+
 [display]
 window/size/viewport_width=1920
 window/size/viewport_height=1080
