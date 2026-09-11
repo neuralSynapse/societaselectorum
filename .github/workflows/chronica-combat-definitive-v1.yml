@@ -3,7 +3,7 @@ name: CHRONICA Combat Definitive v1
 on:
   workflow_dispatch:
   push:
-    branches: [feat/chronica-combat-definitive-v1]
+    branches: [feat/chronica-combat-definitive-v1, feat/chronica-initiatic-roguelite-v2]
     paths:
       - 'game/chronica-harun/**'
       - '.github/workflows/chronica-combat-definitive-v1.yml'
