@@ -87,9 +87,8 @@ def test_proxy_cinematics_do_not_darkveil_the_live_gameplay_camera():
     assert "blackout.visible = false" in presentation
 
 
-def test_threshold_room_has_a_web_safe_visibility_floor():
-    room = read("scripts/generation/RoomShell.gd")
-    assert "ThresholdVisibility" in room
-    assert "func _ensure_threshold_visibility(" in room
-    assert "light_energy = 2.2" in room
-    assert "omni_range = 9.0" in room
+def test_entry_rooms_have_a_web_safe_visibility_fill():
+    room_scene = read("scenes/rooms/RoomShell.tscn")
+    assert 'name="VisibilityFillLight"' in room_scene
+    assert "light_energy = 2.2" in room_scene
+    assert "omni_range = 9.0" in room_scene
