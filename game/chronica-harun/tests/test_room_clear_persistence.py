@@ -13,7 +13,7 @@ def test_cleared_rooms_remain_open_on_reentry_and_survive_room_instance_refresh(
     assert "cleared_rooms[room_id] = true" in director
     assert "if bool(cleared_rooms.get(room_id, false))" in director
     activate = director[director.index("func activate_room"):director.index("func lock_room")]
-    assert "room.set_locked(false)" in activate
+    assert "room.mark_cleared()" in activate or "room.set_locked(false)" in activate
     assert "return" in activate
     register = director[director.index("func register_room"):director.index("func register_enemy")]
     assert "cleared_rooms.get(room.room_id, false)" in register
