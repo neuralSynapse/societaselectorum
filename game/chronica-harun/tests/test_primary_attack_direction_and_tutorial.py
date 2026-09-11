@@ -22,18 +22,20 @@ def test_primary_vfx_spawns_from_left_muzzle_and_follows_camera_forward_only():
     assert "camera_to_origin.dot(forward)" in origin
 
 
-def test_primary_visual_does_not_expand_toward_camera():
+def test_primary_visual_uses_process_driven_forward_motion_and_constant_scale():
     vfx = read("autoload/VFXDirector.gd")
+    motion = read("scripts/vfx/TransientVFXMotion.gd")
     line = next(line for line in vfx.splitlines() if '"player_primary"' in line and 'travel' in line)
     assert '"start_scale":0.52' in line
     assert '"end_scale":0.52' in line
     assert '"travel":5.6' in line
     assert '"duration":0.16' in line
-    assert 'spec.get("start_scale", 0.45)' in vfx
-    assert 'root.position = position' in vfx
-    assert 'tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)' in vfx
-    assert 'tween.tween_property(root, "position", destination, duration)' in vfx
-    assert 'tween.tween_property(root, "global_position"' not in vfx
+    assert 'TransientVFXMotion.gd' in vfx
+    assert 'root.configure(direction, travel, duration' in vfx
+    assert 'process_mode = Node.PROCESS_MODE_ALWAYS' in motion
+    assert 'position += velocity * delta' in motion
+    assert 'velocity = direction.normalized() * (travel / lifetime)' in motion
+    assert 'create_tween' not in vfx[vfx.index("func emit_feedback"):vfx.index("func _scan_existing")]
 
 
 def test_right_mouse_power_is_visually_distinct_and_uses_right_hand_origin():
