@@ -75,15 +75,26 @@ func get_initiatic_path() -> Dictionary:
 func get_base_student_journey() -> Array:
     return all("journey")
 
+func get_degree_journey() -> Array:
+    var degree_stages: Array = []
+    for degree in range(1, 34):
+        var stage := InitiaticProgressionService.build_degree_stage_data(degree)
+        if not stage.is_empty():
+            degree_stages.append(stage)
+    return degree_stages
+
 func get_student_journey() -> Array:
-    if Engine.has_singleton("GameState"):
-        return get_base_student_journey()
-    if typeof(GameState) != TYPE_NIL and String(GameState.journey_state) == "DEGREE":
-        var degree_stages: Array = []
-        for degree in range(1, 34):
-            degree_stages.append(InitiaticProgressionService.build_degree_stage_data(degree))
-        return degree_stages
+    if String(GameState.journey_state) == GameState.JOURNEY_DEGREE:
+        return get_degree_journey()
     return get_base_student_journey()
+
+func get_current_stage() -> Dictionary:
+    if String(GameState.journey_state) == GameState.JOURNEY_DEGREE:
+        return InitiaticProgressionService.build_degree_stage_data(InitiaticProgressionService.current_degree())
+    var journey := get_base_student_journey()
+    if journey.is_empty():
+        return {}
+    return journey[clampi(GameState.stage_index, 0, journey.size() - 1)]
 
 func get_enemy(id: StringName) -> Dictionary:
     return get_item("enemies", id)
