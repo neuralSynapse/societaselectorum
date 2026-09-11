@@ -1,6 +1,7 @@
 from pathlib import Path
 
 GAME = Path(__file__).resolve().parents[1]
+ROOT = GAME.parents[1]
 
 
 def read(rel: str) -> str:
@@ -54,3 +55,16 @@ def test_boss_model_loading_is_threaded_instead_of_spawn_blocking():
     assert 'ResourceLoader.load_threaded_request' in boss
     assert 'ResourceLoader.load_threaded_get_status' in boss
     assert 'EnemyModelStream.gd' in boss
+
+
+def test_ci_runs_real_characterbody_collision_probe():
+    probe_scene = GAME / "runtime_qa/CollisionRuntimeProbe.tscn"
+    probe_script = GAME / "runtime_qa/CollisionRuntimeProbe.gd"
+    assert probe_scene.exists()
+    assert probe_script.exists()
+    script = probe_script.read_text(encoding="utf-8")
+    assert "ENEMY_WALL_COLLISION=PASS" in script
+    assert "PLAYER_ENEMY_COLLISION=PASS" in script
+    workflow = (ROOT / ".github/workflows/chronica-combat-definitive-v1.yml").read_text(encoding="utf-8")
+    assert "Real gameplay collision probe" in workflow
+    assert "COLLISION_RUNTIME=PASS" in workflow
