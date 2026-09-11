@@ -105,12 +105,34 @@ jobs:
         with:
           path: /tmp/chronica-pages
 
-      - name: Definitive visual capture
+      - name: Install visual test display
         shell: bash
         run: |
           set -euo pipefail
           sudo apt-get update -qq
           sudo apt-get install -y -qq xvfb
+
+      - name: Real campaign boot visibility
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/chronica-boot
+          mkdir -p /tmp/chronica-boot
+          xvfb-run -a -s "-screen 0 1920x1080x24" godot --path "$GAME_DIR" res://runtime_qa/GameplayBootVisibilityProbe.tscn 2>&1 | tee /tmp/boot-visibility.log
+          grep -q 'BOOT_GAMEPLAY_VISIBILITY=PASS' /tmp/boot-visibility.log
+          test -s /tmp/chronica-boot/boot_visibility.png
+
+      - name: Upload real boot visual
+        uses: actions/upload-artifact@v4
+        with:
+          name: chronica-real-boot-visibility
+          path: /tmp/chronica-boot/boot_visibility.png
+          if-no-files-found: error
+
+      - name: Definitive visual capture
+        shell: bash
+        run: |
+          set -euo pipefail
           rm -rf /tmp/chronica-definitive
           mkdir -p /tmp/chronica-definitive
           xvfb-run -a -s "-screen 0 1920x1080x24" godot --path "$GAME_DIR" res://runtime_qa/DefinitiveVisualProbe.tscn 2>&1 | tee /tmp/visual.log
@@ -131,12 +153,15 @@ jobs:
           grep -q 'passed' /tmp/pytest.log
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'BOOT_GAMEPLAY_VISIBILITY=PASS' /tmp/boot-visibility.log
           grep -q 'DEFINITIVE_VISUAL_CAPTURE=PASS' /tmp/visual.log
+          test -s /tmp/chronica-boot/boot_visibility.png
           test -s /tmp/chronica-definitive/definitive_visual.png
           test -s "$GAME_DIR/build/web/index.html"
           test -s "$GAME_DIR/build/web/index.wasm"
           test -s "$GAME_DIR/build/web/index.pck"
           test -s /tmp/chronica-pages/chronica-harun-definitive/index.html
+          grep -q 'GameplayVisibilityGuard' "$GAME_DIR/project.godot"
           grep -q 'DefinitivePowerRuntime' "$GAME_DIR/project.godot"
           grep -q 'foundation_hammer_base' "$GAME_DIR/autoload/DefinitivePowerRuntime.gd"
           grep -q 'memoria_ignis_base' "$GAME_DIR/autoload/DefinitivePowerRuntime.gd"
