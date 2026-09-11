@@ -10,6 +10,7 @@ const MIN_KEY_LIGHT := 1.15
 var _main: Node = null
 var _remaining := 0.0
 var _pulse := 0.0
+var _diagnostic_announced := false
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
@@ -95,14 +96,18 @@ func _enforce_world_lights(world_root: Node3D) -> void:
 
 func _enforce_stage(stage: StageDirector) -> void:
     if stage.floor_instance != null:
+        stage.floor_instance.visible = true
         var rooms := stage.floor_instance.get_node_or_null("Rooms")
         if rooms != null:
             for room_value in rooms.get_children():
                 if room_value is RoomShell:
-                    _enforce_room(room_value as RoomShell)
-        if OS.has_feature("web"):
-            stage.floor_instance.visible = false
-            print("WEB_WORLD_ISOLATION floor_hidden=true")
+                    var room := room_value as RoomShell
+                    room.visible = String(room.room_id) == "threshold"
+                    if room.visible:
+                        _enforce_room(room)
+            if OS.has_feature("web") and not _diagnostic_announced:
+                _diagnostic_announced = true
+                print("WEB_ROOM_ISOLATION_DIAGNOSTIC threshold_only=true")
     if stage.player != null and is_instance_valid(stage.player):
         stage.player.visible = true
         stage.player.process_mode = Node.PROCESS_MODE_INHERIT
