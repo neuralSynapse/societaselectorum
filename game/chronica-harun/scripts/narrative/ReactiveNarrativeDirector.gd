@@ -52,7 +52,7 @@ func _line_for(event: String, context: Dictionary, count: int) -> String:
             if room_id in ["secret", "super_secret"]:
                 return "Uma fenda respondeu. Segredo não significa segurança; significa que alguém tentou esconder a regra."
             if room_id.begins_with("combat_"):
-                return "%s não está contando uma história fora da luta. A própria sala é a frase que você precisa interpretar." % stage_title
+                return "PASSAGENS SELADAS. %s exige que as presenças desta sala caiam antes que a saída volte a abrir. Leia os padrões; repetição cega será punida." % stage_title
         "enemy_identified":
             var name := String(context.get("name", "A PRESENÇA")).to_upper()
             var attack := String(context.get("attack", "um padrão ainda não lido"))
