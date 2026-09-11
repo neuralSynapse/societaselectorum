@@ -77,3 +77,19 @@ def test_first_person_power_palette_is_gold_and_deep_violet_not_neon_red_magenta
     assert "emission_energy_multiplier = 2.2" in player_scene
     assert "light_energy = 0.9" in player_scene
     assert "light_energy = 0.8" in player_scene
+
+
+def test_proxy_cinematics_do_not_darkveil_the_live_gameplay_camera():
+    presentation = read("scripts/narrative/NarrativePresentationController.gd")
+    assert "func _has_player_facing_cinematic_visuals(" in presentation
+    assert "if not _has_player_facing_cinematic_visuals():" in presentation
+    assert "cinematic_veil.visible = false" in presentation
+    assert "blackout.visible = false" in presentation
+
+
+def test_threshold_room_has_a_web_safe_visibility_floor():
+    room = read("scripts/generation/RoomShell.gd")
+    assert "ThresholdVisibility" in room
+    assert "func _ensure_threshold_visibility(" in room
+    assert "light_energy = 2.2" in room
+    assert "omni_range = 9.0" in room
