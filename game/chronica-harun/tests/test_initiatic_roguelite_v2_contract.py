@@ -52,7 +52,7 @@ def test_33_scroll_corpus_is_distributed_without_inventing_a_scroll_per_degree()
 def test_draconis_is_programmatically_hidden_until_mortis_completion():
     service = read("scripts/progression/InitiaticProgressionService.gd")
     assert "hidden_until_degree" in service
-    assert "degree_completed() < hidden_until_degree" in service or "degree_completed >= hidden_until_degree" in service
+    assert "degree_completed() < hidden_until_degree" in service or "completed < hidden_until_degree" in service
     assert "ARBOR_DRACONIS" in service
 
 
@@ -84,11 +84,12 @@ def test_narrative_choice_ui_is_structured_and_not_fixed_height_text_collision()
 
 
 def test_pause_menu_is_a_real_navigation_surface():
-    hud = read("scripts/ui/HUDController.gd")
-    scene = read("scenes/ui/HUD.tscn")
+    runtime = read("autoload/InitiaticRuntimeIntegrator.gd")
+    project = read("project.godot")
     for label in ["RETOMAR", "JORNADA", "BUILD", "TAROT", "CODEX", "PERSONAGENS", "CONTROLES", "CONFIGURAÇÕES", "REINICIAR RUN", "VOLTAR AO TÍTULO"]:
-        assert label in hud or label in scene
-    assert "pause_action_requested" in hud
+        assert label in runtime
+    assert "pause_action_requested" in runtime
+    assert 'InitiaticRuntime="*res://autoload/InitiaticRuntimeIntegrator.gd"' in project
 
 
 def test_roster_and_runtime_encounters_are_connected():
@@ -97,9 +98,11 @@ def test_roster_and_runtime_encounters_are_connected():
     names = {row["name"] for row in roster}
     for expected in ["Frater Harun", "Caim", "Lilith", "Nadir", "Seth", "Sabaoth · Ruptura", "Aspecto de Sophia", "Aspecto de Thoth", "Aspecto de Hórus", "Aspecto de Belial"]:
         assert expected in names
-    runtime = read("scripts/narrative/CharacterEncounterDirector.gd")
-    assert 'ContentRegistry.all("characters")' in runtime
-    assert "encounter" in runtime.lower()
+    director = read("scripts/narrative/CharacterEncounterDirector.gd")
+    integrator = read("autoload/InitiaticRuntimeIntegrator.gd")
+    assert 'ContentRegistry.all("characters")' in director
+    assert "encounter" in director.lower()
+    assert "spawn_encounter" in integrator
 
 
 def test_special_rooms_secret_rooms_and_pharmaka_remain_live_in_stage_runtime():
@@ -109,9 +112,11 @@ def test_special_rooms_secret_rooms_and_pharmaka_remain_live_in_stage_runtime():
     assert "known_pharmaka" in read("autoload/RogueliteContentService.gd")
 
 
-def test_enemy_visual_runtime_defines_multiple_occult_silhouette_families():
+def test_enemy_visual_runtime_defines_and_integrates_multiple_occult_silhouette_families():
     art = read("scripts/content/OccultCreaturePresentation.gd")
+    integrator = read("autoload/InitiaticRuntimeIntegrator.gd")
     for family in ["blind_archon", "mirror_wraith", "ember_tyrant", "stone_witness", "hollow_scribe", "serpentine_authority", "abyssal", "draconic"]:
         assert family in art
     assert "emission" in art.lower()
     assert "boss_phase" in art.lower()
+    assert "OccultCreaturePresentation.decorate" in integrator
