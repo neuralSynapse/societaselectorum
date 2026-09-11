@@ -19,16 +19,13 @@ def test_narrator_is_autoloaded_and_has_web_and_native_backends():
     assert "pt-BR" in narrator
 
 
-def test_narrative_text_is_spoken_when_it_is_shown():
-    presentation = read("scripts/narrative/NarrativePresentationController.gd")
-    assert "NarratorDirector.speak" in presentation
-    next_line = presentation[presentation.index("func _next_line"):]
-    assert "NarratorDirector.speak" in next_line[:1600]
-    show_message = presentation[presentation.index("func show_story_message"):]
-    assert "NarratorDirector.speak" in show_message[:800]
-    present_choice = presentation[presentation.index("func present_choice"):]
-    assert "NarratorDirector.speak" in present_choice[:1200]
-    assert "NarratorDirector.stop" in presentation
+def test_narrator_tracks_visible_narrative_text_instead_of_combat_spam():
+    narrator = read("autoload/NarratorDirector.gd")
+    for node_name in ["Subtitle", "StoryMessage", "ChoicePrompt"]:
+        assert node_name in narrator
+    assert "_last_text_by_path" in narrator
+    assert "is_visible_in_tree" in narrator
+    assert "NarratorDirector" not in read("scripts/ui/HUDController.gd")
 
 
 def test_character_encounter_lines_are_spoken_too():
