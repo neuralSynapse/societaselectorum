@@ -108,7 +108,7 @@ func _show_canonical_boot_gate(has_save: bool) -> void:
     stack.add_child(invocation)
 
     var continuity := Label.new()
-    continuity.text = "Cosmogênese → Origem de Harun → Jornada do Estudante → Provas → Autoridades → Yaldabaoth"
+    continuity.text = "Cosmogênese → Origem de Harun → Portal 0 · Aspirante — Initiatio Luciferi → Estudante → I · Peregrinus Ignis → 33 Graus"
     continuity.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     continuity.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
     continuity.add_theme_color_override("font_color", Color(0.76, 0.69, 0.59, 1.0))
@@ -116,7 +116,7 @@ func _show_canonical_boot_gate(has_save: bool) -> void:
     stack.add_child(continuity)
 
     var new_campaign := Button.new()
-    new_campaign.text = "NOVA CAMPANHA · CICLO 0"
+    new_campaign.text = "NOVA CAMPANHA · PORTAL 0"
     new_campaign.custom_minimum_size = Vector2(0, 54)
     new_campaign.add_theme_font_size_override("font_size", 17)
     new_campaign.pressed.connect(_start_new_campaign_from_gate)
@@ -131,7 +131,7 @@ func _show_canonical_boot_gate(has_save: bool) -> void:
     stack.add_child(continue_campaign)
 
     var controls := Label.new()
-    controls.text = "WASD mover · mouse olhar · clique para capturar a câmera · LMB atacar · RMB poder · Espaço esquiva · Esc pausa"
+    controls.text = "WASD mover · mouse olhar · clique para capturar a câmera · LMB atacar · RMB poder · Q esquiva · V câmera · Esc pausa"
     controls.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     controls.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
     controls.add_theme_color_override("font_color", Color(0.64, 0.59, 0.51, 1.0))
