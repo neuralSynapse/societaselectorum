@@ -14,6 +14,8 @@ var vision_director: VisionDirector
 var meta_director: MetaRunDirector
 var daimon_runtime: DaimonRuntime
 var transformation_director: TransformationDirector
+var enigma_director: EnigmaDirector
+var reactive_narrative: ReactiveNarrativeDirector
 var floor_instance: Node3D
 var room_director: RoomDirector
 var player: PlayerController
@@ -29,6 +31,7 @@ var rupture_charges := 1
 var retry_pending := false
 var primary_damage := 22.0
 var world_expansion: WorldExpansionRuntime
+var resolved_enigmas: Dictionary = {}
 
 func configure(next_world_root: Node3D, next_ui_root: CanvasLayer) -> void:
     world_root = next_world_root
@@ -55,6 +58,7 @@ func configure(next_world_root: Node3D, next_ui_root: CanvasLayer) -> void:
     ui_root.add_child(hud)
     hud.bind_player(player)
     hud.set_objective("%s · %s" % [stage_data.get("title", "JORNADA"), stage_data.get("subtitle", "PROVA")])
+    reactive_narrative.configure(hud, stage_data)
     _connect_runtime()
     _refresh_transformations()
     daimon_runtime.on_floor_started(_special_context())
@@ -134,6 +138,10 @@ func _ensure_runtime_directors() -> void:
     transformation_director = TransformationDirector.new()
     transformation_director.name = "TransformationDirector"
     add_child(transformation_director)
+    enigma_director = EnigmaDirector.new()
+    reactive_narrative = ReactiveNarrativeDirector.new()
+    reactive_narrative.name = "ReactiveNarrativeDirector"
+    add_child(reactive_narrative)
 
 func _connect_runtime() -> void:
     room_director.room_entered.connect(_on_room_entered)
@@ -163,6 +171,7 @@ func _room(id: String) -> RoomShell:
     return floor_instance.get_node_or_null("Rooms/special_" + id) as RoomShell
 
 func _on_room_entered(room_id: StringName) -> void:
+    reactive_narrative.narrate_event(&"room_entered", {"room_id":String(room_id)})
     var id := String(room_id)
     if id.begins_with("combat_") and not room_spawned.has(id):
         _spawn_combat_room(id)
@@ -179,11 +188,15 @@ func _spawn_combat_room(room_id: String) -> void:
     if room == null:
         return
     var index := maxi(0, int(room_id.trim_prefix("combat_")) - 1)
-    var budgets: Array = stage_data.get("room_budget", [1, 2, 3])
+    var budgets: Array = stage_data.get("room_budget", [2, 3, 4])
     var base_budget := int(budgets[mini(index, budgets.size() - 1)])
     var modifiers := meta_director.apply_floor_modifiers()
-    var budget := clampi(base_budget + int(modifiers.get("enemy_budget_delta", 0)) + GameState.cycle / 4, 1, 5)
+    var stage_pressure := 1 + int(floor(float(GameState.stage_index) / 4.0))
+    var run_pressure := int(floor(float(GameState.run_stats.get("rooms_cleared", 0)) / 3.0))
+    var budget := clampi(base_budget + 1 + int(modifiers.get("enemy_budget_delta", 0)) + GameState.cycle / 4 + stage_pressure + run_pressure, 2, 7)
     var ids: Array = stage_data.get("common_enemy_ids", [])
+    if ids.is_empty():
+        return
     var anchors := room.get_node("SpawnAnchors").get_children()
     for i in range(budget):
         var enemy_id := StringName(ids[(i + index) % ids.size()])
@@ -204,6 +217,8 @@ func _spawn_elite_room(room_id: String) -> void:
     var enemy := EnemyFactory.spawn(StringName(stage_data.get("elite_id", "")), room, anchor.position, player)
     if enemy:
         enemy.role = "elite"
+        if enemy is DataEnemy:
+            (enemy as DataEnemy).reinforce_elite()
         enemy.identified.connect(_on_enemy_identified)
         enemy.died.connect(func(_source = &""): _on_enemy_killed(enemy))
         room_director.register_enemy(StringName(room_id), enemy)
@@ -294,6 +309,7 @@ func _on_rupture_charge_requested() -> void:
         hud.show_message("A RUPTURA NÃO ENCONTROU UMA FENDA")
 
 func _on_room_cleared(room_id: StringName) -> void:
+    reactive_narrative.narrate_event(&"room_cleared", {"room_id":String(room_id), "damage_taken":float(GameState.run_stats.get("damage_taken", 0.0)) > 0.0})
     GameState.run_stats["rooms_cleared"] = int(GameState.run_stats.get("rooms_cleared", 0)) + 1
     if world_expansion:
         var expansion_result := world_expansion.on_room_cleared(room_id, _special_context())
@@ -304,6 +320,8 @@ func _on_room_cleared(room_id: StringName) -> void:
     player.add_essence(int(mutation.get("essence", 0)))
     if int(mutation.get("charges", 0)) > 0:
         RogueliteContentService.recharge_instrument(int(mutation.get("charges", 0)))
+    if room_id in [&"trial", &"secret", &"super_secret"]:
+        _offer_room_enigma(room_id)
     if String(room_id) == "combat_1":
         _spawn_pickup(_room("reward_1"), "tarot")
     elif String(room_id) == "combat_2":
@@ -411,16 +429,30 @@ func _spawn_pickup(room: RoomShell, category: String, forced_id: StringName = &"
     pickup.content_id = item_id
     pickup.display_name = String(data.get("name", data.get("display_name", item_id)))
     pickup.effect_summary = String(data.get("effect_text", data.get("effect_id", "")))
-    pickup.collected.connect(func(_category, _id, _actor): hud.show_message("%s ADQUIRIDO" % pickup.display_name.to_upper()))
+    var acquired_name := pickup.display_name
+    pickup.collected.connect(func(_category, _id, _actor):
+        var explanation := hud.show_acquisition(category, item_id, data)
+        reactive_narrative.narrate_event(&"acquisition", {"name":acquired_name, "category":category, "purpose":explanation.get_slice("\n", 0).replace("PARA QUE SERVE · ", "")})
+    )
 
 func _on_enemy_identified(_enemy_id: StringName, display_name: String, role: String, attack_name: String) -> void:
     hud.show_identification(display_name, role, attack_name)
+    var seal := "pressure"
+    for enemy in active_enemies:
+        if enemy is DataEnemy and String(enemy.get("display_name")) == display_name:
+            seal = String((enemy as DataEnemy).tactical_seal)
+            break
+    reactive_narrative.narrate_event(&"enemy_identified", {"name":display_name, "role":role, "attack":attack_name, "seal":seal})
 
 func _on_enemy_killed(enemy: Node) -> void:
     active_enemies.erase(enemy)
-    var mutation := PowerMutationRuntime.on_enemy_killed({"elite": String(enemy.get("role")) == "elite"})
+    var kills := int(GameState.run_stats.get("kills", 0)) + 1
+    GameState.run_stats["kills"] = kills
+    var elite := String(enemy.get("role")) == "elite"
+    reactive_narrative.narrate_event(&"enemy_killed", {"name":String(enemy.get("display_name")), "elite":elite, "kills":kills})
+    var mutation := PowerMutationRuntime.on_enemy_killed({"elite": elite})
     if int(mutation.get("fragment", false)) > 0: player.add_essence(1)
-    daimon_runtime.on_enemy_killed({"elite": String(enemy.get("role")) == "elite"})
+    daimon_runtime.on_enemy_killed({"elite": elite})
 
 func _on_boss_health_damaged(current: float, maximum: float, _amount: float, _source_id: StringName) -> void:
     if boss == null or hud == null:
@@ -428,7 +460,9 @@ func _on_boss_health_damaged(current: float, maximum: float, _amount: float, _so
     hud.show_boss(boss.display_name, current / maxf(1.0, maximum), boss.current_phase + 1)
 
 func _on_boss_phase(index: int) -> void:
-    if boss: hud.show_boss(boss.display_name, boss.health.ratio(), index)
+    if boss:
+        hud.show_boss(boss.display_name, boss.health.ratio(), index)
+        reactive_narrative.narrate_event(&"boss_phase", {"name":boss.display_name, "phase":index})
 
 func _on_boss_defeated(defeated_boss_id: StringName, reward_id: StringName) -> void:
     hud.hide_boss()
@@ -468,7 +502,45 @@ func open_secret(room_id: StringName, available_charges: int) -> bool:
     return true
 
 func _on_secret_opened(room_id: StringName) -> void:
-    _spawn_pickup(_room(String(room_id)), "pharmaka")
+    reactive_narrative.narrate_event(&"secret_opened", {"room_id":String(room_id)})
+    _offer_room_enigma(room_id, "pharmaka")
+
+func _offer_room_enigma(room_id: StringName, reward_category: String = "") -> void:
+    var key := "%s:%s" % [String(GameState.current_stage_id), String(room_id)]
+    if resolved_enigmas.has(key):
+        return
+    var enigma := enigma_director.build_enigma(GameState.current_stage_id, room_id, GameState.run_seed + GameState.stage_index * 101 + int(GameState.run_stats.get("rooms_cleared", 0)))
+    if enigma.is_empty():
+        if not reward_category.is_empty():
+            _spawn_pickup(_room(String(room_id)), reward_category)
+        return
+    var prompt := String(enigma.get("prompt", "O selo não responde."))
+    NarratorDirector.speak(prompt, &"enigma", false)
+    hud.show_choice("ENIGMA · %s" % String(room_id).replace("_", " ").to_upper(), enigma.get("options", []), func(index): resolve_enigma(enigma, index, room_id, reward_category))
+
+func resolve_enigma(enigma: Dictionary, selected_index: int, room_id: StringName, reward_category: String = "") -> void:
+    var key := "%s:%s" % [String(GameState.current_stage_id), String(room_id)]
+    if resolved_enigmas.has(key):
+        return
+    resolved_enigmas[key] = true
+    var narrative := String(enigma.get("narrative", "O selo registra a resposta."))
+    if enigma_director.is_correct(enigma, selected_index):
+        var reward: Dictionary = enigma.get("reward", {})
+        player.add_essence(int(reward.get("essence", 0)))
+        player.restore_focus(float(reward.get("focus", 0)))
+        hud.show_message("ENIGMA RESOLVIDO\n%s" % narrative, 7.0)
+        NarratorDirector.speak(narrative, &"enigma_resolution", false)
+        if not reward_category.is_empty():
+            _spawn_pickup(_room(String(room_id)), reward_category)
+    else:
+        var penalty: Dictionary = enigma.get("penalty", {})
+        player.apply_damage(float(penalty.get("damage", 18.0)), &"enigma")
+        player.spend_focus(float(penalty.get("focus", 8.0)))
+        var warning := "Resposta incorreta. A sala cobra o erro. %s" % narrative
+        hud.show_message(warning, 7.0)
+        NarratorDirector.speak(warning, &"enigma_penalty", false)
+        if not reward_category.is_empty():
+            _spawn_pickup(_room(String(room_id)), reward_category)
 
 func _on_player_died(source_id: StringName) -> void:
     if retry_pending:
@@ -574,5 +646,5 @@ func _vision_context() -> Dictionary:
     return context
 
 func _category_catalog(category: String) -> String:
-    var map := {"tarot":"tarot", "relics":"relics", "instrumenta":"instrumenta", "pharmaka":"pharmaka", "sigilla":"sigilla", "talismans":"talismans", "transformations":"transformations", "blessings":"blessings"}
+    var map := {"tarot":"tarot", "relics":"relics", "instrumenta":"instrumenta", "pharmaka":"pharmaka", "sigilla":"sigilla", "talismans":"talismans", "transformations":"transformations", "blessings":"blessings", "curses":"curses", "daimones":"daimones"}
     return String(map.get(category, category))
