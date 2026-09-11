@@ -5,8 +5,8 @@ signal feedback_emitted(event_id: StringName, position: Vector3)
 const MAX_EMISSION := 0.55
 const TELEGRAPH_MAX_EMISSION := 0.08
 const EFFECTS := {
-    "player_primary": {"color":Color(0.72,0.43,0.12), "size":0.20, "end_scale":1.0, "duration":0.10, "emission":0.24, "shape":"sphere", "travel":2.4},
-    "player_power": {"color":Color(0.52,0.08,0.05), "size":0.34, "end_scale":2.8, "duration":0.22, "emission":0.30, "shape":"sphere"},
+    "player_primary": {"color":Color(0.95,0.53,0.10), "size":0.16, "start_scale":0.52, "end_scale":0.52, "duration":0.16, "emission":0.34, "shape":"sphere", "travel":5.6},
+    "player_power": {"color":Color(0.34,0.055,0.72), "size":0.38, "start_scale":0.62, "end_scale":1.72, "duration":0.28, "emission":0.42, "shape":"disc"},
     "player_dodge": {"color":Color(0.31,0.13,0.55), "size":0.22, "end_scale":2.5, "duration":0.16, "emission":0.20, "shape":"disc"},
     "perfect_dodge": {"color":Color(0.95,0.57,0.12), "size":0.30, "end_scale":3.4, "duration":0.20, "emission":0.44, "shape":"disc"},
     "power_reveal": {"color":Color(0.91,0.39,0.08), "size":0.42, "end_scale":3.0, "duration":0.36, "emission":0.48, "shape":"disc"},
@@ -89,7 +89,7 @@ func emit_feedback(event_id: StringName, position: Vector3, direction: Vector3 =
         material.emission = color
         material.emission_energy_multiplier = emission
     mesh_instance.material_override = material
-    root.scale = Vector3.ONE * 0.45
+    root.scale = Vector3.ONE * float(spec.get("start_scale", 0.45))
     var duration := float(spec.get("duration", 0.18))
     var travel := float(spec.get("travel", 0.0))
     var tween := root.create_tween().set_parallel(true)
@@ -122,6 +122,7 @@ func _bind_node(node: Node) -> void:
         _player.primary_attack_requested.connect(_on_primary_requested.bind(_player))
         _player.power_requested.connect(_on_power_requested.bind(_player))
         _player.kinesis_slot_requested.connect(_on_kinesis_requested.bind(_player))
+        call_deferred("_install_start_floor_tutorial", _player)
     elif node is RoomDirector:
         node.set_meta("audio_vfx_bound", true)
         (node as RoomDirector).room_entered.connect(_on_room_entered.bind(node as RoomDirector))
@@ -131,19 +132,20 @@ func _on_primary_requested(player: PlayerController) -> void:
     if now < _primary_ready_at:
         return
     _primary_ready_at = now + 250
-    var origin := _player_feedback_origin(player)
-    var direction := -player.global_transform.basis.z
+    var direction := _player_aim_direction(player)
+    var origin := _player_primary_origin(player, direction)
     emit_feedback(&"player_primary", origin, direction)
     AudioDirector.play_3d(&"player_primary", origin)
 
 func _on_power_requested(player: PlayerController) -> void:
-    var origin := _player_feedback_origin(player)
-    emit_feedback(&"player_power", origin, -player.global_transform.basis.z)
+    var direction := _player_aim_direction(player)
+    var origin := _player_power_origin(player)
+    emit_feedback(&"player_power", origin, direction)
     AudioDirector.play_3d(&"player_power", origin)
 
 func _on_kinesis_requested(_slot: int, player: PlayerController) -> void:
     var origin := _player_feedback_origin(player)
-    emit_feedback(&"kinesis", origin, -player.global_transform.basis.z)
+    emit_feedback(&"kinesis", origin, _player_aim_direction(player))
     AudioDirector.play_3d(&"kinesis", origin)
 
 func _on_content_effect(_effect_id: StringName, payload: Dictionary) -> void:
@@ -182,8 +184,77 @@ func _on_audio_event(event_id: StringName, position: Vector3, spatial: bool) -> 
 func _active_player() -> PlayerController:
     return _player if is_instance_valid(_player) else null
 
+func _player_aim_direction(player: PlayerController) -> Vector3:
+    var camera := player.get_node_or_null("Head/Camera3D") as Camera3D
+    if camera != null:
+        return (-camera.global_transform.basis.z).normalized()
+    return (-player.global_transform.basis.z).normalized()
+
+func _player_primary_origin(player: PlayerController, forward: Vector3) -> Vector3:
+    var camera := player.get_node_or_null("Head/Camera3D") as Camera3D
+    var muzzle := player.get_node_or_null("Head/Camera3D/ViewModelRoot/LeftGauntlet/PrimaryMuzzle") as Node3D
+    if camera != null and muzzle != null:
+        var camera_to_origin := muzzle.global_position - camera.global_position
+        if camera_to_origin.dot(forward) >= 0.30:
+            return muzzle.global_position
+        return camera.global_position + forward * 0.92 - camera.global_transform.basis.x * 0.28 - camera.global_transform.basis.y * 0.16
+    return player.global_position + Vector3.UP * 1.20 + forward * 0.85
+
+func _player_power_origin(player: PlayerController) -> Vector3:
+    var orb := player.get_node_or_null("Head/Camera3D/ViewModelRoot/RightGauntlet/RightVoidOrb") as Node3D
+    if orb != null:
+        return orb.global_position
+    return _player_feedback_origin(player)
+
 func _player_feedback_origin(player: PlayerController) -> Vector3:
     var camera := player.get_node_or_null("Head/Camera3D") as Camera3D
     if camera:
-        return camera.global_position + (-camera.global_transform.basis.z * 0.72)
+        return camera.global_position + _player_aim_direction(player) * 0.82
     return player.global_position + Vector3.UP * 1.2
+
+func _install_start_floor_tutorial(player: PlayerController) -> void:
+    if player == null or not is_instance_valid(player):
+        return
+    if String(GameState.current_stage_id) != "o_olho" or GameState.stage_index != 0:
+        return
+    var host := player.get_parent() as Node3D
+    if host == null or host.get_node_or_null("TutorialFloorGuide") != null:
+        return
+    var guide := Node3D.new()
+    guide.name = "TutorialFloorGuide"
+    host.add_child(guide)
+    guide.global_position = player.global_position + Vector3(0, -0.13, 0)
+    guide.global_rotation.y = player.global_rotation.y
+    _add_floor_instruction(guide, Vector3(0, 0.02, -1.35), "PORTAL 0 · CONTROLES", Color(0.86, 0.64, 0.26, 1.0), 3.8)
+    _add_floor_instruction(guide, Vector3(0, 0.02, -2.10), "WASD · MOVER", Color(0.78, 0.72, 0.62, 1.0), 2.7)
+    _add_floor_instruction(guide, Vector3(-1.75, 0.02, -2.90), "LMB · ATAQUE PRIMÁRIO\nDOURADO · RÁPIDO · SEM CUSTO DE FOCO", Color(0.95, 0.58, 0.16, 1.0), 3.2)
+    _add_floor_instruction(guide, Vector3(1.75, 0.02, -2.90), "RMB · PODER INICIÁTICO\nVIOLETA · FORTE · CONSOME FOCO", Color(0.55, 0.28, 0.92, 1.0), 3.2)
+    _add_floor_instruction(guide, Vector3(-1.75, 0.02, -3.80), "Q · ESQUIVA", Color(0.78, 0.72, 0.62, 1.0), 2.4)
+    _add_floor_instruction(guide, Vector3(0, 0.02, -3.80), "V · CÂMERA", Color(0.78, 0.72, 0.62, 1.0), 2.4)
+    _add_floor_instruction(guide, Vector3(1.75, 0.02, -3.80), "ESC · PAUSA", Color(0.78, 0.72, 0.62, 1.0), 2.4)
+
+func _add_floor_instruction(parent: Node3D, local_position: Vector3, text: String, color: Color, width: float) -> void:
+    var plaque := MeshInstance3D.new()
+    var plaque_mesh := BoxMesh.new()
+    plaque_mesh.size = Vector3(width, 0.018, 0.62)
+    plaque.mesh = plaque_mesh
+    plaque.position = local_position
+    var plaque_material := StandardMaterial3D.new()
+    plaque_material.albedo_color = Color(0.018, 0.015, 0.012, 0.96)
+    plaque_material.metallic = 0.16
+    plaque_material.roughness = 0.72
+    plaque.material_override = plaque_material
+    parent.add_child(plaque)
+
+    var label := Label3D.new()
+    label.text = text
+    label.position = local_position + Vector3(0, 0.022, 0)
+    label.rotation_degrees = Vector3(-90, 0, 0)
+    label.font_size = 34
+    label.pixel_size = 0.0052
+    label.modulate = color
+    label.outline_size = 8
+    label.outline_modulate = Color(0.01, 0.008, 0.006, 1.0)
+    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+    parent.add_child(label)
