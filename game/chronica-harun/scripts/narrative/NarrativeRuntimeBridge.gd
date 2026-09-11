@@ -75,11 +75,11 @@ func start_entry_flow() -> StringName:
         active_sequence = &"harun_origin"
         harun_origin.begin_origin_sequence()
         return active_sequence
-    if GameState.journey_state == GameState.PEREGRINUS_IGNIS_GAME:
+    if bool(GameState.meta_progression.get("initiatic_game_complete", false)) and not bool(state.get("chronica_epilogue_completed", false)):
         active_sequence = &"epilogue"
         start_epilogue()
         return active_sequence
-    active_sequence = &"student_journey"
+    active_sequence = &"initiatic_journey"
     chronica_story.begin_stage(GameState.current_stage_id)
     return active_sequence
 
@@ -183,7 +183,7 @@ func _complete_origin_handoff() -> void:
         return
     var target := pending_handoff_target
     pending_handoff_target = &""
-    active_sequence = &"student_journey"
+    active_sequence = &"initiatic_journey"
     chronica_story.configure(current_story_state())
     chronica_story.begin_stage(target)
     transition_requested.emit(target)
@@ -225,7 +225,8 @@ func _on_stage_completed(stage_id: StringName, _summary: Dictionary) -> void:
     first_combat_entered = false
     first_combat_cleared = false
     inversion_triggered = false
-    if GameState.journey_state == GameState.PEREGRINUS_IGNIS_GAME:
+    var story := current_story_state()
+    if bool(GameState.meta_progression.get("initiatic_game_complete", false)) and not bool(story.get("chronica_epilogue_completed", false)):
         start_epilogue()
 
 func _on_story_beat_started(_stage_id: StringName, _beat_id: StringName, beat: Dictionary) -> void:
