@@ -25,9 +25,10 @@ def test_narrator_tracks_visible_narrative_text_instead_of_combat_spam():
         assert node_name in narrator
     assert "_last_text_by_path" in narrator
     assert "is_visible_in_tree" in narrator
-    assert '"\\n" not in raw_text' in narrator
+    assert 'return "\\n" in raw_text' in narrator
     assert "line_timer" in narrator
     assert "hide_timer" in narrator
+    assert "_estimated_queue_until_msec" in narrator
     assert "NarratorDirector" not in read("scripts/ui/HUDController.gd")
 
 
