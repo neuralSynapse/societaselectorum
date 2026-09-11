@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/narrative/NarrativePresentationController.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="ChoiceFrame"]
+bg_color = Color(0.014, 0.011, 0.017, 0.985)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.63, 0.47, 0.24, 0.95)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_size = 14
 
 [node name="NarrativePresentation" type="CanvasLayer"]
 process_mode = 3
@@ -19,6 +33,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 72.0
 color = Color(0, 0, 0, 0.92)
+mouse_filter = 2
 
 [node name="BottomBar" type="ColorRect" parent="Root"]
 layout_mode = 1
@@ -28,6 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -150.0
 color = Color(0, 0, 0, 0.94)
+mouse_filter = 2
 
 [node name="SceneTitle" type="Label" parent="Root"]
 layout_mode = 0
@@ -37,6 +53,7 @@ offset_right = 800.0
 offset_bottom = 58.0
 theme_override_colors/font_color = Color(0.88, 0.84, 0.72, 1)
 theme_override_font_sizes/font_size = 18
+mouse_filter = 2
 
 [node name="Subtitle" type="Label" parent="Root"]
 layout_mode = 1
@@ -56,6 +73,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 22
+mouse_filter = 2
 
 [node name="SkipHint" type="Label" parent="Root"]
 layout_mode = 1
@@ -71,6 +89,7 @@ offset_bottom = -10.0
 text = "ESC · PULAR"
 horizontal_alignment = 2
 theme_override_colors/font_color = Color(0.62, 0.6, 0.56, 0.9)
+mouse_filter = 2
 
 [node name="StoryMessage" type="Label" parent="Root"]
 visible = false
@@ -89,48 +108,64 @@ vertical_alignment = 1
 autowrap_mode = 2
 theme_override_colors/font_color = Color(0.92, 0.86, 0.68, 1)
 theme_override_font_sizes/font_size = 24
+mouse_filter = 2
+
+[node name="ChoiceDimmer" type="ColorRect" parent="Root"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.006, 0.004, 0.008, 0.82)
+mouse_filter = 0
 
 [node name="ChoicePanel" type="PanelContainer" parent="Root"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -460.0
-offset_top = -230.0
-offset_right = 460.0
-offset_bottom = 230.0
+anchor_left = 0.15
+anchor_top = 0.08
+anchor_right = 0.85
+anchor_bottom = 0.90
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("ChoiceFrame")
 mouse_filter = 0
 
 [node name="Margin" type="MarginContainer" parent="Root/ChoicePanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 28
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 30
 
 [node name="Column" type="VBoxContainer" parent="Root/ChoicePanel/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 18
 
 [node name="ChoicePrompt" type="Label" parent="Root/ChoicePanel/Margin/Column"]
 layout_mode = 2
 autowrap_mode = 2
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.96, 0.9, 0.81, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 26
 
 [node name="ChoiceOptions" type="VBoxContainer" parent="Root/ChoicePanel/Margin/Column"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
+theme_override_constants/separation = 12
 
 [node name="ChoiceConsequence" type="Label" parent="Root/ChoicePanel/Margin/Column"]
 visible = false
 layout_mode = 2
 autowrap_mode = 2
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.75, 0.46, 1)
+theme_override_font_sizes/font_size = 16
 
 [node name="CinematicVeil" type="ColorRect" parent="Root"]
 visible = false
@@ -155,6 +190,7 @@ text = "FRAGMENTOS · 0 / 5"
 horizontal_alignment = 2
 theme_override_colors/font_color = Color(0.76, 0.7, 0.56, 0.92)
 theme_override_font_sizes/font_size = 16
+mouse_filter = 2
 
 [node name="RevealLabel" type="Label" parent="Root"]
 visible = false
@@ -176,6 +212,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 46
+mouse_filter = 2
 
 [node name="EvidenceLabel" type="Label" parent="Root"]
 visible = false
@@ -186,6 +223,7 @@ offset_right = 700.0
 offset_bottom = 114.0
 theme_override_colors/font_color = Color(0.65, 0.72, 0.68, 0.8)
 theme_override_font_sizes/font_size = 13
+mouse_filter = 2
 
 [node name="Blackout" type="ColorRect" parent="Root"]
 visible = false
