@@ -19,15 +19,47 @@ func _on_body_entered(body: Node) -> void:
     if body is PlayerController:
         player_entered.emit(room_id)
 
+func mark_doorway_open(wall_name: String) -> void:
+    var open_doorways: Array = get_meta("open_doorways", [])
+    if wall_name not in open_doorways:
+        open_doorways.append(wall_name)
+        set_meta("open_doorways", open_doorways)
+    if not is_node_ready():
+        return
+    var arches := get_node_or_null("GothicDressing/DoorArches") as Node3D
+    if arches == null:
+        return
+    var wall_mesh := get_node_or_null(wall_name + "/Mesh") as MeshInstance3D
+    var stone: Material = wall_mesh.material_override if wall_mesh != null else null
+    var bronze := StandardMaterial3D.new()
+    bronze.albedo_color = Color(0.24, 0.135, 0.045, 1.0)
+    bronze.metallic = 0.76
+    bronze.roughness = 0.35
+    bronze.emission_enabled = true
+    bronze.emission = Color(0.40, 0.12, 0.018, 1.0)
+    bronze.emission_energy_multiplier = 0.65
+    _add_door_arch_for_wall(arches, wall_name, stone, bronze)
+
 func set_locked(value: bool) -> void:
     locked = value
     set_meta("locked", value)
+    var open_doorways: Array = get_meta("open_doorways", [])
     var door_set := get_node_or_null("DoorSet")
     if door_set:
         for child in door_set.get_children():
             if child is StaticBody3D:
-                child.collision_layer = 2 if value else 0
-                child.visible = value
+                var wall_name := _wall_name_for_door(String(child.name))
+                var should_block := value and wall_name in open_doorways
+                child.collision_layer = 2 if should_block else 0
+                child.visible = should_block
+
+func _wall_name_for_door(door_name: String) -> String:
+    match door_name:
+        "NorthDoor": return "NorthWall"
+        "SouthDoor": return "SouthWall"
+        "EastDoor": return "EastWall"
+        "WestDoor": return "WestWall"
+        _: return ""
 
 func mark_cleared() -> void:
     cleared = true
@@ -158,10 +190,67 @@ func _add_vault_ribs(parent: Node3D, stone: Material, bronze: Material) -> void:
     parent.add_child(crown_mark)
 
 func _add_door_arches(parent: Node3D, stone: Material, bronze: Material) -> void:
-    _add_arch_on_z(parent, -4.74, stone, bronze)
-    _add_arch_on_z(parent, 4.74, stone, bronze)
-    _add_arch_on_x(parent, -4.74, stone, bronze)
-    _add_arch_on_x(parent, 4.74, stone, bronze)
+    var open_doorways: Array = get_meta("open_doorways", [])
+    for wall_name in open_doorways:
+        _add_door_arch_for_wall(parent, String(wall_name), stone, bronze)
+
+func _add_door_arch_for_wall(parent: Node3D, wall_name: String, stone: Material, bronze: Material) -> void:
+    var node_name := wall_name + "Arch"
+    if parent.get_node_or_null(node_name) != null:
+        return
+    var arch := Node3D.new()
+    arch.name = node_name
+    parent.add_child(arch)
+    match wall_name:
+        "NorthWall": _add_arch_on_z(arch, -4.74, stone, bronze)
+        "SouthWall": _add_arch_on_z(arch, 4.74, stone, bronze)
+        "EastWall": _add_arch_on_x(arch, 4.74, stone, bronze)
+        "WestWall": _add_arch_on_x(arch, -4.74, stone, bronze)
+        _: return
+    _add_doorway_beacon(arch, wall_name)
+
+func _add_doorway_beacon(parent: Node3D, wall_name: String) -> void:
+    var glow := StandardMaterial3D.new()
+    glow.albedo_color = Color(0.42, 0.18, 0.035, 1.0)
+    glow.emission_enabled = true
+    glow.emission = Color(1.0, 0.28, 0.035, 1.0)
+    glow.emission_energy_multiplier = 1.45
+    glow.roughness = 0.32
+    var marker := MeshInstance3D.new()
+    marker.name = "PassageMarker"
+    var mesh := BoxMesh.new()
+    var light_position := Vector3.ZERO
+    match wall_name:
+        "NorthWall":
+            mesh.size = Vector3(1.65, 0.035, 0.34)
+            marker.position = Vector3(0, 0.13, -4.30)
+            light_position = Vector3(0, 1.45, -4.18)
+        "SouthWall":
+            mesh.size = Vector3(1.65, 0.035, 0.34)
+            marker.position = Vector3(0, 0.13, 4.30)
+            light_position = Vector3(0, 1.45, 4.18)
+        "EastWall":
+            mesh.size = Vector3(0.34, 0.035, 1.65)
+            marker.position = Vector3(4.30, 0.13, 0)
+            light_position = Vector3(4.18, 1.45, 0)
+        "WestWall":
+            mesh.size = Vector3(0.34, 0.035, 1.65)
+            marker.position = Vector3(-4.30, 0.13, 0)
+            light_position = Vector3(-4.18, 1.45, 0)
+        _:
+            return
+    marker.mesh = mesh
+    marker.material_override = glow
+    parent.add_child(marker)
+    var light := OmniLight3D.new()
+    light.name = "PassageLight"
+    light.position = light_position
+    light.light_color = Color(1.0, 0.30, 0.055, 1.0)
+    light.light_energy = 0.82
+    light.omni_range = 3.2
+    light.omni_attenuation = 1.45
+    light.shadow_enabled = false
+    parent.add_child(light)
 
 func _add_arch_on_z(parent: Node3D, z: float, stone: Material, bronze: Material) -> void:
     var left_low := Vector3(-1.35, 0.25, z)
