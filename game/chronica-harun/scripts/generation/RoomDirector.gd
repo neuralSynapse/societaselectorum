@@ -10,13 +10,21 @@ var active_room: StringName = &""
 var rooms: Dictionary = {}
 var enemies_by_room: Dictionary = {}
 var secret_state: Dictionary = {}
+var cleared_rooms: Dictionary = {}
 
 func register_room(room: RoomShell) -> void:
     rooms[room.room_id] = room
+    if bool(cleared_rooms.get(room.room_id, false)) or room.cleared:
+        cleared_rooms[room.room_id] = true
+        room.mark_cleared()
     if not room.player_entered.is_connected(activate_room):
         room.player_entered.connect(activate_room)
 
 func register_enemy(room_id: StringName, enemy: Node) -> void:
+    if bool(cleared_rooms.get(room_id, false)):
+        if is_instance_valid(enemy):
+            enemy.queue_free()
+        return
     if not enemies_by_room.has(room_id):
         enemies_by_room[room_id] = []
     enemies_by_room[room_id].append(enemy)
@@ -27,16 +35,28 @@ func activate_room(room_id: StringName) -> void:
     active_room = room_id
     room_entered.emit(room_id)
     var room := rooms.get(room_id) as RoomShell
-    if room and String(room.room_role) in ["combat", "elite", "boss", "trial", "archon"]:
+    if room == null:
+        return
+    if room.cleared or bool(cleared_rooms.get(room_id, false)):
+        cleared_rooms[room_id] = true
+        room.mark_cleared()
+        return
+    if String(room.room_role) in ["combat", "elite", "boss", "trial", "archon"]:
         lock_room(room_id)
 
 func lock_room(room_id: StringName) -> void:
+    if bool(cleared_rooms.get(room_id, false)):
+        var cleared_room := rooms.get(room_id) as RoomShell
+        if cleared_room:
+            cleared_room.mark_cleared()
+        return
     var room := rooms.get(room_id) as RoomShell
     if room:
         room.set_locked(true)
     room_locked.emit(room_id)
 
 func clear_room(room_id: StringName) -> void:
+    cleared_rooms[room_id] = true
     var room := rooms.get(room_id) as RoomShell
     if room:
         room.mark_cleared()
