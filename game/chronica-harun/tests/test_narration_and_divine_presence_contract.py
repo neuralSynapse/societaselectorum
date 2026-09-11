@@ -30,7 +30,10 @@ def test_narrator_tracks_visible_narrative_text_instead_of_combat_spam():
     assert "line_timer" in narrator
     assert "hide_timer" in narrator
     assert "_estimated_queue_until_msec" in narrator
-    assert "NarratorDirector" not in read("scripts/ui/HUDController.gd")
+    hud = read("scripts/ui/HUDController.gd")
+    # HUD may ask the narrator for a read-time estimate so acquisition text stays
+    # visible long enough, but it must never trigger speech directly from combat UI.
+    assert "NarratorDirector.speak" not in hud
 
 
 def test_thoth_is_not_the_generic_capsule_placeholder_anymore():
