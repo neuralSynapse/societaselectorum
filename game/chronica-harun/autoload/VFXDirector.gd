@@ -5,7 +5,7 @@ signal feedback_emitted(event_id: StringName, position: Vector3)
 const MAX_EMISSION := 0.55
 const TELEGRAPH_MAX_EMISSION := 0.08
 const EFFECTS := {
-    "player_primary": {"color":Color(0.72,0.43,0.12), "size":0.20, "end_scale":2.2, "duration":0.10, "emission":0.24, "shape":"sphere"},
+    "player_primary": {"color":Color(0.72,0.43,0.12), "size":0.20, "end_scale":1.0, "duration":0.10, "emission":0.24, "shape":"sphere", "travel":2.4},
     "player_power": {"color":Color(0.52,0.08,0.05), "size":0.34, "end_scale":2.8, "duration":0.22, "emission":0.30, "shape":"sphere"},
     "player_dodge": {"color":Color(0.31,0.13,0.55), "size":0.22, "end_scale":2.5, "duration":0.16, "emission":0.20, "shape":"disc"},
     "perfect_dodge": {"color":Color(0.95,0.57,0.12), "size":0.30, "end_scale":3.4, "duration":0.20, "emission":0.44, "shape":"disc"},
@@ -90,9 +90,13 @@ func emit_feedback(event_id: StringName, position: Vector3, direction: Vector3 =
         material.emission_energy_multiplier = emission
     mesh_instance.material_override = material
     root.scale = Vector3.ONE * 0.45
-    var tween := root.create_tween()
-    tween.tween_property(root, "scale", Vector3.ONE * float(spec.get("end_scale", 2.0)), float(spec.get("duration", 0.18)))
-    tween.tween_callback(Callable(root, "queue_free"))
+    var duration := float(spec.get("duration", 0.18))
+    var travel := float(spec.get("travel", 0.0))
+    var tween := root.create_tween().set_parallel(true)
+    tween.tween_property(root, "scale", Vector3.ONE * float(spec.get("end_scale", 2.0)), duration)
+    if travel > 0.0 and direction.length_squared() > 0.001:
+        tween.tween_property(root, "global_position", position + direction.normalized() * travel, duration)
+    tween.chain().tween_callback(Callable(root, "queue_free"))
     feedback_emitted.emit(event_id, position)
     return root
 
