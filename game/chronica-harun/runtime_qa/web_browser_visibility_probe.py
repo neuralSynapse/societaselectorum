@@ -45,7 +45,7 @@ async def main() -> int:
     image = Image.open(SCREENSHOT).convert("RGB")
     width, height = image.size
     crop = image.crop((int(width * 0.15), int(height * 0.18), int(width * 0.85), int(height * 0.72)))
-    pixels = list(crop.getdata())
+    pixels = list(crop.get_flattened_data()) if hasattr(crop, "get_flattened_data") else list(crop.getdata())
     if not pixels:
         raise RuntimeError("browser probe crop is empty")
 
