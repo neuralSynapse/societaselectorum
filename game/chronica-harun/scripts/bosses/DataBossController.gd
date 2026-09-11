@@ -6,6 +6,7 @@ signal boss_defeated(boss_id: StringName, reward_id: StringName)
 signal combat_status_changed(boss: DataBossController, health_ratio: float)
 
 const PROJECTILE_SCENE := preload("res://scenes/vfx/Projectile.tscn")
+const ENEMY_MODEL_STREAM := preload("res://scripts/content/EnemyModelStream.gd")
 
 var boss_id: StringName = &"boss"
 var display_name := "Autoridade"
@@ -166,14 +167,31 @@ func _face_target() -> void:
 func _attach_model() -> void:
     var path := String(content_data.get("model_path", ""))
     if not path.is_empty() and ResourceLoader.exists(path):
-        var resource = load(path)
-        if resource is PackedScene:
-            visual.add_child((resource as PackedScene).instantiate())
-            return
+        var status := ResourceLoader.load_threaded_get_status(path)
+        if status == ResourceLoader.THREAD_LOAD_LOADED:
+            var resource := ResourceLoader.load_threaded_get(path)
+            if resource is PackedScene:
+                visual.add_child((resource as PackedScene).instantiate())
+                return
+        elif status != ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+            ResourceLoader.load_threaded_request(path)
+
     var fallback := MeshInstance3D.new()
-    var mesh := SphereMesh.new(); mesh.radius = 0.9; mesh.height = 1.8
+    fallback.name = "BossFallback_%s" % boss_id
+    var mesh := SphereMesh.new()
+    mesh.radius = 0.9
+    mesh.height = 1.8
     fallback.mesh = mesh
-    var material := StandardMaterial3D.new(); material.albedo_color = Color(0.12, 0.09, 0.06); material.roughness = 0.82; material.emission_enabled = false
+    var material := StandardMaterial3D.new()
+    material.albedo_color = Color(0.12, 0.09, 0.06)
+    material.roughness = 0.82
+    material.emission_enabled = false
     fallback.material_override = material
     fallback.position.y = 1.1
     visual.add_child(fallback)
+
+    if not path.is_empty() and ResourceLoader.exists(path):
+        var streamer := ENEMY_MODEL_STREAM.new() as EnemyModelStream
+        streamer.name = "BossModelStream"
+        visual.add_child(streamer)
+        streamer.configure(path, visual, fallback, int(get_instance_id()))
