@@ -84,8 +84,17 @@ func get_degree_journey() -> Array:
     return degree_stages
 
 func get_student_journey() -> Array:
+    # StageDirector e alguns HUDs históricos ainda selecionam pelo stage_index legado.
+    # Durante os Graus, mantemos o shape de 16 posições e injetamos o Grau atual no
+    # slot corrente, evitando reescrever os consumidores antigos e, principalmente,
+    # evitando que stage_index=15 seja confundido com Grau XVI.
     if String(GameState.journey_state) == GameState.JOURNEY_DEGREE:
-        return get_degree_journey()
+        var compatible := get_base_student_journey().duplicate(true)
+        var current := get_current_stage()
+        if compatible.is_empty():
+            return [current] if not current.is_empty() else []
+        compatible[clampi(GameState.stage_index, 0, compatible.size() - 1)] = current
+        return compatible
     return get_base_student_journey()
 
 func get_current_stage() -> Dictionary:
