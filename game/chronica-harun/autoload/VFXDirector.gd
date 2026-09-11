@@ -2,6 +2,7 @@ extends Node
 
 signal feedback_emitted(event_id: StringName, position: Vector3)
 
+const TRANSIENT_VFX_MOTION := preload("res://scripts/vfx/TransientVFXMotion.gd")
 const MAX_EMISSION := 0.55
 const TELEGRAPH_MAX_EMISSION := 0.08
 const EFFECTS := {
@@ -57,13 +58,11 @@ func emit_feedback(event_id: StringName, position: Vector3, direction: Vector3 =
         feedback_emitted.emit(event_id, position)
         return null
     var spec: Dictionary = EFFECTS[key]
-    var root := Node3D.new()
+    var root := TRANSIENT_VFX_MOTION.new()
     root.name = "VFX_%s" % key
     root.set_meta("feedback_event", key)
     root.set_meta("payload", payload)
     add_child(root)
-    # VFXDirector is a plain Node autoload, so this child has no Node3D parent.
-    # Local position is therefore the world-space position and is safe to animate directly.
     root.position = position
     if direction.length_squared() > 0.001:
         root.set_meta("direction", direction.normalized())
@@ -91,18 +90,9 @@ func emit_feedback(event_id: StringName, position: Vector3, direction: Vector3 =
         material.emission = color
         material.emission_energy_multiplier = emission
     mesh_instance.material_override = material
-    root.scale = Vector3.ONE * float(spec.get("start_scale", 0.45))
     var duration := float(spec.get("duration", 0.18))
     var travel := float(spec.get("travel", 0.0))
-    var tween := root.create_tween()
-    tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-    tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
-    tween.set_parallel(true)
-    tween.tween_property(root, "scale", Vector3.ONE * float(spec.get("end_scale", 2.0)), duration)
-    if travel > 0.0 and direction.length_squared() > 0.001:
-        var destination := root.position + direction.normalized() * travel
-        tween.tween_property(root, "position", destination, duration)
-    tween.chain().tween_callback(Callable(root, "queue_free"))
+    root.configure(direction, travel, duration, float(spec.get("start_scale", 0.45)), float(spec.get("end_scale", 2.0)))
     feedback_emitted.emit(event_id, position)
     return root
 
