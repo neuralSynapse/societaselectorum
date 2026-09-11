@@ -121,6 +121,10 @@ func present_shot_mode(payload: Dictionary) -> void:
         subtitle.visible = false
     else:
         subtitle.visible = true
+    if not _has_player_facing_cinematic_visuals():
+        cinematic_veil.visible = false
+        blackout.visible = false
+        return
     begin_transition(StringName(payload.get("transition", "cut")), float(payload.get("tension", 0.0)))
     if OS.is_debug_build():
         evidence_label.text = "%s · %s · %s" % [
@@ -131,7 +135,9 @@ func present_shot_mode(payload: Dictionary) -> void:
         evidence_label.visible = true
 
 func begin_transition(kind: StringName, tension: float = 0.0) -> void:
-    if final_black_active:
+    if final_black_active or not _has_player_facing_cinematic_visuals():
+        cinematic_veil.visible = false
+        blackout.visible = false
         return
     visible = true
     cinematic_veil.visible = true
@@ -270,13 +276,22 @@ func _finish_choice_display() -> void:
     get_tree().paused = paused_before_choice
     choice_option_ids.clear()
 
+func _has_player_facing_cinematic_visuals() -> bool:
+    return bridge != null and bridge.cinematic_stage != null and bridge.cinematic_stage.can_take_player_control()
+
 func _on_cinematic_sequence_started(_sequence_id: StringName, _sequence: Dictionary) -> void:
     cinematic_sequence_active = true
     visible = true
+    if not _has_player_facing_cinematic_visuals():
+        cinematic_veil.visible = false
+        blackout.visible = false
+        return
     cinematic_veil.visible = true
 
 func _on_cinematic_sequence_finished(_sequence_id: StringName) -> void:
-    pass
+    if not _has_player_facing_cinematic_visuals():
+        cinematic_veil.visible = false
+        blackout.visible = false
 
 func _on_gameplay_handoff(target_stage: StringName) -> void:
     release_to_gameplay(target_stage)
