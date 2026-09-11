@@ -51,6 +51,10 @@ func _prepare_capture() -> void:
     stage.player.global_position = room.global_position + Vector3(0, 0.15, 2.8)
     stage.player.rotation = Vector3.ZERO
 
+    if not await _verify_primary_direction(stage.player):
+        get_tree().quit(6)
+        return
+
     var boss := BOSS_SCENE.instantiate() as DataBossController
     var boss_id := StringName(stage.stage_data.get("boss_id", "blind_observer"))
     boss.configure(boss_id, stage.player)
@@ -98,3 +102,37 @@ func _prepare_capture() -> void:
 
     print("DEFINITIVE_VISUAL_CAPTURE=PASS path=%s size=%dx%d" % [output, image.get_width(), image.get_height()])
     get_tree().quit(0)
+
+func _verify_primary_direction(player: PlayerController) -> bool:
+    var camera := player.camera
+    var muzzle := player.get_node_or_null("Head/Camera3D/ViewModelRoot/LeftGauntlet/PrimaryMuzzle") as Node3D
+    if camera == null or muzzle == null:
+        push_error("Primary direction probe missing camera or PrimaryMuzzle")
+        return false
+    var forward := (-camera.global_transform.basis.z).normalized()
+    VFXDirector._primary_ready_at = 0
+    VFXDirector._on_primary_requested(player)
+    await get_tree().process_frame
+    var effect := VFXDirector.get_node_or_null("VFX_player_primary") as Node3D
+    if effect == null:
+        push_error("Primary direction probe did not create player_primary VFX")
+        return false
+    var origin := effect.global_position
+    var camera_to_origin := origin - camera.global_position
+    var effect_direction: Vector3 = effect.get_meta("direction", Vector3.ZERO)
+    if camera_to_origin.dot(forward) <= 0.25:
+        push_error("Primary VFX spawned behind/inside camera plane")
+        return false
+    if effect_direction.normalized().dot(forward) < 0.995:
+        push_error("Primary VFX direction diverged from camera forward")
+        return false
+    await get_tree().create_timer(0.07).timeout
+    if not is_instance_valid(effect):
+        push_error("Primary VFX expired before travel could be verified")
+        return false
+    var displacement := effect.global_position - origin
+    if displacement.dot(forward) <= 0.25:
+        push_error("Primary VFX did not travel away from camera")
+        return false
+    print("PRIMARY_DIRECTION_RUNTIME=PASS ahead=%.3f travel=%.3f alignment=%.4f" % [camera_to_origin.dot(forward), displacement.dot(forward), effect_direction.normalized().dot(forward)])
+    return true
