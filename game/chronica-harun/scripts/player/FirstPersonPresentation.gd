@@ -17,6 +17,7 @@ var left_rest_position := Vector3.ZERO
 var right_rest_position := Vector3.ZERO
 var idle_clock := 0.0
 var primary_ready_at := 0
+var power_ready_at := 0
 
 func _ready() -> void:
     root_rest_position = position
@@ -25,6 +26,7 @@ func _ready() -> void:
     right_rest_position = right_gauntlet.position
     if player != null:
         player.primary_attack_requested.connect(_on_primary_attack)
+        player.power_requested.connect(_on_power_requested)
         player.dodge_started.connect(_on_dodge)
         player.damaged.connect(_on_damaged)
     if not DefinitivePowerRuntime.power_activated.is_connected(_on_power):
@@ -47,29 +49,39 @@ func _on_primary_attack() -> void:
     var tween := create_tween()
     tween.set_trans(Tween.TRANS_QUAD)
     tween.set_ease(Tween.EASE_OUT)
-    tween.tween_property(left_gauntlet, "position", left_rest_position + Vector3(0.055, 0.035, -0.15), 0.065)
-    tween.parallel().tween_property(left_outer, "scale", Vector3.ONE * 1.26, 0.065)
-    tween.parallel().tween_property(left_inner, "scale", Vector3.ONE * 1.18, 0.065)
+    tween.tween_property(left_gauntlet, "position", left_rest_position + Vector3(0.055, 0.035, -0.18), 0.065)
+    tween.parallel().tween_property(left_outer, "scale", Vector3.ONE * 1.20, 0.065)
+    tween.parallel().tween_property(left_inner, "scale", Vector3.ONE * 1.14, 0.065)
     tween.tween_property(left_gauntlet, "position", left_rest_position, 0.17)
     tween.parallel().tween_property(left_outer, "scale", Vector3.ONE, 0.17)
     tween.parallel().tween_property(left_inner, "scale", Vector3.ONE, 0.17)
 
+func _on_power_requested() -> void:
+    _animate_right_power()
+
 func _on_power(_power_id: StringName, _effect_id: StringName) -> void:
+    _animate_right_power()
+
+func _animate_right_power() -> void:
+    var now := Time.get_ticks_msec()
+    if now < power_ready_at:
+        return
+    power_ready_at = now + 180
     var tween := create_tween()
     tween.set_trans(Tween.TRANS_CUBIC)
     tween.set_ease(Tween.EASE_OUT)
-    tween.tween_property(right_gauntlet, "position", right_rest_position + Vector3(-0.12, 0.07, -0.18), 0.09)
-    tween.parallel().tween_property(right_orb, "scale", Vector3.ONE * 1.72, 0.09)
-    tween.parallel().tween_property(right_outer, "scale", Vector3.ONE * 1.30, 0.09)
-    tween.parallel().tween_property(right_inner, "scale", Vector3.ONE * 1.22, 0.09)
-    tween.tween_property(right_gauntlet, "position", right_rest_position, 0.22)
-    tween.parallel().tween_property(right_orb, "scale", Vector3.ONE, 0.22)
-    tween.parallel().tween_property(right_outer, "scale", Vector3.ONE, 0.22)
-    tween.parallel().tween_property(right_inner, "scale", Vector3.ONE, 0.22)
+    tween.tween_property(right_gauntlet, "position", right_rest_position + Vector3(-0.13, 0.08, -0.10), 0.10)
+    tween.parallel().tween_property(right_orb, "scale", Vector3.ONE * 1.86, 0.10)
+    tween.parallel().tween_property(right_outer, "scale", Vector3.ONE * 1.38, 0.10)
+    tween.parallel().tween_property(right_inner, "scale", Vector3.ONE * 1.28, 0.10)
+    tween.tween_property(right_gauntlet, "position", right_rest_position, 0.24)
+    tween.parallel().tween_property(right_orb, "scale", Vector3.ONE, 0.24)
+    tween.parallel().tween_property(right_outer, "scale", Vector3.ONE, 0.24)
+    tween.parallel().tween_property(right_inner, "scale", Vector3.ONE, 0.24)
 
     var flare := create_tween()
-    flare.tween_property(right_light, "omni_range", 3.15, 0.07)
-    flare.tween_property(right_light, "omni_range", 1.9, 0.24)
+    flare.tween_property(right_light, "omni_range", 3.45, 0.08)
+    flare.tween_property(right_light, "omni_range", 1.9, 0.26)
 
 func _on_dodge(_perfect_window: float) -> void:
     var lateral := 1.0
