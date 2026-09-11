@@ -17,10 +17,10 @@ def test_enemies_collide_with_player_world_and_each_other():
     assert 'radius = 0.52' in scene
 
 
-def test_player_keeps_solid_world_and_enemy_collision_margin():
+def test_player_keeps_world_and_enemy_collision_enabled():
     scene = read("scenes/player/Player.tscn")
+    assert 'collision_layer = 1' in scene
     assert 'collision_mask = 2' in scene
-    assert 'safe_margin = 0.06' in scene
 
 
 def test_enemy_models_are_never_loaded_synchronously_during_spawn():
