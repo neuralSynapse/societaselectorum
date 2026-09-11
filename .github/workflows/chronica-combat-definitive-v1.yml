@@ -79,6 +79,27 @@ jobs:
           test -s "$GAME_DIR/build/web/index.wasm"
           test -s "$GAME_DIR/build/web/index.pck"
 
+      - name: Real Chromium gameplay visibility
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check -q playwright pillow
+          python -m playwright install --with-deps chromium
+          rm -rf /tmp/chronica-web
+          python -m http.server 8787 --bind 127.0.0.1 --directory "$GAME_DIR/build/web" >/tmp/chronica-web-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 2
+          python "$GAME_DIR/runtime_qa/web_browser_visibility_probe.py" | tee /tmp/web-visibility.log
+
+      - name: Upload real browser visual
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chronica-real-browser-visibility
+          path: /tmp/chronica-web/
+          if-no-files-found: warn
+
       - name: Upload browser build
         uses: actions/upload-artifact@v4
         with:
@@ -153,8 +174,10 @@ jobs:
           grep -q 'passed' /tmp/pytest.log
           grep -q 'COMPLETE GAME VALIDATION: PASS' /tmp/complete.log
           grep -q 'CHRONICA STORY CANON VALIDATION: PASS' /tmp/story.log
+          grep -q 'WEB_GAMEPLAY_VISIBILITY=PASS' /tmp/web-visibility.log
           grep -q 'BOOT_GAMEPLAY_VISIBILITY=PASS' /tmp/boot-visibility.log
           grep -q 'DEFINITIVE_VISUAL_CAPTURE=PASS' /tmp/visual.log
+          test -s /tmp/chronica-web/web_visibility.png
           test -s /tmp/chronica-boot/boot_visibility.png
           test -s /tmp/chronica-definitive/definitive_visual.png
           test -s "$GAME_DIR/build/web/index.html"
