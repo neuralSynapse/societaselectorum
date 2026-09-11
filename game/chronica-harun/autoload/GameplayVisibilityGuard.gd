@@ -100,6 +100,9 @@ func _enforce_stage(stage: StageDirector) -> void:
             for room_value in rooms.get_children():
                 if room_value is RoomShell:
                     _enforce_room(room_value as RoomShell)
+        if OS.has_feature("web"):
+            stage.floor_instance.visible = false
+            print("WEB_WORLD_ISOLATION floor_hidden=true")
     if stage.player != null and is_instance_valid(stage.player):
         stage.player.visible = true
         stage.player.process_mode = Node.PROCESS_MODE_INHERIT
