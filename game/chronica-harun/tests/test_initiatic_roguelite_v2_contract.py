@@ -120,3 +120,36 @@ def test_enemy_visual_runtime_defines_and_integrates_multiple_occult_silhouette_
     assert "emission" in art.lower()
     assert "boss_phase" in art.lower()
     assert "OccultCreaturePresentation.decorate" in integrator
+
+
+def test_gameplay_visibility_is_guarded_after_real_campaign_boot():
+    project = read("project.godot")
+    main = read("scripts/boot/Main.gd")
+    guard = read("autoload/GameplayVisibilityGuard.gd")
+    presentation = read("scripts/narrative/NarrativePresentationController.gd")
+    assert 'GameplayVisibilityGuard="*res://autoload/GameplayVisibilityGuard.gd"' in project
+    assert "GameplayVisibilityGuard.enforce" in main
+    assert "ensure_gameplay_safe" in presentation
+    assert "ambient_light_energy" in guard
+    assert "tonemap_exposure" in guard
+    assert "VisibilityFillLight" in guard
+    assert "camera.current = true" in guard
+
+
+def test_boot_copy_uses_web_safe_separators_and_exact_canonical_chain():
+    main = read("scripts/boot/Main.gd")
+    expected = "Cosmogênese · Origem de Harun · Portal 0 · Aspirante — Initiatio Luciferi · Estudante · I · Peregrinus Ignis · 33 Graus"
+    assert expected in main
+    continuity_line = next(line for line in main.splitlines() if "continuity.text" in line)
+    assert "→" not in continuity_line
+    assert "�" not in continuity_line
+
+
+def test_ci_runs_real_boot_visibility_probe_without_disabling_narrative_runtime():
+    probe = read("runtime_qa/GameplayBootVisibilityProbe.gd")
+    workflow = read("../../.github/workflows/chronica-combat-definitive-v1.yml")
+    assert "BOOT_GAMEPLAY_VISIBILITY=PASS" in probe
+    assert "mean_luminance" in probe
+    assert "NarrativeRuntime" not in probe or "PROCESS_MODE_DISABLED" not in probe
+    assert "GameplayBootVisibilityProbe.tscn" in workflow
+    assert "BOOT_GAMEPLAY_VISIBILITY=PASS" in workflow
