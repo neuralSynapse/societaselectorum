@@ -1,8 +1,9 @@
 extends Node
 
-const JOURNEY_INGRESSUS := "ACTUS_INGRESSUS"
+const JOURNEY_PORTAL_0 := "PORTAL_0_ASPIRANTE"
 const JOURNEY_STUDENT := "STUDENT"
 const JOURNEY_DEGREE := "DEGREE"
+const LEGACY_JOURNEY_INGRESSUS := "ACTUS_INGRESSUS"
 const PEREGRINUS_IGNIS_GAME := "PEREGRINUS_IGNIS_GAME"
 
 var selected_character_id: StringName = &"harun"
@@ -10,7 +11,7 @@ var current_stage_id: StringName = &"o_olho"
 var stage_index := 0
 var cycle := 0
 var run_seed := 0
-var journey_state := JOURNEY_INGRESSUS
+var journey_state := JOURNEY_PORTAL_0
 var completion_marks: Dictionary = {}
 var completion_marks_by_character: Dictionary = {}
 var run_stats: Dictionary = {}
@@ -29,11 +30,12 @@ func start_new_campaign(seed: int = 0) -> void:
     current_stage_id = &"o_olho"
     stage_index = 0
     cycle = 0
-    journey_state = JOURNEY_INGRESSUS
+    journey_state = JOURNEY_PORTAL_0
     completion_marks.clear()
     completion_marks_by_character.clear()
     run_build.clear()
     meta_progression.clear()
+    meta_progression["entry_chain"] = "Portal 0 · Aspirante — Initiatio Luciferi → Estudante → I · Peregrinus Ignis"
     route_state = {"route":"student","curses":[],"blessings":[],"post_boss_choice":"","gauntlet":""}
     run_seed = seed if seed != 0 else int(Time.get_unix_time_from_system())
     _reset_run_stats()
@@ -52,7 +54,7 @@ func complete_stage(stage_id: StringName) -> bool:
         _reset_run_stats()
         return true
 
-    var journey := ContentRegistry.get_student_journey()
+    var journey := ContentRegistry.get_base_student_journey()
     if stage_index < 0 or stage_index >= journey.size():
         return false
     var row: Dictionary = journey[stage_index]
@@ -67,11 +69,11 @@ func complete_stage(stage_id: StringName) -> bool:
         meta_progression["degree_current"] = maxi(1, int(meta_progression.get("degree_current", 1)))
         journey_state = JOURNEY_DEGREE
         var first_degree := InitiaticProgressionService.degree_row(int(meta_progression["degree_current"]))
-        current_stage_id = StringName(first_degree.get("id", "grade_01_inceptio"))
+        current_stage_id = StringName(first_degree.get("id", "grade_01_peregrinus_ignis"))
     else:
         stage_index += 1
         current_stage_id = StringName(next)
-        journey_state = JOURNEY_INGRESSUS if stage_index <= 2 else JOURNEY_STUDENT
+        journey_state = JOURNEY_PORTAL_0 if stage_index <= 2 else JOURNEY_STUDENT
     _reset_run_stats()
     return true
 
@@ -101,7 +103,7 @@ func load_save_data(snapshot: Dictionary) -> void:
     stage_index = clampi(int(snapshot.get("stage_index",0)),0,15)
     cycle = maxi(0,int(snapshot.get("cycle",0)))
     run_seed = int(snapshot.get("run_seed",Time.get_unix_time_from_system()))
-    journey_state = String(snapshot.get("journey_state",JOURNEY_INGRESSUS))
+    journey_state = String(snapshot.get("journey_state",JOURNEY_PORTAL_0))
     completion_marks = snapshot.get("completion_marks",{}).duplicate(true)
     completion_marks_by_character = snapshot.get("completion_marks_by_character",{}).duplicate(true)
     run_stats = snapshot.get("run_stats",{}).duplicate(true)
@@ -113,12 +115,16 @@ func load_save_data(snapshot: Dictionary) -> void:
         _reset_run_stats()
 
 func _reconcile_loaded_journey() -> void:
-    var journey := ContentRegistry.get_student_journey()
+    var journey := ContentRegistry.get_base_student_journey()
     if journey.is_empty():
-        journey_state = JOURNEY_INGRESSUS
+        journey_state = JOURNEY_PORTAL_0
         stage_index = 0
         current_stage_id = &"o_olho"
         return
+
+    # Compatibilidade com a nomenclatura intermediária usada antes da decisão Portal 0.
+    if journey_state == LEGACY_JOURNEY_INGRESSUS:
+        journey_state = JOURNEY_PORTAL_0
 
     # Compatibilidade: saves da arquitetura anterior terminavam em PEREGRINUS_IGNIS_GAME.
     if journey_state == PEREGRINUS_IGNIS_GAME:
@@ -130,14 +136,14 @@ func _reconcile_loaded_journey() -> void:
         var degree := clampi(int(meta_progression.get("degree_current", 1)), 1, 33)
         meta_progression["degree_current"] = degree
         var row := InitiaticProgressionService.degree_row(degree)
-        current_stage_id = StringName(row.get("id", "grade_01_inceptio"))
+        current_stage_id = StringName(row.get("id", "grade_01_peregrinus_ignis"))
         stage_index = journey.size() - 1
         return
 
     stage_index = clampi(stage_index, 0, journey.size() - 1)
     var row: Dictionary = journey[stage_index]
     current_stage_id = StringName(String(row.get("id", "o_olho")))
-    journey_state = JOURNEY_INGRESSUS if stage_index <= 2 else JOURNEY_STUDENT
+    journey_state = JOURNEY_PORTAL_0 if stage_index <= 2 else JOURNEY_STUDENT
 
 func snapshot_run() -> Dictionary:
     return to_save_data().duplicate(true)
