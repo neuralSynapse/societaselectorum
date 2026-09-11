@@ -106,8 +106,28 @@ func _enforce_stage(stage: StageDirector) -> void:
         if stage.player.camera != null:
             stage.player.camera.current = true
             stage.player.camera.make_current()
+            _install_web_geometry_probe(stage.player.camera)
     if stage.hud != null and is_instance_valid(stage.hud):
         stage.hud.visible = true
+
+func _install_web_geometry_probe(camera: Camera3D) -> void:
+    if not OS.has_feature("web") or camera == null or camera.has_node("WebGeometryProbe"):
+        return
+    var probe := MeshInstance3D.new()
+    probe.name = "WebGeometryProbe"
+    probe.position = Vector3(0, 0, -1.3)
+    var mesh := BoxMesh.new()
+    mesh.size = Vector3(0.42, 0.42, 0.42)
+    probe.mesh = mesh
+    var material := StandardMaterial3D.new()
+    material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+    material.albedo_color = Color(1.0, 0.0, 0.8, 1.0)
+    material.emission_enabled = true
+    material.emission = Color(1.0, 0.0, 0.8, 1.0)
+    material.emission_energy_multiplier = 2.0
+    probe.material_override = material
+    camera.add_child(probe)
+    print("WEB_GEOMETRY_PROBE installed path=%s" % String(probe.get_path()))
 
 func _enforce_room(room: RoomShell) -> void:
     if room == null or not is_instance_valid(room) or not room.visible:
