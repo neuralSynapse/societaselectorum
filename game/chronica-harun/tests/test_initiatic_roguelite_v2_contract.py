@@ -156,11 +156,12 @@ def test_ci_runs_real_boot_visibility_probe_without_disabling_narrative_runtime(
 
 
 def test_only_real_connections_look_like_doors_and_only_real_exits_can_lock():
-    builder = read("scripts/generation/StageFloorBuilder.gd")
     room = read("scripts/generation/RoomShell.gd")
     narrative = read("scripts/narrative/ReactiveNarrativeDirector.gd")
-    assert "mark_doorway_open" in builder
+    assert "_infer_open_doorways_from_guards" in room
+    assert "DoorwayGuards_" in room
     assert 'get_meta("open_doorways"' in room
     assert "_add_door_arch_for_wall" in room
     assert "should_block" in room
+    assert "PassageMarker" in room and "PassageLight" in room
     assert "PASSAGENS SELADAS" in narrative
