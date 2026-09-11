@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var main: Node3D = $Main
 
+var pause_active := false
+
 const REQUIRED_LABELS := [
     "RETOMAR",
     "JORNADA / MAPA",
@@ -26,6 +28,7 @@ func _run_probe() -> void:
     for _frame in range(36):
         await get_tree().process_frame
 
+    pause_active = true
     main.call("set_pause_state", true)
     for _frame in range(6):
         await get_tree().process_frame
@@ -63,6 +66,7 @@ func _run_probe() -> void:
     image.save_png("/tmp/chronica-pause/pause_menu.png")
 
     print("PAUSE_MENU_RUNTIME=PASS buttons=%d title=%s" % [labels.size(), title.text])
+    pause_active = false
     main.call("set_pause_state", false)
     get_tree().paused = false
     get_tree().quit(0)
@@ -75,6 +79,7 @@ func _collect_button_labels(node: Node, labels: Array[String]) -> void:
 
 func _fail(message: String, code: int) -> void:
     push_error(message)
+    pause_active = false
     if main != null and main.has_method("set_pause_state"):
         main.call("set_pause_state", false)
     get_tree().paused = false
