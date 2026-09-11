@@ -11,6 +11,7 @@ URL = "http://127.0.0.1:8787/index.html"
 OUT = Path("/tmp/chronica-web")
 SCREENSHOT = OUT / "web_visibility.png"
 LOG = OUT / "browser_console.json"
+DIAGNOSTIC_MARKER = "WEB_ROOM_ISOLATION_DIAGNOSTIC"
 
 
 async def main() -> int:
@@ -59,6 +60,10 @@ async def main() -> int:
         "WEB_GAMEPLAY_VISIBILITY mean_luminance=%.4f visible_ratio=%.4f screenshot=%s"
         % (mean_luminance, visible_ratio, SCREENSHOT)
     )
+
+    if any(DIAGNOSTIC_MARKER in item.get("text", "") for item in console):
+        print("WEB_GAMEPLAY_VISIBILITY=DIAGNOSTIC_ONLY")
+        return 3
 
     # The real working native boot is ~0.061 mean luminance and ~0.99 visible
     # ratio in this same crop. The reported browser regression is ~0.004 and
