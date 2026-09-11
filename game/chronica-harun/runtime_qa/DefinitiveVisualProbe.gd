@@ -33,6 +33,9 @@ func _prepare_capture() -> void:
         if cinematic_stage != null:
             cinematic_stage.visible = false
 
+    # The canonical gate can leave the tree paused during narrative handoff.
+    # Directional QA must exercise the same unpaused state used during live combat.
+    get_tree().paused = false
     main.call("_set_gameplay_enabled", true)
     stage.player.rotation = Vector3.ZERO
     stage.player.pitch = 0.0
