@@ -30,6 +30,10 @@ def test_primary_visual_does_not_expand_toward_camera():
     assert '"travel":5.6' in line
     assert '"duration":0.16' in line
     assert 'spec.get("start_scale", 0.45)' in vfx
+    assert 'root.position = position' in vfx
+    assert 'tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)' in vfx
+    assert 'tween.tween_property(root, "position", destination, duration)' in vfx
+    assert 'tween.tween_property(root, "global_position"' not in vfx
 
 
 def test_right_mouse_power_is_visually_distinct_and_uses_right_hand_origin():
