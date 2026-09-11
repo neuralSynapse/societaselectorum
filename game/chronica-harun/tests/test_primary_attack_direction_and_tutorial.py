@@ -33,7 +33,12 @@ def test_primary_visual_uses_process_driven_forward_motion_and_constant_scale():
     assert 'TransientVFXMotion.gd' in vfx
     assert 'root.configure(direction, travel, duration' in vfx
     assert 'process_mode = Node.PROCESS_MODE_ALWAYS' in motion
-    assert 'position += velocity * delta' in motion
+    assert 'MAX_SIMULATION_STEP' in motion
+    assert 'MIN_FRAMES_ALIVE' in motion
+    assert 'var safe_delta := minf(delta, MAX_SIMULATION_STEP)' in motion
+    assert 'position += velocity * safe_delta' in motion
+    assert 'elapsed += safe_delta' in motion
+    assert 'frames_alive >= MIN_FRAMES_ALIVE' in motion
     assert 'velocity = direction.normalized() * (travel / lifetime)' in motion
     assert 'create_tween' not in vfx[vfx.index("func emit_feedback"):vfx.index("func _scan_existing")]
 
