@@ -87,7 +87,8 @@ def test_loaded_campaign_reconciles_stage_index_and_journey_state() -> None:
     load_body = game_state.split("func load_save_data(snapshot: Dictionary) -> void:", 1)[1].split("func snapshot_run()", 1)[0]
     assert "_reconcile_loaded_journey()" in load_body
     assert "if journey_state == PEREGRINUS_IGNIS_GAME:" in game_state
-    assert "current_stage_id = StringName(PEREGRINUS_IGNIS_GAME)" in game_state
+    assert "journey_state = JOURNEY_DEGREE" in game_state
+    assert 'current_stage_id = StringName(row.get("id", "grade_01_peregrinus_ignis"))' in game_state
 
 
 def test_student_journey_chain_and_narrative_final_state_are_consistent() -> None:
@@ -117,7 +118,7 @@ def test_new_campaign_reset_is_campaign_only_and_preserves_input_settings() -> N
         'current_stage_id = &"o_olho"',
         "stage_index = 0",
         "cycle = 0",
-        "journey_state = JOURNEY_STUDENT",
+        "journey_state = JOURNEY_PORTAL_0",
         "completion_marks.clear()",
         "completion_marks_by_character.clear()",
         "run_build.clear()",
@@ -179,14 +180,13 @@ def test_static_scene_and_preload_resource_references_resolve() -> None:
         re.compile(r'path="(res://[^"]+)"'),
         re.compile(r'preload\("(res://[^"]+)"\)'),
     )
-
     missing: list[str] = []
     for path in candidates:
-        source = path.read_text(encoding="utf-8")
+        text = path.read_text(encoding="utf-8", errors="ignore")
         for pattern in patterns:
-            for resource in pattern.findall(source):
+            for match in pattern.finditer(text):
+                resource = match.group(1)
                 relative = resource.removeprefix("res://")
                 if not (ROOT / relative).exists():
                     missing.append(f"{path.relative_to(ROOT)} -> {resource}")
-
     assert not missing, "\n".join(missing)
