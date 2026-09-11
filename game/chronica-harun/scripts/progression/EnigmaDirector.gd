@@ -74,8 +74,8 @@ func build_enigma(stage_id: StringName, room_id: StringName, seed: int) -> Dicti
             eligible.append(row)
     if eligible.is_empty():
         return {}
-    var index := abs(seed + stage_key.hash() * 17 + String(room_id).hash() * 31) % eligible.size()
-    var result := eligible[index].duplicate(true)
+    var index: int = int(abs(seed + stage_key.hash() * 17 + String(room_id).hash() * 31)) % eligible.size()
+    var result: Dictionary = eligible[index].duplicate(true)
     result["stage_id"] = stage_key
     result["room_id"] = String(room_id)
     result["seed"] = seed
