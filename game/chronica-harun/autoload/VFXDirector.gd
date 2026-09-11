@@ -62,7 +62,9 @@ func emit_feedback(event_id: StringName, position: Vector3, direction: Vector3 =
     root.set_meta("feedback_event", key)
     root.set_meta("payload", payload)
     add_child(root)
-    root.global_position = position
+    # VFXDirector is a plain Node autoload, so this child has no Node3D parent.
+    # Local position is therefore the world-space position and is safe to animate directly.
+    root.position = position
     if direction.length_squared() > 0.001:
         root.set_meta("direction", direction.normalized())
     var mesh_instance := MeshInstance3D.new()
@@ -92,10 +94,14 @@ func emit_feedback(event_id: StringName, position: Vector3, direction: Vector3 =
     root.scale = Vector3.ONE * float(spec.get("start_scale", 0.45))
     var duration := float(spec.get("duration", 0.18))
     var travel := float(spec.get("travel", 0.0))
-    var tween := root.create_tween().set_parallel(true)
+    var tween := root.create_tween()
+    tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+    tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
+    tween.set_parallel(true)
     tween.tween_property(root, "scale", Vector3.ONE * float(spec.get("end_scale", 2.0)), duration)
     if travel > 0.0 and direction.length_squared() > 0.001:
-        tween.tween_property(root, "global_position", position + direction.normalized() * travel, duration)
+        var destination := root.position + direction.normalized() * travel
+        tween.tween_property(root, "position", destination, duration)
     tween.chain().tween_callback(Callable(root, "queue_free"))
     feedback_emitted.emit(event_id, position)
     return root
