@@ -39,3 +39,18 @@ def test_enemy_model_attachment_is_staggered_after_threaded_load():
     assert 'ResourceLoader.THREAD_LOAD_LOADED' in streamer
     assert 'frame_index % STAGGER_BUCKETS' in streamer
     assert 'visual.add_child(instance)' in streamer
+
+
+def test_bosses_respect_room_collision_and_player_body():
+    scene = read("scenes/bosses/BossBase.tscn")
+    assert 'collision_layer = 2' in scene
+    assert 'collision_mask = 3' in scene
+    assert 'safe_margin = 0.08' in scene
+
+
+def test_boss_model_loading_is_threaded_instead_of_spawn_blocking():
+    boss = read("scripts/bosses/DataBossController.gd")
+    assert 'load(path)' not in boss
+    assert 'ResourceLoader.load_threaded_request' in boss
+    assert 'ResourceLoader.load_threaded_get_status' in boss
+    assert 'EnemyModelStream.gd' in boss
