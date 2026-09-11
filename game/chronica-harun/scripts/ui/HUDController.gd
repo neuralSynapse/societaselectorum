@@ -175,11 +175,112 @@ func show_power_acquired(power_name: String, description: String = "") -> void:
     acquired_description.text = description if not description.is_empty() else "A vontade encontra uma nova forma."
     acquired_panel.modulate = Color(1, 1, 1, 0)
     acquired_panel.visible = true
-    acquired_hide_timer = 4.2
+    var readable_time := maxf(4.2, NarratorDirector.estimate_duration(acquired_description.text) + 1.2)
+    acquired_hide_timer = readable_time
     var tween := create_tween()
     tween.tween_property(acquired_panel, "modulate:a", 1.0, 0.18)
-    tween.tween_interval(3.4)
+    tween.tween_interval(maxf(3.4, readable_time - 0.7))
     tween.tween_property(acquired_panel, "modulate:a", 0.0, 0.48)
+
+func show_acquisition(category: String, item_id: StringName, data: Dictionary = {}) -> String:
+    var row := data.duplicate(true)
+    if row.is_empty():
+        row = ContentRegistry.get_item(category, item_id)
+    var name := String(row.get("name", row.get("display_name", item_id))).replace("_", " ")
+    var explanation := _describe_acquisition(category, row)
+    var category_label := category.replace("_", " ").to_upper()
+    show_power_acquired("%s · %s" % [category_label, name], explanation)
+    push_reward("+ %s · %s" % [category_label, name.to_upper()])
+    AudioDirector.play_ui(&"power_reveal")
+    return explanation
+
+func _describe_acquisition(category: String, data: Dictionary) -> String:
+    var purpose := _acquisition_purpose(category, data)
+    var usage := _acquisition_usage(category, data)
+    return "PARA QUE SERVE · %s\nCOMO USAR · %s" % [purpose, usage]
+
+func _acquisition_purpose(category: String, data: Dictionary) -> String:
+    var effect_id := String(data.get("effect_id", data.get("effect", {}).get("effect_id", "")))
+    var summary := String(data.get("effect_text", data.get("codex", {}).get("summary", "")))
+    match category:
+        "tarot":
+            return _effect_purpose(effect_id, summary)
+        "pharmaka":
+            var benefit := String(data.get("benefit", data.get("effect", {}).get("benefit", "efeito desconhecido"))).replace("_", " ")
+            var magnitude := int(data.get("magnitude", data.get("effect", {}).get("magnitude", 0)))
+            var side := String(data.get("side_effect", data.get("effect", {}).get("side_effect", "none"))).replace("_", " ")
+            var text := "gera %s" % benefit
+            if magnitude > 0:
+                text += " com intensidade %d" % magnitude
+            if side != "none" and not side.is_empty():
+                text += "; cobra como efeito colateral: %s" % side
+            return text
+        "instrumenta":
+            return _effect_purpose(effect_id, summary)
+        "relics":
+            return summary if not summary.is_empty() else "modifica passivamente a build durante esta run"
+        "talismans":
+            return summary if not summary.is_empty() else "altera passivamente defesa, dano ou recursos enquanto equipado"
+        "sigilla":
+            var dominion := String(data.get("dominium", "um domínio oculto")).replace("_", " ")
+            var price := String(data.get("pretium", "um preço ainda não revelado")).replace("_", " ")
+            return "vincula o domínio %s em troca de %s" % [dominion, price]
+        "daimones":
+            return summary if not summary.is_empty() else "adiciona um companheiro autônomo com uma regra própria de assistência"
+        "blessings":
+            return summary if not summary.is_empty() else "concede uma vantagem persistente durante a rota atual"
+        "curses":
+            return summary if not summary.is_empty() else "impõe uma regra adversa persistente e aumenta o risco da run"
+        "transformations":
+            return summary if not summary.is_empty() else "altera o corpo e a matriz de efeitos de Harun automaticamente"
+        "powers":
+            return summary if not summary.is_empty() else "adiciona uma nova forma ativa de poder"
+    return summary if not summary.is_empty() else "altera a build da run"
+
+func _acquisition_usage(category: String, data: Dictionary) -> String:
+    match category:
+        "tarot": return "pressione C quando o Arcano estiver equipado; é consumido no uso"
+        "pharmaka": return "pressione C; o efeito é identificado plenamente depois do primeiro consumo"
+        "instrumenta": return "pressione R; possui cargas limitadas e pode ser recarregado"
+        "relics": return "passivo; funciona automaticamente enquanto permanecer na build"
+        "talismans": return "passivo; até dois ficam equipados ao mesmo tempo"
+        "sigilla": return "vínculo passivo; o benefício e o preço entram na run imediatamente"
+        "daimones": return "automático; reage a mortes, salas, Arcana e outros gatilhos compatíveis"
+        "blessings": return "passivo; permanece ativo na rota atual"
+        "curses": return "automático; a maldição permanece até ser removida por um efeito específico"
+        "transformations": return "automático; a transformação é reconciliada com a build atual"
+        "powers": return "RMB ativa o poder selecionado e normalmente consome Foco"
+    var charges := int(data.get("charges", 0))
+    return "efeito contextual%s" % (" com %d cargas" % charges if charges > 0 else "")
+
+func _effect_purpose(effect_id: String, fallback: String) -> String:
+    var purposes := {
+        "threshold_reset":"retorna ao último limiar seguro e recupera Foco",
+        "echo_instrument":"repete o próximo efeito de Instrumentum",
+        "secret_sight":"revela passagens secretas próximas",
+        "fecundity":"cura Harun e concede Essência",
+        "command":"interrompe inimigos e cria proteção temporária",
+        "tradition":"converte conhecimento do Codex em defesa",
+        "syzygy":"funde Talisman e Instrumentum em uma combinação de build",
+        "chariot":"concede avanço rápido com breve invulnerabilidade",
+        "adjustment":"reequilibra recursos e remove efeitos adversos",
+        "hermit":"abre uma escolha oculta",
+        "fortune":"rerrola uma recompensa da sala",
+        "lust":"premia agressividade contínua por tempo limitado",
+        "suspension":"altera fase e desacelera ameaças",
+        "death":"executa alvos enfraquecidos e reduz sua pressão",
+        "art":"funde consumível e Instrumentum",
+        "devil":"troca vida máxima por aumento de dano",
+        "tower":"provoca explosão ritual e pode romper segredos",
+        "star":"revela objetivo e aumenta precisão temporariamente",
+        "moon":"revela segredo, mas acrescenta ameaça",
+        "sun":"cura, revela a sala e causa dano aos inimigos",
+        "aeon":"altera uma regra do andar",
+        "universe":"abre conexão excepcional, cura e concede Essência",
+    }
+    if purposes.has(effect_id):
+        return String(purposes[effect_id])
+    return fallback if not fallback.is_empty() else effect_id.replace("_", " ")
 
 func push_reward(text: String) -> void:
     var label := Label.new()
@@ -361,8 +462,9 @@ func show_choice(title: String, options: Array, callback: Callable) -> void:
     for i in range(options.size()):
         var button := Button.new()
         button.text = String(options[i])
-        button.custom_minimum_size = Vector2(0, 54)
+        button.custom_minimum_size = Vector2(0, 72)
         button.add_theme_font_size_override("font_size", 16)
+        button.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
         button.pressed.connect(_on_choice_pressed.bind(i))
         choice_options.add_child(button)
     choice_panel.visible = true
