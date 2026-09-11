@@ -126,10 +126,10 @@ def test_gameplay_visibility_is_guarded_after_real_campaign_boot():
     project = read("project.godot")
     main = read("scripts/boot/Main.gd")
     guard = read("autoload/GameplayVisibilityGuard.gd")
-    presentation = read("scripts/narrative/NarrativePresentationController.gd")
     assert 'GameplayVisibilityGuard="*res://autoload/GameplayVisibilityGuard.gd"' in project
     assert "GameplayVisibilityGuard.enforce" in main
-    assert "ensure_gameplay_safe" in presentation
+    assert "_enforce_presentation" in guard
+    assert 'Root/Blackout' in guard and 'Root/CinematicVeil' in guard
     assert "ambient_light_energy" in guard
     assert "tonemap_exposure" in guard
     assert "VisibilityFillLight" in guard
@@ -150,6 +150,6 @@ def test_ci_runs_real_boot_visibility_probe_without_disabling_narrative_runtime(
     workflow = read("../../.github/workflows/chronica-combat-definitive-v1.yml")
     assert "BOOT_GAMEPLAY_VISIBILITY=PASS" in probe
     assert "mean_luminance" in probe
-    assert "NarrativeRuntime" not in probe or "PROCESS_MODE_DISABLED" not in probe
+    assert "PROCESS_MODE_DISABLED" not in probe
     assert "GameplayBootVisibilityProbe.tscn" in workflow
     assert "BOOT_GAMEPLAY_VISIBILITY=PASS" in workflow
