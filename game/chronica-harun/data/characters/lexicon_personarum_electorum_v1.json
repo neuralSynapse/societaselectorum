@@ -1,0 +1,48 @@
+{
+  "id": "lexicon_personarum_electorum_v1",
+  "version": "1.1",
+  "source": "LEXICON PERSONARUM ELECTORUM — O Nome como Sigilo Narrativo, v1.0, 10.09.2026",
+  "policy": {
+    "author_real": "Frater Horus Phosphorus",
+    "frater_videon": "personagem/interface narrativa; nunca autor real",
+    "use": "banco canônico e de referência; figuras entram em cena somente quando narrativamente coerentes"
+  },
+  "core_humans": [
+    {"id":"harun","name":"Ammar → Hārūn","status":"CANÔNICO","role":"Protagonista; Ammar é o nome de nascimento e Hārūn o nome de travessia."},
+    {"id":"meret","name":"Meret","status":"CANÔNICO","role":"Mãe."},
+    {"id":"darya","name":"Darya","status":"CANÔNICO","aliases":["Darya Nahid"],"role":"Pai; Darya Nahid é aprofundamento opcional, não substituição automática."},
+    {"id":"calen","name":"Calen","status":"CANÔNICO ATUAL","aliases":["Antar"],"role":"Irmão que fica; Antar permanece candidato de revisão."},
+    {"id":"oran","name":"Oran","status":"CANÔNICO ATUAL / REVISÁVEL"},
+    {"id":"asteron","name":"Asteron","status":"CANÔNICO"},
+    {"id":"nahema","name":"Nahema","status":"CANÔNICO","aliases":["Naamah","Nahemah"]},
+    {"id":"amarin","name":"Amarin","status":"CANÔNICO ATUAL / REVISÁVEL"},
+    {"id":"idris","name":"Idris","status":"CONGELADO"},
+    {"id":"horus_phosphorus","name":"Hórus Phosphorus","status":"CONGELADO","role":"Autor, mago e pesquisador humano no universo ficcional; Phosphorus é identidade mágica/luciferiana, não afirmação de encarnação divina."},
+    {"id":"nadir_ibn_samir","name":"Nadir ibn Samir","status":"CANÔNICO"},
+    {"id":"ishan","name":"Ishan","status":"CANÔNICO"},
+    {"id":"frater_videon","name":"Frater Videon","status":"INTERFACE NARRATIVA","role":"Personagem/interface narrativa; nunca autor real."}
+  ],
+  "archons": [
+    {"id":"athoth","name":"Athoth","form":"ram"},
+    {"id":"eloaios","name":"Eloaios","form":"asinine"},
+    {"id":"astaphaios","name":"Astaphaios","form":"hyena"},
+    {"id":"yao","name":"Yao","form":"seven_headed_serpent"},
+    {"id":"sabaoth","name":"Sabaoth","form":"draconic_serpentine"},
+    {"id":"adonin","name":"Adonin","form":"simian"},
+    {"id":"sabbataios","name":"Sabbataios","form":"fire_face"}
+  ],
+  "reference_groups": {
+    "thelema": ["Nuit/Nuith","Hadit","Heru-Ra-Ha","Ra-Hoor-Khuit","Hoor-pa-Kraat/Harpocrates","Aiwass","Babalon","Therion/To Mega Therion","Chaos","Choronzon","Pan","Adonai/Sagrado Anjo Guardião","Ankh-f-n-Khonsu","Mulher Escarlate","Besta 666","NEMO","Bebê do Abismo"],
+    "adversarial": ["Lucifer","Phosphoros/Eosphoros","Satan/ha-satan","Samael","Lilith","Azazel","Belial","Paimon","Baphomet","Leviathan","Beelzebub","Cain/Qayin","Naamah","Melek Taus","Ahriman/Angra Mainyu"],
+    "hindu_vedic": ["Shiva","Rudra","Mahadeva","Mahakala","Bhairava","Nataraja","Ardhanarishvara","Dakshinamurti","Pashupati","Ishana","Tripurantaka","Nilakantha","Vishnu","Narayana","Hari","Vasudeva","Madhava","Keshava","Govinda","Padmanabha","Matsya","Kurma","Varaha","Narasimha","Vamana","Parashurama","Rama","Krishna","Buddha","Kalki","Devi","Shakti","Mahadevi","Adi Shakti","Parvati","Durga","Kali","Lakshmi","Saraswati","Tara","Tripura Sundari/Shodashi","Bhuvaneshvari","Bhairavi","Chhinnamasta","Dhumavati","Bagalamukhi","Matangi","Kamala","Ganesha/Ganapati","Vinayaka","Vighneshvara","Ekadanta","Skanda/Kartikeya","Murugan","Subrahmanya","Kumara","Hanuman/Anjaneya/Maruti","Shukra/Ushanas/Shukracharya","Indra","Agni","Surya","Soma/Chandra","Varuna","Vayu","Yama","Kubera","Ushas","Savitr","Maruts","Brahma","Brahman","Parabrahman"],
+    "egypt": ["Nun","Naunet","Heh","Hauhet","Kek","Kauket","Amun","Amaunet","Atum","Ptah","Neith","Ra","Khepri","Shu","Tefnut","Geb","Nut","Osiris","Isis","Set","Nephthys","Horus","Thoth/Djehuty","Ma’at","Seshat","Sekhmet","Hathor","Bastet","Anubis","Sobek","Khonsu","Amun-Ra","Ra-Horakhty"],
+    "mesopotamia": ["Tiamat","Apsu/Abzu","Mummu","Lahmu","Lahamu","Anshar","Kishar","Anu","Kingu","Marduk","Enki/Ea","Enlil","Inanna/Ishtar","Ereshkigal","Nergal","Shamash/Utu","Nanna/Sin","Nabu","Ninurta","Anunnaki","Igigi","Pazuzu","Lamashtu"],
+    "greece": ["Gaia","Tartarus","Eros","Nyx","Erebus","Uranus","Pontus","Cronus","Rhea","Oceanus","Tethys","Hyperion","Theia","Iapetus","Mnemosyne","Themis","Phoebe","Coeus","Crius","Zeus","Hera","Athena","Apollo","Artemis","Hermes","Aphrodite","Ares","Hephaestus","Demeter","Dionysus","Hestia","Poseidon","Hades","Persephone","Hecate","Thanatos","Hypnos","Nemesis","Prometheus","Heracles","Atlas","Ladon","Hesperides","Orpheus","Asclepius"],
+    "persia": ["Ahura Mazda","Angra Mainyu/Ahriman","Spenta Mainyu","Vohu Manah","Asha Vahishta","Khshathra Vairya","Spenta Armaiti","Haurvatat","Ameretat","Mithra/Mihr","Anahita/Nahid","Atar/Azar","Sraosha/Soroush","Verethragna/Bahram","Tishtrya"],
+    "gnostic": ["Invisible Spirit","Barbelo","Autogenes","Harmozel","Oroiael","Daveithai","Eleleth","Sophia","Yaldabaoth/Saklas/Samael","Sabaoth","Bythos","Sige","Nous","Aletheia","Logos","Zoe","Anthropos","Ecclesia","Horos"],
+    "hermetic_qabalah_qliphoth": ["Hermes Trismegistus","Poimandres/Nous","Asclepius","Tat","Agathodaimon","Adam Kadmon","Metatron","Raziel","Tzaphkiel","Tzadkiel","Kamael","Raphael","Haniel","Michael","Gabriel","Sandalphon","Thaumiel","Ghagiel","Satariel","Gamchicoth","Golachab","Thagirion","A’arab Zaraq","Gamaliel","Nahemoth"],
+    "goetia_72": ["Bael","Agares","Vassago","Samigina/Gamigin","Marbas","Valefor","Amon","Barbatos","Paimon","Buer","Gusion","Sitri","Beleth","Leraje","Eligos","Zepar","Botis","Bathin","Sallos","Purson","Marax/Morax","Ipos","Aim","Naberius","Glasya-Labolas","Bune","Ronove","Berith","Astaroth","Forneus","Foras","Asmoday","Gaap","Furfur","Marchosias","Stolas","Phenex","Halphas","Malphas","Raum","Focalor","Vepar","Sabnock","Shax","Vine","Bifrons","Vual","Haagenti","Crocell","Furcas","Balam","Alloces","Caim","Murmur","Orobas","Gremory","Ose","Amy","Orias","Vapula","Zagan","Valac","Andras","Haures/Flauros","Andrealphus","Cimejes/Kimaris","Amdusias","Belial","Decarabia","Seere","Dantalion","Andromalius"],
+    "historical": ["Zoroaster/Zarathustra","Pythagoras","Plato","Plotinus","Iamblichus","Proclus","Apollonius of Tyana","Marsilio Ficino","Pico della Mirandola","Heinrich Cornelius Agrippa","Paracelsus","John Dee","Edward Kelley","Giordano Bruno","Eliphas Levi","Papus","S. L. MacGregor Mathers","William Wynn Westcott","Aleister Crowley","Austin Osman Spare","Dion Fortune","Israel Regardie","Kenneth Grant","Michael W. Ford","Anton LaVey"],
+    "mythic_literary": ["Gilgamesh","Enkidu","Odysseus","Achilles","Orpheus","Faust","Mephistopheles","Prospero","Ariel","Caliban","Merlin","Morgana","Gawain","Parsifal","Prometheus"]
+  }
+}
