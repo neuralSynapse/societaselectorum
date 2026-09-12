@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "policy": {
+    "enemy_display_names": "traditional_or_textually_attested_names_only",
+    "authorial_names": "reserved_for_tests_rooms_mechanics_or_explicitly_authorial_boss_constructs",
+    "provenance_rule": "traditional identity and historical description must remain separate from Electorum gameplay dramatization"
+  },
+  "sources": {
+    "apocryphon_of_john": "Apócrifo de João / Secret Book of John, Nag Hammadi and Berlin Codex witnesses",
+    "origin_of_world": "On the Origin of the World / Sobre a Origem do Mundo, Nag Hammadi Codex II,5",
+    "testament_of_solomon": "Testament of Solomon / Testamento de Salomão, Greek pseudepigraphic demonology",
+    "ars_goetia": "Ars Goetia, first book of The Lesser Key of Solomon"
+  },
+  "stages": [
+    {"id":"o_olho","enemies":["Athoth","Eloaios","Astaphaios","Yao","Adonin"],"boss":"Harmas"},
+    {"id":"a_chama","enemies":["Sabbataios","Kalila-Oumbri","Yabel","Abrisene","Yobel"],"boss":"Melcheir-Adonein"},
+    {"id":"a_fundacao","enemies":["Sabaoth","Armoupieel","Belias","Cain","Abel"],"boss":"Yaldabaoth"},
+    {"id":"a_eleicao","enemies":["Ornias","Onoskelis","Tephras","Rabdos","Rath"],"boss":"Asmodeus"},
+    {"id":"a_balanca","enemies":["Tribolaios","Obyzouth","Enepsigos","Ephippas","Abezethibou"],"boss":"Beelzeboul"},
+    {"id":"a_vontade","enemies":["Bael","Agares","Vassago","Samigina","Marbas"],"boss":"Paimon"},
+    {"id":"o_carater","enemies":["Valefor","Amon","Barbatos","Gusion","Orobas"],"boss":"Andromalius"},
+    {"id":"a_disciplina","enemies":["Sitri","Beleth","Leraje","Eligos","Zepar"],"boss":"Furcas"},
+    {"id":"a_clareza","enemies":["Botis","Bathin","Sallos","Purson","Marax"],"boss":"Stolas"},
+    {"id":"a_transmutacao","enemies":["Ipos","Aim","Naberius","Glasya-Labolas","Bune"],"boss":"Zagan"},
+    {"id":"o_corpo","enemies":["Ronove","Berith","Astaroth","Forneus","Foras"],"boss":"Buer"},
+    {"id":"a_obra","enemies":["Asmoday","Gaap","Furfur","Marchosias","Halphas"],"boss":"Vapula"},
+    {"id":"a_fortuna","enemies":["Malphas","Raum","Focalor","Vepar","Sabnock"],"boss":"Gremory"},
+    {"id":"a_influencia","enemies":["Shax","Vine","Vual","Haagenti","Crocell"],"boss":"Dantalion"},
+    {"id":"o_legado","enemies":["Alloces","Caim/Camio","Murmur","Ose","Amy"],"boss":"Bifrons"},
+    {"id":"initiation_chamber","enemies":["Orias","Andras","Haures/Flauros","Andrealphus","Cimejes/Kimaris"],"boss":"Belial"}
+  ]
+}
