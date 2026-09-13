@@ -3,13 +3,9 @@
   "sentinelLevel": 4,
   "cycle": 2,
   "activeGame": "chronica-3d",
-  "queue": [
-    "chronica-3d",
-    "harun-roguelite",
-    "harun-survivor"
-  ],
-  "status": "VERIFYING",
-  "lastRunAt": "2026-09-13T07:24:09Z",
+  "queue": ["chronica-3d", "harun-roguelite", "harun-survivor"],
+  "status": "RED",
+  "lastRunAt": "2026-09-13T16:43:49Z",
   "lastGreenAt": null,
   "canonContractVersion": "1.0.0",
   "baseline": {},
@@ -33,7 +29,7 @@
   },
   "games": {
     "chronica-3d": {
-      "status": "VERIFYING",
+      "status": "RED",
       "gates": {
         "CANON_GREEN": "GREEN",
         "RUNTIME_GREEN": "GREEN",
@@ -43,7 +39,7 @@
         "PROGRESSION_GREEN": "UNKNOWN",
         "UI_GREEN": "GREEN",
         "PLATFORM_GREEN": "GREEN",
-        "REGRESSION_GREEN": "GREEN"
+        "REGRESSION_GREEN": "RED"
       },
       "level3Gates": {
         "PERFORMANCE_GREEN": "UNKNOWN",
@@ -55,45 +51,49 @@
         "EVIDENCE_FRESHNESS_GREEN": "GREEN",
         "SAVE_INTEGRITY_GREEN": "UNKNOWN",
         "RECOVERY_GREEN": "UNKNOWN",
-        "CROSS_GAME_CONTRACT_GREEN": "GREEN",
+        "CROSS_GAME_CONTRACT_GREEN": "RED",
         "SELF_HEALTH_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
-      "failureFingerprint": null,
+      "failureFingerprint": "CROSS_GAME:CONTRACT:ROGUELITE_STAGE_COUNT_33_VS_16",
       "repairAttempts": 0,
       "lastRepair": null,
       "evidence": {
-        "workflowRun": 34745064210,
-        "workflowCommit": "9c0ea1b6e8c232f22f621f90b35b9e1edfff08d7",
-        "workflowConclusion": "success",
-        "artifactDigest": "sha256:ae714beaab77c831a2b477943f5c22fb341744befda9e1b204263fa4dd495731",
+        "workflowRun": 34769380391,
+        "workflowCommit": "5821a59ee9fe046683932c80089b112ff0ad4f20",
+        "workflowConclusion": "failure",
+        "artifactId": 10321501584,
+        "artifactDigest": "sha256:b02fdb8898f4b0c717a1bd992560067c19487fe58e4dd5e8af6ade0ac2415809",
         "verified": [
-          "unit-tests-with-l4-queue-guard",
+          "27-python-tests",
           "canon-parity",
           "state-machine",
-          "live-http",
-          "critical-assets",
-          "browser-smoke-chronica-desktop",
-          "async-runtime-error-trapping",
-          "cross-game-browser-smoke-5-of-5",
+          "live-http-all-three",
+          "critical-assets-all-three",
           "dependency-audit-zero-vulnerabilities",
-          "l4-evidence-gate-enforcement",
-          "evidence-freshness-for-current-production-probe",
-          "cross-game-canon-contract-current-probe"
+          "browser-smoke-chronica-desktop-current-production",
+          "browser-smoke-survivor-mobile-current-production",
+          "browser-smoke-survivor-desktop-current-production",
+          "roguelite-canonical-stage-count-regression-detected-desktop-and-mobile"
         ],
-        "performanceSample": {
-          "sourceWorkflowRun": 34745064210,
-          "sentinelReadyMs": 16704,
-          "domContentLoadedMs": 931,
-          "loadEventEndMs": 932.2,
-          "viewport": "1440x900",
-          "trendSamplesSentinelReadyMs": [15057, 17106, 16704],
-          "note": "Latest sample improved slightly versus the immediately previous sentinelReadyMs and DOM/load improved, but no fully green performance baseline exists. PERFORMANCE remains UNKNOWN until a baseline and source attribution are proven."
-        },
         "productionPages": {
-          "chronica-3d": "c6e24222",
-          "harun-roguelite": "67abf2e1",
+          "chronica-3d": "fc1c0010",
+          "harun-roguelite": "f942c08e",
           "harun-survivor": "8ea5983f"
+        },
+        "crossGameFailure": {
+          "game": "harun-roguelite",
+          "expectedCanonicalStages": 16,
+          "declaredCanonicalStages": 33,
+          "desktop": "RED",
+          "mobile": "RED",
+          "classification": "PRODUCT_CONTRACT_REGRESSION",
+          "productRepairDeferred": "Exclusive queue forbids product repair on queued harun-roguelite while chronica-3d is active."
+        },
+        "chronicaBrowser": {
+          "result": "GREEN",
+          "durationSeconds": 47.2,
+          "note": "The previous CHRONICA browser timeout did not reproduce in workflow 34769380391. Keep performance and WebGL fallback unproven until dedicated evidence exists."
         },
         "notYetProven": [
           "combat-cycle",
@@ -108,33 +108,33 @@
       }
     },
     "harun-roguelite": {
-      "status": "QUEUED",
+      "status": "BLOCKED",
       "gates": {
-        "CANON_GREEN": "UNKNOWN",
-        "RUNTIME_GREEN": "UNKNOWN",
-        "ASSET_GREEN": "UNKNOWN",
+        "CANON_GREEN": "RED",
+        "RUNTIME_GREEN": "GREEN",
+        "ASSET_GREEN": "GREEN",
         "INPUT_GREEN": "UNKNOWN",
         "COMBAT_GREEN": "UNKNOWN",
         "PROGRESSION_GREEN": "UNKNOWN",
         "UI_GREEN": "UNKNOWN",
-        "PLATFORM_GREEN": "UNKNOWN",
-        "REGRESSION_GREEN": "UNKNOWN"
+        "PLATFORM_GREEN": "GREEN",
+        "REGRESSION_GREEN": "RED"
       },
       "level3Gates": {
         "PERFORMANCE_GREEN": "UNKNOWN",
         "ASYNC_RUNTIME_GREEN": "UNKNOWN",
-        "DEVICE_MATRIX_GREEN": "UNKNOWN",
+        "DEVICE_MATRIX_GREEN": "RED",
         "SECURITY_GREEN": "UNKNOWN"
       },
       "level4Gates": {
-        "EVIDENCE_FRESHNESS_GREEN": "UNKNOWN",
+        "EVIDENCE_FRESHNESS_GREEN": "GREEN",
         "SAVE_INTEGRITY_GREEN": "UNKNOWN",
         "RECOVERY_GREEN": "UNKNOWN",
-        "CROSS_GAME_CONTRACT_GREEN": "UNKNOWN",
+        "CROSS_GAME_CONTRACT_GREEN": "RED",
         "SELF_HEALTH_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
-      "failureFingerprint": null,
+      "failureFingerprint": "ROGUELITE:CROSS_GAME_CONTRACT:CANONICAL_STAGE_COUNT:33_VS_16",
       "repairAttempts": 0,
       "lastRepair": null
     },
@@ -142,23 +142,23 @@
       "status": "QUEUED",
       "gates": {
         "CANON_GREEN": "UNKNOWN",
-        "RUNTIME_GREEN": "UNKNOWN",
-        "ASSET_GREEN": "UNKNOWN",
-        "INPUT_GREEN": "UNKNOWN",
+        "RUNTIME_GREEN": "GREEN",
+        "ASSET_GREEN": "GREEN",
+        "INPUT_GREEN": "GREEN",
         "COMBAT_GREEN": "UNKNOWN",
         "PROGRESSION_GREEN": "UNKNOWN",
-        "UI_GREEN": "UNKNOWN",
-        "PLATFORM_GREEN": "UNKNOWN",
-        "REGRESSION_GREEN": "UNKNOWN"
+        "UI_GREEN": "GREEN",
+        "PLATFORM_GREEN": "GREEN",
+        "REGRESSION_GREEN": "GREEN"
       },
       "level3Gates": {
         "PERFORMANCE_GREEN": "UNKNOWN",
-        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
-        "DEVICE_MATRIX_GREEN": "UNKNOWN",
+        "ASYNC_RUNTIME_GREEN": "GREEN",
+        "DEVICE_MATRIX_GREEN": "GREEN",
         "SECURITY_GREEN": "UNKNOWN"
       },
       "level4Gates": {
-        "EVIDENCE_FRESHNESS_GREEN": "UNKNOWN",
+        "EVIDENCE_FRESHNESS_GREEN": "GREEN",
         "SAVE_INTEGRITY_GREEN": "UNKNOWN",
         "RECOVERY_GREEN": "UNKNOWN",
         "CROSS_GAME_CONTRACT_GREEN": "UNKNOWN",
@@ -170,35 +170,16 @@
       "lastRepair": null
     }
   },
-  "failureFingerprint": null,
+  "failureFingerprint": "CROSS_GAME:CONTRACT:ROGUELITE_STAGE_COUNT_33_VS_16",
   "repairAttempts": 0,
   "lastRepair": null,
   "nextGame": "harun-roguelite",
   "notes": [
-    {
-      "at": "2026-09-13T05:47:36Z",
-      "game": "chronica-3d",
-      "note": "L2 maintenance: latest workflow is green, but queue remains locked because combat, progression and performance still require dedicated evidence. No fabricated GREEN state."
-    },
-    {
-      "at": "2026-09-13T06:02:00Z",
-      "game": "chronica-3d",
-      "note": "L3 maintenance: browser QA expanded to desktop/mobile compatibility matrix, async error trapping, performance evidence collection, Node 24 runner and critical dependency audit."
-    },
-    {
-      "at": "2026-09-13T06:53:35Z",
-      "game": "chronica-3d",
-      "note": "Supervisor repair verified by red-green CI: sentinel.py previously allowed queue advancement using only legacy gates. L3 gates are enforced before GREEN/advance."
-    },
-    {
-      "at": "2026-09-13T07:18:07Z",
-      "game": "chronica-3d",
-      "note": "Traceability maintenance: state-only reconciliation no longer retriggers CI, avoiding self-generated stale workflow references."
-    },
-    {
-      "at": "2026-09-13T07:24:09Z",
-      "game": "chronica-3d",
-      "note": "L4 elevation verified through TDD. RED run 34745020333 failed because LEVEL4_GATES did not yet exist; implementation commit 9c0ea1b added L4 enforcement and workflow 34745064210 passed unit tests, canon parity, state machine, live HTTP/assets, dependency audit and all 5 browser/device smoke cases. Queue remains locked while combat, progression, performance baseline, WebGL fallback, public-secret scan, save integrity, recovery and scheduled supervisor self-health remain unproven."
-    }
+    {"at":"2026-09-13T05:47:36Z","game":"chronica-3d","note":"L2 maintenance: latest workflow is green, but queue remains locked because combat, progression and performance still require dedicated evidence. No fabricated GREEN state."},
+    {"at":"2026-09-13T06:02:00Z","game":"chronica-3d","note":"L3 maintenance: browser QA expanded to desktop/mobile compatibility matrix, async error trapping, performance evidence collection, Node 24 runner and critical dependency audit."},
+    {"at":"2026-09-13T06:53:35Z","game":"chronica-3d","note":"Supervisor repair verified by red-green CI: sentinel.py previously allowed queue advancement using only legacy gates. L3 gates are enforced before GREEN/advance."},
+    {"at":"2026-09-13T07:18:07Z","game":"chronica-3d","note":"Traceability maintenance: state-only reconciliation no longer retriggers CI, avoiding self-generated stale workflow references."},
+    {"at":"2026-09-13T07:24:09Z","game":"chronica-3d","note":"L4 elevation verified through TDD. Queue remains locked while combat, progression, performance baseline, WebGL fallback, public-secret scan, save integrity, recovery and scheduled supervisor self-health remain unproven."},
+    {"at":"2026-09-13T16:43:49Z","game":"chronica-3d","note":"Fresh production drift invalidated prior page hashes. Workflow 34769380391 revalidated current production: CHRONICA desktop passed in 47.2s and Survivor passed mobile+desktop; Roguelite failed desktop+mobile because the live page declares 33 canonical stages while canon-contract v1.0.0 requires 16. QA was hardened in commit 5821a59e to make this mismatch fail explicitly. No Roguelite product repair was attempted because the exclusive queue keeps chronica-3d active."}
   ]
 }
