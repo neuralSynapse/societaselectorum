@@ -1,0 +1,25 @@
+{
+  "version": "4.4.0",
+  "type": "game_ludic_ingressus",
+  "institutional_curriculum_replica": false,
+  "student_is_degree": false,
+  "next_phase": "student_99d",
+  "stages": [
+    {"id":"o_olho","title":"O OLHO","subtitle":"PERCEPÇÃO","theme":"discernimento, atenção e visão do oculto","boss_id":"blind_observer","boss_name":"OBSERVADOR CEGO","power_id":"revelatory_eye"},
+    {"id":"a_chama","title":"A CHAMA","subtitle":"REGÊNCIA","theme":"governo interno, foco e comando","boss_id":"impulse_archon","boss_name":"ARCONTE DO IMPULSO","power_id":"black_flame_matrix"},
+    {"id":"a_fundacao","title":"A FUNDAÇÃO","subtitle":"ESTRUTURA","theme":"base, limite e sustentação","boss_id":"inert_stone_guardian","boss_name":"GUARDIÃO DA PEDRA INERTE","power_id":"foundation_hammer"},
+    {"id":"a_eleicao","title":"A ELEIÇÃO","subtitle":"AUTOELEIÇÃO","theme":"escolha consciente contra reflexo de massa","boss_id":"seal_of_no","boss_name":"SELO DO NÃO","power_id":"election_sigil"},
+    {"id":"a_balanca","title":"A BALANÇA","subtitle":"AUTORRESPONSABILIDADE","theme":"custo, consequência e proporção","boss_id":"mask_collector","boss_name":"COLETOR DE MÁSCARAS","power_id":"inner_balance"},
+    {"id":"a_vontade","title":"A VONTADE","subtitle":"VERDADEIRA VONTADE","theme":"direção própria contra desejo implantado","boss_id":"false_daimon","boss_name":"FALSO DAIMON","power_id":"will_vector"},
+    {"id":"o_carater","title":"O CARÁTER","subtitle":"CARÁTER","theme":"coerência entre palavra, ato e pressão","boss_id":"stone_witness","boss_name":"TESTEMUNHA DE PEDRA","power_id":"character_column"},
+    {"id":"a_disciplina","title":"A DISCIPLINA","subtitle":"DISCIPLINA","theme":"ritmo, repetição e constância sob atrito","boss_id":"rhythm_devourer","boss_name":"DEVORADOR DO RITMO","power_id":"discipline_rhythm"},
+    {"id":"a_clareza","title":"A CLAREZA","subtitle":"CLAREZA","theme":"redução de ruído e leitura de causalidade","boss_id":"clouding_one","boss_name":"O OFUSCADOR","power_id":"clarity_light"},
+    {"id":"a_transmutacao","title":"A TRANSMUTAÇÃO","subtitle":"TRANSMUTAÇÃO","theme":"converter dano, escória e conflito em recurso","boss_id":"slag_dragon","boss_name":"DRAGÃO DE ESCÓRIA","power_id":"transmutation_serpent"},
+    {"id":"o_corpo","title":"O CORPO","subtitle":"CORPO E ENERGIA","theme":"sustentar ação sem colapso de recurso","boss_id":"exhaustion_tyrant","boss_name":"TIRANO DA EXAUSTÃO","power_id":"vital_pulse"},
+    {"id":"a_obra","title":"A OBRA","subtitle":"OBRA","theme":"construir forma externa a partir da direção interna","boss_id":"blind_architect","boss_name":"ARQUITETO CEGO","power_id":"hand_of_work"},
+    {"id":"a_fortuna","title":"A FORTUNA","subtitle":"FORTUNA","theme":"troca, risco e recursos sem servidão ao acaso","boss_id":"archontic_banker","boss_name":"BANQUEIRO ARCÔNTICO","power_id":"sigillar_fortune"},
+    {"id":"a_influencia","title":"A INFLUÊNCIA","subtitle":"INFLUÊNCIA","theme":"voz, comando e contágio social sem dissolução","boss_id":"approval_chorus","boss_name":"CORO DA APROVAÇÃO","power_id":"verbum"},
+    {"id":"o_legado","title":"O LEGADO","subtitle":"LEGADO","theme":"memória, nome e continuidade que sobrevivem ao ciclo","boss_id":"durable_name_guardian","boss_name":"GUARDIÃO DO NOME DURÁVEL","power_id":"memoria_ignis"},
+    {"id":"actus_ingressus_chamber","title":"CÂMARA DO ACTUS INGRESSUS","subtitle":"ACTUS INGRESSUS","theme":"síntese lúdica do Ingressus e passagem para a condição Estudante","boss_id":"initiation_throne","boss_name":"TRONO DO ACTUS INGRESSUS","power_id":"memoria_ignis"}
+  ]
+}
