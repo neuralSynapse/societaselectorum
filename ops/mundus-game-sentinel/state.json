@@ -54,7 +54,7 @@
         "workflowCommit": "b5cf3521e5644565c8dab088e651a21c23d5887a",
         "workflowConclusion": "success",
         "verified": [
-          "24-plus-unit-tests-including-l3-queue-guard",
+          "unit-tests-including-l3-queue-guard",
           "canon-parity",
           "state-machine",
           "live-http",
@@ -65,9 +65,10 @@
           "dependency-audit-zero-vulnerabilities"
         ],
         "performanceSample": {
-          "sentinelReadyMs": 15371,
-          "domContentLoadedMs": 1524.6,
-          "loadEventEndMs": 8747.7,
+          "sourceWorkflowRun": 34743801603,
+          "sentinelReadyMs": 10965,
+          "domContentLoadedMs": 1816.7,
+          "loadEventEndMs": 1954.4,
           "viewport": "1440x900",
           "note": "sample collected; no green performance baseline exists yet, so trend gate remains UNKNOWN"
         },
