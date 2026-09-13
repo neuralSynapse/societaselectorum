@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - agent/mundus-game-sentinel-v1
+    paths-ignore:
+      - 'ops/mundus-game-sentinel/state.json'
+      - 'ops/mundus-game-sentinel/repair-ledger.json'
+      - 'ops/mundus-game-sentinel/baselines.json'
   workflow_dispatch:
   schedule:
     - cron: '17 * * * *'
