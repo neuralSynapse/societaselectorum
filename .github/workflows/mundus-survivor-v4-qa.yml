@@ -12,7 +12,7 @@ permissions:
 jobs:
   survivor-v4-release-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 16
     steps:
       - uses: actions/checkout@v4
 
@@ -48,7 +48,7 @@ jobs:
         shell: bash
         run: python3 -m pip install --disable-pip-version-check --quiet playwright
 
-      - name: Real-time reference parity gameplay QA
+      - name: Local real-time reference parity gameplay QA
         shell: bash
         run: |
           set -euo pipefail
@@ -56,6 +56,14 @@ jobs:
           test -n "$BROWSER" || { echo "No Chromium-compatible browser on runner"; exit 1; }
           QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-v4-qa python3 mundus/harun-survivor/qa/playtest-v4.py | tee /tmp/harun-survivor-v4-qa.log
           grep -q '"status": "PASS"' /tmp/harun-survivor-v4-qa/qa-report-v4.json
+
+      - name: WebsitePublisher V4 RC production smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          QA_URL="https://project27912.websitepublisher.ai/harun-survivor-v4.html?debug=1" QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-v4-production-qa python3 mundus/harun-survivor/qa/playtest-v4.py | tee /tmp/harun-survivor-v4-production-qa.log
+          grep -q '"status": "PASS"' /tmp/harun-survivor-v4-production-qa/qa-report-v4.json
 
       - name: Preserve V4 QA evidence
         if: always()
@@ -65,5 +73,7 @@ jobs:
           path: |
             /tmp/harun-survivor-v4-qa/
             /tmp/harun-survivor-v4-qa.log
+            /tmp/harun-survivor-v4-production-qa/
+            /tmp/harun-survivor-v4-production-qa.log
             /tmp/mundus-v4-http.log
           if-no-files-found: warn
