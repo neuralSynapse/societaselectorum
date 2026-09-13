@@ -5,7 +5,7 @@
   "activeGame": "chronica-3d",
   "queue": ["chronica-3d", "harun-roguelite", "harun-survivor"],
   "status": "RED",
-  "lastRunAt": "2026-09-13T16:43:49Z",
+  "lastRunAt": "2026-09-13T18:40:35Z",
   "lastGreenAt": null,
   "canonContractVersion": "1.0.0",
   "baseline": {},
@@ -35,7 +35,7 @@
         "RUNTIME_GREEN": "GREEN",
         "ASSET_GREEN": "GREEN",
         "INPUT_GREEN": "GREEN",
-        "COMBAT_GREEN": "UNKNOWN",
+        "COMBAT_GREEN": "GREEN",
         "PROGRESSION_GREEN": "UNKNOWN",
         "UI_GREEN": "GREEN",
         "PLATFORM_GREEN": "GREEN",
@@ -55,15 +55,24 @@
         "SELF_HEALTH_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
-      "failureFingerprint": "CROSS_GAME:CONTRACT:ROGUELITE_STAGE_COUNT_33_VS_16",
+      "failureFingerprint": "CROSS_GAME:CONTRACT:ROGUELITE_GUARD_INTEGRATION_MISSING",
       "repairAttempts": 0,
-      "lastRepair": null,
+      "lastRepair": {
+        "at": "2026-09-13T18:37:00Z",
+        "component": "WebsitePublisher:js/mundus-canon-guard.js",
+        "classification": "SHARED_QA_CONTRACT",
+        "beforeHash": "18ff87f3",
+        "afterHash": "eac476c7",
+        "rollbackHash": "18ff87f3",
+        "result": "PARTIAL_RECOVERY_SURVIVOR_MATRIX"
+      },
       "evidence": {
-        "workflowRun": 34769380391,
-        "workflowCommit": "5821a59ee9fe046683932c80089b112ff0ad4f20",
+        "workflowRun": 34772748195,
+        "workflowCommit": "49620fff66c3248b1cdeeb77b7e578155faaad7c",
         "workflowConclusion": "failure",
-        "artifactId": 10321501584,
-        "artifactDigest": "sha256:b02fdb8898f4b0c717a1bd992560067c19487fe58e4dd5e8af6ade0ac2415809",
+        "artifactId": 10323296243,
+        "artifactDigest": "sha256:d57d36da01db8a33d260b2e29a751928bbbece4049085a88bd3d23e90dcc5e87",
+        "sharedGuardHash": "eac476c7",
         "verified": [
           "27-python-tests",
           "canon-parity",
@@ -72,32 +81,35 @@
           "critical-assets-all-three",
           "dependency-audit-zero-vulnerabilities",
           "browser-smoke-chronica-desktop-current-production",
+          "chronica-isolated-deterministic-combat-chain",
           "browser-smoke-survivor-mobile-current-production",
           "browser-smoke-survivor-desktop-current-production",
-          "roguelite-canonical-stage-count-regression-detected-desktop-and-mobile"
+          "shared-guard-canonical-stage-telemetry-repair"
         ],
         "productionPages": {
-          "chronica-3d": "fc1c0010",
-          "harun-roguelite": "f942c08e",
-          "harun-survivor": "8ea5983f"
+          "chronica-3d": "a6cc4e67",
+          "harun-roguelite": "f1ec5453",
+          "harun-survivor": "3d4224fd"
         },
         "crossGameFailure": {
           "game": "harun-roguelite",
           "expectedCanonicalStages": 16,
-          "declaredCanonicalStages": 33,
+          "pageHash": "f1ec5453",
           "desktop": "RED",
           "mobile": "RED",
           "classification": "PRODUCT_CONTRACT_REGRESSION",
+          "cause": "Current live Roguelite page no longer loads js/mundus-canon-guard.js, so the shared contract cannot reach loaded=true or prove canonical parity.",
           "productRepairDeferred": "Exclusive queue forbids product repair on queued harun-roguelite while chronica-3d is active."
         },
         "chronicaBrowser": {
           "result": "GREEN",
-          "durationSeconds": 47.2,
-          "note": "The previous CHRONICA browser timeout did not reproduce in workflow 34769380391. Keep performance and WebGL fallback unproven until dedicated evidence exists."
+          "durationSeconds": 56.5,
+          "combatProbe": "GREEN",
+          "progressionProbe": "READ_ONLY_ADJACENCY_ONLY_NOT_PROMOTED",
+          "note": "Combat proof exercises damage, reaction, lethal resolution and restored isolated enemy state. Progression remains UNKNOWN because the current deterministic probe does not exercise a real transition plus persistence."
         },
         "notYetProven": [
-          "combat-cycle",
-          "progression-transition",
+          "progression-transition-with-persistence-or-equivalent-safe-simulation",
           "performance-trend-against-green-baseline",
           "webgl-fallback",
           "runtime-public-secret-exposure-scan",
@@ -134,14 +146,14 @@
         "SELF_HEALTH_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
-      "failureFingerprint": "ROGUELITE:CROSS_GAME_CONTRACT:CANONICAL_STAGE_COUNT:33_VS_16",
+      "failureFingerprint": "ROGUELITE:CROSS_GAME_CONTRACT:GUARD_INTEGRATION_MISSING",
       "repairAttempts": 0,
       "lastRepair": null
     },
     "harun-survivor": {
       "status": "QUEUED",
       "gates": {
-        "CANON_GREEN": "UNKNOWN",
+        "CANON_GREEN": "GREEN",
         "RUNTIME_GREEN": "GREEN",
         "ASSET_GREEN": "GREEN",
         "INPUT_GREEN": "GREEN",
@@ -161,7 +173,7 @@
         "EVIDENCE_FRESHNESS_GREEN": "GREEN",
         "SAVE_INTEGRITY_GREEN": "UNKNOWN",
         "RECOVERY_GREEN": "UNKNOWN",
-        "CROSS_GAME_CONTRACT_GREEN": "UNKNOWN",
+        "CROSS_GAME_CONTRACT_GREEN": "GREEN",
         "SELF_HEALTH_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
@@ -170,16 +182,22 @@
       "lastRepair": null
     }
   },
-  "failureFingerprint": "CROSS_GAME:CONTRACT:ROGUELITE_STAGE_COUNT_33_VS_16",
+  "failureFingerprint": "CROSS_GAME:CONTRACT:ROGUELITE_GUARD_INTEGRATION_MISSING",
   "repairAttempts": 0,
-  "lastRepair": null,
+  "lastRepair": {
+    "at": "2026-09-13T18:37:00Z",
+    "component": "WebsitePublisher:js/mundus-canon-guard.js",
+    "result": "Survivor browser matrix recovered; Roguelite remains blocking"
+  },
   "nextGame": "harun-roguelite",
   "notes": [
     {"at":"2026-09-13T05:47:36Z","game":"chronica-3d","note":"L2 maintenance: latest workflow is green, but queue remains locked because combat, progression and performance still require dedicated evidence. No fabricated GREEN state."},
     {"at":"2026-09-13T06:02:00Z","game":"chronica-3d","note":"L3 maintenance: browser QA expanded to desktop/mobile compatibility matrix, async error trapping, performance evidence collection, Node 24 runner and critical dependency audit."},
-    {"at":"2026-09-13T06:53:35Z","game":"chronica-3d","note":"Supervisor repair verified by red-green CI: sentinel.py previously allowed queue advancement using only legacy gates. L3 gates are enforced before GREEN/advance."},
+    {"at":"2026-09-13T06:53:35Z","game":"chronica-3d","note":"Supervisor repair verified by red-green CI: sentinel.py previously allowed queue advancement using only legacy REQUIRED_GATES. L3 gates are enforced before GREEN/advance."},
     {"at":"2026-09-13T07:18:07Z","game":"chronica-3d","note":"Traceability maintenance: state-only reconciliation no longer retriggers CI, avoiding self-generated stale workflow references."},
-    {"at":"2026-09-13T07:24:09Z","game":"chronica-3d","note":"L4 elevation verified through TDD. Queue remains locked while combat, progression, performance baseline, WebGL fallback, public-secret scan, save integrity, recovery and scheduled supervisor self-health remain unproven."},
-    {"at":"2026-09-13T16:43:49Z","game":"chronica-3d","note":"Fresh production drift invalidated prior page hashes. Workflow 34769380391 revalidated current production: CHRONICA desktop passed in 47.2s and Survivor passed mobile+desktop; Roguelite failed desktop+mobile because the live page declares 33 canonical stages while canon-contract v1.0.0 requires 16. QA was hardened in commit 5821a59e to make this mismatch fail explicitly. No Roguelite product repair was attempted because the exclusive queue keeps chronica-3d active."}
+    {"at":"2026-09-13T07:24:09Z","game":"chronica-3d","note":"L4 elevation verified through TDD. Queue remains locked while dedicated deep evidence remains incomplete."},
+    {"at":"2026-09-13T16:43:49Z","game":"chronica-3d","note":"Fresh production drift exposed a Roguelite cross-game contract regression. Product repair deferred because Roguelite is queued."},
+    {"at":"2026-09-13T18:40:35Z","game":"chronica-3d","note":"Shared guard telemetry repaired from 18ff87f3 to eac476c7 and verified by rerun of workflow 34772748195. Browser matrix improved from 1/5 to 3/5: CHRONICA desktop and Survivor mobile+desktop GREEN. CHRONICA isolated deterministic combat chain now has fresh evidence and COMBAT_GREEN is promoted. Roguelite desktop+mobile remain RED because live page f1ec5453 no longer loads the shared guard. Queue remains locked; PROGRESSION, SAVE_INTEGRITY, RECOVERY, PERFORMANCE, WebGL fallback, runtime public-secret scan and SELF_HEALTH remain unproven."
+    }
   ]
 }
