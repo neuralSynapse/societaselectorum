@@ -1,6 +1,6 @@
 # MUNDUS · GAME SENTINEL
 
-Sentinela de QA, paridade canônica, anti-regressão e manutenção dos três jogos ativos de MUNDUS.
+Sentinela L4 de QA, paridade canônica, anti-regressão, auto-reparo e manutenção dos três jogos ativos de MUNDUS.
 
 ## Produção governada
 
@@ -32,11 +32,33 @@ RED, UNKNOWN ou BLOCKED impedem avanço.
 
 O contrato operacional não substitui o story bible; ele torna as invariantes verificáveis por máquina.
 
-## Gates
+## Gates L4
+
+Gates nucleares:
 
 `CANON_GREEN`, `RUNTIME_GREEN`, `ASSET_GREEN`, `INPUT_GREEN`, `COMBAT_GREEN`, `PROGRESSION_GREEN`, `UI_GREEN`, `PLATFORM_GREEN`, `REGRESSION_GREEN`.
 
-Nenhum relatório pode declarar GREEN com gate ausente.
+Gates L3 preservados:
+
+`PERFORMANCE_GREEN`, `ASYNC_RUNTIME_GREEN`, `DEVICE_MATRIX_GREEN`, `SECURITY_GREEN`.
+
+Gates L4 adicionais:
+
+`EVIDENCE_FRESHNESS_GREEN`, `SAVE_INTEGRITY_GREEN`, `RECOVERY_GREEN`, `CROSS_GAME_CONTRACT_GREEN`, `SELF_HEALTH_GREEN`.
+
+Nenhum relatório pode declarar GREEN com gate ausente. No L4, nenhum jogo avança enquanto qualquer gate obrigatório estiver RED, UNKNOWN ou BLOCKED.
+
+## O que conta como prova
+
+- `COMBAT_GREEN`: ataque → acerto/dano → alteração observável do inimigo → estado pós-combate.
+- `PROGRESSION_GREEN`: condição válida → transição → próxima etapa → persistência ou simulação determinística explicitamente isolada.
+- `EVIDENCE_FRESHNESS_GREEN`: evidência corresponde à versão/commit/hash atualmente testados; mudança posterior invalida o GREEN relevante.
+- `SAVE_INTEGRITY_GREEN`: save de QA isolado sobrevive a reload sem corromper estado básico.
+- `RECOVERY_GREEN`: caminho seguro de retry/reload/retomada/fallback foi exercido quando tecnicamente possível.
+- `CROSS_GAME_CONTRACT_GREEN`: contrato, guardião e adapters permanecem compatíveis nos três jogos.
+- `SELF_HEALTH_GREEN`: o supervisor prova que ele próprio executou no intervalo esperado e que a evidência CI corresponde ao branch atual.
+
+HTTP 200, canvas visível ou guardião canônico isolado não equivalem a jogo plenamente jogável.
 
 ## Limites duros
 
@@ -48,19 +70,21 @@ Nenhum relatório pode declarar GREEN com gate ausente.
 - bug mecânico não autoriza reescrever cânone.
 - build de arquivo não é promovida automaticamente.
 - uma tentativa de reparo já falha para o mesmo fingerprint não é repetida indefinidamente.
+- máximo de duas tentativas automáticas diferentes por fingerprint e por execução antes de `CIRCUIT_OPEN`.
+- testes de save destrutivos nunca usam perfil real do usuário.
 
 ## Arquivos
 
 - `canon-contract.json`: invariantes compartilhados.
 - `adapters/*.json`: tradução canônica por gênero.
 - `validate_canon.py`: detector de drift.
-- `state.json`: máquina de estados e jogo ativo.
-- `sentinel.py`: transições de fila.
+- `state.json`: máquina de estados, jogo ativo e gates L4.
+- `sentinel.py`: transições de fila e bloqueio por evidência.
 - `smoke_http.py`: rotas e assets críticos.
-- `browser-smoke.spec.mjs`: browser QA real.
+- `browser-smoke.spec.mjs`: browser QA real e matriz de dispositivos.
 - `report.py`: relatório baseado em evidência.
 - `baselines.json` / `baselines.py`: último estado verde e proteção de reparo.
-- `repair-log.jsonl`: ledger append-only quando houver reparos.
+- `repair-ledger.json` / `repair-log.jsonl`: histórico append-only quando houver reparos.
 
 ## Comandos
 
@@ -69,11 +93,11 @@ pytest -q ops/mundus-game-sentinel/tests
 python ops/mundus-game-sentinel/validate_canon.py
 python ops/mundus-game-sentinel/sentinel.py check
 python ops/mundus-game-sentinel/smoke_http.py
-cd ops/mundus-game-sentinel && npm install && npx playwright install chromium && npm test
+cd ops/mundus-game-sentinel && npm install && npm audit --audit-level=high && npx playwright install chromium && npm test
 ```
 
 ## Política de reparo
 
 Prioridade: boot/crash → progressão impossível → cânone → input/combate → save → UI bloqueante → asset → performance → polimento.
 
-Toda correção precisa de evidência posterior. Uma melhoria controlada só entra depois de o jogo ficar verde e obriga novo ciclo de testes.
+Toda correção precisa de causa raiz, fingerprint, rollback e evidência posterior. Uma melhoria controlada só entra depois de o jogo ficar integralmente verde e obriga novo ciclo de todos os gates L4. Alteração compartilhada obriga smoke transversal dos três jogos.
