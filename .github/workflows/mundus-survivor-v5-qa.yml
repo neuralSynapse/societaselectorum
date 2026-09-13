@@ -12,7 +12,7 @@ permissions:
 jobs:
   survivor-v5-release-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 14
+    timeout-minutes: 16
     steps:
       - uses: actions/checkout@v4
 
@@ -30,6 +30,7 @@ jobs:
           grep -Fq "institutionalWrite:false" mundus/harun-survivor/js/progression-v5.js
           grep -Fq "mundus-audio-core-v1.js" mundus/harun-survivor/v5.html
           grep -Fq "survivor-v5.css" mundus/harun-survivor/v5.html
+          python3 -m py_compile mundus/harun-survivor/qa/playtest-v5.py mundus/harun-survivor/qa/smoke-live-v5.py
 
       - name: Start local V5 preview
         shell: bash
@@ -52,6 +53,14 @@ jobs:
           QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-v5-qa python3 mundus/harun-survivor/qa/playtest-v5.py | tee /tmp/harun-survivor-v5-qa.log
           grep -q '"status": "PASS"' /tmp/harun-survivor-v5-qa/qa-report-v5.json
 
+      - name: Smoke test published WebsitePublisher RC
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-v5-live QA_URL="https://project27912.websitepublisher.ai/harun-survivor-v5.html?debug=1" python3 mundus/harun-survivor/qa/smoke-live-v5.py | tee /tmp/harun-survivor-v5-live.log
+          grep -q '"status": "PASS"' /tmp/harun-survivor-v5-live/live-smoke-report.json
+
       - name: Preserve V5 QA evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -60,5 +69,7 @@ jobs:
           path: |
             /tmp/harun-survivor-v5-qa/
             /tmp/harun-survivor-v5-qa.log
+            /tmp/harun-survivor-v5-live/
+            /tmp/harun-survivor-v5-live.log
             /tmp/mundus-v5-http.log
           if-no-files-found: warn
