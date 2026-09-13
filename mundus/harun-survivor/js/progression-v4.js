@@ -3,7 +3,7 @@
 const D=window.HarunSurvivorData,Core=window.HarunSurvivorDebug;
 if(!D||!Core) throw new Error('Canonical progression requires Survivor core');
 const $=s=>document.querySelector(s);
-const campaign=$('#campaign');
+const campaign=$('#campaign'),quick=$('#startQuick');
 if(!campaign) return;
 
 const ROMAN=['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX','XXI','XXII','XXIII','XXIV','XXV','XXVI','XXVII','XXVIII','XXIX','XXX','XXXI','XXXII','XXXIII'];
@@ -30,7 +30,7 @@ const degrees=Array.from({length:33},(_,i)=>{
  return {number:n,roman:ROMAN[n],name,order,provisional:n===22||(!degreeNames[n]&&n<33),steps};
 });
 
-window.HarunCanonicalProgression=Object.freeze({version:'4.2.0',preStudentName:'INGRESSUS',finalIngressusAct:'ACTUS INGRESSUS',studentIsDegree:false,firstDegree:'Peregrinus Ignis',lastDegree:'Ipsissimus',ingressus,student,degrees,ludic:true});
+window.HarunCanonicalProgression=Object.freeze({version:'4.2.1',preStudentName:'INGRESSUS',finalIngressusAct:'ACTUS INGRESSUS',studentIsDegree:false,firstDegree:'Peregrinus Ignis',lastDegree:'Ipsissimus',ingressus,student,degrees,ludic:true});
 
 function path(meta){
  if(!meta.path||typeof meta.path!=='object') meta.path={phase:'ingressus',ingressusStage:0,studentStage:0,degree:1,degreeStage:0,completedDegrees:[]};
@@ -69,6 +69,7 @@ function beginNode(index){
  const ctx={phase:p.phase,index,degree:p.degree||0,node:nodes[index],act:actFor(p,index)};
  showStartChoice(ctx);
 }
+if(quick)quick.onclick=()=>beginNode(currentIndex(path(Core.getState().meta)));
 function startNode(context,glory){
  Core.startRun(context.act);
  setTimeout(()=>{const st=Core.getState(),r=st.run;if(!r)return;r.progressionContext=context;r.skills[glory]=Math.max(1,r.skills[glory]||0);r.waveDuration=7.2;r._progressionBossSeen=false;r._progressionComplete=false;const story=$('#story');if(story)story.textContent=`${phaseTitle(path(st.meta))} · ${context.node.name}`;},30);
