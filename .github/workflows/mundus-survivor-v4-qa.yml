@@ -20,21 +20,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          node --check mundus/harun-survivor/js/enhancements-v4.js
-          node --check mundus/harun-survivor/js/art-v4.js
-          node --check mundus/harun-survivor/js/perf-v4.js
-          node --check mundus/harun-survivor/js/tuning-v4.js
-          node --check mundus/harun-survivor/js/progression-v4.js
+          for f in enhancements-v4 art-v4 perf-v4 tuning-v4 progression-v4 progression-guard-v4 degree-runtime-v4; do node --check "mundus/harun-survivor/js/${f}.js"; done
           grep -Fq "version:'4." mundus/harun-survivor/js/enhancements-v4.js
           grep -Fq "waveDirector" mundus/harun-survivor/js/enhancements-v4.js
           grep -Fq "#v4fx" mundus/harun-survivor/css/survivor-v4.css
-          grep -Fq "version:'4.3.0'" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "version:'4.4.0'" mundus/harun-survivor/js/progression-v4.js
           grep -Fq "preStudentName:'INGRESSUS'" mundus/harun-survivor/js/progression-v4.js
-          grep -Fq "initialIngressusAct:'ACTUS INGRESSUS'" mundus/harun-survivor/js/progression-v4.js
-          grep -Fq "ingressusResult:'pronto_99d'" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "ingressusRite:'ACTUS INGRESSUS'" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "gameIngressusAdaptation:true" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "institutionalCurriculumReplica:false" mundus/harun-survivor/js/progression-v4.js
           grep -Fq "studentIsDegree:false" mundus/harun-survivor/js/progression-v4.js
           grep -Fq "publicThirdOrderReserved:true" mundus/harun-survivor/js/progression-v4.js
           grep -Fq "lastDegree:'Ipsissimus'" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "window.HarunDegreeRuntime" mundus/harun-survivor/js/degree-runtime-v4.js
           grep -Fq "XXXIII GRAUS" mundus/harun-survivor/index.html
           ! grep -Fq "Umbra Interior" mundus/harun-survivor/js/progression-v4.js
 
