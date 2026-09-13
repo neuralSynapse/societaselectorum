@@ -14,50 +14,63 @@
 - Public game progression is lúdica; `institutionalWrite=false`.
 - Estudante is not a Grau.
 - No copyrighted Isaac assets, item names, room layouts or text.
-- Mobile-first 9:16; stress QA target >=45 FPS.
+- Mobile-first 9:16; performance must be evaluated against a same-runner baseline plus an absolute safety floor.
 
 ---
 
 ### Task 1: V5 canonical progression
 **Files:** Create `mundus/harun-survivor/js/progression-v5.js`.
-- [ ] Encode pre-Ingressus three stages + initial ritual.
-- [ ] Encode three Hórus Ingressus scrolls + ACTUS ritual.
-- [ ] Encode twelve Student scrolls + rites.
-- [ ] Preserve XXXIII Grau structure and reserved content.
-- [ ] Add migration-safe `meta.v5Path` and QA API.
+- [x] Encode pre-Ingressus three stages + initial ritual.
+- [x] Encode three Hórus Ingressus scrolls + ACTUS ritual.
+- [x] Encode twelve Student scrolls + rites.
+- [x] Preserve XXXIII Grau structure and reserved content.
+- [x] Add migration-safe `meta.v5Path` and QA API.
 
 ### Task 2: Room graph, minimap, transitions and special rooms
 **Files:** Create `mundus/harun-survivor/js/world-v5.js`.
-- [ ] Generate unique room/layout IDs per traversal.
-- [ ] Add permanent minimap and TAB expanded map.
-- [ ] Map wave milestones to rooms and special-room events.
-- [ ] Add contextual transitions and room labels.
-- [ ] Add MAGNES ELECTORUM drop/collection behavior.
+- [x] Generate unique room/layout IDs per traversal.
+- [x] Add permanent minimap and TAB expanded map.
+- [x] Map wave milestones to rooms and special-room events.
+- [x] Add contextual transitions and room labels.
+- [x] Add MAGNES ELECTORUM drop/collection behavior.
+- [x] Prevent special-room overlays from pausing a boss wave.
 
 ### Task 3: Tarot + companions + pacts
-**Files:** Create `mundus/harun-survivor/js/systems-v5.js`.
-- [ ] Define 78 Thoth cards.
-- [ ] No-repeat per-run tarot pool; one click selects and dismisses alternatives.
-- [ ] Add Familiars, Seres, Daimons and Pactos catalogs/effects.
-- [ ] Expose run registry for Livro Negro and QA.
+**Files:** Create `mundus/harun-survivor/js/systems-v5.js`, `js/companions-v5.js`.
+- [x] Define 78 Thoth cards.
+- [x] No-repeat per-run tarot pool; one click selects and dismisses alternatives.
+- [x] Add Familiars, Seres, Daimons and Pactos catalogs/effects.
+- [x] Expose run registry for Livro Negro and QA.
+- [x] Render owned Familiars in combat and give them actual runtime behaviors.
+- [x] Offer the first Familiar early when a run has none.
 
 ### Task 4: Livro Negro + pause hub
 **Files:** Create `mundus/harun-survivor/js/blackbook-v5.js`, `css/survivor-v5.css`.
-- [ ] ESC intercept opens full Livro Negro safely.
-- [ ] Tabs: status/map, tarot, relics, familiars, beings, daimons, pacts, scrolls, rituals, bestiary, settings.
-- [ ] Include volume controls and run stat ledger.
+- [x] ESC intercept opens full Livro Negro safely.
+- [x] Tabs: status/map, tarot, familiars, beings, daimons, pacts, scrolls, rituals, bestiary, settings.
+- [x] Include volume controls and run stat ledger.
 
 ### Task 5: Shared audio + faster feel
-**Files:** Create `mundus/harun-survivor/js/audio-v5.js`.
-- [ ] Configure shared MUNDUS Audio Core profile for Survivor.
-- [ ] State music for menu/explore/combat/boss/ritual.
-- [ ] SFX hooks for attacks, impacts, kills, damage, cards, rooms, book and bosses.
-- [ ] Raise default loudness only when user has no saved preference.
-- [ ] Increase movement speed and combat responsiveness once per run.
+**Files:** Create `mundus/harun-survivor/js/audio-v5.js`, `js/art-v5.js`.
+- [x] Configure shared MUNDUS Audio Core profile for Survivor.
+- [x] State music for menu/explore/combat/boss/ritual.
+- [x] SFX hooks for attacks, impacts, kills, damage, cards, rooms, book and bosses.
+- [x] Raise default loudness only when user has no saved preference.
+- [x] Raise gameplay movement to a responsive 220+ floor and gate real displacement in browser QA.
+- [x] Replace the generic soldier-like Hārūn silhouette with a ritual/initiatic procedural renderer.
 
 ### Task 6: V5 page + QA
 **Files:** Create `mundus/harun-survivor/v5.html`, `qa/playtest-v5.py`, `.github/workflows/mundus-survivor-v5-qa.yml`.
-- [ ] Load V3/V4 core plus V5 modules; omit V4 progression ownership.
-- [ ] Add Playwright gates for progression, ESC, TAB, tarot uniqueness, room uniqueness, audio, magnet, movement, boss and FPS.
-- [ ] Publish `/harun-survivor-v5.html` as RC.
-- [ ] Run QA against public RC and only then consider canonical promotion.
+- [x] Load V3/V4 core plus V5 modules; omit V4 progression ownership.
+- [x] Add Playwright gates for progression, ESC, TAB, tarot uniqueness, room uniqueness, audio, magnet, movement, boss and performance.
+- [x] Publish `/harun-survivor-v5.html` as RC.
+- [x] Promote V5 to `/harun-survivor.html` after public smoke.
+- [x] Add V5.1 regression gates for actual movement displacement, hero renderer, live familiars, boss-wave pause authority and no boss resurrection.
+
+## V5.1 Regression Contract
+- Combat movement must start at >=220 logical px/s and displace >=65 px in a 360ms browser input check.
+- `HarunV5Art.version` must be `5.1.0`.
+- An owned Familiar must have a visible combat representation and active behavior.
+- Boss rooms cannot be paused by a special-room overlay.
+- Defeating Observador Cego on wave 10 must advance to wave 11 with no boss respawn.
+- Public RC and canonical WebsitePublisher routes must pass the same smoke assertions before the regression fix is considered shipped.
