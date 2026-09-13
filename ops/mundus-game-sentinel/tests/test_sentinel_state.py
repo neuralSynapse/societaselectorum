@@ -25,3 +25,15 @@ def test_complete_green_advances_and_wraps_cycle():
 def test_missing_gate_is_not_green():
     s=default_state(); gates=green(); gates.pop("UI_GREEN"); apply_gate_results(s,"chronica-3d",gates)
     assert s["status"]=="RED"; assert not advance_if_green(s)
+
+def test_l3_unknown_gate_blocks_advance():
+    s=default_state(); s["sentinelLevel"]=3
+    s["games"]["chronica-3d"]["level3Gates"]={
+        "PERFORMANCE_GREEN":"GREEN",
+        "ASYNC_RUNTIME_GREEN":"GREEN",
+        "DEVICE_MATRIX_GREEN":"UNKNOWN",
+        "SECURITY_GREEN":"GREEN",
+    }
+    apply_gate_results(s,"chronica-3d",green())
+    assert advance_if_green(s) is False
+    assert s["activeGame"]=="chronica-3d"
