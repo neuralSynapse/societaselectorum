@@ -20,11 +20,37 @@ with sync_playwright() as p:
     page.on('pageerror', lambda exc: errors.append(str(exc)))
     page.on('console', lambda msg: errors.append(msg.text) if msg.type == 'error' else None)
     page.goto(URL, wait_until='domcontentloaded')
-    page.wait_for_function('window.HarunSurvivorDebug && window.HarunSurvivorV4Debug', timeout=10000)
+    page.wait_for_function('window.HarunSurvivorDebug && window.HarunSurvivorV4Debug && window.HarunCanonicalProgression', timeout=10000)
+    page.wait_for_timeout(180)
 
     version = page.evaluate('window.HarunSurvivorV4Debug.version')
     check('v4-runtime-present', version.startswith('4.'), version)
-    check('sixteen-stage-map', page.locator('[data-v4-stage]').count() == 16, str(page.locator('[data-v4-stage]').count()))
+
+    canon = page.evaluate('''()=>({v:HarunCanonicalProgression.version,pre:HarunCanonicalProgression.preStudentName,final:HarunCanonicalProgression.finalIngressusAct,studentIsDegree:HarunCanonicalProgression.studentIsDegree,degrees:HarunCanonicalProgression.degrees.length,first:HarunCanonicalProgression.firstDegree,last:HarunCanonicalProgression.lastDegree,ingressus:HarunCanonicalProgression.ingressus.length,student:HarunCanonicalProgression.student.length,g1:HarunCanonicalProgression.degrees[0].steps.length})''')
+    check('canonical-prestudent-ingressus', canon['pre'] == 'INGRESSUS', canon)
+    check('actus-ingressus-final', canon['final'] == 'ACTUS INGRESSUS', canon)
+    check('student-is-not-degree', canon['studentIsDegree'] is False, canon)
+    check('thirty-three-degrees', canon['degrees'] == 33, canon)
+    check('first-degree-peregrinus', canon['first'] == 'Peregrinus Ignis', canon)
+    check('final-degree-ipsissimus', canon['last'] == 'Ipsissimus', canon)
+    check('ingressus-sixteen-stages', canon['ingressus'] == 16, canon)
+    check('student-fifteen-gates-and-cycles', canon['student'] == 15, canon)
+    check('peregrinus-thirteen-scroll-forge-steps', canon['g1'] == 13, canon)
+    check('ingressus-map-rendered', page.locator('[data-prog-index]').count() == 16, str(page.locator('[data-prog-index]').count()))
+    check('ingressus-label-visible', 'INGRESSUS' in page.locator('#campaign').inner_text())
+
+    page.evaluate("""()=>{const m=HarunSurvivorDebug.getState().meta;m.path={phase:'student',ingressusStage:16,studentStage:0,degree:1,degreeStage:0,completedDegrees:[]};HarunSurvivorDebug.showMenu('campaign')}""")
+    page.wait_for_timeout(180)
+    check('student-map-fifteen-stages', page.locator('[data-prog-index]').count() == 15, str(page.locator('[data-prog-index]').count()))
+    check('student-label-visible', 'ESTUDANTE' in page.locator('#campaign').inner_text())
+
+    page.evaluate("""()=>{const m=HarunSurvivorDebug.getState().meta;m.path={phase:'degrees',ingressusStage:16,studentStage:15,degree:1,degreeStage:0,completedDegrees:[]};HarunSurvivorDebug.showMenu('campaign')}""")
+    page.wait_for_timeout(180)
+    check('peregrinus-map-thirteen-stages', page.locator('[data-prog-index]').count() == 13, str(page.locator('[data-prog-index]').count()))
+    check('peregrinus-title-visible', 'Peregrinus Ignis' in page.locator('#campaign').inner_text())
+
+    page.evaluate("""()=>{const m=HarunSurvivorDebug.getState().meta;m.path={phase:'ingressus',ingressusStage:0,studentStage:0,degree:1,degreeStage:0,completedDegrees:[]};HarunSurvivorDebug.showMenu('campaign')}""")
+    page.wait_for_timeout(120)
     check('initial-glory-surface', page.locator('#v4Glory').count() == 1, 'missing #v4Glory')
 
     page.evaluate('window.HarunSurvivorV4Debug.quickStart(1)')
@@ -49,7 +75,6 @@ with sync_playwright() as p:
     skills = page.evaluate('window.HarunSurvivorDebug.getState().run.skills')
     check('behavioral-skill-granted', skills.get('energy_ring', 0) >= 1)
 
-    # damage numbers / companion / overlay FX are structural contracts.
     check('fx-overlay-canvas', page.locator('#v4fx').count() == 1)
     check('daimon-companion-layer', page.evaluate('window.HarunSurvivorV4Debug.metrics().companionVisible === true'))
 
@@ -60,7 +85,6 @@ with sync_playwright() as p:
     check('boss-present', st['run']['boss'] is not None)
     check('danger-visible-or-fired', page.evaluate('window.HarunSurvivorV4Debug.metrics().dangerCount >= 1'))
 
-    # Stress close to late-reference density. V4 must not become a slideshow.
     page.evaluate('window.HarunSurvivorV4Debug.stress(28)')
     fps = page.evaluate('window.HarunSurvivorV4Debug.measureFps(1800)')
     check('stress-fps-45plus', fps >= 45, str(fps))
