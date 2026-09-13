@@ -41,7 +41,7 @@ jobs:
         working-directory: ops/mundus-game-sentinel
         run: |
           npm install --no-fund
-          npm audit --audit-level=critical
+          npm audit --audit-level=high
           npx playwright install --with-deps chromium
       - name: Browser and device-matrix smoke
         working-directory: ops/mundus-game-sentinel
