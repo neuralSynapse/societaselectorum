@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "appendOnly": true,
+  "incidents": [
+    {
+      "fingerprint": "SENTINEL:QUEUE_GATE:L3_GATES_IGNORED",
+      "firstDetectedAt": "2026-09-13T06:50:00Z",
+      "lastDetectedAt": "2026-09-13T06:51:24Z",
+      "component": "ops/mundus-game-sentinel/sentinel.py",
+      "classification": "SUPERVISOR_LOGIC",
+      "productFailure": false,
+      "testFailure": true,
+      "hypothesis": "advance_if_green and apply_gate_results only evaluated legacy REQUIRED_GATES, so an L3 state could advance while PERFORMANCE, ASYNC_RUNTIME, DEVICE_MATRIX or SECURITY remained UNKNOWN.",
+      "evidence": {
+        "redCommit": "61033307c1724593c36b5970817a8b043a9b89d3",
+        "redWorkflowRun": 34743769257,
+        "redConclusion": "failure",
+        "fixCommit": "b5cf3521e5644565c8dab088e651a21c23d5887a",
+        "greenWorkflowRun": 34743801603,
+        "greenConclusion": "success"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "action": "Added an L3 regression test, confirmed it failed, then minimally enforced LEVEL3_GATES in state evaluation and queue advancement.",
+          "result": "GREEN"
+        }
+      ],
+      "rollback": "Revert commit b5cf3521e5644565c8dab088e651a21c23d5887a if the L3 gate enforcement itself regresses state-machine behavior.",
+      "circuitState": "CLOSED",
+      "closedAt": "2026-09-13T06:53:35Z",
+      "remainingBlocker": "CHRONICA still cannot advance until combat, progression, performance trend, WebGL fallback and runtime public-secret exposure are proven by dedicated evidence."
+    }
+  ]
+}
