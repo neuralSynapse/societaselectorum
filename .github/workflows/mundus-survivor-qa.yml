@@ -9,7 +9,7 @@ on:
 jobs:
   survivor-release-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
 
@@ -34,20 +34,18 @@ jobs:
           cat /tmp/mundus-http.log
           exit 1
 
-      - name: Browser gameplay smoke and visual capture
+      - name: Install Playwright driver
+        shell: bash
+        run: python3 -m pip install --disable-pip-version-check --quiet playwright
+
+      - name: Real-time browser gameplay and responsive QA
         shell: bash
         run: |
           set -euo pipefail
           BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
           test -n "$BROWSER" || { echo "No Chromium-compatible browser on runner"; exit 1; }
-          echo "Browser: $BROWSER"
-          "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-background-networking --mute-audio --hide-scrollbars --window-size=540,960 --virtual-time-budget=14000 --dump-dom http://127.0.0.1:8765/mundus/harun-survivor/qa/smoke.html > /tmp/survivor-qa-dom.html
-          STATUS="$(grep -o '<div id="status"[^>]*>[^<]*' /tmp/survivor-qa-dom.html | head -1 || true)"
-          echo "$STATUS"
-          [[ "$STATUS" == *"QA:PASS"* ]]
-          [[ "$STATUS" != *"QA:FAIL"* ]]
-          "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-background-networking --mute-audio --hide-scrollbars --window-size=540,960 --virtual-time-budget=14000 --screenshot=/tmp/harun-survivor-qa.png http://127.0.0.1:8765/mundus/harun-survivor/qa/smoke.html
-          test -s /tmp/harun-survivor-qa.png
+          QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-qa python3 mundus/harun-survivor/qa/playtest.py | tee /tmp/harun-survivor-qa.log
+          grep -q '"status": "PASS"' /tmp/harun-survivor-qa/qa-report.json
 
       - name: Preserve QA evidence
         if: always()
@@ -55,7 +53,7 @@ jobs:
         with:
           name: harun-survivor-qa
           path: |
-            /tmp/survivor-qa-dom.html
-            /tmp/harun-survivor-qa.png
+            /tmp/harun-survivor-qa/
+            /tmp/harun-survivor-qa.log
             /tmp/mundus-http.log
           if-no-files-found: warn
