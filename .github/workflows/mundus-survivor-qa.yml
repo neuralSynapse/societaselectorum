@@ -1,0 +1,67 @@
+name: MUNDUS Survivor QA
+
+on:
+  push:
+    branches: [feat/mundus-game-hub-survivor-v1]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  survivor-release-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Static syntax, isolation and production parity
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check mundus/harun-survivor/js/data-v3.js
+          node --check mundus/harun-survivor/js/art-v3.js
+          node --check mundus/harun-survivor/js/engine-v3.js
+          ! grep -R -E "harun-(peregrino|espectro-cinza|observador-cego|censor-cinzas|vidente-sal)-v1\\.(png|jpg|webp)" mundus/harun-survivor
+          grep -Fq "mundus_harun_survivor_v3" mundus/harun-survivor/js/data-v3.js
+          grep -Fq "renderer:'layered-2.5d'" mundus/harun-survivor/js/art-v3.js
+          grep -Fq "danger:$('#danger')" mundus/harun-survivor/js/engine-v3.js
+          grep -Fq "window.HarunSurvivorDebug" mundus/harun-survivor/js/engine-v3.js
+          test "$(sha256sum mundus/harun-survivor/js/data-v3.js | cut -c1-8)" = "868dc9db"
+          test "$(sha256sum mundus/harun-survivor/js/art-v3.js | cut -c1-8)" = "66609e8f"
+          test "$(sha256sum mundus/harun-survivor/css/survivor-v3.css | cut -c1-8)" = "8ef1e0b7"
+          test "$(sha256sum mundus/harun-survivor/js/engine-v3.js | cut -c1-8)" = "f18bd8df"
+
+      - name: Start local immutable preview
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/mundus-http.log 2>&1 &
+          echo $! > /tmp/mundus-http.pid
+          for i in {1..30}; do curl -fsS http://127.0.0.1:8765/mundus/harun-survivor/index.html >/dev/null && exit 0; sleep .2; done
+          cat /tmp/mundus-http.log
+          exit 1
+
+      - name: Install Playwright driver
+        shell: bash
+        run: python3 -m pip install --disable-pip-version-check --quiet playwright
+
+      - name: Real-time browser gameplay and responsive QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$BROWSER" || { echo "No Chromium-compatible browser on runner"; exit 1; }
+          QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-qa python3 mundus/harun-survivor/qa/playtest.py | tee /tmp/harun-survivor-qa.log
+          grep -q '"status": "PASS"' /tmp/harun-survivor-qa/qa-report.json
+
+      - name: Preserve QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harun-survivor-qa
+          path: |
+            /tmp/harun-survivor-qa/
+            /tmp/harun-survivor-qa.log
+            /tmp/mundus-http.log
+          if-no-files-found: warn
