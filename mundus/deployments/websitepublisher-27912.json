@@ -1,0 +1,47 @@
+{
+  "project_id": 27912,
+  "captured_at": "2026-09-13T04:25:00-03:00",
+  "homepage": {
+    "route": "/",
+    "role": "MUNDUS game hub",
+    "version_hash": "c2f4bed3"
+  },
+  "games": [
+    {
+      "id": "chronica-harun-3d",
+      "route": "/chronica-harun-3d.html",
+      "role": "3D/FPS canonical snapshot",
+      "version_hash": "bf7c1483",
+      "release": "FUSÃO V3.6"
+    },
+    {
+      "id": "harun-roguelite",
+      "route": "/harun-roguelite.html",
+      "role": "2D roguelite"
+    },
+    {
+      "id": "harun-survivor",
+      "route": "/harun-survivor.html",
+      "role": "mobile survivor canonical",
+      "version_hash": "5b2f4ea5",
+      "runtime": {
+        "data": "9f21c8d9",
+        "art": "ac5081d1",
+        "engine": "03238e07",
+        "css": "8ef1e0b7"
+      },
+      "storage_key": "mundus_harun_survivor_v3"
+    }
+  ],
+  "archive": [
+    "/mundus-fps.html",
+    "/survivor-lab.html",
+    "/fusion-v22-clean.html"
+  ],
+  "rules": [
+    "Each active game owns its runtime and persistence.",
+    "Survivor v3 does not import legacy Hārūn PNG characters.",
+    "The old survivor lab remains archive-only.",
+    "Root is navigation, never a gameplay runtime."
+  ]
+}
