@@ -18,11 +18,12 @@ try:
     page.on('console',lambda msg: errors.append('console: '+msg.text) if msg.type=='error' else None)
     sep='&' if '?' in URL else '?';url=URL+sep+'smoke='+str(int(time.time()))
     response=page.goto(url,wait_until='domcontentloaded',timeout=45000)
-    check('public-http-ok',response is not None and response.ok, None if response is None else response.status)
+    check('public-http-ok',response is not None and response.ok,None if response is None else response.status)
     page.wait_for_timeout(6500)
-    names=['HarunSurvivorDebug','HarunSurvivorV4Debug','HarunV5Progression','HarunV5Systems','HarunV5World','HarunV5Runtime','HarunV5BlackBook','HarunV5Audio']
+    names=['HarunSurvivorDebug','HarunSurvivorV4Debug','HarunV5Progression','HarunV5Systems','HarunV5World','HarunV5Runtime','HarunV5BlackBook','HarunV5Audio','HarunV5Art','HarunV5Companions']
     boot=page.evaluate('(names)=>Object.fromEntries(names.map(n=>[n,!!window[n]]))',names)
     check('public-v5-modules-booted',all(boot.values()),boot)
+    check('public-v5-art-5-1',page.evaluate("HarunV5Art.version==='5.1.0'"))
     check('public-thoth-78',page.evaluate('HarunV5Systems.tarot.length')==78,page.evaluate('HarunV5Systems.tarot.length'))
     check('public-mobile-no-overflow',page.evaluate('document.documentElement.scrollWidth<=document.documentElement.clientWidth+1'))
 
@@ -31,15 +32,33 @@ try:
     page.locator('#v4Glory [data-v5-glory]').first.click();page.wait_for_timeout(700)
     st=page.evaluate('HarunSurvivorDebug.getState()')
     check('public-run-started',st['state']=='run',st['state'])
-    check('public-fast-movement',st['run']['player']['speed']>=155,st['run']['player']['speed'])
-    floor=page.evaluate('HarunV5World.getFloor()')
-    check('public-floor-ten',isinstance(floor,list) and len(floor)==10,floor)
+    check('public-fast-movement',st['run']['player']['speed']>=220,st['run']['player']['speed'])
+    x0=page.evaluate('HarunSurvivorDebug.getState().run.player.x');page.keyboard.down('KeyD');page.wait_for_timeout(360);page.keyboard.up('KeyD');x1=page.evaluate('HarunSurvivorDebug.getState().run.player.x')
+    check('public-responsive-displacement',x1-x0>=65,(x0,x1,x1-x0))
+    floor=page.evaluate('HarunV5World.getFloor()');check('public-floor-ten',isinstance(floor,list) and len(floor)==10,floor)
 
     page.keyboard.press('Tab');page.wait_for_timeout(120);check('public-tab-map',page.locator('#v5MapOverlay:not([hidden])').count()==1);page.keyboard.press('Tab')
     page.keyboard.press('Escape');page.wait_for_timeout(120);check('public-esc-blackbook',page.locator('#v5BlackBook:not([hidden])').count()==1);page.keyboard.press('Escape')
+
+    page.evaluate('HarunV5Systems.gain("familiars",HarunV5Systems.familiars[0])');page.wait_for_timeout(220)
+    check('public-familiar-recorded',page.evaluate('HarunV5Systems.state().familiars.length>=1'))
+    check('public-familiar-visible',page.evaluate('HarunV5Companions.visibleCount()>=1'))
+    check('public-familiar-canvas',page.locator('#v5Companions').count()==1)
+
     page.mouse.click(260,520);page.wait_for_timeout(400)
     audio=page.evaluate('HarunV5Audio.snapshot()')
     check('public-audio-running',audio and audio.get('game')=='survivor' and audio.get('contextState')=='running',audio)
+
+    page.evaluate('HarunSurvivorV4Debug.jumpWave(10)');page.wait_for_timeout(500)
+    check('public-boss-present',page.evaluate('HarunSurvivorDebug.getState().run.boss!==null'))
+    check('public-boss-name',page.evaluate("HarunSurvivorDebug.getState().run.boss?.name==='OBSERVADOR CEGO'"))
+    check('public-boss-wave-not-paused',page.locator('#pause').inner_text()=='Ⅱ',page.locator('#pause').inner_text())
+    page.evaluate('HarunSurvivorDebug.getState().run.boss.hp=0')
+    page.wait_for_function('HarunSurvivorDebug.getState().run.wave>=11',timeout=4000)
+    page.wait_for_timeout(220)
+    after=page.evaluate('''()=>{const s=HarunSurvivorDebug.getState();return {wave:s.run.wave,boss:s.run.boss?{name:s.run.boss.name,hp:s.run.boss.hp}:null,state:s.state}}''')
+    check('public-boss-dead-no-respawn',after['wave']>=11 and after['boss'] is None,after)
+
     page.screenshot(path=str(OUT/'public-v5-mobile.png'),full_page=True)
     check('public-no-js-errors',len(errors)==0,errors)
     browser.close()
