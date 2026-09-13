@@ -58,25 +58,8 @@
       "productFailure": true,
       "testFailure": false,
       "hypothesis": "The live Roguelite expanded its primary loop to 33 stages and declares canonicalStages=33/gameLoopStages=33, while the immutable shared CHRONICA contract contains exactly 16 ordered canonical stages. The prior guard only checked HARUN_ROGUELITE_CANON.stageIds and therefore failed to reject the contradictory page-level declaration.",
-      "evidence": {
-        "expectedCanonicalStages": 16,
-        "observedCanonicalStages": 33,
-        "productionPageHash": "f942c08e",
-        "qaHardeningCommit": "5821a59ee9fe046683932c80089b112ff0ad4f20",
-        "workflowRun": 34769380391,
-        "workflowConclusion": "failure",
-        "desktopResult": "RED",
-        "mobileResult": "RED",
-        "artifactId": 10321501584,
-        "artifactDigest": "sha256:b02fdb8898f4b0c717a1bd992560067c19487fe58e4dd5e8af6ade0ac2415809"
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "action": "Hardened live browser QA to assert canonicalStages=16 for every game. RED was reproduced independently on Roguelite desktop and mobile. Product code was intentionally not modified because the exclusive queue keeps chronica-3d as activeGame.",
-          "result": "DETECTED_BLOCKING"
-        }
-      ],
+      "evidence": {"expectedCanonicalStages":16,"observedCanonicalStages":33,"productionPageHash":"f942c08e","qaHardeningCommit":"5821a59ee9fe046683932c80089b112ff0ad4f20","workflowRun":34769380391,"workflowConclusion":"failure","desktopResult":"RED","mobileResult":"RED","artifactId":10321501584,"artifactDigest":"sha256:b02fdb8898f4b0c717a1bd992560067c19487fe58e4dd5e8af6ade0ac2415809"},
+      "attempts": [{"attempt":1,"action":"Hardened live browser QA to assert canonicalStages=16 for every game. RED was reproduced independently on Roguelite desktop and mobile. Product code was intentionally not modified because the exclusive queue keeps chronica-3d as activeGame.","result":"DETECTED_BLOCKING"}],
       "rollback": "Revert QA commit 5821a59ee9fe046683932c80089b112ff0ad4f20 only if the immutable contract itself is explicitly superseded; do not weaken the test to make a 33-stage canonical declaration pass.",
       "circuitState": "OPEN_FOR_QUEUED_GAME",
       "remainingBlocker": "Roguelite must return to a 16-stage canonical story contract, with any extra authorial encounters represented as non-canonical side content, before CROSS_GAME_CONTRACT and transversal REGRESSION can become GREEN. Repair is deferred until harun-roguelite becomes activeGame or an explicitly shared-contract repair is authorized by the active-game policy."
@@ -90,23 +73,43 @@
       "productFailure": false,
       "testFailure": false,
       "hypothesis": "A prior current-production browser run timed out, possibly due headless WebGL/prewarm cost or transient runtime/runner contention. The same current production subsequently completed the full CHRONICA desktop smoke in 47.2 seconds, so no product patch is justified without a reproducible cause.",
-      "evidence": {
-        "productionPageHash": "fc1c0010",
-        "revalidationWorkflowRun": 34769380391,
-        "revalidationResult": "GREEN",
-        "durationSeconds": 47.2
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "action": "Re-ran fresh browser evidence through the hardened Sentinel suite without modifying CHRONICA product code.",
-          "result": "NOT_REPRODUCED"
-        }
-      ],
+      "evidence": {"productionPageHash":"fc1c0010","revalidationWorkflowRun":34769380391,"revalidationResult":"GREEN","durationSeconds":47.2},
+      "attempts": [{"attempt":1,"action":"Re-ran fresh browser evidence through the hardened Sentinel suite without modifying CHRONICA product code.","result":"NOT_REPRODUCED"}],
       "rollback": "No product rollback required because no product change was made.",
       "circuitState": "CLOSED_NO_PATCH",
       "closedAt": "2026-09-13T16:43:34Z",
       "remainingBlocker": "PERFORMANCE, WebGL fallback, COMBAT, PROGRESSION, SAVE_INTEGRITY and RECOVERY remain unproven by dedicated evidence."
+    },
+    {
+      "fingerprint": "SENTINEL:CROSS_GAME_QA:CANONICAL_STAGE_TELEMETRY_MISSING",
+      "firstDetectedAt": "2026-09-13T18:30:00Z",
+      "lastDetectedAt": "2026-09-13T18:40:35Z",
+      "component": "WebsitePublisher project 27912 / js/mundus-canon-guard.js",
+      "classification": "SHARED_QA_CONTRACT",
+      "productFailure": false,
+      "testFailure": true,
+      "hypothesis": "The hardened browser matrix expected canonicalStages=16, but the shared guard validated the 16-stage contract internally without publishing canonicalStages in its public sentinel telemetry object. Survivor therefore failed a telemetry assertion despite loading and validating the same canonical contract.",
+      "evidence": {"workflowRun":34772748195,"workflowCommit":"49620fff66c3248b1cdeeb77b7e578155faaad7c","initialBrowserResult":"1/5","guardBeforeHash":"18ff87f3","guardAfterHash":"eac476c7","rerunJob":103772076929,"rerunBrowserResult":"3/5","survivorMobile":"GREEN","survivorDesktop":"GREEN","artifactId":10323296243,"artifactDigest":"sha256:d57d36da01db8a33d260b2e29a751928bbbece4049085a88bd3d23e90dcc5e87"},
+      "attempts": [{"attempt":1,"action":"Added canonicalStages to the shared sentinel object and populated it from contract.stages.length, then read back the deployed asset and reran the full browser/device matrix.","result":"GREEN_FOR_SURVIVOR_TELEMETRY"}],
+      "rollback": "Restore shared guard asset version/hash 18ff87f3 if the new telemetry field causes a demonstrated regression.",
+      "circuitState": "CLOSED",
+      "closedAt": "2026-09-13T18:40:35Z",
+      "remainingBlocker": "Roguelite remains RED for a separate product integration drift: its current live page no longer loads the shared guard."
+    },
+    {
+      "fingerprint": "ROGUELITE:CROSS_GAME_CONTRACT:GUARD_INTEGRATION_MISSING",
+      "firstDetectedAt": "2026-09-13T18:30:00Z",
+      "lastDetectedAt": "2026-09-13T18:40:35Z",
+      "component": "WebsitePublisher project 27912 / harun-roguelite.html",
+      "classification": "PRODUCT_CONTRACT_REGRESSION",
+      "productFailure": true,
+      "testFailure": false,
+      "hypothesis": "The current Roguelite page evolved past the previously sentinel-integrated version and no longer loads js/mundus-canon-guard.js. Its inline metadata is a separate BUILD 52 / canonContract 2.0.0 / 33-chamber schema and does not publish loaded/status/canonicalStages, so the shared immutable 16-stage contract cannot be proven at runtime.",
+      "evidence": {"currentPageVersion":120,"currentPageHash":"f1ec5453","lastKnownSentinelIntegratedPageVersion":87,"lastKnownSentinelIntegratedPageHash":"67abf2e1","workflowRun":34772748195,"desktop":"RED_TIMEOUT_WAITING_SENTINEL_LOADED","mobile":"RED_TIMEOUT_WAITING_SENTINEL_LOADED","http":"200","sharedGuardHash":"eac476c7"},
+      "attempts": [{"attempt":1,"action":"No queued-game product write performed. Root cause isolated by reading current page, page history, current Roguelite runtime asset and fresh browser traces; exclusive queue policy keeps chronica-3d as the only product-write target.","result":"BLOCKED_BY_EXCLUSIVE_QUEUE"}],
+      "rollback": "No product rollback performed. If/when Roguelite becomes active, restore compatible shared-guard integration with a minimal patch rather than reverting unrelated BUILD 52 gameplay work.",
+      "circuitState": "OPEN_FOR_QUEUED_GAME",
+      "remainingBlocker": "Roguelite must restore machine-readable compatibility with the shared 16-stage CHRONICA contract while retaining any 33-chamber structure strictly as presentation/gameplay subdivisions."
     }
   ]
 }
