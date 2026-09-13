@@ -24,7 +24,6 @@ try:
     boot=page.evaluate('(names)=>Object.fromEntries(names.map(n=>[n,!!window[n]]))',names)
     check('public-v5-modules-booted',all(boot.values()),boot)
     check('public-thoth-78',page.evaluate('HarunV5Systems.tarot.length')==78,page.evaluate('HarunV5Systems.tarot.length'))
-    check('public-floor-ten',len(page.evaluate('HarunV5World.getFloor()'))==10,page.evaluate('HarunV5World.getFloor()'))
     check('public-mobile-no-overflow',page.evaluate('document.documentElement.scrollWidth<=document.documentElement.clientWidth+1'))
 
     page.locator('[data-v5-index="0"]').click();page.wait_for_timeout(120)
@@ -33,6 +32,8 @@ try:
     st=page.evaluate('HarunSurvivorDebug.getState()')
     check('public-run-started',st['state']=='run',st['state'])
     check('public-fast-movement',st['run']['player']['speed']>=155,st['run']['player']['speed'])
+    floor=page.evaluate('HarunV5World.getFloor()')
+    check('public-floor-ten',isinstance(floor,list) and len(floor)==10,floor)
 
     page.keyboard.press('Tab');page.wait_for_timeout(120);check('public-tab-map',page.locator('#v5MapOverlay:not([hidden])').count()==1);page.keyboard.press('Tab')
     page.keyboard.press('Escape');page.wait_for_timeout(120);check('public-esc-blackbook',page.locator('#v5BlackBook:not([hidden])').count()==1);page.keyboard.press('Escape')
