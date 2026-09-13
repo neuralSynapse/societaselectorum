@@ -1,1 +1,116 @@
-{"schemaVersion":1,"cycle":1,"activeGame":"chronica-3d","queue":["chronica-3d","harun-roguelite","harun-survivor"],"status":"QUEUED","lastRunAt":null,"lastGreenAt":null,"canonContractVersion":"1.0.0","baseline":{},"games":{"chronica-3d":{"status":"QUEUED","gates":{"CANON_GREEN":"UNKNOWN","RUNTIME_GREEN":"UNKNOWN","ASSET_GREEN":"UNKNOWN","INPUT_GREEN":"UNKNOWN","COMBAT_GREEN":"UNKNOWN","PROGRESSION_GREEN":"UNKNOWN","UI_GREEN":"UNKNOWN","PLATFORM_GREEN":"UNKNOWN","REGRESSION_GREEN":"UNKNOWN"},"lastGreenAt":null,"failureFingerprint":null,"repairAttempts":0,"lastRepair":null},"harun-roguelite":{"status":"QUEUED","gates":{"CANON_GREEN":"UNKNOWN","RUNTIME_GREEN":"UNKNOWN","ASSET_GREEN":"UNKNOWN","INPUT_GREEN":"UNKNOWN","COMBAT_GREEN":"UNKNOWN","PROGRESSION_GREEN":"UNKNOWN","UI_GREEN":"UNKNOWN","PLATFORM_GREEN":"UNKNOWN","REGRESSION_GREEN":"UNKNOWN"},"lastGreenAt":null,"failureFingerprint":null,"repairAttempts":0,"lastRepair":null},"harun-survivor":{"status":"QUEUED","gates":{"CANON_GREEN":"UNKNOWN","RUNTIME_GREEN":"UNKNOWN","ASSET_GREEN":"UNKNOWN","INPUT_GREEN":"UNKNOWN","COMBAT_GREEN":"UNKNOWN","PROGRESSION_GREEN":"UNKNOWN","UI_GREEN":"UNKNOWN","PLATFORM_GREEN":"UNKNOWN","REGRESSION_GREEN":"UNKNOWN"},"lastGreenAt":null,"failureFingerprint":null,"repairAttempts":0,"lastRepair":null}},"failureFingerprint":null,"repairAttempts":0,"lastRepair":null,"nextGame":"harun-roguelite","notes":[]}
+{
+  "schemaVersion": 2,
+  "sentinelLevel": 2,
+  "cycle": 1,
+  "activeGame": "chronica-3d",
+  "queue": [
+    "chronica-3d",
+    "harun-roguelite",
+    "harun-survivor"
+  ],
+  "status": "VERIFYING",
+  "lastRunAt": "2026-09-13T05:23:34Z",
+  "lastGreenAt": null,
+  "canonContractVersion": "1.0.0",
+  "baseline": {},
+  "evidencePolicy": {
+    "requirePerGateEvidence": true,
+    "maxRepairAttemptsPerFingerprintPerCycle": 2,
+    "crossGameSmokeAfterChange": true,
+    "advanceOnlyWhenAllRequiredGatesGreen": true,
+    "performanceGateRequiredAtLevel2": true
+  },
+  "games": {
+    "chronica-3d": {
+      "status": "VERIFYING",
+      "gates": {
+        "CANON_GREEN": "GREEN",
+        "RUNTIME_GREEN": "GREEN",
+        "ASSET_GREEN": "GREEN",
+        "INPUT_GREEN": "GREEN",
+        "COMBAT_GREEN": "UNKNOWN",
+        "PROGRESSION_GREEN": "UNKNOWN",
+        "UI_GREEN": "GREEN",
+        "PLATFORM_GREEN": "GREEN",
+        "REGRESSION_GREEN": "GREEN"
+      },
+      "level2Gates": {
+        "PERFORMANCE_GREEN": "UNKNOWN"
+      },
+      "lastGreenAt": null,
+      "failureFingerprint": null,
+      "repairAttempts": 0,
+      "lastRepair": null,
+      "evidence": {
+        "workflowRun": 34740105788,
+        "workflowConclusion": "success",
+        "verified": [
+          "unit-tests",
+          "canon-parity",
+          "state-machine",
+          "live-http",
+          "critical-assets",
+          "browser-smoke"
+        ],
+        "notYetProven": [
+          "combat-cycle",
+          "progression-transition",
+          "performance-budget"
+        ]
+      }
+    },
+    "harun-roguelite": {
+      "status": "QUEUED",
+      "gates": {
+        "CANON_GREEN": "UNKNOWN",
+        "RUNTIME_GREEN": "UNKNOWN",
+        "ASSET_GREEN": "UNKNOWN",
+        "INPUT_GREEN": "UNKNOWN",
+        "COMBAT_GREEN": "UNKNOWN",
+        "PROGRESSION_GREEN": "UNKNOWN",
+        "UI_GREEN": "UNKNOWN",
+        "PLATFORM_GREEN": "UNKNOWN",
+        "REGRESSION_GREEN": "UNKNOWN"
+      },
+      "level2Gates": {
+        "PERFORMANCE_GREEN": "UNKNOWN"
+      },
+      "lastGreenAt": null,
+      "failureFingerprint": null,
+      "repairAttempts": 0,
+      "lastRepair": null
+    },
+    "harun-survivor": {
+      "status": "QUEUED",
+      "gates": {
+        "CANON_GREEN": "UNKNOWN",
+        "RUNTIME_GREEN": "UNKNOWN",
+        "ASSET_GREEN": "UNKNOWN",
+        "INPUT_GREEN": "UNKNOWN",
+        "COMBAT_GREEN": "UNKNOWN",
+        "PROGRESSION_GREEN": "UNKNOWN",
+        "UI_GREEN": "UNKNOWN",
+        "PLATFORM_GREEN": "UNKNOWN",
+        "REGRESSION_GREEN": "UNKNOWN"
+      },
+      "level2Gates": {
+        "PERFORMANCE_GREEN": "UNKNOWN"
+      },
+      "lastGreenAt": null,
+      "failureFingerprint": null,
+      "repairAttempts": 0,
+      "lastRepair": null
+    }
+  },
+  "failureFingerprint": null,
+  "repairAttempts": 0,
+  "lastRepair": null,
+  "nextGame": "harun-roguelite",
+  "notes": [
+    {
+      "at": "2026-09-13T05:47:36Z",
+      "game": "chronica-3d",
+      "note": "L2 maintenance: latest workflow is green, but queue remains locked because combat, progression and performance still require dedicated evidence. No fabricated GREEN state."
+    }
+  ]
+}
