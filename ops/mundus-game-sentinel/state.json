@@ -9,7 +9,7 @@
     "harun-survivor"
   ],
   "status": "VERIFYING",
-  "lastRunAt": "2026-09-13T05:23:34Z",
+  "lastRunAt": "2026-09-13T06:53:35Z",
   "lastGreenAt": null,
   "canonContractVersion": "1.0.0",
   "baseline": {},
@@ -41,7 +41,7 @@
       },
       "level3Gates": {
         "PERFORMANCE_GREEN": "UNKNOWN",
-        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
+        "ASYNC_RUNTIME_GREEN": "GREEN",
         "DEVICE_MATRIX_GREEN": "UNKNOWN",
         "SECURITY_GREEN": "UNKNOWN"
       },
@@ -50,23 +50,33 @@
       "repairAttempts": 0,
       "lastRepair": null,
       "evidence": {
-        "workflowRun": 34740105788,
+        "workflowRun": 34743801603,
+        "workflowCommit": "b5cf3521e5644565c8dab088e651a21c23d5887a",
         "workflowConclusion": "success",
         "verified": [
-          "unit-tests",
+          "24-plus-unit-tests-including-l3-queue-guard",
           "canon-parity",
           "state-machine",
           "live-http",
           "critical-assets",
-          "browser-smoke"
+          "browser-smoke-chronica-desktop",
+          "async-runtime-error-trapping",
+          "cross-game-browser-smoke",
+          "dependency-audit-zero-vulnerabilities"
         ],
+        "performanceSample": {
+          "sentinelReadyMs": 15371,
+          "domContentLoadedMs": 1524.6,
+          "loadEventEndMs": 8747.7,
+          "viewport": "1440x900",
+          "note": "sample collected; no green performance baseline exists yet, so trend gate remains UNKNOWN"
+        },
         "notYetProven": [
           "combat-cycle",
           "progression-transition",
-          "performance-trend",
-          "async-runtime-errors",
-          "full-device-matrix",
-          "critical-dependency-audit"
+          "performance-trend-against-green-baseline",
+          "webgl-fallback",
+          "runtime-public-secret-exposure-scan"
         ]
       }
     },
@@ -133,6 +143,11 @@
       "at": "2026-09-13T06:02:00Z",
       "game": "chronica-3d",
       "note": "L3 maintenance: browser QA expanded to desktop/mobile compatibility matrix, async error trapping, performance evidence collection, Node 24 runner and critical dependency audit. L3 gates remain UNKNOWN until the new workflow proves them."
+    },
+    {
+      "at": "2026-09-13T06:53:35Z",
+      "game": "chronica-3d",
+      "note": "Supervisor repair verified by red-green CI: sentinel.py previously allowed queue advancement using only legacy gates. L3 gates are now enforced before GREEN/advance. Workflow 34743801603 passed after fix. ASYNC_RUNTIME is proven GREEN for CHRONICA desktop; PERFORMANCE, DEVICE_MATRIX and SECURITY remain UNKNOWN where evidence is incomplete."
     }
   ]
 }
