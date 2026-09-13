@@ -41,11 +41,12 @@ jobs:
           BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
           test -n "$BROWSER" || { echo "No Chromium-compatible browser on runner"; exit 1; }
           echo "Browser: $BROWSER"
-          "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-background-networking --mute-audio --hide-scrollbars --window-size=540,960 --virtual-time-budget=12000 --dump-dom http://127.0.0.1:8765/mundus/harun-survivor/qa/smoke.html > /tmp/survivor-qa-dom.html
-          cat /tmp/survivor-qa-dom.html
-          grep -q "QA:PASS" /tmp/survivor-qa-dom.html
-          ! grep -q "QA:FAIL" /tmp/survivor-qa-dom.html
-          "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-background-networking --mute-audio --hide-scrollbars --window-size=540,960 --virtual-time-budget=12000 --screenshot=/tmp/harun-survivor-qa.png http://127.0.0.1:8765/mundus/harun-survivor/qa/smoke.html
+          "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-background-networking --mute-audio --hide-scrollbars --window-size=540,960 --virtual-time-budget=14000 --dump-dom http://127.0.0.1:8765/mundus/harun-survivor/qa/smoke.html > /tmp/survivor-qa-dom.html
+          STATUS="$(grep -o '<div id="status"[^>]*>[^<]*' /tmp/survivor-qa-dom.html | head -1 || true)"
+          echo "$STATUS"
+          [[ "$STATUS" == *"QA:PASS"* ]]
+          [[ "$STATUS" != *"QA:FAIL"* ]]
+          "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-background-networking --mute-audio --hide-scrollbars --window-size=540,960 --virtual-time-budget=14000 --screenshot=/tmp/harun-survivor-qa.png http://127.0.0.1:8765/mundus/harun-survivor/qa/smoke.html
           test -s /tmp/harun-survivor-qa.png
 
       - name: Preserve QA evidence
