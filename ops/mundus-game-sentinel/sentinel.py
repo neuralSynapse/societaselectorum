@@ -6,10 +6,20 @@ from datetime import datetime,timezone
 GAMES=["chronica-3d","harun-roguelite","harun-survivor"]
 REQUIRED_GATES=["CANON_GREEN","RUNTIME_GREEN","ASSET_GREEN","INPUT_GREEN","COMBAT_GREEN","PROGRESSION_GREEN","UI_GREEN","PLATFORM_GREEN","REGRESSION_GREEN"]
 LEVEL3_GATES=["PERFORMANCE_GREEN","ASYNC_RUNTIME_GREEN","DEVICE_MATRIX_GREEN","SECURITY_GREEN"]
+LEVEL4_GATES=["EVIDENCE_FRESHNESS_GREEN","SAVE_INTEGRITY_GREEN","RECOVERY_GREEN","CROSS_GAME_CONTRACT_GREEN","SELF_HEALTH_GREEN"]
 
 def now(): return datetime.now(timezone.utc).isoformat()
-def default_game(): return {"status":"QUEUED","gates":{g:"UNKNOWN" for g in REQUIRED_GATES},"lastGreenAt":None,"failureFingerprint":None,"repairAttempts":0,"lastRepair":None}
-def default_state(): return {"schemaVersion":1,"cycle":1,"activeGame":GAMES[0],"queue":GAMES[:],"status":"QUEUED","lastRunAt":None,"lastGreenAt":None,"canonContractVersion":"1.0.0","baseline":{},"games":{g:default_game() for g in GAMES},"failureFingerprint":None,"repairAttempts":0,"lastRepair":None,"nextGame":GAMES[1],"notes":[]}
+def default_game(): return {
+    "status":"QUEUED",
+    "gates":{g:"UNKNOWN" for g in REQUIRED_GATES},
+    "level3Gates":{g:"UNKNOWN" for g in LEVEL3_GATES},
+    "level4Gates":{g:"UNKNOWN" for g in LEVEL4_GATES},
+    "lastGreenAt":None,
+    "failureFingerprint":None,
+    "repairAttempts":0,
+    "lastRepair":None,
+}
+def default_state(): return {"schemaVersion":4,"sentinelLevel":1,"cycle":1,"activeGame":GAMES[0],"queue":GAMES[:],"status":"QUEUED","lastRunAt":None,"lastGreenAt":None,"canonContractVersion":"1.0.0","baseline":{},"games":{g:default_game() for g in GAMES},"failureFingerprint":None,"repairAttempts":0,"lastRepair":None,"nextGame":GAMES[1],"notes":[]}
 def fingerprint(game,gates):
     failed=sorted((k,v) for k,v in gates.items() if v!="GREEN")
     return hashlib.sha256(json.dumps([game,failed],sort_keys=True).encode()).hexdigest()[:16] if failed else None
@@ -20,10 +30,16 @@ def level3_all_green(state,game):
     if int(state.get("sentinelLevel",1))<3: return True
     gates=state.get("games",{}).get(game,{}).get("level3Gates",{})
     return all(gates.get(g,"UNKNOWN")=="GREEN" for g in LEVEL3_GATES)
+def level4_all_green(state,game):
+    if int(state.get("sentinelLevel",1))<4: return True
+    gates=state.get("games",{}).get(game,{}).get("level4Gates",{})
+    return all(gates.get(g,"UNKNOWN")=="GREEN" for g in LEVEL4_GATES)
+def all_required_green(state,game):
+    return all_green(state["games"][game]["gates"]) and level3_all_green(state,game) and level4_all_green(state,game)
 def apply_gate_results(state,game,gates):
     if game!=state["activeGame"]: raise ValueError(f"Only active game may be updated: {state['activeGame']}")
     normalized=normalize_gates(gates); record=state["games"][game]; record["gates"]=normalized; state["lastRunAt"]=now(); fp=fingerprint(game,normalized); record["failureFingerprint"]=fp; state["failureFingerprint"]=fp
-    if all_green(normalized) and level3_all_green(state,game):
+    if all_required_green(state,game):
         record["status"]="GREEN"; state["status"]="GREEN"; record["lastGreenAt"]=state["lastRunAt"]; state["lastGreenAt"]=state["lastRunAt"]
     elif all_green(normalized):
         record["status"]="VERIFYING"; state["status"]="VERIFYING"
@@ -31,7 +47,7 @@ def apply_gate_results(state,game,gates):
     return state["status"]
 def advance_if_green(state):
     game=state["activeGame"]
-    if state.get("status")!="GREEN" or not all_green(state["games"][game]["gates"]) or not level3_all_green(state,game): return False
+    if state.get("status")!="GREEN" or not all_required_green(state,game): return False
     idx=GAMES.index(game); next_idx=(idx+1)%len(GAMES)
     if next_idx==0: state["cycle"]=int(state.get("cycle",1))+1
     state["activeGame"]=GAMES[next_idx]; state["nextGame"]=GAMES[(next_idx+1)%len(GAMES)]; state["status"]="QUEUED"; state["failureFingerprint"]=None
@@ -57,6 +73,9 @@ def validate_state(state):
             if int(state.get("sentinelLevel",1))>=3:
                 missing_l3=[x for x in LEVEL3_GATES if x not in state["games"][g].get("level3Gates",{})]
                 if missing_l3: errors.append(f"{g} missing L3 gates {missing_l3}")
+            if int(state.get("sentinelLevel",1))>=4:
+                missing_l4=[x for x in LEVEL4_GATES if x not in state["games"][g].get("level4Gates",{})]
+                if missing_l4: errors.append(f"{g} missing L4 gates {missing_l4}")
     return errors
 def main():
     root=Path(__file__).resolve().parent; p=argparse.ArgumentParser(); p.add_argument("command",choices=["check","advance","show"]); p.add_argument("--state",default=str(root/"state.json")); a=p.parse_args(); s=load_state(a.state)
