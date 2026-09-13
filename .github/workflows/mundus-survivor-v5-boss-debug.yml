@@ -1,0 +1,23 @@
+name: MUNDUS Survivor V5 Boss Debug
+on:
+  push:
+    branches: [feat/harun-survivor-v5-epic-ingressus]
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start preview
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/v5debug-http.log 2>&1 &
+          for i in {1..30}; do curl -fsS http://127.0.0.1:8765/mundus/harun-survivor/v5.html >/dev/null && exit 0; sleep .2; done
+          exit 1
+      - name: Install Playwright
+        run: python3 -m pip install --disable-pip-version-check --quiet playwright
+      - name: Boss timeline
+        run: |
+          BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
+          QA_BROWSER="$BROWSER" python3 mundus/harun-survivor/qa/boss-diagnostic-v5.py
