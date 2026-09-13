@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 3,
-  "sentinelLevel": 3,
+  "schemaVersion": 4,
+  "sentinelLevel": 4,
   "cycle": 2,
   "activeGame": "chronica-3d",
   "queue": [
@@ -9,7 +9,7 @@
     "harun-survivor"
   ],
   "status": "VERIFYING",
-  "lastRunAt": "2026-09-13T07:18:07Z",
+  "lastRunAt": "2026-09-13T07:24:09Z",
   "lastGreenAt": null,
   "canonContractVersion": "1.0.0",
   "baseline": {},
@@ -23,7 +23,13 @@
     "deviceMatrixRequired": true,
     "criticalDependencyAuditRequired": true,
     "trendRegressionDetection": true,
-    "supervisorGapDetection": true
+    "supervisorGapDetection": true,
+    "evidenceFreshnessRequired": true,
+    "saveIsolationRequired": true,
+    "recoveryEvidenceRequired": true,
+    "crossGameContractRequired": true,
+    "selfHealthRequired": true,
+    "supervisorMaxGapMinutes": 90
   },
   "games": {
     "chronica-3d": {
@@ -45,35 +51,44 @@
         "DEVICE_MATRIX_GREEN": "UNKNOWN",
         "SECURITY_GREEN": "UNKNOWN"
       },
+      "level4Gates": {
+        "EVIDENCE_FRESHNESS_GREEN": "GREEN",
+        "SAVE_INTEGRITY_GREEN": "UNKNOWN",
+        "RECOVERY_GREEN": "UNKNOWN",
+        "CROSS_GAME_CONTRACT_GREEN": "GREEN",
+        "SELF_HEALTH_GREEN": "UNKNOWN"
+      },
       "lastGreenAt": null,
       "failureFingerprint": null,
       "repairAttempts": 0,
       "lastRepair": null,
       "evidence": {
-        "workflowRun": 34744813593,
-        "workflowCommit": "1481f62da5e1f90c40cb05c8c327c7bc0a374641",
+        "workflowRun": 34745064210,
+        "workflowCommit": "9c0ea1b6e8c232f22f621f90b35b9e1edfff08d7",
         "workflowConclusion": "success",
-        "artifactDigest": "sha256:71494e1128445edef97cb2d9f921b04d005cc5905a9f55793eba9a22b318ea9c",
+        "artifactDigest": "sha256:ae714beaab77c831a2b477943f5c22fb341744befda9e1b204263fa4dd495731",
         "verified": [
-          "unit-tests-including-l3-queue-guard",
+          "unit-tests-with-l4-queue-guard",
           "canon-parity",
           "state-machine",
           "live-http",
           "critical-assets",
           "browser-smoke-chronica-desktop",
           "async-runtime-error-trapping",
-          "cross-game-browser-smoke",
+          "cross-game-browser-smoke-5-of-5",
           "dependency-audit-zero-vulnerabilities",
-          "state-only-ci-retrigger-loop-fixed"
+          "l4-evidence-gate-enforcement",
+          "evidence-freshness-for-current-production-probe",
+          "cross-game-canon-contract-current-probe"
         ],
         "performanceSample": {
-          "sourceWorkflowRun": 34744813593,
-          "sentinelReadyMs": 17106,
-          "domContentLoadedMs": 1150.9,
-          "loadEventEndMs": 1151.6,
+          "sourceWorkflowRun": 34745064210,
+          "sentinelReadyMs": 16704,
+          "domContentLoadedMs": 931,
+          "loadEventEndMs": 932.2,
           "viewport": "1440x900",
-          "trendSamplesSentinelReadyMs": [10965, 15057, 17106],
-          "note": "Three consecutive sentinelReadyMs samples increased, but no fully green performance baseline exists and DOM/load timings improved. Keep PERFORMANCE UNKNOWN; investigate guard-ready latency before classifying product regression."
+          "trendSamplesSentinelReadyMs": [15057, 17106, 16704],
+          "note": "Latest sample improved slightly versus the immediately previous sentinelReadyMs and DOM/load improved, but no fully green performance baseline exists. PERFORMANCE remains UNKNOWN until a baseline and source attribution are proven."
         },
         "productionPages": {
           "chronica-3d": "c6e24222",
@@ -85,7 +100,10 @@
           "progression-transition",
           "performance-trend-against-green-baseline",
           "webgl-fallback",
-          "runtime-public-secret-exposure-scan"
+          "runtime-public-secret-exposure-scan",
+          "qa-isolated-save-reload-integrity",
+          "safe-recovery-paths",
+          "scheduled-supervisor-self-health"
         ]
       }
     },
@@ -107,6 +125,13 @@
         "ASYNC_RUNTIME_GREEN": "UNKNOWN",
         "DEVICE_MATRIX_GREEN": "UNKNOWN",
         "SECURITY_GREEN": "UNKNOWN"
+      },
+      "level4Gates": {
+        "EVIDENCE_FRESHNESS_GREEN": "UNKNOWN",
+        "SAVE_INTEGRITY_GREEN": "UNKNOWN",
+        "RECOVERY_GREEN": "UNKNOWN",
+        "CROSS_GAME_CONTRACT_GREEN": "UNKNOWN",
+        "SELF_HEALTH_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
       "failureFingerprint": null,
@@ -132,6 +157,13 @@
         "DEVICE_MATRIX_GREEN": "UNKNOWN",
         "SECURITY_GREEN": "UNKNOWN"
       },
+      "level4Gates": {
+        "EVIDENCE_FRESHNESS_GREEN": "UNKNOWN",
+        "SAVE_INTEGRITY_GREEN": "UNKNOWN",
+        "RECOVERY_GREEN": "UNKNOWN",
+        "CROSS_GAME_CONTRACT_GREEN": "UNKNOWN",
+        "SELF_HEALTH_GREEN": "UNKNOWN"
+      },
       "lastGreenAt": null,
       "failureFingerprint": null,
       "repairAttempts": 0,
@@ -151,17 +183,22 @@
     {
       "at": "2026-09-13T06:02:00Z",
       "game": "chronica-3d",
-      "note": "L3 maintenance: browser QA expanded to desktop/mobile compatibility matrix, async error trapping, performance evidence collection, Node 24 runner and critical dependency audit. L3 gates remain UNKNOWN until the new workflow proves them."
+      "note": "L3 maintenance: browser QA expanded to desktop/mobile compatibility matrix, async error trapping, performance evidence collection, Node 24 runner and critical dependency audit."
     },
     {
       "at": "2026-09-13T06:53:35Z",
       "game": "chronica-3d",
-      "note": "Supervisor repair verified by red-green CI: sentinel.py previously allowed queue advancement using only legacy gates. L3 gates are now enforced before GREEN/advance. Workflow 34743801603 passed after fix. ASYNC_RUNTIME is proven GREEN for CHRONICA desktop; PERFORMANCE, DEVICE_MATRIX and SECURITY remain UNKNOWN where evidence is incomplete."
+      "note": "Supervisor repair verified by red-green CI: sentinel.py previously allowed queue advancement using only legacy gates. L3 gates are enforced before GREEN/advance."
     },
     {
       "at": "2026-09-13T07:18:07Z",
       "game": "chronica-3d",
-      "note": "Traceability maintenance: state-only reconciliation previously retriggered CI, making workflowRun immediately stale by construction. Workflow now ignores state.json, repair-ledger.json and baselines.json on push while retaining scheduled/manual/full code-change CI. Fix commit 1481f62 passed workflow 34744813593. Production routes and hashes remain unchanged; no product repair was needed."
+      "note": "Traceability maintenance: state-only reconciliation no longer retriggers CI, avoiding self-generated stale workflow references."
+    },
+    {
+      "at": "2026-09-13T07:24:09Z",
+      "game": "chronica-3d",
+      "note": "L4 elevation verified through TDD. RED run 34745020333 failed because LEVEL4_GATES did not yet exist; implementation commit 9c0ea1b added L4 enforcement and workflow 34745064210 passed unit tests, canon parity, state machine, live HTTP/assets, dependency audit and all 5 browser/device smoke cases. Queue remains locked while combat, progression, performance baseline, WebGL fallback, public-secret scan, save integrity, recovery and scheduled supervisor self-health remain unproven."
     }
   ]
 }
