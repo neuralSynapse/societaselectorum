@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   survivor-release-gate:
@@ -15,31 +15,6 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: feat/mundus-game-hub-survivor-v1
-
-      - name: Apply boss warning runtime binding fix if needed
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('mundus/harun-survivor/js/engine-v3.js')
-          s=p.read_text(encoding='utf-8')
-          old="joystick:$('#joystick'),joystickKnob:$('#joystickKnob'),mastery:$('#mastery')};"
-          new="joystick:$('#joystick'),joystickKnob:$('#joystickKnob'),mastery:$('#mastery'),danger:$('#danger')};"
-          if old in s:
-              p.write_text(s.replace(old,new,1),encoding='utf-8')
-          elif new not in s:
-              raise SystemExit('Expected UI binding pattern not found')
-          PY
-          if ! git diff --quiet -- mundus/harun-survivor/js/engine-v3.js; then
-            git config user.name "MUNDUS QA Bot"
-            git config user.email "actions@users.noreply.github.com"
-            git add mundus/harun-survivor/js/engine-v3.js
-            git commit -m "fix(survivor): bind danger overlay for boss warning"
-            git push origin HEAD:feat/mundus-game-hub-survivor-v1
-          fi
 
       - name: Static syntax and isolation checks
         shell: bash
@@ -49,10 +24,10 @@ jobs:
           node --check mundus/harun-survivor/js/art-v3.js
           node --check mundus/harun-survivor/js/engine-v3.js
           ! grep -R -E "harun-(peregrino|espectro-cinza|observador-cego|censor-cinzas|vidente-sal)-v1\\.(png|jpg|webp)" mundus/harun-survivor
-          grep -q "mundus_harun_survivor_v3" mundus/harun-survivor/js/data-v3.js
-          grep -q "renderer:'layered-2.5d'" mundus/harun-survivor/js/art-v3.js
-          grep -q "danger:\$('#danger'\)" mundus/harun-survivor/js/engine-v3.js
-          grep -q "window.HarunSurvivorDebug" mundus/harun-survivor/js/engine-v3.js
+          grep -Fq "mundus_harun_survivor_v3" mundus/harun-survivor/js/data-v3.js
+          grep -Fq "renderer:'layered-2.5d'" mundus/harun-survivor/js/art-v3.js
+          grep -Fq "danger:$('#danger')" mundus/harun-survivor/js/engine-v3.js
+          grep -Fq "window.HarunSurvivorDebug" mundus/harun-survivor/js/engine-v3.js
 
       - name: Start local immutable preview
         shell: bash
