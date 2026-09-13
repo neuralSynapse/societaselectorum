@@ -33,6 +33,7 @@ for(const cfg of cases){
     const canon=await page.evaluate(()=>window.__MUNDUS_SENTINEL__);
     expect(canon?.status,JSON.stringify(canon)).toBe('GREEN');
     expect(canon?.gameId).toBe(cfg.id);
+    expect(canon?.canonicalStages,`live page ${cfg.id} declares ${canon?.canonicalStages} canonical stages`).toBe(16);
 
     if(cfg.capture)await page.screenshot({path:`artifacts/${cfg.id}-${cfg.label}-boot.png`});
     const start=page.locator(cfg.start);
