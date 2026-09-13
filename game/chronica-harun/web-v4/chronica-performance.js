@@ -6,6 +6,7 @@ const PROFILES=Object.freeze({
 });
 function profile(name){return PROFILES[name]||PROFILES.medium}
 function autoInitial(dm=8,hc=8){if(Number(dm)<=4||Number(hc)<=4)return'low';if(Number(dm)<=6||Number(hc)<=6)return'medium';return'high'}
+function allowDynamicLight(kind,{combatRoom=false,tier='medium',hitLights=true}={}){if(kind==='roomKey')return true;if(combatRoom&&(kind==='enemyCore'||kind==='hitImpact'))return false;if(kind==='hitImpact')return !!hitLights&&tier!=='low';if(kind==='enemyCore')return tier!=='low';return true}
 function createController({deviceMemory=8,hardwareConcurrency=8,initial='auto'}={}){
  let tierName=initial==='auto'?autoInitial(deviceMemory,hardwareConcurrency):profile(initial).name,ema=16.7,slow=0,fast=0,lastChange=0,hidden=false;
  const listeners=new Set();
@@ -19,7 +20,7 @@ function createController({deviceMemory=8,hardwareConcurrency=8,initial='auto'}=
  function onChange(fn){if(typeof fn==='function')listeners.add(fn);return()=>listeners.delete(fn)}
  function tier(){return tierName}
  function snapshot(){return{tier:tierName,ema:Math.round(ema*10)/10,profile:{...profile(tierName)},hidden,lastChange}}
- return{version:'1.0',tier,profile:()=>profile(tierName),budget,observe,setTier,roomActive,scheduler,setHidden,onChange,snapshot,validate}
+ return{version:'1.1',tier,profile:()=>profile(tierName),budget,observe,setTier,roomActive,scheduler,setHidden,onChange,snapshot,allowDynamicLight:(kind,opts={})=>allowDynamicLight(kind,{...opts,tier:tierName,hitLights:profile(tierName).hitLights}),validate}
 }
 function validate(){const errors=[],c=createController({initial:'high'});for(let i=0;i<6;i++)c.observe(35);if(c.tier()==='high')errors.push('slow frames did not degrade tier');const before=c.tier();for(let i=0;i<3;i++)c.observe(16);if(c.tier()!==before)errors.push('hysteresis flap');if(profile('low').aiHz>20||profile('low').dpr>1)errors.push('low profile budget invalid');return{ok:!errors.length,errors,profiles:Object.keys(PROFILES)}}
-return{PROFILES,profile,createController,validate};});
+return{PROFILES,profile,allowDynamicLight,createController,validate};});
