@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 2,
-  "sentinelLevel": 2,
+  "schemaVersion": 3,
+  "sentinelLevel": 3,
   "cycle": 1,
   "activeGame": "chronica-3d",
   "queue": [
@@ -18,7 +18,12 @@
     "maxRepairAttemptsPerFingerprintPerCycle": 2,
     "crossGameSmokeAfterChange": true,
     "advanceOnlyWhenAllRequiredGatesGreen": true,
-    "performanceGateRequiredAtLevel2": true
+    "performanceEvidenceRequired": true,
+    "asyncRuntimeErrorsAreFatal": true,
+    "deviceMatrixRequired": true,
+    "criticalDependencyAuditRequired": true,
+    "trendRegressionDetection": true,
+    "supervisorGapDetection": true
   },
   "games": {
     "chronica-3d": {
@@ -34,8 +39,11 @@
         "PLATFORM_GREEN": "GREEN",
         "REGRESSION_GREEN": "GREEN"
       },
-      "level2Gates": {
-        "PERFORMANCE_GREEN": "UNKNOWN"
+      "level3Gates": {
+        "PERFORMANCE_GREEN": "UNKNOWN",
+        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
+        "DEVICE_MATRIX_GREEN": "UNKNOWN",
+        "SECURITY_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
       "failureFingerprint": null,
@@ -55,7 +63,10 @@
         "notYetProven": [
           "combat-cycle",
           "progression-transition",
-          "performance-budget"
+          "performance-trend",
+          "async-runtime-errors",
+          "full-device-matrix",
+          "critical-dependency-audit"
         ]
       }
     },
@@ -72,8 +83,11 @@
         "PLATFORM_GREEN": "UNKNOWN",
         "REGRESSION_GREEN": "UNKNOWN"
       },
-      "level2Gates": {
-        "PERFORMANCE_GREEN": "UNKNOWN"
+      "level3Gates": {
+        "PERFORMANCE_GREEN": "UNKNOWN",
+        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
+        "DEVICE_MATRIX_GREEN": "UNKNOWN",
+        "SECURITY_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
       "failureFingerprint": null,
@@ -93,8 +107,11 @@
         "PLATFORM_GREEN": "UNKNOWN",
         "REGRESSION_GREEN": "UNKNOWN"
       },
-      "level2Gates": {
-        "PERFORMANCE_GREEN": "UNKNOWN"
+      "level3Gates": {
+        "PERFORMANCE_GREEN": "UNKNOWN",
+        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
+        "DEVICE_MATRIX_GREEN": "UNKNOWN",
+        "SECURITY_GREEN": "UNKNOWN"
       },
       "lastGreenAt": null,
       "failureFingerprint": null,
@@ -111,6 +128,11 @@
       "at": "2026-09-13T05:47:36Z",
       "game": "chronica-3d",
       "note": "L2 maintenance: latest workflow is green, but queue remains locked because combat, progression and performance still require dedicated evidence. No fabricated GREEN state."
+    },
+    {
+      "at": "2026-09-13T06:02:00Z",
+      "game": "chronica-3d",
+      "note": "L3 maintenance: browser QA expanded to desktop/mobile compatibility matrix, async error trapping, performance evidence collection, Node 24 runner and critical dependency audit. L3 gates remain UNKNOWN until the new workflow proves them."
     }
   ]
 }
