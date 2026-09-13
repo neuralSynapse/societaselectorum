@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from sentinel import default_state, apply_gate_results, advance_if_green, REQUIRED_GATES
+from sentinel import default_state, apply_gate_results, advance_if_green, validate_state, REQUIRED_GATES, LEVEL4_GATES
 
 def green(): return {g:"GREEN" for g in REQUIRED_GATES}
 
@@ -37,3 +37,23 @@ def test_l3_unknown_gate_blocks_advance():
     apply_gate_results(s,"chronica-3d",green())
     assert advance_if_green(s) is False
     assert s["activeGame"]=="chronica-3d"
+
+def test_l4_unknown_gate_blocks_advance():
+    s=default_state(); s["sentinelLevel"]=4
+    s["games"]["chronica-3d"]["level3Gates"]={
+        "PERFORMANCE_GREEN":"GREEN",
+        "ASYNC_RUNTIME_GREEN":"GREEN",
+        "DEVICE_MATRIX_GREEN":"GREEN",
+        "SECURITY_GREEN":"GREEN",
+    }
+    s["games"]["chronica-3d"]["level4Gates"]={g:"GREEN" for g in LEVEL4_GATES}
+    s["games"]["chronica-3d"]["level4Gates"]["SAVE_INTEGRITY_GREEN"]="UNKNOWN"
+    apply_gate_results(s,"chronica-3d",green())
+    assert advance_if_green(s) is False
+    assert s["activeGame"]=="chronica-3d"
+
+def test_l4_validation_requires_all_l4_gate_keys():
+    s=default_state(); s["sentinelLevel"]=4
+    s["games"]["chronica-3d"]["level4Gates"]={g:"GREEN" for g in LEVEL4_GATES if g!="SELF_HEALTH_GREEN"}
+    errors=validate_state(s)
+    assert any("missing L4 gates" in e and "SELF_HEALTH_GREEN" in e for e in errors)
