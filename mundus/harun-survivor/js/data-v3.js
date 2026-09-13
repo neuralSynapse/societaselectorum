@@ -3,13 +3,17 @@
 const D={};
 D.version='3.0.0';
 D.metaKey='mundus_harun_survivor_v3';
+D.canonStageGroups=[['o_olho','a_chama','a_fundacao'],['a_eleicao','a_balanca','a_vontade'],['o_carater','a_disciplina','a_clareza'],['a_transmutacao','o_corpo','a_obra'],['a_fortuna','a_influencia','o_legado','initiation_chamber']];
+D.storyResultState='PEREGRINUS_IGNIS_GAME';
+D.institutionalWrite=false;
 D.acts=[
- {id:1,name:'LIMIAR',boss:'ATHOTH',subtitle:'O ESQUECIMENTO',bg:['#e2bd76','#b87f4d','#28444f'],accent:'#5fe0d0'},
- {id:2,name:'GALERIA DO PESO',boss:'ELOAIOS',subtitle:'O PESO',bg:['#bd88a5','#6a4b70','#273950'],accent:'#f5b35b'},
- {id:3,name:'CORREDOR DAS MÁSCARAS',boss:'ASTAPHAIOS',subtitle:'AS MÁSCARAS',bg:['#80b6aa','#396d77','#34345c'],accent:'#db8eff'},
- {id:4,name:'CÂMARA DA BALANÇA',boss:'SABAOTH',subtitle:'A MEDIDA',bg:['#89c9c2','#43818b','#283d58'],accent:'#8ff2e7'},
- {id:5,name:'TRONO DA INICIAÇÃO',boss:'OBSERVADOR CEGO',subtitle:'O LIMITE DO OLHAR',bg:['#a55d65','#653541','#261e35'],accent:'#ff8b6f'}
+ {id:1,name:'LIMIAR',boss:'ATHOTH',bossRole:'act_guardian',provenance:'authorial',subtitle:'O OLHO · A CHAMA · A FUNDAÇÃO',storyTheme:'O ESQUECIMENTO',bg:['#e2bd76','#b87f4d','#28444f'],accent:'#5fe0d0'},
+ {id:2,name:'GALERIA DO PESO',boss:'ELOAIOS',bossRole:'act_guardian',provenance:'authorial',subtitle:'A ELEIÇÃO · A BALANÇA · A VONTADE',storyTheme:'O PESO',bg:['#bd88a5','#6a4b70','#273950'],accent:'#f5b35b'},
+ {id:3,name:'CORREDOR DAS MÁSCARAS',boss:'ASTAPHAIOS',bossRole:'act_guardian',provenance:'authorial',subtitle:'O CARÁTER · A DISCIPLINA · A CLAREZA',storyTheme:'AS MÁSCARAS',bg:['#80b6aa','#396d77','#34345c'],accent:'#db8eff'},
+ {id:4,name:'CÂMARA DA BALANÇA',boss:'SABAOTH',bossRole:'act_guardian',provenance:'authorial',subtitle:'A TRANSMUTAÇÃO · O CORPO · A OBRA',storyTheme:'A MEDIDA',bg:['#89c9c2','#43818b','#283d58'],accent:'#8ff2e7'},
+ {id:5,name:'TRONO DA INICIAÇÃO',boss:'TRONO DA INICIAÇÃO',bossRole:'canonical_final',provenance:'electorum',subtitle:'A FORTUNA · A INFLUÊNCIA · O LEGADO · INICIAÇÃO',storyTheme:'O LIMITE DO OLHAR',bg:['#a55d65','#653541','#261e35'],accent:'#ff8b6f'}
 ];
+D.acts.forEach((act,i)=>act.canonStageIds=(D.canonStageGroups[i]||[]).slice());
 D.enemyKinds={
  shade:{label:'Espectro',hp:2.2,speed:48,r:15,xp:1,damage:.7,behavior:'chase'},
  crawler:{label:'Rastejante',hp:1.45,speed:75,r:11,xp:1,damage:.55,behavior:'chase'},
