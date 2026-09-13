@@ -20,7 +20,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for f in progression-v5 systems-v5 world-v5 runtime-v5 blackbook-v5 audio-v5; do
+          for f in progression-v5 systems-v5 world-v5 runtime-v5 blackbook-v5 audio-v5 art-v5 companions-v5; do
             node --check "mundus/harun-survivor/js/$f.js"
           done
           grep -Fq "version:'5.0.0'" mundus/harun-survivor/js/progression-v5.js
@@ -30,6 +30,9 @@ jobs:
           grep -Fq "institutionalWrite:false" mundus/harun-survivor/js/progression-v5.js
           grep -Fq "mundus-audio-core-v1.js" mundus/harun-survivor/v5.html
           grep -Fq "survivor-v5.css" mundus/harun-survivor/v5.html
+          grep -Fq "art-v5.js" mundus/harun-survivor/v5.html
+          grep -Fq "companions-v5.js" mundus/harun-survivor/v5.html
+          grep -Fq "companions-v5.css" mundus/harun-survivor/v5.html
           python3 -m py_compile mundus/harun-survivor/qa/playtest-v5.py mundus/harun-survivor/qa/smoke-live-v5.py
 
       - name: Start local V5 preview
