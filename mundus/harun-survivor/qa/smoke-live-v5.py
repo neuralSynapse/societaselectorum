@@ -40,10 +40,11 @@ try:
     page.keyboard.press('Tab');page.wait_for_timeout(120);check('public-tab-map',page.locator('#v5MapOverlay:not([hidden])').count()==1);page.keyboard.press('Tab')
     page.keyboard.press('Escape');page.wait_for_timeout(120);check('public-esc-blackbook',page.locator('#v5BlackBook:not([hidden])').count()==1);page.keyboard.press('Escape')
 
-    page.evaluate('HarunV5Systems.gain("familiars",HarunV5Systems.familiars[0])');page.wait_for_timeout(220)
+    page.evaluate('HarunV5Systems.gain("familiars",HarunV5Systems.familiars[0])');page.wait_for_timeout(320)
     check('public-familiar-recorded',page.evaluate('HarunV5Systems.state().familiars.length>=1'))
     check('public-familiar-visible',page.evaluate('HarunV5Companions.visibleCount()>=1'))
     check('public-familiar-canvas',page.locator('#v5Companions').count()==1)
+    page.screenshot(path=str(OUT/'public-v5-gameplay-familiar.png'),full_page=True)
 
     page.mouse.click(260,520);page.wait_for_timeout(400)
     audio=page.evaluate('HarunV5Audio.snapshot()')
