@@ -1,0 +1,68 @@
+{
+  "project_id": 27912,
+  "captured_at": "2026-09-13T05:21:00-03:00",
+  "status": "published",
+  "domain": "project27912.websitepublisher.ai",
+  "homepage": {
+    "route": "/",
+    "role": "MUNDUS game hub",
+    "version_hash": "c2f4bed3"
+  },
+  "games": [
+    {
+      "id": "chronica-harun-3d",
+      "route": "/chronica-harun-3d.html",
+      "role": "3D/FPS canonical snapshot",
+      "version_hash": "bf7c1483",
+      "release": "FUSÃO V3.6"
+    },
+    {
+      "id": "harun-roguelite",
+      "route": "/harun-roguelite.html",
+      "role": "2D roguelite"
+    },
+    {
+      "id": "harun-survivor",
+      "route": "/harun-survivor.html",
+      "role": "mobile survivor canonical",
+      "page_version": 14,
+      "page_version_hash": "db739972",
+      "release": "CIDADELA VIVA V3 / renderer 3.1.0",
+      "canon_contract": "1.0.0",
+      "canonical_stages": 16,
+      "story_result_state": "PEREGRINUS_IGNIS_GAME",
+      "institutional_write": false,
+      "runtime": {
+        "data": "868dc9db",
+        "art": "66609e8f",
+        "engine": "f18bd8df",
+        "css": "8ef1e0b7"
+      },
+      "storage_key": "mundus_harun_survivor_v3",
+      "qa": {
+        "workflow": "MUNDUS Survivor QA",
+        "run_id": 34747422028,
+        "head_sha": "a8c5fae49b04ddbfe38c502f9834cb89407a6088",
+        "conclusion": "success",
+        "browser": "Playwright + Chromium",
+        "checks": "25/25",
+        "runtime_js_errors": 0,
+        "artifact_id": 10313924588,
+        "artifact_digest": "sha256:e660d262ad288864c634819b2980c0c10ebe8aa27cb8ddb7b8c41d4cdf7b1c93",
+        "evidence": ["01-boot.png", "02-upgrade.png", "03-boss.png", "04-mobile-menu.png", "qa-report.json"]
+      }
+    }
+  ],
+  "archive": [
+    "/mundus-fps.html",
+    "/survivor-lab.html",
+    "/fusion-v22-clean.html"
+  ],
+  "rules": [
+    "Each active game owns its runtime and persistence.",
+    "Survivor v3 does not import legacy Hārūn PNG characters.",
+    "The old survivor lab remains archive-only.",
+    "Root is navigation, never a gameplay runtime.",
+    "Survivor release CI fails when tested branch asset hashes diverge from WebsitePublisher production hashes."
+  ]
+}
