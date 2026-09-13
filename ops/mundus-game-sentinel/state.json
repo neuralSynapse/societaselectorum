@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "sentinelLevel": 3,
-  "cycle": 1,
+  "cycle": 2,
   "activeGame": "chronica-3d",
   "queue": [
     "chronica-3d",
@@ -9,7 +9,7 @@
     "harun-survivor"
   ],
   "status": "VERIFYING",
-  "lastRunAt": "2026-09-13T06:53:35Z",
+  "lastRunAt": "2026-09-13T07:18:07Z",
   "lastGreenAt": null,
   "canonContractVersion": "1.0.0",
   "baseline": {},
@@ -50,9 +50,10 @@
       "repairAttempts": 0,
       "lastRepair": null,
       "evidence": {
-        "workflowRun": 34743801603,
-        "workflowCommit": "b5cf3521e5644565c8dab088e651a21c23d5887a",
+        "workflowRun": 34744813593,
+        "workflowCommit": "1481f62da5e1f90c40cb05c8c327c7bc0a374641",
         "workflowConclusion": "success",
+        "artifactDigest": "sha256:71494e1128445edef97cb2d9f921b04d005cc5905a9f55793eba9a22b318ea9c",
         "verified": [
           "unit-tests-including-l3-queue-guard",
           "canon-parity",
@@ -62,15 +63,22 @@
           "browser-smoke-chronica-desktop",
           "async-runtime-error-trapping",
           "cross-game-browser-smoke",
-          "dependency-audit-zero-vulnerabilities"
+          "dependency-audit-zero-vulnerabilities",
+          "state-only-ci-retrigger-loop-fixed"
         ],
         "performanceSample": {
-          "sourceWorkflowRun": 34743801603,
-          "sentinelReadyMs": 10965,
-          "domContentLoadedMs": 1816.7,
-          "loadEventEndMs": 1954.4,
+          "sourceWorkflowRun": 34744813593,
+          "sentinelReadyMs": 17106,
+          "domContentLoadedMs": 1150.9,
+          "loadEventEndMs": 1151.6,
           "viewport": "1440x900",
-          "note": "sample collected; no green performance baseline exists yet, so trend gate remains UNKNOWN"
+          "trendSamplesSentinelReadyMs": [10965, 15057, 17106],
+          "note": "Three consecutive sentinelReadyMs samples increased, but no fully green performance baseline exists and DOM/load timings improved. Keep PERFORMANCE UNKNOWN; investigate guard-ready latency before classifying product regression."
+        },
+        "productionPages": {
+          "chronica-3d": "c6e24222",
+          "harun-roguelite": "67abf2e1",
+          "harun-survivor": "8ea5983f"
         },
         "notYetProven": [
           "combat-cycle",
@@ -149,6 +157,11 @@
       "at": "2026-09-13T06:53:35Z",
       "game": "chronica-3d",
       "note": "Supervisor repair verified by red-green CI: sentinel.py previously allowed queue advancement using only legacy gates. L3 gates are now enforced before GREEN/advance. Workflow 34743801603 passed after fix. ASYNC_RUNTIME is proven GREEN for CHRONICA desktop; PERFORMANCE, DEVICE_MATRIX and SECURITY remain UNKNOWN where evidence is incomplete."
+    },
+    {
+      "at": "2026-09-13T07:18:07Z",
+      "game": "chronica-3d",
+      "note": "Traceability maintenance: state-only reconciliation previously retriggered CI, making workflowRun immediately stale by construction. Workflow now ignores state.json, repair-ledger.json and baselines.json on push while retaining scheduled/manual/full code-change CI. Fix commit 1481f62 passed workflow 34744813593. Production routes and hashes remain unchanged; no product repair was needed."
     }
   ]
 }
