@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Hārūn Survivor QA</title><style>html,body{margin:0;background:#111;color:#eee;font:14px monospace}#status{position:fixed;left:0;top:0;z-index:99;padding:8px;background:#000}iframe{width:540px;height:960px;border:0;display:block;margin:auto}</style></head><body><div id="status">QA:RUNNING</div><iframe id="game" src="../index.html?autoplay=1&debug=1"></iframe><script>
+(async()=>{
+ const out=document.querySelector('#status'), frame=document.querySelector('#game'); const results=[];
+ const wait=(ms)=>new Promise(r=>setTimeout(r,ms)); const assert=(name,cond,detail='')=>{results.push({name,ok:!!cond,detail}); if(!cond) throw new Error(name+(detail?': '+detail:''))};
+ try{
+  await new Promise((resolve,reject)=>{const t=setTimeout(()=>reject(new Error('iframe load timeout')),8000); frame.addEventListener('load',()=>{clearTimeout(t);resolve()},{once:true})});
+  const w=frame.contentWindow,d=w.document; for(let i=0;i<80&&!w.HarunSurvivorDebug;i++) await wait(100);
+  assert('debug api',!!w.HarunSurvivorDebug);
+  for(let i=0;i<50&&w.HarunSurvivorDebug.getState().state!=='run';i++) await wait(100);
+  let s=w.HarunSurvivorDebug.getState(); assert('autoplay boot',s.state==='run',s.state);
+  assert('canvas visible',!!d.querySelector('#game')&&d.querySelector('#game').getBoundingClientRect().height>500);
+  const x0=s.run.player.x; w.dispatchEvent(new w.KeyboardEvent('keydown',{code:'KeyD'})); await wait(350); w.dispatchEvent(new w.KeyboardEvent('keyup',{code:'KeyD'})); s=w.HarunSurvivorDebug.getState(); assert('keyboard movement',s.run.player.x>x0+5,`${x0}->${s.run.player.x}`);
+  const p=s.run.player; p.damage=100;p.fireRate=.05;s.run.enemies.length=0;s.run.gems.length=0;s.run.enemies.push({kind:'crawler',x:p.x,y:p.y-70,r:11,hp:1,maxHp:1,speed:0,damage:0,xp:1,phase:0,hit:0,cd:9,charge:9,poison:0,burn:0}); await wait(550); s=w.HarunSurvivorDebug.getState(); assert('autoattack combat',s.run.enemies.length===0,`enemies=${s.run.enemies.length}`); assert('combat drop',s.run.gems.length>0||s.run.xp>0);
+  s.run.gems.push({x:s.run.player.x,y:s.run.player.y,big:true,xp:s.run.xpNeed+3}); await wait(300); s=w.HarunSurvivorDebug.getState(); assert('level up overlay',s.state==='upgrade',s.state); assert('three upgrade cards',d.querySelectorAll('#cards [data-skill]').length===3,`${d.querySelectorAll('#cards [data-skill]').length}`); d.querySelector('#cards [data-skill]').click(); await wait(150); s=w.HarunSurvivorDebug.getState(); assert('upgrade resumes run',s.state==='run',s.state); assert('skill applied',Object.keys(s.run.skills).length===1,JSON.stringify(s.run.skills));
+  s.meta.essence=100; w.HarunSurvivorDebug.showMenu('talents'); await wait(100); const tb=d.querySelector('[data-buy]'); assert('talent button',!!tb); const key=tb.dataset.buy,before=s.meta.talents[key]||0; tb.click(); await wait(100); s=w.HarunSurvivorDebug.getState(); assert('talent purchase',(s.meta.talents[key]||0)===before+1,`${before}->${s.meta.talents[key]}`);
+  w.HarunSurvivorDebug.showMenu('roulette'); s=w.HarunSurvivorDebug.getState(); s.meta.essence=100; d.querySelector('#spin').click(); await wait(1900); s=w.HarunSurvivorDebug.getState(); assert('roulette resolves',/ESSÊNCIA/.test(d.querySelector('#rouletteCopy').textContent));
+  w.HarunSurvivorDebug.startRun(1); await wait(100); s=w.HarunSurvivorDebug.getState(); s.run.wave=9;s.run.waveDuration=.05;s.run.waveTime=.06;s.run.enemies.length=0; await wait(150); s=w.HarunSurvivorDebug.getState(); assert('boss wave',s.run.wave===10,`${s.run.wave}`); assert('boss spawned',!!s.run.boss); s.run.player.damage=999;s.run.player.fireRate=.02;s.run.boss.x=s.run.player.x;s.run.boss.y=s.run.player.y-65;s.run.boss.hp=.01; await wait(350); s=w.HarunSurvivorDebug.getState(); assert('boss defeated',!s.run.boss); assert('act unlock',s.meta.unlockedAct>=2,`${s.meta.unlockedAct}`);
+  const saved=JSON.parse(w.localStorage.getItem('mundus_harun_survivor_v3')||'{}'); assert('save persisted',saved.unlockedAct>=2&&saved.talents&&saved.talents[key]>=1,JSON.stringify(saved));
+  out.textContent='QA:PASS · '+results.length+' checks'; out.dataset.results=JSON.stringify(results); document.title='QA PASS';
+ }catch(e){out.textContent='QA:FAIL · '+e.message;out.dataset.results=JSON.stringify(results);document.title='QA FAIL';console.error(e)}
+})();
+</script></body></html>
