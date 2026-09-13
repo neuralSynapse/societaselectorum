@@ -21,10 +21,19 @@ jobs:
         run: |
           set -euo pipefail
           node --check mundus/harun-survivor/js/enhancements-v4.js
+          node --check mundus/harun-survivor/js/art-v4.js
+          node --check mundus/harun-survivor/js/perf-v4.js
+          node --check mundus/harun-survivor/js/tuning-v4.js
+          node --check mundus/harun-survivor/js/progression-v4.js
           grep -Fq "version:'4." mundus/harun-survivor/js/enhancements-v4.js
           grep -Fq "data-v4-stage" mundus/harun-survivor/js/enhancements-v4.js
           grep -Fq "waveDirector" mundus/harun-survivor/js/enhancements-v4.js
           grep -Fq "#v4fx" mundus/harun-survivor/css/survivor-v4.css
+          grep -Fq "preStudentName:'INGRESSUS'" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "finalIngressusAct:'ACTUS INGRESSUS'" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "studentIsDegree:false" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "lastDegree:'Ipsissimus'" mundus/harun-survivor/js/progression-v4.js
+          grep -Fq "XXXIII GRAUS" mundus/harun-survivor/index.html
 
       - name: Start local immutable preview
         shell: bash
