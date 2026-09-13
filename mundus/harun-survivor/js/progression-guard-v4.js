@@ -1,0 +1,1 @@
+(function(){'use strict';const c=document.querySelector('#campaign');if(!c)return;function mark(){c.querySelectorAll('.prog-stage').forEach((el,i)=>{if(!el.dataset.v4Stage)el.dataset.v4Stage='canonical-'+i})}const o=new MutationObserver(mark);o.observe(c,{childList:true,subtree:true});mark();})();
