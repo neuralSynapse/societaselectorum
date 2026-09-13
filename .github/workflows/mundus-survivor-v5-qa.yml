@@ -12,7 +12,7 @@ permissions:
 jobs:
   survivor-v5-release-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 16
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
 
@@ -61,6 +61,14 @@ jobs:
           QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-v5-live QA_URL="https://project27912.websitepublisher.ai/harun-survivor-v5.html?debug=1" python3 mundus/harun-survivor/qa/smoke-live-v5.py | tee /tmp/harun-survivor-v5-live.log
           grep -q '"status": "PASS"' /tmp/harun-survivor-v5-live/live-smoke-report.json
 
+      - name: Smoke test canonical WebsitePublisher route
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-v5-canonical QA_URL="https://project27912.websitepublisher.ai/harun-survivor.html?debug=1" python3 mundus/harun-survivor/qa/smoke-live-v5.py | tee /tmp/harun-survivor-v5-canonical.log
+          grep -q '"status": "PASS"' /tmp/harun-survivor-v5-canonical/live-smoke-report.json
+
       - name: Preserve V5 QA evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -71,5 +79,7 @@ jobs:
             /tmp/harun-survivor-v5-qa.log
             /tmp/harun-survivor-v5-live/
             /tmp/harun-survivor-v5-live.log
+            /tmp/harun-survivor-v5-canonical/
+            /tmp/harun-survivor-v5-canonical.log
             /tmp/mundus-v5-http.log
           if-no-files-found: warn
