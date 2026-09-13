@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Static syntax and isolation checks
+      - name: Static syntax, isolation and production parity
         shell: bash
         run: |
           set -euo pipefail
@@ -28,6 +28,10 @@ jobs:
           grep -Fq "renderer:'layered-2.5d'" mundus/harun-survivor/js/art-v3.js
           grep -Fq "danger:$('#danger')" mundus/harun-survivor/js/engine-v3.js
           grep -Fq "window.HarunSurvivorDebug" mundus/harun-survivor/js/engine-v3.js
+          test "$(sha256sum mundus/harun-survivor/js/data-v3.js | cut -c1-8)" = "868dc9db"
+          test "$(sha256sum mundus/harun-survivor/js/art-v3.js | cut -c1-8)" = "66609e8f"
+          test "$(sha256sum mundus/harun-survivor/css/survivor-v3.css | cut -c1-8)" = "8ef1e0b7"
+          test "$(sha256sum mundus/harun-survivor/js/engine-v3.js | cut -c1-8)" = "f18bd8df"
 
       - name: Start local immutable preview
         shell: bash
