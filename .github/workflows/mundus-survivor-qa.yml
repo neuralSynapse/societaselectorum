@@ -2,7 +2,7 @@ name: MUNDUS Survivor QA
 
 on:
   push:
-    branches: [feat/mundus-game-hub-survivor-v1]
+    branches: [feat/mundus-game-hub-survivor-v1, feat/harun-survivor-v4-reference-parity]
   pull_request:
     branches: [main]
 
@@ -24,10 +24,10 @@ jobs:
           node --check mundus/harun-survivor/js/art-v3.js
           node --check mundus/harun-survivor/js/engine-v3.js
           ! grep -R -E "harun-(peregrino|espectro-cinza|observador-cego|censor-cinzas|vidente-sal)-v1\\.(png|jpg|webp)" mundus/harun-survivor
-          grep -Fq "mundus_harun_survivor_v3" mundus/harun-survivor/js/data-v3.js
+          grep -Fq 'mundus_harun_survivor_v3' mundus/harun-survivor/js/data-v3.js
           grep -Fq "renderer:'layered-2.5d'" mundus/harun-survivor/js/art-v3.js
-          grep -Fq "danger:$('#danger')" mundus/harun-survivor/js/engine-v3.js
-          grep -Fq "window.HarunSurvivorDebug" mundus/harun-survivor/js/engine-v3.js
+          grep -Fq 'danger:$("#danger")' /dev/null || grep -Fq "danger:\$('#danger')" mundus/harun-survivor/js/engine-v3.js || grep -Fq "danger:$('#danger')" mundus/harun-survivor/js/engine-v3.js
+          grep -Fq 'window.HarunSurvivorDebug' mundus/harun-survivor/js/engine-v3.js
           test "$(sha256sum mundus/harun-survivor/js/data-v3.js | cut -c1-8)" = "868dc9db"
           test "$(sha256sum mundus/harun-survivor/js/art-v3.js | cut -c1-8)" = "66609e8f"
           test "$(sha256sum mundus/harun-survivor/css/survivor-v3.css | cut -c1-8)" = "8ef1e0b7"
