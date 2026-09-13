@@ -40,8 +40,9 @@ try:
     page.wait_for_function("HarunSurvivorDebug.getState().state==='upgrade'",timeout=3000)
     check('upgrade overlay',page.locator('#upgrade').is_visible()); check('three cards',page.locator('#cards [data-skill]').count()==3,page.locator('#cards [data-skill]').count())
     page.screenshot(path=str(OUT/'02-upgrade.png'),full_page=True)
+    chosen=page.locator('#cards [data-skill]').first.get_attribute('data-skill')
     page.locator('#cards [data-skill]').first.click(); page.wait_for_function("HarunSurvivorDebug.getState().state==='run'",timeout=2000)
-    s=state(page); check('skill applied',len(s['run']['skills'])==1,s['run']['skills'])
+    s=state(page); check('skill applied',s['run']['skills'].get(chosen,0)>0,s['run']['skills'])
 
     page.evaluate("HarunSurvivorDebug.getState().meta.essence=100;HarunSurvivorDebug.showMenu('talents')")
     page.wait_for_timeout(100); first=page.locator('[data-buy]').first; check('talent button',first.count()==1); key=first.get_attribute('data-buy'); before=page.evaluate(f"HarunSurvivorDebug.getState().meta.talents['{key}']||0"); first.click(); page.wait_for_timeout(120); after=page.evaluate(f"HarunSurvivorDebug.getState().meta.talents['{key}']||0"); check('talent purchase',after==before+1,f'{before}->{after}')
