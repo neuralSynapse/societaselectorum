@@ -1,0 +1,59 @@
+name: MUNDUS Survivor V4 QA
+
+on:
+  push:
+    branches: [feat/harun-survivor-v4-reference-parity]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  survivor-v4-release-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Static v4 contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check mundus/harun-survivor/js/enhancements-v4.js
+          grep -Fq "version:'4." mundus/harun-survivor/js/enhancements-v4.js
+          grep -Fq "data-v4-stage" mundus/harun-survivor/js/enhancements-v4.js
+          grep -Fq "waveDirector" mundus/harun-survivor/js/enhancements-v4.js
+          grep -Fq "#v4fx" mundus/harun-survivor/css/survivor-v4.css
+
+      - name: Start local immutable preview
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/mundus-v4-http.log 2>&1 &
+          for i in {1..30}; do curl -fsS http://127.0.0.1:8765/mundus/harun-survivor/index.html >/dev/null && exit 0; sleep .2; done
+          cat /tmp/mundus-v4-http.log
+          exit 1
+
+      - name: Install Playwright driver
+        shell: bash
+        run: python3 -m pip install --disable-pip-version-check --quiet playwright
+
+      - name: Real-time reference parity gameplay QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$BROWSER" || { echo "No Chromium-compatible browser on runner"; exit 1; }
+          QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-v4-qa python3 mundus/harun-survivor/qa/playtest-v4.py | tee /tmp/harun-survivor-v4-qa.log
+          grep -q '"status": "PASS"' /tmp/harun-survivor-v4-qa/qa-report-v4.json
+
+      - name: Preserve V4 QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harun-survivor-v4-qa
+          path: |
+            /tmp/harun-survivor-v4-qa/
+            /tmp/harun-survivor-v4-qa.log
+            /tmp/mundus-v4-http.log
+          if-no-files-found: warn
