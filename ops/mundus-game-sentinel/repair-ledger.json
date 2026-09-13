@@ -30,6 +30,35 @@
       "circuitState": "CLOSED",
       "closedAt": "2026-09-13T06:53:35Z",
       "remainingBlocker": "CHRONICA still cannot advance until combat, progression, performance trend, WebGL fallback and runtime public-secret exposure are proven by dedicated evidence."
+    },
+    {
+      "fingerprint": "SENTINEL:TRACEABILITY:STATE_UPDATE_SELF_TRIGGERS_CI",
+      "firstDetectedAt": "2026-09-13T07:05:23Z",
+      "lastDetectedAt": "2026-09-13T07:18:07Z",
+      "component": ".github/workflows/mundus-game-sentinel.yml",
+      "classification": "SUPERVISOR_TRACEABILITY",
+      "productFailure": false,
+      "testFailure": false,
+      "hypothesis": "Every state-only reconciliation commit triggered the full workflow, making state.evidence.workflowRun immediately stale again and creating a self-induced traceability loop.",
+      "evidence": {
+        "observedStateWorkflowRun": 34743801603,
+        "newerSuccessfulRunBeforeFix": 34743979802,
+        "fixCommit": "1481f62da5e1f90c40cb05c8c327c7bc0a374641",
+        "greenWorkflowRun": 34744813593,
+        "greenConclusion": "success",
+        "artifactDigest": "sha256:71494e1128445edef97cb2d9f921b04d005cc5905a9f55793eba9a22b318ea9c"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "action": "Added push paths-ignore for state.json, repair-ledger.json and baselines.json while preserving scheduled, manual and code-change CI. Then ran the workflow caused by the workflow-file change and verified SUCCESS.",
+          "result": "GREEN"
+        }
+      ],
+      "rollback": "Revert commit 1481f62da5e1f90c40cb05c8c327c7bc0a374641 if state-only files are later required to trigger full CI for a demonstrated reason.",
+      "circuitState": "CLOSED",
+      "closedAt": "2026-09-13T07:18:07Z",
+      "remainingBlocker": "No traceability blocker. CHRONICA remains VERIFYING because COMBAT, PROGRESSION, PERFORMANCE baseline, WebGL fallback and runtime public-secret exposure scan still lack dedicated proof."
     }
   ]
 }
