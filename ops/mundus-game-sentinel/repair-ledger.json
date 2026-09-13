@@ -59,6 +59,36 @@
       "circuitState": "CLOSED",
       "closedAt": "2026-09-13T07:18:07Z",
       "remainingBlocker": "No traceability blocker. CHRONICA remains VERIFYING because COMBAT, PROGRESSION, PERFORMANCE baseline, WebGL fallback and runtime public-secret exposure scan still lack dedicated proof."
+    },
+    {
+      "fingerprint": "SENTINEL:SELF_HEALTH:SCHEDULE_NOT_ON_DEFAULT_BRANCH",
+      "firstDetectedAt": "2026-09-13T12:30:00Z",
+      "lastDetectedAt": "2026-09-13T12:30:00Z",
+      "component": ".github/workflows/mundus-game-sentinel.yml",
+      "classification": "SUPERVISOR_SCHEDULING",
+      "productFailure": false,
+      "testFailure": false,
+      "hypothesis": "The Sentinel workflow declared an hourly schedule only on agent/mundus-game-sentinel-v1, while the repository default branch is main and main had no Sentinel workflow. GitHub scheduled workflows are sourced from the default branch, so branch CI was healthy on push but independent hourly GitHub CI was not actually established there.",
+      "evidence": {
+        "defaultBranch": "main",
+        "featureBranch": "agent/mundus-game-sentinel-v1",
+        "featureWorkflowCron": "17 * * * *",
+        "mainWorkflowBeforeRepair": "ABSENT",
+        "latestFeatureRun": 34745222404,
+        "latestFeatureRunConclusion": "success",
+        "repairCommitOnMain": "bc056b9275141d67cae3c01a0acd2d4d7b5df6f4",
+        "repairPath": ".github/workflows/mundus-game-sentinel-scheduled.yml"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "action": "Created a minimal scheduler workflow on main that runs hourly and explicitly checks out agent/mundus-game-sentinel-v1 before executing the existing L4 unit, canon, state, HTTP/assets, dependency-audit and browser/device smoke suite.",
+          "result": "VERIFYING"
+        }
+      ],
+      "rollback": "Revert commit bc056b9275141d67cae3c01a0acd2d4d7b5df6f4 if the default-branch scheduler causes duplicate or malformed scheduled runs.",
+      "circuitState": "VERIFYING",
+      "remainingBlocker": "Require the first actual scheduled run and artifact from the new main-branch scheduler before SELF_HEALTH can become GREEN. No product gate is promoted by this infrastructure repair."
     }
   ]
 }
