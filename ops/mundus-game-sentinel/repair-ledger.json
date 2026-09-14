@@ -158,6 +158,25 @@
       "circuitState": "CLOSED",
       "closedAt": "2026-09-14T04:47:38Z",
       "remainingBlocker": "No SELF_HEALTH blocker. CROSS_GAME_CONTRACT and REGRESSION remain RED from queued-game product drift."
+    },
+    {
+      "fingerprint": "SENTINEL:CROSS_GAME_QA:CONTRACT_POLICY_OSCILLATION",
+      "firstDetectedAt": "2026-09-14T22:51:56Z",
+      "lastDetectedAt": "2026-09-14T23:08:23Z",
+      "component": "ops/mundus-game-sentinel/browser-smoke.spec.mjs + tests/test_browser_contract_policy.py",
+      "classification": "SUPERVISOR_QA_REGRESSION",
+      "productFailure": false,
+      "testFailure": true,
+      "hypothesis": "After the prior false-green regression was closed, later commits repeatedly alternated browser-smoke between the immutable shared 1.0.0/16-stage contract and a permissive per-game policy, despite canon-contract.json remaining at 1.0.0. The permissive state therefore re-created a known false-green path instead of reconciling the underlying queued-game product drift.",
+      "evidence": {"governingContractSha":"52be3316745ca9e0dcc10732443ab45035c7e781","falseGreenCommit":"81d2014e60171757b6dc9dfd7aa868314215ca73","falseGreenWorkflowRun":34896944728,"falseGreenArtifact":10368827234,"falseGreenArtifactDigest":"sha256:9f936dec8afac27e49bd83ea0fa7344b04e02a61c43f9a10a1a79fd85f007dc3","repairCommit":"b4a5ec2d85e440377dbeea9372e023312fd6273a","policyLockCommit":"fd3d23840afb651f9fad672b0d8e6d537182abba","verificationWorkflowRun":34907352811,"verificationConclusion":"failure_expected_due_real_contract_drift","verificationArtifact":10373091008,"verificationArtifactDigest":"sha256:4f1537da42aeb2239edd628069e190148d112d41f276eddfc87a8ea04db682d1","chronica":"GREEN","rogueliteDesktop":"RED_4.0.0_VS_1.0.0","rogueliteMobile":"RED_4.0.0_VS_1.0.0","survivorMobile":"RED_CONTRACT_MISSING","survivorDesktop":"RED_CONTRACT_MISSING"},
+      "attempts": [
+        {"attempt":1,"action":"Restored the immutable shared canonContract=1.0.0 and canonicalStages=16 assertions for all five browser/device scenarios without changing any game product runtime.","result":"QA_REPAIRED_PRODUCT_DRIFT_RECONFIRMED"},
+        {"attempt":2,"action":"Added test_browser_contract_policy.py, deriving the expected version/stage count from canon-contract.json and failing if permissive per-game acceptance or optional shared assertions reappear. Unit tests passed in workflow 34907352811.","result":"POLICY_LOCK_GREEN"}
+      ],
+      "rollback": "Revert fd3d23840afb651f9fad672b0d8e6d537182abba and b4a5ec2d85e440377dbeea9372e023312fd6273a only if canon-contract.json is explicitly superseded by an authorized governing contract. Do not weaken the lock merely to turn queued-game product drift green.",
+      "circuitState": "CLOSED_QA_OPEN_QUEUED_PRODUCT",
+      "closedAt": "2026-09-14T23:08:23Z",
+      "remainingBlocker": "Queued-game product drift remains blocking: Roguelite publishes canonContract 4.0.0, Survivor omits required shared contract telemetry, and chronica-3d remains activeGame. No queued-game product write is authorized until the queue advances legitimately."
     }
   ]
 }
