@@ -7,18 +7,13 @@ permissions:
 jobs:
   survivor-v6-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
       - name: Static V6 contracts
         run: |
           set -euo pipefail
-          test -f mundus/harun-survivor/js/art-v6.js
-          test -f mundus/harun-survivor/js/feel-v6.js
-          test -f mundus/harun-survivor/js/companions-v6.js
-          test -f mundus/harun-survivor/js/hud-v6.js
-          test -f mundus/harun-survivor/js/events-v6.js
-          test -f mundus/harun-survivor/js/meta-v6.js
+          for f in art-v6 feel-v6 companions-v6 hud-v6 events-v6 meta-v6; do node --check "mundus/harun-survivor/js/$f.js"; done
           test -f mundus/harun-survivor/css/survivor-v6.css
           test -f mundus/harun-survivor/v6.html
           grep -Fq "version:'6.0.0'" mundus/harun-survivor/js/art-v6.js
@@ -34,3 +29,29 @@ jobs:
           grep -Fq "hud-v6.js" mundus/harun-survivor/v6.html
           grep -Fq "events-v6.js" mundus/harun-survivor/v6.html
           grep -Fq "meta-v6.js" mundus/harun-survivor/v6.html
+          python3 -m py_compile mundus/harun-survivor/qa/playtest-v6.py
+      - name: Start local V6 preview
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/mundus-v6-http.log 2>&1 &
+          for i in {1..40}; do curl -fsS http://127.0.0.1:8765/mundus/harun-survivor/v6.html >/dev/null && exit 0; sleep .2; done
+          cat /tmp/mundus-v6-http.log
+          exit 1
+      - name: Install Playwright driver
+        run: python3 -m pip install --disable-pip-version-check --quiet playwright
+      - name: Run V6 browser parity QA
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$BROWSER" || { echo "No Chromium-compatible browser on runner"; exit 1; }
+          QA_BROWSER="$BROWSER" QA_OUT=/tmp/harun-survivor-v6-qa python3 mundus/harun-survivor/qa/playtest-v6.py | tee /tmp/harun-survivor-v6-qa.log
+          grep -q '"status": "PASS"' /tmp/harun-survivor-v6-qa/qa-report-v6.json
+      - name: Preserve V6 QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harun-survivor-v6-qa
+          path: |
+            /tmp/harun-survivor-v6-qa/
+            /tmp/harun-survivor-v6-qa.log
+            /tmp/mundus-v6-http.log
+          if-no-files-found: warn
