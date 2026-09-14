@@ -3,9 +3,13 @@
   "sentinelLevel": 4,
   "cycle": 2,
   "activeGame": "chronica-3d",
-  "queue": ["chronica-3d", "harun-roguelite", "harun-survivor"],
+  "queue": [
+    "chronica-3d",
+    "harun-roguelite",
+    "harun-survivor"
+  ],
   "status": "RED",
-  "lastRunAt": "2026-09-13T18:40:35Z",
+  "lastRunAt": "2026-09-14T00:29:05Z",
   "lastGreenAt": null,
   "canonContractVersion": "1.0.0",
   "baseline": {},
@@ -29,33 +33,33 @@
   },
   "games": {
     "chronica-3d": {
-      "status": "RED",
+      "status": "VERIFYING",
       "gates": {
         "CANON_GREEN": "GREEN",
-        "RUNTIME_GREEN": "GREEN",
-        "ASSET_GREEN": "GREEN",
-        "INPUT_GREEN": "GREEN",
-        "COMBAT_GREEN": "GREEN",
+        "RUNTIME_GREEN": "UNKNOWN",
+        "ASSET_GREEN": "UNKNOWN",
+        "INPUT_GREEN": "UNKNOWN",
+        "COMBAT_GREEN": "UNKNOWN",
         "PROGRESSION_GREEN": "UNKNOWN",
-        "UI_GREEN": "GREEN",
-        "PLATFORM_GREEN": "GREEN",
+        "UI_GREEN": "UNKNOWN",
+        "PLATFORM_GREEN": "UNKNOWN",
         "REGRESSION_GREEN": "RED"
       },
       "level3Gates": {
         "PERFORMANCE_GREEN": "UNKNOWN",
-        "ASYNC_RUNTIME_GREEN": "GREEN",
+        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
         "DEVICE_MATRIX_GREEN": "UNKNOWN",
         "SECURITY_GREEN": "UNKNOWN"
       },
       "level4Gates": {
-        "EVIDENCE_FRESHNESS_GREEN": "GREEN",
+        "EVIDENCE_FRESHNESS_GREEN": "RED",
         "SAVE_INTEGRITY_GREEN": "UNKNOWN",
         "RECOVERY_GREEN": "UNKNOWN",
         "CROSS_GAME_CONTRACT_GREEN": "RED",
-        "SELF_HEALTH_GREEN": "UNKNOWN"
+        "SELF_HEALTH_GREEN": "RED"
       },
       "lastGreenAt": null,
-      "failureFingerprint": "CROSS_GAME:CONTRACT:ROGUELITE_GUARD_INTEGRATION_MISSING",
+      "failureFingerprint": "CROSS_GAME:EVIDENCE_FRESHNESS:ALL_THREE_PRODUCTION_DRIFT",
       "repairAttempts": 0,
       "lastRepair": {
         "at": "2026-09-13T18:37:00Z",
@@ -67,55 +71,73 @@
         "result": "PARTIAL_RECOVERY_SURVIVOR_MATRIX"
       },
       "evidence": {
-        "workflowRun": 34772748195,
-        "workflowCommit": "49620fff66c3248b1cdeeb77b7e578155faaad7c",
-        "workflowConclusion": "failure",
-        "artifactId": 10323296243,
-        "artifactDigest": "sha256:d57d36da01db8a33d260b2e29a751928bbbece4049085a88bd3d23e90dcc5e87",
+        "previousWorkflowRun": 34772748195,
+        "previousWorkflowCommit": "49620fff66c3248b1cdeeb77b7e578155faaad7c",
+        "previousWorkflowConclusion": "failure",
+        "latestWorkflowAtCheck": 34772748195,
+        "latestWorkflowUpdatedAt": "2026-09-13T18:40:38Z",
         "sharedGuardHash": "eac476c7",
-        "verified": [
-          "27-python-tests",
-          "canon-parity",
-          "state-machine",
-          "live-http-all-three",
-          "critical-assets-all-three",
-          "dependency-audit-zero-vulnerabilities",
-          "browser-smoke-chronica-desktop-current-production",
-          "chronica-isolated-deterministic-combat-chain",
-          "browser-smoke-survivor-mobile-current-production",
-          "browser-smoke-survivor-desktop-current-production",
-          "shared-guard-canonical-stage-telemetry-repair"
-        ],
-        "productionPages": {
+        "deployedContractHash": "8670e9f1",
+        "deployedAdaptersHash": "d5ad991d",
+        "freshStaticCanonEvidence": {
+          "contractVersion": "1.0.0",
+          "canonicalStages": 16,
+          "chronicaPageDeclaresContract": "1.0.0",
+          "chronicaPageDeclaresStages": 16,
+          "chronicaLoadsSharedGuard": true,
+          "chronicaCanonAssetHash": "ef42e2bb",
+          "institutionalWrite": false
+        },
+        "previousProductionPages": {
           "chronica-3d": "a6cc4e67",
           "harun-roguelite": "f1ec5453",
           "harun-survivor": "3d4224fd"
         },
-        "crossGameFailure": {
-          "game": "harun-roguelite",
-          "expectedCanonicalStages": 16,
-          "pageHash": "f1ec5453",
-          "desktop": "RED",
-          "mobile": "RED",
-          "classification": "PRODUCT_CONTRACT_REGRESSION",
-          "cause": "Current live Roguelite page no longer loads js/mundus-canon-guard.js, so the shared contract cannot reach loaded=true or prove canonical parity.",
-          "productRepairDeferred": "Exclusive queue forbids product repair on queued harun-roguelite while chronica-3d is active."
+        "currentProductionPages": {
+          "chronica-3d": "5b70081a",
+          "harun-roguelite": "84404e80",
+          "harun-survivor": "9ddde73f"
         },
-        "chronicaBrowser": {
-          "result": "GREEN",
-          "durationSeconds": 56.5,
-          "combatProbe": "GREEN",
-          "progressionProbe": "READ_ONLY_ADJACENCY_ONLY_NOT_PROMOTED",
-          "note": "Combat proof exercises damage, reaction, lethal resolution and restored isolated enemy state. Progression remains UNKNOWN because the current deterministic probe does not exercise a real transition plus persistence."
+        "productionUpdatedAt": {
+          "chronica-3d": "2026-09-13T23:42:10Z",
+          "harun-roguelite": "2026-09-13T23:32:50Z",
+          "harun-survivor": "2026-09-13T23:47:45Z"
+        },
+        "freshCrossGameFindings": {
+          "harun-roguelite": {
+            "pageCanonContract": "4.0.0",
+            "sharedRequiredContract": "1.0.0",
+            "declaredFloors": 16,
+            "loadsSharedGuard": false,
+            "institutionalWrite": false,
+            "classification": "PRODUCT_CONTRACT_DRIFT"
+          },
+          "harun-survivor": {
+            "loadsSharedGuard": false,
+            "pageChangedAfterLastBrowserEvidence": true,
+            "institutionalWrite": false,
+            "classification": "EVIDENCE_STALE_AND_CONTRACT_UNPROVEN"
+          }
+        },
+        "supervisorGap": {
+          "previousLastRunAt": "2026-09-13T18:40:35Z",
+          "currentRunAt": "2026-09-14T00:29:05Z",
+          "gapMinutes": 349,
+          "thresholdMinutes": 90,
+          "classification": "SUPERVISOR_GAP"
         },
         "notYetProven": [
+          "current-production-browser-runtime",
+          "current-production-input",
+          "current-production-combat-chain",
           "progression-transition-with-persistence-or-equivalent-safe-simulation",
           "performance-trend-against-green-baseline",
           "webgl-fallback",
           "runtime-public-secret-exposure-scan",
           "qa-isolated-save-reload-integrity",
           "safe-recovery-paths",
-          "scheduled-supervisor-self-health"
+          "current-device-matrix",
+          "scheduled-supervisor-self-health-recovery"
         ]
       }
     },
@@ -123,71 +145,71 @@
       "status": "BLOCKED",
       "gates": {
         "CANON_GREEN": "RED",
-        "RUNTIME_GREEN": "GREEN",
-        "ASSET_GREEN": "GREEN",
+        "RUNTIME_GREEN": "UNKNOWN",
+        "ASSET_GREEN": "UNKNOWN",
         "INPUT_GREEN": "UNKNOWN",
         "COMBAT_GREEN": "UNKNOWN",
         "PROGRESSION_GREEN": "UNKNOWN",
         "UI_GREEN": "UNKNOWN",
-        "PLATFORM_GREEN": "GREEN",
+        "PLATFORM_GREEN": "UNKNOWN",
         "REGRESSION_GREEN": "RED"
       },
       "level3Gates": {
         "PERFORMANCE_GREEN": "UNKNOWN",
         "ASYNC_RUNTIME_GREEN": "UNKNOWN",
-        "DEVICE_MATRIX_GREEN": "RED",
+        "DEVICE_MATRIX_GREEN": "UNKNOWN",
         "SECURITY_GREEN": "UNKNOWN"
       },
       "level4Gates": {
-        "EVIDENCE_FRESHNESS_GREEN": "GREEN",
+        "EVIDENCE_FRESHNESS_GREEN": "RED",
         "SAVE_INTEGRITY_GREEN": "UNKNOWN",
         "RECOVERY_GREEN": "UNKNOWN",
         "CROSS_GAME_CONTRACT_GREEN": "RED",
-        "SELF_HEALTH_GREEN": "UNKNOWN"
+        "SELF_HEALTH_GREEN": "RED"
       },
       "lastGreenAt": null,
-      "failureFingerprint": "ROGUELITE:CROSS_GAME_CONTRACT:GUARD_INTEGRATION_MISSING",
+      "failureFingerprint": "ROGUELITE:CROSS_GAME_CONTRACT:CONTRACT_VERSION_DRIFT_4.0.0_VS_1.0.0",
       "repairAttempts": 0,
       "lastRepair": null
     },
     "harun-survivor": {
-      "status": "QUEUED",
+      "status": "VERIFYING",
       "gates": {
-        "CANON_GREEN": "GREEN",
-        "RUNTIME_GREEN": "GREEN",
-        "ASSET_GREEN": "GREEN",
-        "INPUT_GREEN": "GREEN",
+        "CANON_GREEN": "UNKNOWN",
+        "RUNTIME_GREEN": "UNKNOWN",
+        "ASSET_GREEN": "UNKNOWN",
+        "INPUT_GREEN": "UNKNOWN",
         "COMBAT_GREEN": "UNKNOWN",
         "PROGRESSION_GREEN": "UNKNOWN",
-        "UI_GREEN": "GREEN",
-        "PLATFORM_GREEN": "GREEN",
-        "REGRESSION_GREEN": "GREEN"
+        "UI_GREEN": "UNKNOWN",
+        "PLATFORM_GREEN": "UNKNOWN",
+        "REGRESSION_GREEN": "UNKNOWN"
       },
       "level3Gates": {
         "PERFORMANCE_GREEN": "UNKNOWN",
-        "ASYNC_RUNTIME_GREEN": "GREEN",
-        "DEVICE_MATRIX_GREEN": "GREEN",
+        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
+        "DEVICE_MATRIX_GREEN": "UNKNOWN",
         "SECURITY_GREEN": "UNKNOWN"
       },
       "level4Gates": {
-        "EVIDENCE_FRESHNESS_GREEN": "GREEN",
+        "EVIDENCE_FRESHNESS_GREEN": "RED",
         "SAVE_INTEGRITY_GREEN": "UNKNOWN",
         "RECOVERY_GREEN": "UNKNOWN",
-        "CROSS_GAME_CONTRACT_GREEN": "GREEN",
-        "SELF_HEALTH_GREEN": "UNKNOWN"
+        "CROSS_GAME_CONTRACT_GREEN": "UNKNOWN",
+        "SELF_HEALTH_GREEN": "RED"
       },
       "lastGreenAt": null,
-      "failureFingerprint": null,
+      "failureFingerprint": "SURVIVOR:EVIDENCE_FRESHNESS:PRODUCTION_CHANGED_AFTER_LAST_BROWSER_PROOF",
       "repairAttempts": 0,
       "lastRepair": null
     }
   },
-  "failureFingerprint": "CROSS_GAME:CONTRACT:ROGUELITE_GUARD_INTEGRATION_MISSING",
+  "failureFingerprint": "CROSS_GAME:EVIDENCE_FRESHNESS:ALL_THREE_PRODUCTION_DRIFT",
   "repairAttempts": 0,
   "lastRepair": {
     "at": "2026-09-13T18:37:00Z",
     "component": "WebsitePublisher:js/mundus-canon-guard.js",
-    "result": "Survivor browser matrix recovered; Roguelite remains blocking"
+    "result": "Survivor browser matrix recovered on superseded build; current builds require revalidation"
   },
   "nextGame": "harun-roguelite",
   "notes": [
@@ -197,7 +219,7 @@
     {"at":"2026-09-13T07:18:07Z","game":"chronica-3d","note":"Traceability maintenance: state-only reconciliation no longer retriggers CI, avoiding self-generated stale workflow references."},
     {"at":"2026-09-13T07:24:09Z","game":"chronica-3d","note":"L4 elevation verified through TDD. Queue remains locked while dedicated deep evidence remains incomplete."},
     {"at":"2026-09-13T16:43:49Z","game":"chronica-3d","note":"Fresh production drift exposed a Roguelite cross-game contract regression. Product repair deferred because Roguelite is queued."},
-    {"at":"2026-09-13T18:40:35Z","game":"chronica-3d","note":"Shared guard telemetry repaired from 18ff87f3 to eac476c7 and verified by rerun of workflow 34772748195. Browser matrix improved from 1/5 to 3/5: CHRONICA desktop and Survivor mobile+desktop GREEN. CHRONICA isolated deterministic combat chain now has fresh evidence and COMBAT_GREEN is promoted. Roguelite desktop+mobile remain RED because live page f1ec5453 no longer loads the shared guard. Queue remains locked; PROGRESSION, SAVE_INTEGRITY, RECOVERY, PERFORMANCE, WebGL fallback, runtime public-secret scan and SELF_HEALTH remain unproven."
-    }
+    {"at":"2026-09-13T18:40:35Z","game":"chronica-3d","note":"Shared guard telemetry repaired from 18ff87f3 to eac476c7 and verified by rerun of workflow 34772748195. Browser matrix improved from 1/5 to 3/5. Roguelite remained RED."},
+    {"at":"2026-09-14T00:29:05Z","game":"chronica-3d","note":"L4 reconciliation: all three production pages changed after the last recorded browser/workflow evidence (CHRONICA 5b70081a, Roguelite 84404e80, Survivor 9ddde73f). Runtime-dependent GREENs from superseded builds were demoted to UNKNOWN and EVIDENCE_FRESHNESS to RED. CHRONICA retains fresh static CANON evidence only (contract 1.0.0, 16 stages, shared guard present, institutionalWrite=false). Roguelite now declares canonContract 4.0.0 and does not load the shared 1.0.0 guard, so CROSS_GAME_CONTRACT remains RED. A 349-minute supervisor gap was recorded; SELF_HEALTH is RED. No product patch applied because no reproducible CHRONICA product fault was proven on the new build and queued-game product writes remain forbidden."}
   ]
 }
