@@ -5,7 +5,7 @@
   "activeGame": "chronica-3d",
   "queue": ["chronica-3d", "harun-roguelite", "harun-survivor"],
   "status": "RED",
-  "lastRunAt": "2026-09-14T04:47:38Z",
+  "lastRunAt": "2026-09-14T23:08:23Z",
   "lastGreenAt": null,
   "canonContractVersion": "1.0.0",
   "baseline": {},
@@ -58,27 +58,27 @@
       "failureFingerprint": "CROSS_GAME:CROSS_GAME_CONTRACT:LIVE_CONTRACT_DRIFT",
       "repairAttempts": 0,
       "lastRepair": {
-        "at": "2026-09-14T04:39:38Z",
-        "component": "ops/mundus-game-sentinel/browser-smoke.spec.mjs",
+        "at": "2026-09-14T23:07:11Z",
+        "component": "ops/mundus-game-sentinel/browser-smoke.spec.mjs + tests/test_browser_contract_policy.py",
         "classification": "SUPERVISOR_QA_REGRESSION",
-        "beforeCommit": "c22501ab13618fe047389a2b3b36e29935d26f47",
-        "afterCommit": "5442ba1b9b994776868424e9ed35c9b5d1cd0df3",
-        "rollbackRef": "c22501ab13618fe047389a2b3b36e29935d26f47",
-        "result": "QA_ASSERTIONS_RESTORED_PRODUCT_DRIFT_RECONFIRMED"
+        "beforeCommit": "81d2014e60171757b6dc9dfd7aa868314215ca73",
+        "afterCommit": "fd3d23840afb651f9fad672b0d8e6d537182abba",
+        "rollbackRef": "81d2014e60171757b6dc9dfd7aa868314215ca73",
+        "result": "QA_POLICY_LOCKED_PRODUCT_DRIFT_RECONFIRMED"
       },
       "evidence": {
-        "workflowRun": 34806874272,
-        "workflowCommit": "5442ba1b9b994776868424e9ed35c9b5d1cd0df3",
+        "workflowRun": 34907352811,
+        "workflowCommit": "fd3d23840afb651f9fad672b0d8e6d537182abba",
         "workflowConclusion": "failure_cross_game_contract",
-        "artifactId": 10333321692,
-        "artifactDigest": "sha256:0104e795a737a8ff8d7d256f2af8fac4ebd7c68f099cda3b9a3ca9f9b6d20d79",
+        "artifactId": 10373091008,
+        "artifactDigest": "sha256:4f1537da42aeb2239edd628069e190148d112d41f276eddfc87a8ea04db682d1",
         "productionPageHash": "5b70081a",
         "browserCurrentProduction": {
           "desktop1440x900": "GREEN",
-          "durationMs": 17717,
-          "sentinelReadyMs": 5299,
-          "domContentLoadedMs": 2006.7,
-          "loadEventEndMs": 4969.9,
+          "durationMs": 20484,
+          "sentinelReadyMs": 4096,
+          "domContentLoadedMs": 1077.1,
+          "loadEventEndMs": 6066.9,
           "fatalAsyncErrors": 0,
           "criticalRequestFailures": 0
         },
@@ -86,12 +86,12 @@
         "canonCurrentProduction": {"contract": "1.0.0", "canonicalStages": 16, "institutionalWrite": false},
         "selfHealth": {
           "automationTaskId": "6aa6325001d08191be31e19ecea00234",
-          "automationTaskLastRun": "2026-09-14T03:56:26.681844Z",
-          "currentRunObservedAt": "2026-09-14T04:47:38Z",
-          "gapMinutesApprox": 51,
+          "automationTaskLastRun": "2026-09-14T21:33:53.336962Z",
+          "currentRunObservedAt": "2026-09-14T22:51:56Z",
+          "gapMinutesApprox": 78,
           "thresholdMinutes": 90,
-          "latestBranchWorkflow": 34806874272,
-          "latestBranchWorkflowCompletedAt": "2026-09-14T04:40:49Z",
+          "latestBranchWorkflow": 34907352811,
+          "latestBranchWorkflowCompletedAt": "2026-09-14T23:08:23Z",
           "classification": "GREEN_AUTOMATION_AND_CI_CURRENT"
         },
         "notYetProven": [
@@ -129,7 +129,7 @@
       "lastRepair": null,
       "evidence": {
         "productionPageHash": "84404e80",
-        "workflowRun": 34806874272,
+        "workflowRun": 34907352811,
         "desktop": "RED_CONTRACT_ASSERTION",
         "mobile": "RED_CONTRACT_ASSERTION",
         "observedContract": "4.0.0",
@@ -161,7 +161,7 @@
       "lastRepair": null,
       "evidence": {
         "productionPageHash": "9ddde73f",
-        "workflowRun": 34806874272,
+        "workflowRun": 34907352811,
         "mobile": "RED_CONTRACT_ASSERTION",
         "desktop": "RED_CONTRACT_ASSERTION",
         "observedContract": null,
@@ -175,9 +175,9 @@
   "failureFingerprint": "CROSS_GAME:CROSS_GAME_CONTRACT:LIVE_CONTRACT_DRIFT",
   "repairAttempts": 0,
   "lastRepair": {
-    "at": "2026-09-14T04:39:38Z",
-    "component": "ops/mundus-game-sentinel/browser-smoke.spec.mjs",
-    "result": "Restored immutable shared contract assertions after a false-green QA relaxation; fresh transversal smoke reconfirmed queued-game product drift."
+    "at": "2026-09-14T23:07:11Z",
+    "component": "ops/mundus-game-sentinel/browser-smoke.spec.mjs + tests/test_browser_contract_policy.py",
+    "result": "Restored immutable shared contract assertions after their recurrence and added a regression test that locks the policy; fresh transversal smoke reconfirmed queued-game product drift."
   },
   "nextGame": "harun-roguelite",
   "notes": [
@@ -191,6 +191,7 @@
     {"at":"2026-09-14T00:29:05Z","game":"chronica-3d","note":"All production pages had changed after prior browser evidence; stale runtime greens were demoted and a 349-minute supervisor gap was recorded."},
     {"at":"2026-09-14T01:59:09Z","game":"chronica-3d","note":"Fresh reconciliation restored current CHRONICA runtime evidence but retained cross-game contract RED."},
     {"at":"2026-09-14T04:40:49Z","game":"chronica-3d","note":"Detected a false-green QA regression in commit c22501ab: browser smoke accepted Roguelite contract 4.0.0 and stopped requiring shared contract telemetry from Survivor. Restored immutable 1.0.0/16-stage assertions in commit 5442ba1b. Fresh run 34806874272 correctly failed 4/5 transversal scenarios: CHRONICA passed; Roguelite failed desktop/mobile with 4.0.0 vs 1.0.0; Survivor failed desktop/mobile with missing canonContract. No queued-game product write performed."},
-    {"at":"2026-09-14T04:47:38Z","game":"chronica-3d","note":"SELF_HEALTH correction after reading the actual automation task: MUNDUS Sentinel L4 last_run_time is 2026-09-14T03:56:26.681844Z, only ~51 minutes before this reconciliation. The earlier gap derived from state.lastRunAt was a false positive. SELF_HEALTH restored to GREEN. Latest branch CI is also fresh (run 34806874272 completed 04:40:49Z)."}
+    {"at":"2026-09-14T04:47:38Z","game":"chronica-3d","note":"SELF_HEALTH correction after reading the actual automation task: MUNDUS Sentinel L4 last_run_time is 2026-09-14T03:56:26.681844Z, only ~51 minutes before this reconciliation. The earlier gap derived from state.lastRunAt was a false positive. SELF_HEALTH restored to GREEN. Latest branch CI is also fresh (run 34806874272 completed 04:40:49Z)."},
+    {"at":"2026-09-14T23:08:23Z","game":"chronica-3d","note":"The previously closed permissive-contract QA regression recurred through alternating commits that repeatedly switched browser-smoke between immutable shared assertions and per-game acceptance. Restored shared 1.0.0/16-stage assertions in b4a5ec2d and added test_browser_contract_policy.py in fd3d2384 so the permissive policy now fails unit tests if reintroduced. Fresh workflow 34907352811 passed unit/canon/state/HTTP/security setup and failed only browser/device smoke as expected: CHRONICA GREEN; Roguelite desktop/mobile RED at 4.0.0 vs 1.0.0; Survivor mobile/desktop RED with canonContract missing. No queued-game product write performed; queue remains on chronica-3d."}
   ]
 }
