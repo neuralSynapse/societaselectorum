@@ -1,0 +1,36 @@
+name: MUNDUS Survivor V6 QA
+on:
+  push:
+    branches: [feat/harun-survivor-v6-reference-parity]
+permissions:
+  contents: read
+jobs:
+  survivor-v6-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static V6 contracts
+        run: |
+          set -euo pipefail
+          test -f mundus/harun-survivor/js/art-v6.js
+          test -f mundus/harun-survivor/js/feel-v6.js
+          test -f mundus/harun-survivor/js/companions-v6.js
+          test -f mundus/harun-survivor/js/hud-v6.js
+          test -f mundus/harun-survivor/js/events-v6.js
+          test -f mundus/harun-survivor/js/meta-v6.js
+          test -f mundus/harun-survivor/css/survivor-v6.css
+          test -f mundus/harun-survivor/v6.html
+          grep -Fq "version:'6.0.0'" mundus/harun-survivor/js/art-v6.js
+          grep -Fq "window.HarunV6Feel" mundus/harun-survivor/js/feel-v6.js
+          grep -Fq "window.HarunV6Companions" mundus/harun-survivor/js/companions-v6.js
+          grep -Fq "window.HarunV6HUD" mundus/harun-survivor/js/hud-v6.js
+          grep -Fq "window.HarunV6Events" mundus/harun-survivor/js/events-v6.js
+          grep -Fq "window.HarunV6Meta" mundus/harun-survivor/js/meta-v6.js
+          grep -Fq "survivor-v6.css" mundus/harun-survivor/v6.html
+          grep -Fq "art-v6.js" mundus/harun-survivor/v6.html
+          grep -Fq "feel-v6.js" mundus/harun-survivor/v6.html
+          grep -Fq "companions-v6.js" mundus/harun-survivor/v6.html
+          grep -Fq "hud-v6.js" mundus/harun-survivor/v6.html
+          grep -Fq "events-v6.js" mundus/harun-survivor/v6.html
+          grep -Fq "meta-v6.js" mundus/harun-survivor/v6.html
