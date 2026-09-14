@@ -3,14 +3,14 @@ import fs from 'node:fs';
 const BASE='https://project27912.websitepublisher.ai';
 const cases=[
   {id:'chronica-3d',sentinelId:'chronica-3d',label:'desktop',route:'/chronica-harun-3d.html',viewport:{width:1440,height:900},start:'#action',canvas:'#stage canvas',settle:650,timeout:60000,capture:false,keyboard:false,canonContract:'1.0.0',canonicalStages:16},
-  {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'desktop',route:'/harun-roguelite.html',viewport:{width:1280,height:720},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,canonContract:'4.0.0',floors:16,primaryRooms:112},
-  {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'mobile',route:'/harun-roguelite.html',viewport:{width:390,height:844},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:false,canonContract:'4.0.0',floors:16,primaryRooms:112},
-  {id:'harun-survivor',sentinelId:'harun-survivor',label:'mobile',route:'/harun-survivor.html',viewport:{width:390,height:844},start:'#startQuick',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,degrees:33,tarot:78,preIngressusStages:3,ingressusScrolls:3,studentScrolls:12},
-  {id:'harun-survivor',sentinelId:'harun-survivor',label:'desktop-compat',route:'/harun-survivor.html',viewport:{width:1280,height:720},start:'#startQuick',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,degrees:33,tarot:78,preIngressusStages:3,ingressusScrolls:3,studentScrolls:12},
+  {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'desktop',route:'/harun-roguelite.html',viewport:{width:1280,height:720},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,canonContract:'1.0.0',canonicalStages:16,floors:16,primaryRooms:112},
+  {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'mobile',route:'/harun-roguelite.html',viewport:{width:390,height:844},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:false,canonContract:'1.0.0',canonicalStages:16,floors:16,primaryRooms:112},
+  {id:'harun-survivor',sentinelId:'harun-survivor',label:'mobile',route:'/harun-survivor.html',viewport:{width:390,height:844},start:'#startQuick',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,canonContract:'1.0.0',canonicalStages:16,degrees:33,tarot:78,preIngressusStages:3,ingressusScrolls:3,studentScrolls:12},
+  {id:'harun-survivor',sentinelId:'harun-survivor',label:'desktop-compat',route:'/harun-survivor.html',viewport:{width:1280,height:720},start:'#startQuick',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,canonContract:'1.0.0',canonicalStages:16,degrees:33,tarot:78,preIngressusStages:3,ingressusScrolls:3,studentScrolls:12},
 ];
 const perf=[];
 for(const cfg of cases){
-  test(`${cfg.id} ${cfg.label} boots, matches immutable per-game contract and accepts primary interaction`,async({page})=>{
+  test(`${cfg.id} ${cfg.label} boots, matches immutable shared canon contract and accepts primary interaction`,async({page})=>{
     test.setTimeout(cfg.timeout);
     await page.setViewportSize(cfg.viewport);
     const fatal=[],failed=[];
@@ -31,8 +31,8 @@ for(const cfg of cases){
     const canon=await page.evaluate(()=>window.__MUNDUS_SENTINEL__);
     expect(canon?.gameId,JSON.stringify(canon)).toBe(cfg.sentinelId);
     expect(canon?.institutionalWrite ?? canon?.qa?.institutionalWrite ?? false).toBe(false);
-    if(cfg.canonContract!==undefined)expect(canon?.canonContract,JSON.stringify(canon)).toBe(cfg.canonContract);
-    if(cfg.canonicalStages!==undefined)expect(canon?.canonicalStages,JSON.stringify(canon)).toBe(cfg.canonicalStages);
+    expect(canon?.canonContract,JSON.stringify(canon)).toBe(cfg.canonContract);
+    expect(canon?.canonicalStages,JSON.stringify(canon)).toBe(cfg.canonicalStages);
     if(cfg.floors!==undefined)expect(canon?.floors,JSON.stringify(canon)).toBe(cfg.floors);
     if(cfg.primaryRooms!==undefined)expect(canon?.primaryRooms,JSON.stringify(canon)).toBe(cfg.primaryRooms);
     if(cfg.degrees!==undefined)expect(canon?.degrees,JSON.stringify(canon)).toBe(cfg.degrees);
