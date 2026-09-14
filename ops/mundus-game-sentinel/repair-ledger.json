@@ -110,6 +110,37 @@
       "rollback": "No product rollback performed. If/when Roguelite becomes active, restore compatible shared-guard integration with a minimal patch rather than reverting unrelated BUILD 52 gameplay work.",
       "circuitState": "OPEN_FOR_QUEUED_GAME",
       "remainingBlocker": "Roguelite must restore machine-readable compatibility with the shared 16-stage CHRONICA contract while retaining any 33-chamber structure strictly as presentation/gameplay subdivisions."
+    },
+    {
+      "fingerprint": "SENTINEL:CROSS_GAME_QA:IMMUTABLE_CONTRACT_ASSERTIONS_WEAKENED",
+      "firstDetectedAt": "2026-09-14T04:03:19Z",
+      "lastDetectedAt": "2026-09-14T04:40:49Z",
+      "component": "ops/mundus-game-sentinel/browser-smoke.spec.mjs",
+      "classification": "SUPERVISOR_QA_REGRESSION",
+      "productFailure": false,
+      "testFailure": true,
+      "hypothesis": "Commit c22501ab changed the transversal browser test from one immutable shared canon contract (1.0.0/16 stages) to permissive per-game expectations, explicitly accepting Roguelite canonContract=4.0.0 and omitting shared canonContract/canonicalStages assertions for Survivor. This produced a false-green workflow while live cross-game contract drift still existed.",
+      "evidence": {"falseGreenCommit":"c22501ab13618fe047389a2b3b36e29935d26f47","falseGreenWorkflowRun":34804584399,"falseGreenConclusion":"success","falseGreenArtifact":10332453057,"repairCommit":"5442ba1b9b994776868424e9ed35c9b5d1cd0df3","verificationWorkflowRun":34806874272,"verificationConclusion":"failure_expected_due_real_contract_drift","verificationArtifact":10333321692,"verificationArtifactDigest":"sha256:0104e795a737a8ff8d7d256f2af8fac4ebd7c68f099cda3b9a3ca9f9b6d20d79","chronica":"GREEN","rogueliteDesktop":"RED_4.0.0_VS_1.0.0","rogueliteMobile":"RED_4.0.0_VS_1.0.0","survivorMobile":"RED_CONTRACT_MISSING","survivorDesktop":"RED_CONTRACT_MISSING"},
+      "attempts": [{"attempt":1,"action":"Restored the immutable shared assertions canonContract=1.0.0 and canonicalStages=16 for every active game, preserving game-specific secondary telemetry assertions. Re-ran the full transversal browser matrix.","result":"QA_REPAIRED_PRODUCT_DRIFT_RECONFIRMED"}],
+      "rollback": "Revert commit 5442ba1b9b994776868424e9ed35c9b5d1cd0df3 only if the governing canon-contract.json is explicitly superseded. Never weaken shared contract assertions merely to turn a red product into a green test.",
+      "circuitState": "CLOSED",
+      "closedAt": "2026-09-14T04:40:49Z",
+      "remainingBlocker": "Queued-game product drift remains real: Roguelite publishes contract 4.0.0 and Survivor omits mandatory shared contract telemetry. chronica-3d remains activeGame, so no queued-game product patch was applied."
+    },
+    {
+      "fingerprint": "SENTINEL:SELF_HEALTH:AUTOMATION_MISSED_TICK_2026-09-14T04Z",
+      "firstDetectedAt": "2026-09-14T04:40:49Z",
+      "lastDetectedAt": "2026-09-14T04:40:49Z",
+      "component": ".github/workflows/mundus-game-sentinel-scheduled.yml + supervisor cadence",
+      "classification": "SUPERVISOR_SCHEDULING",
+      "productFailure": false,
+      "testFailure": false,
+      "hypothesis": "The hourly scheduler file still exists on main with cron 17 * * * *, but the latest real scheduled workflow remains run 34794723643 updated at 01:22:22Z. The previous supervisor reconciliation was at 01:59:09Z and the current one at 04:40:49Z. Both gaps exceed the 90-minute SELF_HEALTH threshold, while push-triggered CI continued to function.",
+      "evidence": {"schedulerPath":".github/workflows/mundus-game-sentinel-scheduled.yml","schedulerCron":"17 * * * *","latestScheduledRun":34794723643,"latestScheduledUpdatedAt":"2026-09-14T01:22:22Z","currentSupervisorRunAt":"2026-09-14T04:40:49Z","supervisorGapMinutesApprox":162,"scheduledGapMinutesApprox":198,"pushWorkflowHealthy":true},
+      "attempts": [{"attempt":1,"action":"Verified the scheduler definition still exists on main and distinguished healthy push CI from missing expected scheduled executions. No scheduler rewrite was attempted because the cause of GitHub schedule non-delivery is not yet proven and blind workflow churn would violate the minimal-repair rule.","result":"RED_SELF_HEALTH_NO_UNPROVEN_PATCH"}],
+      "rollback": "No code rollback required; no scheduler change was made in this incident.",
+      "circuitState": "OPEN_OBSERVE_NEXT_CYCLE",
+      "remainingBlocker": "SELF_HEALTH remains RED until a real scheduled execution resumes within the allowed cadence or a reproducible repository-side scheduler fault is identified and repaired."
     }
   ]
 }
