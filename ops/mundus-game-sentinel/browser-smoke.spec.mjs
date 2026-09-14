@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 const BASE='https://project27912.websitepublisher.ai';
+const CANON_CONTRACT='1.0.0';
+const CANONICAL_STAGES=16;
 const cases=[
   {id:'chronica-3d',sentinelId:'chronica-3d',label:'desktop',route:'/chronica-harun-3d.html',viewport:{width:1440,height:900},start:'#action',canvas:'#stage canvas',settle:650,timeout:60000,capture:false,keyboard:false},
   {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'desktop',route:'/harun-roguelite.html',viewport:{width:1280,height:720},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true},
@@ -10,7 +12,7 @@ const cases=[
 ];
 const perf=[];
 for(const cfg of cases){
-  test(`${cfg.id} ${cfg.label} boots, matches live contract and accepts primary interaction`,async({page})=>{
+  test(`${cfg.id} ${cfg.label} boots, matches immutable shared contract and accepts primary interaction`,async({page})=>{
     test.setTimeout(cfg.timeout);
     await page.setViewportSize(cfg.viewport);
     const fatal=[],failed=[];
@@ -31,7 +33,8 @@ for(const cfg of cases){
     const canon=await page.evaluate(()=>window.__MUNDUS_SENTINEL__);
     expect(canon?.gameId,JSON.stringify(canon)).toBe(cfg.sentinelId);
     expect(canon?.institutionalWrite ?? canon?.qa?.institutionalWrite ?? false).toBe(false);
-    if(cfg.id==='chronica-3d')expect(canon?.canonicalStages).toBe(16);
+    expect(canon?.canonContract,JSON.stringify(canon)).toBe(CANON_CONTRACT);
+    expect(canon?.canonicalStages,JSON.stringify(canon)).toBe(CANONICAL_STAGES);
     if(cfg.id==='harun-roguelite'){
       expect(canon?.floors).toBe(16);
       expect(canon?.primaryRooms).toBe(112);
