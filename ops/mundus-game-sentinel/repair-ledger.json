@@ -135,12 +135,29 @@
       "classification": "SUPERVISOR_SCHEDULING",
       "productFailure": false,
       "testFailure": false,
-      "hypothesis": "The hourly scheduler file still exists on main with cron 17 * * * *, but the latest real scheduled workflow remains run 34794723643 updated at 01:22:22Z. The previous supervisor reconciliation was at 01:59:09Z and the current one at 04:40:49Z. Both gaps exceed the 90-minute SELF_HEALTH threshold, while push-triggered CI continued to function.",
-      "evidence": {"schedulerPath":".github/workflows/mundus-game-sentinel-scheduled.yml","schedulerCron":"17 * * * *","latestScheduledRun":34794723643,"latestScheduledUpdatedAt":"2026-09-14T01:22:22Z","currentSupervisorRunAt":"2026-09-14T04:40:49Z","supervisorGapMinutesApprox":162,"scheduledGapMinutesApprox":198,"pushWorkflowHealthy":true},
-      "attempts": [{"attempt":1,"action":"Verified the scheduler definition still exists on main and distinguished healthy push CI from missing expected scheduled executions. No scheduler rewrite was attempted because the cause of GitHub schedule non-delivery is not yet proven and blind workflow churn would violate the minimal-repair rule.","result":"RED_SELF_HEALTH_NO_UNPROVEN_PATCH"}],
+      "hypothesis": "The hourly scheduler file still exists on main with cron 17 * * * *, but the latest real scheduled workflow remains run 34794723643 updated at 01:22:22Z. The previous state reconciliation timestamp was 01:59:09Z and the current one at 04:40:49Z. Interpreting state.lastRunAt as the automation task timestamp suggested a gap above the 90-minute threshold.",
+      "evidence": {"schedulerPath":".github/workflows/mundus-game-sentinel-scheduled.yml","schedulerCron":"17 * * * *","latestScheduledRun":34794723643,"latestScheduledUpdatedAt":"2026-09-14T01:22:22Z","stateTimestampUsed":"2026-09-14T01:59:09Z","initialInterpretation":"POSSIBLE_AUTOMATION_GAP"},
+      "attempts": [{"attempt":1,"action":"Verified the scheduler definition still exists on main and initially distinguished healthy push CI from missing expected scheduled executions. No scheduler rewrite was attempted because the cause of GitHub schedule non-delivery was not proven.","result":"SUPERSEDED_BY_ACTUAL_AUTOMATION_TASK_READBACK"}],
       "rollback": "No code rollback required; no scheduler change was made in this incident.",
-      "circuitState": "OPEN_OBSERVE_NEXT_CYCLE",
-      "remainingBlocker": "SELF_HEALTH remains RED until a real scheduled execution resumes within the allowed cadence or a reproducible repository-side scheduler fault is identified and repaired."
+      "circuitState": "SUPERSEDED_FALSE_POSITIVE",
+      "closedAt": "2026-09-14T04:47:38Z",
+      "remainingBlocker": "None for ChatGPT automation cadence; actual task last_run_time proved cadence healthy. GitHub schedule history may still be observed independently but does not demote SELF_HEALTH while task cadence and fresh branch CI are current."
+    },
+    {
+      "fingerprint": "SENTINEL:SELF_HEALTH:STATE_TIMESTAMP_NOT_AUTOMATION_TIMESTAMP",
+      "firstDetectedAt": "2026-09-14T04:47:38Z",
+      "lastDetectedAt": "2026-09-14T04:47:38Z",
+      "component": "ops/mundus-game-sentinel/state.json + task mundus-game-sentinel",
+      "classification": "SUPERVISOR_DIAGNOSTIC_CORRECTION",
+      "productFailure": false,
+      "testFailure": true,
+      "hypothesis": "state.lastRunAt is a reconciliation timestamp and cannot substitute for the actual automation task last_run_time when evaluating SELF_HEALTH. The task itself reported last_run_time 2026-09-14T03:56:26.681844Z, about 51 minutes before the current reconciliation, below the 90-minute threshold. Fresh branch CI also completed at 04:40:49Z.",
+      "evidence": {"automationTaskId":"6aa6325001d08191be31e19ecea00234","automationTaskLastRun":"2026-09-14T03:56:26.681844Z","currentObservedAt":"2026-09-14T04:47:38Z","gapMinutesApprox":51,"thresholdMinutes":90,"latestBranchWorkflow":34806874272,"latestBranchWorkflowCompletedAt":"2026-09-14T04:40:49Z"},
+      "attempts": [{"attempt":1,"action":"Read back the actual MUNDUS Sentinel L4 automation record, corrected SELF_HEALTH to GREEN in state.json, and preserved the prior false-positive incident rather than deleting or rewriting history.","result":"GREEN_SELF_HEALTH_CORRECTED"}],
+      "rollback": "If future task readback shows a real gap above 90 minutes, demote SELF_HEALTH using the actual task last_run_time rather than state reconciliation timestamps.",
+      "circuitState": "CLOSED",
+      "closedAt": "2026-09-14T04:47:38Z",
+      "remainingBlocker": "No SELF_HEALTH blocker. CROSS_GAME_CONTRACT and REGRESSION remain RED from queued-game product drift."
     }
   ]
 }
