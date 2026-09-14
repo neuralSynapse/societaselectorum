@@ -5,7 +5,7 @@
   "activeGame": "chronica-3d",
   "queue": ["chronica-3d", "harun-roguelite", "harun-survivor"],
   "status": "RED",
-  "lastRunAt": "2026-09-14T01:59:09Z",
+  "lastRunAt": "2026-09-14T04:40:49Z",
   "lastGreenAt": null,
   "canonContractVersion": "1.0.0",
   "baseline": {},
@@ -52,48 +52,47 @@
         "SAVE_INTEGRITY_GREEN": "UNKNOWN",
         "RECOVERY_GREEN": "UNKNOWN",
         "CROSS_GAME_CONTRACT_GREEN": "RED",
-        "SELF_HEALTH_GREEN": "GREEN"
+        "SELF_HEALTH_GREEN": "RED"
       },
       "lastGreenAt": null,
       "failureFingerprint": "CROSS_GAME:CROSS_GAME_CONTRACT:LIVE_CONTRACT_DRIFT",
       "repairAttempts": 0,
       "lastRepair": {
-        "at": "2026-09-13T18:37:00Z",
-        "component": "WebsitePublisher:js/mundus-canon-guard.js",
-        "classification": "SHARED_QA_CONTRACT",
-        "beforeHash": "18ff87f3",
-        "afterHash": "eac476c7",
-        "rollbackHash": "18ff87f3",
-        "result": "PARTIAL_RECOVERY_SURVIVOR_MATRIX_ON_SUPERSEDED_BUILD"
+        "at": "2026-09-14T04:39:38Z",
+        "component": "ops/mundus-game-sentinel/browser-smoke.spec.mjs",
+        "classification": "SUPERVISOR_QA_REGRESSION",
+        "beforeCommit": "c22501ab13618fe047389a2b3b36e29935d26f47",
+        "afterCommit": "5442ba1b9b994776868424e9ed35c9b5d1cd0df3",
+        "rollbackRef": "c22501ab13618fe047389a2b3b36e29935d26f47",
+        "result": "QA_ASSERTIONS_RESTORED_PRODUCT_DRIFT_RECONFIRMED"
       },
       "evidence": {
-        "workflowRun": 34797417538,
-        "workflowCommit": "d9e5e68daaefc528041fb49b19eb2ec98eda9793",
+        "workflowRun": 34806874272,
+        "workflowCommit": "5442ba1b9b994776868424e9ed35c9b5d1cd0df3",
         "workflowConclusion": "failure_cross_game_contract",
-        "artifactId": 10330271986,
-        "artifactDigest": "sha256:75182d03d29b8c083e04026d4687cc8cf7d549701f3561424dbe863750c4d319",
+        "artifactId": 10333321692,
+        "artifactDigest": "sha256:0104e795a737a8ff8d7d256f2af8fac4ebd7c68f099cda3b9a3ca9f9b6d20d79",
         "productionPageHash": "5b70081a",
-        "productionUpdatedAt": "2026-09-13T23:42:10Z",
         "browserCurrentProduction": {
           "desktop1440x900": "GREEN",
-          "durationMs": 24698,
-          "sentinelReadyMs": 5135,
-          "domContentLoadedMs": 1258.1,
-          "loadEventEndMs": 5511.4,
+          "durationMs": 17717,
+          "sentinelReadyMs": 5299,
+          "domContentLoadedMs": 2006.7,
+          "loadEventEndMs": 4969.9,
           "fatalAsyncErrors": 0,
           "criticalRequestFailures": 0
         },
         "httpCurrentProduction": {"status": 200, "runtime": "GREEN", "assets": "GREEN"},
-        "canonCurrentProduction": {"contract": "1.0.0", "canonicalStages": 16, "loadsSharedGuard": true, "institutionalWrite": false},
+        "canonCurrentProduction": {"contract": "1.0.0", "canonicalStages": 16, "institutionalWrite": false},
         "selfHealth": {
-          "chatSupervisorLastRecordedRun": "2026-09-14T00:57:53Z",
-          "currentRunAt": "2026-09-14T01:59:09Z",
-          "gapMinutesApprox": 61,
+          "previousSupervisorRun": "2026-09-14T01:59:09Z",
+          "currentRunAt": "2026-09-14T04:40:49Z",
+          "supervisorGapMinutesApprox": 162,
           "thresholdMinutes": 90,
-          "githubScheduledRun": 34794723643,
-          "githubScheduledConclusion": "success",
-          "githubScheduledUpdatedAt": "2026-09-14T01:22:22Z",
-          "classification": "RECOVERED"
+          "latestGitHubScheduledRun": 34794723643,
+          "latestGitHubScheduledUpdatedAt": "2026-09-14T01:22:22Z",
+          "scheduledGapMinutesApprox": 198,
+          "classification": "SUPERVISOR_GAP_AND_AUTOMATION_MISSED_TICK"
         },
         "notYetProven": [
           "movement-and-primary-input-after-run-start",
@@ -122,34 +121,21 @@
         "PLATFORM_GREEN": "UNKNOWN",
         "REGRESSION_GREEN": "RED"
       },
-      "level3Gates": {
-        "PERFORMANCE_GREEN": "UNKNOWN",
-        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
-        "DEVICE_MATRIX_GREEN": "UNKNOWN",
-        "SECURITY_GREEN": "UNKNOWN"
-      },
-      "level4Gates": {
-        "EVIDENCE_FRESHNESS_GREEN": "GREEN",
-        "SAVE_INTEGRITY_GREEN": "UNKNOWN",
-        "RECOVERY_GREEN": "UNKNOWN",
-        "CROSS_GAME_CONTRACT_GREEN": "RED",
-        "SELF_HEALTH_GREEN": "GREEN"
-      },
+      "level3Gates": {"PERFORMANCE_GREEN":"UNKNOWN","ASYNC_RUNTIME_GREEN":"UNKNOWN","DEVICE_MATRIX_GREEN":"UNKNOWN","SECURITY_GREEN":"UNKNOWN"},
+      "level4Gates": {"EVIDENCE_FRESHNESS_GREEN":"GREEN","SAVE_INTEGRITY_GREEN":"UNKNOWN","RECOVERY_GREEN":"UNKNOWN","CROSS_GAME_CONTRACT_GREEN":"RED","SELF_HEALTH_GREEN":"RED"},
       "lastGreenAt": null,
       "failureFingerprint": "ROGUELITE:CROSS_GAME_CONTRACT:CONTRACT_VERSION_DRIFT_4.0.0_VS_1.0.0",
       "repairAttempts": 0,
       "lastRepair": null,
       "evidence": {
         "productionPageHash": "84404e80",
-        "productionUpdatedAt": "2026-09-13T23:32:50Z",
-        "workflowRun": 34797417538,
+        "workflowRun": 34806874272,
         "desktop": "RED_CONTRACT_ASSERTION",
         "mobile": "RED_CONTRACT_ASSERTION",
         "observedContract": "4.0.0",
         "requiredContract": "1.0.0",
-        "declaredFloors": 16,
+        "floors": 16,
         "primaryRooms": 112,
-        "loadsSharedGuard": false,
         "institutionalWrite": false,
         "httpStatus": 200
       }
@@ -167,33 +153,20 @@
         "PLATFORM_GREEN": "UNKNOWN",
         "REGRESSION_GREEN": "RED"
       },
-      "level3Gates": {
-        "PERFORMANCE_GREEN": "UNKNOWN",
-        "ASYNC_RUNTIME_GREEN": "UNKNOWN",
-        "DEVICE_MATRIX_GREEN": "UNKNOWN",
-        "SECURITY_GREEN": "UNKNOWN"
-      },
-      "level4Gates": {
-        "EVIDENCE_FRESHNESS_GREEN": "GREEN",
-        "SAVE_INTEGRITY_GREEN": "UNKNOWN",
-        "RECOVERY_GREEN": "UNKNOWN",
-        "CROSS_GAME_CONTRACT_GREEN": "RED",
-        "SELF_HEALTH_GREEN": "GREEN"
-      },
+      "level3Gates": {"PERFORMANCE_GREEN":"UNKNOWN","ASYNC_RUNTIME_GREEN":"UNKNOWN","DEVICE_MATRIX_GREEN":"UNKNOWN","SECURITY_GREEN":"UNKNOWN"},
+      "level4Gates": {"EVIDENCE_FRESHNESS_GREEN":"GREEN","SAVE_INTEGRITY_GREEN":"UNKNOWN","RECOVERY_GREEN":"UNKNOWN","CROSS_GAME_CONTRACT_GREEN":"RED","SELF_HEALTH_GREEN":"RED"},
       "lastGreenAt": null,
       "failureFingerprint": "SURVIVOR:CROSS_GAME_CONTRACT:REQUIRED_CONTRACT_TELEMETRY_MISSING",
       "repairAttempts": 0,
       "lastRepair": null,
       "evidence": {
         "productionPageHash": "9ddde73f",
-        "productionUpdatedAt": "2026-09-13T23:47:45Z",
-        "workflowRun": 34797417538,
+        "workflowRun": 34806874272,
         "mobile": "RED_CONTRACT_ASSERTION",
         "desktop": "RED_CONTRACT_ASSERTION",
         "observedContract": null,
         "requiredContract": "1.0.0",
         "observedCanonicalStages": null,
-        "loadsSharedGuard": false,
         "institutionalWrite": false,
         "httpStatus": 200
       }
@@ -202,9 +175,9 @@
   "failureFingerprint": "CROSS_GAME:CROSS_GAME_CONTRACT:LIVE_CONTRACT_DRIFT",
   "repairAttempts": 0,
   "lastRepair": {
-    "at": "2026-09-13T18:37:00Z",
-    "component": "WebsitePublisher:js/mundus-canon-guard.js",
-    "result": "Survivor telemetry recovered on a superseded build; current Roguelite and Survivor builds require contract reconciliation"
+    "at": "2026-09-14T04:39:38Z",
+    "component": "ops/mundus-game-sentinel/browser-smoke.spec.mjs",
+    "result": "Restored immutable shared contract assertions after a false-green QA relaxation; fresh transversal smoke reconfirmed queued-game product drift."
   },
   "nextGame": "harun-roguelite",
   "notes": [
@@ -216,6 +189,7 @@
     {"at":"2026-09-13T16:43:49Z","game":"chronica-3d","note":"Roguelite cross-game contract regression detected; queued-game product repair deferred."},
     {"at":"2026-09-13T18:40:35Z","game":"chronica-3d","note":"Shared guard telemetry repair improved then-current browser matrix but did not resolve Roguelite product drift."},
     {"at":"2026-09-14T00:29:05Z","game":"chronica-3d","note":"All production pages had changed after prior browser evidence; stale runtime greens were demoted and a 349-minute supervisor gap was recorded."},
-    {"at":"2026-09-14T01:59:09Z","game":"chronica-3d","note":"Fresh reconciliation against workflow 34797417538 and unchanged current production hashes. CHRONICA desktop browser smoke is GREEN on page hash 5b70081a, with HTTP/assets and async runtime clean; runtime-dependent CHRONICA evidence is fresh again. Roguelite remains RED because live contract is 4.0.0 vs immutable 1.0.0. Survivor is now explicitly RED for missing required 1.0.0/canonicalStages telemetry on current hash 9ddde73f. Scheduler/self-health recovered: real GitHub schedule run 34794723643 completed successfully and the supervisor cadence is back under the 90-minute threshold. No product patch applied because CHRONICA has no reproduced product fault and queued-game writes remain forbidden."}
+    {"at":"2026-09-14T01:59:09Z","game":"chronica-3d","note":"Fresh reconciliation restored current CHRONICA runtime evidence but retained cross-game contract RED."},
+    {"at":"2026-09-14T04:40:49Z","game":"chronica-3d","note":"Detected a false-green QA regression in commit c22501ab: browser smoke accepted Roguelite contract 4.0.0 and stopped requiring shared contract telemetry from Survivor. Restored immutable 1.0.0/16-stage assertions in commit 5442ba1b. Fresh run 34806874272 correctly failed 4/5 transversal scenarios: CHRONICA passed; Roguelite failed desktop/mobile with 4.0.0 vs 1.0.0; Survivor failed desktop/mobile with missing canonContract. SELF_HEALTH demoted to RED because supervisor cadence gap was ~162 minutes and the latest real scheduled GitHub run remains 34794723643, updated 2026-09-14T01:22:22Z, exceeding the 90-minute threshold. No queued-game product write performed."}
   ]
 }
