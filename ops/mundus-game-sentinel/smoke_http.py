@@ -5,7 +5,7 @@ BASE="https://project27912.websitepublisher.ai"
 GAME_CONFIG={
  "chronica-3d":{"route":"/chronica-harun-3d.html","criticalAssets":["chronica-canon.js","chronica-parity.js","chronica-v2.js"]},
  "harun-roguelite":{"route":"/harun-roguelite.html","criticalAssets":["harun-roguelite.js"]},
- "harun-survivor":{"route":"/harun-survivor.html","criticalAssets":["harun-survivor-data-v3.js","harun-survivor-art-v3.js","harun-survivor-engine-v3.js","harun-survivor-v3.css"]}}
+ "harun-survivor":{"route":"/harun-survivor.html","criticalAssets":["survivor-v3.css","survivor-v5.css","data-v3.js","art-v3.js","engine-v3.js","progression-v5.js","systems-v5.js","companions-v5.js","world-v5.js","runtime-v5.js"]}}
 
 def evaluate_page(game,status,html,failed_requests):
     cfg=GAME_CONFIG[game]; errors=[]; runtime="GREEN" if status==200 and "<html" in html.lower() else "RED"; missing=[a for a in cfg["criticalAssets"] if a not in html]; failed=[x for x in failed_requests if any(a in x for a in cfg["criticalAssets"])]; asset="GREEN" if not missing and not failed else "RED"
