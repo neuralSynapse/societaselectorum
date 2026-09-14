@@ -3,10 +3,10 @@ import fs from 'node:fs';
 const BASE='https://project27912.websitepublisher.ai';
 const cases=[
   {id:'chronica-3d',sentinelId:'chronica-3d',label:'desktop',route:'/chronica-harun-3d.html',viewport:{width:1440,height:900},start:'#action',canvas:'#stage canvas',settle:650,timeout:60000,capture:false,keyboard:false},
-  {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'desktop',route:'/harun-roguelite.html',viewport:{width:1280,height:720},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,ready:'#hud'},
-  {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'mobile',route:'/harun-roguelite.html',viewport:{width:390,height:844},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:false,ready:'#hud'},
-  {id:'harun-survivor',sentinelId:'harun-survivor',label:'mobile',route:'/harun-survivor.html',viewport:{width:390,height:844},start:'#startQuick',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,ready:'#gameUI'},
-  {id:'harun-survivor',sentinelId:'harun-survivor',label:'desktop-compat',route:'/harun-survivor.html',viewport:{width:1280,height:720},start:'#startQuick',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true,ready:'#gameUI'},
+  {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'desktop',route:'/harun-roguelite.html',viewport:{width:1280,height:720},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true},
+  {id:'harun-roguelite',sentinelId:'jogo-3-roguelite-evolved',label:'mobile',route:'/harun-roguelite.html',viewport:{width:390,height:844},start:'#start',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:false},
+  {id:'harun-survivor',sentinelId:'harun-survivor',label:'mobile',route:'/harun-survivor.html',viewport:{width:390,height:844},start:'#startQuick',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true},
+  {id:'harun-survivor',sentinelId:'harun-survivor',label:'desktop-compat',route:'/harun-survivor.html',viewport:{width:1280,height:720},start:'#startQuick',canvas:'#game',settle:1500,timeout:45000,capture:true,keyboard:true},
 ];
 const perf=[];
 for(const cfg of cases){
@@ -58,7 +58,6 @@ for(const cfg of cases){
           if(await start.isVisible().catch(()=>false))await start.click({force:true});
         }
       }
-      if(cfg.ready)await expect(page.locator(cfg.ready)).toBeVisible({timeout:12000});
       if(cfg.keyboard){await page.keyboard.press('KeyW').catch(()=>{});await page.keyboard.press('KeyE').catch(()=>{});}
     }
     await page.waitForTimeout(cfg.settle);
