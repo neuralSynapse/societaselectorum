@@ -1,0 +1,16 @@
+(function(){
+'use strict';
+const Core=window.HarunSurvivorDebug,D=window.HarunSurvivorData;if(!Core||!D)return;const frame=document.querySelector('.frame'),pause=document.querySelector('#pause');
+let strip=document.querySelector('#v6SkillStrip');if(!strip){strip=document.createElement('div');strip.id='v6SkillStrip';strip.hidden=true;frame.appendChild(strip)}
+let panel=document.querySelector('#v6Pause');if(!panel){panel=document.createElement('section');panel.id='v6Pause';panel.hidden=true;panel.innerHTML='<div class="v6-pause-card"><b class="v6-pause-title">PAUSAR</b><div class="v6-pause-sub">HABILIDADES ADQUIRIDAS</div><div id="v6PauseSkills" class="v6-skill-grid"></div><div id="v6PauseStats" class="v6-pause-sub"></div><div class="v6-pause-actions"><button class="leave">SAIR DA BATALHA</button><button class="resume">▶ CONTINUAR</button></div></div>';frame.appendChild(panel)}
+const colors={rare:'#53d98d',epic:'#c76cff',legend:'#ffd45f'};let sig='';
+function skillOf(id){return D.skills.find(s=>s.id===id)||{id,name:id,icon:'✦',tier:'rare',max:5}}
+function render(run){if(!run){strip.hidden=true;return}strip.hidden=false;const entries=Object.entries(run.skills||{}).filter(([,v])=>v>0);const s=entries.slice(-7).map(([id,l])=>{const x=skillOf(id),master=l>=(x.max||5);return `<i class="${master?'master':''}" style="--c:${colors[x.tier]||'#7be0ce'}" title="${x.name} ${l}">${x.icon||'✦'}</i>`}).join('');if(strip.innerHTML!==s)strip.innerHTML=s;
+  const allMax=D.skills.length>0&&D.skills.every(x=>(run.skills?.[x.id]||0)>=(x.max||5));const lv=document.querySelector('#level');if(lv)lv.textContent=allMax?'Lv.Max':`Lv.${run.level}`;
+  if(!panel.hidden){document.querySelector('#v6PauseSkills').innerHTML=entries.map(([id,l])=>{const x=skillOf(id);return `<div class="v6-skill-cell" style="--c:${colors[x.tier]||'#53d98d'}" title="${x.name}"><i>${x.icon||'✦'}</i><b>${l}</b></div>`}).join('')||'<small>NENHUMA HABILIDADE</small>';const p=run.player;document.querySelector('#v6PauseStats').textContent=`ONDA ${run.wave} · SOPRO ${Math.ceil(p.hp)}/${Math.ceil(p.maxHp)} · DANO ${p.damage.toFixed(1)} · MOV ${Math.round(p.speed)}`}}
+function syncPause(){const st=Core.getState();if(st.state!=='run'){panel.hidden=true;return}const paused=pause?.textContent==='▶';panel.hidden=!paused;if(paused)render(st.run)}
+pause?.addEventListener('click',()=>setTimeout(syncPause,0));panel.querySelector('.resume').onclick=()=>{if(pause?.textContent==='▶')pause.click();panel.hidden=true};panel.querySelector('.leave').onclick=()=>{const st=Core.getState();if(st.run)st.run.v6VoluntaryLeave=true;panel.hidden=true;Core.showMenu('campaign')};
+window.addEventListener('keydown',e=>{if(e.code==='Escape')setTimeout(syncPause,20)});
+function loop(){const st=Core.getState(),run=st.run;const n=run?`${st.state}:${run.level}:${run.wave}:${JSON.stringify(run.skills)}:${pause?.textContent}`:st.state;if(n!==sig){sig=n;render(st.state==='run'?run:null);syncPause()}requestAnimationFrame(loop)}
+window.HarunV6HUD=Object.freeze({version:'6.0.0',refresh:()=>render(Core.getState().run),isPaused:()=>!panel.hidden});requestAnimationFrame(loop);
+})();
