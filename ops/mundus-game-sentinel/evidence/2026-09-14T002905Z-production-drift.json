@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "appendOnlyEvidence": true,
+  "recordedAt": "2026-09-14T00:29:05Z",
+  "activeGame": "chronica-3d",
+  "incidents": [
+    {
+      "fingerprint": "CROSS_GAME:EVIDENCE_FRESHNESS:ALL_THREE_PRODUCTION_DRIFT",
+      "classification": "PRODUCTION_STATE_DIVERGENCE",
+      "productFailure": false,
+      "testFailure": false,
+      "hypothesis": "All three published pages changed after the last browser/workflow evidence, so build-bound GREEN gates are stale until the current production hashes are re-proven.",
+      "evidence": {
+        "latestWorkflowRun": 34772748195,
+        "latestWorkflowUpdatedAt": "2026-09-13T18:40:38Z",
+        "previousProductionPages": {
+          "chronica-3d": "a6cc4e67",
+          "harun-roguelite": "f1ec5453",
+          "harun-survivor": "3d4224fd"
+        },
+        "currentProductionPages": {
+          "chronica-3d": "5b70081a",
+          "harun-roguelite": "84404e80",
+          "harun-survivor": "9ddde73f"
+        },
+        "currentUpdatedAt": {
+          "chronica-3d": "2026-09-13T23:42:10Z",
+          "harun-roguelite": "2026-09-13T23:32:50Z",
+          "harun-survivor": "2026-09-13T23:47:45Z"
+        }
+      },
+      "action": "Reconciled state fail-closed: runtime-bound GREEN gates from superseded production were demoted to UNKNOWN; EVIDENCE_FRESHNESS was set RED; queue did not advance.",
+      "stateCommit": "5c7727c963551f3aa340b3a9bb7725cad6f4f442",
+      "rollback": "Revert state commit 5c7727c963551f3aa340b3a9bb7725cad6f4f442 only if the recorded production hashes or timestamps are proven incorrect.",
+      "circuitState": "OPEN_VERIFY_CURRENT_PRODUCTION"
+    },
+    {
+      "fingerprint": "SENTINEL:SELF_HEALTH:SUPERVISOR_GAP",
+      "classification": "SUPERVISOR_EXECUTION_GAP",
+      "productFailure": false,
+      "testFailure": false,
+      "evidence": {
+        "previousLastRunAt": "2026-09-13T18:40:35Z",
+        "currentRunAt": "2026-09-14T00:29:05Z",
+        "gapMinutes": 349,
+        "thresholdMinutes": 90,
+        "latestWorkflowRun": 34772748195
+      },
+      "action": "SELF_HEALTH set RED and SUPERVISOR_GAP recorded; no claim of continuous autonomous operation.",
+      "circuitState": "OPEN_VERIFYING"
+    },
+    {
+      "fingerprint": "ROGUELITE:CROSS_GAME_CONTRACT:CONTRACT_VERSION_DRIFT_4.0.0_VS_1.0.0",
+      "classification": "PRODUCT_CONTRACT_DRIFT",
+      "productFailure": true,
+      "testFailure": false,
+      "evidence": {
+        "pageHash": "84404e80",
+        "pageCanonContract": "4.0.0",
+        "sharedContractVersion": "1.0.0",
+        "sharedContractHash": "8670e9f1",
+        "sharedAdaptersHash": "d5ad991d",
+        "loadsSharedGuard": false,
+        "declaredFloors": 16,
+        "institutionalWrite": false
+      },
+      "action": "No Roguelite product write performed because chronica-3d remains activeGame. CROSS_GAME_CONTRACT remains RED.",
+      "rollback": "No product rollback performed in this run.",
+      "circuitState": "OPEN_FOR_QUEUED_GAME"
+    }
+  ]
+}
