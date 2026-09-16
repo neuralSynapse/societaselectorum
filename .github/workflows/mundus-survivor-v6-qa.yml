@@ -13,15 +13,18 @@ jobs:
       - name: Static V6 contracts
         run: |
           set -euo pipefail
-          for f in art-v6 feel-v6 companions-v6 hud-v6 events-v6 meta-v6; do node --check "mundus/harun-survivor/js/$f.js"; done
+          for f in art-v6 render-cache-v6 feel-v6 companions-v6 hud-v6 events-v6 meta-v6 meta-transition-v6; do node --check "mundus/harun-survivor/js/$f.js"; done
           test -f mundus/harun-survivor/css/survivor-v6.css
           test -f mundus/harun-survivor/v6.html
           grep -Fq "version:'6.0.0'" mundus/harun-survivor/js/art-v6.js
+          grep -Fq "window.HarunV6RenderCache" mundus/harun-survivor/js/render-cache-v6.js
           grep -Fq "window.HarunV6Feel" mundus/harun-survivor/js/feel-v6.js
           grep -Fq "window.HarunV6Companions" mundus/harun-survivor/js/companions-v6.js
           grep -Fq "window.HarunV6HUD" mundus/harun-survivor/js/hud-v6.js
           grep -Fq "window.HarunV6Events" mundus/harun-survivor/js/events-v6.js
           grep -Fq "window.HarunV6Meta" mundus/harun-survivor/js/meta-v6.js
+          grep -Fq "render-cache-v6.js" mundus/harun-survivor/v6.html
+          grep -Fq ".v6-meta-nav[hidden]{display:none!important}" mundus/harun-survivor/css/survivor-v6.css
           grep -Fq "survivor-v6.css" mundus/harun-survivor/v6.html
           grep -Fq "art-v6.js" mundus/harun-survivor/v6.html
           grep -Fq "feel-v6.js" mundus/harun-survivor/v6.html
