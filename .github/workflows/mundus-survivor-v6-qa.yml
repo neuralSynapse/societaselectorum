@@ -24,7 +24,7 @@ jobs:
           grep -Fq "window.HarunV6Events" mundus/harun-survivor/js/events-v6.js
           grep -Fq "window.HarunV6Meta" mundus/harun-survivor/js/meta-v6.js
           grep -Fq "render-cache-v6.js" mundus/harun-survivor/v6.html
-          grep -Fq ".v6-meta-nav[hidden]{display:none!important}" mundus/harun-survivor/css/survivor-v6.css
+          grep -Fq ".v6-meta-nav[hidden]{display:none!important}" mundus/harun-survivor/js/meta-transition-v6.js
           grep -Fq "survivor-v6.css" mundus/harun-survivor/v6.html
           grep -Fq "art-v6.js" mundus/harun-survivor/v6.html
           grep -Fq "feel-v6.js" mundus/harun-survivor/v6.html
