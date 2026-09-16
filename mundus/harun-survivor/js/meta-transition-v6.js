@@ -2,6 +2,9 @@
 'use strict';
 const frame=document.querySelector('.frame');
 if(!frame)return;
+const style=document.createElement('style');
+style.textContent='.v6-meta-nav[hidden]{display:none!important}';
+document.head.appendChild(style);
 function hideMeta(){
   const meta=document.querySelector('#v6Meta');
   const nav=document.querySelector('#v6MetaNav');
@@ -20,6 +23,6 @@ function guard(){
   if(choiceOwnsScreen())hideMeta();
   requestAnimationFrame(guard);
 }
-window.HarunV6MetaTransition=Object.freeze({version:'6.0.2',hideMeta});
+window.HarunV6MetaTransition=Object.freeze({version:'6.0.3',hideMeta});
 requestAnimationFrame(guard);
 })();
