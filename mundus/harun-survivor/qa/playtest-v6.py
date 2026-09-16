@@ -19,7 +19,7 @@ try:
   with sync_playwright() as p:
     browser=p.chromium.launch(headless=True,executable_path=BROWSER or None,args=['--no-sandbox','--autoplay-policy=no-user-gesture-required'])
     page=browser.new_page(viewport={'width':390,'height':844},device_scale_factor=1)
-    page.add_init_script("localStorage.clear()")
+    page.add_init_script("if(!sessionStorage.getItem('__v6qa_cleaned')){localStorage.clear();sessionStorage.setItem('__v6qa_cleaned','1')}")
     page.on('pageerror',lambda exc: errors.append('pageerror: '+str(exc)))
     page.on('console',lambda msg: errors.append('console: '+msg.text) if msg.type=='error' else None)
     page.goto(URL,wait_until='domcontentloaded',timeout=30000); page.wait_for_timeout(1800)
