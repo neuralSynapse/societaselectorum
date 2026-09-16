@@ -1,0 +1,45 @@
+{
+  "directorLevel": 5,
+  "activeGame": "chronica-3d",
+  "objective": "CH3D-L5-001",
+  "outcome": "REPAIR_APPLIED",
+  "classification": "LOCAL_BLOCKER",
+  "hypothesis": "INPUT cannot be promoted because the production runtime lacks an isolated executable movement/camera proof hook even though the live loop already implements movement and look.",
+  "change": {
+    "asset": "js/chronica-v2.js",
+    "assetBeforeHash": "2975d9f4",
+    "assetAfterHash": "706660ae",
+    "page": "chronica-harun-3d.html",
+    "pageBeforeHash": "61c16d8e",
+    "pageAfterHash": "d640d2e8",
+    "pageVersion": 69,
+    "moduleCacheBust": "130 -> 131",
+    "qaBridgeVersion": "3 -> 4",
+    "hook": "window.__MUNDUS_QA__.movementProbe()"
+  },
+  "safety": {
+    "saveWrite": false,
+    "campaignWrite": false,
+    "institutionalWrite": false,
+    "probeRestoresRuntimeState": true,
+    "canonChanged": false,
+    "gameplayRulesChanged": false
+  },
+  "expectedEvidence": {
+    "movement": "player position delta after three requestAnimationFrame ticks with KeyW isolated",
+    "camera": "yaw and pitch delta through the same sensitivity path",
+    "async": "probe Promise resolves and restores phase/player/input state"
+  },
+  "verification": {
+    "readBack": "PASS: patched asset exposes movementProbe and page references chronica-v2.js?v=131",
+    "browserExecution": "NOT_AVAILABLE_IN_THIS_RUN",
+    "inputGate": "VERIFYING",
+    "reason": "No interactive browser/Playwright executor was available through the authorized WebsitePublisher integration in this run; absence of runtime execution is not promoted to GREEN."
+  },
+  "rollback": {
+    "assetHash": "2975d9f4",
+    "pageVersion": 68,
+    "pageHash": "61c16d8e"
+  },
+  "nextAction": "Execute movementProbe in an authorized browser QA context, capture before/during deltas plus async console/request evidence, then either promote INPUT with fresh evidence or rollback/fix the hook if it fails."
+}
