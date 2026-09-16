@@ -1,7 +1,7 @@
 (function(){
 'use strict';
-const Core=window.HarunSurvivorDebug;if(!Core)return;const frame=document.querySelector('.frame'),TAU=Math.PI*2;
-let canvas=document.querySelector('#v6Feel');if(!canvas){canvas=document.createElement('canvas');canvas.id='v6Feel';canvas.width=540;canvas.height=960;frame.appendChild(canvas)}const c=canvas.getContext('2d');
+const Core=window.HarunSurvivorDebug;if(!Core)return;const frame=document.querySelector('.frame'),TAU=Math.PI*2,renderScale=.58;
+let canvas=document.querySelector('#v6Feel');if(!canvas){canvas=document.createElement('canvas');canvas.id='v6Feel';frame.appendChild(canvas)}canvas.width=Math.round(540*renderScale);canvas.height=Math.round(960*renderScale);const c=canvas.getContext('2d');c.setTransform(renderScale,0,0,renderScale,0,0);c.imageSmoothingEnabled=true;
 let last=performance.now(),lastDraw=0,enemySnap=new Map(),shotSnap=new WeakMap(),lastRun=null,lastHp=null,lastInv=0,bossRef=null,bossBirth=0,fx=[],feedback={hit:0,crit:0,heal:0,block:0,death:0,boss:0};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 function ring(x,y,r,color,life=.45){fx.push({kind:'ring',x,y,r,color,life,max:life})}
@@ -23,5 +23,5 @@ function drawFx(dt,run,now){c.clearRect(0,0,540,960);const lod=run.enemies.lengt
   if(run.boss&&bossBirth){const age=(now-bossBirth)/1000;if(age<1.15){const k=clamp(age/1.15,0,1),r=130*(1-k)+48;c.save();c.globalAlpha=1-k*.65;c.strokeStyle='#e473ff';c.lineWidth=5*(1-k)+1;c.beginPath();c.arc(run.boss.x,run.boss.y,r,0,TAU);c.stroke();for(let i=0;i<8;i++){const a=i*TAU/8+age*2;c.beginPath();c.moveTo(run.boss.x+Math.cos(a)*r*.45,run.boss.y+Math.sin(a)*r*.45);c.lineTo(run.boss.x+Math.cos(a)*r,run.boss.y+Math.sin(a)*r);c.stroke()}c.restore()}}
   const maxFx=lod?Math.min(fx.length,28):fx.length;for(let j=0;j<maxFx;j++){const f=fx[j];f.life-=dt;const k=clamp(f.life/f.max,0,1);if(f.kind==='ring'){c.save();c.globalAlpha=k;c.strokeStyle=f.color;c.lineWidth=2+4*k;c.beginPath();c.arc(f.x,f.y,f.r*(1.45-k*.45),0,TAU);c.stroke();c.restore()}else if(f.kind==='burst'){c.save();c.translate(f.x,f.y);c.globalAlpha=k;c.strokeStyle=f.color;c.lineWidth=2;const n=lod?5:9;for(let i=0;i<n;i++){const a=i*TAU/n+f.seed;c.beginPath();c.moveTo(Math.cos(a)*5,Math.sin(a)*5);c.lineTo(Math.cos(a)*(8+26*(1-k)),Math.sin(a)*(8+26*(1-k)));c.stroke()}c.restore()}else if(f.kind==='puff'){c.save();c.globalAlpha=k*.7;c.fillStyle=f.color;const n=lod?4:8;for(let i=0;i<n;i++){const a=i*TAU/n+f.seed,r=(1-k)*24+5;c.beginPath();c.arc(f.x+Math.cos(a)*r,f.y+Math.sin(a)*r,3+4*k,0,TAU);c.fill()}c.restore()}}for(const f of fx)if(f.life>0&&maxFx===0)f.life-=dt;fx=fx.filter(f=>f.life>0)}
 function loop(now){const st=Core.getState(),run=st.run;if(run!==lastRun)reset(run);if(now-lastDraw<32){requestAnimationFrame(loop);return}const dt=Math.min(.066,(now-last)/1000);last=now;lastDraw=now;if(st.state==='run'&&run){inspect(run,now);drawFx(dt,run,now)}else c.clearRect(0,0,540,960);requestAnimationFrame(loop)}
-window.HarunV6Feel=Object.freeze({version:'6.1.0',pushText,burst,ring,stats:()=>({...feedback,fx:fx.length})});requestAnimationFrame(loop);
+window.HarunV6Feel=Object.freeze({version:'6.2.0',renderScale,pushText,burst,ring,stats:()=>({...feedback,fx:fx.length})});requestAnimationFrame(loop);
 })();
