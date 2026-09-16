@@ -1,0 +1,17 @@
+(function(){
+'use strict';
+const A=window.HarunSurvivorArt,D=window.HarunSurvivorData;if(!A||!D)return;
+const raw={arena:A.drawArena.bind(A),enemy:A.drawEnemy.bind(A),projectile:A.drawProjectile.bind(A),gem:A.drawGem.bind(A)};
+const arenaCache=new Map(),enemyCache=new Map(),shotCache=new Map(),gemCache=new Map(),TAU=Math.PI*2;
+function makeCanvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c}
+function arenaKey(act){return act?.id||act?.name||'default'}
+function cachedArena(act){const key=arenaKey(act);if(arenaCache.has(key))return arenaCache.get(key);const c=makeCanvas(540,960),x=c.getContext('2d');raw.arena(x,act,.37);arenaCache.set(key,c);return c}
+A.drawArena=function(ctx,act,t){ctx.drawImage(cachedArena(act),0,0);ctx.save();ctx.globalCompositeOperation='screen';const pulse=.35+.2*Math.sin(t*7);for(const [x,y] of [[73,190],[467,190],[73,760],[467,760]]){ctx.globalAlpha=pulse;ctx.fillStyle='#ffb34c';ctx.beginPath();ctx.arc(x,y,3.2,0,TAU);ctx.fill()}for(let i=0;i<7;i++){const x=76+((i*89+t*(8+i%3)*4)%388),y=120+((i*137+t*(5+i%4)*5)%730);ctx.globalAlpha=.11;ctx.fillStyle=i%2?'#ffd47c':'#8cdbd3';ctx.fillRect(x,y,2,2)}ctx.restore()};
+function enemySprite(kind,r){const key=kind+':'+Math.round(r);if(enemyCache.has(key))return enemyCache.get(key);const pad=24,size=Math.ceil(r*2+pad*2),c=makeCanvas(size,size),x=c.getContext('2d'),e={kind,x:size/2,y:size/2,r,hp:10,maxHp:10,phase:.42,hit:0};raw.enemy(x,e,.28);enemyCache.set(key,c);return c}
+A.drawEnemy=function(ctx,e,t){const c=enemySprite(e.kind||'crawler',e.r||18),bob=Math.sin(t*7+(e.phase||0))*2;ctx.save();ctx.globalAlpha=e.hit>0?.72:1;ctx.drawImage(c,e.x-c.width/2,e.y-c.height/2+bob);if(e.hit>0){ctx.globalCompositeOperation='screen';ctx.globalAlpha=.18;ctx.fillStyle='#fff6e8';ctx.beginPath();ctx.arc(e.x,e.y+bob,Math.max(6,(e.r||18)*.75),0,TAU);ctx.fill()}ctx.restore();if(e.hp<e.maxHp){const f=Math.max(0,Math.min(1,e.hp/Math.max(1,e.maxHp))),r=e.r||18;ctx.fillStyle='#120b10dd';ctx.fillRect(e.x-r,e.y-r-15,r*2,4);ctx.fillStyle=f<.3?'#ff5c4e':'#d5aa46';ctx.fillRect(e.x-r,e.y-r-15,r*2*f,4)}};
+function shotSprite(enemy,color){const key=(enemy?'e:':'p:')+(color||'');if(shotCache.has(key))return shotCache.get(key);const c=makeCanvas(58,42),x=c.getContext('2d'),s={x:29,y:21,vx:1,vy:0,a:0,enemy:!!enemy,color:color||undefined};raw.projectile(x,s);shotCache.set(key,c);return c}
+A.drawProjectile=function(ctx,s){const col=s.enemy?'#ff6582':s.color||'#ffe37a',c=shotSprite(!!s.enemy,col),a=s.a!=null?s.a:Math.atan2(s.vy||0,s.vx||1);ctx.save();ctx.translate(s.x,s.y);ctx.rotate(a);ctx.globalCompositeOperation='lighter';ctx.drawImage(c,-29,-21);ctx.restore()};
+function gemSprite(big,magnet){const key=(big?'b':'s')+(magnet?'m':'');if(gemCache.has(key))return gemCache.get(key);const c=makeCanvas(44,44),x=c.getContext('2d'),g={x:22,y:22,big:!!big,v5Magnet:!!magnet};raw.gem(x,g);gemCache.set(key,c);return c}
+A.drawGem=function(ctx,g){const c=gemSprite(!!g.big,!!g.v5Magnet);ctx.save();ctx.translate(g.x,g.y);ctx.rotate(performance.now()/1300);ctx.drawImage(c,-22,-22);ctx.restore()};
+window.HarunV6RenderCache=Object.freeze({version:'6.0.0',stats:()=>({arenas:arenaCache.size,enemies:enemyCache.size,shots:shotCache.size,gems:gemCache.size})});
+})();
