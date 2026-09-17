@@ -15,7 +15,7 @@ const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const hash=(x,y,k=0)=>{let n=Math.sin(x*127.1+y*311.7+k*74.7)*43758.5453;return n-Math.floor(n)};
 const isoRaw=(x,y)=>({x:(x-y)*TW*.5,y:(x+y)*TH*.5});
 let camera={x:0,y:0},shake=0,started=false,paused=false,last=performance.now(),time=0,idle=0,lastCombat=false;
-let pointer={active:false,id:null,ox:0,oy:0,x:0,y:0,vx:0,vy:0};
+let pointer={active:false,id:null,ox:0,oy:0,x:0,y:0,vx:0,vy:0,targetX:0,targetY:0,mode:'direct'};
 let keys={};
 const walkZones=[
  {x0:2.8,y0:11.0,x1:11.3,y1:19.4,type:'room'},
@@ -115,9 +115,9 @@ const builds=[
  {x:17.2,y:7.2,cost:40,invest:0,done:false,name:'SELO DO LIMIAR',height:0}
 ];
 let fx=[],drops=[],enemies=[],boss=null,objective=0,kills=0,rescued=0,resource=0;
-const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:5.05,atkCd:0,hitCd:0,walk:0,angle:0,attackPulse:0};
+const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:7.8,accel:26,decel:34,vx:0,vy:0,hp:100,maxHp:100,atkCd:0,hitCd:0,walk:0,angle:0,attackPulse:0};
 function resetRun(){
-  player.x=5.2;player.y=15.2;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;
+  player.x=5.2;player.y=15.2;player.vx=0;player.vy=0;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;
   objective=0;kills=0;rescued=0;resource=0;fx=[];drops=[];enemies=[];boss=null;depot.amount=40;depot.respawn=0;
   builds.forEach(b=>{b.invest=0;b.done=false;b.height=0});acolytes.forEach(a=>{if(!a.ambient){a.rescued=false;a.follow=a.follow}else a.rescued=false});
   spawnInitialEnemies();updateHUD();
@@ -188,17 +188,23 @@ function inputVector(){
   let sx=0,sy=0;
   if(keys.w||keys.arrowup)sy-=1;if(keys.s||keys.arrowdown)sy+=1;if(keys.a||keys.arrowleft)sx-=1;if(keys.d||keys.arrowright)sx+=1;
   if(pointer.active){sx=pointer.vx;sy=pointer.vy}
-  const m=Math.hypot(sx,sy);if(m<.08)return{x:0,y:0};
-  sx/=m;sy/=m;
-  let wx=(sx/(TW*.5)+sy/(TH*.5))*.5,wy=(sy/(TH*.5)-sx/(TW*.5))*.5;
-  const wm=Math.hypot(wx,wy)||1;return{x:wx/wm,y:wy/wm}
+  const m=Math.hypot(sx,sy);if(m<.045)return{x:0,y:0,mag:0};
+  const mag=Math.min(1,m);sx/=m;sy/=m;
+  // Screen-space input converted into the two isometric world axes.
+  let wx=sx/(TW*.5)+sy/(TH*.5),wy=sy/(TH*.5)-sx/(TW*.5);
+  const wm=Math.hypot(wx,wy)||1;return{x:wx/wm,y:wy/wm,mag}
 }
+function approach(v,target,delta){return v<target?Math.min(target,v+delta):Math.max(target,v-delta)}
 function movePlayer(dt){
-  const v=inputVector();const moving=Math.hypot(v.x,v.y)>.01;
-  if(moving){idle=0;UI.tip?.classList.add('hide');player.walk+=dt*10;player.angle=Math.atan2(v.y,v.x);
-    const nx=player.x+v.x*player.speed*dt,ny=player.y+v.y*player.speed*dt;
-    if(isWalkable(nx,player.y))player.x=nx;if(isWalkable(player.x,ny))player.y=ny;
-  }else idle+=dt;
+  const v=inputVector(),moving=v.mag>.01;
+  const targetVx=v.x*player.speed*v.mag,targetVy=v.y*player.speed*v.mag;
+  const rate=moving?player.accel:player.decel;
+  player.vx=approach(player.vx,targetVx,rate*dt);player.vy=approach(player.vy,targetVy,rate*dt);
+  if(moving){idle=0;UI.tip?.classList.add('hide');player.walk+=dt*(11+v.mag*5);player.angle=Math.atan2(player.vy,player.vx)}
+  else idle+=dt;
+  const nx=player.x+player.vx*dt,ny=player.y+player.vy*dt;
+  if(isWalkable(nx,player.y))player.x=nx;else player.vx=0;
+  if(isWalkable(player.x,ny))player.y=ny;else player.vy=0;
   if(idle>2.2&&!pointer.active&&started&&!paused)UI.tip?.classList.remove('hide');
 }
 function combatUpdate(dt){
@@ -327,12 +333,13 @@ function loop(now){
 function setJoy(e){
   const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*W/r.width,y=(e.clientY-r.top)*H/r.height;
   if(!pointer.active){pointer.ox=x;pointer.oy=y;UI.joy.style.left=(e.clientX-r.left)+'px';UI.joy.style.top=(e.clientY-r.top)+'px';UI.joy.style.display='block'}
-  pointer.x=x;pointer.y=y;const dx=x-pointer.ox,dy=y-pointer.oy,m=Math.hypot(dx,dy),rad=48,sc=m>rad?rad/m:1;
-  pointer.vx=(dx*sc)/rad;pointer.vy=(dy*sc)/rad;UI.knob.style.transform='translate('+(dx*sc)+'px,'+(dy*sc)+'px)'
+  pointer.x=x;pointer.y=y;const dx=x-pointer.ox,dy=y-pointer.oy,m=Math.hypot(dx,dy),rad=34,dead=3,sc=m>rad?rad/m:1;
+  const cm=Math.max(0,m-dead),norm=Math.min(1,cm/(rad-dead)),ux=m?dx/m:0,uy=m?dy/m:0;
+  pointer.vx=ux*norm;pointer.vy=uy*norm;UI.knob.style.transform='translate('+(dx*sc)+'px,'+(dy*sc)+'px)'
 }
 canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(!started)return;pointer.active=true;pointer.id=e.pointerId;canvas.setPointerCapture?.(e.pointerId);setJoy(e);audio&&audio.unlock()},{passive:false});
 canvas.addEventListener('pointermove',e=>{if(!pointer.active||e.pointerId!==pointer.id)return;e.preventDefault();setJoy(e)},{passive:false});
-function endPointer(e){if(pointer.active&&(!e||e.pointerId===pointer.id)){pointer.active=false;pointer.vx=pointer.vy=0;UI.joy.style.display='none';UI.knob.style.transform='translate(0,0)'}}
+function endPointer(e){if(pointer.active&&(!e||e.pointerId===pointer.id)){pointer.active=false;pointer.vx=pointer.vy=0;player.vx*=.42;player.vy*=.42;UI.joy.style.display='none';UI.knob.style.transform='translate(0,0)'}}
 canvas.addEventListener('pointerup',endPointer);canvas.addEventListener('pointercancel',endPointer);
 window.addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key==='Escape'){e.preventDefault();togglePause()}});
 window.addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
