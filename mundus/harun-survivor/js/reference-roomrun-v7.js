@@ -362,5 +362,5 @@ function bindAudio(){
 bindAudio();resetRun();
 const p0=isoRaw(player.x,player.y);camera.x=p0.x;camera.y=p0.y;
 requestAnimationFrame(loop);
-window.__HARUN_ROOMRUN_V7__={version:'7.0.0-reference-roomrun',reset:resetRun,state:()=>({objective,resource,kills,rescued,hp:player.hp,enemies:enemies.length,boss:boss?boss.hp:null}),sentinel:{gameId:'harun-survivor',mode:'reference-roomrun',institutionalWrite:false,sourceArt:'procedural-original',mobileFirst:true}};
+window.__HARUN_ROOMRUN_V7__={version:'8.0.0-reference-roomrun',reset:resetRun,state:()=>({objective,resource,kills,rescued,hp:player.hp,enemies:enemies.length,boss:boss?boss.hp:null}),sentinel:{gameId:'harun-survivor',mode:'reference-roomrun',institutionalWrite:false,sourceArt:'procedural-original',mobileFirst:true}};
 })();
