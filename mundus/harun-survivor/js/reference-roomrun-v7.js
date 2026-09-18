@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
-const VERSION='9.0.0-stability-polish';
+const VERSION='9.6.0-stability-polish';
 const W=540,TW=72,TH=36,TAU=Math.PI*2;
 let H=960;
 const $=s=>document.querySelector(s);
