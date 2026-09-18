@@ -165,6 +165,7 @@ const builds=[
  {id:'relicary',x:18.0,y:8.0,cost:280,invest:0,done:false,name:'RELICÁRIO',height:0,tier:0,product:'relic',process:0,input:0}
 ];
 const goods={provision:0,meat:0,scroll:0,book:0,relic:0};
+const metaLoot={glory:0,seal:0,eye:0,opus:0,arcana:0};
 const PRODUCT={
  provision:{label:'PROVISÃO',icon:'◫',price:2},
  meat:{label:'CARNE',icon:'●',price:4},
@@ -200,7 +201,7 @@ function resetRun(){
   clearTimeout(deathTimer);clearTimeout(victoryTimer);deathTimer=victoryTimer=0;
   objective=0;kills=0;fieldKills=0;rescued=0;resource=0;grain=0;meat=0;coins=0;sales=0;salesLevel=0;level=1;levelTarget=6;levelTimer=0;waveTimer=8;customerTimer=1.2;harvestSfxCd=0;buildSfxCd=0;cutFxCd=0;
   fx=[];drops=[];enemies=[];customers=[];boss=null;depot.input=0;depot.process=0;
-  Object.keys(goods).forEach(k=>goods[k]=0);
+  Object.keys(goods).forEach(k=>goods[k]=0);Object.keys(metaLoot).forEach(k=>metaLoot[k]=0);
   harvestNodes.forEach(h=>{h.amount=h.max=18;h.respawn=0});
   builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0;b.process=0;b.input=0});
   acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0;a.workCd=0});
@@ -262,7 +263,7 @@ function completeLevel(){
   if(runState!=='playing'||levelTimer>0)return;
   objective=6;levelTimer=1.25;resource+=3+Math.floor(level*.5);player.hp=Math.min(player.maxHp,player.hp+28);
   builds.filter(b=>b.done).forEach(b=>b.tier=(b.tier||0)+1);
-  bestLevel=Math.max(bestLevel,level+1);try{localStorage.setItem('harun-roomrun-best',String(bestLevel))}catch(_){}
+  bestLevel=Math.max(bestLevel,level+1);metaLoot.glory+=5+level;if(level%2===0)metaLoot.seal++;if(level%3===0)metaLoot.eye++;if(level%4===0)metaLoot.opus++;if(level%5===0)metaLoot.arcana++;try{localStorage.setItem('harun-roomrun-best',String(bestLevel))}catch(_){}
   updateHUD();fx.push({kind:'banner',text:'DISTRITO '+level+' CONSOLIDADO · +'+(3+Math.floor(level*.5))+' ESSÊNCIAS',t:0,d:1.2});
   audio&&audio.setState('ritual',{intensity:.5});audio&&audio.sfx('level_up',{gain:1});window.MUNDUSMusic?.sync?.();try{navigator.vibrate?.([16,28,24])}catch(_){}
 }
@@ -456,10 +457,10 @@ function combatUpdate(dt){
     for(const e of live)if(e!==nearest&&!e.dead&&dist(player,e)<1.18&&hasLineOfSight(player,e))damageEnemy(e,9);
     emit('slash',player.x,player.y,{angle:Math.atan2(nearest.y-player.y,nearest.x-player.x)});
   }
-  if(objective>=3)acolytes.filter(a=>a.rescued&&!a.ambient).forEach((a,i)=>{
-    a.cool=(a.cool||0)-dt;if(a.cool<=0&&nearest&&!nearest.dead&&nd<4.5&&hasLineOfSight(player,nearest)){a.cool=.82+i*.08;damageEnemy(nearest,4);emit('bolt',player.x,player.y,{to:nearest})}
+  if(objective>=3)acolytes.filter(a=>a.rescued&&!a.ambient&&a.role==='GUARDIÃO').forEach((a,i)=>{
+    a.cool=(a.cool||0)-dt;const ad=nearest?dist(a,nearest):99;if(a.cool<=0&&nearest&&!nearest.dead&&ad<5.2){a.cool=.72+i*.08;damageEnemy(nearest,5.5);emit('bolt',a.x,a.y,{to:nearest})}
   });
-  for(const d of drops){if(d.dead)continue;d.t+=dt;const di=dist(player,d);if(di<2.15){const q=Math.min(1,dt*7);d.x=lerp(d.x,player.x,q);d.y=lerp(d.y,player.y,q)}if(di<.48)pickupDrop(d)}
+  for(const d of drops){if(d.dead)continue;d.t+=dt;const di=dist(player,d);if(freeCarry()>.05&&di<2.15){const q=Math.min(1,dt*7);d.x=lerp(d.x,player.x,q);d.y=lerp(d.y,player.y,q)}if(di<.48&&freeCarry()>.05)pickupDrop(d)}
   enemies=enemies.filter(e=>!e.dead);drops=drops.filter(d=>!d.dead);
   const combat=enemies.some(e=>dist(player,e)<5.8);if(combat!==lastCombat&&objective!==5){lastCombat=combat;audio&&audio.setState(combat?'combat':'explore',{intensity:combat ? .72 : .38})}
 }
@@ -478,10 +479,11 @@ function restartAfterDeath(){
 function updateFollowers(dt){
   const rescuedList=acolytes.filter(a=>a.rescued&&!a.ambient);
   rescuedList.forEach((a,i)=>{
-    const back=1.05+i*.55,side=(i-1)*.45;
-    const target={x:player.x-Math.cos(player.angle)*back-Math.sin(player.angle)*side,y:player.y-Math.sin(player.angle)*back+Math.cos(player.angle)*side};
-    const nx=lerp(a.x,target.x,Math.min(1,dt*5.4)),ny=lerp(a.y,target.y,Math.min(1,dt*5.4));
-    if(isWalkable(nx,ny)){a.x=nx;a.y=ny}
+    let target;
+    if(i===0){target={x:depot.x-.65,y:depot.y+.25};a.role='MOLEIRO'}
+    else if(i===1&&builds[1].done){target={x:builds[1].x-.55,y:builds[1].y+.35};a.role='ESCRIBA'}
+    else{const back=1.05+(i===2?0:.35),side=(i-1)*.38;target={x:player.x-Math.cos(player.angle)*back-Math.sin(player.angle)*side,y:player.y-Math.sin(player.angle)*back+Math.cos(player.angle)*side};a.role='GUARDIÃO'}
+    const nx=lerp(a.x,target.x,Math.min(1,dt*4.8)),ny=lerp(a.y,target.y,Math.min(1,dt*4.8));if(isWalkable(nx,ny)){a.x=nx;a.y=ny}
   });
 }
 function update(dt){
@@ -550,6 +552,7 @@ function drawBuild(b){
 function drawAcolyte(a){
   const p=project(a.x,a.y);ell(p.x,p.y+10,12,5,'#000',.35);ell(p.x,p.y-6,7,9,a.rescued?'#2f4157':'#4a3b56');ell(p.x,p.y-17,5.5,6,'#d2b89d');line(p.x-4,p.y+1,p.x-8,p.y+11,'#1f2026',3);line(p.x+4,p.y+1,p.x+8,p.y+11,'#1f2026',3);if(a.rescued)glow(p.x,p.y-4,18,'#7edfd0',.16);
   if(!a.rescued)drawBubble(p.x,p.y-43,a.bubble,a.ambient?'#7f6d5c':'#9b312c');
+  else if(a.role){ctx.save();ctx.globalAlpha=.75;ctx.fillStyle='#d8c79d';ctx.font='700 5px Cinzel,serif';ctx.textAlign='center';ctx.fillText(a.role,p.x,p.y-31);ctx.restore()}
 }
 function drawCustomer(c){
   const p=project(c.x,c.y),walk=Math.sin(time*7+c.x*2)*1.2;
@@ -727,7 +730,7 @@ perf?.onChange?.(s=>window.MUNDUSVFX?.setQuality?.(s.tier==='low' ? .68 : s.tier
 requestAnimationFrame(loop);
 const stateSnapshot=()=>({
   runState,paused,objective,resource,grain,meat,coins,sales,salesLevel,level,bestLevel,kills,fieldKills,rescued,
-  carry:{load:+carryLoad().toFixed(2),capacity:carryCapacity()},goods:{...goods},customers:customers.length,
+  carry:{load:+carryLoad().toFixed(2),capacity:carryCapacity()},goods:{...goods},meta:{...metaLoot},customers:customers.length,
   hp:player.hp,maxHp:player.maxHp,x:player.x,y:player.y,depot:{input:+depot.input.toFixed(2),process:+depot.process.toFixed(2)},
   builds:builds.map(b=>({id:b.id,name:b.name,invest:+b.invest.toFixed(2),cost:b.cost,height:+b.height.toFixed(3),done:b.done,available:buildAvailable(b),input:+(b.input||0).toFixed(2),stock:goods[b.product]||0})),
   enemies:enemies.filter(e=>!e.dead).length,boss:boss?Math.max(0,boss.hp):null,
