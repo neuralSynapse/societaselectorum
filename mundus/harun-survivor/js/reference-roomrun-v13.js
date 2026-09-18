@@ -722,10 +722,26 @@ function drawBuild(b){
   rr(p.x-31,p.y-46,62,16,7,'#080908e8','#8b744d');
   ctx.fillStyle='#f3dfa8';ctx.font='800 7.2px Cinzel,serif';ctx.textAlign='center';ctx.fillText(icon+' '+b.name+' · '+count,p.x,p.y-35);
 }
+function drawAcolytePad(a){
+  if(a.ambient||a.rescued||!STRICT_REFERENCE||objective<1)return;
+  const p=project(a.padX,a.padY),cost=Math.ceil(a.cost*(1+(level-1)*.08)),remain=Math.max(0,Math.ceil(cost-a.invest)),prog=clamp(a.invest/cost,0,1);
+  ctx.save();ctx.setLineDash([5,5]);ctx.strokeStyle='#f5f5f0d0';ctx.lineWidth=1.2;ctx.beginPath();ctx.ellipse(p.x,p.y+3,27,12,0,0,TAU);ctx.stroke();ctx.setLineDash([]);ctx.restore();
+  // green cash plate like reference ad
+  poly([[p.x-18,p.y-5],[p.x+16,p.y-10],[p.x+21,p.y+1],[p.x-14,p.y+7]],'#2caf60','#6cff9b',1);
+  ctx.fillStyle='#eaffef';ctx.font='900 10px Manrope';ctx.textAlign='center';ctx.fillText('¤ '+remain,p.x+2,p.y+2);
+  if(prog>0){ctx.strokeStyle='#68ff9c';ctx.lineWidth=3;ctx.beginPath();ctx.arc(p.x,p.y+2,31,-Math.PI/2,-Math.PI/2+TAU*prog);ctx.stroke()}
+}
 function drawAcolyte(a){
-  const p=project(a.x,a.y);ell(p.x,p.y+10,12,5,'#000',.35);ell(p.x,p.y-6,7,9,a.rescued?'#2f4157':'#4a3b56');ell(p.x,p.y-17,5.5,6,'#d2b89d');line(p.x-4,p.y+1,p.x-8,p.y+11,'#1f2026',3);line(p.x+4,p.y+1,p.x+8,p.y+11,'#1f2026',3);if(a.rescued)glow(p.x,p.y-4,18,'#7edfd0',.16);
-  if(!a.rescued)drawBubble(p.x,p.y-43,a.bubble,a.ambient?'#7f6d5c':'#9b312c');
-  else if(a.role){ctx.save();ctx.globalAlpha=.75;ctx.fillStyle='#d8c79d';ctx.font='700 7px Cinzel,serif';ctx.textAlign='center';ctx.fillText(a.role,p.x,p.y-31);ctx.restore()}
+  const p=project(a.x,a.y),locked=STRICT_REFERENCE&&!a.ambient&&!a.rescued;
+  ell(p.x,p.y+10,12,5,'#000',.35);
+  if(locked){
+    ell(p.x,p.y-6,7,9,'#2e3033');ell(p.x,p.y-17,5.5,6,'#746c62');line(p.x-4,p.y+1,p.x-8,p.y+11,'#1f2022',3);line(p.x+4,p.y+1,p.x+8,p.y+11,'#1f2022',3);
+    drawBubble(p.x,p.y-43,'¤','#2f8b55');
+  }else{
+    ell(p.x,p.y-6,7,9,a.rescued?'#2f4157':'#4a3b56');ell(p.x,p.y-17,5.5,6,'#d2b89d');line(p.x-4,p.y+1,p.x-8,p.y+11,'#1f2026',3);line(p.x+4,p.y+1,p.x+8,p.y+11,'#1f2026',3);if(a.rescued)glow(p.x,p.y-4,18,'#7edfd0',.16);
+    if(!a.rescued)drawBubble(p.x,p.y-43,a.bubble,a.ambient?'#7f6d5c':'#9b312c');
+    else if(a.role){ctx.save();ctx.globalAlpha=.8;ctx.fillStyle='#e5d1a4';ctx.font='800 7px Cinzel,serif';ctx.textAlign='center';ctx.fillText(a.role,p.x,p.y-31);ctx.restore()}
+  }
 }
 function drawCustomer(c){
   const p=project(c.x,c.y),walk=Math.sin(time*7+c.x*2)*1.2;
@@ -884,7 +900,8 @@ function drawScene(){
   fieldCrops.filter(h=>h.amount>.02).forEach(h=>drawables.push({d:h.x+h.y-.08,fn:()=>drawCrop(h)}));
   drawables.push({d:depot.x+depot.y,fn:drawDepot});
   builds.forEach(b=>drawables.push({d:b.x+b.y+.01,fn:()=>drawBuild(b)}));
-  upgrades.forEach(u=>drawables.push({d:u.x+u.y+.015,fn:()=>drawUpgradePad(u)}));
+  if(!STRICT_REFERENCE)upgrades.forEach(u=>drawables.push({d:u.x+u.y+.015,fn:()=>drawUpgradePad(u)}));
+  if(STRICT_REFERENCE)acolytes.filter(a=>!a.ambient&&!a.rescued).forEach(a=>drawables.push({d:a.padX+a.padY-.01,fn:()=>drawAcolytePad(a)}));
   props.forEach(p=>drawables.push({d:p.x+p.y+.02,fn:()=>drawProp(p)}));
   acolytes.forEach(a=>drawables.push({d:a.x+a.y+.05,fn:()=>drawAcolyte(a)}));
   customers.forEach(q=>drawables.push({d:q.x+q.y+.06,fn:()=>drawCustomer(q)}));
@@ -955,8 +972,10 @@ function selfTest(){
     field:enemyCanWalk({kind:'shade'},16,4),
     input:!mobileInput||mobileInput.validate?.().ok!==false,
     market:builds.length===4&&Object.keys(PRODUCT).length===5&&typeof spawnCustomer==='function'&&marketStalls.length===3,
-    upgrades:upgrades.length===6&&typeof updateAutomation==='function'&&typeof updateUpgradePads==='function',
-    phases:phaseNumber()>=1&&phaseNumber()<=7,
+    upgrades:STRICT_REFERENCE?true:(upgrades.length===6&&typeof updateAutomation==='function'&&typeof updateUpgradePads==='function'),
+    paidAcolytes:acolytes.filter(a=>!a.ambient).every(a=>Number.isFinite(a.cost)&&Number.isFinite(a.invest)),
+    strictReference:STRICT_REFERENCE===true,
+    phases:STRICT_REFERENCE?true:(phaseNumber()>=1&&phaseNumber()<=7),
     nativeArt:typeof drawNativeHarun==='function'&&typeof drawNativeShade==='function'&&typeof drawNativeBoss==='function',
     allCropsHarvestable:fieldCrops.length>40&&fieldCrops.every(h=>typeof h.amount==='number'&&typeof h.respawn==='number'),
     processing:typeof processBusiness==='function'&&typeof addSale==='function',
@@ -972,7 +991,7 @@ perf?.onChange?.(s=>window.MUNDUSVFX?.setQuality?.(s.tier==='low' ? .68 : s.tier
 requestAnimationFrame(loop);
 const stateSnapshot=()=>({
   runState,paused,objective,phase:phaseNumber(),phaseName:phaseName(),resource,grain,meat,coins,sales,salesLevel,level,bestLevel,kills,fieldKills,rescued,
-  carry:{load:+carryLoad().toFixed(2),capacity:carryCapacity()},goods:{...goods},meta:{...metaLoot},customers:customers.length,market:{gate:{...marketGate},stalls:marketStalls.map(s=>({...s}))},upgrades:upgrades.map(u=>({id:u.id,name:u.name,level:u.level,max:u.max,cost:upgradeCost(u),invest:+u.invest.toFixed(2),available:upgradeAvailable(u)})),
+  carry:{load:+carryLoad().toFixed(2),capacity:carryCapacity()},goods:{...goods},sold:{...soldByKind},meta:{...metaLoot},customers:customers.length,acolytes:acolytes.filter(a=>!a.ambient).map(a=>({role:a.roleName,rescued:a.rescued,cost:Math.ceil(a.cost*(1+(level-1)*.08)),invest:+a.invest.toFixed(2),pad:[a.padX,a.padY]})),market:{gate:{...marketGate},stalls:marketStalls.map(s=>({...s}))},upgrades:STRICT_REFERENCE?[]:upgrades.map(u=>({id:u.id,name:u.name,level:u.level,max:u.max,cost:upgradeCost(u),invest:+u.invest.toFixed(2),available:upgradeAvailable(u)})),
   hp:player.hp,maxHp:player.maxHp,x:player.x,y:player.y,depot:{input:+depot.input.toFixed(2),process:+depot.process.toFixed(2)},
   builds:builds.map(b=>({id:b.id,name:b.name,invest:+b.invest.toFixed(2),cost:b.cost,height:+b.height.toFixed(3),done:b.done,available:buildAvailable(b),input:+(b.input||0).toFixed(2),stock:goods[b.product]||0})),
   enemies:enemies.filter(e=>!e.dead).length,boss:boss?Math.max(0,boss.hp):null,
@@ -987,7 +1006,8 @@ const qaTools=qaEnabled?{
   setObjective:n=>{objective=Math.max(0,Math.min(6,Number(n)||0));updateHUD();return stateSnapshot()},
   grant:(kind,n)=>{const v=Math.max(0,Number(n)||0);if(kind==='grain')grain+=v;else if(kind==='meat')meat+=v;else if(kind==='coins')coins+=v;else if(kind==='essence')resource+=v;else if(goods[kind]!=null)goods[kind]+=v;updateHUD();return stateSnapshot()},
   fillBuild:i=>{const b=builds[Math.max(0,Math.min(builds.length-1,Number(i)||0))];if(b){b.invest=b.cost;b.height=1;b.done=true;b.tier=Math.max(1,b.tier||0)}updateHUD();return stateSnapshot()},
-  awakenAll:()=>{for(const a of acolytes)if(!a.ambient)a.rescued=true;rescued=3;updateHUD();return stateSnapshot()},
+  payAcolyte:i=>{const a=acolytes.filter(x=>!x.ambient)[Math.max(0,Math.min(2,Number(i)||0))];if(a){coins+=Math.ceil(a.cost*(1+(level-1)*.08));player.x=a.padX;player.y=a.padY;for(let n=0;n<120&&!a.rescued;n++)updateAcolytePurchases(1/60)}return stateSnapshot()},
+  awakenAll:()=>{if(STRICT_REFERENCE)return stateSnapshot();for(const a of acolytes)if(!a.ambient)a.rescued=true;rescued=3;updateHUD();return stateSnapshot()},
   spawnCustomer:kind=>{const c={x:4,y:18.55,want:PRODUCT[kind]?kind:'provision',state:'wait',tx:depot.x,ty:depot.y,wait:.4,buyFlash:0,speed:1.8};customers.push(c);return stateSnapshot()},
   sell:kind=>{const k=PRODUCT[kind]?kind:'provision';goods[k]++;const c={x:depot.x,y:depot.y,want:k,state:'wait',wait:1,buyFlash:0,speed:1};customers.push(c);updateCustomers(.5);return stateSnapshot()},
   killField:()=>{for(const e of [...enemies])if(e!==boss&&!e.dead)damageEnemy(e,9999);return stateSnapshot()},
@@ -1000,12 +1020,13 @@ const qaTools=qaEnabled?{
   forceWave:()=>{if(!combatUnlocked())builds[0].done=true;spawnFieldWave();return stateSnapshot()},
   nextLevel:()=>{completeLevel();levelTimer=0;beginNextLevel();return stateSnapshot()}
 }:Object.freeze({enabled:false});
-window.__HARUN_ROOMRUN_V13__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'reference-tycoon-infinite',institutionalWrite:false,sourceArt:'native-in-engine-only',mobileFirst:true,desktopAdaptive:true,infinite:true,market:true,externalBuyers:true,coinUpgrades:true,automation:true,phases:7,allVisibleCropsHarvestable:true}};
-window.__HARUN_ROOMRUN_V12__=window.__HARUN_ROOMRUN_V13__;
-window.__HARUN_ROOMRUN_V11__=window.__HARUN_ROOMRUN_V13__;
-window.__HARUN_ROOMRUN_V10__=window.__HARUN_ROOMRUN_V13__;
-window.__HARUN_ROOMRUN_V9__=window.__HARUN_ROOMRUN_V13__;
+window.__HARUN_ROOMRUN_V14__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'strict-reference-reskin',institutionalWrite:false,sourceArt:'native-in-engine-only',mobileFirst:true,desktopAdaptive:true,referenceStrict:true,paidAcolytes:true,freeAcolytes:false,simultaneousAcolytePads:true,stageLoop:true,allVisibleCropsHarvestable:true}};
+window.__HARUN_ROOMRUN_V13__=window.__HARUN_ROOMRUN_V14__;
+window.__HARUN_ROOMRUN_V12__=window.__HARUN_ROOMRUN_V14__;
+window.__HARUN_ROOMRUN_V11__=window.__HARUN_ROOMRUN_V14__;
+window.__HARUN_ROOMRUN_V10__=window.__HARUN_ROOMRUN_V14__;
+window.__HARUN_ROOMRUN_V9__=window.__HARUN_ROOMRUN_V14__;
 window.__MUNDUS_SENTINEL__=window.__MUNDUS_SENTINEL__||{};
-window.__MUNDUS_SENTINEL__.roomrunV13=window.__HARUN_ROOMRUN_V13__;
+window.__MUNDUS_SENTINEL__.roomrunV14=window.__HARUN_ROOMRUN_V14__;
 window.__MUNDUS_SENTINEL__.roomrunQA=selfTest();
 })();
