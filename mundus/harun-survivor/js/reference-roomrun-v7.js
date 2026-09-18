@@ -151,7 +151,7 @@ function spawnInitialEnemies(){
 }
 function spawnEnemy(x,y,kind='shade',elite=false){
   const hp=elite?70:kind==='hound'?28:22;
-  enemies.push({x,y,kind,hp,maxHp:hp,r:elite?.42:.27,speed:kind==='hound'?2.35:1.7,hit:0,dead:false,elite});
+  enemies.push({x,y,kind,hp,maxHp:hp,r:elite ? .42 : .27,speed:kind==='hound'?2.35:1.7,hit:0,dead:false,elite});
 }
 function spawnBoss(){
   boss={x:18.3,y:3.3,hp:360,maxHp:360,r:.72,speed:1.18,hit:0,dead:false,name:'OBSERVADOR CEGO',phase:0,specialCd:2.5,telegraph:0,struck:false};
@@ -182,7 +182,7 @@ function emit(kind,x,y,data={}){fx.push(Object.assign({kind,x,y,t:0,d:.65},data)
 function pickupDrop(d){resource+=d.value;d.dead=true;emit('pickup',d.x,d.y,{text:'+'+d.value});audio&&audio.sfx('pickup',{gain:.7});updateHUD()}
 function damageEnemy(e,dmg){
   if(e.dead||runState!=='playing')return;e.hp=Math.max(0,e.hp-dmg);e.hit=.11;emit('damage',e.x,e.y,{text:String(Math.round(dmg)),crit:dmg>22});
-  audio&&audio.sfx('impact',{gain:.45,pitch:e===boss?.86:1});
+  audio&&audio.sfx('impact',{gain:.45,pitch:e===boss ? .86 : 1});
   if(e.hp<=0){e.dead=true;kills++;if(objective===3&&e!==boss)fieldKills++;emit('burst',e.x,e.y,{big:e===boss});audio&&audio.sfx(e===boss?'boss_death':'enemy_death',{gain:e===boss?1:.55});
     if(e===boss){clearTimeout(deathTimer);deathTimer=0;setObjective(6);runState='victoryPending';paused=true;endPointer();victoryTimer=setTimeout(showVictory,650)}
     else drops.push({x:e.x,y:e.y,value:8,dead:false,t:0});
@@ -253,12 +253,12 @@ function updateBossSpecial(dt){
     }
   }else{
     boss.specialCd-=dt;
-    if(boss.specialCd<=0){boss.telegraph=boss.phase?.52:.68;boss.struck=false;audio&&audio.sfx('boss_windup',{gain:.9})}
+    if(boss.specialCd<=0){boss.telegraph=boss.phase ? .52 : .68;boss.struck=false;audio&&audio.sfx('boss_windup',{gain:.9})}
   }
 }
 function separateEnemies(){
   for(let i=0;i<enemies.length;i++)for(let j=i+1;j<enemies.length;j++){
-    const a=enemies[i],b=enemies[j];if(a.dead||b.dead)continue;let dx=a.x-b.x,dy=a.y-b.y,m=Math.hypot(dx,dy);const min=(a===boss||b===boss)?.72:.46;
+    const a=enemies[i],b=enemies[j];if(a.dead||b.dead)continue;let dx=a.x-b.x,dy=a.y-b.y,m=Math.hypot(dx,dy);const min=(a===boss||b===boss) ? .72 : .46;
     if(m>0&&m<min){const push=(min-m)*.16,ux=dx/m,uy=dy/m;const ax=a.x+ux*push,ay=a.y+uy*push,bx=b.x-ux*push,by=b.y-uy*push;if(enemyCanWalk(a,ax,ay)){a.x=ax;a.y=ay}if(enemyCanWalk(b,bx,by)){b.x=bx;b.y=by}}
   }
 }
@@ -289,7 +289,7 @@ function combatUpdate(dt){
   });
   for(const d of drops){if(d.dead)continue;d.t+=dt;const di=dist(player,d);if(di<2.15){const q=Math.min(1,dt*7);d.x=lerp(d.x,player.x,q);d.y=lerp(d.y,player.y,q)}if(di<.48)pickupDrop(d)}
   enemies=enemies.filter(e=>!e.dead);drops=drops.filter(d=>!d.dead);
-  const combat=enemies.some(e=>dist(player,e)<5.8);if(combat!==lastCombat&&objective!==5){lastCombat=combat;audio&&audio.setState(combat?'combat':'explore',{intensity:combat?.72:.38})}
+  const combat=enemies.some(e=>dist(player,e)<5.8);if(combat!==lastCombat&&objective!==5){lastCombat=combat;audio&&audio.setState(combat?'combat':'explore',{intensity:combat ? .72 : .38})}
 }
 function restartAfterDeath(){
   if(runState==='dead'||runState==='victory')return;
@@ -352,7 +352,7 @@ function drawHero(){
 }
 function drawEnemy(e){
   const p=project(e.x,e.y),hit=e.hit>0;ell(p.x,p.y+12,e===boss?25:14,e===boss?9:6,'#000',.45);
-  if(e===boss&&e.telegraph>0){const q=1-Math.max(0,Math.min(1,e.telegraph/(e.phase?.52:.68)));ctx.save();ctx.globalAlpha=.35+.45*q;ctx.strokeStyle='#ff5164';ctx.lineWidth=2.5;ctx.beginPath();ctx.ellipse(p.x,p.y+5,30+q*46,14+q*22,0,0,TAU);ctx.stroke();ctx.restore();}
+  if(e===boss&&e.telegraph>0){const q=1-Math.max(0,Math.min(1,e.telegraph/(e.phase ? .52 : .68)));ctx.save();ctx.globalAlpha=.35+.45*q;ctx.strokeStyle='#ff5164';ctx.lineWidth=2.5;ctx.beginPath();ctx.ellipse(p.x,p.y+5,30+q*46,14+q*22,0,0,TAU);ctx.stroke();ctx.restore();}
   ctx.save();ctx.translate(p.x,p.y);if(hit)ctx.globalAlpha=.55;
   if(e===boss){glow(0,-4,45,'#ba2040',.16);ell(0,-4,25,20,'#16131e');poly([[-28,-6],[-38,-28],[-12,-21]],'#3c1823');poly([[28,-6],[38,-28],[12,-21]],'#3c1823');ell(-8,-8,4,4,'#ff3c51');ell(8,-8,4,4,'#ff3c51');for(let i=0;i<5;i++){const a=time*1.2+i*TAU/5;ell(Math.cos(a)*34,3+Math.sin(a)*12,5,3,'#381521')}}
   else if(e.kind==='hound'){ell(0,0,15,9,'#11151d');poly([[-10,-5],[-18,-18],[-3,-12]],'#1e202b');poly([[10,-5],[18,-18],[3,-12]],'#1e202b');ell(7,-2,2,2,'#ff3b4d')}
@@ -394,7 +394,7 @@ function drawScene(){
   props.forEach(p=>drawables.push({d:p.x+p.y,fn:()=>drawProp(p)}));
   acolytes.forEach(a=>drawables.push({d:a.x+a.y+.05,fn:()=>drawAcolyte(a)}));
   drops.forEach(d=>drawables.push({d:d.x+d.y+.08,fn:()=>drawDrop(d)}));
-  enemies.forEach(e=>drawables.push({d:e.x+e.y+.12,fn:()=>drawEnemy(e)}));
+  enemies.filter(e=>!e.dead).forEach(e=>drawables.push({d:e.x+e.y+.12,fn:()=>drawEnemy(e)}));
   drawables.push({d:player.x+player.y+.14,fn:drawHero});
   drawables.sort((a,b)=>a.d-b.d).forEach(o=>o.fn());
   drawFx();drawObjectiveBeacon();drawGuide();
@@ -428,7 +428,7 @@ function startGame(){
   started=true;paused=false;runState='playing';UI.start.hidden=true;UI.pause.hidden=true;UI.victory.hidden=true;idle=0;last=performance.now();audio&&audio.unlock();audio&&audio.setState('explore',{intensity:.38});resetRun();
 }
 function togglePause(){
-  if(!started||runState!=='playing'||!UI.victory.hidden)return;paused=!paused;UI.pause.hidden=!paused;last=performance.now();audio&&audio.setState(paused?'menu':(objective===5?'boss':'explore'),{intensity:paused?.2:.45});endPointer()
+  if(!started||runState!=='playing'||!UI.victory.hidden)return;paused=!paused;UI.pause.hidden=!paused;last=performance.now();audio&&audio.setState(paused?'menu':(objective===5?'boss':'explore'),{intensity:paused ? .2 : .45});endPointer()
 }
 function restart(){clearTimeout(deathTimer);clearTimeout(victoryTimer);runState='playing';paused=false;UI.pause.hidden=true;UI.victory.hidden=true;last=performance.now();resetRun();audio&&audio.setState('explore',{intensity:.38})}
 function showVictory(){if(runState==='dead')return;runState='victory';paused=true;endPointer();UI.pause.hidden=true;UI.victory.hidden=false;audio&&audio.setState('pleroma',{intensity:.4});audio&&audio.sfx('room_clear',{gain:1})}
@@ -456,9 +456,9 @@ function selfTest(){
 }
 bindAudio();resetRun();syncViewport();
 const p0=isoRaw(player.x,player.y);camera.x=p0.x;camera.y=p0.y;
-perf?.onChange?.(s=>window.MUNDUSVFX?.setQuality?.(s.tier==='low'?.68:s.tier==='medium'?.88:1.06));
+perf?.onChange?.(s=>window.MUNDUSVFX?.setQuality?.(s.tier==='low' ? .68 : s.tier==='medium' ? .88 : 1.06));
 requestAnimationFrame(loop);
-const stateSnapshot=()=>({runState,paused,objective,resource,kills,fieldKills,rescued,hp:player.hp,x:player.x,y:player.y,enemies:enemies.length,boss:boss?boss.hp:null,fps:Math.round(1000/Math.max(1,frameEma)),height:H,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]});
+const stateSnapshot=()=>({runState,paused,objective,resource,kills,fieldKills,rescued,hp:player.hp,x:player.x,y:player.y,enemies:enemies.filter(e=>!e.dead).length,boss:boss?Math.max(0,boss.hp):null,fps:Math.round(1000/Math.max(1,frameEma)),height:H,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]});
 window.__HARUN_ROOMRUN_V9__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:{
   step:(dt=.016)=>{if(runState==='playing'&&!paused)update(Math.max(0,Math.min(.033,Number(dt)||.016)));return stateSnapshot()},
   setMove:(x=0,y=0)=>{pointer.active=Math.hypot(x,y)>.001;pointer.vx=Math.max(-1,Math.min(1,Number(x)||0));pointer.vy=Math.max(-1,Math.min(1,Number(y)||0));return stateSnapshot()},
