@@ -20,7 +20,7 @@ const runtimeErrors=[];
 const captureError=(kind,e)=>{runtimeErrors.push({kind,message:String(e?.message||e?.reason||e||'erro'),at:Date.now()});if(runtimeErrors.length>20)runtimeErrors.shift()};
 window.addEventListener('error',e=>captureError('error',e));
 window.addEventListener('unhandledrejection',e=>captureError('promise',e));
-const UI={resource:$('#resourceCount'),objective:$('#objectiveText'),objectiveKicker:$('#objectiveKicker'),tip:$('#moveTip'),joy:$('#touchJoy'),knob:$('#touchJoy i'),pause:$('#pauseOverlay'),start:$('#startOverlay'),victory:$('#victoryOverlay'),pauseBtn:$('#pauseBtn'),resume:$('#resumeBtn'),restart:$('#restartBtn'),restartVictory:$('#restartVictory'),music:$('#musicVol'),sfx:$('#sfxVol'),musicVal:$('#musicVal'),sfxVal:$('#sfxVal')};
+const UI={resource:$('#resourceCount'),grain:$('#grainCount'),meat:$('#meatCount'),level:$('#levelCount'),objective:$('#objectiveText'),objectiveKicker:$('#objectiveKicker'),tip:$('#moveTip'),joy:$('#touchJoy'),knob:$('#touchJoy i'),pause:$('#pauseOverlay'),start:$('#startOverlay'),victory:$('#victoryOverlay'),pauseBtn:$('#pauseBtn'),resume:$('#resumeBtn'),restart:$('#restartBtn'),restartVictory:$('#restartVictory'),music:$('#musicVol'),sfx:$('#sfxVol'),musicVal:$('#musicVal'),sfxVal:$('#sfxVal')};
 const perfProfile=perf?.profile?.()||{dpr:1.25};
 const DPR=Math.min(Number(perfProfile.dpr)||1.25,window.devicePixelRatio||1.25);
 function syncViewport(){
@@ -138,30 +138,36 @@ const acolytes=[
  {x:12.2,y:15.8,homeX:12.2,homeY:15.8,rescued:false,ambient:true,bubble:'◌'},
  {x:13.0,y:15.3,homeX:13.0,homeY:15.3,rescued:false,ambient:true,bubble:'⚗'}
 ];
-const depot={x:6.2,y:16.0,amount:40,max:40,respawn:0};
-const builds=[
- {x:13.0,y:13.2,cost:40,invest:0,done:false,name:'PILAR DE HÓRUS',height:0},
- {x:17.2,y:7.2,cost:40,invest:0,done:false,name:'SELO DO LIMIAR',height:0}
+const depot={x:6.2,y:16.0,amount:40,max:40,respawn:0,kind:'grain'};
+const harvestNodes=[
+ {x:9.2,y:2.2,amount:18,max:18,respawn:0},{x:11.6,y:1.4,amount:18,max:18,respawn:0},{x:13.5,y:3.0,amount:18,max:18,respawn:0},
+ {x:15.7,y:1.5,amount:18,max:18,respawn:0},{x:18.0,y:2.8,amount:18,max:18,respawn:0},{x:20.1,y:1.4,amount:18,max:18,respawn:0}
 ];
-let fx=[],drops=[],enemies=[],boss=null,objective=0,kills=0,fieldKills=0,rescued=0,resource=0;
+const builds=[
+ {x:13.0,y:13.2,cost:40,invest:0,done:false,name:'PILAR DE HÓRUS',height:0,currency:'grain',tier:0},
+ {x:17.2,y:7.2,cost:32,invest:0,done:false,name:'SELO DO LIMIAR',height:0,currency:'meat',tier:0}
+];
+let fx=[],drops=[],enemies=[],boss=null,objective=0,kills=0,fieldKills=0,rescued=0,resource=0,grain=0,meat=0,level=1,bestLevel=1,levelTarget=6,levelTimer=0;
 const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:7.25,accel:44,decel:58,vx:0,vy:0,atkCd:0,hitCd:0,walk:0,moveBlend:0,angle:0,attackPulse:0,stepCd:0};
 function resetRun(){
   player.x=5.2;player.y=15.2;player.vx=0;player.vy=0;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;player.moveBlend=0;player.angle=0;player.stepCd=0;lastCombat=false;
   clearTimeout(deathTimer);clearTimeout(victoryTimer);deathTimer=victoryTimer=0;
-  objective=0;kills=0;fieldKills=0;rescued=0;resource=0;fx=[];drops=[];enemies=[];boss=null;depot.amount=40;depot.respawn=0;
-  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0});acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0});
+  objective=0;kills=0;fieldKills=0;rescued=0;resource=0;grain=0;meat=0;level=1;bestLevel=Math.max(bestLevel,1);levelTarget=6;levelTimer=0;fx=[];drops=[];enemies=[];boss=null;depot.amount=40;depot.max=40;depot.respawn=0;
+  harvestNodes.forEach(h=>{h.amount=h.max;h.respawn=0});
+  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0});acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0});
   spawnInitialEnemies();updateHUD();
 }
 function spawnInitialEnemies(){
-  const pts=[[14,4.6],[16.2,3.5],[18.2,5.4],[19.4,2.8],[12.8,2.8],[20.5,6.2]];
-  pts.forEach((p,i)=>spawnEnemy(p[0],p[1],i%3===0?'hound':'shade'));
+  const pts=[[14,4.6],[16.2,3.5],[18.2,5.4],[19.4,2.8],[12.8,2.8],[20.5,6.2],[11.2,4.2],[21.2,4.7],[15.2,6.0],[18.9,7.0]];
+  const count=Math.min(pts.length,6+Math.floor((level-1)/2));for(let i=0;i<count;i++){const p=pts[i];spawnEnemy(p[0],p[1],i%3===0?'hound':'shade',level%5===0&&i===count-1)}
 }
 function spawnEnemy(x,y,kind='shade',elite=false){
-  const hp=elite?70:kind==='hound'?28:22;
-  enemies.push({x,y,kind,hp,maxHp:hp,r:elite ? .42 : .27,speed:kind==='hound'?2.35:1.7,hit:0,dead:false,elite});
+  const scale=1+(level-1)*.12,hp=Math.round((elite?70:kind==='hound'?28:22)*scale),speed=(kind==='hound'?2.35:1.7)*(1+Math.min(.28,(level-1)*.012));
+  enemies.push({x,y,kind,hp,maxHp:hp,r:elite ? .42 : .27,speed,hit:0,dead:false,elite});
 }
 function spawnBoss(){
-  boss={x:18.3,y:3.3,hp:360,maxHp:360,r:.72,speed:1.18,hit:0,dead:false,name:'OBSERVADOR CEGO',phase:0,specialCd:2.5,telegraph:0,struck:false};
+  const scale=1+(level-1)*.18,bhp=Math.round(360*scale);
+  boss={x:18.3,y:3.3,hp:bhp,maxHp:bhp,r:.72,speed:1.18*(1+Math.min(.2,(level-1)*.01)),hit:0,dead:false,name:'OBSERVADOR CEGO',phase:0,specialCd:2.5,telegraph:0,struck:false};
   enemies.push(boss);
   audio&&audio.setState('boss',{intensity:.95});audio&&audio.sfx('boss_windup',{gain:1});
 }
