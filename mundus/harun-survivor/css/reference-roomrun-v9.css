@@ -10,16 +10,19 @@ button,input{font:inherit}
 .hud{position:absolute;z-index:20;inset:0;pointer-events:none;color:#fff}
 .brand{position:absolute;left:max(10px,env(safe-area-inset-left));top:max(10px,env(safe-area-inset-top));text-shadow:0 2px 8px #000;font-family:Cinzel,serif}
 .brand b{display:block;font-size:13px;letter-spacing:.13em;color:#f3ddb0}.brand small{display:block;margin-top:1px;font-size:6.5px;letter-spacing:.2em;color:#a58e69}
-.resources{position:absolute;top:max(11px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;max-width:72%;pointer-events:none}
-.resource{position:relative;display:flex;align-items:center;gap:5px;min-width:52px;justify-content:center;padding:5px 8px;border-radius:16px;background:#090a08cf;border:1px solid #5d4932;box-shadow:0 5px 15px #0008;backdrop-filter:blur(5px)}
+.resources{position:absolute;top:max(9px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:4px;width:min(72%,290px);pointer-events:none}
+.resource{position:relative;display:flex;align-items:center;gap:4px;min-width:42px;justify-content:center;padding:5px 6px;border-radius:15px;background:#090a08d8;border:1px solid #5d4932;box-shadow:0 5px 15px #0008;backdrop-filter:blur(5px)}
 .resource i{width:13px;height:13px;border-radius:50%;display:block;border:1px solid #f0c167}
 .resource b{font:800 11px Cinzel,serif;color:#fff1cf}
 .resource.essence i{background:radial-gradient(circle at 35% 30%,#caffdf 0 12%,#43d88a 40%,#176b48 75%,#092b20)}
 .resource.grain i{background:radial-gradient(circle at 35% 30%,#fff0a0 0 14%,#d7b84e 45%,#806a25 76%,#332a0f)}
 .resource.meat i{background:radial-gradient(circle at 35% 30%,#ffd0c4 0 12%,#bd514d 42%,#6f272d 76%,#2c0f16);border-color:#ef8d82}
+.resource.obol i{background:radial-gradient(circle at 35% 30%,#fff5bf 0 15%,#e2b950 45%,#7e5b1f 78%,#30210b);border-color:#f0c96a;box-shadow:0 0 7px #d7ad42aa}
+.carryHud{position:absolute;z-index:21;left:max(10px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom));padding:5px 8px;border-radius:10px;background:#070806c9;border:1px solid #5c4c37;color:#a99778;font:700 6px Cinzel,serif;letter-spacing:.08em;pointer-events:none;backdrop-filter:blur(4px)}
+.carryHud b{color:#f1dfb8;font-size:8px;margin-left:4px}
 .levelChip{display:flex;align-items:center;gap:4px;padding:5px 8px;border-radius:16px;background:#11100de8;border:1px solid #786341;color:#d9c18f;font:700 7px Cinzel,serif;letter-spacing:.08em;white-space:nowrap}
 .levelChip b{font-size:11px;color:#fff0bd}
-.objective{position:absolute;left:50%;top:53px;transform:translateX(-50%);width:min(74%,330px);text-align:center;padding:5px 9px;border-radius:9px;background:#050604b6;border:1px solid #53463285;backdrop-filter:blur(5px);opacity:.94}
+.objective{position:absolute;left:50%;top:51px;transform:translateX(-50%);width:min(76%,340px);text-align:center;padding:5px 9px;border-radius:9px;background:#050604b9;border:1px solid #53463285;backdrop-filter:blur(5px);opacity:.95}
 .objective small{display:block;font-size:6px;letter-spacing:.19em;color:#b39d78}.objective b{display:block;margin-top:2px;font:700 8px Cinzel,serif;letter-spacing:.05em;color:#f0dfbe}
 .pauseBtn{pointer-events:auto;position:absolute;right:max(9px,env(safe-area-inset-right));top:max(9px,env(safe-area-inset-top));width:44px;height:44px;border-radius:13px;border:1px solid #65513b;background:#0a0b09df;color:#e6d2ad;font:700 15px Cinzel,serif;box-shadow:0 6px 18px #0009;touch-action:manipulation}
 .tip{position:absolute;z-index:18;left:50%;bottom:22%;transform:translateX(-50%);text-align:center;pointer-events:none;filter:drop-shadow(0 3px 8px #000)}
@@ -39,8 +42,8 @@ button,input{font:inherit}
 .footerNote{margin-top:10px!important;font-size:7px!important;color:#756b5b!important}
 @media(max-width:540px){
   #app{width:100vw;height:var(--app-h);max-height:var(--app-h);border-radius:0;box-shadow:none}
-  .objective{top:max(54px,calc(env(safe-area-inset-top) + 44px));width:min(76%,330px)}
-  .resources{top:max(9px,env(safe-area-inset-top));max-width:70%;gap:4px}.resource{min-width:47px;padding:5px 6px}.resource b{font-size:10px}.levelChip{padding:5px 6px}
+  .objective{top:max(51px,calc(env(safe-area-inset-top) + 42px));width:min(78%,335px)}
+  .resources{top:max(8px,env(safe-area-inset-top));width:72%;gap:3px}.resource{min-width:39px;padding:4px 5px}.resource i{width:11px;height:11px}.resource b{font-size:9px}.levelChip{padding:4px 5px;font-size:6px}.levelChip b{font-size:9px}.carryHud{bottom:max(10px,env(safe-area-inset-bottom))}
   .brand{top:max(11px,env(safe-area-inset-top));left:max(11px,env(safe-area-inset-left))}
 }
 @media(min-width:541px){#app{height:min(var(--app-h),960px);aspect-ratio:9/16;border-radius:20px}}
