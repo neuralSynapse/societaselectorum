@@ -75,14 +75,14 @@ function drawFloor(){
     if(p.x<-TW||p.x>W+TW||p.y<-TH||p.y>H+TH)continue;
     diamond(p.x,p.y,floorColor(c),c.type==='field'?'#29483c':'#4d4c47');
     if(c.type!=='field'&&hash(c.x,c.y,9)>.78){line(p.x-TW*.18,p.y,p.x+TW*.18,p.y,'#ffffff10',1)}
-    if(c.type==='field'&&hash(c.x,c.y,2)>.18){
-      const path=Math.abs((c.x-c.y)-7)<1.6||Math.abs(c.x-15)<1.1;
-      if(!path)drawCrop(c.x+.5,c.y+.5,c.x*31+c.y*19);
+    if(c.type==='field'){
+      const tier=perf?.tier?.()||'medium',threshold=tier==='low' ? .48 : tier==='high' ? .18 : .32;
+      if(hash(c.x,c.y,2)>threshold){const path=Math.abs((c.x-c.y)-7)<1.6||Math.abs(c.x-15)<1.1;if(!path)drawCrop(c.x+.5,c.y+.5,c.x*31+c.y*19)}
     }
   }
 }
 function drawCrop(x,y,seed){
-  const p=project(x,y);for(let i=0;i<7;i++){const a=hash(seed,i,1),b=hash(seed,i,2);const ox=(a-.5)*38,oy=(b-.5)*14,h=15+hash(seed,i,3)*17;
+  const p=project(x,y),tier=perf?.tier?.()||'medium',count=tier==='low'?3:tier==='high'?7:5;for(let i=0;i<count;i++){const a=hash(seed,i,1),b=hash(seed,i,2);const ox=(a-.5)*38,oy=(b-.5)*14,h=15+hash(seed,i,3)*17;
     line(p.x+ox,p.y+oy,p.x+ox-2,p.y+oy-h,'#8f7a34',1.4,.9);
     line(p.x+ox-2,p.y+oy-h,p.x+ox+4,p.y+oy-h-3,'#d1b957',1.2,.88);
     line(p.x+ox-1,p.y+oy-h*.65,p.x+ox+4,p.y+oy-h*.78,'#b19a43',1,.8);
@@ -459,7 +459,8 @@ const p0=isoRaw(player.x,player.y);camera.x=p0.x;camera.y=p0.y;
 perf?.onChange?.(s=>window.MUNDUSVFX?.setQuality?.(s.tier==='low' ? .68 : s.tier==='medium' ? .88 : 1.06));
 requestAnimationFrame(loop);
 const stateSnapshot=()=>({runState,paused,objective,resource,kills,fieldKills,rescued,hp:player.hp,x:player.x,y:player.y,enemies:enemies.filter(e=>!e.dead).length,boss:boss?Math.max(0,boss.hp):null,fps:Math.round(1000/Math.max(1,frameEma)),height:H,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]});
-window.__HARUN_ROOMRUN_V9__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:{
+const qaEnabled=new URLSearchParams(window.location?.search||'').get('qa')==='dev';
+const qaTools=qaEnabled?{
   step:(dt=.016)=>{if(runState==='playing'&&!paused)update(Math.max(0,Math.min(.033,Number(dt)||.016)));return stateSnapshot()},
   setMove:(x=0,y=0)=>{pointer.active=Math.hypot(x,y)>.001;pointer.vx=Math.max(-1,Math.min(1,Number(x)||0));pointer.vy=Math.max(-1,Math.min(1,Number(y)||0));return stateSnapshot()},
   release:()=>{endPointer();return stateSnapshot()},
@@ -468,6 +469,7 @@ window.__HARUN_ROOMRUN_V9__={version:VERSION,start:startGame,reset:resetRun,self
   grantResource:n=>{resource=Math.max(0,resource+(Number(n)||0));updateHUD();return stateSnapshot()},
   killField:()=>{if(objective===3){for(const e of [...enemies])if(e!==boss&&!e.dead)damageEnemy(e,9999);interactionUpdate(0)}return stateSnapshot()},
   killBoss:()=>{if(boss&&!boss.dead)damageEnemy(boss,9999);return stateSnapshot()}
-},sentinel:{gameId:'harun-survivor',mode:'reference-roomrun',institutionalWrite:false,sourceArt:'procedural-original',mobileFirst:true}};
+}:Object.freeze({enabled:false});
+window.__HARUN_ROOMRUN_V9__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'reference-roomrun',institutionalWrite:false,sourceArt:'procedural-original',mobileFirst:true}};
 window.__MUNDUS_SENTINEL__=window.__MUNDUS_SENTINEL__||{};window.__MUNDUS_SENTINEL__.roomrunV9=window.__HARUN_ROOMRUN_V9__;window.__MUNDUS_SENTINEL__.roomrunQA=selfTest();
 })();
