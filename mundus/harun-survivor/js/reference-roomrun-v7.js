@@ -412,7 +412,7 @@ function setJoy(e){
   if(n){pointer.vx=n.x;pointer.vy=n.y;UI.knob.style.transform='translate('+(n.x*33)+'px,'+(n.y*33)+'px)'}
   else{const dx=e.clientX-pointer.box,dy=e.clientY-pointer.boy,m=Math.hypot(dx,dy),rad=46,sc=m>rad?rad/m:1;pointer.vx=(dx*sc)/rad;pointer.vy=(dy*sc)/rad;UI.knob.style.transform='translate('+(dx*sc*.72)+'px,'+(dy*sc*.72)+'px)'}
 }
-canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(!started||paused||runState!=='playing'||pointer.active)return;pointer.active=true;pointer.id=e.pointerId;pointer.box=pointer.boy=0;canvas.setPointerCapture?.(e.pointerId);setJoy(e);audio&&audio.unlock()},{passive:false});
+canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(!started||paused||runState!=='playing'||pointer.active)return;pointer.active=true;pointer.id=e.pointerId;pointer.box=pointer.boy=0;try{canvas.setPointerCapture?.(e.pointerId)}catch(_){}setJoy(e);audio&&audio.unlock()},{passive:false});
 canvas.addEventListener('pointermove',e=>{if(!pointer.active||e.pointerId!==pointer.id)return;e.preventDefault();setJoy(e)},{passive:false});
 function endPointer(e){if(pointer.active&&(!e||e.pointerId===pointer.id)){const id=pointer.id;pointer.active=false;pointer.id=null;pointer.vx=pointer.vy=0;pointer.box=pointer.boy=0;player.vx*=.28;player.vy*=.28;UI.joy.style.display='none';UI.knob.style.transform='translate(0,0)';try{if(id!=null&&canvas.hasPointerCapture?.(id))canvas.releasePointerCapture(id)}catch(_){}}}
 canvas.addEventListener('pointerup',endPointer);canvas.addEventListener('pointercancel',endPointer);canvas.addEventListener('lostpointercapture',()=>endPointer());
