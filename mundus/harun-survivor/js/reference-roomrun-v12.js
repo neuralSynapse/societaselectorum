@@ -263,7 +263,7 @@ function spawnEnemy(x,y,kind='shade',elite=false){
 function spawnBoss(){
   if(boss&&!boss.dead)return;
   const scale=1+(level-1)*.18,bhp=Math.round(360*scale);
-  enemies=enemies.filter(e=>e.dead);waveTimer=0;
+  enemies=[];waveTimer=0;
   boss={x:18.3,y:3.3,hp:bhp,maxHp:bhp,r:.72,speed:1.18*(1+Math.min(.2,(level-1)*.01)),hit:0,dead:false,name:'OBSERVADOR CEGO',phase:0,specialCd:2.5,telegraph:0,struck:false};
   enemies.push(boss);objective=5;updateHUD();
   audio&&audio.setState('boss',{intensity:.95});audio&&audio.sfx('boss_windup',{gain:1});window.MUNDUSMusic?.sync?.();
