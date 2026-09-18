@@ -349,28 +349,33 @@ function drawAcolyte(a){
   const p=project(a.x,a.y);ell(p.x,p.y+10,12,5,'#000',.35);ell(p.x,p.y-6,7,9,a.rescued?'#2f4157':'#4a3b56');ell(p.x,p.y-17,5.5,6,'#d2b89d');line(p.x-4,p.y+1,p.x-8,p.y+11,'#1f2026',3);line(p.x+4,p.y+1,p.x+8,p.y+11,'#1f2026',3);if(a.rescued)glow(p.x,p.y-4,18,'#7edfd0',.16);
   if(!a.rescued)drawBubble(p.x,p.y-43,a.bubble,a.ambient?'#7f6d5c':'#9b312c');
 }
+function artReady(im){return !!(im&&im.complete&&im.naturalWidth>1&&im.naturalHeight>1)}
+function drawSprite(im,x,y,targetH,alpha=1,flip=false){
+  if(!artReady(im))return false;const ar=im.naturalWidth/im.naturalHeight,w=Math.max(targetH*.42,Math.min(targetH*.9,targetH*ar));
+  ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,y);if(flip)ctx.scale(-1,1);ctx.drawImage(im,-w/2,-targetH,w,targetH);ctx.restore();return true
+}
 function drawHero(){
-  const p=project(player.x,player.y);ell(p.x,p.y+18,19,7,'#000',.48);
-  ctx.save();ctx.strokeStyle='#49e795';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(p.x,p.y+15,22,9,0,0,TAU);ctx.stroke();glow(p.x,p.y-1,30,'#7ce5ad',.08);
-  const bob=Math.sin(player.walk*1.7)*1.5*player.moveBlend;ctx.translate(p.x,p.y+bob);
-  poly([[-10,2],[-14,19],[0,28],[14,19],[10,2]],'#17191d','#08090a',1.5);poly([[-7,1],[0,22],[7,1],[5,-7],[-5,-7]],'#35252b');line(-8,8,8,15,'#c3994d',3);
-  ell(0,-12,8,9,'#bc9b7d');poly([[-10,-11],[-8,-22],[0,-27],[9,-22],[11,-10],[5,-15],[-4,-15]],'#08090b');
-  line(7,7,17,-10,'#d0aa63',2);line(17,-10,20,-18,'#f0dfb7',2);
-  if(player.attackPulse>0){ctx.globalAlpha=player.attackPulse;ctx.strokeStyle='#7ae9ff';ctx.lineWidth=4;for(let i=0;i<4;i++){const a=time*6+i*TAU/4;ctx.beginPath();ctx.arc(0,7,27+i*2,a,a+.65);ctx.stroke();glow(Math.cos(a)*30,7+Math.sin(a)*12,10,'#6deeff',.22)}}
-  ctx.restore();
-  // health bar
-  rr(p.x-23,p.y-39,46,5,3,'#111');rr(p.x-23,p.y-39,46*(player.hp/player.maxHp),5,3,'#48e178');if(player.hp===player.maxHp){ctx.fillStyle='#effbe8';ctx.font='bold 6px Manrope';ctx.textAlign='center';ctx.fillText('MAX',p.x,p.y-43)}
+  const p=project(player.x,player.y);ell(p.x,p.y+17,18,6,'#000',.45);
+  ctx.save();ctx.strokeStyle='#46f19a';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(p.x,p.y+14,21,8,0,0,TAU);ctx.stroke();glow(p.x,p.y-1,27,'#7ce5ad',.08);ctx.restore();
+  const bob=Math.sin(player.walk*1.7)*1.3*player.moveBlend,flip=Math.cos(player.angle)+Math.sin(player.angle)<-.08;
+  const used=drawSprite(ART.hero,p.x,p.y+20+bob,58,1,flip);
+  if(!used){
+    ctx.save();ctx.translate(p.x,p.y+bob);
+    poly([[-9,2],[-12,17],[0,25],[12,17],[9,2]],'#17191d','#08090a',1.2);poly([[-6,1],[0,20],[6,1],[4,-6],[-4,-6]],'#35252b');line(-7,7,7,14,'#c3994d',3);
+    ell(0,-11,7,8,'#bc9b7d');poly([[-9,-10],[-7,-20],[0,-24],[8,-20],[9,-9],[4,-14],[-4,-14]],'#08090b');line(6,6,15,-9,'#d0aa63',2);ctx.restore();
+  }
+  if(player.attackPulse>0){ctx.save();ctx.globalAlpha=player.attackPulse;ctx.strokeStyle='#7ae9ff';ctx.lineWidth=3.5;for(let i=0;i<3;i++){const a=time*7+i*TAU/3;ctx.beginPath();ctx.arc(p.x,p.y+5,24+i*2,a,a+.7);ctx.stroke()}ctx.restore()}
+  rr(p.x-22,p.y-39,44,5,3,'#111');rr(p.x-22,p.y-39,44*(player.hp/player.maxHp),5,3,'#48e178');
+  if(player.hp===player.maxHp){ctx.fillStyle='#effbe8';ctx.font='bold 6px Manrope';ctx.textAlign='center';ctx.fillText('MAX',p.x,p.y-43)}
 }
 function drawEnemy(e){
-  const p=project(e.x,e.y),hit=e.hit>0;ell(p.x,p.y+12,e===boss?25:14,e===boss?9:6,'#000',.45);
-  if(e===boss&&e.telegraph>0){const q=1-Math.max(0,Math.min(1,e.telegraph/(e.phase ? .52 : .68)));ctx.save();ctx.globalAlpha=.35+.45*q;ctx.strokeStyle='#ff5164';ctx.lineWidth=2.5;ctx.beginPath();ctx.ellipse(p.x,p.y+5,30+q*46,14+q*22,0,0,TAU);ctx.stroke();ctx.restore();}
-  ctx.save();ctx.translate(p.x,p.y);if(hit)ctx.globalAlpha=.55;
-  if(e===boss){glow(0,-4,45,'#ba2040',.16);ell(0,-4,25,20,'#16131e');poly([[-28,-6],[-38,-28],[-12,-21]],'#3c1823');poly([[28,-6],[38,-28],[12,-21]],'#3c1823');ell(-8,-8,4,4,'#ff3c51');ell(8,-8,4,4,'#ff3c51');for(let i=0;i<5;i++){const a=time*1.2+i*TAU/5;ell(Math.cos(a)*34,3+Math.sin(a)*12,5,3,'#381521')}}
-  else if(e.kind==='hound'){ell(0,0,15,9,'#11151d');poly([[-10,-5],[-18,-18],[-3,-12]],'#1e202b');poly([[10,-5],[18,-18],[3,-12]],'#1e202b');ell(7,-2,2,2,'#ff3b4d')}
-  else{poly([[-13,11],[-9,-9],[0,-17],[9,-9],[13,11],[0,17]],'#17131d','#33243a');ell(0,-8,3,3,'#e53f5a')}
-  ctx.restore();
-  const w=e===boss?84:34;rr(p.x-w/2,p.y-(e===boss?48:31),w,5,3,'#1b090d');rr(p.x-w/2,p.y-(e===boss?48:31),w*Math.max(0,e.hp/e.maxHp),5,3,e===boss?'#e92f4b':'#d3293b');
-  if(e===boss){ctx.fillStyle='#f1d9c2';ctx.font='700 8px Cinzel,serif';ctx.textAlign='center';ctx.fillText(e.name,p.x,p.y-55)}
+  const p=project(e.x,e.y),hit=e.hit>0;ell(p.x,p.y+12,e===boss?24:13,e===boss?8:5,'#000',.43);
+  if(e===boss&&e.telegraph>0){const q=1-Math.max(0,Math.min(1,e.telegraph/(e.phase ? .52 : .68)));ctx.save();ctx.globalAlpha=.3+.5*q;ctx.strokeStyle='#ff5164';ctx.lineWidth=2.5;ctx.beginPath();ctx.ellipse(p.x,p.y+5,28+q*42,13+q*20,0,0,TAU);ctx.stroke();ctx.restore()}
+  const a=hit?.58:1;
+  let used=false;if(e===boss)used=drawSprite(ART.boss,p.x,p.y+24,94,a,false);else used=drawSprite(ART.shade,p.x,p.y+17,e.kind==='hound'?46:43,a,Math.sin(e.x+time)<0);
+  if(!used){ctx.save();ctx.translate(p.x,p.y);ctx.globalAlpha=a;if(e===boss){glow(0,-4,42,'#ba2040',.15);ell(0,-4,23,18,'#16131e');ell(-7,-7,4,4,'#ff3c51');ell(7,-7,4,4,'#ff3c51')}else if(e.kind==='hound'){ell(0,0,14,8,'#11151d');poly([[-9,-4],[-16,-16],[-3,-11]],'#1e202b');poly([[9,-4],[16,-16],[3,-11]],'#1e202b');ell(6,-2,2,2,'#ff3b4d')}else{poly([[-11,10],[-8,-8],[0,-15],[8,-8],[11,10],[0,15]],'#17131d','#33243a');ell(0,-7,3,3,'#e53f5a')}ctx.restore()}
+  const w=e===boss?82:32,y=p.y-(e===boss?50:29);rr(p.x-w/2,y,w,5,3,'#1b090d');rr(p.x-w/2,y,w*Math.max(0,e.hp/e.maxHp),5,3,e===boss?'#e92f4b':'#d3293b');
+  if(e===boss){ctx.fillStyle='#f1d9c2';ctx.font='700 8px Cinzel,serif';ctx.textAlign='center';ctx.fillText(e.name,p.x,p.y-57)}
 }
 function drawDrop(d){const p=project(d.x,d.y),bob=Math.sin(d.t*7)*2;glow(p.x,p.y-7+bob,18,'#6bffb2',.2);poly([[p.x-8,p.y-6+bob],[p.x,p.y-11+bob],[p.x+9,p.y-5+bob],[p.x,p.y+bob]],'#1e8a58','#7bffc0');ctx.fillStyle='#eafff1';ctx.font='bold 7px serif';ctx.textAlign='center';ctx.fillText('✦',p.x,p.y-5+bob)}
 function drawFx(){
