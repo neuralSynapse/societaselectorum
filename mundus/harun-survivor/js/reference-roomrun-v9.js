@@ -224,11 +224,10 @@ function inputVector(){
   let sx=0,sy=0;
   if(keys.w||keys.arrowup)sy-=1;if(keys.s||keys.arrowdown)sy+=1;if(keys.a||keys.arrowleft)sx-=1;if(keys.d||keys.arrowright)sx+=1;
   if(pointer.active){sx=pointer.vx;sy=pointer.vy}
-  const m=Math.hypot(sx,sy);if(m<.045)return{x:0,y:0,mag:0};
-  const mag=Math.min(1,m);sx/=m;sy/=m;
-  // Screen-space input converted into the two isometric world axes.
-  let wx=sx/(TW*.5)+sy/(TH*.5),wy=sy/(TH*.5)-sx/(TW*.5);
-  const wm=Math.hypot(wx,wy)||1;return{x:wx/wm,y:wy/wm,mag}
+  const m=Math.hypot(sx,sy);if(m<.03)return{x:0,y:0,mag:0,sx:0,sy:0};
+  const mag=Math.min(1,m),nx=sx/m,ny=sy/m;
+  let wx=nx/TW+ny/TH,wy=ny/TH-nx/TW;
+  const wm=Math.hypot(wx,wy)||1;return{x:wx/wm,y:wy/wm,mag,sx:nx,sy:ny}
 }
 function approach(v,target,delta){return v<target?Math.min(target,v+delta):Math.max(target,v-delta)}
 function movePlayer(dt){
@@ -236,12 +235,17 @@ function movePlayer(dt){
   const targetVx=v.x*player.speed*v.mag,targetVy=v.y*player.speed*v.mag;
   const rate=moving?player.accel:player.decel;
   player.vx=approach(player.vx,targetVx,rate*dt);player.vy=approach(player.vy,targetVy,rate*dt);
-  player.moveBlend=approach(player.moveBlend,moving?1:0,dt*(moving?7:10));
-  if(moving){idle=0;UI.tip?.classList.add('hide');player.walk+=dt*(12+v.mag*7);player.angle=Math.atan2(player.vy,player.vx)}
-  else idle+=dt;
-  const nx=player.x+player.vx*dt,ny=player.y+player.vy*dt;
-  if(isWalkableRadius(nx,player.y))player.x=nx;else player.vx=0;
-  if(isWalkableRadius(player.x,ny))player.y=ny;else player.vy=0;
+  player.moveBlend=approach(player.moveBlend,moving?1:0,dt*(moving?10:14));
+  if(moving){
+    idle=0;UI.tip?.classList.add('hide');player.walk+=dt*(13+v.mag*8);player.angle=Math.atan2(player.vy,player.vx);
+    player.stepCd-=dt;if(player.stepCd<=0){player.stepCd=.24;audio&&audio.sfx('footstep',{gain:.24,pitch:.92+Math.random()*.15})}
+  }else{idle+=dt;player.stepCd=0}
+  const steps=Math.max(1,Math.ceil(Math.hypot(player.vx,player.vy)*dt/.12)),sd=dt/steps;
+  for(let i=0;i<steps;i++){
+    const nx=player.x+player.vx*sd,ny=player.y+player.vy*sd;
+    if(isWalkableRadius(nx,player.y))player.x=nx;else player.vx=0;
+    if(isWalkableRadius(player.x,ny))player.y=ny;else player.vy=0;
+  }
   if(idle>2.2&&!pointer.active&&started&&!paused)UI.tip?.classList.remove('hide');
 }
 function hurtPlayer(amount){
@@ -316,7 +320,7 @@ function update(dt){
   time+=dt;if(shake>0)shake=Math.max(0,shake-dt*34);
   movePlayer(dt);interactionUpdate(dt);combatUpdate(dt);updateFollowers(dt);
   for(const f of fx)f.t+=dt;fx=fx.filter(f=>f.t<f.d);
-  const pr=isoRaw(player.x,player.y);camera.x=lerp(camera.x,pr.x,1-Math.pow(.001,dt));camera.y=lerp(camera.y,pr.y,1-Math.pow(.001,dt));
+  const look=.13,pr=isoRaw(player.x+player.vx*look,player.y+player.vy*look);camera.x=lerp(camera.x,pr.x,1-Math.pow(.00045,dt));camera.y=lerp(camera.y,pr.y,1-Math.pow(.00045,dt));
 }
 function drawWallTorch(x,y){const p=project(x,y);glow(p.x,p.y-22,26,'#ff8b3e',.28);ell(p.x,p.y-24,3,9,'#ffb85b');ell(p.x,p.y-29,1.8,5,'#fff1a9')}
 function drawProp(p){
@@ -413,15 +417,24 @@ function loop(now){
 }
 function setJoy(e){
   const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*W/r.width,y=(e.clientY-r.top)*H/r.height;
-  if(pointer.box===0&&pointer.boy===0){pointer.ox=x;pointer.oy=y;pointer.box=e.clientX;pointer.boy=e.clientY;UI.joy.style.left=(e.clientX-r.left)+'px';UI.joy.style.top=(e.clientY-r.top)+'px';UI.joy.style.display='block'}
+  if(pointer.box===0&&pointer.boy===0){
+    pointer.ox=x;pointer.oy=y;pointer.box=e.clientX;pointer.boy=e.clientY;
+    UI.joy.style.left=(e.clientX-r.left)+'px';UI.joy.style.top=(e.clientY-r.top)+'px';UI.joy.style.display='block';
+  }
+  let dx=e.clientX-pointer.box,dy=e.clientY-pointer.boy,m=Math.hypot(dx,dy),rad=54;
+  if(m>rad*1.35){
+    const shift=m-rad,ux=dx/m,uy=dy/m;pointer.box+=ux*shift;pointer.boy+=uy*shift;
+    UI.joy.style.left=(pointer.box-r.left)+'px';UI.joy.style.top=(pointer.boy-r.top)+'px';
+    dx=e.clientX-pointer.box;dy=e.clientY-pointer.boy;m=Math.hypot(dx,dy);
+  }
   pointer.x=x;pointer.y=y;
-  const n=mobileInput?.normalizeStick?.(e.clientX,e.clientY,pointer.box,pointer.boy,46,.065);
-  if(n){pointer.vx=n.x;pointer.vy=n.y;UI.knob.style.transform='translate('+(n.x*33)+'px,'+(n.y*33)+'px)'}
-  else{const dx=e.clientX-pointer.box,dy=e.clientY-pointer.boy,m=Math.hypot(dx,dy),rad=46,sc=m>rad?rad/m:1;pointer.vx=(dx*sc)/rad;pointer.vy=(dy*sc)/rad;UI.knob.style.transform='translate('+(dx*sc*.72)+'px,'+(dy*sc*.72)+'px)'}
+  const dead=3.5,norm=m<=dead?0:Math.min(1,(m-dead)/(rad-dead)),ux=m?dx/m:0,uy=m?dy/m:0;
+  pointer.vx=ux*norm;pointer.vy=uy*norm;pointer.strength=norm;
+  UI.knob.style.transform='translate('+(ux*Math.min(rad,m)*.66)+'px,'+(uy*Math.min(rad,m)*.66)+'px)';
 }
 canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(!started||paused||runState!=='playing'||pointer.active)return;pointer.active=true;pointer.id=e.pointerId;pointer.box=pointer.boy=0;try{canvas.setPointerCapture?.(e.pointerId)}catch(_){}setJoy(e);audio&&audio.unlock()},{passive:false});
 canvas.addEventListener('pointermove',e=>{if(!pointer.active||e.pointerId!==pointer.id)return;e.preventDefault();setJoy(e)},{passive:false});
-function endPointer(e){if(pointer.active&&(!e||e.pointerId===pointer.id)){const id=pointer.id;pointer.active=false;pointer.id=null;pointer.vx=pointer.vy=0;pointer.box=pointer.boy=0;player.vx*=.28;player.vy*=.28;UI.joy.style.display='none';UI.knob.style.transform='translate(0,0)';try{if(id!=null&&canvas.hasPointerCapture?.(id))canvas.releasePointerCapture(id)}catch(_){}}}
+function endPointer(e){if(pointer.active&&(!e||e.pointerId===pointer.id)){const id=pointer.id;pointer.active=false;pointer.id=null;pointer.vx=pointer.vy=0;pointer.strength=0;pointer.box=pointer.boy=0;player.vx*=.18;player.vy*=.18;UI.joy.style.display='none';UI.knob.style.transform='translate(0,0)';try{if(id!=null&&canvas.hasPointerCapture?.(id))canvas.releasePointerCapture(id)}catch(_){}}}
 canvas.addEventListener('pointerup',endPointer);canvas.addEventListener('pointercancel',endPointer);canvas.addEventListener('lostpointercapture',()=>endPointer());
 window.addEventListener('keydown',e=>{if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName||''))return;const k=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k))e.preventDefault();keys[k]=true;if(e.key==='Escape'&&!e.repeat){e.preventDefault();togglePause()}},{passive:false});
 window.addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
