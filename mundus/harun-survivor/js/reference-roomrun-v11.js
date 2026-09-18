@@ -98,7 +98,7 @@ function drawFloor(){
 }
 function drawCrop(h){
   if(h.amount<=.02)return;
-  const p=project(h.x,h.y),ratio=clamp(h.amount/h.max,0,1),tier=perf?.tier?.()||'medium';
+  const p=project(h.x,h.y);if(p.x<-55||p.x>W+55||p.y<-75||p.y>H+45)return;const ratio=clamp(h.amount/h.max,0,1),tier=perf?.tier?.()||'medium';
   const count=Math.max(2,Math.round((tier==='low'?4:tier==='high'?8:6)*(.42+.58*ratio)));
   const sway=Math.sin(time*2.6+h.seed)*1.4;
   for(let i=0;i<count;i++){
@@ -721,9 +721,12 @@ function drawObjectiveBeacon(){
   const cx=Math.max(margin,Math.min(W-margin,p.x)),cy=Math.max(112,Math.min(H-margin,p.y)),ang=Math.atan2(p.y-H*.5,p.x-W*.5);ctx.save();ctx.translate(cx,cy);ctx.rotate(ang);poly([[12,0],[-7,-6],[-4,0],[-7,6]],'#f0ca75');ctx.restore()
 }
 function drawScene(){
-  drawFloor();drawForest();fieldCrops.forEach(drawCrop);drawWalls();drawDepot();builds.forEach(drawBuild);
+  drawFloor();drawForest();drawWalls();
   const drawables=[];
-  props.forEach(p=>drawables.push({d:p.x+p.y,fn:()=>drawProp(p)}));
+  fieldCrops.filter(h=>h.amount>.02).forEach(h=>drawables.push({d:h.x+h.y-.08,fn:()=>drawCrop(h)}));
+  drawables.push({d:depot.x+depot.y,fn:drawDepot});
+  builds.forEach(b=>drawables.push({d:b.x+b.y+.01,fn:()=>drawBuild(b)}));
+  props.forEach(p=>drawables.push({d:p.x+p.y+.02,fn:()=>drawProp(p)}));
   acolytes.forEach(a=>drawables.push({d:a.x+a.y+.05,fn:()=>drawAcolyte(a)}));
   customers.forEach(q=>drawables.push({d:q.x+q.y+.06,fn:()=>drawCustomer(q)}));
   drops.forEach(d=>drawables.push({d:d.x+d.y+.08,fn:()=>drawDrop(d)}));
@@ -792,6 +795,8 @@ function selfTest(){
     field:enemyCanWalk({kind:'shade'},16,4),
     input:!mobileInput||mobileInput.validate?.().ok!==false,
     market:builds.length===4&&Object.keys(PRODUCT).length===5&&typeof spawnCustomer==='function',
+    nativeArt:typeof drawNativeHarun==='function'&&typeof drawNativeShade==='function'&&typeof drawNativeBoss==='function',
+    allCropsHarvestable:fieldCrops.length>40&&fieldCrops.every(h=>typeof h.amount==='number'&&typeof h.respawn==='number'),
     processing:typeof processBusiness==='function'&&typeof addSale==='function',
     infinite:typeof beginNextLevel==='function'&&typeof completeLevel==='function',
     audio:!audio||typeof audio.setState==='function',
@@ -826,12 +831,16 @@ const qaTools=qaEnabled?{
   killField:()=>{for(const e of [...enemies])if(e!==boss&&!e.dead)damageEnemy(e,9999);return stateSnapshot()},
   spawnBoss:()=>{spawnBoss();return stateSnapshot()},
   killBoss:()=>{if(boss&&!boss.dead)damageEnemy(boss,99999);return stateSnapshot()},
+  cropCount:()=>fieldCrops.length,
+  setAtCrop:i=>{const h=fieldCrops[Math.max(0,Math.min(fieldCrops.length-1,Number(i)||0))];if(h){player.x=h.x;player.y=h.y;player.vx=player.vy=0}return stateSnapshot()},
+  cropState:i=>{const h=fieldCrops[Math.max(0,Math.min(fieldCrops.length-1,Number(i)||0))];return h?{x:h.x,y:h.y,amount:h.amount,max:h.max,cut:h.cut,respawn:h.respawn}:null},
   nextLevel:()=>{completeLevel();levelTimer=0;beginNextLevel();return stateSnapshot()}
 }:Object.freeze({enabled:false});
-window.__HARUN_ROOMRUN_V11__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'living-market-infinite',institutionalWrite:false,sourceArt:'canonical-harun+procedural-environment',mobileFirst:true,infinite:true,market:true}};
-window.__HARUN_ROOMRUN_V10__=window.__HARUN_ROOMRUN_V11__;
-window.__HARUN_ROOMRUN_V9__=window.__HARUN_ROOMRUN_V11__;
+window.__HARUN_ROOMRUN_V12__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'native-reference-market-infinite',institutionalWrite:false,sourceArt:'native-in-engine-only',mobileFirst:true,infinite:true,market:true,allVisibleCropsHarvestable:true}};
+window.__HARUN_ROOMRUN_V11__=window.__HARUN_ROOMRUN_V12__;
+window.__HARUN_ROOMRUN_V10__=window.__HARUN_ROOMRUN_V12__;
+window.__HARUN_ROOMRUN_V9__=window.__HARUN_ROOMRUN_V12__;
 window.__MUNDUS_SENTINEL__=window.__MUNDUS_SENTINEL__||{};
-window.__MUNDUS_SENTINEL__.roomrunV11=window.__HARUN_ROOMRUN_V11__;
+window.__MUNDUS_SENTINEL__.roomrunV12=window.__HARUN_ROOMRUN_V12__;
 window.__MUNDUS_SENTINEL__.roomrunQA=selfTest();
 })();
