@@ -2,7 +2,8 @@
 (function(){
 'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
-const VERSION='13.0.0-tycoon-reference-parity';
+const VERSION='14.0.0-reference-strict';
+const STRICT_REFERENCE=true;
 const BASE_W=540,TW=72,TH=36,TAU=Math.PI*2;
 let W=540,H=960,viewportMode='mobile',sceneZoom=1.18;
 const $=s=>document.querySelector(s);
@@ -174,9 +175,9 @@ const props=[
  {kind:'torch',x:3.1,y:14.1},{kind:'torch',x:10.8,y:18.5},{kind:'torch',x:18.1,y:13.7},{kind:'rune',x:15.9,y:16.1}
 ];
 const acolytes=[
- {x:9.3,y:17.2,homeX:9.3,homeY:17.2,rescued:false,follow:0,bubble:'☉'},
- {x:10.2,y:16.7,homeX:10.2,homeY:16.7,rescued:false,follow:1,bubble:'≡'},
- {x:11.2,y:16.3,homeX:11.2,homeY:16.3,rescued:false,follow:2,bubble:'△'},
+ {x:9.15,y:17.15,homeX:9.15,homeY:17.15,rescued:false,follow:0,bubble:'☉',cost:20,invest:0,padX:8.72,padY:17.55,roleName:'MOLEIRO'},
+ {x:10.25,y:16.75,homeX:10.25,homeY:16.75,rescued:false,follow:1,bubble:'≡',cost:20,invest:0,padX:10.0,padY:17.35,roleName:'ESCRIBA'},
+ {x:11.35,y:16.30,homeX:11.35,homeY:16.30,rescued:false,follow:2,bubble:'△',cost:40,invest:0,padX:11.35,padY:16.95,roleName:'GUARDIÃO'},
  {x:12.2,y:15.8,homeX:12.2,homeY:15.8,rescued:false,ambient:true,bubble:'◌'},
  {x:13.0,y:15.3,homeX:13.0,homeY:15.3,rescued:false,ambient:true,bubble:'⚗'}
 ];
@@ -193,6 +194,7 @@ const marketStalls=[
  {x:4.6,y:20.7,label:'BANCA I'},{x:6.5,y:21.15,label:'BANCA II'},{x:8.4,y:20.7,label:'BANCA III'}
 ];
 const goods={provision:0,meat:0,scroll:0,book:0,relic:0};
+const soldByKind={provision:0,meat:0,scroll:0,book:0,relic:0};
 const upgrades=[
  {id:'scythe',x:3.0,y:22.0,name:'FOICE',icon:'☽',level:0,max:5,invest:0,base:18,desc:'CORTE MAIS RÁPIDO'},
  {id:'pack',x:4.6,y:22.55,name:'CARGA',icon:'▣',level:0,max:5,invest:0,base:22,desc:'MAIS CAPACIDADE'},
@@ -221,13 +223,20 @@ function carryCapacity(){return 24+rescued*4+Math.min(24,(level-1)*2)+metaLoot.s
 function cutSpeed(){return 6.2*(1+upgrade('scythe').level*.34)}
 function phaseNumber(){return Math.min(7,objective+1)}
 function phaseName(){return ['COLHEITA','MERCADO','ACÓLITOS','DEFESA','EXPANSÃO','PROVA','ASCENSÃO'][Math.min(6,objective)]}
-function combatUnlocked(){return builds[0].done||objective>=3||level>1}
+function combatUnlocked(){return STRICT_REFERENCE ? builds[0].done : (builds[0].done||objective>=3||level>1)}
 function carryLoad(){return grain+meat}
 function freeCarry(){return Math.max(0,carryCapacity()-carryLoad())}
-function requiredBuildCount(){return level<=1?2:level===2?3:4}
+function requiredBuildCount(){return STRICT_REFERENCE?4:(level<=1?2:level===2?3:4)}
 function levelSalesTarget(){return 10+level*5}
 function buildAvailable(b){
   if(b.done)return true;
+  if(STRICT_REFERENCE){
+    if(b.id==='butcher')return sales>=3;
+    if(b.id==='scriptorium')return builds[0].done&&soldByKind.meat>=3;
+    if(b.id==='library')return builds[1].done&&sales>=14;
+    if(b.id==='relicary')return builds[2].done&&sales>=20;
+    return false
+  }
   if(b.id==='butcher')return sales>=3;
   if(b.id==='scriptorium')return builds[0].done&&sales>=7;
   if(b.id==='library')return level>=2&&builds[1].done&&sales>=14;
@@ -245,10 +254,10 @@ function resetRun(){
   clearTimeout(deathTimer);clearTimeout(victoryTimer);deathTimer=victoryTimer=0;
   objective=0;kills=0;fieldKills=0;rescued=0;resource=0;grain=0;meat=0;coins=0;sales=0;salesLevel=0;level=1;levelTarget=6;levelTimer=0;waveTimer=2.5;customerTimer=.7;harvestSfxCd=0;buildSfxCd=0;cutFxCd=0;automation.harvestCd=0;automation.guardCd=0;
   fx=[];drops=[];enemies=[];customers=[];boss=null;depot.input=0;depot.process=0;
-  Object.keys(goods).forEach(k=>goods[k]=0);Object.keys(metaLoot).forEach(k=>metaLoot[k]=0);
+  Object.keys(goods).forEach(k=>goods[k]=0);Object.keys(soldByKind).forEach(k=>soldByKind[k]=0);Object.keys(metaLoot).forEach(k=>metaLoot[k]=0);
   resetFieldCrops();
   builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0;b.process=0;b.input=0});upgrades.forEach(u=>{u.level=0;u.invest=0});
-  acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0;a.workCd=0});
+  acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.invest=0;a.cool=0;a.workCd=0;a.role=null});
   updateHUD();
 }
 function spawnInitialEnemies(){
@@ -292,7 +301,7 @@ function updateHUD(){
 function setObjective(n){if(objective===n)return;objective=n;updateHUD();fx.push({kind:'banner',text:UI.objective?.textContent||'',t:0,d:1.15});audio&&audio.sfx('special_room_activate',{gain:.72})}
 function emit(kind,x,y,data={}){fx.push(Object.assign({kind,x,y,t:0,d:.65},data))}
 function addSale(kind,c){
-  const p=PRODUCT[kind],marketBoost=1+upgrade('market').level*.08,pay=Math.ceil((p.price+Math.floor((level-1)*.7)+Math.floor(metaLoot.glory/10))*marketBoost);coins+=pay;sales++;salesLevel++;
+  const p=PRODUCT[kind],marketBoost=STRICT_REFERENCE?1:(1+upgrade('market').level*.08),pay=Math.ceil((p.price+Math.floor((level-1)*.7)+Math.floor(metaLoot.glory/10))*marketBoost);coins+=pay;sales++;salesLevel++;soldByKind[kind]=(soldByKind[kind]||0)+1;
   emit('sale',c.x,c.y,{text:'+'+pay+' ÓB'});audio&&audio.sfx(kind==='scroll'||kind==='book'?'arcana':'pickup',{gain:.7,pitch:1.05});
   if(objective===0)setObjective(1);
   if(objective===1&&sales>=3)setObjective(rescued<3?2:3);
