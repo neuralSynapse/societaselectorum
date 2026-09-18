@@ -2,9 +2,9 @@
 (function(){
 'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
-const VERSION='12.0.0-native-reference-parity';
+const VERSION='13.0.0-tycoon-reference-parity';
 const BASE_W=540,TW=72,TH=36,TAU=Math.PI*2;
-let W=540,H=960,viewportMode='mobile';
+let W=540,H=960,viewportMode='mobile',sceneZoom=1.18;
 const $=s=>document.querySelector(s);
 const mobileInput=window.CHRONICA_MOBILE_INPUT||null;
 const perf=window.CHRONICA_PERFORMANCE||null;
@@ -13,7 +13,7 @@ const runtimeErrors=[];
 const captureError=(kind,e)=>{runtimeErrors.push({kind,message:String(e?.message||e?.reason||e||'erro'),at:Date.now()});if(runtimeErrors.length>20)runtimeErrors.shift()};
 window.addEventListener('error',e=>captureError('error',e));
 window.addEventListener('unhandledrejection',e=>captureError('promise',e));
-const UI={resource:$('#resourceCount'),grain:$('#grainCount'),meat:$('#meatCount'),coin:$('#obolCount'),carry:$('#carryCount'),level:$('#levelCount'),glory:$('#legacyGlory'),seal:$('#legacySeal'),eye:$('#legacyEye'),opus:$('#legacyOpus'),arcana:$('#legacyArcana'),objective:$('#objectiveText'),objectiveKicker:$('#objectiveKicker'),tip:$('#moveTip'),joy:$('#touchJoy'),knob:$('#touchJoy i'),pause:$('#pauseOverlay'),start:$('#startOverlay'),victory:$('#victoryOverlay'),pauseBtn:$('#pauseBtn'),resume:$('#resumeBtn'),restart:$('#restartBtn'),restartVictory:$('#restartVictory'),music:$('#musicVol'),sfx:$('#sfxVol'),musicVal:$('#musicVal'),sfxVal:$('#sfxVal')};
+const UI={resource:$('#resourceCount'),grain:$('#grainCount'),meat:$('#meatCount'),coin:$('#obolCount'),carry:$('#carryCount'),level:$('#levelCount'),phase:$('#phaseCount'),phaseName:$('#phaseName'),glory:$('#legacyGlory'),seal:$('#legacySeal'),eye:$('#legacyEye'),opus:$('#legacyOpus'),arcana:$('#legacyArcana'),objective:$('#objectiveText'),objectiveKicker:$('#objectiveKicker'),tip:$('#moveTip'),joy:$('#touchJoy'),knob:$('#touchJoy i'),pause:$('#pauseOverlay'),start:$('#startOverlay'),victory:$('#victoryOverlay'),pauseBtn:$('#pauseBtn'),resume:$('#resumeBtn'),restart:$('#restartBtn'),restartVictory:$('#restartVictory'),music:$('#musicVol'),sfx:$('#sfxVol'),musicVal:$('#musicVal'),sfxVal:$('#sfxVal')};
 const perfProfile=perf?.profile?.()||{dpr:1.25};
 const DPR=Math.min(Number(perfProfile.dpr)||1.25,window.devicePixelRatio||1.25);
 function syncViewport(){
@@ -25,11 +25,11 @@ function syncViewport(){
   const desktop=rw>=720&&aspect>=.78;
   let nextW,nextH;
   if(desktop){
-    viewportMode='desktop';
+    viewportMode='desktop';sceneZoom=aspect>1.9?1.5:1.42;
     nextH=900;
     nextW=Math.max(720,Math.min(1920,Math.round(nextH*aspect)));
   }else{
-    viewportMode='mobile';
+    viewportMode='mobile';sceneZoom=1.22;
     nextW=BASE_W;
     nextH=Math.max(820,Math.min(1280,Math.round(nextW/aspect)));
   }
@@ -55,10 +55,11 @@ const walkZones=[
  {x0:10.0,y0:9.0,x1:18.6,y1:17.1,type:'room'},
  {x0:7.5,y0:6.7,x1:14.8,y1:13.1,type:'hall'},
  {x0:13.4,y0:5.6,x1:20.4,y1:11.9,type:'hall'},
- {x0:7.5,y0:-.2,x1:22.7,y1:9.3,type:'field'}
+ {x0:7.5,y0:-.2,x1:22.7,y1:9.3,type:'field'},
+ {x0:.4,y0:18.2,x1:11.8,y1:24.2,type:'market'}
 ];
 const floorCells=[];
-for(let y=0;y<21;y++)for(let x=0;x<24;x++){
+for(let y=0;y<25;y++)for(let x=0;x<25;x++){
   const cx=x+.5,cy=y+.5,z=walkZones.find(q=>cx>=q.x0&&cx<=q.x1&&cy>=q.y0&&cy<=q.y1);
   if(z)floorCells.push({x,y,type:z.type});
 }
@@ -68,7 +69,7 @@ function isWalkable(x,y){return walkZones.some(q=>x>=q.x0&&x<=q.x1&&y>=q.y0&&y<=
 function isWalkableRadius(x,y,r=.16){return isWalkable(x-r,y)&&isWalkable(x+r,y)&&isWalkable(x,y-r)&&isWalkable(x,y+r)}
 function typeAt(x,y){const z=walkZones.slice().reverse().find(q=>x>=q.x0&&x<=q.x1&&y>=q.y0&&y<=q.y1);return z?z.type:null}
 function hasLineOfSight(a,b){for(let i=1;i<8;i++){const t=i/8;if(!isWalkable(lerp(a.x,b.x,t),lerp(a.y,b.y,t)))return false}return true}
-function enemyCanWalk(e,x,y){const t=walkZones.slice().reverse().find(q=>x>=q.x0&&x<=q.x1&&y>=q.y0&&y<=q.y1)?.type;return t==='field'||t==='hall'}
+function enemyCanWalk(e,x,y){const t=walkZones.slice().reverse().find(q=>x>=q.x0&&x<=q.x1&&y>=q.y0&&y<=q.y1)?.type;return t==='field'||t==='hall'||t==='market'}
 function moveEnemy(e,dx,dy,dt){const nx=e.x+dx*e.speed*dt,ny=e.y+dy*e.speed*dt;if(enemyCanWalk(e,nx,e.y))e.x=nx;if(enemyCanWalk(e,e.x,ny))e.y=ny}
 function project(x,y){const p=isoRaw(x,y);return{x:p.x-camera.x+W*.5+shakeX,y:p.y-camera.y+H*.56+shakeY}}
 function rr(x,y,w,h,r,fill,stroke,lw=1){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke()}}
