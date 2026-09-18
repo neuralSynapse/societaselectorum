@@ -36,6 +36,10 @@ button,input{font:inherit}
 .kicker{font:700 8px Cinzel,serif;letter-spacing:.22em;color:#c99f5a}.panel h1{margin:8px 0 6px;font:800 clamp(28px,8vw,44px)/.95 Cinzel,serif;color:#f3ddb0}.panel h2{margin:0 0 14px;font:700 13px Cinzel,serif;letter-spacing:.08em;color:#cfb581}.panel p{margin:0 auto 18px;max-width:330px;color:#b6aa97;font-size:11px;line-height:1.55}
 .primary,.secondary{width:100%;min-height:46px;border-radius:12px;padding:13px 14px;border:1px solid #9d783f;cursor:pointer;font:800 10px Cinzel,serif;letter-spacing:.08em;touch-action:manipulation}.primary{background:linear-gradient(#4b351d,#25180e);color:#ffe2a2;box-shadow:0 8px 24px #0008}.secondary{margin-top:8px;background:#0b0b09;color:#c8b896;border-color:#493a29}
 .settings{margin-top:15px;display:grid;gap:10px;text-align:left}.settings label{display:grid;grid-template-columns:72px 1fr 32px;gap:8px;align-items:center;font-size:8px;color:#baa98e}.settings input{width:100%}
+.legacyGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin:14px 0 4px}
+.legacyItem{padding:7px 3px;border-radius:9px;border:1px solid #59472f;background:#0a0b09;color:#a89470;text-align:center}
+.legacyItem span{display:block;font:700 11px serif;color:#e0bd65;line-height:1}.legacyItem b{display:block;margin-top:3px;font:800 8px Cinzel,serif;color:#f1dfb5}.legacyItem small{display:block;margin-top:2px;font:700 4.8px Cinzel,serif;letter-spacing:.04em;color:#85765e}
+
 .rewardGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:16px 0}.reward{aspect-ratio:1;border-radius:9px;border:1px solid #80643d;background:radial-gradient(circle at 50% 25%,#5a3b20,#12100c 70%);display:grid;place-items:center;box-shadow:inset 0 0 18px #d0a34a22}.reward span{font-size:22px}.reward small{display:block;font-size:6px;color:#bca37a}
 .victorySeal{font-size:40px;line-height:1;margin:4px 0;color:#e2b85d;text-shadow:0 0 24px #d49d3b66}
 .ribbon{margin:10px -10px 0;padding:9px;border:1px solid #8b6538;background:linear-gradient(90deg,#3a160f,#7b381e,#3a160f);font:800 19px Cinzel,serif;color:#ffe9bd;text-shadow:0 2px 4px #000}
