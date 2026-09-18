@@ -223,7 +223,7 @@ function carryCapacity(){return 24+rescued*4+Math.min(24,(level-1)*2)+metaLoot.s
 function cutSpeed(){return 6.2*(1+upgrade('scythe').level*.34)}
 function phaseNumber(){return Math.min(7,objective+1)}
 function phaseName(){return ['COLHEITA','MERCADO','ACÓLITOS','DEFESA','EXPANSÃO','PROVA','ASCENSÃO'][Math.min(6,objective)]}
-function combatUnlocked(){return STRICT_REFERENCE ? builds[0].done : (builds[0].done||objective>=3||level>1)}
+function combatUnlocked(){return STRICT_REFERENCE ? true : (builds[0].done||objective>=3||level>1)}
 function carryLoad(){return grain+meat}
 function freeCarry(){return Math.max(0,carryCapacity()-carryLoad())}
 function requiredBuildCount(){return STRICT_REFERENCE?4:(level<=1?2:level===2?3:4)}
@@ -258,10 +258,10 @@ function resetRun(){
   resetFieldCrops();
   builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0;b.process=0;b.input=0});upgrades.forEach(u=>{u.level=0;u.invest=0});
   acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.invest=0;a.cool=0;a.workCd=0;a.role=null});
-  updateHUD();
+  if(STRICT_REFERENCE)spawnInitialEnemies();updateHUD();
 }
 function spawnInitialEnemies(){
-  if(objective<3&&level===1)return;
+  if(!STRICT_REFERENCE&&objective<3&&level===1)return;
   const pts=[[14,4.6],[16.2,3.5],[18.2,5.4],[19.4,2.8],[12.8,2.8],[20.5,6.2],[11.2,4.2],[21.2,4.7],[15.2,6.0],[18.9,7.0]];
   const count=Math.min(pts.length,4+Math.floor(level/2));for(let i=0;i<count;i++){const p=pts[i];spawnEnemy(p[0],p[1],i%3===0?'hound':'shade',level%5===0&&i===count-1)}
 }
@@ -345,7 +345,7 @@ function beginNextLevel(){
   if(STRICT_REFERENCE){
     grain=0;meat=0;coins=0;depot.input=0;depot.process=0;Object.keys(goods).forEach(k=>goods[k]=0);Object.keys(soldByKind).forEach(k=>soldByKind[k]=0);
     resetFieldCrops();builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.process=0;b.input=0});
-    acolytes.forEach(a=>{if(!a.ambient){a.rescued=false;a.invest=0;a.role=null;a.x=a.homeX;a.y=a.homeY}});rescued=0;
+    acolytes.forEach(a=>{if(!a.ambient){a.rescued=false;a.invest=0;a.role=null;a.x=a.homeX;a.y=a.homeY}});rescued=0;spawnInitialEnemies();
   }else{
     grain=Math.min(grain,Math.ceil(carryCapacity()*.35));meat=Math.min(meat,Math.ceil(carryCapacity()*.3));resetFieldCrops();
     if(level>1&&acolytes.filter(a=>a.rescued&&!a.ambient).length>=3)rescued=3;
