@@ -414,8 +414,7 @@ function setJoy(e){
 }
 canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(!started||paused||runState!=='playing'||pointer.active)return;pointer.active=true;pointer.id=e.pointerId;pointer.box=pointer.boy=0;canvas.setPointerCapture?.(e.pointerId);setJoy(e);audio&&audio.unlock()},{passive:false});
 canvas.addEventListener('pointermove',e=>{if(!pointer.active||e.pointerId!==pointer.id)return;e.preventDefault();setJoy(e)},{passive:false});
-function endPointer(e){if(pointer.active&&(!e||e.pointerId===pointer.id)){try{if(pointer.id!=null&&canvas.hasPointerCapture?.(pointer.id))canvas.releasePointerCapture(pointer.id)}catch(_){}
-  pointer.active=false;pointer.vx=pointer.vy=0;pointer.box=pointer.boy=0;player.vx*=.28;player.vy*=.28;UI.joy.style.display='none';UI.knob.style.transform='translate(0,0)'}}
+function endPointer(e){if(pointer.active&&(!e||e.pointerId===pointer.id)){const id=pointer.id;pointer.active=false;pointer.id=null;pointer.vx=pointer.vy=0;pointer.box=pointer.boy=0;player.vx*=.28;player.vy*=.28;UI.joy.style.display='none';UI.knob.style.transform='translate(0,0)';try{if(id!=null&&canvas.hasPointerCapture?.(id))canvas.releasePointerCapture(id)}catch(_){}}}
 canvas.addEventListener('pointerup',endPointer);canvas.addEventListener('pointercancel',endPointer);canvas.addEventListener('lostpointercapture',()=>endPointer());
 window.addEventListener('keydown',e=>{if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName||''))return;const k=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k))e.preventDefault();keys[k]=true;if(e.key==='Escape'&&!e.repeat){e.preventDefault();togglePause()}},{passive:false});
 window.addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
@@ -459,6 +458,14 @@ bindAudio();resetRun();syncViewport();
 const p0=isoRaw(player.x,player.y);camera.x=p0.x;camera.y=p0.y;
 perf?.onChange?.(s=>window.MUNDUSVFX?.setQuality?.(s.tier==='low'?.68:s.tier==='medium'?.88:1.06));
 requestAnimationFrame(loop);
-window.__HARUN_ROOMRUN_V9__={version:VERSION,reset:resetRun,selfTest,state:()=>({runState,paused,objective,resource,kills,fieldKills,rescued,hp:player.hp,enemies:enemies.length,boss:boss?boss.hp:null,fps:Math.round(1000/Math.max(1,frameEma)),height:H,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]}),sentinel:{gameId:'harun-survivor',mode:'reference-roomrun',institutionalWrite:false,sourceArt:'procedural-original',mobileFirst:true}};
+const stateSnapshot=()=>({runState,paused,objective,resource,kills,fieldKills,rescued,hp:player.hp,x:player.x,y:player.y,enemies:enemies.length,boss:boss?boss.hp:null,fps:Math.round(1000/Math.max(1,frameEma)),height:H,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]});
+window.__HARUN_ROOMRUN_V9__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:{
+  step:(dt=.016)=>{if(runState==='playing'&&!paused)update(Math.max(0,Math.min(.033,Number(dt)||.016)));return stateSnapshot()},
+  setMove:(x=0,y=0)=>{pointer.active=Math.hypot(x,y)>.001;pointer.vx=Math.max(-1,Math.min(1,Number(x)||0));pointer.vy=Math.max(-1,Math.min(1,Number(y)||0));return stateSnapshot()},
+  release:()=>{endPointer();return stateSnapshot()},
+  setPlayer:(x,y)=>{if(isWalkableRadius(Number(x),Number(y))){player.x=Number(x);player.y=Number(y);player.vx=player.vy=0}return stateSnapshot()},
+  setObjective:n=>{const v=Math.max(0,Math.min(6,Number(n)||0));objective=v;updateHUD();return stateSnapshot()},
+  grantResource:n=>{resource=Math.max(0,resource+(Number(n)||0));updateHUD();return stateSnapshot()}
+},sentinel:{gameId:'harun-survivor',mode:'reference-roomrun',institutionalWrite:false,sourceArt:'procedural-original',mobileFirst:true}};
 window.__MUNDUS_SENTINEL__=window.__MUNDUS_SENTINEL__||{};window.__MUNDUS_SENTINEL__.roomrunV9=window.__HARUN_ROOMRUN_V9__;window.__MUNDUS_SENTINEL__.roomrunQA=selfTest();
 })();
