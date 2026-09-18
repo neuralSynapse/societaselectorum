@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
-const VERSION='14.0.0-reference-strict';
+const VERSION='14.1.0-reference-strict';
 const STRICT_REFERENCE=true;
 const BASE_W=540,TW=72,TH=36,TAU=Math.PI*2;
 let W=540,H=960,viewportMode='mobile',sceneZoom=1.18;
@@ -288,10 +288,10 @@ function updateHUD(){
     if(UI.objectiveKicker)UI.objectiveKicker.textContent='ESTÁGIO '+level;
     let text='';
     if(objective===0)text='CORTE O CAMPO · LEVE A PILHA AO MOINHO · VENDA PROVISÕES';
-    else if(objective===1)text='USE ÓBOLOS NOS CÍRCULOS VERDES · LIBERE ACÓLITOS E ESTAÇÕES';
-    else if(objective===2)text='DEFENDA O CAMPO · RECOLHA CARNE · LEVE AO AÇOUGUE';
-    else if(objective===3)text='VENDA CARNE · LIBERE A PRÓXIMA ESTAÇÃO';
-    else if(objective===4)text='EXPANDA TODAS AS ESTAÇÕES · ATENDA A FILA';
+    else if(objective===1)text='USE ÓBOLOS NOS CÍRCULOS VERDES · LIBERE ACÓLITOS E AÇOUGUE';
+    else if(objective===2)text='DERROTE FERAS · RECOLHA CARNE · LEVE AO AÇOUGUE';
+    else if(objective===3)text='VENDA CARNE · LIBERE OS ACÓLITOS RESTANTES';
+    else if(objective===4)text='ATENDA A FILA · META DE VENDAS '+salesLevel+'/'+levelSalesTarget();
     else if(objective===5)text='META FINAL · VENDAS '+salesLevel+'/'+levelSalesTarget();
     else text='ESTÁGIO CONCLUÍDO';
     if(UI.objective)UI.objective.textContent=text;
