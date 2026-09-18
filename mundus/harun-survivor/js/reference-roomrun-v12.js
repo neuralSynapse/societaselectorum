@@ -3,8 +3,8 @@
 'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
 const VERSION='12.0.0-native-reference-parity';
-const W=540,TW=72,TH=36,TAU=Math.PI*2;
-let H=960;
+const BASE_W=540,TW=72,TH=36,TAU=Math.PI*2;
+let W=540,H=960,viewportMode='mobile';
 const $=s=>document.querySelector(s);
 const mobileInput=window.CHRONICA_MOBILE_INPUT||null;
 const perf=window.CHRONICA_PERFORMANCE||null;
@@ -18,11 +18,25 @@ const perfProfile=perf?.profile?.()||{dpr:1.25};
 const DPR=Math.min(Number(perfProfile.dpr)||1.25,window.devicePixelRatio||1.25);
 function syncViewport(){
   const vh=Math.max(420,Math.round(window.visualViewport?.height||window.innerHeight||960));
+  const vw=Math.max(320,Math.round(window.visualViewport?.width||window.innerWidth||540));
   document.documentElement.style.setProperty('--app-h',vh+'px');
-  const r=canvas.getBoundingClientRect(),nextH=Math.max(820,Math.min(1240,Math.round(W*(r.height/Math.max(1,r.width)))));
-  if(nextH!==H||canvas.width!==Math.round(W*DPR)||canvas.height!==Math.round(nextH*DPR)){
-    H=nextH;canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);
+  document.documentElement.style.setProperty('--app-w',vw+'px');
+  const r=canvas.getBoundingClientRect(),rw=Math.max(1,r.width),rh=Math.max(1,r.height),aspect=rw/rh;
+  const desktop=rw>=720&&aspect>=.78;
+  let nextW,nextH;
+  if(desktop){
+    viewportMode='desktop';
+    nextH=900;
+    nextW=Math.max(720,Math.min(1920,Math.round(nextH*aspect)));
+  }else{
+    viewportMode='mobile';
+    nextW=BASE_W;
+    nextH=Math.max(820,Math.min(1280,Math.round(nextW/aspect)));
   }
+  if(nextW!==W||nextH!==H||canvas.width!==Math.round(nextW*DPR)||canvas.height!==Math.round(nextH*DPR)){
+    W=nextW;H=nextH;canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  document.documentElement.dataset.viewportMode=viewportMode;
 }
 syncViewport();
 const audio=window.MUNDUSAudio||null;
@@ -814,7 +828,7 @@ const stateSnapshot=()=>({
   hp:player.hp,maxHp:player.maxHp,x:player.x,y:player.y,depot:{input:+depot.input.toFixed(2),process:+depot.process.toFixed(2)},
   builds:builds.map(b=>({id:b.id,name:b.name,invest:+b.invest.toFixed(2),cost:b.cost,height:+b.height.toFixed(3),done:b.done,available:buildAvailable(b),input:+(b.input||0).toFixed(2),stock:goods[b.product]||0})),
   enemies:enemies.filter(e=>!e.dead).length,boss:boss?Math.max(0,boss.hp):null,
-  fps:Math.round(1000/Math.max(1,frameEma)),height:H,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]
+  fps:Math.round(1000/Math.max(1,frameEma)),width:W,height:H,viewportMode,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]
 });
 const qaEnabled=new URLSearchParams(window.location?.search||'').get('qa')==='dev';
 const qaTools=qaEnabled?{
@@ -836,7 +850,7 @@ const qaTools=qaEnabled?{
   cropState:i=>{const h=fieldCrops[Math.max(0,Math.min(fieldCrops.length-1,Number(i)||0))];return h?{x:h.x,y:h.y,amount:h.amount,max:h.max,cut:h.cut,respawn:h.respawn}:null},
   nextLevel:()=>{completeLevel();levelTimer=0;beginNextLevel();return stateSnapshot()}
 }:Object.freeze({enabled:false});
-window.__HARUN_ROOMRUN_V12__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'native-reference-market-infinite',institutionalWrite:false,sourceArt:'native-in-engine-only',mobileFirst:true,infinite:true,market:true,allVisibleCropsHarvestable:true}};
+window.__HARUN_ROOMRUN_V12__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'native-reference-market-infinite',institutionalWrite:false,sourceArt:'native-in-engine-only',mobileFirst:true,desktopAdaptive:true,infinite:true,market:true,allVisibleCropsHarvestable:true}};
 window.__HARUN_ROOMRUN_V11__=window.__HARUN_ROOMRUN_V12__;
 window.__HARUN_ROOMRUN_V10__=window.__HARUN_ROOMRUN_V12__;
 window.__HARUN_ROOMRUN_V9__=window.__HARUN_ROOMRUN_V12__;
