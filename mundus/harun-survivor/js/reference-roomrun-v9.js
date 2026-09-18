@@ -168,9 +168,10 @@ function spawnEnemy(x,y,kind='shade',elite=false){
 }
 function spawnBoss(){
   const scale=1+(level-1)*.18,bhp=Math.round(360*scale);
+  enemies=[];waveTimer=0;
   boss={x:18.3,y:3.3,hp:bhp,maxHp:bhp,r:.72,speed:1.18*(1+Math.min(.2,(level-1)*.01)),hit:0,dead:false,name:'OBSERVADOR CEGO',phase:0,specialCd:2.5,telegraph:0,struck:false};
   enemies.push(boss);
-  audio&&audio.setState('boss',{intensity:.95});audio&&audio.sfx('boss_windup',{gain:1});
+  audio&&audio.setState('boss',{intensity:.95});audio&&audio.sfx('boss_windup',{gain:1});window.MUNDUSMusic?.sync?.();
 }
 function currencyAmount(kind){return kind==='grain'?grain:kind==='meat'?meat:resource}
 function addCurrency(kind,value){if(kind==='grain')grain+=value;else if(kind==='meat')meat+=value;else resource+=value;updateHUD()}
@@ -353,7 +354,7 @@ function separateEnemies(){
   }
 }
 function combatUpdate(dt){
-  if(runState!=='playing')return;
+  if(runState!=='playing'||levelTimer>0||objective===6)return;
   player.atkCd-=dt;player.hitCd=Math.max(0,player.hitCd-dt);player.attackPulse=Math.max(0,player.attackPulse-dt*3);
   const live=enemies.filter(e=>!e.dead);
   let nearest=null,nd=99;
@@ -591,31 +592,46 @@ function bindAudio(){
 function selfTest(){
   const checks={
     canvas:!!canvas&&!!ctx,
-    ui:Object.values(UI).every(Boolean),
+    ui:[UI.resource,UI.grain,UI.meat,UI.level,UI.objective,UI.objectiveKicker,UI.joy,UI.pause,UI.start].every(Boolean),
     spawn:isWalkableRadius(5.2,15.2),
     field:enemyCanWalk({kind:'shade'},16,4),
     input:!mobileInput||mobileInput.validate?.().ok!==false,
-    objectives:objective>=0&&objective<=6,
+    economy:Array.isArray(harvestNodes)&&harvestNodes.length>=4&&builds.length===2,
+    infinite:typeof beginNextLevel==='function'&&typeof completeLevel==='function',
     audio:!audio||typeof audio.setState==='function',
     runtimeErrors:runtimeErrors.length===0
-  };return{version:VERSION,pass:Object.values(checks).every(Boolean),checks,runtimeErrors:[...runtimeErrors],tier:perf?.snapshot?.()||null}
+  };
+  return{version:VERSION,pass:Object.values(checks).every(Boolean),checks,runtimeErrors:[...runtimeErrors],tier:perf?.snapshot?.()||null}
 }
 bindAudio();resetRun();syncViewport();
 const p0=isoRaw(player.x,player.y);camera.x=p0.x;camera.y=p0.y;
 perf?.onChange?.(s=>window.MUNDUSVFX?.setQuality?.(s.tier==='low' ? .68 : s.tier==='medium' ? .88 : 1.06));
 requestAnimationFrame(loop);
-const stateSnapshot=()=>({runState,paused,objective,resource,kills,fieldKills,rescued,hp:player.hp,x:player.x,y:player.y,enemies:enemies.filter(e=>!e.dead).length,boss:boss?Math.max(0,boss.hp):null,fps:Math.round(1000/Math.max(1,frameEma)),height:H,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]});
+const stateSnapshot=()=>({
+  runState,paused,objective,resource,grain,meat,level,bestLevel,kills,fieldKills,rescued,
+  hp:player.hp,maxHp:player.maxHp,x:player.x,y:player.y,
+  builds:builds.map(b=>({name:b.name,currency:b.currency,invest:+b.invest.toFixed(2),cost:b.cost,height:+b.height.toFixed(3),done:b.done})),
+  enemies:enemies.filter(e=>!e.dead).length,boss:boss?Math.max(0,boss.hp):null,
+  fps:Math.round(1000/Math.max(1,frameEma)),height:H,tier:perf?.tier?.()||'standalone',runtimeErrors:[...runtimeErrors]
+});
 const qaEnabled=new URLSearchParams(window.location?.search||'').get('qa')==='dev';
 const qaTools=qaEnabled?{
   step:(dt=.016)=>{if(runState==='playing'&&!paused)update(Math.max(0,Math.min(.033,Number(dt)||.016)));return stateSnapshot()},
   setMove:(x=0,y=0)=>{pointer.active=Math.hypot(x,y)>.001;pointer.vx=Math.max(-1,Math.min(1,Number(x)||0));pointer.vy=Math.max(-1,Math.min(1,Number(y)||0));return stateSnapshot()},
   release:()=>{endPointer();return stateSnapshot()},
   setPlayer:(x,y)=>{if(isWalkableRadius(Number(x),Number(y))){player.x=Number(x);player.y=Number(y);player.vx=player.vy=0}return stateSnapshot()},
-  setObjective:n=>{const v=Math.max(0,Math.min(6,Number(n)||0));objective=v;updateHUD();return stateSnapshot()},
-  grantResource:n=>{resource=Math.max(0,resource+(Number(n)||0));updateHUD();return stateSnapshot()},
-  killField:()=>{if(objective===3){for(const e of [...enemies])if(e!==boss&&!e.dead)damageEnemy(e,9999);interactionUpdate(0)}return stateSnapshot()},
-  killBoss:()=>{if(boss&&!boss.dead)damageEnemy(boss,9999);return stateSnapshot()}
+  setObjective:n=>{objective=Math.max(0,Math.min(6,Number(n)||0));updateHUD();return stateSnapshot()},
+  grant:(kind,n)=>{addCurrency(kind,Math.max(0,Number(n)||0));return stateSnapshot()},
+  fillBuild:i=>{const b=builds[Math.max(0,Math.min(1,Number(i)||0))];if(b){b.invest=b.cost;b.height=1;b.done=true}return stateSnapshot()},
+  awakenAll:()=>{for(const a of acolytes)if(!a.ambient)a.rescued=true;rescued=3;return stateSnapshot()},
+  killField:()=>{for(const e of [...enemies])if(e!==boss&&!e.dead)damageEnemy(e,9999);return stateSnapshot()},
+  spawnBoss:()=>{objective=5;spawnBoss();updateHUD();return stateSnapshot()},
+  killBoss:()=>{if(boss&&!boss.dead)damageEnemy(boss,99999);return stateSnapshot()},
+  nextLevel:()=>{completeLevel();levelTimer=0;beginNextLevel();return stateSnapshot()}
 }:Object.freeze({enabled:false});
-window.__HARUN_ROOMRUN_V9__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'reference-roomrun',institutionalWrite:false,sourceArt:'procedural-original',mobileFirst:true}};
-window.__MUNDUS_SENTINEL__=window.__MUNDUS_SENTINEL__||{};window.__MUNDUS_SENTINEL__.roomrunV9=window.__HARUN_ROOMRUN_V9__;window.__MUNDUS_SENTINEL__.roomrunQA=selfTest();
+window.__HARUN_ROOMRUN_V10__={version:VERSION,start:startGame,reset:resetRun,selfTest,state:stateSnapshot,qa:qaTools,sentinel:{gameId:'harun-survivor',mode:'infinite-reference-roomrun',institutionalWrite:false,sourceArt:'canonical-harun+procedural-environment',mobileFirst:true,infinite:true}};
+window.__HARUN_ROOMRUN_V9__=window.__HARUN_ROOMRUN_V10__;
+window.__MUNDUS_SENTINEL__=window.__MUNDUS_SENTINEL__||{};
+window.__MUNDUS_SENTINEL__.roomrunV10=window.__HARUN_ROOMRUN_V10__;
+window.__MUNDUS_SENTINEL__.roomrunQA=selfTest();
 })();
