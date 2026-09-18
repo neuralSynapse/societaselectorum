@@ -175,9 +175,9 @@ const props=[
  {kind:'torch',x:3.1,y:14.1},{kind:'torch',x:10.8,y:18.5},{kind:'torch',x:18.1,y:13.7},{kind:'rune',x:15.9,y:16.1}
 ];
 const acolytes=[
- {x:9.15,y:17.15,homeX:9.15,homeY:17.15,rescued:false,follow:0,bubble:'☉',cost:20,invest:0,padX:8.72,padY:17.55,roleName:'MOLEIRO'},
- {x:10.25,y:16.75,homeX:10.25,homeY:16.75,rescued:false,follow:1,bubble:'≡',cost:20,invest:0,padX:10.0,padY:17.35,roleName:'ESCRIBA'},
- {x:11.35,y:16.30,homeX:11.35,homeY:16.30,rescued:false,follow:2,bubble:'△',cost:40,invest:0,padX:11.35,padY:16.95,roleName:'GUARDIÃO'},
+ {x:9.15,y:17.15,homeX:9.15,homeY:17.15,rescued:false,follow:0,bubble:'☉',cost:20,invest:0,padX:8.72,padY:17.55,roleName:'ACÓLITO DO MOINHO'},
+ {x:10.25,y:16.75,homeX:10.25,homeY:16.75,rescued:false,follow:1,bubble:'≡',cost:20,invest:0,padX:10.0,padY:17.35,roleName:'ACÓLITO DO AÇOUGUE'},
+ {x:11.35,y:16.30,homeX:11.35,homeY:16.30,rescued:false,follow:2,bubble:'△',cost:40,invest:0,padX:11.35,padY:16.95,roleName:'ACÓLITO DA GUARDA'},
  {x:12.2,y:15.8,homeX:12.2,homeY:15.8,rescued:false,ambient:true,bubble:'◌'},
  {x:13.0,y:15.3,homeX:13.0,homeY:15.3,rescued:false,ambient:true,bubble:'⚗'}
 ];
@@ -219,7 +219,7 @@ try{bestLevel=Math.max(1,Number(localStorage.getItem('harun-roomrun-best'))||1)}
 function upgrade(id){return upgrades.find(u=>u.id===id)}
 function upgradeCost(u){return Math.ceil(u.base*Math.pow(1.72,u.level))}
 function upgradeAvailable(u){if(u.id==='scythe'||u.id==='pack'||u.id==='market')return sales>=1||level>1;if(u.id==='farm')return rescued>=1||level>1;if(u.id==='guard')return builds[0].done;if(u.id==='craft')return builds[1].done;return true}
-function carryCapacity(){return 24+rescued*4+Math.min(24,(level-1)*2)+metaLoot.seal*2+upgrade('pack').level*10}
+function carryCapacity(){return STRICT_REFERENCE?18:(24+rescued*4+Math.min(24,(level-1)*2)+metaLoot.seal*2+upgrade('pack').level*10)}
 function cutSpeed(){return 6.2*(1+upgrade('scythe').level*.34)}
 function phaseNumber(){return Math.min(7,objective+1)}
 function phaseName(){return ['COLHEITA','MERCADO','ACÓLITOS','DEFESA','EXPANSÃO','PROVA','ASCENSÃO'][Math.min(6,objective)]}
@@ -231,11 +231,7 @@ function levelSalesTarget(){return 10+level*5}
 function buildAvailable(b){
   if(b.done)return true;
   if(STRICT_REFERENCE){
-    if(b.id==='butcher')return sales>=3;
-    if(b.id==='scriptorium')return builds[0].done&&soldByKind.meat>=3;
-    if(b.id==='library')return builds[1].done&&sales>=14;
-    if(b.id==='relicary')return builds[2].done&&sales>=20;
-    return false
+    return b.id==='butcher'&&sales>=3;
   }
   if(b.id==='butcher')return sales>=3;
   if(b.id==='scriptorium')return builds[0].done&&sales>=7;
@@ -245,6 +241,7 @@ function buildAvailable(b){
 }
 function productAvailable(kind){
   if(kind==='provision')return true;
+  if(STRICT_REFERENCE)return kind==='meat'&&builds[0].done;
   const b=builds.find(x=>x.product===kind);return !!b?.done
 }
 function availableProducts(){return Object.keys(PRODUCT).filter(productAvailable)}
@@ -362,13 +359,13 @@ function damageEnemy(e,dmg){
   }
 }
 function spawnFieldWave(){
-  if(!combatUnlocked()||objective===5||levelTimer>0)return;
+  if(!combatUnlocked()||(!STRICT_REFERENCE&&objective===5)||levelTimer>0)return;
   const pts=[[10.2,4.8],[12.1,2.5],[14.4,4.1],[16.6,2.0],[18.9,4.8],[21.0,2.7],[20.7,6.5],[15.0,6.4],[9.0,6.8],[22.0,5.5]];
   const count=Math.min(10,3+Math.floor(level/2)+(STRICT_REFERENCE?0:upgrade('guard').level));for(let i=0;i<count;i++){const p=pts[(i+level+fieldKills)%pts.length];spawnEnemy(p[0]+(Math.random()-.5)*.45,p[1]+(Math.random()-.5)*.35,i%3===0?'hound':'shade',level%4===0&&i===count-1)}
   audio&&audio.sfx('enemy_windup',{gain:.46});emit('banner',null,null,{text:'FERAS NO PERÍMETRO · CARNE DISPONÍVEL',d:.8});
 }
 function maintainEncounter(dt){
-  if(!combatUnlocked()||objective===5||levelTimer>0)return;
+  if(!combatUnlocked()||(!STRICT_REFERENCE&&objective===5)||levelTimer>0)return;
   waveTimer-=dt;const alive=enemies.filter(e=>!e.dead&&e!==boss).length,minAlive=Math.min(7,2+Math.floor(level/2));
   if(alive<minAlive&&waveTimer<=0){waveTimer=Math.max(4.2,7.2-level*.12);spawnFieldWave()}
 }
@@ -404,9 +401,12 @@ function updateCustomers(dt){
 }
 function processBusiness(dt){
   const craftBoost=(1+metaLoot.opus*.08)*(STRICT_REFERENCE?1:(1+upgrade('craft').level*.22));
-  if(depot.input>=1){depot.process+=dt*(rescued>=1?2.3:1.7)*craftBoost;while(depot.process>=1&&depot.input>=1){depot.process-=1;depot.input-=1;goods.provision++;audio&&audio.sfx('pickup',{gain:.22,pitch:1.08})}}
+  const millerBoost=STRICT_REFERENCE&&acolytes[0].rescued?1.55:1;
+  if(depot.input>=1){depot.process+=dt*(rescued>=1?2.3:1.7)*craftBoost*millerBoost;while(depot.process>=1&&depot.input>=1){depot.process-=1;depot.input-=1;goods.provision++;audio&&audio.sfx('pickup',{gain:.22,pitch:1.08})}}
   const butcher=builds[0],script=builds[1],library=builds[2],relic=builds[3];
-  if(butcher.done&&butcher.input>=1){butcher.process+=dt*1.55*craftBoost;while(butcher.process>=1&&butcher.input>=1){butcher.process-=1;butcher.input-=1;goods.meat++}}
+  const butcherBoost=STRICT_REFERENCE&&acolytes[1].rescued?1.55:1;
+  if(butcher.done&&butcher.input>=1){butcher.process+=dt*1.55*craftBoost*butcherBoost;while(butcher.process>=1&&butcher.input>=1){butcher.process-=1;butcher.input-=1;goods.meat++}}
+  if(STRICT_REFERENCE)return;
   if(script.done&&goods.provision>=2){script.process+=dt*(rescued>=2 ? .58 : .36)*craftBoost;if(script.process>=1){script.process-=1;goods.provision-=2;goods.scroll++;audio&&audio.sfx('arcana',{gain:.28})}}
   if(library.done&&goods.scroll>=2){library.process+=dt*.24*craftBoost;if(library.process>=1){library.process-=1;goods.scroll-=2;goods.book++;audio&&audio.sfx('arcana',{gain:.38})}}
   if(relic.done&&goods.book>=1&&goods.meat>=1){relic.process+=dt*.15*craftBoost;if(relic.process>=1){relic.process-=1;goods.book--;goods.meat--;goods.relic++;audio&&audio.sfx('ritual_seal',{gain:.32})}}
@@ -459,12 +459,10 @@ function checkBusinessProgress(){
   if(STRICT_REFERENCE){
     const paidAcolytes=acolytes.filter(a=>!a.ambient&&a.rescued).length;
     if(objective===0&&sales>=3)setObjective(1);
-    if(objective===1&&paidAcolytes>=1&&builds[0].done)setObjective(2);
+    if(objective===1&&builds[0].done)setObjective(2);
     if(objective===2&&soldByKind.meat>=3)setObjective(3);
-    if(objective===3&&builds[1].done)setObjective(4);
-    const allBuilt=builds.every(b=>b.done),allAcolytes=paidAcolytes===3;
-    if(objective===4&&allBuilt&&allAcolytes)setObjective(5);
-    if(objective===5&&salesLevel>=levelSalesTarget())completeLevel();
+    if(objective===3&&paidAcolytes===3)setObjective(4);
+    if(objective===4&&salesLevel>=levelSalesTarget())completeLevel();
     return;
   }
   if(objective===1&&sales>=3)setObjective(rescued<3?2:3);
@@ -474,7 +472,7 @@ function checkBusinessProgress(){
   if(objective===4&&built>=req&&salesLevel>=levelSalesTarget()&&!boss)spawnBoss();
 }
 function updateAcolytePurchases(dt){
-  if(!STRICT_REFERENCE||objective<1)return;
+  if(!STRICT_REFERENCE)return;
   for(const a of acolytes){
     if(a.ambient||a.rescued)continue;
     const pad={x:a.padX,y:a.padY},cost=Math.ceil(a.cost*(1+(level-1)*.08));
@@ -528,7 +526,7 @@ function interactionUpdate(dt){
     if(harvestSfxCd<=0){harvestSfxCd=.18;audio&&audio.sfx('pickup',{gain:.32,pitch:.82})}
   }
 
-  for(const b of builds){
+  for(const b of (STRICT_REFERENCE?[builds[0]]:builds)){
     if(b.done||!buildAvailable(b))continue;
     if(dist(player,b)<.92&&coins>.01){
       const take=Math.min(coins,b.cost-b.invest,dt*22);coins-=take;b.invest+=take;b.height=clamp(b.invest/b.cost,0,1);updateHUD();
@@ -619,7 +617,7 @@ function combatUpdate(dt){
     for(const e of live)if(e!==nearest&&!e.dead&&dist(player,e)<1.18&&hasLineOfSight(player,e))damageEnemy(e,9);
     emit('slash',player.x,player.y,{angle:Math.atan2(nearest.y-player.y,nearest.x-player.x)});
   }
-  if(objective>=3)acolytes.filter(a=>a.rescued&&!a.ambient&&a.role==='GUARDIÃO').forEach((a,i)=>{
+  if((STRICT_REFERENCE||objective>=3))acolytes.filter(a=>a.rescued&&!a.ambient&&(STRICT_REFERENCE?a.follow===2:a.role==='GUARDIÃO')).forEach((a,i)=>{
     a.cool=(a.cool||0)-dt;const ad=nearest?dist(a,nearest):99;if(a.cool<=0&&nearest&&!nearest.dead&&ad<5.2){a.cool=.72+i*.08;damageEnemy(nearest,5.5);emit('bolt',a.x,a.y,{to:nearest})}
   });
   for(const d of drops){if(d.dead)continue;d.t+=dt;const di=dist(player,d);if(freeCarry()>.05&&di<2.15+metaLoot.eye*.22){const q=Math.min(1,dt*7);d.x=lerp(d.x,player.x,q);d.y=lerp(d.y,player.y,q)}if(di<.48&&freeCarry()>.05)pickupDrop(d)}
@@ -642,9 +640,15 @@ function updateFollowers(dt){
   const rescuedList=acolytes.filter(a=>a.rescued&&!a.ambient);
   rescuedList.forEach((a,i)=>{
     let target;
-    if(i===0){target={x:depot.x-.65,y:depot.y+.25};a.role='MOLEIRO'}
-    else if(i===1&&builds[1].done){target={x:builds[1].x-.55,y:builds[1].y+.35};a.role='ESCRIBA'}
-    else{const back=1.05+(i===2?0:.35),side=(i-1)*.38;target={x:player.x-Math.cos(player.angle)*back-Math.sin(player.angle)*side,y:player.y-Math.sin(player.angle)*back+Math.cos(player.angle)*side};a.role='GUARDIÃO'}
+    if(STRICT_REFERENCE){
+      if(a.follow===0){target={x:depot.x-.65,y:depot.y+.25};a.role='MOINHO'}
+      else if(a.follow===1&&builds[0].done){target={x:builds[0].x-.62,y:builds[0].y+.28};a.role='AÇOUGUE'}
+      else{const side=(a.follow-1)*.38;target={x:player.x-Math.cos(player.angle)*1.05-Math.sin(player.angle)*side,y:player.y-Math.sin(player.angle)*1.05+Math.cos(player.angle)*side};a.role='GUARDA'}
+    }else{
+      if(i===0){target={x:depot.x-.65,y:depot.y+.25};a.role='MOLEIRO'}
+      else if(i===1&&builds[1].done){target={x:builds[1].x-.55,y:builds[1].y+.35};a.role='ESCRIBA'}
+      else{const back=1.05+(i===2?0:.35),side=(i-1)*.38;target={x:player.x-Math.cos(player.angle)*back-Math.sin(player.angle)*side,y:player.y-Math.sin(player.angle)*back+Math.cos(player.angle)*side};a.role='GUARDIÃO'}
+    }
     const nx=lerp(a.x,target.x,Math.min(1,dt*4.8)),ny=lerp(a.y,target.y,Math.min(1,dt*4.8));if(isWalkable(nx,ny)){a.x=nx;a.y=ny}
   });
 }
@@ -736,7 +740,7 @@ function drawBuild(b){
   ctx.fillStyle='#f3dfa8';ctx.font='800 7.2px Cinzel,serif';ctx.textAlign='center';ctx.fillText(icon+' '+b.name+' · '+count,p.x,p.y-35);
 }
 function drawAcolytePad(a){
-  if(a.ambient||a.rescued||!STRICT_REFERENCE||objective<1)return;
+  if(a.ambient||a.rescued||!STRICT_REFERENCE)return;
   const p=project(a.padX,a.padY),cost=Math.ceil(a.cost*(1+(level-1)*.08)),remain=Math.max(0,Math.ceil(cost-a.invest)),prog=clamp(a.invest/cost,0,1);
   ctx.save();ctx.setLineDash([5,5]);ctx.strokeStyle='#f5f5f0d0';ctx.lineWidth=1.2;ctx.beginPath();ctx.ellipse(p.x,p.y+3,27,12,0,0,TAU);ctx.stroke();ctx.setLineDash([]);ctx.restore();
   // green cash plate like reference ad
@@ -894,12 +898,21 @@ function drawGuide(){
   ctx.save();ctx.fillStyle='#f6f6f0';for(let i=1;i<=8;i++){const t=i/9;ctx.globalAlpha=.25+.65*t;ctx.beginPath();ctx.arc(lerp(h.x,x,t),lerp(h.y,y,t),2.2,0,TAU);ctx.fill()}ctx.globalAlpha=.85;ctx.strokeStyle='#fff';ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(x,y,12,0,TAU);ctx.stroke();ctx.restore()
 }
 function objectiveTarget(){
+  if(STRICT_REFERENCE){
+    if(grain>0)return depot;
+    const unpaid=acolytes.filter(a=>!a.ambient&&!a.rescued);
+    const candidates=[];
+    if(coins>0)unpaid.forEach(a=>candidates.push({x:a.padX,y:a.padY}));
+    if(buildAvailable(builds[0])&&!builds[0].done)candidates.push(builds[0]);
+    if(candidates.length)return candidates.sort((a,b)=>dist(player,a)-dist(player,b))[0];
+    if(meat>0&&builds[0].done)return builds[0];
+    const foe=enemies.find(e=>!e.dead);if(foe)return foe;
+    const hs=harvestNodes.filter(h=>h.amount>0);return hs.sort((a,b)=>dist(player,a)-dist(player,b))[0]||depot;
+  }
   if(objective===0){if(grain>0)return depot;const hs=harvestNodes.filter(h=>h.amount>0);return hs.sort((a,b)=>dist(player,a)-dist(player,b))[0]||depot}
-  if(objective===1)return depot;
-  if(objective===2)return acolytes.find(a=>!a.ambient&&!a.rescued)||null;
+  if(objective===1)return depot;if(objective===2)return acolytes.find(a=>!a.ambient&&!a.rescued)||null;
   if(objective===3)return builds[0].done?(enemies.find(e=>!e.dead)||{x:16,y:4}):builds[0];
-  if(objective===4)return builds.find(b=>!b.done&&buildAvailable(b))||(enemies.find(e=>!e.dead)||depot);
-  if(objective===5)return boss;return null
+  if(objective===4)return builds.find(b=>!b.done&&buildAvailable(b))||(enemies.find(e=>!e.dead)||depot);if(objective===5)return boss;return null
 }
 function drawObjectiveBeacon(){
   const t=objectiveTarget();if(!t)return;const p=project(t.x,t.y),margin=34;
@@ -912,7 +925,7 @@ function drawScene(){
   const drawables=[];
   fieldCrops.filter(h=>h.amount>.02).forEach(h=>drawables.push({d:h.x+h.y-.08,fn:()=>drawCrop(h)}));
   drawables.push({d:depot.x+depot.y,fn:drawDepot});
-  builds.forEach(b=>drawables.push({d:b.x+b.y+.01,fn:()=>drawBuild(b)}));
+  (STRICT_REFERENCE?[builds[0]]:builds).forEach(b=>drawables.push({d:b.x+b.y+.01,fn:()=>drawBuild(b)}));
   if(!STRICT_REFERENCE)upgrades.forEach(u=>drawables.push({d:u.x+u.y+.015,fn:()=>drawUpgradePad(u)}));
   if(STRICT_REFERENCE)acolytes.filter(a=>!a.ambient&&!a.rescued).forEach(a=>drawables.push({d:a.padX+a.padY-.01,fn:()=>drawAcolytePad(a)}));
   props.forEach(p=>drawables.push({d:p.x+p.y+.02,fn:()=>drawProp(p)}));
