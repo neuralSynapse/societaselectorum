@@ -272,17 +272,17 @@ function updateHUD(){
   if(UI.meat)UI.meat.textContent=Math.floor(meat);
   if(UI.coin)UI.coin.textContent=Math.floor(coins);
   if(UI.carry)UI.carry.textContent=Math.floor(carryLoad())+'/'+carryCapacity();
-  if(UI.level)UI.level.textContent=String(level);
+  if(UI.level)UI.level.textContent=String(level);if(UI.phase)UI.phase.textContent=phaseNumber()+'/7';if(UI.phaseName)UI.phaseName.textContent=phaseName();
   if(UI.glory)UI.glory.textContent=metaLoot.glory;if(UI.seal)UI.seal.textContent=metaLoot.seal;if(UI.eye)UI.eye.textContent=metaLoot.eye;if(UI.opus)UI.opus.textContent=metaLoot.opus;if(UI.arcana)UI.arcana.textContent=metaLoot.arcana;
-  if(UI.objectiveKicker)UI.objectiveKicker.textContent='NÍVEL '+level+' · MERCADO VIVO';
+  if(UI.objectiveKicker)UI.objectiveKicker.textContent='NÍVEL '+level+' · FASE '+phaseNumber()+'/7 · '+phaseName();
   let text='';
-  if(objective===0)text='CORTE O CAMPO · LEVE FEIXES AO MOINHO · PROVISÕES '+goods.provision;
-  else if(objective===1)text='ATENDA OS PEREGRINOS · VENDAS '+sales+'/3 · ÓBOLOS '+Math.floor(coins);
+  if(objective===0)text='CORTE SEM PARAR · CARGA '+Math.floor(carryLoad())+'/'+carryCapacity()+' · PROVISÕES '+goods.provision;
+  else if(objective===1)text='PEREGRINOS NO MERCADO EXTERNO · VENDAS '+sales+'/3 · ÓBOLOS '+Math.floor(coins);
   else if(objective===2)text='DESPERTE OS 3 ACÓLITOS · '+rescued+'/3';
   else if(objective===3){
     const b=builds[0];text=b.done?'DEFENDA O MERCADO · CARREGUE CARNE AO AÇOUGUE':'ERGA O AÇOUGUE · '+Math.ceil(Math.max(0,b.cost-b.invest))+' ÓBOLOS';
   }else if(objective===4){
-    const next=builds.find(b=>!b.done&&buildAvailable(b));text=next?'EXPANDA: '+next.name+' · '+Math.ceil(Math.max(0,next.cost-next.invest))+' ÓBOLOS':'VENDAS DO DISTRITO '+salesLevel+'/'+levelSalesTarget();
+    const next=builds.find(b=>!b.done&&buildAvailable(b)),up=upgrades.find(u=>u.level<u.max);text=next?'EXPANDA: '+next.name+' · '+Math.ceil(Math.max(0,next.cost-next.invest))+' ÓBOLOS':up?'EVOLUA/AUTOMATIZE NO MERCADO · '+up.name+' NV.'+up.level:'VENDAS DO DISTRITO '+salesLevel+'/'+levelSalesTarget();
   }else if(objective===5)text=boss?'OBSERVADOR CEGO · '+Math.ceil(Math.max(0,boss.hp))+'/'+boss.maxHp:'A PROVA SE APROXIMA';
   else text='A CIDADELA SE EXPANDE · PRÓXIMO NÍVEL';
   if(UI.objective)UI.objective.textContent=text;
@@ -311,7 +311,7 @@ function completeLevel(){
   audio&&audio.setState('ritual',{intensity:.5});audio&&audio.sfx('level_up',{gain:1});window.MUNDUSMusic?.sync?.();try{navigator.vibrate?.([16,28,24])}catch(_){}
 }
 function beginNextLevel(){
-  level++;levelTimer=0;objective=rescued>=3?3:0;fieldKills=0;kills=0;boss=null;enemies=[];drops=[];customers=[];salesLevel=0;waveTimer=6;customerTimer=.7;
+  level++;levelTimer=0;objective=0;fieldKills=0;kills=0;boss=null;enemies=[];drops=[];customers=[];salesLevel=0;sales=0;waveTimer=2.5;customerTimer=.5;
   player.maxHp=Math.min(190,100+(level-1)*3);player.hp=player.maxHp;player.vx=player.vy=0;player.x=5.2;player.y=15.2;
   grain=Math.min(grain,Math.ceil(carryCapacity()*.35));meat=Math.min(meat,Math.ceil(carryCapacity()*.3));
   resetFieldCrops();
@@ -328,19 +328,19 @@ function damageEnemy(e,dmg){
   }
 }
 function spawnFieldWave(){
-  if(objective<3||objective===5||levelTimer>0)return;
-  const pts=[[10.2,4.8],[12.1,2.5],[14.4,4.1],[16.6,2.0],[18.9,4.8],[21.0,2.7],[20.7,6.5],[15.0,6.4]];
-  const count=Math.min(8,3+Math.floor(level/2));for(let i=0;i<count;i++){const p=pts[(i+level+fieldKills)%pts.length];spawnEnemy(p[0]+(Math.random()-.5)*.45,p[1]+(Math.random()-.5)*.35,i%3===0?'hound':'shade',level%4===0&&i===count-1)}
-  audio&&audio.sfx('enemy_windup',{gain:.46});emit('banner',null,null,{text:'FERAS NO PERÍMETRO',d:.8});
+  if(!combatUnlocked()||objective===5||levelTimer>0)return;
+  const pts=[[10.2,4.8],[12.1,2.5],[14.4,4.1],[16.6,2.0],[18.9,4.8],[21.0,2.7],[20.7,6.5],[15.0,6.4],[9.0,6.8],[22.0,5.5]];
+  const count=Math.min(10,3+Math.floor(level/2)+upgrade('guard').level);for(let i=0;i<count;i++){const p=pts[(i+level+fieldKills)%pts.length];spawnEnemy(p[0]+(Math.random()-.5)*.45,p[1]+(Math.random()-.5)*.35,i%3===0?'hound':'shade',level%4===0&&i===count-1)}
+  audio&&audio.sfx('enemy_windup',{gain:.46});emit('banner',null,null,{text:'FERAS NO PERÍMETRO · CARNE DISPONÍVEL',d:.8});
 }
 function maintainEncounter(dt){
-  if(objective<3||objective===5||levelTimer>0)return;
-  const alive=enemies.some(e=>!e.dead&&e!==boss);waveTimer-=dt;
-  if(!alive&&waveTimer<=0){waveTimer=Math.max(5.5,10-level*.2);spawnFieldWave()}
+  if(!combatUnlocked()||objective===5||levelTimer>0)return;
+  waveTimer-=dt;const alive=enemies.filter(e=>!e.dead&&e!==boss).length,minAlive=Math.min(7,2+Math.floor(level/2));
+  if(alive<minAlive&&waveTimer<=0){waveTimer=Math.max(4.2,7.2-level*.12);spawnFieldWave()}
 }
 function customerTarget(kind,index=0){
-  const b=kind==='provision'?depot:builds.find(x=>x.product===kind);
-  const offsets=[[.8,.5],[.35,.85],[1.15,.15],[-.1,.9]];const o=offsets[index%offsets.length];return{x:b.x+o[0],y:b.y+o[1]}
+  const stall=marketStalls[index%marketStalls.length],lane=Math.floor(index/marketStalls.length);
+  return{x:stall.x+(lane%2?-.22:.22),y:stall.y+lane*.42}
 }
 function productForCustomer(){
   const pool=availableProducts();let weighted=[];
@@ -350,23 +350,23 @@ function productForCustomer(){
 function spawnCustomer(){
   if(customers.length>=Math.min(10,5+Math.floor(level/2)))return;
   const want=productForCustomer(),q=customers.filter(c=>c.want===want&&c.state!=='leave').length,t=customerTarget(want,q);
-  customers.push({x:4.0+(Math.random()-.5)*.2,y:18.55+(Math.random()-.5)*.12,want,state:'arrive',tx:t.x,ty:t.y,wait:0,buyFlash:0,speed:1.7+Math.random()*.25});
+  customers.push({x:marketGate.x+(Math.random()-.5)*.18,y:marketGate.y+(Math.random()-.5)*.16,want,state:'arrive',tx:t.x,ty:t.y,wait:0,buyFlash:0,speed:1.8+Math.random()*.28});
 }
 function moveNpcTo(n,tx,ty,dt){
   const dx=tx-n.x,dy=ty-n.y,m=Math.hypot(dx,dy);if(m<.04){n.x=tx;n.y=ty;return true}
   const d=Math.min(m,n.speed*dt);n.x+=dx/m*d;n.y+=dy/m*d;return false
 }
 function updateCustomers(dt){
-  customerTimer-=dt;if(customerTimer<=0){customerTimer=Math.max(.75,2.15-level*.07);spawnCustomer()}
+  customerTimer-=dt;if(customerTimer<=0){customerTimer=Math.max(.38,1.85-level*.055-upgrade('market').level*.19);spawnCustomer()}
   for(const c of customers){
     c.buyFlash=Math.max(0,c.buyFlash-dt);
     if(c.state==='arrive'){if(moveNpcTo(c,c.tx,c.ty,dt)){c.state='wait';c.wait=0}}
     else if(c.state==='wait'){
       c.wait+=dt;if(goods[c.want]>0&&c.wait>.28){goods[c.want]-=1;addSale(c.want,c);c.state='leave';c.buyFlash=.6}
       else if(c.wait>12){c.state='leave'}
-    }else if(c.state==='leave'){moveNpcTo(c,3.7,19.1,dt)}
+    }else if(c.state==='leave'){moveNpcTo(c,marketGate.x,marketGate.y,dt)}
   }
-  customers=customers.filter(c=>!(c.state==='leave'&&Math.hypot(c.x-3.7,c.y-19.1)<.12));
+  customers=customers.filter(c=>!(c.state==='leave'&&Math.hypot(c.x-marketGate.x,c.y-marketGate.y)<.14));
 }
 function processBusiness(dt){
   const craftBoost=1+metaLoot.opus*.08;
