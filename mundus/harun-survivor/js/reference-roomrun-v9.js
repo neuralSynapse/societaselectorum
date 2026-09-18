@@ -20,7 +20,7 @@ const runtimeErrors=[];
 const captureError=(kind,e)=>{runtimeErrors.push({kind,message:String(e?.message||e?.reason||e||'erro'),at:Date.now()});if(runtimeErrors.length>20)runtimeErrors.shift()};
 window.addEventListener('error',e=>captureError('error',e));
 window.addEventListener('unhandledrejection',e=>captureError('promise',e));
-const UI={resource:$('#resourceCount'),grain:$('#grainCount'),meat:$('#meatCount'),level:$('#levelCount'),objective:$('#objectiveText'),objectiveKicker:$('#objectiveKicker'),tip:$('#moveTip'),joy:$('#touchJoy'),knob:$('#touchJoy i'),pause:$('#pauseOverlay'),start:$('#startOverlay'),victory:$('#victoryOverlay'),pauseBtn:$('#pauseBtn'),resume:$('#resumeBtn'),restart:$('#restartBtn'),restartVictory:$('#restartVictory'),music:$('#musicVol'),sfx:$('#sfxVol'),musicVal:$('#musicVal'),sfxVal:$('#sfxVal')};
+const UI={resource:$('#resourceCount'),grain:$('#grainCount'),meat:$('#meatCount'),coin:$('#obolCount'),carry:$('#carryCount'),level:$('#levelCount'),objective:$('#objectiveText'),objectiveKicker:$('#objectiveKicker'),tip:$('#moveTip'),joy:$('#touchJoy'),knob:$('#touchJoy i'),pause:$('#pauseOverlay'),start:$('#startOverlay'),victory:$('#victoryOverlay'),pauseBtn:$('#pauseBtn'),resume:$('#resumeBtn'),restart:$('#restartBtn'),restartVictory:$('#restartVictory'),music:$('#musicVol'),sfx:$('#sfxVol'),musicVal:$('#musicVal'),sfxVal:$('#sfxVal')};
 const perfProfile=perf?.profile?.()||{dpr:1.25};
 const DPR=Math.min(Number(perfProfile.dpr)||1.25,window.devicePixelRatio||1.25);
 function syncViewport(){
@@ -153,167 +153,233 @@ const acolytes=[
  {x:12.2,y:15.8,homeX:12.2,homeY:15.8,rescued:false,ambient:true,bubble:'◌'},
  {x:13.0,y:15.3,homeX:13.0,homeY:15.3,rescued:false,ambient:true,bubble:'⚗'}
 ];
-const depot={x:6.2,y:16.0,amount:40,max:40,respawn:0,kind:'grain'};
+const depot={x:6.2,y:16.0,input:0,process:0,name:'MOINHO DO LIMIAR'};
 const harvestNodes=[
  {x:9.2,y:2.2,amount:18,max:18,respawn:0},{x:11.6,y:1.4,amount:18,max:18,respawn:0},{x:13.5,y:3.0,amount:18,max:18,respawn:0},
  {x:15.7,y:1.5,amount:18,max:18,respawn:0},{x:18.0,y:2.8,amount:18,max:18,respawn:0},{x:20.1,y:1.4,amount:18,max:18,respawn:0}
 ];
 const builds=[
- {x:13.0,y:13.2,cost:40,invest:0,done:false,name:'PILAR DE HÓRUS',height:0,currency:'grain',tier:0},
- {x:17.2,y:7.2,cost:32,invest:0,done:false,name:'SELO DO LIMIAR',height:0,currency:'meat',tier:0}
+ {id:'butcher',x:10.8,y:15.1,cost:28,invest:0,done:false,name:'AÇOUGUE DO LIMIAR',height:0,tier:0,product:'meat',process:0,input:0},
+ {id:'scriptorium',x:13.0,y:13.2,cost:68,invest:0,done:false,name:'SCRIPTORIUM',height:0,tier:0,product:'scroll',process:0,input:0},
+ {id:'library',x:16.0,y:11.1,cost:145,invest:0,done:false,name:'BIBLIOTHECA',height:0,tier:0,product:'book',process:0,input:0},
+ {id:'relicary',x:18.0,y:8.0,cost:280,invest:0,done:false,name:'RELICÁRIO',height:0,tier:0,product:'relic',process:0,input:0}
 ];
-let fx=[],drops=[],enemies=[],boss=null,objective=0,kills=0,fieldKills=0,rescued=0,resource=0,grain=0,meat=0,level=1,bestLevel=1,levelTarget=6,levelTimer=0,waveTimer=0,harvestSfxCd=0,buildSfxCd=0;
+const goods={provision:0,meat:0,scroll:0,book:0,relic:0};
+const PRODUCT={
+ provision:{label:'PROVISÃO',icon:'◫',price:2},
+ meat:{label:'CARNE',icon:'●',price:4},
+ scroll:{label:'PERGAMINHO',icon:'≡',price:8},
+ book:{label:'LIVRO',icon:'▤',price:14},
+ relic:{label:'RELICÁRIO',icon:'✦',price:24}
+};
+let fx=[],drops=[],enemies=[],boss=null,customers=[],objective=0,kills=0,fieldKills=0,rescued=0,resource=0,grain=0,meat=0,coins=0,sales=0,salesLevel=0,level=1,bestLevel=1,levelTarget=6,levelTimer=0,waveTimer=0,customerTimer=0,harvestSfxCd=0,buildSfxCd=0,cutFxCd=0;
 const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:7.25,accel:44,decel:58,vx:0,vy:0,atkCd:0,hitCd:0,walk:0,moveBlend:0,angle:0,attackPulse:0,stepCd:0};
 try{bestLevel=Math.max(1,Number(localStorage.getItem('harun-roomrun-best'))||1)}catch(_){}
+
+function carryCapacity(){return 18+rescued*4+Math.min(18,(level-1)*2)}
+function carryLoad(){return grain+meat}
+function freeCarry(){return Math.max(0,carryCapacity()-carryLoad())}
+function requiredBuildCount(){return level<=1?2:level===2?3:4}
+function levelSalesTarget(){return 10+level*5}
+function buildAvailable(b){
+  if(b.done)return true;
+  if(b.id==='butcher')return sales>=3;
+  if(b.id==='scriptorium')return builds[0].done&&sales>=7;
+  if(b.id==='library')return level>=2&&builds[1].done&&sales>=14;
+  if(b.id==='relicary')return level>=3&&builds[2].done&&sales>=24;
+  return false
+}
+function productAvailable(kind){
+  if(kind==='provision')return true;
+  const b=builds.find(x=>x.product===kind);return !!b?.done
+}
+function availableProducts(){return Object.keys(PRODUCT).filter(productAvailable)}
+function goodsTotal(){return Object.values(goods).reduce((a,b)=>a+b,0)}
 function resetRun(){
   player.x=5.2;player.y=15.2;player.vx=0;player.vy=0;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;player.moveBlend=0;player.angle=0;player.stepCd=0;lastCombat=false;
   clearTimeout(deathTimer);clearTimeout(victoryTimer);deathTimer=victoryTimer=0;
-  objective=0;kills=0;fieldKills=0;rescued=0;resource=0;grain=0;meat=0;level=1;bestLevel=Math.max(bestLevel,1);levelTarget=6;levelTimer=0;waveTimer=0;harvestSfxCd=0;buildSfxCd=0;fx=[];drops=[];enemies=[];boss=null;depot.amount=40;depot.max=40;depot.respawn=0;
-  harvestNodes.forEach(h=>{h.amount=h.max;h.respawn=0});
-  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0});acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0});
-  spawnInitialEnemies();updateHUD();
+  objective=0;kills=0;fieldKills=0;rescued=0;resource=0;grain=0;meat=0;coins=0;sales=0;salesLevel=0;level=1;levelTarget=6;levelTimer=0;waveTimer=8;customerTimer=1.2;harvestSfxCd=0;buildSfxCd=0;cutFxCd=0;
+  fx=[];drops=[];enemies=[];customers=[];boss=null;depot.input=0;depot.process=0;
+  Object.keys(goods).forEach(k=>goods[k]=0);
+  harvestNodes.forEach(h=>{h.amount=h.max=18;h.respawn=0});
+  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0;b.process=0;b.input=0});
+  acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0;a.workCd=0});
+  updateHUD();
 }
 function spawnInitialEnemies(){
+  if(objective<3&&level===1)return;
   const pts=[[14,4.6],[16.2,3.5],[18.2,5.4],[19.4,2.8],[12.8,2.8],[20.5,6.2],[11.2,4.2],[21.2,4.7],[15.2,6.0],[18.9,7.0]];
-  const count=Math.min(pts.length,6+Math.floor((level-1)/2));for(let i=0;i<count;i++){const p=pts[i];spawnEnemy(p[0],p[1],i%3===0?'hound':'shade',level%5===0&&i===count-1)}
+  const count=Math.min(pts.length,4+Math.floor(level/2));for(let i=0;i<count;i++){const p=pts[i];spawnEnemy(p[0],p[1],i%3===0?'hound':'shade',level%5===0&&i===count-1)}
 }
 function spawnEnemy(x,y,kind='shade',elite=false){
   const scale=1+(level-1)*.12,hp=Math.round((elite?70:kind==='hound'?28:22)*scale),speed=(kind==='hound'?2.35:1.7)*(1+Math.min(.28,(level-1)*.012));
   enemies.push({x,y,kind,hp,maxHp:hp,r:elite ? .42 : .27,speed,hit:0,dead:false,elite});
 }
 function spawnBoss(){
+  if(boss&&!boss.dead)return;
   const scale=1+(level-1)*.18,bhp=Math.round(360*scale);
-  enemies=[];waveTimer=0;
+  enemies=enemies.filter(e=>e.dead);waveTimer=0;
   boss={x:18.3,y:3.3,hp:bhp,maxHp:bhp,r:.72,speed:1.18*(1+Math.min(.2,(level-1)*.01)),hit:0,dead:false,name:'OBSERVADOR CEGO',phase:0,specialCd:2.5,telegraph:0,struck:false};
-  enemies.push(boss);
+  enemies.push(boss);objective=5;updateHUD();
   audio&&audio.setState('boss',{intensity:.95});audio&&audio.sfx('boss_windup',{gain:1});window.MUNDUSMusic?.sync?.();
 }
-function currencyAmount(kind){return kind==='grain'?grain:kind==='meat'?meat:resource}
-function addCurrency(kind,value){if(kind==='grain')grain+=value;else if(kind==='meat')meat+=value;else resource+=value;updateHUD()}
-function spendCurrency(kind,value){const have=currencyAmount(kind),take=Math.min(have,Math.max(0,value));if(kind==='grain')grain-=take;else if(kind==='meat')meat-=take;else resource-=take;return take}
-function levelCosts(){
-  return{grain:40+Math.min(60,(level-1)*5),meat:32+Math.min(64,(level-1)*4),kills:6+Math.min(10,Math.floor((level-1)*.75))}
-}
 function updateHUD(){
-  const costs=levelCosts();levelTarget=costs.kills;builds[0].cost=costs.grain;builds[1].cost=costs.meat;
   if(UI.resource)UI.resource.textContent=Math.floor(resource);
   if(UI.grain)UI.grain.textContent=Math.floor(grain);
   if(UI.meat)UI.meat.textContent=Math.floor(meat);
+  if(UI.coin)UI.coin.textContent=Math.floor(coins);
+  if(UI.carry)UI.carry.textContent=Math.floor(carryLoad())+'/'+carryCapacity();
   if(UI.level)UI.level.textContent=String(level);
-  const data=[
-    ['COLETA','REÚNA GRÃOS PARA O PILAR'],
-    ['CONSTRUÇÃO','ALIMENTE O PILAR DE HÓRUS'],
-    ['CHAMADO','DESPERTE 3 ACÓLITOS'],
-    ['CAÇA','DERRUBE AS SOMBRAS E RECOLHA CARNE'],
-    ['LIMIAR','ALIMENTE O SELO DO LIMIAR'],
-    ['PROVA','VENÇA O OBSERVADOR CEGO'],
-    ['ASCENSÃO','O PRÓXIMO NÍVEL ESTÁ SE ABRINDO']
-  ][objective]||['TRAVESSIA','AVANCE'];
-  if(UI.objectiveKicker)UI.objectiveKicker.textContent='NÍVEL '+level+' · '+data[0];
-  let text=data[1];
-  if(objective===0)text='GRÃOS '+Math.floor(grain)+' / '+costs.grain;
-  if(objective===1)text='PILAR '+Math.floor(builds[0].height*100)+'% · GRÃOS '+Math.floor(grain);
-  if(objective===2)text='ACÓLITOS '+rescued+' / 3';
-  if(objective===3)text='SOMBRAS '+Math.min(levelTarget,fieldKills)+' / '+levelTarget+' · CARNE '+Math.floor(meat)+' / '+costs.meat;
-  if(objective===4)text='SELO '+Math.floor(builds[1].height*100)+'% · CARNE '+Math.floor(meat);
-  if(objective===5&&boss)text='OBSERVADOR CEGO · '+Math.max(0,Math.ceil(boss.hp))+' / '+boss.maxHp;
+  if(UI.objectiveKicker)UI.objectiveKicker.textContent='NÍVEL '+level+' · MERCADO VIVO';
+  let text='';
+  if(objective===0)text='CORTE O CAMPO · LEVE FEIXES AO MOINHO · PROVISÕES '+goods.provision;
+  else if(objective===1)text='ATENDA OS PEREGRINOS · VENDAS '+sales+'/3 · ÓBOLOS '+Math.floor(coins);
+  else if(objective===2)text='DESPERTE OS 3 ACÓLITOS · '+rescued+'/3';
+  else if(objective===3){
+    const b=builds[0];text=b.done?'DEFENDA O MERCADO · CARREGUE CARNE AO AÇOUGUE':'ERGA O AÇOUGUE · '+Math.ceil(Math.max(0,b.cost-b.invest))+' ÓBOLOS';
+  }else if(objective===4){
+    const next=builds.find(b=>!b.done&&buildAvailable(b));text=next?'EXPANDA: '+next.name+' · '+Math.ceil(Math.max(0,next.cost-next.invest))+' ÓBOLOS':'VENDAS DO DISTRITO '+salesLevel+'/'+levelSalesTarget();
+  }else if(objective===5)text=boss?'OBSERVADOR CEGO · '+Math.ceil(Math.max(0,boss.hp))+'/'+boss.maxHp:'A PROVA SE APROXIMA';
+  else text='A CIDADELA SE EXPANDE · PRÓXIMO NÍVEL';
   if(UI.objective)UI.objective.textContent=text;
 }
-function setObjective(n){if(objective===n)return;objective=n;updateHUD();fx.push({kind:'banner',text:UI.objective?.textContent||'',t:0,d:1.25});audio&&audio.sfx('special_room_activate',{gain:.75})}
+function setObjective(n){if(objective===n)return;objective=n;updateHUD();fx.push({kind:'banner',text:UI.objective?.textContent||'',t:0,d:1.15});audio&&audio.sfx('special_room_activate',{gain:.72})}
 function emit(kind,x,y,data={}){fx.push(Object.assign({kind,x,y,t:0,d:.65},data))}
+function addSale(kind,c){
+  const p=PRODUCT[kind],pay=p.price+Math.floor((level-1)*.7);coins+=pay;sales++;salesLevel++;
+  emit('sale',c.x,c.y,{text:'+'+pay+' ÓB'});audio&&audio.sfx(kind==='scroll'||kind==='book'?'arcana':'pickup',{gain:.7,pitch:1.05});
+  if(objective===0)setObjective(1);
+  if(objective===1&&sales>=3)setObjective(rescued<3?2:3);
+  updateHUD();
+}
 function pickupDrop(d){
-  addCurrency(d.kind||'meat',d.value);d.dead=true;emit('pickup',d.x,d.y,{text:'+'+d.value+(d.kind==='grain'?' GRÃO':d.kind==='meat'?' CARNE':' ESSÊNCIA')});
-  audio&&audio.sfx('pickup',{gain:.68,pitch:d.kind==='meat' ? .9 : 1.08});try{navigator.vibrate?.(4)}catch(_){}
+  const room=freeCarry();if(room<=.01)return false;
+  const got=Math.min(room,d.value);meat+=got;d.value-=got;
+  emit('pickup',d.x,d.y,{text:'+'+Math.ceil(got)+' CARNE'});audio&&audio.sfx('pickup',{gain:.68,pitch:.9});try{navigator.vibrate?.(4)}catch(_){}
+  if(d.value<=.05)d.dead=true;updateHUD();return true
 }
 function completeLevel(){
-  if(runState!=='playing')return;objective=6;levelTimer=1.25;resource+=3+Math.floor(level*.5);player.hp=Math.min(player.maxHp,player.hp+28);
-  builds.forEach(b=>{b.tier=(b.tier||0)+1;b.done=true;b.height=1});
+  if(runState!=='playing'||levelTimer>0)return;
+  objective=6;levelTimer=1.25;resource+=3+Math.floor(level*.5);player.hp=Math.min(player.maxHp,player.hp+28);
+  builds.filter(b=>b.done).forEach(b=>b.tier=(b.tier||0)+1);
   bestLevel=Math.max(bestLevel,level+1);try{localStorage.setItem('harun-roomrun-best',String(bestLevel))}catch(_){}
-  updateHUD();fx.push({kind:'banner',text:'NÍVEL '+level+' CONCLUÍDO · +'+(3+Math.floor(level*.5))+' ESSÊNCIAS',t:0,d:1.2});
+  updateHUD();fx.push({kind:'banner',text:'DISTRITO '+level+' CONSOLIDADO · +'+(3+Math.floor(level*.5))+' ESSÊNCIAS',t:0,d:1.2});
   audio&&audio.setState('ritual',{intensity:.5});audio&&audio.sfx('level_up',{gain:1});window.MUNDUSMusic?.sync?.();try{navigator.vibrate?.([16,28,24])}catch(_){}
 }
 function beginNextLevel(){
-  level++;levelTimer=0;objective=0;fieldKills=0;kills=0;boss=null;enemies=[];drops=[];waveTimer=0;
-  player.maxHp=Math.min(180,100+(level-1)*2);player.hp=player.maxHp;player.vx=player.vy=0;player.x=5.2;player.y=15.2;
-  const costs=levelCosts();
-  grain=Math.min(grain,Math.ceil(costs.grain*.22));meat=Math.min(meat,Math.ceil(costs.meat*.18));
-  depot.max=costs.grain;depot.amount=Math.ceil(costs.grain*.72);depot.respawn=0;
-  harvestNodes.forEach(h=>{h.max=18+Math.min(18,level);h.amount=h.max;h.respawn=0});
-  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.soundCd=0});
+  level++;levelTimer=0;objective=rescued>=3?3:0;fieldKills=0;kills=0;boss=null;enemies=[];drops=[];customers=[];salesLevel=0;waveTimer=6;customerTimer=.7;
+  player.maxHp=Math.min(190,100+(level-1)*3);player.hp=player.maxHp;player.vx=player.vy=0;player.x=5.2;player.y=15.2;
+  grain=Math.min(grain,Math.ceil(carryCapacity()*.35));meat=Math.min(meat,Math.ceil(carryCapacity()*.3));
+  harvestNodes.forEach(h=>{h.max=18+Math.min(24,level*2);h.amount=h.max;h.respawn=0});
   if(level>1&&acolytes.filter(a=>a.rescued&&!a.ambient).length>=3)rescued=3;
-  spawnInitialEnemies();updateHUD();audio&&audio.setState('explore',{intensity:.4});
-  fx.push({kind:'banner',text:'NÍVEL '+level+' · A CIDADELA SE RECOMPÕE',t:0,d:1.2});
+  updateHUD();audio&&audio.setState('explore',{intensity:.4});fx.push({kind:'banner',text:'DISTRITO '+level+' · O MERCADO CRESCE',t:0,d:1.2});
 }
 function damageEnemy(e,dmg){
   if(e.dead||runState!=='playing')return;const power=1+(level-1)*.035;e.hp=Math.max(0,e.hp-dmg*power);e.hit=.11;emit('damage',e.x,e.y,{text:String(Math.round(dmg*power)),crit:dmg>22});
   audio&&audio.sfx('impact',{gain:.45,pitch:e===boss ? .86 : 1});
   if(e.hp<=0){
-    e.dead=true;kills++;if(e!==boss)fieldKills++;emit('burst',e.x,e.y,{big:e===boss});audio&&audio.sfx(e===boss?'boss_death':'enemy_death',{gain:e===boss?1:.55});
+    e.dead=true;kills++;if(e!==boss)fieldKills++;emit('burst',e.x,e.y,{big:e===boss});audio&&audio.sfx(e===boss?'boss_death':'enemy_death',{gain:e===boss ? 1 : .55});
     if(e===boss){resource+=2+Math.floor(level*.4);completeLevel()}
-    else{const value=e.elite?10:e.kind==='hound'?7:5;drops.push({x:e.x,y:e.y,value,kind:'meat',dead:false,t:0})}
+    else{const value=e.elite?9:e.kind==='hound'?6:4;drops.push({x:e.x,y:e.y,value,kind:'meat',dead:false,t:0})}
   }
 }
 function spawnFieldWave(){
+  if(objective<3||objective===5||levelTimer>0)return;
   const pts=[[10.2,4.8],[12.1,2.5],[14.4,4.1],[16.6,2.0],[18.9,4.8],[21.0,2.7],[20.7,6.5],[15.0,6.4]];
-  const count=Math.min(8,3+Math.floor(level/2));
-  for(let i=0;i<count;i++){const p=pts[(i+level+fieldKills)%pts.length];spawnEnemy(p[0]+(Math.random()-.5)*.45,p[1]+(Math.random()-.5)*.35,i%3===0?'hound':'shade',level%4===0&&i===count-1)}
-  audio&&audio.sfx('enemy_windup',{gain:.46});emit('banner',null,null,{text:'AS SOMBRAS RETORNAM',d:.8})
+  const count=Math.min(8,3+Math.floor(level/2));for(let i=0;i<count;i++){const p=pts[(i+level+fieldKills)%pts.length];spawnEnemy(p[0]+(Math.random()-.5)*.45,p[1]+(Math.random()-.5)*.35,i%3===0?'hound':'shade',level%4===0&&i===count-1)}
+  audio&&audio.sfx('enemy_windup',{gain:.46});emit('banner',null,null,{text:'FERAS NO PERÍMETRO',d:.8});
 }
 function maintainEncounter(dt){
-  if(objective!==3&&objective!==4)return;
-  const alive=enemies.some(e=>!e.dead&&e!==boss);
-  if(alive){waveTimer=1.1;return}
-  if(builds[1].done)return;
-  waveTimer-=dt;if(waveTimer<=0){waveTimer=1.35;spawnFieldWave()}
+  if(objective<3||objective===5||levelTimer>0)return;
+  const alive=enemies.some(e=>!e.dead&&e!==boss);waveTimer-=dt;
+  if(!alive&&waveTimer<=0){waveTimer=Math.max(5.5,10-level*.2);spawnFieldWave()}
+}
+function customerTarget(kind,index=0){
+  const b=kind==='provision'?depot:builds.find(x=>x.product===kind);
+  const offsets=[[.8,.5],[.35,.85],[1.15,.15],[-.1,.9]];const o=offsets[index%offsets.length];return{x:b.x+o[0],y:b.y+o[1]}
+}
+function productForCustomer(){
+  const pool=availableProducts();let weighted=[];
+  for(const k of pool){const weight=k==='provision'?4:k==='meat'?3:k==='scroll'?2:k==='book'?1.5:1;for(let i=0;i<Math.ceil(weight);i++)weighted.push(k)}
+  return weighted[Math.floor(Math.random()*weighted.length)]||'provision'
+}
+function spawnCustomer(){
+  if(customers.length>=Math.min(10,5+Math.floor(level/2)))return;
+  const want=productForCustomer(),q=customers.filter(c=>c.want===want&&c.state!=='leave').length,t=customerTarget(want,q);
+  customers.push({x:4.0+(Math.random()-.5)*.2,y:18.55+(Math.random()-.5)*.12,want,state:'arrive',tx:t.x,ty:t.y,wait:0,buyFlash:0,speed:1.7+Math.random()*.25});
+}
+function moveNpcTo(n,tx,ty,dt){
+  const dx=tx-n.x,dy=ty-n.y,m=Math.hypot(dx,dy);if(m<.04){n.x=tx;n.y=ty;return true}
+  const d=Math.min(m,n.speed*dt);n.x+=dx/m*d;n.y+=dy/m*d;return false
+}
+function updateCustomers(dt){
+  customerTimer-=dt;if(customerTimer<=0){customerTimer=Math.max(.75,2.15-level*.07);spawnCustomer()}
+  for(const c of customers){
+    c.buyFlash=Math.max(0,c.buyFlash-dt);
+    if(c.state==='arrive'){if(moveNpcTo(c,c.tx,c.ty,dt)){c.state='wait';c.wait=0}}
+    else if(c.state==='wait'){
+      c.wait+=dt;if(goods[c.want]>0&&c.wait>.28){goods[c.want]-=1;addSale(c.want,c);c.state='leave';c.buyFlash=.6}
+      else if(c.wait>12){c.state='leave'}
+    }else if(c.state==='leave'){moveNpcTo(c,3.7,19.1,dt)}
+  }
+  customers=customers.filter(c=>!(c.state==='leave'&&Math.hypot(c.x-3.7,c.y-19.1)<.12));
+}
+function processBusiness(dt){
+  if(depot.input>=1){depot.process+=dt*(rescued>=1?2.3:1.7);while(depot.process>=1&&depot.input>=1){depot.process-=1;depot.input-=1;goods.provision++;audio&&audio.sfx('pickup',{gain:.22,pitch:1.08})}}
+  const butcher=builds[0],script=builds[1],library=builds[2],relic=builds[3];
+  if(butcher.done&&butcher.input>=1){butcher.process+=dt*1.55;while(butcher.process>=1&&butcher.input>=1){butcher.process-=1;butcher.input-=1;goods.meat++}}
+  if(script.done&&goods.provision>=2){script.process+=dt*(rescued>=2 ? .58 : .36);if(script.process>=1){script.process-=1;goods.provision-=2;goods.scroll++;audio&&audio.sfx('arcana',{gain:.28})}}
+  if(library.done&&goods.scroll>=2){library.process+=dt*.24;if(library.process>=1){library.process-=1;goods.scroll-=2;goods.book++;audio&&audio.sfx('arcana',{gain:.38})}}
+  if(relic.done&&goods.book>=1&&goods.meat>=1){relic.process+=dt*.15;if(relic.process>=1){relic.process-=1;goods.book--;goods.meat--;goods.relic++;audio&&audio.sfx('ritual_seal',{gain:.32})}}
+}
+function checkBusinessProgress(){
+  if(objective===1&&sales>=3)setObjective(rescued<3?2:3);
+  if(objective===2&&rescued>=3)setObjective(3);
+  if(objective===3&&builds[0].done)setObjective(4);
+  const req=requiredBuildCount(),built=builds.slice(0,req).filter(b=>b.done).length;
+  if(objective===4&&built>=req&&salesLevel>=levelSalesTarget()&&!boss)spawnBoss();
 }
 function interactionUpdate(dt){
-  const costs=levelCosts();harvestSfxCd=Math.max(0,harvestSfxCd-dt);buildSfxCd=Math.max(0,buildSfxCd-dt);
-  if(levelTimer>0){levelTimer-=dt;if(levelTimer<=0)beginNextLevel();return}
-  const pd=dist(player,depot);
-  if(depot.amount>0&&pd<.9){
-    const take=Math.min(depot.amount,dt*38);depot.amount-=take;grain+=take;updateHUD();
-    if(Math.random()<dt*11)emit('pickup',depot.x+(Math.random()-.5)*.4,depot.y,{text:'+'});
-    if(harvestSfxCd<=0){harvestSfxCd=.16;audio&&audio.sfx('pickup',{gain:.28,pitch:1.15})}
-    if(depot.amount<=.05){depot.amount=0;audio&&audio.sfx('room_clear',{gain:.48});depot.respawn=10}
-  }else if(depot.amount<=0&&depot.respawn>0){
-    depot.respawn-=dt;if(depot.respawn<=0){depot.amount=Math.ceil(costs.grain*.55);depot.respawn=0}
-  }
+  harvestSfxCd=Math.max(0,harvestSfxCd-dt);buildSfxCd=Math.max(0,buildSfxCd-dt);cutFxCd=Math.max(0,cutFxCd-dt);
+  if(levelTimer>0){levelTimer-=dt;processBusiness(dt);updateCustomers(dt);if(levelTimer<=0)beginNextLevel();return}
+
   for(const h of harvestNodes){
-    if(h.amount>0&&dist(player,h)<.78){
-      const take=Math.min(h.amount,dt*18);h.amount-=take;grain+=take;
-      if(Math.random()<dt*8)emit('pickup',h.x+(Math.random()-.5)*.18,h.y,{text:'+'});updateHUD();
-      if(harvestSfxCd<=0){harvestSfxCd=.14;audio&&audio.sfx('pickup',{gain:.32,pitch:1.22})}
-      if(h.amount<=.05){h.amount=0;h.respawn=8+level*.25;audio&&audio.sfx('room_clear',{gain:.34,pitch:1.15})}
+    if(h.amount>0&&dist(player,h)<.82&&freeCarry()>.05){
+      const take=Math.min(h.amount,freeCarry(),dt*7.5);h.amount-=take;grain+=take;updateHUD();
+      if(cutFxCd<=0){cutFxCd=.13;emit('cut',h.x,h.y,{angle:player.angle});audio&&audio.sfx('attack',{gain:.2,pitch:1.3})}
+      if(h.amount<=.05){h.amount=0;h.respawn=7.5+level*.2;audio&&audio.sfx('room_clear',{gain:.28,pitch:1.15})}
     }else if(h.amount<=0&&h.respawn>0){h.respawn-=dt;if(h.respawn<=0)h.amount=h.max}
   }
 
-  if(objective===0&&grain>0)setObjective(1);
+  if(dist(player,depot)<.92&&grain>.02){
+    const take=Math.min(grain,dt*15);grain-=take;depot.input+=take;updateHUD();
+    if(harvestSfxCd<=0){harvestSfxCd=.18;audio&&audio.sfx('pickup',{gain:.32,pitch:.98})}
+  }
+  if(builds[0].done&&dist(player,builds[0])<.92&&meat>.02){
+    const take=Math.min(meat,dt*13);meat-=take;builds[0].input+=take;updateHUD();
+    if(harvestSfxCd<=0){harvestSfxCd=.18;audio&&audio.sfx('pickup',{gain:.32,pitch:.82})}
+  }
 
-  builds.forEach((b,ix)=>{
-    if(b.done)return;
-    const active=(ix===0&&objective===1)||(ix===1&&(objective===3||objective===4));if(!active)return;
-    if(dist(player,b)<.92&&currencyAmount(b.currency)>0){
-      if(ix===1&&objective===3)setObjective(4);
-      const need=b.cost-b.invest,take=spendCurrency(b.currency,Math.min(need,dt*30));b.invest+=take;b.height=clamp(b.invest/b.cost,0,1);updateHUD();
+  for(const b of builds){
+    if(b.done||!buildAvailable(b))continue;
+    if(dist(player,b)<.92&&coins>.01){
+      const take=Math.min(coins,b.cost-b.invest,dt*22);coins-=take;b.invest+=take;b.height=clamp(b.invest/b.cost,0,1);updateHUD();
       if(Math.random()<dt*10)emit('spark',b.x,b.y,{});
-      if(buildSfxCd<=0){buildSfxCd=.24;audio&&audio.sfx('instrumenta',{gain:.38,pitch:.9+b.height*.25})}
-      if(b.invest>=b.cost-.01){
-        b.done=true;b.height=1;audio&&audio.sfx('ritual_seal',{gain:.95});shake=4;try{navigator.vibrate?.([8,22,12])}catch(_){}
-        if(ix===0){if(level===1&&rescued<3)setObjective(2);else setObjective(3)}
-        else{setObjective(5);spawnBoss()}
+      if(buildSfxCd<=0){buildSfxCd=.22;audio&&audio.sfx('instrumenta',{gain:.34,pitch:.92+b.height*.2})}
+      if(b.invest>=b.cost-.01){b.done=true;b.height=1;b.tier=1;audio&&audio.sfx('ritual_seal',{gain:.9});shake=4;try{navigator.vibrate?.([8,22,12])}catch(_){}
+        if(b.id==='butcher'&&objective===3)setObjective(4);
       }
     }
-  });
+  }
 
   if(objective===2){
     for(const a of acolytes){
       if(a.ambient||a.rescued)continue;
-      if(dist(player,a)<.72){a.rescued=true;rescued++;audio&&audio.sfx('arcana',{gain:.6});emit('pickup',a.x,a.y,{text:'DESPERTO'});if(rescued>=3)setObjective(3)}
+      if(dist(player,a)<.72){a.rescued=true;rescued++;audio&&audio.sfx('arcana',{gain:.6});emit('pickup',a.x,a.y,{text:'DESPERTO'});updateHUD()}
     }
   }
 
-  if(objective===3&&meat>0)setObjective(4);
-  maintainEncounter(dt);
+  processBusiness(dt);updateCustomers(dt);maintainEncounter(dt);checkBusinessProgress();
 }
 function inputVector(){
   let sx=0,sy=0;
