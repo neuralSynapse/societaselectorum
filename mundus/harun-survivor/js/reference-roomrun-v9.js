@@ -2,11 +2,18 @@
 (function(){
 'use strict';
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
-const VERSION='9.8.0-stability-polish';
+const VERSION='10.0.0-reference-parity';
 const W=540,TW=72,TH=36,TAU=Math.PI*2;
 let H=960;
 const $=s=>document.querySelector(s);
 const mobileInput=window.CHRONICA_MOBILE_INPUT||null;
+const ART_URLS={
+  hero:'https://cdn.websitepublisher.ai/custom/wid27912/images/harun-peregrino-v1.png',
+  shade:'https://cdn.websitepublisher.ai/custom/wid27912/images/harun-espectro-cinza-v1.png',
+  boss:'https://cdn.websitepublisher.ai/custom/wid27912/images/harun-observador-cego-v1.png'
+};
+function loadArt(src){const im=new Image();im.decoding='async';im.loading='eager';im.src=src;return im}
+const ART={hero:loadArt(ART_URLS.hero),shade:loadArt(ART_URLS.shade),boss:loadArt(ART_URLS.boss)};
 const perf=window.CHRONICA_PERFORMANCE||null;
 const reducedMotion=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
 const runtimeErrors=[];
@@ -34,7 +41,7 @@ const hash=(x,y,k=0)=>{let n=Math.sin(x*127.1+y*311.7+k*74.7)*43758.5453;return 
 const isoRaw=(x,y)=>({x:(x-y)*TW*.5,y:(x+y)*TH*.5});
 let camera={x:0,y:0},shake=0,shakeX=0,shakeY=0,started=false,paused=false,last=performance.now(),time=0,idle=0,lastCombat=false;
 let runState='menu',deathTimer=0,victoryTimer=0,frameEma=16.7;
-let pointer={active:false,id:null,ox:0,oy:0,box:0,boy:0,x:0,y:0,vx:0,vy:0,targetX:0,targetY:0,mode:'direct'};
+let pointer={active:false,id:null,ox:0,oy:0,box:0,boy:0,x:0,y:0,vx:0,vy:0,strength:0,targetX:0,targetY:0,mode:'floating'};
 let keys={};
 const walkZones=[
  {x0:2.8,y0:11.0,x1:11.3,y1:19.4,type:'room'},
@@ -137,9 +144,9 @@ const builds=[
  {x:17.2,y:7.2,cost:40,invest:0,done:false,name:'SELO DO LIMIAR',height:0}
 ];
 let fx=[],drops=[],enemies=[],boss=null,objective=0,kills=0,fieldKills=0,rescued=0,resource=0;
-const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:8.45,accel:34,decel:42,vx:0,vy:0,atkCd:0,hitCd:0,walk:0,moveBlend:0,angle:0,attackPulse:0};
+const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:7.25,accel:44,decel:58,vx:0,vy:0,atkCd:0,hitCd:0,walk:0,moveBlend:0,angle:0,attackPulse:0,stepCd:0};
 function resetRun(){
-  player.x=5.2;player.y=15.2;player.vx=0;player.vy=0;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;player.moveBlend=0;player.angle=0;lastCombat=false;
+  player.x=5.2;player.y=15.2;player.vx=0;player.vy=0;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;player.moveBlend=0;player.angle=0;player.stepCd=0;lastCombat=false;
   clearTimeout(deathTimer);clearTimeout(victoryTimer);deathTimer=victoryTimer=0;
   objective=0;kills=0;fieldKills=0;rescued=0;resource=0;fx=[];drops=[];enemies=[];boss=null;depot.amount=40;depot.respawn=0;
   builds.forEach(b=>{b.invest=0;b.done=false;b.height=0});acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0});
