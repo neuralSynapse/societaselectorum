@@ -465,7 +465,9 @@ window.__HARUN_ROOMRUN_V9__={version:VERSION,start:startGame,reset:resetRun,self
   release:()=>{endPointer();return stateSnapshot()},
   setPlayer:(x,y)=>{if(isWalkableRadius(Number(x),Number(y))){player.x=Number(x);player.y=Number(y);player.vx=player.vy=0}return stateSnapshot()},
   setObjective:n=>{const v=Math.max(0,Math.min(6,Number(n)||0));objective=v;updateHUD();return stateSnapshot()},
-  grantResource:n=>{resource=Math.max(0,resource+(Number(n)||0));updateHUD();return stateSnapshot()}
+  grantResource:n=>{resource=Math.max(0,resource+(Number(n)||0));updateHUD();return stateSnapshot()},
+  killField:()=>{if(objective===3){for(const e of [...enemies])if(e!==boss&&!e.dead)damageEnemy(e,9999);interactionUpdate(0)}return stateSnapshot()},
+  killBoss:()=>{if(boss&&!boss.dead)damageEnemy(boss,9999);return stateSnapshot()}
 },sentinel:{gameId:'harun-survivor',mode:'reference-roomrun',institutionalWrite:false,sourceArt:'procedural-original',mobileFirst:true}};
 window.__MUNDUS_SENTINEL__=window.__MUNDUS_SENTINEL__||{};window.__MUNDUS_SENTINEL__.roomrunV9=window.__HARUN_ROOMRUN_V9__;window.__MUNDUS_SENTINEL__.roomrunQA=selfTest();
 })();
