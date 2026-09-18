@@ -139,9 +139,9 @@ function drawTree(t){
 function drawForest(){for(const t of forest)drawTree(t)}
 function boundaryWallSegments(){
   const seg=[];
-  const set=new Set(floorCells.filter(c=>c.type!=='field').map(c=>c.x+','+c.y));
+  const set=new Set(floorCells.filter(c=>c.type!=='field'&&c.type!=='market').map(c=>c.x+','+c.y));
   for(const c of floorCells){
-    if(c.type==='field')continue;
+    if(c.type==='field'||c.type==='market')continue;
     const dirs=[[1,0,'e'],[-1,0,'w'],[0,1,'s'],[0,-1,'n']];
     for(const d of dirs){
       const nx=c.x+d[0],ny=c.y+d[1];
