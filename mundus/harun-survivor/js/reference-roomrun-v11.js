@@ -52,7 +52,7 @@ floorCells.sort((a,b)=>(a.x+a.y)-(b.x+b.y));
 
 function isWalkable(x,y){return walkZones.some(q=>x>=q.x0&&x<=q.x1&&y>=q.y0&&y<=q.y1)}
 function isWalkableRadius(x,y,r=.16){return isWalkable(x-r,y)&&isWalkable(x+r,y)&&isWalkable(x,y-r)&&isWalkable(x,y+r)}
-function typeAt(x,y){const z=walkZones.slice().reverse().find(q=>x>=q.x0&&x<=q.x1&&y>=q.y0&&y<=q.x1);return z?z.type:null}
+function typeAt(x,y){const z=walkZones.slice().reverse().find(q=>x>=q.x0&&x<=q.x1&&y>=q.y0&&y<=q.y1);return z?z.type:null}
 function hasLineOfSight(a,b){for(let i=1;i<8;i++){const t=i/8;if(!isWalkable(lerp(a.x,b.x,t),lerp(a.y,b.y,t)))return false}return true}
 function enemyCanWalk(e,x,y){const t=walkZones.slice().reverse().find(q=>x>=q.x0&&x<=q.x1&&y>=q.y0&&y<=q.y1)?.type;return t==='field'||t==='hall'}
 function moveEnemy(e,dx,dy,dt){const nx=e.x+dx*e.speed*dt,ny=e.y+dy*e.speed*dt;if(enemyCanWalk(e,nx,e.y))e.x=nx;if(enemyCanWalk(e,e.x,ny))e.y=ny}
@@ -165,10 +165,7 @@ const acolytes=[
  {x:13.0,y:15.3,homeX:13.0,homeY:15.3,rescued:false,ambient:true,bubble:'⚗'}
 ];
 const depot={x:6.2,y:16.0,input:0,process:0,name:'MOINHO DO LIMIAR'};
-const harvestNodes=[
- {x:9.2,y:2.2,amount:18,max:18,respawn:0},{x:11.6,y:1.4,amount:18,max:18,respawn:0},{x:13.5,y:3.0,amount:18,max:18,respawn:0},
- {x:15.7,y:1.5,amount:18,max:18,respawn:0},{x:18.0,y:2.8,amount:18,max:18,respawn:0},{x:20.1,y:1.4,amount:18,max:18,respawn:0}
-];
+const harvestNodes=fieldCrops;
 const builds=[
  {id:'butcher',x:10.8,y:15.1,cost:28,invest:0,done:false,name:'AÇOUGUE DO LIMIAR',height:0,tier:0,product:'meat',process:0,input:0},
  {id:'scriptorium',x:13.0,y:13.2,cost:68,invest:0,done:false,name:'SCRIPTORIUM',height:0,tier:0,product:'scroll',process:0,input:0},
@@ -213,7 +210,7 @@ function resetRun(){
   objective=0;kills=0;fieldKills=0;rescued=0;resource=0;grain=0;meat=0;coins=0;sales=0;salesLevel=0;level=1;levelTarget=6;levelTimer=0;waveTimer=8;customerTimer=1.2;harvestSfxCd=0;buildSfxCd=0;cutFxCd=0;
   fx=[];drops=[];enemies=[];customers=[];boss=null;depot.input=0;depot.process=0;
   Object.keys(goods).forEach(k=>goods[k]=0);Object.keys(metaLoot).forEach(k=>metaLoot[k]=0);
-  harvestNodes.forEach(h=>{h.amount=h.max=18;h.respawn=0});
+  resetFieldCrops();
   builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0;b.process=0;b.input=0});
   acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0;a.workCd=0});
   updateHUD();
@@ -283,7 +280,7 @@ function beginNextLevel(){
   level++;levelTimer=0;objective=rescued>=3?3:0;fieldKills=0;kills=0;boss=null;enemies=[];drops=[];customers=[];salesLevel=0;waveTimer=6;customerTimer=.7;
   player.maxHp=Math.min(190,100+(level-1)*3);player.hp=player.maxHp;player.vx=player.vy=0;player.x=5.2;player.y=15.2;
   grain=Math.min(grain,Math.ceil(carryCapacity()*.35));meat=Math.min(meat,Math.ceil(carryCapacity()*.3));
-  harvestNodes.forEach(h=>{h.max=18+Math.min(24,level*2);h.amount=h.max;h.respawn=0});
+  resetFieldCrops();
   if(level>1&&acolytes.filter(a=>a.rescued&&!a.ambient).length>=3)rescued=3;
   updateHUD();audio&&audio.setState('explore',{intensity:.4});fx.push({kind:'banner',text:'DISTRITO '+level+' · O MERCADO CRESCE',t:0,d:1.2});
 }
@@ -357,12 +354,30 @@ function interactionUpdate(dt){
   harvestSfxCd=Math.max(0,harvestSfxCd-dt);buildSfxCd=Math.max(0,buildSfxCd-dt);cutFxCd=Math.max(0,cutFxCd-dt);
   if(levelTimer>0){levelTimer-=dt;processBusiness(dt);updateCustomers(dt);if(levelTimer<=0)beginNextLevel();return}
 
+  let cutTarget=null,cutDist=99;
   for(const h of harvestNodes){
-    if(h.amount>0&&dist(player,h)<.82&&freeCarry()>.05){
-      const take=Math.min(h.amount,freeCarry(),dt*7.5);h.amount-=take;grain+=take;updateHUD();
-      if(cutFxCd<=0){cutFxCd=.13;emit('cut',h.x,h.y,{angle:player.angle});audio&&audio.sfx('attack',{gain:.2,pitch:1.3})}
-      if(h.amount<=.05){h.amount=0;h.respawn=7.5+level*.2;audio&&audio.sfx('room_clear',{gain:.28,pitch:1.15})}
-    }else if(h.amount<=0&&h.respawn>0){h.respawn-=dt;if(h.respawn<=0)h.amount=h.max}
+    if(h.amount<=.02){
+      h.cut=0;if(h.respawn>0){h.respawn-=dt;if(h.respawn<=0){h.amount=h.max;h.respawn=0}}
+      continue;
+    }
+    const d=dist(player,h);
+    if(d<.88&&d<cutDist&&freeCarry()>.05){cutTarget=h;cutDist=d}
+    else h.cut=Math.max(0,(h.cut||0)-dt*3.2);
+  }
+  if(cutTarget){
+    cutTarget.cut=(cutTarget.cut||0)+dt*6.2;
+    player.angle=Math.atan2(cutTarget.y-player.y,cutTarget.x-player.x);
+    if(cutFxCd<=0){cutFxCd=.11;emit('cut',cutTarget.x,cutTarget.y,{angle:player.angle});audio&&audio.sfx('attack',{gain:.24,pitch:1.28+Math.random()*.08})}
+    if(cutTarget.cut>=1){
+      const yieldAmount=Math.min(cutTarget.amount,Math.max(.5,Math.floor(freeCarry())));
+      if(yieldAmount>0){
+        grain+=yieldAmount;cutTarget.amount-=yieldAmount;emit('pickup',cutTarget.x,cutTarget.y,{text:'+'+Math.ceil(yieldAmount)+' FEIXE'});
+        audio&&audio.sfx('pickup',{gain:.42,pitch:1.14});try{navigator.vibrate?.(4)}catch(_){}
+      }
+      cutTarget.cut=0;
+      if(cutTarget.amount<=.02){cutTarget.amount=0;cutTarget.respawn=7+Math.min(6,level*.3);audio&&audio.sfx('room_clear',{gain:.24,pitch:1.12})}
+      updateHUD();
+    }
   }
 
   if(dist(player,depot)<.92&&grain>.02){
@@ -528,18 +543,6 @@ function drawDepot(){
   rr(p.x-28,p.y-42,56,15,7,'#080908dd','#8b744d');
   ctx.fillStyle='#f0d36b';ctx.font='800 6px Cinzel,serif';ctx.textAlign='center';ctx.fillText('MOINHO · ◫ '+stock,p.x,p.y-32);
 }
-function drawHarvestNode(h){
-  if(h.amount<=.05)return;
-  const p=project(h.x,h.y),ratio=clamp(h.amount/h.max,0,1),stems=Math.max(3,Math.round(10*ratio));
-  ctx.save();ctx.globalAlpha=.72+.28*ratio;
-  for(let i=0;i<stems;i++){
-    const a=hash(h.x*17+i,h.y*23,4),b=hash(h.x*11+i,h.y*19,8),ox=(a-.5)*32,oy=(b-.5)*12,hh=19+hash(i,h.x,9)*15;
-    line(p.x+ox,p.y+oy,p.x+ox-2,p.y+oy-hh,'#9a8032',1.5,.92);
-    line(p.x+ox-2,p.y+oy-hh,p.x+ox+4,p.y+oy-hh-3,'#e1c55e',1.25,.95);
-  }
-  ctx.restore();
-  if(dist(player,h)<1.05){ctx.save();ctx.setLineDash([4,4]);ctx.strokeStyle='#f0df83aa';ctx.beginPath();ctx.ellipse(p.x,p.y+4,25,10,0,0,TAU);ctx.stroke();ctx.restore()}
-}
 function drawBuild(b){
   const p=project(b.x,b.y),done=b.done,prog=clamp(b.height||0,0,1),available=buildAvailable(b),active=!done&&available;
   ctx.save();ctx.setLineDash([4,4]);ctx.strokeStyle=done?'#6effb0aa':active?'#f5dc84dd':'#6d6d6880';ctx.lineWidth=active?1.8:1.1;ctx.beginPath();ctx.ellipse(p.x,p.y+3,30,13,0,0,TAU);ctx.stroke();ctx.restore();
@@ -659,7 +662,7 @@ function drawObjectiveBeacon(){
   const cx=Math.max(margin,Math.min(W-margin,p.x)),cy=Math.max(112,Math.min(H-margin,p.y)),ang=Math.atan2(p.y-H*.5,p.x-W*.5);ctx.save();ctx.translate(cx,cy);ctx.rotate(ang);poly([[12,0],[-7,-6],[-4,0],[-7,6]],'#f0ca75');ctx.restore()
 }
 function drawScene(){
-  drawFloor();drawForest();drawWalls();drawDepot();harvestNodes.forEach(drawHarvestNode);builds.forEach(drawBuild);
+  drawFloor();drawForest();fieldCrops.forEach(drawCrop);drawWalls();drawDepot();builds.forEach(drawBuild);
   const drawables=[];
   props.forEach(p=>drawables.push({d:p.x+p.y,fn:()=>drawProp(p)}));
   acolytes.forEach(a=>drawables.push({d:a.x+a.y+.05,fn:()=>drawAcolyte(a)}));
