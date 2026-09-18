@@ -72,11 +72,16 @@ function ell(x,y,rx,ry,fill,a=1,rot=0){ctx.save();ctx.globalAlpha*=a;ctx.transla
 function glow(x,y,r,color,a=.25){ctx.save();ctx.globalAlpha=a;ctx.shadowColor=color;ctx.shadowBlur=r;ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,Math.max(2,r*.12),0,TAU);ctx.fill();ctx.restore()}
 function diamond(x,y,fill,stroke='#332c25'){poly([[x,y-TH*.5],[x+TW*.5,y],[x,y+TH*.5],[x-TW*.5,y]],fill,stroke,.8)}
 function floorColor(cell){
-  if(cell.type==='field'){const n=hash(cell.x,cell.y);return n>.5?'#20342d':'#1b3029'}
-  const n=hash(cell.x,cell.y);return n>.66?'#3b3c3b':n>.32?'#343635':'#2f3332'
+  const phase=(level-1)%4,n=hash(cell.x,cell.y,level);
+  if(cell.type==='field'){
+    const sets=[['#20342d','#1b3029'],['#26352b','#1e2c25'],['#1c3334','#172b2d'],['#2d3227','#242a22']],s=sets[phase];return n>.5?s[0]:s[1]
+  }
+  const sets=[['#3b3c3b','#343635','#2f3332'],['#403b38','#383532','#302f2d'],['#363b40','#30363b','#2b3035'],['#403d34','#38362f','#302f2a']],s=sets[phase];
+  return n>.66?s[0]:n>.32?s[1]:s[2]
 }
 function drawFloor(){
-  ctx.fillStyle='#06100d';ctx.fillRect(0,0,W,H);
+  const phase=(level-1)%4,sky=['#06100d','#0a100d','#061013','#101008'][phase],g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,sky);g.addColorStop(.62,'#07100d');g.addColorStop(1,'#030605');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
   for(const c of floorCells){
     const p=project(c.x+.5,c.y+.5);
     if(p.x<-TW||p.x>W+TW||p.y<-TH||p.y>H+TH)continue;
@@ -95,6 +100,16 @@ function drawCrop(x,y,seed){
     line(p.x+ox-1,p.y+oy-h*.65,p.x+ox+4,p.y+oy-h*.78,'#b19a43',1,.8);
   }
 }
+const forest=[
+ {x:7.1,y:-1.0,s:1.1},{x:9.1,y:-1.6,s:.9},{x:11.4,y:-1.2,s:1.25},{x:14.0,y:-1.8,s:1.0},{x:17.0,y:-1.4,s:1.2},{x:20.0,y:-1.1,s:1.0},{x:22.5,y:.2,s:1.2},
+ {x:23.3,y:2.8,s:1.05},{x:23.7,y:5.1,s:1.25},{x:7.0,y:2.0,s:1.15},{x:6.7,y:4.6,s:.9},{x:6.9,y:7.0,s:1.2}
+];
+function drawTree(t){
+  const p=project(t.x,t.y),s=t.s||1;ell(p.x,p.y+4,15*s,6*s,'#000',.28);
+  line(p.x,p.y+4,p.x,p.y-25*s,'#171a15',4*s,.85);
+  for(let i=0;i<3;i++){const yy=p.y-12*s-i*12*s,w=(20-i*4)*s;poly([[p.x,yy-25*s],[p.x-w,yy+9*s],[p.x+w,yy+9*s]],i%2?'#10261f':'#0d211b')}
+}
+function drawForest(){for(const t of forest)drawTree(t)}
 function boundaryWallSegments(){
   const seg=[];
   const set=new Set(floorCells.filter(c=>c.type!=='field').map(c=>c.x+','+c.y));
@@ -527,7 +542,7 @@ function drawObjectiveBeacon(){
   const cx=Math.max(margin,Math.min(W-margin,p.x)),cy=Math.max(112,Math.min(H-margin,p.y)),ang=Math.atan2(p.y-H*.5,p.x-W*.5);ctx.save();ctx.translate(cx,cy);ctx.rotate(ang);poly([[12,0],[-7,-6],[-4,0],[-7,6]],'#f0ca75');ctx.restore()
 }
 function drawScene(){
-  drawFloor();drawWalls();drawDepot();harvestNodes.forEach(drawHarvestNode);builds.forEach(drawBuild);
+  drawFloor();drawForest();drawWalls();drawDepot();harvestNodes.forEach(drawHarvestNode);builds.forEach(drawBuild);
   const drawables=[];
   props.forEach(p=>drawables.push({d:p.x+p.y,fn:()=>drawProp(p)}));
   acolytes.forEach(a=>drawables.push({d:a.x+a.y+.05,fn:()=>drawAcolyte(a)}));
