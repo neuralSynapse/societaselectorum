@@ -215,6 +215,7 @@ try{bestLevel=Math.max(1,Number(localStorage.getItem('harun-roomrun-best'))||1)}
 
 function upgrade(id){return upgrades.find(u=>u.id===id)}
 function upgradeCost(u){return Math.ceil(u.base*Math.pow(1.72,u.level))}
+function upgradeAvailable(u){if(u.id==='scythe'||u.id==='pack'||u.id==='market')return sales>=1||level>1;if(u.id==='farm')return rescued>=1||level>1;if(u.id==='guard')return builds[0].done;if(u.id==='craft')return builds[1].done;return true}
 function carryCapacity(){return 24+rescued*4+Math.min(24,(level-1)*2)+metaLoot.seal*2+upgrade('pack').level*10}
 function cutSpeed(){return 6.2*(1+upgrade('scythe').level*.34)}
 function phaseNumber(){return Math.min(7,objective+1)}
@@ -290,7 +291,7 @@ function updateHUD(){
 function setObjective(n){if(objective===n)return;objective=n;updateHUD();fx.push({kind:'banner',text:UI.objective?.textContent||'',t:0,d:1.15});audio&&audio.sfx('special_room_activate',{gain:.72})}
 function emit(kind,x,y,data={}){fx.push(Object.assign({kind,x,y,t:0,d:.65},data))}
 function addSale(kind,c){
-  const p=PRODUCT[kind],pay=p.price+Math.floor((level-1)*.7)+Math.floor(metaLoot.glory/10);coins+=pay;sales++;salesLevel++;
+  const p=PRODUCT[kind],marketBoost=1+upgrade('market').level*.08,pay=Math.ceil((p.price+Math.floor((level-1)*.7)+Math.floor(metaLoot.glory/10))*marketBoost);coins+=pay;sales++;salesLevel++;
   emit('sale',c.x,c.y,{text:'+'+pay+' ÓB'});audio&&audio.sfx(kind==='scroll'||kind==='book'?'arcana':'pickup',{gain:.7,pitch:1.05});
   if(objective===0)setObjective(1);
   if(objective===1&&sales>=3)setObjective(rescued<3?2:3);
@@ -348,7 +349,7 @@ function productForCustomer(){
   return weighted[Math.floor(Math.random()*weighted.length)]||'provision'
 }
 function spawnCustomer(){
-  if(customers.length>=Math.min(10,5+Math.floor(level/2)))return;
+  if(customers.length>=Math.min(18,5+Math.floor(level/2)+upgrade('market').level*2))return;
   const want=productForCustomer(),q=customers.filter(c=>c.want===want&&c.state!=='leave').length,t=customerTarget(want,q);
   customers.push({x:marketGate.x+(Math.random()-.5)*.18,y:marketGate.y+(Math.random()-.5)*.16,want,state:'arrive',tx:t.x,ty:t.y,wait:0,buyFlash:0,speed:1.8+Math.random()*.28});
 }
@@ -369,13 +370,57 @@ function updateCustomers(dt){
   customers=customers.filter(c=>!(c.state==='leave'&&Math.hypot(c.x-marketGate.x,c.y-marketGate.y)<.14));
 }
 function processBusiness(dt){
-  const craftBoost=1+metaLoot.opus*.08;
+  const craftBoost=(1+metaLoot.opus*.08)*(1+upgrade('craft').level*.22);
   if(depot.input>=1){depot.process+=dt*(rescued>=1?2.3:1.7)*craftBoost;while(depot.process>=1&&depot.input>=1){depot.process-=1;depot.input-=1;goods.provision++;audio&&audio.sfx('pickup',{gain:.22,pitch:1.08})}}
   const butcher=builds[0],script=builds[1],library=builds[2],relic=builds[3];
   if(butcher.done&&butcher.input>=1){butcher.process+=dt*1.55*craftBoost;while(butcher.process>=1&&butcher.input>=1){butcher.process-=1;butcher.input-=1;goods.meat++}}
   if(script.done&&goods.provision>=2){script.process+=dt*(rescued>=2 ? .58 : .36)*craftBoost;if(script.process>=1){script.process-=1;goods.provision-=2;goods.scroll++;audio&&audio.sfx('arcana',{gain:.28})}}
   if(library.done&&goods.scroll>=2){library.process+=dt*.24*craftBoost;if(library.process>=1){library.process-=1;goods.scroll-=2;goods.book++;audio&&audio.sfx('arcana',{gain:.38})}}
   if(relic.done&&goods.book>=1&&goods.meat>=1){relic.process+=dt*.15*craftBoost;if(relic.process>=1){relic.process-=1;goods.book--;goods.meat--;goods.relic++;audio&&audio.sfx('ritual_seal',{gain:.32})}}
+}
+function updateAutomation(dt){
+  const farm=upgrade('farm');
+  if(farm.level>0){
+    automation.harvestCd-=dt;
+    if(automation.harvestCd<=0){
+      const active=fieldCrops.filter(h=>h.amount>.02);
+      if(active.length){
+        const h=active[Math.floor(Math.random()*active.length)],take=Math.min(h.amount,1+Math.floor(farm.level/3));
+        h.amount-=take;depot.input+=take;emit('pickup',h.x,h.y,{text:'AUTO +'+take+' FEIXE'});
+        if(h.amount<=.02){h.amount=0;h.respawn=3.2+Math.random()*1.8}
+      }
+      automation.harvestCd=Math.max(.32,1.7-farm.level*.24);
+    }
+  }
+  const guard=upgrade('guard');
+  if(guard.level>0){
+    automation.guardCd-=dt;
+    if(automation.guardCd<=0){
+      const live=enemies.filter(e=>!e.dead&&e!==boss);
+      if(live.length){const e=live.reduce((a,b)=>dist(player,a)<dist(player,b)?a:b);damageEnemy(e,5+guard.level*3.2)}
+      automation.guardCd=Math.max(.3,1.05-guard.level*.11);
+    }
+    if(guard.level>=2&&builds[0].done){
+      for(const d of drops){
+        if(d.dead||d.kind!=='meat')continue;
+        const take=Math.min(d.value,dt*(.9+guard.level*.55));d.value-=take;builds[0].input+=take;
+        if(d.value<=.05)d.dead=true;
+      }
+    }
+  }
+}
+function updateUpgradePads(dt){
+  for(const u of upgrades){
+    if(u.level>=u.max||!upgradeAvailable(u))continue;
+    if(dist(player,u)<.9&&coins>.01){
+      const cost=upgradeCost(u),take=Math.min(coins,cost-u.invest,dt*20);coins-=take;u.invest+=take;updateHUD();
+      if(Math.random()<dt*8)emit('spark',u.x,u.y,{});
+      if(u.invest>=cost-.01){
+        u.level++;u.invest=0;audio&&audio.sfx('level_up',{gain:.72,pitch:1.04+u.level*.025});shake=Math.max(shake,2.5);
+        emit('banner',null,null,{text:u.name+' · NÍVEL '+u.level,d:.9});try{navigator.vibrate?.([7,18,9])}catch(_){}
+      }
+    }
+  }
 }
 function checkBusinessProgress(){
   if(objective===1&&sales>=3)setObjective(rescued<3?2:3);
@@ -399,7 +444,7 @@ function interactionUpdate(dt){
     else h.cut=Math.max(0,(h.cut||0)-dt*3.2);
   }
   if(cutTarget){
-    cutTarget.cut=(cutTarget.cut||0)+dt*6.2;
+    cutTarget.cut=(cutTarget.cut||0)+dt*cutSpeed();
     player.cutPulse=.22;player.angle=Math.atan2(cutTarget.y-player.y,cutTarget.x-player.x);
     if(cutFxCd<=0){cutFxCd=.11;emit('cut',cutTarget.x,cutTarget.y,{angle:player.angle});audio&&audio.sfx('attack',{gain:.24,pitch:1.28+Math.random()*.08})}
     if(cutTarget.cut>=1){
@@ -409,7 +454,7 @@ function interactionUpdate(dt){
         audio&&audio.sfx('pickup',{gain:.42,pitch:1.14});try{navigator.vibrate?.(4)}catch(_){}
       }
       cutTarget.cut=0;
-      if(cutTarget.amount<=.02){cutTarget.amount=0;cutTarget.respawn=7+Math.min(6,level*.3);audio&&audio.sfx('room_clear',{gain:.24,pitch:1.12})}
+      if(cutTarget.amount<=.02){cutTarget.amount=0;cutTarget.respawn=Math.max(2.8,4.4-level*.04)+Math.random()*1.4;audio&&audio.sfx('room_clear',{gain:.24,pitch:1.12})}
       updateHUD();
     }
   }
@@ -442,7 +487,7 @@ function interactionUpdate(dt){
     }
   }
 
-  processBusiness(dt);updateCustomers(dt);maintainEncounter(dt);checkBusinessProgress();
+  updateUpgradePads(dt);updateAutomation(dt);processBusiness(dt);updateCustomers(dt);maintainEncounter(dt);checkBusinessProgress();
 }
 function inputVector(){
   let sx=0,sy=0;
