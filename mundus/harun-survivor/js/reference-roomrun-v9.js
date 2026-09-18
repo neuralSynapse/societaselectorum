@@ -171,60 +171,106 @@ function spawnBoss(){
   enemies.push(boss);
   audio&&audio.setState('boss',{intensity:.95});audio&&audio.sfx('boss_windup',{gain:1});
 }
-function updateHUD(){
-  if(UI.resource)UI.resource.textContent=Math.floor(resource);
-  const data=[
-    ['OFÍCIO','COLETE 40 ESSÊNCIAS NO DEPÓSITO'],
-    ['CONSTRUÇÃO','ERGA O PILAR DE HÓRUS'],
-    ['CHAMADO','DESPERTE 3 ACÓLITOS'],
-    ['EXTERIOR','ATRAVESSE O CAMPO E DERRUBE 6 SOMBRAS'],
-    ['LIMIAR','REÚNA 40 ESSÊNCIAS E ERGA O SELO'],
-    ['PROVA','VENÇA O OBSERVADOR CEGO'],
-    ['CONCLUÍDO','A PASSAGEM FOI ABERTA']
-  ][objective]||['TRAVESSIA','AVANCE'];
-  UI.objectiveKicker.textContent=data[0];
-  let text=data[1];
-  if(objective===0)text='COLETE '+Math.max(0,Math.ceil(depot.amount))+' ESSÊNCIAS NO DEPÓSITO';
-  if(objective===1)text='ERGA O PILAR DE HÓRUS · '+Math.floor(builds[0].height*100)+'%';
-  if(objective===3)text='DERRUBE 6 SOMBRAS · '+Math.min(6,fieldKills)+'/6';
-  if(objective===4)text='REÚNA 40 ESSÊNCIAS E ERGA O SELO · '+Math.floor(builds[1].height*100)+'%';
-  UI.objective.textContent=text;
+function currencyAmount(kind){return kind==='grain'?grain:kind==='meat'?meat:resource}
+function addCurrency(kind,value){if(kind==='grain')grain+=value;else if(kind==='meat')meat+=value;else resource+=value;updateHUD()}
+function spendCurrency(kind,value){const have=currencyAmount(kind),take=Math.min(have,Math.max(0,value));if(kind==='grain')grain-=take;else if(kind==='meat')meat-=take;else resource-=take;return take}
+function levelCosts(){
+  return{grain:40+Math.min(60,(level-1)*5),meat:32+Math.min(64,(level-1)*4),kills:6+Math.min(10,Math.floor((level-1)*.75))}
 }
-function setObjective(n){if(objective===n)return;objective=n;updateHUD();fx.push({kind:'banner',text:UI.objective.textContent,t:0,d:1.35});audio&&audio.sfx('special_room_activate',{gain:.85})}
+function updateHUD(){
+  const costs=levelCosts();levelTarget=costs.kills;builds[0].cost=costs.grain;builds[1].cost=costs.meat;
+  if(UI.resource)UI.resource.textContent=Math.floor(resource);
+  if(UI.grain)UI.grain.textContent=Math.floor(grain);
+  if(UI.meat)UI.meat.textContent=Math.floor(meat);
+  if(UI.level)UI.level.textContent=String(level);
+  const data=[
+    ['COLETA','REÚNA GRÃOS PARA O PILAR'],
+    ['CONSTRUÇÃO','ALIMENTE O PILAR DE HÓRUS'],
+    ['CHAMADO','DESPERTE 3 ACÓLITOS'],
+    ['CAÇA','DERRUBE AS SOMBRAS E RECOLHA CARNE'],
+    ['LIMIAR','ALIMENTE O SELO DO LIMIAR'],
+    ['PROVA','VENÇA O OBSERVADOR CEGO'],
+    ['ASCENSÃO','O PRÓXIMO NÍVEL ESTÁ SE ABRINDO']
+  ][objective]||['TRAVESSIA','AVANCE'];
+  if(UI.objectiveKicker)UI.objectiveKicker.textContent='NÍVEL '+level+' · '+data[0];
+  let text=data[1];
+  if(objective===0)text='GRÃOS '+Math.floor(grain)+' / '+costs.grain;
+  if(objective===1)text='PILAR '+Math.floor(builds[0].height*100)+'% · GRÃOS '+Math.floor(grain);
+  if(objective===2)text='ACÓLITOS '+rescued+' / 3';
+  if(objective===3)text='SOMBRAS '+Math.min(levelTarget,fieldKills)+' / '+levelTarget+' · CARNE '+Math.floor(meat)+' / '+costs.meat;
+  if(objective===4)text='SELO '+Math.floor(builds[1].height*100)+'% · CARNE '+Math.floor(meat);
+  if(objective===5&&boss)text='OBSERVADOR CEGO · '+Math.max(0,Math.ceil(boss.hp))+' / '+boss.maxHp;
+  if(UI.objective)UI.objective.textContent=text;
+}
+function setObjective(n){if(objective===n)return;objective=n;updateHUD();fx.push({kind:'banner',text:UI.objective?.textContent||'',t:0,d:1.25});audio&&audio.sfx('special_room_activate',{gain:.75})}
 function emit(kind,x,y,data={}){fx.push(Object.assign({kind,x,y,t:0,d:.65},data))}
-function pickupDrop(d){resource+=d.value;d.dead=true;emit('pickup',d.x,d.y,{text:'+'+d.value});audio&&audio.sfx('pickup',{gain:.7});updateHUD()}
+function pickupDrop(d){
+  addCurrency(d.kind||'meat',d.value);d.dead=true;emit('pickup',d.x,d.y,{text:'+'+d.value+(d.kind==='grain'?' GRÃO':d.kind==='meat'?' CARNE':' ESSÊNCIA')});
+  audio&&audio.sfx('pickup',{gain:.68,pitch:d.kind==='meat' ? .9 : 1.08});try{navigator.vibrate?.(4)}catch(_){}
+}
+function completeLevel(){
+  if(runState!=='playing')return;objective=6;levelTimer=1.25;resource+=3+Math.floor(level*.5);player.hp=Math.min(player.maxHp,player.hp+28);
+  builds.forEach(b=>{b.tier=(b.tier||0)+1;b.done=true;b.height=1});
+  bestLevel=Math.max(bestLevel,level+1);try{localStorage.setItem('harun-roomrun-best',String(bestLevel))}catch(_){}
+  updateHUD();fx.push({kind:'banner',text:'NÍVEL '+level+' CONCLUÍDO · +'+(3+Math.floor(level*.5))+' ESSÊNCIAS',t:0,d:1.2});
+  audio&&audio.setState('ritual',{intensity:.5});audio&&audio.sfx('level_up',{gain:1});try{navigator.vibrate?.([16,28,24])}catch(_){}
+}
+function beginNextLevel(){
+  level++;levelTimer=0;objective=0;fieldKills=0;kills=0;boss=null;enemies=[];drops=[];
+  player.maxHp=Math.min(180,100+(level-1)*2);player.hp=player.maxHp;player.vx=player.vy=0;player.x=5.2;player.y=15.2;
+  const costs=levelCosts();depot.max=costs.grain;depot.amount=costs.grain;depot.respawn=0;
+  harvestNodes.forEach(h=>{h.max=18+Math.min(18,level);h.amount=h.max;h.respawn=0});
+  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0});
+  // Acólitos são permanentes dentro da mesma run. Depois do primeiro despertar, acompanham Hārūn indefinidamente.
+  if(level>1&&acolytes.filter(a=>a.rescued&&!a.ambient).length>=3)rescued=3;
+  spawnInitialEnemies();updateHUD();audio&&audio.setState('explore',{intensity:.4});
+  fx.push({kind:'banner',text:'NÍVEL '+level+' · A CIDADELA SE RECOMPÕE',t:0,d:1.2});
+}
 function damageEnemy(e,dmg){
-  if(e.dead||runState!=='playing')return;e.hp=Math.max(0,e.hp-dmg);e.hit=.11;emit('damage',e.x,e.y,{text:String(Math.round(dmg)),crit:dmg>22});
+  if(e.dead||runState!=='playing')return;const power=1+(level-1)*.035;e.hp=Math.max(0,e.hp-dmg*power);e.hit=.11;emit('damage',e.x,e.y,{text:String(Math.round(dmg*power)),crit:dmg>22});
   audio&&audio.sfx('impact',{gain:.45,pitch:e===boss ? .86 : 1});
-  if(e.hp<=0){e.dead=true;kills++;if(objective===3&&e!==boss)fieldKills++;emit('burst',e.x,e.y,{big:e===boss});audio&&audio.sfx(e===boss?'boss_death':'enemy_death',{gain:e===boss?1:.55});
-    if(e===boss){clearTimeout(deathTimer);deathTimer=0;setObjective(6);runState='victoryPending';paused=true;endPointer();victoryTimer=setTimeout(showVictory,650)}
-    else drops.push({x:e.x,y:e.y,value:8,dead:false,t:0});
+  if(e.hp<=0){
+    e.dead=true;kills++;if(e!==boss)fieldKills++;emit('burst',e.x,e.y,{big:e===boss});audio&&audio.sfx(e===boss?'boss_death':'enemy_death',{gain:e===boss?1:.55});
+    if(e===boss){resource+=2+Math.floor(level*.4);completeLevel()}
+    else{const value=e.elite?10:e.kind==='hound'?7:5;drops.push({x:e.x,y:e.y,value,kind:'meat',dead:false,t:0})}
   }
 }
 function interactionUpdate(dt){
+  const costs=levelCosts();
+  if(levelTimer>0){levelTimer-=dt;if(levelTimer<=0)beginNextLevel();return}
   const pd=dist(player,depot);
-  if(depot.amount>0&&pd<.85){
-    const take=Math.min(depot.amount,dt*34);depot.amount-=take;resource+=take;updateHUD();
-    if(Math.random()<dt*12)emit('pickup',depot.x+(Math.random()-.5)*.4,depot.y,{text:'+'});
-    if(depot.amount<=.05){depot.amount=0;audio&&audio.sfx('room_clear',{gain:.55});if(objective===0)setObjective(1);depot.respawn=9}
-  }else if(depot.amount<=0&&depot.respawn>0){depot.respawn-=dt;if(depot.respawn<=0&&objective>=3){depot.amount=40;depot.respawn=0}}
+  if(depot.amount>0&&pd<.9){
+    const take=Math.min(depot.amount,dt*38);depot.amount-=take;grain+=take;updateHUD();
+    if(Math.random()<dt*11)emit('pickup',depot.x+(Math.random()-.5)*.4,depot.y,{text:'+'});
+    if(depot.amount<=.05){depot.amount=0;audio&&audio.sfx('room_clear',{gain:.48});depot.respawn=10}
+  }else if(depot.amount<=0&&depot.respawn>0){depot.respawn-=dt;if(depot.respawn<=0){depot.amount=Math.ceil(costs.grain*.55);depot.respawn=0}}
+  for(const h of harvestNodes){
+    if(h.amount>0&&dist(player,h)<.75){
+      const take=Math.min(h.amount,dt*18);h.amount-=take;grain+=take;if(Math.random()<dt*8)emit('pickup',h.x,h.y,{text:'+'});updateHUD();
+      if(h.amount<=.05){h.amount=0;h.respawn=8+level*.25;audio&&audio.sfx('pickup',{gain:.45,pitch:1.18})}
+    }else if(h.amount<=0&&h.respawn>0){h.respawn-=dt;if(h.respawn<=0)h.amount=h.max}
+  }
+  if(objective===0&&grain>=costs.grain)setObjective(1);
   builds.forEach((b,ix)=>{
     if(b.done)return;
-    if(dist(player,b)<.82&&resource>0&&((ix===0&&objective===1)||(ix===1&&objective===4))){
-      const take=Math.min(resource,b.cost-b.invest,dt*32);resource-=take;b.invest+=take;b.height=b.invest/b.cost;updateHUD();
-      if(Math.random()<dt*8)emit('spark',b.x,b.y,{});
-      if(b.invest>=b.cost-.01){b.done=true;b.height=1;audio&&audio.sfx('ritual_seal',{gain:.95});shake=4;
-        if(ix===0)setObjective(2);else{setObjective(5);spawnBoss()}
+    const active=(ix===0&&objective===1)||(ix===1&&objective===4);if(!active)return;
+    if(dist(player,b)<.88&&currencyAmount(b.currency)>0){
+      const need=b.cost-b.invest,take=spendCurrency(b.currency,Math.min(need,dt*34));b.invest+=take;b.height=clamp(b.invest/b.cost,0,1);updateHUD();
+      if(Math.random()<dt*10)emit('spark',b.x,b.y,{});
+      if(b.invest>=b.cost-.01){
+        b.done=true;b.height=1;audio&&audio.sfx('ritual_seal',{gain:.95});shake=4;try{navigator.vibrate?.([8,22,12])}catch(_){}
+        if(ix===0){if(level===1&&rescued<3)setObjective(2);else setObjective(3)}
+        else{setObjective(5);spawnBoss()}
       }
     }
   });
   if(objective===2){
     for(const a of acolytes){
       if(a.ambient||a.rescued)continue;
-      if(dist(player,a)<.7){a.rescued=true;rescued++;audio&&audio.sfx('arcana',{gain:.6});emit('pickup',a.x,a.y,{text:'DESPERTO'});if(rescued>=3)setObjective(3)}
+      if(dist(player,a)<.72){a.rescued=true;rescued++;audio&&audio.sfx('arcana',{gain:.6});emit('pickup',a.x,a.y,{text:'DESPERTO'});if(rescued>=3)setObjective(3)}
     }
   }
-  if(objective===3&&fieldKills>=6)setObjective(4);
+  if(objective===3&&fieldKills>=levelTarget&&meat>=costs.meat)setObjective(4);
 }
 function inputVector(){
   let sx=0,sy=0;
