@@ -20,7 +20,7 @@ const runtimeErrors=[];
 const captureError=(kind,e)=>{runtimeErrors.push({kind,message:String(e?.message||e?.reason||e||'erro'),at:Date.now()});if(runtimeErrors.length>20)runtimeErrors.shift()};
 window.addEventListener('error',e=>captureError('error',e));
 window.addEventListener('unhandledrejection',e=>captureError('promise',e));
-const UI={resource:$('#resourceCount'),grain:$('#grainCount'),meat:$('#meatCount'),coin:$('#obolCount'),carry:$('#carryCount'),level:$('#levelCount'),objective:$('#objectiveText'),objectiveKicker:$('#objectiveKicker'),tip:$('#moveTip'),joy:$('#touchJoy'),knob:$('#touchJoy i'),pause:$('#pauseOverlay'),start:$('#startOverlay'),victory:$('#victoryOverlay'),pauseBtn:$('#pauseBtn'),resume:$('#resumeBtn'),restart:$('#restartBtn'),restartVictory:$('#restartVictory'),music:$('#musicVol'),sfx:$('#sfxVol'),musicVal:$('#musicVal'),sfxVal:$('#sfxVal')};
+const UI={resource:$('#resourceCount'),grain:$('#grainCount'),meat:$('#meatCount'),coin:$('#obolCount'),carry:$('#carryCount'),level:$('#levelCount'),glory:$('#legacyGlory'),seal:$('#legacySeal'),eye:$('#legacyEye'),opus:$('#legacyOpus'),arcana:$('#legacyArcana'),objective:$('#objectiveText'),objectiveKicker:$('#objectiveKicker'),tip:$('#moveTip'),joy:$('#touchJoy'),knob:$('#touchJoy i'),pause:$('#pauseOverlay'),start:$('#startOverlay'),victory:$('#victoryOverlay'),pauseBtn:$('#pauseBtn'),resume:$('#resumeBtn'),restart:$('#restartBtn'),restartVictory:$('#restartVictory'),music:$('#musicVol'),sfx:$('#sfxVol'),musicVal:$('#musicVal'),sfxVal:$('#sfxVal')};
 const perfProfile=perf?.profile?.()||{dpr:1.25};
 const DPR=Math.min(Number(perfProfile.dpr)||1.25,window.devicePixelRatio||1.25);
 function syncViewport(){
@@ -177,7 +177,7 @@ let fx=[],drops=[],enemies=[],boss=null,customers=[],objective=0,kills=0,fieldKi
 const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:7.25,accel:44,decel:58,vx:0,vy:0,atkCd:0,hitCd:0,walk:0,moveBlend:0,angle:0,attackPulse:0,stepCd:0};
 try{bestLevel=Math.max(1,Number(localStorage.getItem('harun-roomrun-best'))||1)}catch(_){}
 
-function carryCapacity(){return 18+rescued*4+Math.min(18,(level-1)*2)}
+function carryCapacity(){return 18+rescued*4+Math.min(18,(level-1)*2)+metaLoot.seal*2}
 function carryLoad(){return grain+meat}
 function freeCarry(){return Math.max(0,carryCapacity()-carryLoad())}
 function requiredBuildCount(){return level<=1?2:level===2?3:4}
@@ -231,6 +231,7 @@ function updateHUD(){
   if(UI.coin)UI.coin.textContent=Math.floor(coins);
   if(UI.carry)UI.carry.textContent=Math.floor(carryLoad())+'/'+carryCapacity();
   if(UI.level)UI.level.textContent=String(level);
+  if(UI.glory)UI.glory.textContent=metaLoot.glory;if(UI.seal)UI.seal.textContent=metaLoot.seal;if(UI.eye)UI.eye.textContent=metaLoot.eye;if(UI.opus)UI.opus.textContent=metaLoot.opus;if(UI.arcana)UI.arcana.textContent=metaLoot.arcana;
   if(UI.objectiveKicker)UI.objectiveKicker.textContent='NÍVEL '+level+' · MERCADO VIVO';
   let text='';
   if(objective===0)text='CORTE O CAMPO · LEVE FEIXES AO MOINHO · PROVISÕES '+goods.provision;
@@ -247,7 +248,7 @@ function updateHUD(){
 function setObjective(n){if(objective===n)return;objective=n;updateHUD();fx.push({kind:'banner',text:UI.objective?.textContent||'',t:0,d:1.15});audio&&audio.sfx('special_room_activate',{gain:.72})}
 function emit(kind,x,y,data={}){fx.push(Object.assign({kind,x,y,t:0,d:.65},data))}
 function addSale(kind,c){
-  const p=PRODUCT[kind],pay=p.price+Math.floor((level-1)*.7);coins+=pay;sales++;salesLevel++;
+  const p=PRODUCT[kind],pay=p.price+Math.floor((level-1)*.7)+Math.floor(metaLoot.glory/10);coins+=pay;sales++;salesLevel++;
   emit('sale',c.x,c.y,{text:'+'+pay+' ÓB'});audio&&audio.sfx(kind==='scroll'||kind==='book'?'arcana':'pickup',{gain:.7,pitch:1.05});
   if(objective===0)setObjective(1);
   if(objective===1&&sales>=3)setObjective(rescued<3?2:3);
@@ -276,7 +277,7 @@ function beginNextLevel(){
   updateHUD();audio&&audio.setState('explore',{intensity:.4});fx.push({kind:'banner',text:'DISTRITO '+level+' · O MERCADO CRESCE',t:0,d:1.2});
 }
 function damageEnemy(e,dmg){
-  if(e.dead||runState!=='playing')return;const power=1+(level-1)*.035;e.hp=Math.max(0,e.hp-dmg*power);e.hit=.11;emit('damage',e.x,e.y,{text:String(Math.round(dmg*power)),crit:dmg>22});
+  if(e.dead||runState!=='playing')return;const power=1+(level-1)*.035+metaLoot.arcana*.05;e.hp=Math.max(0,e.hp-dmg*power);e.hit=.11;emit('damage',e.x,e.y,{text:String(Math.round(dmg*power)),crit:dmg>22});
   audio&&audio.sfx('impact',{gain:.45,pitch:e===boss ? .86 : 1});
   if(e.hp<=0){
     e.dead=true;kills++;if(e!==boss)fieldKills++;emit('burst',e.x,e.y,{big:e===boss});audio&&audio.sfx(e===boss?'boss_death':'enemy_death',{gain:e===boss ? 1 : .55});
@@ -326,12 +327,13 @@ function updateCustomers(dt){
   customers=customers.filter(c=>!(c.state==='leave'&&Math.hypot(c.x-3.7,c.y-19.1)<.12));
 }
 function processBusiness(dt){
-  if(depot.input>=1){depot.process+=dt*(rescued>=1?2.3:1.7);while(depot.process>=1&&depot.input>=1){depot.process-=1;depot.input-=1;goods.provision++;audio&&audio.sfx('pickup',{gain:.22,pitch:1.08})}}
+  const craftBoost=1+metaLoot.opus*.08;
+  if(depot.input>=1){depot.process+=dt*(rescued>=1?2.3:1.7)*craftBoost;while(depot.process>=1&&depot.input>=1){depot.process-=1;depot.input-=1;goods.provision++;audio&&audio.sfx('pickup',{gain:.22,pitch:1.08})}}
   const butcher=builds[0],script=builds[1],library=builds[2],relic=builds[3];
-  if(butcher.done&&butcher.input>=1){butcher.process+=dt*1.55;while(butcher.process>=1&&butcher.input>=1){butcher.process-=1;butcher.input-=1;goods.meat++}}
-  if(script.done&&goods.provision>=2){script.process+=dt*(rescued>=2 ? .58 : .36);if(script.process>=1){script.process-=1;goods.provision-=2;goods.scroll++;audio&&audio.sfx('arcana',{gain:.28})}}
-  if(library.done&&goods.scroll>=2){library.process+=dt*.24;if(library.process>=1){library.process-=1;goods.scroll-=2;goods.book++;audio&&audio.sfx('arcana',{gain:.38})}}
-  if(relic.done&&goods.book>=1&&goods.meat>=1){relic.process+=dt*.15;if(relic.process>=1){relic.process-=1;goods.book--;goods.meat--;goods.relic++;audio&&audio.sfx('ritual_seal',{gain:.32})}}
+  if(butcher.done&&butcher.input>=1){butcher.process+=dt*1.55*craftBoost;while(butcher.process>=1&&butcher.input>=1){butcher.process-=1;butcher.input-=1;goods.meat++}}
+  if(script.done&&goods.provision>=2){script.process+=dt*(rescued>=2 ? .58 : .36)*craftBoost;if(script.process>=1){script.process-=1;goods.provision-=2;goods.scroll++;audio&&audio.sfx('arcana',{gain:.28})}}
+  if(library.done&&goods.scroll>=2){library.process+=dt*.24*craftBoost;if(library.process>=1){library.process-=1;goods.scroll-=2;goods.book++;audio&&audio.sfx('arcana',{gain:.38})}}
+  if(relic.done&&goods.book>=1&&goods.meat>=1){relic.process+=dt*.15*craftBoost;if(relic.process>=1){relic.process-=1;goods.book--;goods.meat--;goods.relic++;audio&&audio.sfx('ritual_seal',{gain:.32})}}
 }
 function checkBusinessProgress(){
   if(objective===1&&sales>=3)setObjective(rescued<3?2:3);
@@ -460,7 +462,7 @@ function combatUpdate(dt){
   if(objective>=3)acolytes.filter(a=>a.rescued&&!a.ambient&&a.role==='GUARDIÃO').forEach((a,i)=>{
     a.cool=(a.cool||0)-dt;const ad=nearest?dist(a,nearest):99;if(a.cool<=0&&nearest&&!nearest.dead&&ad<5.2){a.cool=.72+i*.08;damageEnemy(nearest,5.5);emit('bolt',a.x,a.y,{to:nearest})}
   });
-  for(const d of drops){if(d.dead)continue;d.t+=dt;const di=dist(player,d);if(freeCarry()>.05&&di<2.15){const q=Math.min(1,dt*7);d.x=lerp(d.x,player.x,q);d.y=lerp(d.y,player.y,q)}if(di<.48&&freeCarry()>.05)pickupDrop(d)}
+  for(const d of drops){if(d.dead)continue;d.t+=dt;const di=dist(player,d);if(freeCarry()>.05&&di<2.15+metaLoot.eye*.22){const q=Math.min(1,dt*7);d.x=lerp(d.x,player.x,q);d.y=lerp(d.y,player.y,q)}if(di<.48&&freeCarry()>.05)pickupDrop(d)}
   enemies=enemies.filter(e=>!e.dead);drops=drops.filter(d=>!d.dead);
   const combat=enemies.some(e=>dist(player,e)<5.8);if(combat!==lastCombat&&objective!==5){lastCombat=combat;audio&&audio.setState(combat?'combat':'explore',{intensity:combat ? .72 : .38})}
 }
