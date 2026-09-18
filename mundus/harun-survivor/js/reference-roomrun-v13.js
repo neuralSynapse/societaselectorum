@@ -702,6 +702,20 @@ function drawDepot(){
 }
 function drawBuild(b){
   const p=project(b.x,b.y),done=b.done,prog=clamp(b.height||0,0,1),available=buildAvailable(b),active=!done&&available;
+  if(STRICT_REFERENCE&&!done){
+    ctx.save();ctx.setLineDash([5,5]);ctx.strokeStyle=available?'#f5f5f0d5':'#7d7d7888';ctx.lineWidth=1.3;ctx.beginPath();ctx.ellipse(p.x,p.y+3,29,13,0,0,TAU);ctx.stroke();ctx.setLineDash([]);ctx.restore();
+    if(available){
+      poly([[p.x-19,p.y-6],[p.x+17,p.y-11],[p.x+22,p.y+1],[p.x-14,p.y+8]],'#2caf60','#6cff9b',1);
+      ctx.fillStyle='#f1fff5';ctx.font='900 9px Manrope';ctx.textAlign='center';ctx.fillText('¤ '+Math.ceil(Math.max(0,b.cost-b.invest)),p.x+2,p.y+2);
+    }
+    if(prog>0){
+      const h=8+prog*74;ell(p.x,p.y+5,15,6,'#161413');
+      poly([[p.x-10,p.y],[p.x-7,p.y-h],[p.x+7,p.y-h],[p.x+10,p.y]],'#6c3b31','#a8644d',1);
+      for(let yy=10;yy<h-4;yy+=10)line(p.x-6,p.y-yy,p.x+6,p.y-yy,'#df8c6a',1,.5);
+      ell(p.x,p.y-h,8,3.5,'#c55e55');
+    }
+    return;
+  }
   ctx.save();ctx.setLineDash([4,4]);ctx.strokeStyle=done?'#6effb0aa':active?'#f5dc84dd':'#6d6d6880';ctx.lineWidth=active?1.8:1.1;ctx.beginPath();ctx.ellipse(p.x,p.y+3,30,13,0,0,TAU);ctx.stroke();ctx.restore();
   if(!done){
     poly([[p.x-18,p.y-3],[p.x,p.y-12],[p.x+18,p.y-3],[p.x,p.y+7]],available?'#24452c':'#222522',available?'#f0cc61':'#5c625c');
@@ -711,7 +725,6 @@ function drawBuild(b){
     if(prog>0){const h=8+prog*55;poly([[p.x-10,p.y],[p.x-8,p.y-h],[p.x+8,p.y-h],[p.x+10,p.y]],'#704033','#c08455',1);ell(p.x,p.y-h,8,4,'#a36b44')}
     return;
   }
-  // estação pronta
   poly([[p.x-24,p.y-4],[p.x+24,p.y-4],[p.x+20,p.y+8],[p.x-27,p.y+8]],'#3f2f27','#866143',1);
   line(p.x-18,p.y+8,p.x-18,p.y+20,'#241a15',4);line(p.x+16,p.y+7,p.x+16,p.y+19,'#241a15',4);
   const icon=PRODUCT[b.product]?.icon||'✦',count=goods[b.product]||0;
@@ -952,7 +965,7 @@ function togglePause(){
   if(!started||runState!=='playing'||!UI.victory.hidden)return;paused=!paused;UI.pause.hidden=!paused;last=performance.now();audio&&audio.setState(paused?'menu':(objective===5?'boss':'explore'),{intensity:paused ? .2 : .45});endPointer()
 }
 function restart(){clearTimeout(deathTimer);clearTimeout(victoryTimer);runState='playing';paused=false;UI.pause.hidden=true;UI.victory.hidden=true;last=performance.now();resetRun();window.MUNDUSMusic?.resume?.();audio&&audio.setState('explore',{intensity:.38})}
-function showVictory(){if(runState==='dead')return;runState='victory';paused=true;endPointer();UI.pause.hidden=true;UI.victory.hidden=false;audio&&audio.setState('pleroma',{intensity:.4});audio&&audio.sfx('room_clear',{gain:1})}
+function showVictory(){if(runState==='dead')return;runState='victory';paused=true;endPointer();UI.pause.hidden=true;UI.victory.hidden=false;const vs=document.getElementById('victoryStage');if(vs)vs.textContent='ESTÁGIO '+level;audio&&audio.setState('pleroma',{intensity:.4});audio&&audio.sfx('room_clear',{gain:1})}
 function continueStage(){if(!STRICT_REFERENCE){restart();return}beginNextLevel()}
 $('#startBtn').addEventListener('click',startGame);UI.pauseBtn.addEventListener('click',togglePause);UI.resume.addEventListener('click',togglePause);UI.restart.addEventListener('click',restart);UI.restartVictory.addEventListener('click',continueStage);
 function safeStore(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}
