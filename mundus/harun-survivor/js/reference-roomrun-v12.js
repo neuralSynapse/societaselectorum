@@ -187,7 +187,20 @@ const builds=[
  {id:'library',x:16.0,y:11.1,cost:145,invest:0,done:false,name:'BIBLIOTHECA',height:0,tier:0,product:'book',process:0,input:0},
  {id:'relicary',x:18.0,y:8.0,cost:280,invest:0,done:false,name:'RELICÁRIO',height:0,tier:0,product:'relic',process:0,input:0}
 ];
+const marketGate={x:1.2,y:23.0};
+const marketStalls=[
+ {x:4.6,y:20.7,label:'BANCA I'},{x:6.5,y:21.15,label:'BANCA II'},{x:8.4,y:20.7,label:'BANCA III'}
+];
 const goods={provision:0,meat:0,scroll:0,book:0,relic:0};
+const upgrades=[
+ {id:'scythe',x:3.0,y:22.0,name:'FOICE',icon:'☽',level:0,max:5,invest:0,base:18,desc:'CORTE MAIS RÁPIDO'},
+ {id:'pack',x:4.6,y:22.55,name:'CARGA',icon:'▣',level:0,max:5,invest:0,base:22,desc:'MAIS CAPACIDADE'},
+ {id:'farm',x:6.2,y:22.0,name:'CEIFEIRO',icon:'♟',level:0,max:5,invest:0,base:35,desc:'COLHEITA AUTOMÁTICA'},
+ {id:'market',x:7.8,y:22.55,name:'PREGÃO',icon:'¤',level:0,max:5,invest:0,base:30,desc:'MAIS CLIENTES'},
+ {id:'guard',x:9.4,y:22.0,name:'GUARDA',icon:'⚔',level:0,max:5,invest:0,base:38,desc:'DEFESA AUTOMÁTICA'},
+ {id:'craft',x:10.6,y:20.7,name:'OFÍCIO',icon:'⚒',level:0,max:5,invest:0,base:44,desc:'PRODUÇÃO MAIS RÁPIDA'}
+];
+const automation={harvestCd:0,guardCd:0};
 const metaLoot={glory:0,seal:0,eye:0,opus:0,arcana:0};
 const PRODUCT={
  provision:{label:'PROVISÃO',icon:'◫',price:2},
@@ -200,7 +213,13 @@ let fx=[],drops=[],enemies=[],boss=null,customers=[],objective=0,kills=0,fieldKi
 const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:7.25,accel:44,decel:58,vx:0,vy:0,atkCd:0,hitCd:0,walk:0,moveBlend:0,angle:0,attackPulse:0,cutPulse:0,stepCd:0};
 try{bestLevel=Math.max(1,Number(localStorage.getItem('harun-roomrun-best'))||1)}catch(_){}
 
-function carryCapacity(){return 18+rescued*4+Math.min(18,(level-1)*2)+metaLoot.seal*2}
+function upgrade(id){return upgrades.find(u=>u.id===id)}
+function upgradeCost(u){return Math.ceil(u.base*Math.pow(1.72,u.level))}
+function carryCapacity(){return 24+rescued*4+Math.min(24,(level-1)*2)+metaLoot.seal*2+upgrade('pack').level*10}
+function cutSpeed(){return 6.2*(1+upgrade('scythe').level*.34)}
+function phaseNumber(){return Math.min(7,objective+1)}
+function phaseName(){return ['COLHEITA','MERCADO','ACÓLITOS','DEFESA','EXPANSÃO','PROVA','ASCENSÃO'][Math.min(6,objective)]}
+function combatUnlocked(){return builds[0].done||objective>=3||level>1}
 function carryLoad(){return grain+meat}
 function freeCarry(){return Math.max(0,carryCapacity()-carryLoad())}
 function requiredBuildCount(){return level<=1?2:level===2?3:4}
@@ -222,11 +241,11 @@ function goodsTotal(){return Object.values(goods).reduce((a,b)=>a+b,0)}
 function resetRun(){
   player.x=5.2;player.y=15.2;player.vx=0;player.vy=0;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;player.moveBlend=0;player.angle=0;player.attackPulse=0;player.cutPulse=0;player.stepCd=0;lastCombat=false;
   clearTimeout(deathTimer);clearTimeout(victoryTimer);deathTimer=victoryTimer=0;
-  objective=0;kills=0;fieldKills=0;rescued=0;resource=0;grain=0;meat=0;coins=0;sales=0;salesLevel=0;level=1;levelTarget=6;levelTimer=0;waveTimer=8;customerTimer=1.2;harvestSfxCd=0;buildSfxCd=0;cutFxCd=0;
+  objective=0;kills=0;fieldKills=0;rescued=0;resource=0;grain=0;meat=0;coins=0;sales=0;salesLevel=0;level=1;levelTarget=6;levelTimer=0;waveTimer=2.5;customerTimer=.7;harvestSfxCd=0;buildSfxCd=0;cutFxCd=0;automation.harvestCd=0;automation.guardCd=0;
   fx=[];drops=[];enemies=[];customers=[];boss=null;depot.input=0;depot.process=0;
   Object.keys(goods).forEach(k=>goods[k]=0);Object.keys(metaLoot).forEach(k=>metaLoot[k]=0);
   resetFieldCrops();
-  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0;b.process=0;b.input=0});
+  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0;b.tier=0;b.process=0;b.input=0});upgrades.forEach(u=>{u.level=0;u.invest=0});
   acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0;a.workCd=0});
   updateHUD();
 }
