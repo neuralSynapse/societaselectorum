@@ -125,11 +125,11 @@ const props=[
  {kind:'torch',x:3.1,y:14.1},{kind:'torch',x:10.8,y:18.5},{kind:'torch',x:18.1,y:13.7},{kind:'rune',x:15.9,y:16.1}
 ];
 const acolytes=[
- {x:9.3,y:17.2,rescued:false,follow:0,bubble:'☉'},
- {x:10.2,y:16.7,rescued:false,follow:1,bubble:'≡'},
- {x:11.2,y:16.3,rescued:false,follow:2,bubble:'△'},
- {x:12.2,y:15.8,rescued:false,ambient:true,bubble:'◌'},
- {x:13.0,y:15.3,rescued:false,ambient:true,bubble:'⚗'}
+ {x:9.3,y:17.2,homeX:9.3,homeY:17.2,rescued:false,follow:0,bubble:'☉'},
+ {x:10.2,y:16.7,homeX:10.2,homeY:16.7,rescued:false,follow:1,bubble:'≡'},
+ {x:11.2,y:16.3,homeX:11.2,homeY:16.3,rescued:false,follow:2,bubble:'△'},
+ {x:12.2,y:15.8,homeX:12.2,homeY:15.8,rescued:false,ambient:true,bubble:'◌'},
+ {x:13.0,y:15.3,homeX:13.0,homeY:15.3,rescued:false,ambient:true,bubble:'⚗'}
 ];
 const depot={x:6.2,y:16.0,amount:40,max:40,respawn:0};
 const builds=[
@@ -139,10 +139,10 @@ const builds=[
 let fx=[],drops=[],enemies=[],boss=null,objective=0,kills=0,fieldKills=0,rescued=0,resource=0;
 const player={x:5.2,y:15.2,hp:100,maxHp:100,speed:8.45,accel:34,decel:42,vx:0,vy:0,atkCd:0,hitCd:0,walk:0,moveBlend:0,angle:0,attackPulse:0};
 function resetRun(){
-  player.x=5.2;player.y=15.2;player.vx=0;player.vy=0;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;player.moveBlend=0;
+  player.x=5.2;player.y=15.2;player.vx=0;player.vy=0;player.hp=100;player.maxHp=100;player.atkCd=0;player.hitCd=0;player.walk=0;player.moveBlend=0;player.angle=0;lastCombat=false;
   clearTimeout(deathTimer);clearTimeout(victoryTimer);deathTimer=victoryTimer=0;
   objective=0;kills=0;fieldKills=0;rescued=0;resource=0;fx=[];drops=[];enemies=[];boss=null;depot.amount=40;depot.respawn=0;
-  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0});acolytes.forEach(a=>{if(!a.ambient){a.rescued=false;a.follow=a.follow}else a.rescued=false});
+  builds.forEach(b=>{b.invest=0;b.done=false;b.height=0});acolytes.forEach(a=>{a.x=a.homeX??a.x;a.y=a.homeY??a.y;a.rescued=false;a.cool=0});
   spawnInitialEnemies();updateHUD();
 }
 function spawnInitialEnemies(){
@@ -181,10 +181,10 @@ function setObjective(n){if(objective===n)return;objective=n;updateHUD();fx.push
 function emit(kind,x,y,data={}){fx.push(Object.assign({kind,x,y,t:0,d:.65},data))}
 function pickupDrop(d){resource+=d.value;d.dead=true;emit('pickup',d.x,d.y,{text:'+'+d.value});audio&&audio.sfx('pickup',{gain:.7});updateHUD()}
 function damageEnemy(e,dmg){
-  if(e.dead||runState!=='playing')return;e.hp-=dmg;e.hit=.11;emit('damage',e.x,e.y,{text:String(Math.round(dmg)),crit:dmg>22});
+  if(e.dead||runState!=='playing')return;e.hp=Math.max(0,e.hp-dmg);e.hit=.11;emit('damage',e.x,e.y,{text:String(Math.round(dmg)),crit:dmg>22});
   audio&&audio.sfx('impact',{gain:.45,pitch:e===boss?.86:1});
   if(e.hp<=0){e.dead=true;kills++;if(objective===3&&e!==boss)fieldKills++;emit('burst',e.x,e.y,{big:e===boss});audio&&audio.sfx(e===boss?'boss_death':'enemy_death',{gain:e===boss?1:.55});
-    if(e===boss){clearTimeout(deathTimer);deathTimer=0;setObjective(6);victoryTimer=setTimeout(showVictory,650)}
+    if(e===boss){clearTimeout(deathTimer);deathTimer=0;setObjective(6);runState='victoryPending';paused=true;endPointer();victoryTimer=setTimeout(showVictory,650)}
     else drops.push({x:e.x,y:e.y,value:8,dead:false,t:0});
   }
 }
