@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#020304">
+<meta name="robots" content="index,follow">
+<title>MUNDUS ELECTORUM · Electorum City 3D</title>
+<meta name="description" content="MUNDUS ELECTORUM: cidade 3D navegável e Observatorium Publicum da SOCIETAS ELECTORUM.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="https://cdn.websitepublisher.ai/custom/wid25063/images/branding/favicon-flame-v4.svg">
+<link rel="stylesheet" href="https://cdn.websitepublisher.ai/custom/wid25063/css/mundus-electorum-real3d-v1.css?v=20260921.3">
+</head>
+<body>
+<main class="me3d-app">
+  <div class="me3d-loading" id="me3dLoading"></div>
+  <canvas id="me3dCanvas" aria-label="Electorum City 3D"></canvas>
+  <div class="label-layer" id="me3dLabels"></div>
+  <div class="me3d-vignette"></div>
+
+  <div class="me3d-hud">
+    <header class="top">
+      <div class="brandrow">
+        <a class="back glass" href="/">← SOCIETAS</a>
+        <div class="brand glass"><span class="k">OBSERVATORIUM PUBLICUM · ELECTORUM CITY 3D</span><h1>MUNDUS ELECTORUM</h1><p>Arquitetura real em 3D, navegável por câmera. O Actus Ingressus permanece no Extra-Circulum e a Caixa Negra conecta os mundos do ecossistema.</p></div>
+      </div>
+      <div class="stats glass">
+        <div class="stat"><b id="statTotal">7</b><span>Ativos</span></div>
+        <div class="stat"><b id="statOuter">6</b><span>Exterior</span></div>
+        <div class="stat"><b id="statInner">1</b><span>Círculo</span></div>
+        <div class="stat"><b id="statTime">--:--</b><span>Hora</span></div>
+      </div>
+    </header>
+
+    <div class="mid">
+      <nav class="menu glass">
+        <button class="nav on" data-action="overview">⌂ &nbsp; Visão Geral</button>
+        <button class="nav" data-action="labels">◇ &nbsp; Rótulos</button>
+        <button class="nav" data-action="chronica">◫ &nbsp; Chronica Mundi</button>
+        <button class="nav" data-action="maps">⊙ &nbsp; Atlas Terrae</button>
+        <button class="nav" data-action="dimensions">◎ &nbsp; Dimensionum</button>
+        <button class="nav" data-action="portal">◆ &nbsp; Caixa Negra</button>
+      </nav>
+
+      <aside class="side">
+        <section class="card glass">
+          <span class="k">ERA I · TEMPLUM PRIMUS</span><h3>Progresso do Assentamento</h3>
+          <p>A cidade cresce conforme marcos reais da SOCIETAS. A cena 3D é representação, não promoção.</p>
+          <div class="meter"><div><span>Bibliotheca</span><span>55%</span></div><div class="bar"><i style="width:55%"></i></div></div>
+          <div class="meter"><div><span>Templum</span><span>42%</span></div><div class="bar"><i style="width:42%"></i></div></div>
+          <div class="meter"><div><span>Scriptorium</span><span>36%</span></div><div class="bar"><i style="width:36%"></i></div></div>
+          <div style="margin-top:10px"><button class="btn" data-action="portal" style="width:100%">ABRIR CAIXA NEGRA</button></div>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="bottom">
+      <div class="dock glass">
+        <button class="btn" data-action="overview">PANORAMA</button>
+        <button class="btn" data-action="labels">RÓTULOS</button>
+        <button class="btn" data-action="chronica">CHRONICA</button>
+        <button class="btn" data-action="portal">CAIXA NEGRA</button>
+      </div>
+      <div class="hint">Desktop: arraste para orbitar/panoramizar + scroll para zoom · Mobile: um dedo gira, dois dedos movem e fazem pinça</div>
+    </footer>
+  </div>
+
+  <section class="panel glass" id="chronPanel"><span class="k">CHRONICA MUNDI</span><h2 style="font:600 19px Cinzel,serif;color:var(--gold2);margin:.3rem 0">Memória do mundo</h2><div id="chronBody"></div></section>
+
+  <section class="modal" id="placeModal">
+    <div class="mhead"><div><span class="k">LOCUS MUNDI</span><h2 id="placeName">Local</h2></div><button class="close" data-close="placeModal">×</button></div>
+    <div style="padding:15px"><p id="placeDesc" style="margin:0;color:var(--muted);font-size:11px;line-height:1.65"></p><div style="margin-top:12px"><a id="placeGo" class="btn" style="display:inline-grid;place-items:center;text-decoration:none;padding:0 12px">ABRIR FUNÇÃO</a></div></div>
+  </section>
+
+  <section class="modal" id="portalModal">
+    <div class="mhead"><div><span class="k">NEXUS INTERMUNDIA · CAIXA NEGRA</span><h2>Escolha a travessia</h2></div><button class="close" data-close="portalModal">×</button></div>
+    <div class="portalgrid">
+      <a class="dest" href="/comunidade/mundus-societas.html"><span class="k">MUNDO</span><h3>MUNDUS · SOCIETAS</h3><p>Arquitetura navegável da Ordem, Árvores, Pergaminhos e formação.</p><em>ATRAVESSAR →</em></a>
+      <a class="dest" href="https://project27912.websitepublisher.ai/jogo4-oficial.html"><span class="k">JOGO 4</span><h3>A JORNADA</h3><p>Sobrevivência, construção e narrativa canônica.</p><em>ATRAVESSAR →</em></a>
+      <a class="dest" href="https://project27912.websitepublisher.ai/chronica-harun-3d.html"><span class="k">ACTION RPG</span><h3>CHRONICA HĀRŪN</h3><p>Cidadela, poderes, combate e exploração.</p><em>ATRAVESSAR →</em></a>
+      <a class="dest" href="https://project27912.websitepublisher.ai/harun-roguelite.html"><span class="k">ROGUELITE</span><h3>CIDADELA DAS CINZAS</h3><p>Salas, Arcanas, rotas e chefes.</p><em>ATRAVESSAR →</em></a>
+      <a class="dest" href="/mundus-electorum.html#chronica-temporal"><span class="k">TEMPO</span><h3>CHRONICA MUNDI</h3><p>Estados históricos preservados do próprio MUNDUS.</p><em>ATRAVESSAR →</em></a>
+      <a class="dest" href="/mundus-terrae.html"><span class="k">TERRAE</span><h3>TERRAS DOS FRATRES</h3><p>Atlas territorial e futuras terras visitáveis.</p><em>ABRIR ATLAS →</em></a>
+      <a class="dest" href="/mundus-dimensiones.html"><span class="k">DIMENSIONES</span><h3>OUTROS MUNDOS</h3><p>Jogos, mundos e travessias conectados ao Nexus.</p><em>ABRIR ATLAS →</em></a>
+    </div>
+  </section>
+
+  <div class="toast" id="me3dToast"></div>
+</main>
+<script src="https://cdn.websitepublisher.ai/custom/wid25063/js/vendor/three-r128.min.js?v=20260921.1"></script>
+<script src="https://cdn.websitepublisher.ai/custom/wid25063/js/vendor/OrbitControls-r128.js?v=20260921.1"></script>
+<script src="https://cdn.websitepublisher.ai/custom/wid25063/js/mundus-electorum-real3d-v1.js?v=20260921.6"></script>
+<script>setTimeout(function(){var l=document.getElementById("me3dLoading");if(l&&!l.classList.contains("off")){l.setAttribute("data-error","1");l.innerHTML="<div style=\"max-width:520px;text-align:center;padding:18px;border:1px solid rgba(216,173,85,.38);background:rgba(4,5,5,.82);color:#f3d28b;font:600 13px Cinzel,serif;line-height:1.55\">O motor 3D não iniciou. Atualize a página com Ctrl+F5. Se persistir, o fallback técnico será ativado automaticamente.</div>";}},9000);</script>
+</body>
+</html>
