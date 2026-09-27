@@ -1,0 +1,69 @@
+{
+  "archive": "wp25063-capacity-20260927",
+  "source_project_id": 25063,
+  "archived_at": "2026-09-27",
+  "reason": "Capacity migration: remove explicit backup/archive assets from WebsitePublisher CDN after external preservation.",
+  "destination_branch": "archive/wp25063-capacity-20260927",
+  "rules": [
+    "GitHub readback completed before source deletion.",
+    "Only explicit backup/archive assets were removed.",
+    "Operational current assets were not removed."
+  ],
+  "files": [
+    {
+      "path": "json/backups/reading-assessments-v1.dca2c87b.pre-actus-olho-v3.json",
+      "wp_version_hash": "dca2c87b",
+      "size": 224980
+    },
+    {
+      "path": "worlds/societas/backups/manifest-v7.1.staging.pre-probation-fix-20260926.js",
+      "wp_version_hash": "2f5edf8c",
+      "size": 16464
+    },
+    {
+      "path": "worlds/societas/backups/sequence-v7.1.staging.pre-probation-fix-20260926.js",
+      "wp_version_hash": "1d33e075",
+      "size": 9862
+    },
+    {
+      "path": "worlds/societas/backups/sequence-v7.1.staging.pre-veiled-draconis-fix-20260926.js",
+      "wp_version_hash": "1d33e075",
+      "size": 9862
+    },
+    {
+      "path": "worlds/societas/backups/manifest-pre-v7.1-20260927.js",
+      "wp_version_hash": "0585422d",
+      "size": 15821
+    },
+    {
+      "path": "worlds/societas/backups/sequence-pre-v7.1-20260927.js",
+      "wp_version_hash": "fb2cbfb1",
+      "size": 9684
+    },
+    {
+      "path": "worlds/societas/backups/runtime-pre-v7.1-20260927.js",
+      "wp_version_hash": "1b329d9d",
+      "size": 21086
+    },
+    {
+      "path": "worlds/societas/backups/runtime-3d-pre-v7.1-20260927.js",
+      "wp_version_hash": "d9ee4106",
+      "size": 29372
+    },
+    {
+      "path": "worlds/societas/backups/boot-pre-v7.1-20260927.js",
+      "wp_version_hash": "4d9e7fe6",
+      "size": 3417
+    },
+    {
+      "path": "archive/page-backups/comunidade__mundus-electorum-webpub.html.html",
+      "wp_version_hash": "00a81a0c",
+      "size": 11510
+    },
+    {
+      "path": "archive/page-backups/mundus-electorum-webpub-3d.html.html",
+      "wp_version_hash": "f6aefaa4",
+      "size": 7306
+    }
+  ]
+}
